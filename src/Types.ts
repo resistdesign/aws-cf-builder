@@ -1,26 +1,3 @@
-export type CFPropertyTypeDescriptorProperty = {
-  Documentation?: string;
-  UpdateType?: string;
-  Required?: boolean;
-  Type?: string;
-  PrimitiveItemType?: string;
-  DuplicatesAllowed?: boolean;
-  PrimitiveType?: string;
-  ItemType?: string;
-};
-
-export type CFPropertyTypeDescriptorPropertyMap = {
-  [PropertyName: string]: CFPropertyTypeDescriptorProperty;
-};
-
-export type CFPropertyTypeDescriptor = CFPropertyTypeDescriptorProperty & {
-  Properties?: CFPropertyTypeDescriptorPropertyMap;
-};
-
-export type CFPropertyTypeMap = {
-  [PropTypeDescriptor: string]: CFPropertyTypeDescriptor;
-};
-
 export type CFResourceTypeProperty = {
   Documentation?: string;
   UpdateType?: string;
@@ -36,9 +13,9 @@ export type CFResourceTypePropertyMap = {
   [Property: string]: CFResourceTypeProperty;
 };
 
-export type CFResourceType = {
+export type CFResourceType = CFResourceTypeProperty & {
   Documentation?: string;
-  Properties: CFResourceTypePropertyMap;
+  Properties?: CFResourceTypePropertyMap;
   Attributes?: CFResourceTypePropertyMap;
   AdditionalProperties?: boolean;
 };
@@ -48,7 +25,7 @@ export type CFResourceTypeMap = {
 };
 
 export type CloudFormationResourceSpecification = {
-  PropertyTypes: CFPropertyTypeMap;
+  PropertyTypes: CFResourceTypeMap;
   ResourceTypes: CFResourceTypeMap;
   ResourceSpecificationVersion: `${number}.${number}.${number}`;
 };
