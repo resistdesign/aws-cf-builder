@@ -1,0 +1,22 @@
+{
+  "name": "aws-cf-builder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Ryan Graff",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn ts-node ./src/index.ts"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.2",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "useTabs": false
+  }
+}
