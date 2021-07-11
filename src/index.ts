@@ -1,6 +1,7 @@
+import FS from 'fs';
+import * as TS from 'typescript';
 import { CloudFormationResourceSpecificationData } from './CloudFormationResourceSpecification';
 import { CFResourceTypeMap, CFResourceTypePropertyMap } from './Types';
-import FS from 'fs';
 
 type PropertyTypeMap = {
   [PropertyName: string]: string;
@@ -195,6 +196,42 @@ const renderPackage = (
   return values.join('\n\n');
 };
 
-FS.writeFileSync('./AWSResourceTypes.d.ts', renderPackage(PackageStructure), {
+const getDiagnosticsForText = (text: string) => {
+  const dummyFilePath = '/file.ts';
+  const textAst = TS.createSourceFile(
+    dummyFilePath,
+    text,
+    TS.ScriptTarget.Latest
+  );
+  const options: TS.CompilerOptions = {};
+  const host: TS.CompilerHost = {
+    fileExists: (filePath) => filePath === dummyFilePath,
+    directoryExists: (dirPath) => dirPath === '/',
+    getCurrentDirectory: () => '/',
+    getDirectories: () => [],
+    getCanonicalFileName: (fileName) => fileName,
+    getNewLine: () => '\n',
+    getDefaultLibFileName: () => '',
+    getSourceFile: (filePath) =>
+      filePath === dummyFilePath ? textAst : undefined,
+    readFile: (filePath) => (filePath === dummyFilePath ? text : undefined),
+    useCaseSensitiveFileNames: () => true,
+    writeFile: () => {},
+  };
+  const program = TS.createProgram({
+    options,
+    rootNames: [dummyFilePath],
+    host,
+  });
+
+  return TS.getPreEmitDiagnostics(program);
+};
+const TypesContentString = renderPackage(PackageStructure);
+
+console.log(
+  getDiagnosticsForText(TypesContentString).map((d) => d.messageText)
+);
+
+FS.writeFileSync('./AWSResourceTypes.d.ts', TypesContentString, {
   encoding: 'utf8',
 });
