@@ -104,7 +104,11 @@ const PackageStructure: Record<any, any> = Object.keys(
   return acc;
 }, {} as Record<any, any>);
 
-const renderPackage = (pack: Record<any, any> = {}, depth = 0): string => {
+const renderPackage = (
+  pack: Record<any, any> = {},
+  depth = 0,
+  inType = false
+): string => {
   const values = [];
 
   for (const k in pack) {
@@ -112,14 +116,20 @@ const renderPackage = (pack: Record<any, any> = {}, depth = 0): string => {
 
     if (v instanceof Object) {
       if (depth > 2) {
-        values.push(`export type ${k} = { ${renderPackage(v, depth + 1)} };`);
+        if (inType) {
+          values.push(`${k}: { ${renderPackage(v, depth + 1, true)} };`);
+        } else {
+          values.push(
+            `export type ${k} = { ${renderPackage(v, depth + 1, true)} };`
+          );
+        }
       } else {
         values.push(`export namespace ${k} {`);
         values.push(renderPackage(v, depth + 1));
         values.push('}');
       }
     } else {
-      if (depth > 3) {
+      if (depth > 3 || inType) {
         values.push(`${k}: ${v.replace(/::/gim, () => '.')};`);
       } else {
         values.push(`export type ${k} = ${v.replace(/::/gim, () => '.')};`);
