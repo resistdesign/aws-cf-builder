@@ -1,5 +1,6 @@
 import FS from 'fs';
 import * as TS from 'typescript';
+import { format } from 'prettier';
 import { CloudFormationResourceSpecificationData } from './CloudFormationResourceSpecification';
 import { CFResourceTypeMap, CFResourceTypePropertyMap } from './Types';
 
@@ -229,7 +230,9 @@ const getDiagnosticsForText = (text: string) => {
 
   return TS.getPreEmitDiagnostics(program);
 };
-const TypesContentString = renderPackage(PackageStructure);
+const TypesContentString = format(renderPackage(PackageStructure), {
+  parser: 'typescript',
+});
 
 console.log(
   getDiagnosticsForText(TypesContentString).map((d) => d.messageText)
