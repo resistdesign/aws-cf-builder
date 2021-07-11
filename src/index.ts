@@ -2,7 +2,7 @@ import { CloudFormationResourceSpecificationData } from './CloudFormationResourc
 import { CFResourceTypeMap, CFResourceTypePropertyMap } from './Types';
 
 type PropertyTypeMap = {
-  [PropertyName: string]: string | undefined;
+  [PropertyName: string]: string;
 };
 type ResourceTypeMap = {
   [ResourceType: string]: PropertyTypeMap;
@@ -16,7 +16,7 @@ const Combo: CFResourceTypeMap = {
   ...ResourceTypes,
 };
 const GET_PROP_REDUCER =
-  (t: string, propsObj: CFResourceTypePropertyMap) =>
+  (t: string, propsObj: CFResourceTypePropertyMap, combo: CFResourceTypeMap) =>
   (acc: PropertyTypeMap, p: string) => {
     const { Type, PrimitiveType, ItemType, PrimitiveItemType } = propsObj[p];
     const typeDomain = t.split('.')[0] || '';
@@ -33,10 +33,10 @@ const GET_PROP_REDUCER =
     const fullType =
       itemType && mainType ? `${mainType}<${itemType}>` : itemType || mainType;
     const typeIsReferenced = itemType
-      ? itemType in Combo
-      : mainType && mainType in Combo;
+      ? itemType in combo
+      : mainType && mainType in combo;
 
-    if (Type && !(mainType && mainType in Combo)) {
+    if (Type && !(mainType && mainType in combo)) {
       TypeKindsMap[Type] = true;
     }
 
@@ -46,12 +46,17 @@ const GET_PROP_REDUCER =
   };
 const GET_RESOURCE_REDUCER =
   (combo: CFResourceTypeMap) => (acc: ResourceTypeMap, t: string) => {
-    const propsObj = combo[t]?.Properties || {};
+    const propsObj = combo[t].Properties;
 
-    acc[t] = Object.keys(propsObj).reduce(
-      GET_PROP_REDUCER(t, propsObj),
-      {} as PropertyTypeMap
-    );
+    if (propsObj) {
+      acc[t] = Object.keys(propsObj).reduce(
+        GET_PROP_REDUCER(t, propsObj, combo),
+        {} as PropertyTypeMap
+      );
+    } else {
+      // Parse Resources w/o Properties, but w/ direct properties.
+      acc[t] = GET_PROP_REDUCER(t, combo, combo)({}, t);
+    }
 
     return acc;
   };
@@ -59,7 +64,5 @@ const ResourceTypeMapData: ResourceTypeMap = Object.keys(Combo).reduce(
   GET_RESOURCE_REDUCER(Combo),
   {} as ResourceTypeMap
 );
-
-// TODO: Parse Resources w/o Properties, but w/ direct properties.
 
 console.log(ResourceTypeMapData, TypeKindsMap);
