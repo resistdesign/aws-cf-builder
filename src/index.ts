@@ -168,7 +168,7 @@ const renderPackage = (
     const v = pack[k];
 
     if (v instanceof Object) {
-      namespaceValues.push(renderPackage(v));
+      namespaceValues.push(renderPackage(v, k));
     } else {
       typeValues.push(`${k}${v.replace(/::/gim, () => '.')};`);
     }

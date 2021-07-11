@@ -1,14 +1,30 @@
-export type JSONString = string;
+JSONStringstring;
 
-export type Timestamp = string;
+Timestampstring;
 
 export namespace AWS {
 
+
 export namespace WAFRegional {
+
+
+export type ByteMatchSet = {
+
+
+ByteMatchTuples?: AWS.WAFRegional.ByteMatchSet.ByteMatchTuple[];
+
+Name: string;
+
+
+};
 
 export namespace ByteMatchSet {
 
-export type ByteMatchTuple = { TargetString?: string;
+
+export type ByteMatchTuple = {
+
+
+TargetString?: string;
 
 TargetStringBase64?: string;
 
@@ -16,247 +32,525 @@ PositionalConstraint: string;
 
 TextTransformation: string;
 
-FieldToMatch: AWS.WAFRegional.ByteMatchSet.FieldToMatch; };
+FieldToMatch: AWS.WAFRegional.ByteMatchSet.FieldToMatch;
 
-export type FieldToMatch = { Type: string;
 
-Data?: string; };
+};
 
-export type ByteMatchTuples =  AWS.WAFRegional.ByteMatchSet.ByteMatchTuple[];
+export type FieldToMatch = {
 
-export type Name =  string;
+
+Type: string;
+
+Data?: string;
+
+
+};
+
 
 }
+
+export type Rule = {
+
+
+MetricName: string;
+
+Predicates?: AWS.WAFRegional.Rule.Predicate[];
+
+Name: string;
+
+
+};
 
 export namespace Rule {
 
-export type Predicate = { Type: string;
+
+export type Predicate = {
+
+
+Type: string;
 
 DataId: string;
 
-Negated: boolean; };
+Negated: boolean;
 
-export type MetricName =  string;
 
-export type Predicates =  AWS.WAFRegional.Rule.Predicate[];
+};
 
-export type Name =  string;
 
 }
 
+export type SizeConstraintSet = {
+
+
+SizeConstraints?: AWS.WAFRegional.SizeConstraintSet.SizeConstraint[];
+
+Name: string;
+
+
+};
+
 export namespace SizeConstraintSet {
 
-export type SizeConstraint = { ComparisonOperator: string;
+
+export type SizeConstraint = {
+
+
+ComparisonOperator: string;
 
 Size: number;
 
 TextTransformation: string;
 
-FieldToMatch: AWS.WAFRegional.SizeConstraintSet.FieldToMatch; };
+FieldToMatch: AWS.WAFRegional.SizeConstraintSet.FieldToMatch;
 
-export type FieldToMatch = { Type: string;
 
-Data?: string; };
+};
 
-export type SizeConstraints =  AWS.WAFRegional.SizeConstraintSet.SizeConstraint[];
+export type FieldToMatch = {
 
-export type Name =  string;
+
+Type: string;
+
+Data?: string;
+
+
+};
+
 
 }
+
+export type XssMatchSet = {
+
+
+XssMatchTuples?: AWS.WAFRegional.XssMatchSet.XssMatchTuple[];
+
+Name: string;
+
+
+};
 
 export namespace XssMatchSet {
 
-export type XssMatchTuple = { TextTransformation: string;
 
-FieldToMatch: AWS.WAFRegional.XssMatchSet.FieldToMatch; };
+export type XssMatchTuple = {
 
-export type FieldToMatch = { Type: string;
 
-Data?: string; };
+TextTransformation: string;
 
-export type XssMatchTuples =  AWS.WAFRegional.XssMatchSet.XssMatchTuple[];
+FieldToMatch: AWS.WAFRegional.XssMatchSet.FieldToMatch;
 
-export type Name =  string;
+
+};
+
+export type FieldToMatch = {
+
+
+Type: string;
+
+Data?: string;
+
+
+};
+
 
 }
+
+export type GeoMatchSet = {
+
+
+GeoMatchConstraints?: AWS.WAFRegional.GeoMatchSet.GeoMatchConstraint[];
+
+Name: string;
+
+
+};
 
 export namespace GeoMatchSet {
 
-export type GeoMatchConstraint = { Type: string;
 
-Value: string; };
+export type GeoMatchConstraint = {
 
-export type GeoMatchConstraints =  AWS.WAFRegional.GeoMatchSet.GeoMatchConstraint[];
 
-export type Name =  string;
+Type: string;
+
+Value: string;
+
+
+};
+
 
 }
+
+export type SqlInjectionMatchSet = {
+
+
+SqlInjectionMatchTuples?: AWS.WAFRegional.SqlInjectionMatchSet.SqlInjectionMatchTuple[];
+
+Name: string;
+
+
+};
 
 export namespace SqlInjectionMatchSet {
 
-export type FieldToMatch = { Type: string;
 
-Data?: string; };
+export type FieldToMatch = {
 
-export type SqlInjectionMatchTuple = { TextTransformation: string;
 
-FieldToMatch: AWS.WAFRegional.SqlInjectionMatchSet.FieldToMatch; };
+Type: string;
 
-export type SqlInjectionMatchTuples =  AWS.WAFRegional.SqlInjectionMatchSet.SqlInjectionMatchTuple[];
+Data?: string;
 
-export type Name =  string;
+
+};
+
+export type SqlInjectionMatchTuple = {
+
+
+TextTransformation: string;
+
+FieldToMatch: AWS.WAFRegional.SqlInjectionMatchSet.FieldToMatch;
+
+
+};
+
 
 }
+
+export type WebACL = {
+
+
+MetricName: string;
+
+DefaultAction: AWS.WAFRegional.WebACL.Action;
+
+Rules?: AWS.WAFRegional.WebACL.Rule[];
+
+Name: string;
+
+
+};
 
 export namespace WebACL {
 
-export type Action = { Type: string; };
 
-export type Rule = { Action: AWS.WAFRegional.WebACL.Action;
+export type Action = {
+
+
+Type: string;
+
+
+};
+
+export type Rule = {
+
+
+Action: AWS.WAFRegional.WebACL.Action;
 
 Priority: number;
 
-RuleId: string; };
+RuleId: string;
 
-export type MetricName =  string;
 
-export type DefaultAction =  AWS.WAFRegional.WebACL.Action;
+};
 
-export type Rules =  AWS.WAFRegional.WebACL.Rule[];
-
-export type Name =  string;
 
 }
+
+export type IPSet = {
+
+
+IPSetDescriptors?: AWS.WAFRegional.IPSet.IPSetDescriptor[];
+
+Name: string;
+
+
+};
 
 export namespace IPSet {
 
-export type IPSetDescriptor = { Type: string;
 
-Value: string; };
+export type IPSetDescriptor = {
 
-export type IPSetDescriptors =  AWS.WAFRegional.IPSet.IPSetDescriptor[];
 
-export type Name =  string;
+Type: string;
+
+Value: string;
+
+
+};
+
 
 }
+
+export type RateBasedRule = {
+
+
+MetricName: string;
+
+RateLimit: number;
+
+MatchPredicates?: AWS.WAFRegional.RateBasedRule.Predicate[];
+
+RateKey: string;
+
+Name: string;
+
+
+};
 
 export namespace RateBasedRule {
 
-export type Predicate = { Type: string;
+
+export type Predicate = {
+
+
+Type: string;
 
 DataId: string;
 
-Negated: boolean; };
+Negated: boolean;
 
-export type MetricName =  string;
 
-export type RateLimit =  number;
+};
 
-export type MatchPredicates =  AWS.WAFRegional.RateBasedRule.Predicate[];
-
-export type RateKey =  string;
-
-export type Name =  string;
 
 }
 
-export namespace RegexPatternSet {
+export type RegexPatternSet = {
 
-export type RegexPatternStrings =  string[];
 
-export type Name =  string;
+RegexPatternStrings: string[];
 
-}
+Name: string;
 
-export namespace WebACLAssociation {
 
-export type ResourceArn =  string;
+};
 
-export type WebACLId =  string;
+export type WebACLAssociation = {
 
-}
+
+ResourceArn: string;
+
+WebACLId: string;
+
+
+};
+
 
 }
 
 export namespace AppMesh {
 
+
+export type VirtualRouter = {
+
+
+MeshName: string;
+
+VirtualRouterName?: string;
+
+MeshOwner?: string;
+
+Spec: AWS.AppMesh.VirtualRouter.VirtualRouterSpec;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace VirtualRouter {
 
-export type PortMapping = { Port: number;
 
-Protocol: string; };
+export type PortMapping = {
 
-export type VirtualRouterSpec = { Listeners: AWS.AppMesh.VirtualRouter.VirtualRouterListener[]; };
 
-export type VirtualRouterListener = { PortMapping: AWS.AppMesh.VirtualRouter.PortMapping; };
+Port: number;
 
-export type MeshName =  string;
+Protocol: string;
 
-export type VirtualRouterName =  string;
 
-export type MeshOwner =  string;
+};
 
-export type Spec =  AWS.AppMesh.VirtualRouter.VirtualRouterSpec;
+export type VirtualRouterSpec = {
 
-export type Tags =  Tag[];
+
+Listeners: AWS.AppMesh.VirtualRouter.VirtualRouterListener[];
+
+
+};
+
+export type VirtualRouterListener = {
+
+
+PortMapping: AWS.AppMesh.VirtualRouter.PortMapping;
+
+
+};
+
 
 }
 
+export type VirtualNode = {
+
+
+MeshName: string;
+
+MeshOwner?: string;
+
+Spec: AWS.AppMesh.VirtualNode.VirtualNodeSpec;
+
+VirtualNodeName?: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace VirtualNode {
 
-export type TlsValidationContextSdsTrust = { SecretName: string; };
 
-export type ClientPolicyTls = { Validation: AWS.AppMesh.VirtualNode.TlsValidationContext;
+export type TlsValidationContextSdsTrust = {
+
+
+SecretName: string;
+
+
+};
+
+export type ClientPolicyTls = {
+
+
+Validation: AWS.AppMesh.VirtualNode.TlsValidationContext;
 
 Enforce?: boolean;
 
 Ports?: number[];
 
-Certificate?: AWS.AppMesh.VirtualNode.ClientTlsCertificate; };
+Certificate?: AWS.AppMesh.VirtualNode.ClientTlsCertificate;
 
-export type FileAccessLog = { Path: string; };
 
-export type AwsCloudMapInstanceAttribute = { Value: string;
+};
 
-Key: string; };
+export type FileAccessLog = {
 
-export type ListenerTlsValidationContext = { SubjectAlternativeNames?: AWS.AppMesh.VirtualNode.SubjectAlternativeNames;
 
-Trust: AWS.AppMesh.VirtualNode.ListenerTlsValidationContextTrust; };
+Path: string;
 
-export type TcpTimeout = { Idle?: AWS.AppMesh.VirtualNode.Duration; };
 
-export type Backend = { VirtualService?: AWS.AppMesh.VirtualNode.VirtualServiceBackend; };
+};
 
-export type ListenerTimeout = { TCP?: AWS.AppMesh.VirtualNode.TcpTimeout;
+export type AwsCloudMapInstanceAttribute = {
+
+
+Value: string;
+
+Key: string;
+
+
+};
+
+export type ListenerTlsValidationContext = {
+
+
+SubjectAlternativeNames?: AWS.AppMesh.VirtualNode.SubjectAlternativeNames;
+
+Trust: AWS.AppMesh.VirtualNode.ListenerTlsValidationContextTrust;
+
+
+};
+
+export type TcpTimeout = {
+
+
+Idle?: AWS.AppMesh.VirtualNode.Duration;
+
+
+};
+
+export type Backend = {
+
+
+VirtualService?: AWS.AppMesh.VirtualNode.VirtualServiceBackend;
+
+
+};
+
+export type ListenerTimeout = {
+
+
+TCP?: AWS.AppMesh.VirtualNode.TcpTimeout;
 
 HTTP2?: AWS.AppMesh.VirtualNode.HttpTimeout;
 
 HTTP?: AWS.AppMesh.VirtualNode.HttpTimeout;
 
-GRPC?: AWS.AppMesh.VirtualNode.GrpcTimeout; };
+GRPC?: AWS.AppMesh.VirtualNode.GrpcTimeout;
 
-export type PortMapping = { Port: number;
 
-Protocol: string; };
+};
 
-export type ListenerTls = { Validation?: AWS.AppMesh.VirtualNode.ListenerTlsValidationContext;
+export type PortMapping = {
+
+
+Port: number;
+
+Protocol: string;
+
+
+};
+
+export type ListenerTls = {
+
+
+Validation?: AWS.AppMesh.VirtualNode.ListenerTlsValidationContext;
 
 Mode: string;
 
-Certificate: AWS.AppMesh.VirtualNode.ListenerTlsCertificate; };
+Certificate: AWS.AppMesh.VirtualNode.ListenerTlsCertificate;
 
-export type ListenerTlsSdsCertificate = { SecretName: string; };
 
-export type BackendDefaults = { ClientPolicy?: AWS.AppMesh.VirtualNode.ClientPolicy; };
+};
 
-export type VirtualNodeTcpConnectionPool = { MaxConnections: number; };
+export type ListenerTlsSdsCertificate = {
 
-export type HttpTimeout = { PerRequest?: AWS.AppMesh.VirtualNode.Duration;
 
-Idle?: AWS.AppMesh.VirtualNode.Duration; };
+SecretName: string;
 
-export type HealthCheck = { Path?: string;
+
+};
+
+export type BackendDefaults = {
+
+
+ClientPolicy?: AWS.AppMesh.VirtualNode.ClientPolicy;
+
+
+};
+
+export type VirtualNodeTcpConnectionPool = {
+
+
+MaxConnections: number;
+
+
+};
+
+export type HttpTimeout = {
+
+
+PerRequest?: AWS.AppMesh.VirtualNode.Duration;
+
+Idle?: AWS.AppMesh.VirtualNode.Duration;
+
+
+};
+
+export type HealthCheck = {
+
+
+Path?: string;
 
 UnhealthyThreshold: number;
 
@@ -268,27 +562,57 @@ TimeoutMillis: number;
 
 Protocol: string;
 
-IntervalMillis: number; };
+IntervalMillis: number;
 
-export type AwsCloudMapServiceDiscovery = { NamespaceName: string;
+
+};
+
+export type AwsCloudMapServiceDiscovery = {
+
+
+NamespaceName: string;
 
 ServiceName: string;
 
-Attributes?: AWS.AppMesh.VirtualNode.AwsCloudMapInstanceAttribute[]; };
+Attributes?: AWS.AppMesh.VirtualNode.AwsCloudMapInstanceAttribute[];
 
-export type VirtualNodeHttpConnectionPool = { MaxConnections: number;
 
-MaxPendingRequests?: number; };
+};
 
-export type ListenerTlsFileCertificate = { PrivateKey: string;
+export type VirtualNodeHttpConnectionPool = {
 
-CertificateChain: string; };
 
-export type TlsValidationContext = { SubjectAlternativeNames?: AWS.AppMesh.VirtualNode.SubjectAlternativeNames;
+MaxConnections: number;
 
-Trust: AWS.AppMesh.VirtualNode.TlsValidationContextTrust; };
+MaxPendingRequests?: number;
 
-export type VirtualNodeSpec = { Logging?: AWS.AppMesh.VirtualNode.Logging;
+
+};
+
+export type ListenerTlsFileCertificate = {
+
+
+PrivateKey: string;
+
+CertificateChain: string;
+
+
+};
+
+export type TlsValidationContext = {
+
+
+SubjectAlternativeNames?: AWS.AppMesh.VirtualNode.SubjectAlternativeNames;
+
+Trust: AWS.AppMesh.VirtualNode.TlsValidationContextTrust;
+
+
+};
+
+export type VirtualNodeSpec = {
+
+
+Logging?: AWS.AppMesh.VirtualNode.Logging;
 
 Backends?: AWS.AppMesh.VirtualNode.Backend[];
 
@@ -296,9 +620,15 @@ Listeners?: AWS.AppMesh.VirtualNode.Listener[];
 
 BackendDefaults?: AWS.AppMesh.VirtualNode.BackendDefaults;
 
-ServiceDiscovery?: AWS.AppMesh.VirtualNode.ServiceDiscovery; };
+ServiceDiscovery?: AWS.AppMesh.VirtualNode.ServiceDiscovery;
 
-export type Listener = { ConnectionPool?: AWS.AppMesh.VirtualNode.VirtualNodeConnectionPool;
+
+};
+
+export type Listener = {
+
+
+ConnectionPool?: AWS.AppMesh.VirtualNode.VirtualNodeConnectionPool;
 
 Timeout?: AWS.AppMesh.VirtualNode.ListenerTimeout;
 
@@ -308,105 +638,259 @@ TLS?: AWS.AppMesh.VirtualNode.ListenerTls;
 
 PortMapping: AWS.AppMesh.VirtualNode.PortMapping;
 
-OutlierDetection?: AWS.AppMesh.VirtualNode.OutlierDetection; };
+OutlierDetection?: AWS.AppMesh.VirtualNode.OutlierDetection;
 
-export type DnsServiceDiscovery = { Hostname: string;
 
-ResponseType?: string; };
+};
 
-export type TlsValidationContextFileTrust = { CertificateChain: string; };
+export type DnsServiceDiscovery = {
 
-export type GrpcTimeout = { PerRequest?: AWS.AppMesh.VirtualNode.Duration;
 
-Idle?: AWS.AppMesh.VirtualNode.Duration; };
+Hostname: string;
 
-export type VirtualNodeConnectionPool = { TCP?: AWS.AppMesh.VirtualNode.VirtualNodeTcpConnectionPool;
+ResponseType?: string;
+
+
+};
+
+export type TlsValidationContextFileTrust = {
+
+
+CertificateChain: string;
+
+
+};
+
+export type GrpcTimeout = {
+
+
+PerRequest?: AWS.AppMesh.VirtualNode.Duration;
+
+Idle?: AWS.AppMesh.VirtualNode.Duration;
+
+
+};
+
+export type VirtualNodeConnectionPool = {
+
+
+TCP?: AWS.AppMesh.VirtualNode.VirtualNodeTcpConnectionPool;
 
 HTTP2?: AWS.AppMesh.VirtualNode.VirtualNodeHttp2ConnectionPool;
 
 HTTP?: AWS.AppMesh.VirtualNode.VirtualNodeHttpConnectionPool;
 
-GRPC?: AWS.AppMesh.VirtualNode.VirtualNodeGrpcConnectionPool; };
+GRPC?: AWS.AppMesh.VirtualNode.VirtualNodeGrpcConnectionPool;
 
-export type Logging = { AccessLog?: AWS.AppMesh.VirtualNode.AccessLog; };
 
-export type ServiceDiscovery = { DNS?: AWS.AppMesh.VirtualNode.DnsServiceDiscovery;
+};
 
-AWSCloudMap?: AWS.AppMesh.VirtualNode.AwsCloudMapServiceDiscovery; };
+export type Logging = {
 
-export type Duration = { Value: number;
 
-Unit: string; };
+AccessLog?: AWS.AppMesh.VirtualNode.AccessLog;
 
-export type TlsValidationContextTrust = { SDS?: AWS.AppMesh.VirtualNode.TlsValidationContextSdsTrust;
+
+};
+
+export type ServiceDiscovery = {
+
+
+DNS?: AWS.AppMesh.VirtualNode.DnsServiceDiscovery;
+
+AWSCloudMap?: AWS.AppMesh.VirtualNode.AwsCloudMapServiceDiscovery;
+
+
+};
+
+export type Duration = {
+
+
+Value: number;
+
+Unit: string;
+
+
+};
+
+export type TlsValidationContextTrust = {
+
+
+SDS?: AWS.AppMesh.VirtualNode.TlsValidationContextSdsTrust;
 
 ACM?: AWS.AppMesh.VirtualNode.TlsValidationContextAcmTrust;
 
-File?: AWS.AppMesh.VirtualNode.TlsValidationContextFileTrust; };
+File?: AWS.AppMesh.VirtualNode.TlsValidationContextFileTrust;
 
-export type ListenerTlsAcmCertificate = { CertificateArn: string; };
 
-export type VirtualNodeHttp2ConnectionPool = { MaxRequests: number; };
+};
 
-export type ListenerTlsCertificate = { SDS?: AWS.AppMesh.VirtualNode.ListenerTlsSdsCertificate;
+export type ListenerTlsAcmCertificate = {
+
+
+CertificateArn: string;
+
+
+};
+
+export type VirtualNodeHttp2ConnectionPool = {
+
+
+MaxRequests: number;
+
+
+};
+
+export type ListenerTlsCertificate = {
+
+
+SDS?: AWS.AppMesh.VirtualNode.ListenerTlsSdsCertificate;
 
 ACM?: AWS.AppMesh.VirtualNode.ListenerTlsAcmCertificate;
 
-File?: AWS.AppMesh.VirtualNode.ListenerTlsFileCertificate; };
+File?: AWS.AppMesh.VirtualNode.ListenerTlsFileCertificate;
 
-export type VirtualServiceBackend = { ClientPolicy?: AWS.AppMesh.VirtualNode.ClientPolicy;
 
-VirtualServiceName: string; };
+};
 
-export type OutlierDetection = { MaxEjectionPercent: number;
+export type VirtualServiceBackend = {
+
+
+ClientPolicy?: AWS.AppMesh.VirtualNode.ClientPolicy;
+
+VirtualServiceName: string;
+
+
+};
+
+export type OutlierDetection = {
+
+
+MaxEjectionPercent: number;
 
 BaseEjectionDuration: AWS.AppMesh.VirtualNode.Duration;
 
 MaxServerErrors: number;
 
-Interval: AWS.AppMesh.VirtualNode.Duration; };
+Interval: AWS.AppMesh.VirtualNode.Duration;
 
-export type TlsValidationContextAcmTrust = { CertificateAuthorityArns: string[]; };
 
-export type ClientPolicy = { TLS?: AWS.AppMesh.VirtualNode.ClientPolicyTls; };
+};
 
-export type ClientTlsCertificate = { SDS?: AWS.AppMesh.VirtualNode.ListenerTlsSdsCertificate;
+export type TlsValidationContextAcmTrust = {
 
-File?: AWS.AppMesh.VirtualNode.ListenerTlsFileCertificate; };
 
-export type ListenerTlsValidationContextTrust = { SDS?: AWS.AppMesh.VirtualNode.TlsValidationContextSdsTrust;
+CertificateAuthorityArns: string[];
 
-File?: AWS.AppMesh.VirtualNode.TlsValidationContextFileTrust; };
 
-export type AccessLog = { File?: AWS.AppMesh.VirtualNode.FileAccessLog; };
+};
 
-export type SubjectAlternativeNameMatchers = { Exact?: string[]; };
+export type ClientPolicy = {
 
-export type SubjectAlternativeNames = { Match: AWS.AppMesh.VirtualNode.SubjectAlternativeNameMatchers; };
 
-export type VirtualNodeGrpcConnectionPool = { MaxRequests: number; };
+TLS?: AWS.AppMesh.VirtualNode.ClientPolicyTls;
 
-export type MeshName =  string;
 
-export type MeshOwner =  string;
+};
 
-export type Spec =  AWS.AppMesh.VirtualNode.VirtualNodeSpec;
+export type ClientTlsCertificate = {
 
-export type VirtualNodeName =  string;
 
-export type Tags =  Tag[];
+SDS?: AWS.AppMesh.VirtualNode.ListenerTlsSdsCertificate;
+
+File?: AWS.AppMesh.VirtualNode.ListenerTlsFileCertificate;
+
+
+};
+
+export type ListenerTlsValidationContextTrust = {
+
+
+SDS?: AWS.AppMesh.VirtualNode.TlsValidationContextSdsTrust;
+
+File?: AWS.AppMesh.VirtualNode.TlsValidationContextFileTrust;
+
+
+};
+
+export type AccessLog = {
+
+
+File?: AWS.AppMesh.VirtualNode.FileAccessLog;
+
+
+};
+
+export type SubjectAlternativeNameMatchers = {
+
+
+Exact?: string[];
+
+
+};
+
+export type SubjectAlternativeNames = {
+
+
+Match: AWS.AppMesh.VirtualNode.SubjectAlternativeNameMatchers;
+
+
+};
+
+export type VirtualNodeGrpcConnectionPool = {
+
+
+MaxRequests: number;
+
+
+};
+
 
 }
 
+export type GatewayRoute = {
+
+
+MeshName: string;
+
+VirtualGatewayName: string;
+
+MeshOwner?: string;
+
+GatewayRouteName?: string;
+
+Spec: AWS.AppMesh.GatewayRoute.GatewayRouteSpec;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace GatewayRoute {
 
-export type HttpQueryParameterMatch = { Exact?: string; };
 
-export type HttpGatewayRoutePrefixRewrite = { Value?: string;
+export type HttpQueryParameterMatch = {
 
-DefaultPrefix?: string; };
 
-export type HttpGatewayRouteHeaderMatch = { Suffix?: string;
+Exact?: string;
+
+
+};
+
+export type HttpGatewayRoutePrefixRewrite = {
+
+
+Value?: string;
+
+DefaultPrefix?: string;
+
+
+};
+
+export type HttpGatewayRouteHeaderMatch = {
+
+
+Suffix?: string;
 
 Regex?: string;
 
@@ -414,27 +898,57 @@ Exact?: string;
 
 Prefix?: string;
 
-Range?: AWS.AppMesh.GatewayRoute.GatewayRouteRangeMatch; };
+Range?: AWS.AppMesh.GatewayRoute.GatewayRouteRangeMatch;
 
-export type GatewayRouteSpec = { HttpRoute?: AWS.AppMesh.GatewayRoute.HttpGatewayRoute;
+
+};
+
+export type GatewayRouteSpec = {
+
+
+HttpRoute?: AWS.AppMesh.GatewayRoute.HttpGatewayRoute;
 
 Http2Route?: AWS.AppMesh.GatewayRoute.HttpGatewayRoute;
 
-GrpcRoute?: AWS.AppMesh.GatewayRoute.GrpcGatewayRoute; };
+GrpcRoute?: AWS.AppMesh.GatewayRoute.GrpcGatewayRoute;
 
-export type HttpGatewayRouteHeader = { Invert?: boolean;
+
+};
+
+export type HttpGatewayRouteHeader = {
+
+
+Invert?: boolean;
 
 Name: string;
 
-Match?: AWS.AppMesh.GatewayRoute.HttpGatewayRouteHeaderMatch; };
+Match?: AWS.AppMesh.GatewayRoute.HttpGatewayRouteHeaderMatch;
 
-export type GatewayRouteHostnameRewrite = { DefaultTargetHostname?: string; };
 
-export type QueryParameter = { Name: string;
+};
 
-Match?: AWS.AppMesh.GatewayRoute.HttpQueryParameterMatch; };
+export type GatewayRouteHostnameRewrite = {
 
-export type GatewayRouteMetadataMatch = { Suffix?: string;
+
+DefaultTargetHostname?: string;
+
+
+};
+
+export type QueryParameter = {
+
+
+Name: string;
+
+Match?: AWS.AppMesh.GatewayRoute.HttpQueryParameterMatch;
+
+
+};
+
+export type GatewayRouteMetadataMatch = {
+
+
+Suffix?: string;
 
 Regex?: string;
 
@@ -442,55 +956,133 @@ Exact?: string;
 
 Prefix?: string;
 
-Range?: AWS.AppMesh.GatewayRoute.GatewayRouteRangeMatch; };
+Range?: AWS.AppMesh.GatewayRoute.GatewayRouteRangeMatch;
 
-export type GrpcGatewayRouteAction = { Target: AWS.AppMesh.GatewayRoute.GatewayRouteTarget;
 
-Rewrite?: AWS.AppMesh.GatewayRoute.GrpcGatewayRouteRewrite; };
+};
 
-export type GrpcGatewayRouteRewrite = { Hostname?: AWS.AppMesh.GatewayRoute.GatewayRouteHostnameRewrite; };
+export type GrpcGatewayRouteAction = {
 
-export type GatewayRouteTarget = { VirtualService: AWS.AppMesh.GatewayRoute.GatewayRouteVirtualService; };
 
-export type GrpcGatewayRouteMatch = { ServiceName?: string;
+Target: AWS.AppMesh.GatewayRoute.GatewayRouteTarget;
 
-Hostname?: AWS.AppMesh.GatewayRoute.GatewayRouteHostnameMatch;
+Rewrite?: AWS.AppMesh.GatewayRoute.GrpcGatewayRouteRewrite;
 
-Metadata?: AWS.AppMesh.GatewayRoute.GrpcGatewayRouteMetadata[]; };
 
-export type HttpGatewayRoutePathRewrite = { Exact?: string; };
+};
 
-export type GrpcGatewayRoute = { Action: AWS.AppMesh.GatewayRoute.GrpcGatewayRouteAction;
+export type GrpcGatewayRouteRewrite = {
 
-Match: AWS.AppMesh.GatewayRoute.GrpcGatewayRouteMatch; };
-
-export type GatewayRouteRangeMatch = { Start: number;
-
-End: number; };
-
-export type HttpGatewayRouteRewrite = { Path?: AWS.AppMesh.GatewayRoute.HttpGatewayRoutePathRewrite;
 
 Hostname?: AWS.AppMesh.GatewayRoute.GatewayRouteHostnameRewrite;
 
-Prefix?: AWS.AppMesh.GatewayRoute.HttpGatewayRoutePrefixRewrite; };
 
-export type GrpcGatewayRouteMetadata = { Invert?: boolean;
+};
+
+export type GatewayRouteTarget = {
+
+
+VirtualService: AWS.AppMesh.GatewayRoute.GatewayRouteVirtualService;
+
+
+};
+
+export type GrpcGatewayRouteMatch = {
+
+
+ServiceName?: string;
+
+Hostname?: AWS.AppMesh.GatewayRoute.GatewayRouteHostnameMatch;
+
+Metadata?: AWS.AppMesh.GatewayRoute.GrpcGatewayRouteMetadata[];
+
+
+};
+
+export type HttpGatewayRoutePathRewrite = {
+
+
+Exact?: string;
+
+
+};
+
+export type GrpcGatewayRoute = {
+
+
+Action: AWS.AppMesh.GatewayRoute.GrpcGatewayRouteAction;
+
+Match: AWS.AppMesh.GatewayRoute.GrpcGatewayRouteMatch;
+
+
+};
+
+export type GatewayRouteRangeMatch = {
+
+
+Start: number;
+
+End: number;
+
+
+};
+
+export type HttpGatewayRouteRewrite = {
+
+
+Path?: AWS.AppMesh.GatewayRoute.HttpGatewayRoutePathRewrite;
+
+Hostname?: AWS.AppMesh.GatewayRoute.GatewayRouteHostnameRewrite;
+
+Prefix?: AWS.AppMesh.GatewayRoute.HttpGatewayRoutePrefixRewrite;
+
+
+};
+
+export type GrpcGatewayRouteMetadata = {
+
+
+Invert?: boolean;
 
 Name: string;
 
-Match?: AWS.AppMesh.GatewayRoute.GatewayRouteMetadataMatch; };
+Match?: AWS.AppMesh.GatewayRoute.GatewayRouteMetadataMatch;
 
-export type HttpGatewayRouteAction = { Target: AWS.AppMesh.GatewayRoute.GatewayRouteTarget;
 
-Rewrite?: AWS.AppMesh.GatewayRoute.HttpGatewayRouteRewrite; };
+};
 
-export type GatewayRouteHostnameMatch = { Suffix?: string;
+export type HttpGatewayRouteAction = {
 
-Exact?: string; };
 
-export type GatewayRouteVirtualService = { VirtualServiceName: string; };
+Target: AWS.AppMesh.GatewayRoute.GatewayRouteTarget;
 
-export type HttpGatewayRouteMatch = { Path?: AWS.AppMesh.GatewayRoute.HttpPathMatch;
+Rewrite?: AWS.AppMesh.GatewayRoute.HttpGatewayRouteRewrite;
+
+
+};
+
+export type GatewayRouteHostnameMatch = {
+
+
+Suffix?: string;
+
+Exact?: string;
+
+
+};
+
+export type GatewayRouteVirtualService = {
+
+
+VirtualServiceName: string;
+
+
+};
+
+export type HttpGatewayRouteMatch = {
+
+
+Path?: AWS.AppMesh.GatewayRoute.HttpPathMatch;
 
 Headers?: AWS.AppMesh.GatewayRoute.HttpGatewayRouteHeader[];
 
@@ -500,41 +1092,79 @@ Prefix?: string;
 
 Method?: string;
 
-QueryParameters?: AWS.AppMesh.GatewayRoute.QueryParameter[]; };
+QueryParameters?: AWS.AppMesh.GatewayRoute.QueryParameter[];
 
-export type HttpPathMatch = { Regex?: string;
 
-Exact?: string; };
+};
 
-export type HttpGatewayRoute = { Action: AWS.AppMesh.GatewayRoute.HttpGatewayRouteAction;
+export type HttpPathMatch = {
 
-Match: AWS.AppMesh.GatewayRoute.HttpGatewayRouteMatch; };
 
-export type MeshName =  string;
+Regex?: string;
 
-export type VirtualGatewayName =  string;
+Exact?: string;
 
-export type MeshOwner =  string;
 
-export type GatewayRouteName =  string;
+};
 
-export type Spec =  AWS.AppMesh.GatewayRoute.GatewayRouteSpec;
+export type HttpGatewayRoute = {
 
-export type Tags =  Tag[];
+
+Action: AWS.AppMesh.GatewayRoute.HttpGatewayRouteAction;
+
+Match: AWS.AppMesh.GatewayRoute.HttpGatewayRouteMatch;
+
+
+};
+
 
 }
 
+export type Route = {
+
+
+MeshName: string;
+
+VirtualRouterName: string;
+
+MeshOwner?: string;
+
+RouteName?: string;
+
+Spec: AWS.AppMesh.Route.RouteSpec;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace Route {
 
-export type Duration = { Value: number;
 
-Unit: string; };
+export type Duration = {
 
-export type WeightedTarget = { VirtualNode: string;
 
-Weight: number; };
+Value: number;
 
-export type GrpcRouteMetadataMatchMethod = { Suffix?: string;
+Unit: string;
+
+
+};
+
+export type WeightedTarget = {
+
+
+VirtualNode: string;
+
+Weight: number;
+
+
+};
+
+export type GrpcRouteMetadataMatchMethod = {
+
+
+Suffix?: string;
 
 Regex?: string;
 
@@ -542,9 +1172,15 @@ Exact?: string;
 
 Prefix?: string;
 
-Range?: AWS.AppMesh.Route.MatchRange; };
+Range?: AWS.AppMesh.Route.MatchRange;
 
-export type HeaderMatchMethod = { Suffix?: string;
+
+};
+
+export type HeaderMatchMethod = {
+
+
+Suffix?: string;
 
 Regex?: string;
 
@@ -552,9 +1188,15 @@ Exact?: string;
 
 Prefix?: string;
 
-Range?: AWS.AppMesh.Route.MatchRange; };
+Range?: AWS.AppMesh.Route.MatchRange;
 
-export type RouteSpec = { HttpRoute?: AWS.AppMesh.Route.HttpRoute;
+
+};
+
+export type RouteSpec = {
+
+
+HttpRoute?: AWS.AppMesh.Route.HttpRoute;
 
 Priority?: number;
 
@@ -562,23 +1204,47 @@ Http2Route?: AWS.AppMesh.Route.HttpRoute;
 
 GrpcRoute?: AWS.AppMesh.Route.GrpcRoute;
 
-TcpRoute?: AWS.AppMesh.Route.TcpRoute; };
+TcpRoute?: AWS.AppMesh.Route.TcpRoute;
 
-export type HttpPathMatch = { Regex?: string;
 
-Exact?: string; };
+};
 
-export type GrpcRouteMetadata = { Invert?: boolean;
+export type HttpPathMatch = {
+
+
+Regex?: string;
+
+Exact?: string;
+
+
+};
+
+export type GrpcRouteMetadata = {
+
+
+Invert?: boolean;
 
 Name: string;
 
-Match?: AWS.AppMesh.Route.GrpcRouteMetadataMatchMethod; };
+Match?: AWS.AppMesh.Route.GrpcRouteMetadataMatchMethod;
 
-export type QueryParameter = { Name: string;
 
-Match?: AWS.AppMesh.Route.HttpQueryParameterMatch; };
+};
 
-export type HttpRouteMatch = { Path?: AWS.AppMesh.Route.HttpPathMatch;
+export type QueryParameter = {
+
+
+Name: string;
+
+Match?: AWS.AppMesh.Route.HttpQueryParameterMatch;
+
+
+};
+
+export type HttpRouteMatch = {
+
+
+Path?: AWS.AppMesh.Route.HttpPathMatch;
 
 Scheme?: string;
 
@@ -588,29 +1254,65 @@ Prefix?: string;
 
 Method?: string;
 
-QueryParameters?: AWS.AppMesh.Route.QueryParameter[]; };
+QueryParameters?: AWS.AppMesh.Route.QueryParameter[];
 
-export type HttpQueryParameterMatch = { Exact?: string; };
 
-export type GrpcRouteAction = { WeightedTargets: AWS.AppMesh.Route.WeightedTarget[]; };
+};
 
-export type GrpcRouteMatch = { ServiceName?: string;
+export type HttpQueryParameterMatch = {
+
+
+Exact?: string;
+
+
+};
+
+export type GrpcRouteAction = {
+
+
+WeightedTargets: AWS.AppMesh.Route.WeightedTarget[];
+
+
+};
+
+export type GrpcRouteMatch = {
+
+
+ServiceName?: string;
 
 Metadata?: AWS.AppMesh.Route.GrpcRouteMetadata[];
 
-MethodName?: string; };
+MethodName?: string;
 
-export type HttpRoute = { Action: AWS.AppMesh.Route.HttpRouteAction;
+
+};
+
+export type HttpRoute = {
+
+
+Action: AWS.AppMesh.Route.HttpRouteAction;
 
 Timeout?: AWS.AppMesh.Route.HttpTimeout;
 
 RetryPolicy?: AWS.AppMesh.Route.HttpRetryPolicy;
 
-Match: AWS.AppMesh.Route.HttpRouteMatch; };
+Match: AWS.AppMesh.Route.HttpRouteMatch;
 
-export type TcpRouteAction = { WeightedTargets: AWS.AppMesh.Route.WeightedTarget[]; };
 
-export type GrpcRetryPolicy = { MaxRetries: number;
+};
+
+export type TcpRouteAction = {
+
+
+WeightedTargets: AWS.AppMesh.Route.WeightedTarget[];
+
+
+};
+
+export type GrpcRetryPolicy = {
+
+
+MaxRetries: number;
 
 PerRetryTimeout: AWS.AppMesh.Route.Duration;
 
@@ -618,161 +1320,377 @@ GrpcRetryEvents?: string[];
 
 HttpRetryEvents?: string[];
 
-TcpRetryEvents?: string[]; };
+TcpRetryEvents?: string[];
 
-export type TcpRoute = { Action: AWS.AppMesh.Route.TcpRouteAction;
 
-Timeout?: AWS.AppMesh.Route.TcpTimeout; };
+};
 
-export type HttpRetryPolicy = { MaxRetries: number;
+export type TcpRoute = {
+
+
+Action: AWS.AppMesh.Route.TcpRouteAction;
+
+Timeout?: AWS.AppMesh.Route.TcpTimeout;
+
+
+};
+
+export type HttpRetryPolicy = {
+
+
+MaxRetries: number;
 
 PerRetryTimeout: AWS.AppMesh.Route.Duration;
 
 HttpRetryEvents?: string[];
 
-TcpRetryEvents?: string[]; };
+TcpRetryEvents?: string[];
 
-export type GrpcTimeout = { PerRequest?: AWS.AppMesh.Route.Duration;
 
-Idle?: AWS.AppMesh.Route.Duration; };
+};
 
-export type GrpcRoute = { Action: AWS.AppMesh.Route.GrpcRouteAction;
+export type GrpcTimeout = {
+
+
+PerRequest?: AWS.AppMesh.Route.Duration;
+
+Idle?: AWS.AppMesh.Route.Duration;
+
+
+};
+
+export type GrpcRoute = {
+
+
+Action: AWS.AppMesh.Route.GrpcRouteAction;
 
 Timeout?: AWS.AppMesh.Route.GrpcTimeout;
 
 RetryPolicy?: AWS.AppMesh.Route.GrpcRetryPolicy;
 
-Match: AWS.AppMesh.Route.GrpcRouteMatch; };
+Match: AWS.AppMesh.Route.GrpcRouteMatch;
 
-export type TcpTimeout = { Idle?: AWS.AppMesh.Route.Duration; };
 
-export type HttpTimeout = { PerRequest?: AWS.AppMesh.Route.Duration;
+};
 
-Idle?: AWS.AppMesh.Route.Duration; };
+export type TcpTimeout = {
 
-export type HttpRouteHeader = { Invert?: boolean;
+
+Idle?: AWS.AppMesh.Route.Duration;
+
+
+};
+
+export type HttpTimeout = {
+
+
+PerRequest?: AWS.AppMesh.Route.Duration;
+
+Idle?: AWS.AppMesh.Route.Duration;
+
+
+};
+
+export type HttpRouteHeader = {
+
+
+Invert?: boolean;
 
 Name: string;
 
-Match?: AWS.AppMesh.Route.HeaderMatchMethod; };
+Match?: AWS.AppMesh.Route.HeaderMatchMethod;
 
-export type HttpRouteAction = { WeightedTargets: AWS.AppMesh.Route.WeightedTarget[]; };
 
-export type MatchRange = { Start: number;
+};
 
-End: number; };
+export type HttpRouteAction = {
 
-export type MeshName =  string;
 
-export type VirtualRouterName =  string;
+WeightedTargets: AWS.AppMesh.Route.WeightedTarget[];
 
-export type MeshOwner =  string;
 
-export type RouteName =  string;
+};
 
-export type Spec =  AWS.AppMesh.Route.RouteSpec;
+export type MatchRange = {
 
-export type Tags =  Tag[];
+
+Start: number;
+
+End: number;
+
+
+};
+
 
 }
 
+export type VirtualGateway = {
+
+
+VirtualGatewayName?: string;
+
+MeshName: string;
+
+MeshOwner?: string;
+
+Spec: AWS.AppMesh.VirtualGateway.VirtualGatewaySpec;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace VirtualGateway {
 
-export type VirtualGatewayTlsValidationContextTrust = { SDS?: AWS.AppMesh.VirtualGateway.VirtualGatewayTlsValidationContextSdsTrust;
+
+export type VirtualGatewayTlsValidationContextTrust = {
+
+
+SDS?: AWS.AppMesh.VirtualGateway.VirtualGatewayTlsValidationContextSdsTrust;
 
 ACM?: AWS.AppMesh.VirtualGateway.VirtualGatewayTlsValidationContextAcmTrust;
 
-File?: AWS.AppMesh.VirtualGateway.VirtualGatewayTlsValidationContextFileTrust; };
+File?: AWS.AppMesh.VirtualGateway.VirtualGatewayTlsValidationContextFileTrust;
 
-export type VirtualGatewayListenerTlsAcmCertificate = { CertificateArn: string; };
 
-export type VirtualGatewayTlsValidationContextFileTrust = { CertificateChain: string; };
+};
 
-export type VirtualGatewayHttp2ConnectionPool = { MaxRequests: number; };
+export type VirtualGatewayListenerTlsAcmCertificate = {
 
-export type VirtualGatewaySpec = { Logging?: AWS.AppMesh.VirtualGateway.VirtualGatewayLogging;
+
+CertificateArn: string;
+
+
+};
+
+export type VirtualGatewayTlsValidationContextFileTrust = {
+
+
+CertificateChain: string;
+
+
+};
+
+export type VirtualGatewayHttp2ConnectionPool = {
+
+
+MaxRequests: number;
+
+
+};
+
+export type VirtualGatewaySpec = {
+
+
+Logging?: AWS.AppMesh.VirtualGateway.VirtualGatewayLogging;
 
 Listeners: AWS.AppMesh.VirtualGateway.VirtualGatewayListener[];
 
-BackendDefaults?: AWS.AppMesh.VirtualGateway.VirtualGatewayBackendDefaults; };
+BackendDefaults?: AWS.AppMesh.VirtualGateway.VirtualGatewayBackendDefaults;
 
-export type VirtualGatewayTlsValidationContext = { SubjectAlternativeNames?: AWS.AppMesh.VirtualGateway.SubjectAlternativeNames;
 
-Trust: AWS.AppMesh.VirtualGateway.VirtualGatewayTlsValidationContextTrust; };
+};
 
-export type VirtualGatewayListenerTlsCertificate = { SDS?: AWS.AppMesh.VirtualGateway.VirtualGatewayListenerTlsSdsCertificate;
+export type VirtualGatewayTlsValidationContext = {
+
+
+SubjectAlternativeNames?: AWS.AppMesh.VirtualGateway.SubjectAlternativeNames;
+
+Trust: AWS.AppMesh.VirtualGateway.VirtualGatewayTlsValidationContextTrust;
+
+
+};
+
+export type VirtualGatewayListenerTlsCertificate = {
+
+
+SDS?: AWS.AppMesh.VirtualGateway.VirtualGatewayListenerTlsSdsCertificate;
 
 ACM?: AWS.AppMesh.VirtualGateway.VirtualGatewayListenerTlsAcmCertificate;
 
-File?: AWS.AppMesh.VirtualGateway.VirtualGatewayListenerTlsFileCertificate; };
+File?: AWS.AppMesh.VirtualGateway.VirtualGatewayListenerTlsFileCertificate;
 
-export type VirtualGatewayGrpcConnectionPool = { MaxRequests: number; };
 
-export type VirtualGatewayConnectionPool = { HTTP2?: AWS.AppMesh.VirtualGateway.VirtualGatewayHttp2ConnectionPool;
+};
+
+export type VirtualGatewayGrpcConnectionPool = {
+
+
+MaxRequests: number;
+
+
+};
+
+export type VirtualGatewayConnectionPool = {
+
+
+HTTP2?: AWS.AppMesh.VirtualGateway.VirtualGatewayHttp2ConnectionPool;
 
 HTTP?: AWS.AppMesh.VirtualGateway.VirtualGatewayHttpConnectionPool;
 
-GRPC?: AWS.AppMesh.VirtualGateway.VirtualGatewayGrpcConnectionPool; };
+GRPC?: AWS.AppMesh.VirtualGateway.VirtualGatewayGrpcConnectionPool;
 
-export type SubjectAlternativeNames = { Match: AWS.AppMesh.VirtualGateway.SubjectAlternativeNameMatchers; };
 
-export type VirtualGatewayClientTlsCertificate = { SDS?: AWS.AppMesh.VirtualGateway.VirtualGatewayListenerTlsSdsCertificate;
+};
 
-File?: AWS.AppMesh.VirtualGateway.VirtualGatewayListenerTlsFileCertificate; };
+export type SubjectAlternativeNames = {
 
-export type VirtualGatewayListenerTlsValidationContext = { SubjectAlternativeNames?: AWS.AppMesh.VirtualGateway.SubjectAlternativeNames;
 
-Trust: AWS.AppMesh.VirtualGateway.VirtualGatewayListenerTlsValidationContextTrust; };
+Match: AWS.AppMesh.VirtualGateway.SubjectAlternativeNameMatchers;
 
-export type VirtualGatewayListenerTlsFileCertificate = { PrivateKey: string;
 
-CertificateChain: string; };
+};
 
-export type VirtualGatewayLogging = { AccessLog?: AWS.AppMesh.VirtualGateway.VirtualGatewayAccessLog; };
+export type VirtualGatewayClientTlsCertificate = {
 
-export type VirtualGatewayListenerTls = { Validation?: AWS.AppMesh.VirtualGateway.VirtualGatewayListenerTlsValidationContext;
+
+SDS?: AWS.AppMesh.VirtualGateway.VirtualGatewayListenerTlsSdsCertificate;
+
+File?: AWS.AppMesh.VirtualGateway.VirtualGatewayListenerTlsFileCertificate;
+
+
+};
+
+export type VirtualGatewayListenerTlsValidationContext = {
+
+
+SubjectAlternativeNames?: AWS.AppMesh.VirtualGateway.SubjectAlternativeNames;
+
+Trust: AWS.AppMesh.VirtualGateway.VirtualGatewayListenerTlsValidationContextTrust;
+
+
+};
+
+export type VirtualGatewayListenerTlsFileCertificate = {
+
+
+PrivateKey: string;
+
+CertificateChain: string;
+
+
+};
+
+export type VirtualGatewayLogging = {
+
+
+AccessLog?: AWS.AppMesh.VirtualGateway.VirtualGatewayAccessLog;
+
+
+};
+
+export type VirtualGatewayListenerTls = {
+
+
+Validation?: AWS.AppMesh.VirtualGateway.VirtualGatewayListenerTlsValidationContext;
 
 Mode: string;
 
-Certificate: AWS.AppMesh.VirtualGateway.VirtualGatewayListenerTlsCertificate; };
+Certificate: AWS.AppMesh.VirtualGateway.VirtualGatewayListenerTlsCertificate;
 
-export type SubjectAlternativeNameMatchers = { Exact?: string[]; };
 
-export type VirtualGatewayClientPolicy = { TLS?: AWS.AppMesh.VirtualGateway.VirtualGatewayClientPolicyTls; };
+};
 
-export type VirtualGatewayTlsValidationContextSdsTrust = { SecretName: string; };
+export type SubjectAlternativeNameMatchers = {
 
-export type VirtualGatewayListener = { ConnectionPool?: AWS.AppMesh.VirtualGateway.VirtualGatewayConnectionPool;
+
+Exact?: string[];
+
+
+};
+
+export type VirtualGatewayClientPolicy = {
+
+
+TLS?: AWS.AppMesh.VirtualGateway.VirtualGatewayClientPolicyTls;
+
+
+};
+
+export type VirtualGatewayTlsValidationContextSdsTrust = {
+
+
+SecretName: string;
+
+
+};
+
+export type VirtualGatewayListener = {
+
+
+ConnectionPool?: AWS.AppMesh.VirtualGateway.VirtualGatewayConnectionPool;
 
 HealthCheck?: AWS.AppMesh.VirtualGateway.VirtualGatewayHealthCheckPolicy;
 
 TLS?: AWS.AppMesh.VirtualGateway.VirtualGatewayListenerTls;
 
-PortMapping: AWS.AppMesh.VirtualGateway.VirtualGatewayPortMapping; };
+PortMapping: AWS.AppMesh.VirtualGateway.VirtualGatewayPortMapping;
 
-export type VirtualGatewayPortMapping = { Port: number;
 
-Protocol: string; };
+};
 
-export type VirtualGatewayBackendDefaults = { ClientPolicy?: AWS.AppMesh.VirtualGateway.VirtualGatewayClientPolicy; };
+export type VirtualGatewayPortMapping = {
 
-export type VirtualGatewayClientPolicyTls = { Validation: AWS.AppMesh.VirtualGateway.VirtualGatewayTlsValidationContext;
+
+Port: number;
+
+Protocol: string;
+
+
+};
+
+export type VirtualGatewayBackendDefaults = {
+
+
+ClientPolicy?: AWS.AppMesh.VirtualGateway.VirtualGatewayClientPolicy;
+
+
+};
+
+export type VirtualGatewayClientPolicyTls = {
+
+
+Validation: AWS.AppMesh.VirtualGateway.VirtualGatewayTlsValidationContext;
 
 Enforce?: boolean;
 
 Ports?: number[];
 
-Certificate?: AWS.AppMesh.VirtualGateway.VirtualGatewayClientTlsCertificate; };
+Certificate?: AWS.AppMesh.VirtualGateway.VirtualGatewayClientTlsCertificate;
 
-export type VirtualGatewayAccessLog = { File?: AWS.AppMesh.VirtualGateway.VirtualGatewayFileAccessLog; };
 
-export type VirtualGatewayFileAccessLog = { Path: string; };
+};
 
-export type VirtualGatewayHttpConnectionPool = { MaxConnections: number;
+export type VirtualGatewayAccessLog = {
 
-MaxPendingRequests?: number; };
 
-export type VirtualGatewayHealthCheckPolicy = { Path?: string;
+File?: AWS.AppMesh.VirtualGateway.VirtualGatewayFileAccessLog;
+
+
+};
+
+export type VirtualGatewayFileAccessLog = {
+
+
+Path: string;
+
+
+};
+
+export type VirtualGatewayHttpConnectionPool = {
+
+
+MaxConnections: number;
+
+MaxPendingRequests?: number;
+
+
+};
+
+export type VirtualGatewayHealthCheckPolicy = {
+
+
+Path?: string;
 
 UnhealthyThreshold: number;
 
@@ -784,75 +1702,183 @@ TimeoutMillis: number;
 
 Protocol: string;
 
-IntervalMillis: number; };
+IntervalMillis: number;
 
-export type VirtualGatewayTlsValidationContextAcmTrust = { CertificateAuthorityArns: string[]; };
 
-export type VirtualGatewayListenerTlsValidationContextTrust = { SDS?: AWS.AppMesh.VirtualGateway.VirtualGatewayTlsValidationContextSdsTrust;
+};
 
-File?: AWS.AppMesh.VirtualGateway.VirtualGatewayTlsValidationContextFileTrust; };
+export type VirtualGatewayTlsValidationContextAcmTrust = {
 
-export type VirtualGatewayListenerTlsSdsCertificate = { SecretName: string; };
 
-export type VirtualGatewayName =  string;
+CertificateAuthorityArns: string[];
 
-export type MeshName =  string;
 
-export type MeshOwner =  string;
+};
 
-export type Spec =  AWS.AppMesh.VirtualGateway.VirtualGatewaySpec;
+export type VirtualGatewayListenerTlsValidationContextTrust = {
 
-export type Tags =  Tag[];
+
+SDS?: AWS.AppMesh.VirtualGateway.VirtualGatewayTlsValidationContextSdsTrust;
+
+File?: AWS.AppMesh.VirtualGateway.VirtualGatewayTlsValidationContextFileTrust;
+
+
+};
+
+export type VirtualGatewayListenerTlsSdsCertificate = {
+
+
+SecretName: string;
+
+
+};
+
 
 }
+
+export type VirtualService = {
+
+
+MeshName: string;
+
+MeshOwner?: string;
+
+VirtualServiceName: string;
+
+Spec: AWS.AppMesh.VirtualService.VirtualServiceSpec;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace VirtualService {
 
-export type VirtualRouterServiceProvider = { VirtualRouterName: string; };
 
-export type VirtualNodeServiceProvider = { VirtualNodeName: string; };
+export type VirtualRouterServiceProvider = {
 
-export type VirtualServiceProvider = { VirtualNode?: AWS.AppMesh.VirtualService.VirtualNodeServiceProvider;
 
-VirtualRouter?: AWS.AppMesh.VirtualService.VirtualRouterServiceProvider; };
+VirtualRouterName: string;
 
-export type VirtualServiceSpec = { Provider?: AWS.AppMesh.VirtualService.VirtualServiceProvider; };
 
-export type MeshName =  string;
+};
 
-export type MeshOwner =  string;
+export type VirtualNodeServiceProvider = {
 
-export type VirtualServiceName =  string;
 
-export type Spec =  AWS.AppMesh.VirtualService.VirtualServiceSpec;
+VirtualNodeName: string;
 
-export type Tags =  Tag[];
+
+};
+
+export type VirtualServiceProvider = {
+
+
+VirtualNode?: AWS.AppMesh.VirtualService.VirtualNodeServiceProvider;
+
+VirtualRouter?: AWS.AppMesh.VirtualService.VirtualRouterServiceProvider;
+
+
+};
+
+export type VirtualServiceSpec = {
+
+
+Provider?: AWS.AppMesh.VirtualService.VirtualServiceProvider;
+
+
+};
+
 
 }
+
+export type Mesh = {
+
+
+MeshName?: string;
+
+Spec?: AWS.AppMesh.Mesh.MeshSpec;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace Mesh {
 
-export type MeshSpec = { EgressFilter?: AWS.AppMesh.Mesh.EgressFilter; };
 
-export type EgressFilter = { Type: string; };
+export type MeshSpec = {
 
-export type MeshName =  string;
 
-export type Spec =  AWS.AppMesh.Mesh.MeshSpec;
+EgressFilter?: AWS.AppMesh.Mesh.EgressFilter;
 
-export type Tags =  Tag[];
+
+};
+
+export type EgressFilter = {
+
+
+Type: string;
+
+
+};
+
 
 }
+
 
 }
 
 export namespace QuickSight {
 
+
+export type DataSet = {
+
+
+RowLevelPermissionDataSet?: AWS.QuickSight.DataSet.RowLevelPermissionDataSet;
+
+IngestionWaitPolicy?: AWS.QuickSight.DataSet.IngestionWaitPolicy;
+
+AwsAccountId?: string;
+
+ColumnGroups?: AWS.QuickSight.DataSet.ColumnGroup[];
+
+ColumnLevelPermissionRules?: AWS.QuickSight.DataSet.ColumnLevelPermissionRule[];
+
+DataSetId?: string;
+
+FieldFolders?: Record<string, AWS.QuickSight.DataSet.FieldFolder>;
+
+ImportMode?: string;
+
+LogicalTableMap?: Record<string, AWS.QuickSight.DataSet.LogicalTable>;
+
+Name?: string;
+
+Permissions?: AWS.QuickSight.DataSet.ResourcePermission[];
+
+PhysicalTableMap?: Record<string, AWS.QuickSight.DataSet.PhysicalTable>;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace DataSet {
 
-export type JoinKeyProperties = { UniqueKey?: boolean; };
 
-export type UploadSettings = { ContainsHeader?: boolean;
+export type JoinKeyProperties = {
+
+
+UniqueKey?: boolean;
+
+
+};
+
+export type UploadSettings = {
+
+
+ContainsHeader?: boolean;
 
 TextQualifier?: string;
 
@@ -860,37 +1886,91 @@ Format?: string;
 
 StartFromRow?: number;
 
-Delimiter?: string; };
+Delimiter?: string;
 
-export type ProjectOperation = { ProjectedColumns: string[]; };
 
-export type ColumnLevelPermissionRule = { ColumnNames?: string[];
+};
 
-Principals?: string[]; };
+export type ProjectOperation = {
 
-export type CreateColumnsOperation = { Columns: AWS.QuickSight.DataSet.CalculatedColumn[]; };
 
-export type PhysicalTable = { RelationalTable?: AWS.QuickSight.DataSet.RelationalTable;
+ProjectedColumns: string[];
+
+
+};
+
+export type ColumnLevelPermissionRule = {
+
+
+ColumnNames?: string[];
+
+Principals?: string[];
+
+
+};
+
+export type CreateColumnsOperation = {
+
+
+Columns: AWS.QuickSight.DataSet.CalculatedColumn[];
+
+
+};
+
+export type PhysicalTable = {
+
+
+RelationalTable?: AWS.QuickSight.DataSet.RelationalTable;
 
 CustomSql?: AWS.QuickSight.DataSet.CustomSql;
 
-S3Source?: AWS.QuickSight.DataSet.S3Source; };
+S3Source?: AWS.QuickSight.DataSet.S3Source;
 
-export type ColumnDescription = { Text?: string; };
 
-export type RenameColumnOperation = { NewColumnName: string;
+};
 
-ColumnName: string; };
+export type ColumnDescription = {
 
-export type ColumnGroup = { GeoSpatialColumnGroup?: AWS.QuickSight.DataSet.GeoSpatialColumnGroup; };
 
-export type GeoSpatialColumnGroup = { Columns: string[];
+Text?: string;
+
+
+};
+
+export type RenameColumnOperation = {
+
+
+NewColumnName: string;
+
+ColumnName: string;
+
+
+};
+
+export type ColumnGroup = {
+
+
+GeoSpatialColumnGroup?: AWS.QuickSight.DataSet.GeoSpatialColumnGroup;
+
+
+};
+
+export type GeoSpatialColumnGroup = {
+
+
+Columns: string[];
 
 CountryCode?: string;
 
-Name: string; };
+Name: string;
 
-export type RelationalTable = { DataSourceArn: string;
+
+};
+
+export type RelationalTable = {
+
+
+DataSourceArn: string;
 
 InputColumns: AWS.QuickSight.DataSet.InputColumn[];
 
@@ -898,45 +1978,91 @@ Schema?: string;
 
 Catalog?: string;
 
-Name: string; };
+Name: string;
 
-export type InputColumn = { Type: string;
 
-Name: string; };
+};
 
-export type RowLevelPermissionDataSet =  AWS.QuickSight.DataSet.RowLevelPermissionDataSet;
+export type InputColumn = {
 
-export type FilterOperation = { ConditionExpression: string; };
 
-export type CustomSql = { DataSourceArn: string;
+Type: string;
+
+Name: string;
+
+
+};
+
+export type FilterOperation = {
+
+
+ConditionExpression: string;
+
+
+};
+
+export type CustomSql = {
+
+
+DataSourceArn: string;
 
 SqlQuery: string;
 
 Columns: AWS.QuickSight.DataSet.InputColumn[];
 
-Name: string; };
+Name: string;
 
-export type ResourcePermission = { Actions: string[];
 
-Principal: string; };
+};
 
-export type FieldFolder = { Description?: string;
+export type ResourcePermission = {
 
-Columns?: string[]; };
 
-export type S3Source = { DataSourceArn: string;
+Actions: string[];
+
+Principal: string;
+
+
+};
+
+export type FieldFolder = {
+
+
+Description?: string;
+
+Columns?: string[];
+
+
+};
+
+export type S3Source = {
+
+
+DataSourceArn: string;
 
 InputColumns: AWS.QuickSight.DataSet.InputColumn[];
 
-UploadSettings?: AWS.QuickSight.DataSet.UploadSettings; };
+UploadSettings?: AWS.QuickSight.DataSet.UploadSettings;
 
-export type LogicalTable = { Alias: string;
+
+};
+
+export type LogicalTable = {
+
+
+Alias: string;
 
 DataTransforms?: AWS.QuickSight.DataSet.TransformOperation[];
 
-Source: AWS.QuickSight.DataSet.LogicalTableSource; };
+Source: AWS.QuickSight.DataSet.LogicalTableSource;
 
-export type TransformOperation = { TagColumnOperation?: AWS.QuickSight.DataSet.TagColumnOperation;
+
+};
+
+export type TransformOperation = {
+
+
+TagColumnOperation?: AWS.QuickSight.DataSet.TagColumnOperation;
 
 FilterOperation?: AWS.QuickSight.DataSet.FilterOperation;
 
@@ -946,9 +2072,15 @@ CreateColumnsOperation?: AWS.QuickSight.DataSet.CreateColumnsOperation;
 
 RenameColumnOperation?: AWS.QuickSight.DataSet.RenameColumnOperation;
 
-ProjectOperation?: AWS.QuickSight.DataSet.ProjectOperation; };
+ProjectOperation?: AWS.QuickSight.DataSet.ProjectOperation;
 
-export type JoinInstruction = { OnClause: string;
+
+};
+
+export type JoinInstruction = {
+
+
+OnClause: string;
 
 Type: string;
 
@@ -958,347 +2090,713 @@ LeftOperand: string;
 
 RightOperand: string;
 
-RightJoinKeyProperties?: AWS.QuickSight.DataSet.JoinKeyProperties; };
+RightJoinKeyProperties?: AWS.QuickSight.DataSet.JoinKeyProperties;
 
-export type OutputColumn = { Type?: string;
+
+};
+
+export type OutputColumn = {
+
+
+Type?: string;
 
 Description?: string;
 
-Name?: string; };
+Name?: string;
 
-export type ColumnTag = { ColumnGeographicRole?: string;
 
-ColumnDescription?: AWS.QuickSight.DataSet.ColumnDescription; };
+};
 
-export type TagColumnOperation = { ColumnName: string;
+export type ColumnTag = {
 
-Tags: AWS.QuickSight.DataSet.ColumnTag[]; };
 
-export type IngestionWaitPolicy =  AWS.QuickSight.DataSet.IngestionWaitPolicy;
+ColumnGeographicRole?: string;
 
-export type CalculatedColumn = { ColumnId: string;
+ColumnDescription?: AWS.QuickSight.DataSet.ColumnDescription;
+
+
+};
+
+export type TagColumnOperation = {
+
 
 ColumnName: string;
 
-Expression: string; };
+Tags: AWS.QuickSight.DataSet.ColumnTag[];
 
-export type CastColumnTypeOperation = { ColumnName: string;
+
+};
+
+export type CalculatedColumn = {
+
+
+ColumnId: string;
+
+ColumnName: string;
+
+Expression: string;
+
+
+};
+
+export type CastColumnTypeOperation = {
+
+
+ColumnName: string;
 
 Format?: string;
 
-NewColumnType: string; };
+NewColumnType: string;
 
-export type LogicalTableSource = { PhysicalTableId?: string;
 
-JoinInstruction?: AWS.QuickSight.DataSet.JoinInstruction; };
+};
 
-export type AwsAccountId =  string;
+export type LogicalTableSource = {
 
-export type ColumnGroups =  AWS.QuickSight.DataSet.ColumnGroup[];
 
-export type ColumnLevelPermissionRules =  AWS.QuickSight.DataSet.ColumnLevelPermissionRule[];
+PhysicalTableId?: string;
 
-export type DataSetId =  string;
+JoinInstruction?: AWS.QuickSight.DataSet.JoinInstruction;
 
-export type FieldFolders =  Record<string, AWS.QuickSight.DataSet.FieldFolder>;
 
-export type ImportMode =  string;
+};
 
-export type LogicalTableMap =  Record<string, AWS.QuickSight.DataSet.LogicalTable>;
-
-export type Name =  string;
-
-export type Permissions =  AWS.QuickSight.DataSet.ResourcePermission[];
-
-export type PhysicalTableMap =  Record<string, AWS.QuickSight.DataSet.PhysicalTable>;
-
-export type Tags =  Tag[];
 
 }
 
+export type DataSource = {
+
+
+DataSourceParameters?: AWS.QuickSight.DataSource.DataSourceParameters;
+
+SslProperties?: AWS.QuickSight.DataSource.SslProperties;
+
+VpcConnectionProperties?: AWS.QuickSight.DataSource.VpcConnectionProperties;
+
+AlternateDataSourceParameters?: AWS.QuickSight.DataSource.DataSourceParameters[];
+
+AwsAccountId?: string;
+
+Credentials?: AWS.QuickSight.DataSource.DataSourceCredentials;
+
+DataSourceId?: string;
+
+ErrorInfo?: AWS.QuickSight.DataSource.DataSourceErrorInfo;
+
+Name?: string;
+
+Permissions?: AWS.QuickSight.DataSource.ResourcePermission[];
+
+Tags?: Tag[];
+
+Type?: string;
+
+
+};
+
 export namespace DataSource {
 
-export type DataSourceParameters =  AWS.QuickSight.DataSource.DataSourceParameters;
 
-export type AuroraPostgreSqlParameters = { Port: number;
+export type AuroraPostgreSqlParameters = {
 
-Database: string;
 
-Host: string; };
-
-export type DataSourceCredentials = { CopySourceArn?: string;
-
-CredentialPair?: AWS.QuickSight.DataSource.CredentialPair; };
-
-export type CredentialPair = { AlternateDataSourceParameters?: AWS.QuickSight.DataSource.DataSourceParameters[];
-
-Username: string;
-
-Password: string; };
-
-export type SnowflakeParameters = { Warehouse: string;
+Port: number;
 
 Database: string;
-
-Host: string; };
-
-export type SslProperties =  AWS.QuickSight.DataSource.SslProperties;
-
-export type S3Parameters = { ManifestFileLocation: AWS.QuickSight.DataSource.ManifestFileLocation; };
-
-export type PrestoParameters = { Port: number;
 
 Host: string;
 
-Catalog: string; };
 
-export type ResourcePermission = { Actions: string[];
+};
 
-Principal: string; };
+export type DataSourceCredentials = {
 
-export type SparkParameters = { Port: number;
 
-Host: string; };
+CopySourceArn?: string;
 
-export type AuroraParameters = { Port: number;
+CredentialPair?: AWS.QuickSight.DataSource.CredentialPair;
 
-Database: string;
 
-Host: string; };
+};
 
-export type MariaDbParameters = { Port: number;
+export type CredentialPair = {
 
-Database: string;
 
-Host: string; };
+AlternateDataSourceParameters?: AWS.QuickSight.DataSource.DataSourceParameters[];
 
-export type TeradataParameters = { Port: number;
+Username: string;
 
-Database: string;
+Password: string;
 
-Host: string; };
 
-export type AthenaParameters = { WorkGroup?: string; };
+};
 
-export type ManifestFileLocation = { Bucket: string;
+export type SnowflakeParameters = {
 
-Key: string; };
 
-export type MySqlParameters = { Port: number;
+Warehouse: string;
 
 Database: string;
 
-Host: string; };
+Host: string;
 
-export type OracleParameters = { Port: number;
+
+};
+
+export type S3Parameters = {
+
+
+ManifestFileLocation: AWS.QuickSight.DataSource.ManifestFileLocation;
+
+
+};
+
+export type PrestoParameters = {
+
+
+Port: number;
+
+Host: string;
+
+Catalog: string;
+
+
+};
+
+export type ResourcePermission = {
+
+
+Actions: string[];
+
+Principal: string;
+
+
+};
+
+export type SparkParameters = {
+
+
+Port: number;
+
+Host: string;
+
+
+};
+
+export type AuroraParameters = {
+
+
+Port: number;
 
 Database: string;
 
-Host: string; };
+Host: string;
 
-export type AmazonElasticsearchParameters = { Domain: string; };
 
-export type DataSourceErrorInfo = { Type?: string;
+};
 
-Message?: string; };
+export type MariaDbParameters = {
 
-export type VpcConnectionProperties =  AWS.QuickSight.DataSource.VpcConnectionProperties;
 
-export type RedshiftParameters = { ClusterId?: string;
+Port: number;
+
+Database: string;
+
+Host: string;
+
+
+};
+
+export type TeradataParameters = {
+
+
+Port: number;
+
+Database: string;
+
+Host: string;
+
+
+};
+
+export type AthenaParameters = {
+
+
+WorkGroup?: string;
+
+
+};
+
+export type ManifestFileLocation = {
+
+
+Bucket: string;
+
+Key: string;
+
+
+};
+
+export type MySqlParameters = {
+
+
+Port: number;
+
+Database: string;
+
+Host: string;
+
+
+};
+
+export type OracleParameters = {
+
+
+Port: number;
+
+Database: string;
+
+Host: string;
+
+
+};
+
+export type AmazonElasticsearchParameters = {
+
+
+Domain: string;
+
+
+};
+
+export type DataSourceErrorInfo = {
+
+
+Type?: string;
+
+Message?: string;
+
+
+};
+
+export type RedshiftParameters = {
+
+
+ClusterId?: string;
 
 Port?: number;
 
 Database: string;
 
-Host?: string; };
+Host?: string;
 
-export type PostgreSqlParameters = { Port: number;
 
-Database: string;
+};
 
-Host: string; };
+export type PostgreSqlParameters = {
 
-export type RdsParameters = { InstanceId: string;
 
-Database: string; };
-
-export type SqlServerParameters = { Port: number;
+Port: number;
 
 Database: string;
 
-Host: string; };
+Host: string;
 
-export type AlternateDataSourceParameters =  AWS.QuickSight.DataSource.DataSourceParameters[];
 
-export type AwsAccountId =  string;
+};
 
-export type Credentials =  AWS.QuickSight.DataSource.DataSourceCredentials;
+export type RdsParameters = {
 
-export type DataSourceId =  string;
 
-export type ErrorInfo =  AWS.QuickSight.DataSource.DataSourceErrorInfo;
+InstanceId: string;
 
-export type Name =  string;
+Database: string;
 
-export type Permissions =  AWS.QuickSight.DataSource.ResourcePermission[];
 
-export type Tags =  Tag[];
+};
 
-export type Type =  string;
+export type SqlServerParameters = {
+
+
+Port: number;
+
+Database: string;
+
+Host: string;
+
+
+};
+
 
 }
+
+export type Dashboard = {
+
+
+Parameters?: AWS.QuickSight.Dashboard.Parameters;
+
+DashboardPublishOptions?: AWS.QuickSight.Dashboard.DashboardPublishOptions;
+
+AwsAccountId: string;
+
+DashboardId: string;
+
+Name?: string;
+
+Permissions?: AWS.QuickSight.Dashboard.ResourcePermission[];
+
+SourceEntity?: AWS.QuickSight.Dashboard.DashboardSourceEntity;
+
+Tags?: Tag[];
+
+ThemeArn?: string;
+
+VersionDescription?: string;
+
+
+};
 
 export namespace Dashboard {
 
-export type SheetControlsOption = { VisibilityState?: string; };
 
-export type ResourcePermission = { Actions: string[];
+export type SheetControlsOption = {
 
-Principal: string; };
 
-export type DashboardSourceEntity = { SourceTemplate?: AWS.QuickSight.Dashboard.DashboardSourceTemplate; };
+VisibilityState?: string;
 
-export type Parameters =  AWS.QuickSight.Dashboard.Parameters;
 
-export type DashboardSourceTemplate = { DataSetReferences: AWS.QuickSight.Dashboard.DataSetReference[];
+};
 
-Arn: string; };
+export type ResourcePermission = {
 
-export type DataSetReference = { DataSetArn: string;
 
-DataSetPlaceholder: string; };
+Actions: string[];
 
-export type StringParameter = { Values: string[];
+Principal: string;
 
-Name: string; };
 
-export type IntegerParameter = { Values: number[];
+};
 
-Name: string; };
+export type DashboardSourceEntity = {
 
-export type ExportToCSVOption = { AvailabilityStatus?: string; };
 
-export type DashboardPublishOptions =  AWS.QuickSight.Dashboard.DashboardPublishOptions;
+SourceTemplate?: AWS.QuickSight.Dashboard.DashboardSourceTemplate;
 
-export type DecimalParameter = { Values: number[];
 
-Name: string; };
+};
 
-export type DateTimeParameter = { Values: string[];
+export type DashboardSourceTemplate = {
 
-Name: string; };
 
-export type AdHocFilteringOption = { AvailabilityStatus?: string; };
+DataSetReferences: AWS.QuickSight.Dashboard.DataSetReference[];
 
-export type AwsAccountId =  string;
+Arn: string;
 
-export type DashboardId =  string;
 
-export type Name =  string;
+};
 
-export type Permissions =  AWS.QuickSight.Dashboard.ResourcePermission[];
+export type DataSetReference = {
 
-export type SourceEntity =  AWS.QuickSight.Dashboard.DashboardSourceEntity;
 
-export type Tags =  Tag[];
+DataSetArn: string;
 
-export type ThemeArn =  string;
+DataSetPlaceholder: string;
 
-export type VersionDescription =  string;
+
+};
+
+export type StringParameter = {
+
+
+Values: string[];
+
+Name: string;
+
+
+};
+
+export type IntegerParameter = {
+
+
+Values: number[];
+
+Name: string;
+
+
+};
+
+export type ExportToCSVOption = {
+
+
+AvailabilityStatus?: string;
+
+
+};
+
+export type DecimalParameter = {
+
+
+Values: number[];
+
+Name: string;
+
+
+};
+
+export type DateTimeParameter = {
+
+
+Values: string[];
+
+Name: string;
+
+
+};
+
+export type AdHocFilteringOption = {
+
+
+AvailabilityStatus?: string;
+
+
+};
+
 
 }
+
+export type Analysis = {
+
+
+Parameters?: AWS.QuickSight.Analysis.Parameters;
+
+AnalysisId: string;
+
+AwsAccountId: string;
+
+Errors?: AWS.QuickSight.Analysis.AnalysisError[];
+
+Name?: string;
+
+Permissions?: AWS.QuickSight.Analysis.ResourcePermission[];
+
+SourceEntity?: AWS.QuickSight.Analysis.AnalysisSourceEntity;
+
+Tags?: Tag[];
+
+ThemeArn?: string;
+
+
+};
 
 export namespace Analysis {
 
-export type DecimalParameter = { Values: number[];
 
-Name: string; };
+export type DecimalParameter = {
 
-export type ResourcePermission = { Actions: string[];
 
-Principal: string; };
+Values: number[];
 
-export type AnalysisSourceTemplate = { DataSetReferences: AWS.QuickSight.Analysis.DataSetReference[];
+Name: string;
 
-Arn: string; };
 
-export type Sheet = { SheetId?: string;
+};
 
-Name?: string; };
+export type ResourcePermission = {
 
-export type AnalysisSourceEntity = { SourceTemplate?: AWS.QuickSight.Analysis.AnalysisSourceTemplate; };
 
-export type DataSetReference = { DataSetArn: string;
+Actions: string[];
 
-DataSetPlaceholder: string; };
+Principal: string;
 
-export type DateTimeParameter = { Values: string[];
 
-Name: string; };
+};
 
-export type IntegerParameter = { Values: number[];
+export type AnalysisSourceTemplate = {
 
-Name: string; };
 
-export type Parameters =  AWS.QuickSight.Analysis.Parameters;
+DataSetReferences: AWS.QuickSight.Analysis.DataSetReference[];
 
-export type StringParameter = { Values: string[];
+Arn: string;
 
-Name: string; };
 
-export type AnalysisError = { Type?: string;
+};
 
-Message?: string; };
+export type Sheet = {
 
-export type AnalysisId =  string;
 
-export type AwsAccountId =  string;
+SheetId?: string;
 
-export type Errors =  AWS.QuickSight.Analysis.AnalysisError[];
+Name?: string;
 
-export type Name =  string;
 
-export type Permissions =  AWS.QuickSight.Analysis.ResourcePermission[];
+};
 
-export type SourceEntity =  AWS.QuickSight.Analysis.AnalysisSourceEntity;
+export type AnalysisSourceEntity = {
 
-export type Tags =  Tag[];
 
-export type ThemeArn =  string;
+SourceTemplate?: AWS.QuickSight.Analysis.AnalysisSourceTemplate;
+
+
+};
+
+export type DataSetReference = {
+
+
+DataSetArn: string;
+
+DataSetPlaceholder: string;
+
+
+};
+
+export type DateTimeParameter = {
+
+
+Values: string[];
+
+Name: string;
+
+
+};
+
+export type IntegerParameter = {
+
+
+Values: number[];
+
+Name: string;
+
+
+};
+
+export type StringParameter = {
+
+
+Values: string[];
+
+Name: string;
+
+
+};
+
+export type AnalysisError = {
+
+
+Type?: string;
+
+Message?: string;
+
+
+};
+
 
 }
 
+export type Theme = {
+
+
+AwsAccountId: string;
+
+BaseThemeId?: string;
+
+Configuration?: AWS.QuickSight.Theme.ThemeConfiguration;
+
+Name?: string;
+
+Permissions?: AWS.QuickSight.Theme.ResourcePermission[];
+
+Tags?: Tag[];
+
+ThemeId: string;
+
+VersionDescription?: string;
+
+
+};
+
 export namespace Theme {
 
-export type Font = { FontFamily?: string; };
 
-export type BorderStyle = { Show?: boolean; };
+export type Font = {
 
-export type TileStyle = { Border?: AWS.QuickSight.Theme.BorderStyle; };
 
-export type ResourcePermission = { Actions: string[];
+FontFamily?: string;
 
-Principal: string; };
 
-export type MarginStyle = { Show?: boolean; };
+};
 
-export type GutterStyle = { Show?: boolean; };
+export type BorderStyle = {
 
-export type DataColorPalette = { EmptyFillColor?: string;
+
+Show?: boolean;
+
+
+};
+
+export type TileStyle = {
+
+
+Border?: AWS.QuickSight.Theme.BorderStyle;
+
+
+};
+
+export type ResourcePermission = {
+
+
+Actions: string[];
+
+Principal: string;
+
+
+};
+
+export type MarginStyle = {
+
+
+Show?: boolean;
+
+
+};
+
+export type GutterStyle = {
+
+
+Show?: boolean;
+
+
+};
+
+export type DataColorPalette = {
+
+
+EmptyFillColor?: string;
 
 Colors?: string[];
 
-MinMaxGradient?: string[]; };
+MinMaxGradient?: string[];
 
-export type ThemeConfiguration = { DataColorPalette?: AWS.QuickSight.Theme.DataColorPalette;
+
+};
+
+export type ThemeConfiguration = {
+
+
+DataColorPalette?: AWS.QuickSight.Theme.DataColorPalette;
 
 UIColorPalette?: AWS.QuickSight.Theme.UIColorPalette;
 
 Sheet?: AWS.QuickSight.Theme.SheetStyle;
 
-Typography?: AWS.QuickSight.Theme.Typography; };
+Typography?: AWS.QuickSight.Theme.Typography;
 
-export type UIColorPalette = { Warning?: string;
+
+};
+
+export type UIColorPalette = {
+
+
+Warning?: string;
 
 Accent?: string;
 
@@ -1328,363 +2826,575 @@ SuccessForeground?: string;
 
 Measure?: string;
 
-MeasureForeground?: string; };
+MeasureForeground?: string;
 
-export type SheetStyle = { TileLayout?: AWS.QuickSight.Theme.TileLayoutStyle;
 
-Tile?: AWS.QuickSight.Theme.TileStyle; };
+};
 
-export type TileLayoutStyle = { Gutter?: AWS.QuickSight.Theme.GutterStyle;
+export type SheetStyle = {
 
-Margin?: AWS.QuickSight.Theme.MarginStyle; };
 
-export type Typography = { FontFamilies?: AWS.QuickSight.Theme.Font[]; };
+TileLayout?: AWS.QuickSight.Theme.TileLayoutStyle;
 
-export type AwsAccountId =  string;
+Tile?: AWS.QuickSight.Theme.TileStyle;
 
-export type BaseThemeId =  string;
 
-export type Configuration =  AWS.QuickSight.Theme.ThemeConfiguration;
+};
 
-export type Name =  string;
+export type TileLayoutStyle = {
 
-export type Permissions =  AWS.QuickSight.Theme.ResourcePermission[];
 
-export type Tags =  Tag[];
+Gutter?: AWS.QuickSight.Theme.GutterStyle;
 
-export type ThemeId =  string;
+Margin?: AWS.QuickSight.Theme.MarginStyle;
 
-export type VersionDescription =  string;
+
+};
+
+export type Typography = {
+
+
+FontFamilies?: AWS.QuickSight.Theme.Font[];
+
+
+};
+
 
 }
+
+export type Template = {
+
+
+AwsAccountId: string;
+
+Name?: string;
+
+Permissions?: AWS.QuickSight.Template.ResourcePermission[];
+
+SourceEntity?: AWS.QuickSight.Template.TemplateSourceEntity;
+
+Tags?: Tag[];
+
+TemplateId: string;
+
+VersionDescription?: string;
+
+
+};
 
 export namespace Template {
 
-export type ResourcePermission = { Actions: string[];
 
-Principal: string; };
+export type ResourcePermission = {
 
-export type TemplateSourceTemplate = { Arn: string; };
 
-export type DataSetReference = { DataSetArn: string;
+Actions: string[];
 
-DataSetPlaceholder: string; };
+Principal: string;
 
-export type TemplateSourceEntity = { SourceAnalysis?: AWS.QuickSight.Template.TemplateSourceAnalysis;
 
-SourceTemplate?: AWS.QuickSight.Template.TemplateSourceTemplate; };
+};
 
-export type TemplateSourceAnalysis = { DataSetReferences: AWS.QuickSight.Template.DataSetReference[];
+export type TemplateSourceTemplate = {
 
-Arn: string; };
 
-export type AwsAccountId =  string;
+Arn: string;
 
-export type Name =  string;
 
-export type Permissions =  AWS.QuickSight.Template.ResourcePermission[];
+};
 
-export type SourceEntity =  AWS.QuickSight.Template.TemplateSourceEntity;
+export type DataSetReference = {
 
-export type Tags =  Tag[];
 
-export type TemplateId =  string;
+DataSetArn: string;
 
-export type VersionDescription =  string;
+DataSetPlaceholder: string;
+
+
+};
+
+export type TemplateSourceEntity = {
+
+
+SourceAnalysis?: AWS.QuickSight.Template.TemplateSourceAnalysis;
+
+SourceTemplate?: AWS.QuickSight.Template.TemplateSourceTemplate;
+
+
+};
+
+export type TemplateSourceAnalysis = {
+
+
+DataSetReferences: AWS.QuickSight.Template.DataSetReference[];
+
+Arn: string;
+
+
+};
+
 
 }
+
 
 }
 
 export namespace ElastiCache {
 
+
+export type ReplicationGroup = {
+
+
+NodeGroupConfiguration?: AWS.ElastiCache.ReplicationGroup.NodeGroupConfiguration[];
+
+AtRestEncryptionEnabled?: boolean;
+
+AuthToken?: string;
+
+AutoMinorVersionUpgrade?: boolean;
+
+AutomaticFailoverEnabled?: boolean;
+
+CacheNodeType?: string;
+
+CacheParameterGroupName?: string;
+
+CacheSecurityGroupNames?: string[];
+
+CacheSubnetGroupName?: string;
+
+Engine?: string;
+
+EngineVersion?: string;
+
+GlobalReplicationGroupId?: string;
+
+KmsKeyId?: string;
+
+LogDeliveryConfigurations?: AWS.ElastiCache.ReplicationGroup.LogDeliveryConfigurationRequest[];
+
+MultiAZEnabled?: boolean;
+
+NotificationTopicArn?: string;
+
+NumCacheClusters?: number;
+
+NumNodeGroups?: number;
+
+Port?: number;
+
+PreferredCacheClusterAZs?: string[];
+
+PreferredMaintenanceWindow?: string;
+
+PrimaryClusterId?: string;
+
+ReplicasPerNodeGroup?: number;
+
+ReplicationGroupDescription: string;
+
+ReplicationGroupId?: string;
+
+SecurityGroupIds?: string[];
+
+SnapshotArns?: string[];
+
+SnapshotName?: string;
+
+SnapshotRetentionLimit?: number;
+
+SnapshotWindow?: string;
+
+SnapshottingClusterId?: string;
+
+Tags?: Tag[];
+
+TransitEncryptionEnabled?: boolean;
+
+UserGroupIds?: string[];
+
+
+};
+
 export namespace ReplicationGroup {
 
-export type LogDeliveryConfigurationRequest = { DestinationDetails?: AWS.ElastiCache.ReplicationGroup.DestinationDetails;
+
+export type LogDeliveryConfigurationRequest = {
+
+
+DestinationDetails?: AWS.ElastiCache.ReplicationGroup.DestinationDetails;
 
 DestinationType?: string;
 
 LogFormat?: string;
 
-LogType?: string; };
+LogType?: string;
 
-export type CloudWatchLogsDestinationDetails = { LogGroup?: string; };
 
-export type NodeGroupConfiguration =  AWS.ElastiCache.ReplicationGroup.NodeGroupConfiguration[];
+};
 
-export type DestinationDetails = { CloudWatchLogsDetails?: AWS.ElastiCache.ReplicationGroup.CloudWatchLogsDestinationDetails;
+export type CloudWatchLogsDestinationDetails = {
 
-KinesisFirehoseDetails?: AWS.ElastiCache.ReplicationGroup.KinesisFirehoseDestinationDetails; };
 
-export type KinesisFirehoseDestinationDetails = { DeliveryStream?: string; };
+LogGroup?: string;
 
-export type AtRestEncryptionEnabled =  boolean;
 
-export type AuthToken =  string;
+};
 
-export type AutoMinorVersionUpgrade =  boolean;
+export type DestinationDetails = {
 
-export type AutomaticFailoverEnabled =  boolean;
 
-export type CacheNodeType =  string;
+CloudWatchLogsDetails?: AWS.ElastiCache.ReplicationGroup.CloudWatchLogsDestinationDetails;
 
-export type CacheParameterGroupName =  string;
+KinesisFirehoseDetails?: AWS.ElastiCache.ReplicationGroup.KinesisFirehoseDestinationDetails;
 
-export type CacheSecurityGroupNames =  string[];
 
-export type CacheSubnetGroupName =  string;
+};
 
-export type Engine =  string;
+export type KinesisFirehoseDestinationDetails = {
 
-export type EngineVersion =  string;
 
-export type GlobalReplicationGroupId =  string;
+DeliveryStream?: string;
 
-export type KmsKeyId =  string;
 
-export type LogDeliveryConfigurations =  AWS.ElastiCache.ReplicationGroup.LogDeliveryConfigurationRequest[];
+};
 
-export type MultiAZEnabled =  boolean;
-
-export type NotificationTopicArn =  string;
-
-export type NumCacheClusters =  number;
-
-export type NumNodeGroups =  number;
-
-export type Port =  number;
-
-export type PreferredCacheClusterAZs =  string[];
-
-export type PreferredMaintenanceWindow =  string;
-
-export type PrimaryClusterId =  string;
-
-export type ReplicasPerNodeGroup =  number;
-
-export type ReplicationGroupDescription =  string;
-
-export type ReplicationGroupId =  string;
-
-export type SecurityGroupIds =  string[];
-
-export type SnapshotArns =  string[];
-
-export type SnapshotName =  string;
-
-export type SnapshotRetentionLimit =  number;
-
-export type SnapshotWindow =  string;
-
-export type SnapshottingClusterId =  string;
-
-export type Tags =  Tag[];
-
-export type TransitEncryptionEnabled =  boolean;
-
-export type UserGroupIds =  string[];
 
 }
+
+export type CacheCluster = {
+
+
+AZMode?: string;
+
+AutoMinorVersionUpgrade?: boolean;
+
+CacheNodeType: string;
+
+CacheParameterGroupName?: string;
+
+CacheSecurityGroupNames?: string[];
+
+CacheSubnetGroupName?: string;
+
+ClusterName?: string;
+
+Engine: string;
+
+EngineVersion?: string;
+
+LogDeliveryConfigurations?: AWS.ElastiCache.CacheCluster.LogDeliveryConfigurationRequest[];
+
+NotificationTopicArn?: string;
+
+NumCacheNodes: number;
+
+Port?: number;
+
+PreferredAvailabilityZone?: string;
+
+PreferredAvailabilityZones?: string[];
+
+PreferredMaintenanceWindow?: string;
+
+SnapshotArns?: string[];
+
+SnapshotName?: string;
+
+SnapshotRetentionLimit?: number;
+
+SnapshotWindow?: string;
+
+Tags?: Tag[];
+
+VpcSecurityGroupIds?: string[];
+
+
+};
 
 export namespace CacheCluster {
 
-export type KinesisFirehoseDestinationDetails = { DeliveryStream?: string; };
 
-export type LogDeliveryConfigurationRequest = { DestinationDetails?: AWS.ElastiCache.CacheCluster.DestinationDetails;
+export type KinesisFirehoseDestinationDetails = {
+
+
+DeliveryStream?: string;
+
+
+};
+
+export type LogDeliveryConfigurationRequest = {
+
+
+DestinationDetails?: AWS.ElastiCache.CacheCluster.DestinationDetails;
 
 DestinationType?: string;
 
 LogFormat?: string;
 
-LogType?: string; };
+LogType?: string;
 
-export type DestinationDetails = { CloudWatchLogsDetails?: AWS.ElastiCache.CacheCluster.CloudWatchLogsDestinationDetails;
 
-KinesisFirehoseDetails?: AWS.ElastiCache.CacheCluster.KinesisFirehoseDestinationDetails; };
+};
 
-export type CloudWatchLogsDestinationDetails = { LogGroup?: string; };
+export type DestinationDetails = {
 
-export type AZMode =  string;
 
-export type AutoMinorVersionUpgrade =  boolean;
+CloudWatchLogsDetails?: AWS.ElastiCache.CacheCluster.CloudWatchLogsDestinationDetails;
 
-export type CacheNodeType =  string;
+KinesisFirehoseDetails?: AWS.ElastiCache.CacheCluster.KinesisFirehoseDestinationDetails;
 
-export type CacheParameterGroupName =  string;
 
-export type CacheSecurityGroupNames =  string[];
+};
 
-export type CacheSubnetGroupName =  string;
+export type CloudWatchLogsDestinationDetails = {
 
-export type ClusterName =  string;
 
-export type Engine =  string;
+LogGroup?: string;
 
-export type EngineVersion =  string;
 
-export type LogDeliveryConfigurations =  AWS.ElastiCache.CacheCluster.LogDeliveryConfigurationRequest[];
+};
 
-export type NotificationTopicArn =  string;
-
-export type NumCacheNodes =  number;
-
-export type Port =  number;
-
-export type PreferredAvailabilityZone =  string;
-
-export type PreferredAvailabilityZones =  string[];
-
-export type PreferredMaintenanceWindow =  string;
-
-export type SnapshotArns =  string[];
-
-export type SnapshotName =  string;
-
-export type SnapshotRetentionLimit =  number;
-
-export type SnapshotWindow =  string;
-
-export type Tags =  Tag[];
-
-export type VpcSecurityGroupIds =  string[];
 
 }
+
+export type GlobalReplicationGroup = {
+
+
+GlobalReplicationGroupIdSuffix?: string;
+
+AutomaticFailoverEnabled?: boolean;
+
+CacheNodeType?: string;
+
+EngineVersion?: string;
+
+CacheParameterGroupName?: string;
+
+GlobalNodeGroupCount?: number;
+
+GlobalReplicationGroupDescription?: string;
+
+Members: AWS.ElastiCache.GlobalReplicationGroup.GlobalReplicationGroupMember[];
+
+RegionalConfigurations?: AWS.ElastiCache.GlobalReplicationGroup.RegionalConfiguration[];
+
+
+};
 
 export namespace GlobalReplicationGroup {
 
-export type RegionalConfiguration = { ReplicationGroupId?: string;
+
+export type RegionalConfiguration = {
+
+
+ReplicationGroupId?: string;
 
 ReplicationGroupRegion?: string;
 
-ReshardingConfigurations?: AWS.ElastiCache.GlobalReplicationGroup.ReshardingConfiguration[]; };
+ReshardingConfigurations?: AWS.ElastiCache.GlobalReplicationGroup.ReshardingConfiguration[];
 
-export type ReshardingConfiguration = { NodeGroupId?: string;
 
-PreferredAvailabilityZones?: string[]; };
+};
 
-export type GlobalReplicationGroupMember = { ReplicationGroupId?: string;
+export type ReshardingConfiguration = {
+
+
+NodeGroupId?: string;
+
+PreferredAvailabilityZones?: string[];
+
+
+};
+
+export type GlobalReplicationGroupMember = {
+
+
+ReplicationGroupId?: string;
 
 ReplicationGroupRegion?: string;
 
-Role?: string; };
+Role?: string;
 
-export type GlobalReplicationGroupIdSuffix =  string;
 
-export type AutomaticFailoverEnabled =  boolean;
+};
 
-export type CacheNodeType =  string;
-
-export type EngineVersion =  string;
-
-export type CacheParameterGroupName =  string;
-
-export type GlobalNodeGroupCount =  number;
-
-export type GlobalReplicationGroupDescription =  string;
-
-export type Members =  AWS.ElastiCache.GlobalReplicationGroup.GlobalReplicationGroupMember[];
-
-export type RegionalConfigurations =  AWS.ElastiCache.GlobalReplicationGroup.RegionalConfiguration[];
 
 }
 
-export namespace UserGroup {
+export type UserGroup = {
 
-export type UserGroupId =  string;
 
-export type Engine =  string;
+UserGroupId: string;
 
-export type UserIds =  string[];
+Engine: string;
 
-}
+UserIds?: string[];
 
-export namespace SubnetGroup {
 
-export type CacheSubnetGroupName =  string;
+};
 
-export type Description =  string;
+export type SubnetGroup = {
 
-export type SubnetIds =  string[];
 
-export type Tags =  Tag[];
+CacheSubnetGroupName?: string;
 
-}
+Description: string;
 
-export namespace ParameterGroup {
+SubnetIds: string[];
 
-export type CacheParameterGroupFamily =  string;
+Tags?: Tag[];
 
-export type Description =  string;
 
-export type Properties =  Record<string, string>;
+};
 
-export type Tags =  Tag[];
+export type ParameterGroup = {
 
-}
 
-export namespace User {
+CacheParameterGroupFamily: string;
 
-export type UserId =  string;
+Description: string;
 
-export type UserName =  string;
+Properties?: Record<string, string>;
 
-export type Engine =  string;
+Tags?: Tag[];
 
-export type AccessString =  string;
 
-export type NoPasswordRequired =  boolean;
+};
 
-export type Passwords =  string[];
+export type User = {
 
-}
 
-export namespace SecurityGroup {
+UserId: string;
 
-export type Description =  string;
+UserName: string;
 
-export type Tags =  Tag[];
+Engine: string;
 
-}
+AccessString?: string;
 
-export namespace SecurityGroupIngress {
+NoPasswordRequired?: boolean;
 
-export type CacheSecurityGroupName =  string;
+Passwords?: string[];
 
-export type EC2SecurityGroupName =  string;
 
-export type EC2SecurityGroupOwnerId =  string;
+};
 
-}
+export type SecurityGroup = {
+
+
+Description: string;
+
+Tags?: Tag[];
+
+
+};
+
+export type SecurityGroupIngress = {
+
+
+CacheSecurityGroupName: string;
+
+EC2SecurityGroupName: string;
+
+EC2SecurityGroupOwnerId?: string;
+
+
+};
+
 
 }
 
 export namespace AppFlow {
 
+
+export type Flow = {
+
+
+SourceFlowConfig: AWS.AppFlow.Flow.SourceFlowConfig;
+
+TriggerConfig: AWS.AppFlow.Flow.TriggerConfig;
+
+FlowName: string;
+
+Description?: string;
+
+KMSArn?: string;
+
+DestinationFlowConfigList: AWS.AppFlow.Flow.DestinationFlowConfig[];
+
+Tasks: AWS.AppFlow.Flow.Task[];
+
+Tags?: Tag[];
+
+
+};
+
 export namespace Flow {
 
-export type IncrementalPullConfig = { DatetimeTypeFieldName?: string; };
 
-export type PrefixConfig = { PrefixType?: string;
+export type IncrementalPullConfig = {
 
-PrefixFormat?: string; };
 
-export type S3OutputFormatConfig = { FileType?: string;
+DatetimeTypeFieldName?: string;
+
+
+};
+
+export type PrefixConfig = {
+
+
+PrefixType?: string;
+
+PrefixFormat?: string;
+
+
+};
+
+export type S3OutputFormatConfig = {
+
+
+FileType?: string;
 
 PrefixConfig?: AWS.AppFlow.Flow.PrefixConfig;
 
-AggregationConfig?: AWS.AppFlow.Flow.AggregationConfig; };
+AggregationConfig?: AWS.AppFlow.Flow.AggregationConfig;
 
-export type DestinationFlowConfig = { ConnectorType: string;
+
+};
+
+export type DestinationFlowConfig = {
+
+
+ConnectorType: string;
 
 ConnectorProfileName?: string;
 
-DestinationConnectorProperties: AWS.AppFlow.Flow.DestinationConnectorProperties; };
+DestinationConnectorProperties: AWS.AppFlow.Flow.DestinationConnectorProperties;
 
-export type DatadogSourceProperties = { Object: string; };
 
-export type AggregationConfig = { AggregationType?: string; };
+};
 
-export type ScheduledTriggerProperties = { ScheduleExpression: string;
+export type DatadogSourceProperties = {
+
+
+Object: string;
+
+
+};
+
+export type AggregationConfig = {
+
+
+AggregationType?: string;
+
+
+};
+
+export type ScheduledTriggerProperties = {
+
+
+ScheduleExpression: string;
 
 DataPullMode?: string;
 
@@ -1692,9 +3402,15 @@ ScheduleStartTime?: number;
 
 ScheduleEndTime?: number;
 
-TimeZone?: string; };
+TimeZone?: string;
 
-export type DestinationConnectorProperties = { Redshift?: AWS.AppFlow.Flow.RedshiftDestinationProperties;
+
+};
+
+export type DestinationConnectorProperties = {
+
+
+Redshift?: AWS.AppFlow.Flow.RedshiftDestinationProperties;
 
 S3?: AWS.AppFlow.Flow.S3DestinationProperties;
 
@@ -1708,9 +3424,15 @@ Upsolver?: AWS.AppFlow.Flow.UpsolverDestinationProperties;
 
 LookoutMetrics?: AWS.AppFlow.Flow.LookoutMetricsDestinationProperties;
 
-Zendesk?: AWS.AppFlow.Flow.ZendeskDestinationProperties; };
+Zendesk?: AWS.AppFlow.Flow.ZendeskDestinationProperties;
 
-export type ConnectorOperator = { Amplitude?: string;
+
+};
+
+export type ConnectorOperator = {
+
+
+Amplitude?: string;
 
 Datadog?: string;
 
@@ -1736,87 +3458,193 @@ Trendmicro?: string;
 
 Veeva?: string;
 
-Zendesk?: string; };
+Zendesk?: string;
 
-export type ZendeskSourceProperties = { Object: string; };
 
-export type SalesforceDestinationProperties = { Object: string;
+};
+
+export type ZendeskSourceProperties = {
+
+
+Object: string;
+
+
+};
+
+export type SalesforceDestinationProperties = {
+
+
+Object: string;
 
 ErrorHandlingConfig?: AWS.AppFlow.Flow.ErrorHandlingConfig;
 
 IdFieldNames?: string[];
 
-WriteOperationType?: string; };
+WriteOperationType?: string;
 
-export type ErrorHandlingConfig = { FailOnFirstError?: boolean;
+
+};
+
+export type ErrorHandlingConfig = {
+
+
+FailOnFirstError?: boolean;
 
 BucketPrefix?: string;
 
-BucketName?: string; };
+BucketName?: string;
 
-export type S3SourceProperties = { BucketName: string;
 
-BucketPrefix: string; };
+};
 
-export type SalesforceSourceProperties = { Object: string;
+export type S3SourceProperties = {
+
+
+BucketName: string;
+
+BucketPrefix: string;
+
+
+};
+
+export type SalesforceSourceProperties = {
+
+
+Object: string;
 
 EnableDynamicFieldUpdate?: boolean;
 
-IncludeDeletedRecords?: boolean; };
+IncludeDeletedRecords?: boolean;
 
-export type SingularSourceProperties = { Object: string; };
 
-export type EventBridgeDestinationProperties = { Object: string;
+};
 
-ErrorHandlingConfig?: AWS.AppFlow.Flow.ErrorHandlingConfig; };
+export type SingularSourceProperties = {
 
-export type MarketoSourceProperties = { Object: string; };
 
-export type SlackSourceProperties = { Object: string; };
+Object: string;
 
-export type RedshiftDestinationProperties = { Object: string;
+
+};
+
+export type EventBridgeDestinationProperties = {
+
+
+Object: string;
+
+ErrorHandlingConfig?: AWS.AppFlow.Flow.ErrorHandlingConfig;
+
+
+};
+
+export type MarketoSourceProperties = {
+
+
+Object: string;
+
+
+};
+
+export type SlackSourceProperties = {
+
+
+Object: string;
+
+
+};
+
+export type RedshiftDestinationProperties = {
+
+
+Object: string;
 
 IntermediateBucketName: string;
 
 BucketPrefix?: string;
 
-ErrorHandlingConfig?: AWS.AppFlow.Flow.ErrorHandlingConfig; };
+ErrorHandlingConfig?: AWS.AppFlow.Flow.ErrorHandlingConfig;
 
-export type LookoutMetricsDestinationProperties = { Object?: string; };
 
-export type SourceFlowConfig =  AWS.AppFlow.Flow.SourceFlowConfig;
+};
 
-export type UpsolverS3OutputFormatConfig = { FileType?: string;
+export type LookoutMetricsDestinationProperties = {
+
+
+Object?: string;
+
+
+};
+
+export type UpsolverS3OutputFormatConfig = {
+
+
+FileType?: string;
 
 PrefixConfig: AWS.AppFlow.Flow.PrefixConfig;
 
-AggregationConfig?: AWS.AppFlow.Flow.AggregationConfig; };
+AggregationConfig?: AWS.AppFlow.Flow.AggregationConfig;
 
-export type UpsolverDestinationProperties = { BucketName: string;
+
+};
+
+export type UpsolverDestinationProperties = {
+
+
+BucketName: string;
 
 BucketPrefix?: string;
 
-S3OutputFormatConfig: AWS.AppFlow.Flow.UpsolverS3OutputFormatConfig; };
+S3OutputFormatConfig: AWS.AppFlow.Flow.UpsolverS3OutputFormatConfig;
 
-export type ServiceNowSourceProperties = { Object: string; };
 
-export type ZendeskDestinationProperties = { Object: string;
+};
+
+export type ServiceNowSourceProperties = {
+
+
+Object: string;
+
+
+};
+
+export type ZendeskDestinationProperties = {
+
+
+Object: string;
 
 ErrorHandlingConfig?: AWS.AppFlow.Flow.ErrorHandlingConfig;
 
 IdFieldNames?: string[];
 
-WriteOperationType?: string; };
+WriteOperationType?: string;
 
-export type InforNexusSourceProperties = { Object: string; };
 
-export type S3DestinationProperties = { BucketName: string;
+};
+
+export type InforNexusSourceProperties = {
+
+
+Object: string;
+
+
+};
+
+export type S3DestinationProperties = {
+
+
+BucketName: string;
 
 BucketPrefix?: string;
 
-S3OutputFormatConfig?: AWS.AppFlow.Flow.S3OutputFormatConfig; };
+S3OutputFormatConfig?: AWS.AppFlow.Flow.S3OutputFormatConfig;
 
-export type SourceConnectorProperties = { Amplitude?: AWS.AppFlow.Flow.AmplitudeSourceProperties;
+
+};
+
+export type SourceConnectorProperties = {
+
+
+Amplitude?: AWS.AppFlow.Flow.AmplitudeSourceProperties;
 
 Datadog?: AWS.AppFlow.Flow.DatadogSourceProperties;
 
@@ -1842,25 +3670,61 @@ Trendmicro?: AWS.AppFlow.Flow.TrendmicroSourceProperties;
 
 Veeva?: AWS.AppFlow.Flow.VeevaSourceProperties;
 
-Zendesk?: AWS.AppFlow.Flow.ZendeskSourceProperties; };
+Zendesk?: AWS.AppFlow.Flow.ZendeskSourceProperties;
 
-export type TrendmicroSourceProperties = { Object: string; };
 
-export type SnowflakeDestinationProperties = { Object: string;
+};
+
+export type TrendmicroSourceProperties = {
+
+
+Object: string;
+
+
+};
+
+export type SnowflakeDestinationProperties = {
+
+
+Object: string;
 
 IntermediateBucketName: string;
 
 BucketPrefix?: string;
 
-ErrorHandlingConfig?: AWS.AppFlow.Flow.ErrorHandlingConfig; };
+ErrorHandlingConfig?: AWS.AppFlow.Flow.ErrorHandlingConfig;
 
-export type GoogleAnalyticsSourceProperties = { Object: string; };
 
-export type VeevaSourceProperties = { Object: string; };
+};
 
-export type DynatraceSourceProperties = { Object: string; };
+export type GoogleAnalyticsSourceProperties = {
 
-export type Task = { SourceFields: string[];
+
+Object: string;
+
+
+};
+
+export type VeevaSourceProperties = {
+
+
+Object: string;
+
+
+};
+
+export type DynatraceSourceProperties = {
+
+
+Object: string;
+
+
+};
+
+export type Task = {
+
+
+SourceFields: string[];
 
 ConnectorOperator?: AWS.AppFlow.Flow.ConnectorOperator;
 
@@ -1868,79 +3732,155 @@ DestinationField?: string;
 
 TaskType: string;
 
-TaskProperties?: AWS.AppFlow.Flow.TaskPropertiesObject[]; };
+TaskProperties?: AWS.AppFlow.Flow.TaskPropertiesObject[];
 
-export type TaskPropertiesObject = { Key: string;
 
-Value: string; };
+};
 
-export type TriggerConfig =  AWS.AppFlow.Flow.TriggerConfig;
+export type TaskPropertiesObject = {
 
-export type AmplitudeSourceProperties = { Object: string; };
 
-export type FlowName =  string;
+Key: string;
 
-export type Description =  string;
+Value: string;
 
-export type KMSArn =  string;
 
-export type DestinationFlowConfigList =  AWS.AppFlow.Flow.DestinationFlowConfig[];
+};
 
-export type Tasks =  AWS.AppFlow.Flow.Task[];
+export type AmplitudeSourceProperties = {
 
-export type Tags =  Tag[];
+
+Object: string;
+
+
+};
+
 
 }
 
+export type ConnectorProfile = {
+
+
+ConnectorProfileConfig?: AWS.AppFlow.ConnectorProfile.ConnectorProfileConfig;
+
+ConnectorProfileName: string;
+
+KMSArn?: string;
+
+ConnectorType: string;
+
+ConnectionMode: string;
+
+
+};
+
 export namespace ConnectorProfile {
 
-export type InforNexusConnectorProfileProperties = { InstanceUrl: string; };
 
-export type DynatraceConnectorProfileCredentials = { ApiToken: string; };
+export type InforNexusConnectorProfileProperties = {
 
-export type MarketoConnectorProfileCredentials = { ClientId: string;
+
+InstanceUrl: string;
+
+
+};
+
+export type DynatraceConnectorProfileCredentials = {
+
+
+ApiToken: string;
+
+
+};
+
+export type MarketoConnectorProfileCredentials = {
+
+
+ClientId: string;
 
 ClientSecret: string;
 
 AccessToken?: string;
 
-ConnectorOAuthRequest?: AWS.AppFlow.ConnectorProfile.ConnectorOAuthRequest; };
+ConnectorOAuthRequest?: AWS.AppFlow.ConnectorProfile.ConnectorOAuthRequest;
 
-export type RedshiftConnectorProfileCredentials = { Username: string;
 
-Password: string; };
+};
 
-export type ZendeskConnectorProfileProperties = { InstanceUrl: string; };
+export type RedshiftConnectorProfileCredentials = {
 
-export type GoogleAnalyticsConnectorProfileCredentials = { ClientId: string;
+
+Username: string;
+
+Password: string;
+
+
+};
+
+export type ZendeskConnectorProfileProperties = {
+
+
+InstanceUrl: string;
+
+
+};
+
+export type GoogleAnalyticsConnectorProfileCredentials = {
+
+
+ClientId: string;
 
 ClientSecret: string;
 
 AccessToken?: string;
-
-RefreshToken?: string;
-
-ConnectorOAuthRequest?: AWS.AppFlow.ConnectorProfile.ConnectorOAuthRequest; };
-
-export type DynatraceConnectorProfileProperties = { InstanceUrl: string; };
-
-export type SalesforceConnectorProfileCredentials = { AccessToken?: string;
 
 RefreshToken?: string;
 
 ConnectorOAuthRequest?: AWS.AppFlow.ConnectorProfile.ConnectorOAuthRequest;
 
-ClientCredentialsArn?: string; };
 
-export type RedshiftConnectorProfileProperties = { DatabaseUrl: string;
+};
+
+export type DynatraceConnectorProfileProperties = {
+
+
+InstanceUrl: string;
+
+
+};
+
+export type SalesforceConnectorProfileCredentials = {
+
+
+AccessToken?: string;
+
+RefreshToken?: string;
+
+ConnectorOAuthRequest?: AWS.AppFlow.ConnectorProfile.ConnectorOAuthRequest;
+
+ClientCredentialsArn?: string;
+
+
+};
+
+export type RedshiftConnectorProfileProperties = {
+
+
+DatabaseUrl: string;
 
 BucketName: string;
 
 BucketPrefix?: string;
 
-RoleArn: string; };
+RoleArn: string;
 
-export type ConnectorProfileCredentials = { Amplitude?: AWS.AppFlow.ConnectorProfile.AmplitudeConnectorProfileCredentials;
+
+};
+
+export type ConnectorProfileCredentials = {
+
+
+Amplitude?: AWS.AppFlow.ConnectorProfile.AmplitudeConnectorProfileCredentials;
 
 Datadog?: AWS.AppFlow.ConnectorProfile.DatadogConnectorProfileCredentials;
 
@@ -1968,27 +3908,57 @@ Trendmicro?: AWS.AppFlow.ConnectorProfile.TrendmicroConnectorProfileCredentials;
 
 Veeva?: AWS.AppFlow.ConnectorProfile.VeevaConnectorProfileCredentials;
 
-Zendesk?: AWS.AppFlow.ConnectorProfile.ZendeskConnectorProfileCredentials; };
+Zendesk?: AWS.AppFlow.ConnectorProfile.ZendeskConnectorProfileCredentials;
 
-export type SingularConnectorProfileCredentials = { ApiKey: string; };
 
-export type ServiceNowConnectorProfileCredentials = { Username: string;
+};
 
-Password: string; };
+export type SingularConnectorProfileCredentials = {
 
-export type SnowflakeConnectorProfileCredentials = { Username: string;
 
-Password: string; };
+ApiKey: string;
 
-export type ZendeskConnectorProfileCredentials = { ClientId: string;
+
+};
+
+export type ServiceNowConnectorProfileCredentials = {
+
+
+Username: string;
+
+Password: string;
+
+
+};
+
+export type SnowflakeConnectorProfileCredentials = {
+
+
+Username: string;
+
+Password: string;
+
+
+};
+
+export type ZendeskConnectorProfileCredentials = {
+
+
+ClientId: string;
 
 ClientSecret: string;
 
 AccessToken?: string;
 
-ConnectorOAuthRequest?: AWS.AppFlow.ConnectorProfile.ConnectorOAuthRequest; };
+ConnectorOAuthRequest?: AWS.AppFlow.ConnectorProfile.ConnectorOAuthRequest;
 
-export type SnowflakeConnectorProfileProperties = { Warehouse: string;
+
+};
+
+export type SnowflakeConnectorProfileProperties = {
+
+
+Warehouse: string;
 
 Stage: string;
 
@@ -2000,59 +3970,141 @@ PrivateLinkServiceName?: string;
 
 AccountName?: string;
 
-Region?: string; };
+Region?: string;
 
-export type SalesforceConnectorProfileProperties = { InstanceUrl?: string;
 
-isSandboxEnvironment?: boolean; };
+};
 
-export type ConnectorProfileConfig =  AWS.AppFlow.ConnectorProfile.ConnectorProfileConfig;
+export type SalesforceConnectorProfileProperties = {
 
-export type AmplitudeConnectorProfileCredentials = { ApiKey: string;
 
-SecretKey: string; };
+InstanceUrl?: string;
 
-export type ConnectorOAuthRequest = { AuthCode?: string;
+isSandboxEnvironment?: boolean;
 
-RedirectUri?: string; };
 
-export type DatadogConnectorProfileCredentials = { ApiKey: string;
+};
 
-ApplicationKey: string; };
+export type AmplitudeConnectorProfileCredentials = {
 
-export type SlackConnectorProfileCredentials = { ClientId: string;
+
+ApiKey: string;
+
+SecretKey: string;
+
+
+};
+
+export type ConnectorOAuthRequest = {
+
+
+AuthCode?: string;
+
+RedirectUri?: string;
+
+
+};
+
+export type DatadogConnectorProfileCredentials = {
+
+
+ApiKey: string;
+
+ApplicationKey: string;
+
+
+};
+
+export type SlackConnectorProfileCredentials = {
+
+
+ClientId: string;
 
 ClientSecret: string;
 
 AccessToken?: string;
 
-ConnectorOAuthRequest?: AWS.AppFlow.ConnectorProfile.ConnectorOAuthRequest; };
+ConnectorOAuthRequest?: AWS.AppFlow.ConnectorProfile.ConnectorOAuthRequest;
 
-export type TrendmicroConnectorProfileCredentials = { ApiSecretKey: string; };
 
-export type VeevaConnectorProfileCredentials = { Username: string;
+};
 
-Password: string; };
+export type TrendmicroConnectorProfileCredentials = {
 
-export type VeevaConnectorProfileProperties = { InstanceUrl: string; };
 
-export type SlackConnectorProfileProperties = { InstanceUrl: string; };
+ApiSecretKey: string;
 
-export type MarketoConnectorProfileProperties = { InstanceUrl: string; };
 
-export type InforNexusConnectorProfileCredentials = { AccessKeyId: string;
+};
+
+export type VeevaConnectorProfileCredentials = {
+
+
+Username: string;
+
+Password: string;
+
+
+};
+
+export type VeevaConnectorProfileProperties = {
+
+
+InstanceUrl: string;
+
+
+};
+
+export type SlackConnectorProfileProperties = {
+
+
+InstanceUrl: string;
+
+
+};
+
+export type MarketoConnectorProfileProperties = {
+
+
+InstanceUrl: string;
+
+
+};
+
+export type InforNexusConnectorProfileCredentials = {
+
+
+AccessKeyId: string;
 
 UserId: string;
 
 SecretAccessKey: string;
 
-Datakey: string; };
+Datakey: string;
 
-export type DatadogConnectorProfileProperties = { InstanceUrl: string; };
 
-export type ServiceNowConnectorProfileProperties = { InstanceUrl: string; };
+};
 
-export type ConnectorProfileProperties = { Datadog?: AWS.AppFlow.ConnectorProfile.DatadogConnectorProfileProperties;
+export type DatadogConnectorProfileProperties = {
+
+
+InstanceUrl: string;
+
+
+};
+
+export type ServiceNowConnectorProfileProperties = {
+
+
+InstanceUrl: string;
+
+
+};
+
+export type ConnectorProfileProperties = {
+
+
+Datadog?: AWS.AppFlow.ConnectorProfile.DatadogConnectorProfileProperties;
 
 Dynatrace?: AWS.AppFlow.ConnectorProfile.DynatraceConnectorProfileProperties;
 
@@ -2072,29 +4124,53 @@ Snowflake?: AWS.AppFlow.ConnectorProfile.SnowflakeConnectorProfileProperties;
 
 Veeva?: AWS.AppFlow.ConnectorProfile.VeevaConnectorProfileProperties;
 
-Zendesk?: AWS.AppFlow.ConnectorProfile.ZendeskConnectorProfileProperties; };
+Zendesk?: AWS.AppFlow.ConnectorProfile.ZendeskConnectorProfileProperties;
 
-export type ConnectorProfileName =  string;
 
-export type KMSArn =  string;
+};
 
-export type ConnectorType =  string;
-
-export type ConnectionMode =  string;
 
 }
+
 
 }
 
 export namespace LookoutMetrics {
 
+
+export type AnomalyDetector = {
+
+
+AnomalyDetectorName?: string;
+
+AnomalyDetectorDescription?: string;
+
+AnomalyDetectorConfig: JSONString;
+
+MetricSetList: AWS.LookoutMetrics.AnomalyDetector.MetricSet[];
+
+KmsKeyArn?: string;
+
+
+};
+
 export namespace AnomalyDetector {
 
-export type FileFormatDescriptor = { CsvFormatDescriptor?: AWS.LookoutMetrics.AnomalyDetector.CsvFormatDescriptor;
 
-JsonFormatDescriptor?: AWS.LookoutMetrics.AnomalyDetector.JsonFormatDescriptor; };
+export type FileFormatDescriptor = {
 
-export type CsvFormatDescriptor = { FileCompression?: string;
+
+CsvFormatDescriptor?: AWS.LookoutMetrics.AnomalyDetector.CsvFormatDescriptor;
+
+JsonFormatDescriptor?: AWS.LookoutMetrics.AnomalyDetector.JsonFormatDescriptor;
+
+
+};
+
+export type CsvFormatDescriptor = {
+
+
+FileCompression?: string;
 
 Charset?: string;
 
@@ -2104,13 +4180,25 @@ HeaderList?: string[];
 
 QuoteSymbol?: string;
 
-ContainsHeader?: boolean; };
+ContainsHeader?: boolean;
 
-export type VpcConfiguration = { SubnetIdList: string[];
 
-SecurityGroupIdList: string[]; };
+};
 
-export type RDSSourceConfig = { DBInstanceIdentifier: string;
+export type VpcConfiguration = {
+
+
+SubnetIdList: string[];
+
+SecurityGroupIdList: string[];
+
+
+};
+
+export type RDSSourceConfig = {
+
+
+DBInstanceIdentifier: string;
 
 DatabaseHost: string;
 
@@ -2124,21 +4212,45 @@ TableName: string;
 
 RoleArn: string;
 
-VpcConfiguration: AWS.LookoutMetrics.AnomalyDetector.VpcConfiguration; };
+VpcConfiguration: AWS.LookoutMetrics.AnomalyDetector.VpcConfiguration;
 
-export type TimestampColumn = { ColumnName?: string;
 
-ColumnFormat?: string; };
+};
 
-export type JsonFormatDescriptor = { FileCompression?: string;
+export type TimestampColumn = {
 
-Charset?: string; };
 
-export type AppFlowConfig = { RoleArn: string;
+ColumnName?: string;
 
-FlowName: string; };
+ColumnFormat?: string;
 
-export type MetricSource = { S3SourceConfig?: AWS.LookoutMetrics.AnomalyDetector.S3SourceConfig;
+
+};
+
+export type JsonFormatDescriptor = {
+
+
+FileCompression?: string;
+
+Charset?: string;
+
+
+};
+
+export type AppFlowConfig = {
+
+
+RoleArn: string;
+
+FlowName: string;
+
+
+};
+
+export type MetricSource = {
+
+
+S3SourceConfig?: AWS.LookoutMetrics.AnomalyDetector.S3SourceConfig;
 
 RDSSourceConfig?: AWS.LookoutMetrics.AnomalyDetector.RDSSourceConfig;
 
@@ -2146,9 +4258,15 @@ RedshiftSourceConfig?: AWS.LookoutMetrics.AnomalyDetector.RedshiftSourceConfig;
 
 CloudwatchConfig?: AWS.LookoutMetrics.AnomalyDetector.CloudwatchConfig;
 
-AppFlowConfig?: AWS.LookoutMetrics.AnomalyDetector.AppFlowConfig; };
+AppFlowConfig?: AWS.LookoutMetrics.AnomalyDetector.AppFlowConfig;
 
-export type RedshiftSourceConfig = { ClusterIdentifier: string;
+
+};
+
+export type RedshiftSourceConfig = {
+
+
+ClusterIdentifier: string;
 
 DatabaseHost: string;
 
@@ -2162,15 +4280,27 @@ TableName: string;
 
 RoleArn: string;
 
-VpcConfiguration: AWS.LookoutMetrics.AnomalyDetector.VpcConfiguration; };
+VpcConfiguration: AWS.LookoutMetrics.AnomalyDetector.VpcConfiguration;
 
-export type Metric = { MetricName: string;
+
+};
+
+export type Metric = {
+
+
+MetricName: string;
 
 AggregationFunction: string;
 
-Namespace?: string; };
+Namespace?: string;
 
-export type MetricSet = { MetricSetName: string;
+
+};
+
+export type MetricSet = {
+
+
+MetricSetName: string;
 
 MetricSetDescription?: string;
 
@@ -2186,71 +4316,117 @@ DimensionList?: string[];
 
 MetricSetFrequency?: string;
 
-Timezone?: string; };
+Timezone?: string;
 
-export type CloudwatchConfig = { RoleArn: string; };
 
-export type S3SourceConfig = { RoleArn: string;
+};
+
+export type CloudwatchConfig = {
+
+
+RoleArn: string;
+
+
+};
+
+export type S3SourceConfig = {
+
+
+RoleArn: string;
 
 TemplatedPathList?: string[];
 
 HistoricalDataPathList?: string[];
 
-FileFormatDescriptor: AWS.LookoutMetrics.AnomalyDetector.FileFormatDescriptor; };
+FileFormatDescriptor: AWS.LookoutMetrics.AnomalyDetector.FileFormatDescriptor;
 
-export type AnomalyDetectorName =  string;
 
-export type AnomalyDetectorDescription =  string;
+};
 
-export type AnomalyDetectorConfig =  JSONString;
-
-export type MetricSetList =  AWS.LookoutMetrics.AnomalyDetector.MetricSet[];
-
-export type KmsKeyArn =  string;
 
 }
 
-export namespace Alert {
+export type Alert = {
 
-export type AlertName =  string;
 
-export type AlertDescription =  string;
+AlertName?: string;
 
-export type AnomalyDetectorArn =  string;
+AlertDescription?: string;
 
-export type AlertSensitivityThreshold =  number;
+AnomalyDetectorArn: string;
 
-export type Action =  JSONString;
+AlertSensitivityThreshold: number;
 
-}
+Action: JSONString;
+
+
+};
+
 
 }
 
 export namespace Greengrass {
 
+
+export type CoreDefinition = {
+
+
+InitialVersion?: AWS.Greengrass.CoreDefinition.CoreDefinitionVersion;
+
+Tags?: JSONString;
+
+Name: string;
+
+
+};
+
 export namespace CoreDefinition {
 
-export type Core = { SyncShadow?: boolean;
+
+export type Core = {
+
+
+SyncShadow?: boolean;
 
 ThingArn: string;
 
 Id: string;
 
-CertificateArn: string; };
+CertificateArn: string;
 
-export type CoreDefinitionVersion = { Cores: AWS.Greengrass.CoreDefinition.Core[]; };
 
-export type InitialVersion =  AWS.Greengrass.CoreDefinition.CoreDefinitionVersion;
+};
 
-export type Tags =  JSONString;
+export type CoreDefinitionVersion = {
 
-export type Name =  string;
+
+Cores: AWS.Greengrass.CoreDefinition.Core[];
+
+
+};
+
 
 }
 
+export type FunctionDefinitionVersion = {
+
+
+DefaultConfig?: AWS.Greengrass.FunctionDefinitionVersion.DefaultConfig;
+
+Functions: AWS.Greengrass.FunctionDefinitionVersion.Function[];
+
+FunctionDefinitionId: string;
+
+
+};
+
 export namespace FunctionDefinitionVersion {
 
-export type FunctionConfiguration = { MemorySize?: number;
+
+export type FunctionConfiguration = {
+
+
+MemorySize?: number;
 
 Pinned?: boolean;
 
@@ -2262,81 +4438,165 @@ EncodingType?: string;
 
 Environment?: AWS.Greengrass.FunctionDefinitionVersion.Environment;
 
-Executable?: string; };
+Executable?: string;
 
-export type Execution = { IsolationMode?: string;
 
-RunAs?: AWS.Greengrass.FunctionDefinitionVersion.RunAs; };
+};
 
-export type DefaultConfig =  AWS.Greengrass.FunctionDefinitionVersion.DefaultConfig;
+export type Execution = {
 
-export type Function = { FunctionArn: string;
+
+IsolationMode?: string;
+
+RunAs?: AWS.Greengrass.FunctionDefinitionVersion.RunAs;
+
+
+};
+
+export type Function = {
+
+
+FunctionArn: string;
 
 FunctionConfiguration: AWS.Greengrass.FunctionDefinitionVersion.FunctionConfiguration;
 
-Id: string; };
+Id: string;
 
-export type RunAs = { Uid?: number;
 
-Gid?: number; };
+};
 
-export type Environment = { Variables?: JSONString;
+export type RunAs = {
+
+
+Uid?: number;
+
+Gid?: number;
+
+
+};
+
+export type Environment = {
+
+
+Variables?: JSONString;
 
 Execution?: AWS.Greengrass.FunctionDefinitionVersion.Execution;
 
 ResourceAccessPolicies?: AWS.Greengrass.FunctionDefinitionVersion.ResourceAccessPolicy[];
 
-AccessSysfs?: boolean; };
+AccessSysfs?: boolean;
 
-export type ResourceAccessPolicy = { ResourceId: string;
 
-Permission?: string; };
+};
 
-export type Functions =  AWS.Greengrass.FunctionDefinitionVersion.Function[];
+export type ResourceAccessPolicy = {
 
-export type FunctionDefinitionId =  string;
+
+ResourceId: string;
+
+Permission?: string;
+
+
+};
+
 
 }
 
+export type ResourceDefinitionVersion = {
+
+
+Resources: AWS.Greengrass.ResourceDefinitionVersion.ResourceInstance[];
+
+ResourceDefinitionId: string;
+
+
+};
+
 export namespace ResourceDefinitionVersion {
 
-export type ResourceInstance = { ResourceDataContainer: AWS.Greengrass.ResourceDefinitionVersion.ResourceDataContainer;
+
+export type ResourceInstance = {
+
+
+ResourceDataContainer: AWS.Greengrass.ResourceDefinitionVersion.ResourceDataContainer;
 
 Id: string;
 
-Name: string; };
+Name: string;
 
-export type LocalDeviceResourceData = { SourcePath: string;
 
-GroupOwnerSetting?: AWS.Greengrass.ResourceDefinitionVersion.GroupOwnerSetting; };
+};
 
-export type LocalVolumeResourceData = { SourcePath: string;
+export type LocalDeviceResourceData = {
 
-DestinationPath: string;
 
-GroupOwnerSetting?: AWS.Greengrass.ResourceDefinitionVersion.GroupOwnerSetting; };
+SourcePath: string;
 
-export type SecretsManagerSecretResourceData = { ARN: string;
+GroupOwnerSetting?: AWS.Greengrass.ResourceDefinitionVersion.GroupOwnerSetting;
 
-AdditionalStagingLabelsToDownload?: string[]; };
 
-export type SageMakerMachineLearningModelResourceData = { OwnerSetting?: AWS.Greengrass.ResourceDefinitionVersion.ResourceDownloadOwnerSetting;
+};
 
-DestinationPath: string;
+export type LocalVolumeResourceData = {
 
-SageMakerJobArn: string; };
 
-export type ResourceDownloadOwnerSetting = { GroupOwner: string;
-
-GroupPermission: string; };
-
-export type S3MachineLearningModelResourceData = { OwnerSetting?: AWS.Greengrass.ResourceDefinitionVersion.ResourceDownloadOwnerSetting;
+SourcePath: string;
 
 DestinationPath: string;
 
-S3Uri: string; };
+GroupOwnerSetting?: AWS.Greengrass.ResourceDefinitionVersion.GroupOwnerSetting;
 
-export type ResourceDataContainer = { SecretsManagerSecretResourceData?: AWS.Greengrass.ResourceDefinitionVersion.SecretsManagerSecretResourceData;
+
+};
+
+export type SecretsManagerSecretResourceData = {
+
+
+ARN: string;
+
+AdditionalStagingLabelsToDownload?: string[];
+
+
+};
+
+export type SageMakerMachineLearningModelResourceData = {
+
+
+OwnerSetting?: AWS.Greengrass.ResourceDefinitionVersion.ResourceDownloadOwnerSetting;
+
+DestinationPath: string;
+
+SageMakerJobArn: string;
+
+
+};
+
+export type ResourceDownloadOwnerSetting = {
+
+
+GroupOwner: string;
+
+GroupPermission: string;
+
+
+};
+
+export type S3MachineLearningModelResourceData = {
+
+
+OwnerSetting?: AWS.Greengrass.ResourceDefinitionVersion.ResourceDownloadOwnerSetting;
+
+DestinationPath: string;
+
+S3Uri: string;
+
+
+};
+
+export type ResourceDataContainer = {
+
+
+SecretsManagerSecretResourceData?: AWS.Greengrass.ResourceDefinitionVersion.SecretsManagerSecretResourceData;
 
 SageMakerMachineLearningModelResourceData?: AWS.Greengrass.ResourceDefinitionVersion.SageMakerMachineLearningModelResourceData;
 
@@ -2344,21 +4604,43 @@ LocalVolumeResourceData?: AWS.Greengrass.ResourceDefinitionVersion.LocalVolumeRe
 
 LocalDeviceResourceData?: AWS.Greengrass.ResourceDefinitionVersion.LocalDeviceResourceData;
 
-S3MachineLearningModelResourceData?: AWS.Greengrass.ResourceDefinitionVersion.S3MachineLearningModelResourceData; };
+S3MachineLearningModelResourceData?: AWS.Greengrass.ResourceDefinitionVersion.S3MachineLearningModelResourceData;
 
-export type GroupOwnerSetting = { AutoAddGroupOwner: boolean;
 
-GroupOwner?: string; };
+};
 
-export type Resources =  AWS.Greengrass.ResourceDefinitionVersion.ResourceInstance[];
+export type GroupOwnerSetting = {
 
-export type ResourceDefinitionId =  string;
+
+AutoAddGroupOwner: boolean;
+
+GroupOwner?: string;
+
+
+};
+
 
 }
 
+export type FunctionDefinition = {
+
+
+InitialVersion?: AWS.Greengrass.FunctionDefinition.FunctionDefinitionVersion;
+
+Tags?: JSONString;
+
+Name: string;
+
+
+};
+
 export namespace FunctionDefinition {
 
-export type FunctionConfiguration = { MemorySize?: number;
+
+export type FunctionConfiguration = {
+
+
+MemorySize?: number;
 
 Pinned?: boolean;
 
@@ -2370,51 +4652,105 @@ EncodingType?: string;
 
 Environment?: AWS.Greengrass.FunctionDefinition.Environment;
 
-Executable?: string; };
+Executable?: string;
 
-export type DefaultConfig = { Execution: AWS.Greengrass.FunctionDefinition.Execution; };
 
-export type Execution = { IsolationMode?: string;
+};
 
-RunAs?: AWS.Greengrass.FunctionDefinition.RunAs; };
+export type DefaultConfig = {
 
-export type Environment = { Variables?: JSONString;
+
+Execution: AWS.Greengrass.FunctionDefinition.Execution;
+
+
+};
+
+export type Execution = {
+
+
+IsolationMode?: string;
+
+RunAs?: AWS.Greengrass.FunctionDefinition.RunAs;
+
+
+};
+
+export type Environment = {
+
+
+Variables?: JSONString;
 
 Execution?: AWS.Greengrass.FunctionDefinition.Execution;
 
 ResourceAccessPolicies?: AWS.Greengrass.FunctionDefinition.ResourceAccessPolicy[];
 
-AccessSysfs?: boolean; };
+AccessSysfs?: boolean;
 
-export type FunctionDefinitionVersion = { DefaultConfig?: AWS.Greengrass.FunctionDefinition.DefaultConfig;
 
-Functions: AWS.Greengrass.FunctionDefinition.Function[]; };
+};
 
-export type RunAs = { Uid?: number;
+export type FunctionDefinitionVersion = {
 
-Gid?: number; };
 
-export type Function = { FunctionArn: string;
+DefaultConfig?: AWS.Greengrass.FunctionDefinition.DefaultConfig;
+
+Functions: AWS.Greengrass.FunctionDefinition.Function[];
+
+
+};
+
+export type RunAs = {
+
+
+Uid?: number;
+
+Gid?: number;
+
+
+};
+
+export type Function = {
+
+
+FunctionArn: string;
 
 FunctionConfiguration: AWS.Greengrass.FunctionDefinition.FunctionConfiguration;
 
-Id: string; };
+Id: string;
 
-export type ResourceAccessPolicy = { ResourceId: string;
 
-Permission?: string; };
+};
 
-export type InitialVersion =  AWS.Greengrass.FunctionDefinition.FunctionDefinitionVersion;
+export type ResourceAccessPolicy = {
 
-export type Tags =  JSONString;
 
-export type Name =  string;
+ResourceId: string;
+
+Permission?: string;
+
+
+};
+
 
 }
 
+export type LoggerDefinitionVersion = {
+
+
+LoggerDefinitionId: string;
+
+Loggers: AWS.Greengrass.LoggerDefinitionVersion.Logger[];
+
+
+};
+
 export namespace LoggerDefinitionVersion {
 
-export type Logger = { Space?: number;
+
+export type Logger = {
+
+
+Space?: number;
 
 Type: string;
 
@@ -2422,59 +4758,129 @@ Level: string;
 
 Id: string;
 
-Component: string; };
+Component: string;
 
-export type LoggerDefinitionId =  string;
 
-export type Loggers =  AWS.Greengrass.LoggerDefinitionVersion.Logger[];
+};
+
 
 }
 
+export type ResourceDefinition = {
+
+
+InitialVersion?: AWS.Greengrass.ResourceDefinition.ResourceDefinitionVersion;
+
+Tags?: JSONString;
+
+Name: string;
+
+
+};
+
 export namespace ResourceDefinition {
 
-export type S3MachineLearningModelResourceData = { OwnerSetting?: AWS.Greengrass.ResourceDefinition.ResourceDownloadOwnerSetting;
+
+export type S3MachineLearningModelResourceData = {
+
+
+OwnerSetting?: AWS.Greengrass.ResourceDefinition.ResourceDownloadOwnerSetting;
 
 DestinationPath: string;
 
-S3Uri: string; };
+S3Uri: string;
 
-export type SecretsManagerSecretResourceData = { ARN: string;
 
-AdditionalStagingLabelsToDownload?: string[]; };
+};
 
-export type ResourceDownloadOwnerSetting = { GroupOwner: string;
+export type SecretsManagerSecretResourceData = {
 
-GroupPermission: string; };
 
-export type SageMakerMachineLearningModelResourceData = { OwnerSetting?: AWS.Greengrass.ResourceDefinition.ResourceDownloadOwnerSetting;
+ARN: string;
+
+AdditionalStagingLabelsToDownload?: string[];
+
+
+};
+
+export type ResourceDownloadOwnerSetting = {
+
+
+GroupOwner: string;
+
+GroupPermission: string;
+
+
+};
+
+export type SageMakerMachineLearningModelResourceData = {
+
+
+OwnerSetting?: AWS.Greengrass.ResourceDefinition.ResourceDownloadOwnerSetting;
 
 DestinationPath: string;
 
-SageMakerJobArn: string; };
+SageMakerJobArn: string;
 
-export type GroupOwnerSetting = { AutoAddGroupOwner: boolean;
 
-GroupOwner?: string; };
+};
 
-export type LocalDeviceResourceData = { SourcePath: string;
+export type GroupOwnerSetting = {
 
-GroupOwnerSetting?: AWS.Greengrass.ResourceDefinition.GroupOwnerSetting; };
 
-export type ResourceDefinitionVersion = { Resources: AWS.Greengrass.ResourceDefinition.ResourceInstance[]; };
+AutoAddGroupOwner: boolean;
 
-export type LocalVolumeResourceData = { SourcePath: string;
+GroupOwner?: string;
+
+
+};
+
+export type LocalDeviceResourceData = {
+
+
+SourcePath: string;
+
+GroupOwnerSetting?: AWS.Greengrass.ResourceDefinition.GroupOwnerSetting;
+
+
+};
+
+export type ResourceDefinitionVersion = {
+
+
+Resources: AWS.Greengrass.ResourceDefinition.ResourceInstance[];
+
+
+};
+
+export type LocalVolumeResourceData = {
+
+
+SourcePath: string;
 
 DestinationPath: string;
 
-GroupOwnerSetting?: AWS.Greengrass.ResourceDefinition.GroupOwnerSetting; };
+GroupOwnerSetting?: AWS.Greengrass.ResourceDefinition.GroupOwnerSetting;
 
-export type ResourceInstance = { ResourceDataContainer: AWS.Greengrass.ResourceDefinition.ResourceDataContainer;
+
+};
+
+export type ResourceInstance = {
+
+
+ResourceDataContainer: AWS.Greengrass.ResourceDefinition.ResourceDataContainer;
 
 Id: string;
 
-Name: string; };
+Name: string;
 
-export type ResourceDataContainer = { SecretsManagerSecretResourceData?: AWS.Greengrass.ResourceDefinition.SecretsManagerSecretResourceData;
+
+};
+
+export type ResourceDataContainer = {
+
+
+SecretsManagerSecretResourceData?: AWS.Greengrass.ResourceDefinition.SecretsManagerSecretResourceData;
 
 SageMakerMachineLearningModelResourceData?: AWS.Greengrass.ResourceDefinition.SageMakerMachineLearningModelResourceData;
 
@@ -2482,57 +4888,111 @@ LocalVolumeResourceData?: AWS.Greengrass.ResourceDefinition.LocalVolumeResourceD
 
 LocalDeviceResourceData?: AWS.Greengrass.ResourceDefinition.LocalDeviceResourceData;
 
-S3MachineLearningModelResourceData?: AWS.Greengrass.ResourceDefinition.S3MachineLearningModelResourceData; };
+S3MachineLearningModelResourceData?: AWS.Greengrass.ResourceDefinition.S3MachineLearningModelResourceData;
 
-export type InitialVersion =  AWS.Greengrass.ResourceDefinition.ResourceDefinitionVersion;
 
-export type Tags =  JSONString;
+};
 
-export type Name =  string;
 
 }
 
+export type SubscriptionDefinition = {
+
+
+InitialVersion?: AWS.Greengrass.SubscriptionDefinition.SubscriptionDefinitionVersion;
+
+Tags?: JSONString;
+
+Name: string;
+
+
+};
+
 export namespace SubscriptionDefinition {
 
-export type SubscriptionDefinitionVersion = { Subscriptions: AWS.Greengrass.SubscriptionDefinition.Subscription[]; };
 
-export type Subscription = { Target: string;
+export type SubscriptionDefinitionVersion = {
+
+
+Subscriptions: AWS.Greengrass.SubscriptionDefinition.Subscription[];
+
+
+};
+
+export type Subscription = {
+
+
+Target: string;
 
 Id: string;
 
 Source: string;
 
-Subject: string; };
+Subject: string;
 
-export type InitialVersion =  AWS.Greengrass.SubscriptionDefinition.SubscriptionDefinitionVersion;
 
-export type Tags =  JSONString;
+};
 
-export type Name =  string;
 
 }
+
+export type ConnectorDefinition = {
+
+
+InitialVersion?: AWS.Greengrass.ConnectorDefinition.ConnectorDefinitionVersion;
+
+Tags?: JSONString;
+
+Name: string;
+
+
+};
 
 export namespace ConnectorDefinition {
 
-export type ConnectorDefinitionVersion = { Connectors: AWS.Greengrass.ConnectorDefinition.Connector[]; };
 
-export type Connector = { ConnectorArn: string;
+export type ConnectorDefinitionVersion = {
+
+
+Connectors: AWS.Greengrass.ConnectorDefinition.Connector[];
+
+
+};
+
+export type Connector = {
+
+
+ConnectorArn: string;
 
 Parameters?: JSONString;
 
-Id: string; };
+Id: string;
 
-export type InitialVersion =  AWS.Greengrass.ConnectorDefinition.ConnectorDefinitionVersion;
 
-export type Tags =  JSONString;
+};
 
-export type Name =  string;
 
 }
 
+export type LoggerDefinition = {
+
+
+InitialVersion?: AWS.Greengrass.LoggerDefinition.LoggerDefinitionVersion;
+
+Tags?: JSONString;
+
+Name: string;
+
+
+};
+
 export namespace LoggerDefinition {
 
-export type Logger = { Space?: number;
+
+export type Logger = {
+
+
+Space?: number;
 
 Type: string;
 
@@ -2540,69 +5000,133 @@ Level: string;
 
 Id: string;
 
-Component: string; };
+Component: string;
 
-export type LoggerDefinitionVersion = { Loggers: AWS.Greengrass.LoggerDefinition.Logger[]; };
 
-export type InitialVersion =  AWS.Greengrass.LoggerDefinition.LoggerDefinitionVersion;
+};
 
-export type Tags =  JSONString;
+export type LoggerDefinitionVersion = {
 
-export type Name =  string;
+
+Loggers: AWS.Greengrass.LoggerDefinition.Logger[];
+
+
+};
+
 
 }
 
+export type SubscriptionDefinitionVersion = {
+
+
+SubscriptionDefinitionId: string;
+
+Subscriptions: AWS.Greengrass.SubscriptionDefinitionVersion.Subscription[];
+
+
+};
+
 export namespace SubscriptionDefinitionVersion {
 
-export type Subscription = { Target: string;
+
+export type Subscription = {
+
+
+Target: string;
 
 Id: string;
 
 Source: string;
 
-Subject: string; };
+Subject: string;
 
-export type SubscriptionDefinitionId =  string;
 
-export type Subscriptions =  AWS.Greengrass.SubscriptionDefinitionVersion.Subscription[];
+};
+
 
 }
+
+export type CoreDefinitionVersion = {
+
+
+Cores: AWS.Greengrass.CoreDefinitionVersion.Core[];
+
+CoreDefinitionId: string;
+
+
+};
 
 export namespace CoreDefinitionVersion {
 
-export type Core = { SyncShadow?: boolean;
+
+export type Core = {
+
+
+SyncShadow?: boolean;
 
 ThingArn: string;
 
 Id: string;
 
-CertificateArn: string; };
+CertificateArn: string;
 
-export type Cores =  AWS.Greengrass.CoreDefinitionVersion.Core[];
 
-export type CoreDefinitionId =  string;
+};
+
 
 }
+
+export type DeviceDefinitionVersion = {
+
+
+DeviceDefinitionId: string;
+
+Devices: AWS.Greengrass.DeviceDefinitionVersion.Device[];
+
+
+};
 
 export namespace DeviceDefinitionVersion {
 
-export type Device = { SyncShadow?: boolean;
+
+export type Device = {
+
+
+SyncShadow?: boolean;
 
 ThingArn: string;
 
 Id: string;
 
-CertificateArn: string; };
+CertificateArn: string;
 
-export type DeviceDefinitionId =  string;
 
-export type Devices =  AWS.Greengrass.DeviceDefinitionVersion.Device[];
+};
+
 
 }
 
+export type Group = {
+
+
+InitialVersion?: AWS.Greengrass.Group.GroupVersion;
+
+RoleArn?: string;
+
+Tags?: JSONString;
+
+Name: string;
+
+
+};
+
 export namespace Group {
 
-export type GroupVersion = { LoggerDefinitionVersionArn?: string;
+
+export type GroupVersion = {
+
+
+LoggerDefinitionVersionArn?: string;
 
 DeviceDefinitionVersionArn?: string;
 
@@ -2614,297 +5138,501 @@ ResourceDefinitionVersionArn?: string;
 
 ConnectorDefinitionVersionArn?: string;
 
-SubscriptionDefinitionVersionArn?: string; };
+SubscriptionDefinitionVersionArn?: string;
 
-export type InitialVersion =  AWS.Greengrass.Group.GroupVersion;
 
-export type RoleArn =  string;
+};
 
-export type Tags =  JSONString;
-
-export type Name =  string;
 
 }
 
+export type DeviceDefinition = {
+
+
+InitialVersion?: AWS.Greengrass.DeviceDefinition.DeviceDefinitionVersion;
+
+Tags?: JSONString;
+
+Name: string;
+
+
+};
+
 export namespace DeviceDefinition {
 
-export type Device = { SyncShadow?: boolean;
+
+export type Device = {
+
+
+SyncShadow?: boolean;
 
 ThingArn: string;
 
 Id: string;
 
-CertificateArn: string; };
+CertificateArn: string;
 
-export type DeviceDefinitionVersion = { Devices: AWS.Greengrass.DeviceDefinition.Device[]; };
 
-export type InitialVersion =  AWS.Greengrass.DeviceDefinition.DeviceDefinitionVersion;
+};
 
-export type Tags =  JSONString;
+export type DeviceDefinitionVersion = {
 
-export type Name =  string;
+
+Devices: AWS.Greengrass.DeviceDefinition.Device[];
+
+
+};
+
 
 }
+
+export type ConnectorDefinitionVersion = {
+
+
+Connectors: AWS.Greengrass.ConnectorDefinitionVersion.Connector[];
+
+ConnectorDefinitionId: string;
+
+
+};
 
 export namespace ConnectorDefinitionVersion {
 
-export type Connector = { ConnectorArn: string;
+
+export type Connector = {
+
+
+ConnectorArn: string;
 
 Parameters?: JSONString;
 
-Id: string; };
+Id: string;
 
-export type Connectors =  AWS.Greengrass.ConnectorDefinitionVersion.Connector[];
 
-export type ConnectorDefinitionId =  string;
+};
 
-}
-
-export namespace GroupVersion {
-
-export type LoggerDefinitionVersionArn =  string;
-
-export type DeviceDefinitionVersionArn =  string;
-
-export type FunctionDefinitionVersionArn =  string;
-
-export type CoreDefinitionVersionArn =  string;
-
-export type ResourceDefinitionVersionArn =  string;
-
-export type ConnectorDefinitionVersionArn =  string;
-
-export type SubscriptionDefinitionVersionArn =  string;
-
-export type GroupId =  string;
 
 }
+
+export type GroupVersion = {
+
+
+LoggerDefinitionVersionArn?: string;
+
+DeviceDefinitionVersionArn?: string;
+
+FunctionDefinitionVersionArn?: string;
+
+CoreDefinitionVersionArn?: string;
+
+ResourceDefinitionVersionArn?: string;
+
+ConnectorDefinitionVersionArn?: string;
+
+SubscriptionDefinitionVersionArn?: string;
+
+GroupId: string;
+
+
+};
+
 
 }
 
 export namespace Glue {
 
+
+export type MLTransform = {
+
+
+InputRecordTables: AWS.Glue.MLTransform.InputRecordTables;
+
+TransformEncryption?: AWS.Glue.MLTransform.TransformEncryption;
+
+TransformParameters: AWS.Glue.MLTransform.TransformParameters;
+
+MaxRetries?: number;
+
+Description?: string;
+
+Timeout?: number;
+
+Name?: string;
+
+Role: string;
+
+WorkerType?: string;
+
+GlueVersion?: string;
+
+NumberOfWorkers?: number;
+
+Tags?: JSONString;
+
+MaxCapacity?: number;
+
+
+};
+
 export namespace MLTransform {
 
-export type FindMatchesParameters = { PrecisionRecallTradeoff?: number;
+
+export type FindMatchesParameters = {
+
+
+PrecisionRecallTradeoff?: number;
 
 EnforceProvidedLabels?: boolean;
 
 PrimaryKeyColumnName: string;
 
-AccuracyCostTradeoff?: number; };
+AccuracyCostTradeoff?: number;
 
-export type MLUserDataEncryption = { MLUserDataEncryptionMode: string;
 
-KmsKeyId?: string; };
+};
 
-export type InputRecordTables =  AWS.Glue.MLTransform.InputRecordTables;
+export type MLUserDataEncryption = {
 
-export type GlueTables = { ConnectionName?: string;
+
+MLUserDataEncryptionMode: string;
+
+KmsKeyId?: string;
+
+
+};
+
+export type GlueTables = {
+
+
+ConnectionName?: string;
 
 TableName: string;
 
 DatabaseName: string;
 
-CatalogId?: string; };
+CatalogId?: string;
 
-export type TransformEncryption =  AWS.Glue.MLTransform.TransformEncryption;
 
-export type TransformParameters =  AWS.Glue.MLTransform.TransformParameters;
+};
 
-export type MaxRetries =  number;
-
-export type Description =  string;
-
-export type Timeout =  number;
-
-export type Name =  string;
-
-export type Role =  string;
-
-export type WorkerType =  string;
-
-export type GlueVersion =  string;
-
-export type NumberOfWorkers =  number;
-
-export type Tags =  JSONString;
-
-export type MaxCapacity =  number;
 
 }
+
+export type Database = {
+
+
+DatabaseInput: AWS.Glue.Database.DatabaseInput;
+
+CatalogId: string;
+
+
+};
 
 export namespace Database {
 
-export type DatabaseInput =  AWS.Glue.Database.DatabaseInput;
 
-export type DatabaseIdentifier = { DatabaseName?: string;
+export type DatabaseIdentifier = {
 
-CatalogId?: string; };
 
-export type CatalogId =  string;
+DatabaseName?: string;
+
+CatalogId?: string;
+
+
+};
+
 
 }
+
+export type Job = {
+
+
+NotificationProperty?: AWS.Glue.Job.NotificationProperty;
+
+ExecutionProperty?: AWS.Glue.Job.ExecutionProperty;
+
+Connections?: AWS.Glue.Job.ConnectionsList;
+
+MaxRetries?: number;
+
+Description?: string;
+
+Timeout?: number;
+
+AllocatedCapacity?: number;
+
+Name?: string;
+
+Role: string;
+
+DefaultArguments?: JSONString;
+
+WorkerType?: string;
+
+LogUri?: string;
+
+Command: AWS.Glue.Job.JobCommand;
+
+GlueVersion?: string;
+
+SecurityConfiguration?: string;
+
+NumberOfWorkers?: number;
+
+Tags?: JSONString;
+
+MaxCapacity?: number;
+
+
+};
 
 export namespace Job {
 
-export type JobCommand = { PythonVersion?: string;
+
+export type JobCommand = {
+
+
+PythonVersion?: string;
 
 ScriptLocation?: string;
 
-Name?: string; };
+Name?: string;
 
-export type ConnectionsList = { Connections?: string[]; };
 
-export type NotificationProperty =  AWS.Glue.Job.NotificationProperty;
+};
 
-export type ExecutionProperty =  AWS.Glue.Job.ExecutionProperty;
+export type ConnectionsList = {
 
-export type Connections =  AWS.Glue.Job.ConnectionsList;
 
-export type MaxRetries =  number;
+Connections?: string[];
 
-export type Description =  string;
 
-export type Timeout =  number;
+};
 
-export type AllocatedCapacity =  number;
-
-export type Name =  string;
-
-export type Role =  string;
-
-export type DefaultArguments =  JSONString;
-
-export type WorkerType =  string;
-
-export type LogUri =  string;
-
-export type Command =  AWS.Glue.Job.JobCommand;
-
-export type GlueVersion =  string;
-
-export type SecurityConfiguration =  string;
-
-export type NumberOfWorkers =  number;
-
-export type Tags =  JSONString;
-
-export type MaxCapacity =  number;
 
 }
+
+export type Crawler = {
+
+
+Schedule?: AWS.Glue.Crawler.Schedule;
+
+SchemaChangePolicy?: AWS.Glue.Crawler.SchemaChangePolicy;
+
+Targets: AWS.Glue.Crawler.Targets;
+
+Role: string;
+
+Classifiers?: string[];
+
+Description?: string;
+
+Configuration?: string;
+
+DatabaseName?: string;
+
+CrawlerSecurityConfiguration?: string;
+
+TablePrefix?: string;
+
+Tags?: JSONString;
+
+Name?: string;
+
+
+};
 
 export namespace Crawler {
 
-export type CatalogTarget = { DatabaseName?: string;
 
-Tables?: string[]; };
+export type CatalogTarget = {
 
-export type Schedule =  AWS.Glue.Crawler.Schedule;
 
-export type SchemaChangePolicy =  AWS.Glue.Crawler.SchemaChangePolicy;
+DatabaseName?: string;
 
-export type Targets =  AWS.Glue.Crawler.Targets;
+Tables?: string[];
 
-export type JdbcTarget = { ConnectionName?: string;
 
-Path?: string;
+};
 
-Exclusions?: string[]; };
+export type JdbcTarget = {
 
-export type DynamoDBTarget = { Path?: string; };
 
-export type S3Target = { ConnectionName?: string;
+ConnectionName?: string;
 
 Path?: string;
 
-Exclusions?: string[]; };
+Exclusions?: string[];
 
-export type Role =  string;
 
-export type Classifiers =  string[];
+};
 
-export type Description =  string;
+export type DynamoDBTarget = {
 
-export type Configuration =  string;
 
-export type DatabaseName =  string;
+Path?: string;
 
-export type CrawlerSecurityConfiguration =  string;
 
-export type TablePrefix =  string;
+};
 
-export type Tags =  JSONString;
+export type S3Target = {
 
-export type Name =  string;
+
+ConnectionName?: string;
+
+Path?: string;
+
+Exclusions?: string[];
+
+
+};
+
 
 }
+
+export type Connection = {
+
+
+ConnectionInput: AWS.Glue.Connection.ConnectionInput;
+
+CatalogId: string;
+
+
+};
 
 export namespace Connection {
 
-export type ConnectionInput =  AWS.Glue.Connection.ConnectionInput;
 
-export type PhysicalConnectionRequirements = { AvailabilityZone?: string;
+export type PhysicalConnectionRequirements = {
+
+
+AvailabilityZone?: string;
 
 SecurityGroupIdList?: string[];
 
-SubnetId?: string; };
+SubnetId?: string;
 
-export type CatalogId =  string;
 
-}
+};
 
-export namespace SchemaVersion {
-
-export type Schema =  AWS.Glue.SchemaVersion.Schema;
-
-export type SchemaDefinition =  string;
 
 }
+
+export type SchemaVersion = {
+
+
+Schema: AWS.Glue.SchemaVersion.Schema;
+
+SchemaDefinition: string;
+
+
+};
+
+export type Schema = {
+
+
+Registry?: AWS.Glue.Schema.Registry;
+
+Name: string;
+
+Description?: string;
+
+DataFormat: string;
+
+Compatibility: string;
+
+SchemaDefinition: string;
+
+CheckpointVersion?: AWS.Glue.Schema.SchemaVersion;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace Schema {
 
-export type SchemaVersion = { IsLatest?: boolean;
 
-VersionNumber?: number; };
+export type SchemaVersion = {
 
-export type Registry =  AWS.Glue.Schema.Registry;
 
-export type Name =  string;
+IsLatest?: boolean;
 
-export type Description =  string;
+VersionNumber?: number;
 
-export type DataFormat =  string;
 
-export type Compatibility =  string;
+};
 
-export type SchemaDefinition =  string;
-
-export type CheckpointVersion =  AWS.Glue.Schema.SchemaVersion;
-
-export type Tags =  Tag[];
 
 }
+
+export type DataCatalogEncryptionSettings = {
+
+
+DataCatalogEncryptionSettings: AWS.Glue.DataCatalogEncryptionSettings.DataCatalogEncryptionSettings;
+
+CatalogId: string;
+
+
+};
 
 export namespace DataCatalogEncryptionSettings {
 
-export type DataCatalogEncryptionSettings =  AWS.Glue.DataCatalogEncryptionSettings.DataCatalogEncryptionSettings;
 
-export type EncryptionAtRest = { CatalogEncryptionMode?: string;
+export type EncryptionAtRest = {
 
-SseAwsKmsKeyId?: string; };
 
-export type ConnectionPasswordEncryption = { ReturnConnectionPasswordEncrypted?: boolean;
+CatalogEncryptionMode?: string;
 
-KmsKeyId?: string; };
+SseAwsKmsKeyId?: string;
 
-export type CatalogId =  string;
+
+};
+
+export type ConnectionPasswordEncryption = {
+
+
+ReturnConnectionPasswordEncrypted?: boolean;
+
+KmsKeyId?: string;
+
+
+};
+
 
 }
 
+export type Trigger = {
+
+
+Predicate?: AWS.Glue.Trigger.Predicate;
+
+Type: string;
+
+StartOnCreation?: boolean;
+
+Description?: string;
+
+Actions: AWS.Glue.Trigger.Action[];
+
+WorkflowName?: string;
+
+Schedule?: string;
+
+Tags?: JSONString;
+
+Name?: string;
+
+
+};
+
 export namespace Trigger {
 
-export type Condition = { CrawlerName?: string;
+
+export type Condition = {
+
+
+CrawlerName?: string;
 
 State?: string;
 
@@ -2912,11 +5640,15 @@ CrawlState?: string;
 
 LogicalOperator?: string;
 
-JobName?: string; };
+JobName?: string;
 
-export type Predicate =  AWS.Glue.Trigger.Predicate;
 
-export type Action = { NotificationProperty?: AWS.Glue.Trigger.NotificationProperty;
+};
+
+export type Action = {
+
+
+NotificationProperty?: AWS.Glue.Trigger.NotificationProperty;
 
 CrawlerName?: string;
 
@@ -2926,55 +5658,89 @@ JobName?: string;
 
 Arguments?: JSONString;
 
-SecurityConfiguration?: string; };
+SecurityConfiguration?: string;
 
-export type NotificationProperty = { NotifyDelayAfter?: number; };
 
-export type Type =  string;
+};
 
-export type StartOnCreation =  boolean;
+export type NotificationProperty = {
 
-export type Description =  string;
 
-export type Actions =  AWS.Glue.Trigger.Action[];
+NotifyDelayAfter?: number;
 
-export type WorkflowName =  string;
 
-export type Schedule =  string;
+};
 
-export type Tags =  JSONString;
-
-export type Name =  string;
 
 }
 
+export type Partition = {
+
+
+PartitionInput: AWS.Glue.Partition.PartitionInput;
+
+TableName: string;
+
+DatabaseName: string;
+
+CatalogId: string;
+
+
+};
+
 export namespace Partition {
 
-export type PartitionInput =  AWS.Glue.Partition.PartitionInput;
 
-export type Order = { Column: string;
+export type Order = {
 
-SortOrder?: number; };
 
-export type SchemaReference = { SchemaId?: AWS.Glue.Partition.SchemaId;
+Column: string;
+
+SortOrder?: number;
+
+
+};
+
+export type SchemaReference = {
+
+
+SchemaId?: AWS.Glue.Partition.SchemaId;
 
 SchemaVersionNumber?: number;
 
-SchameVersionId?: string; };
+SchameVersionId?: string;
 
-export type SerdeInfo = { Parameters?: JSONString;
+
+};
+
+export type SerdeInfo = {
+
+
+Parameters?: JSONString;
 
 SerializationLibrary?: string;
 
-Name?: string; };
+Name?: string;
 
-export type Column = { Comment?: string;
+
+};
+
+export type Column = {
+
+
+Comment?: string;
 
 Type?: string;
 
-Name: string; };
+Name: string;
 
-export type StorageDescriptor = { StoredAsSubDirectories?: boolean;
+
+};
+
+export type StorageDescriptor = {
+
+
+StoredAsSubDirectories?: boolean;
 
 Parameters?: JSONString;
 
@@ -2998,61 +5764,115 @@ SkewedInfo?: AWS.Glue.Partition.SkewedInfo;
 
 InputFormat?: string;
 
-Location?: string; };
+Location?: string;
 
-export type SkewedInfo = { SkewedColumnNames?: string[];
+
+};
+
+export type SkewedInfo = {
+
+
+SkewedColumnNames?: string[];
 
 SkewedColumnValues?: string[];
 
-SkewedColumnValueLocationMaps?: JSONString; };
+SkewedColumnValueLocationMaps?: JSONString;
 
-export type SchemaId = { RegistryName?: string;
+
+};
+
+export type SchemaId = {
+
+
+RegistryName?: string;
 
 SchemaName?: string;
 
-SchemaArn?: string; };
+SchemaArn?: string;
 
-export type TableName =  string;
 
-export type DatabaseName =  string;
+};
 
-export type CatalogId =  string;
 
 }
 
+export type Table = {
+
+
+TableInput: AWS.Glue.Table.TableInput;
+
+DatabaseName: string;
+
+CatalogId: string;
+
+
+};
+
 export namespace Table {
 
-export type Column = { Comment?: string;
+
+export type Column = {
+
+
+Comment?: string;
 
 Type?: string;
 
-Name: string; };
+Name: string;
 
-export type TableInput =  AWS.Glue.Table.TableInput;
 
-export type SerdeInfo = { Parameters?: JSONString;
+};
+
+export type SerdeInfo = {
+
+
+Parameters?: JSONString;
 
 SerializationLibrary?: string;
 
-Name?: string; };
+Name?: string;
 
-export type SchemaId = { RegistryName?: string;
+
+};
+
+export type SchemaId = {
+
+
+RegistryName?: string;
 
 SchemaName?: string;
 
-SchemaArn?: string; };
+SchemaArn?: string;
 
-export type Order = { Column: string;
 
-SortOrder: number; };
+};
 
-export type SkewedInfo = { SkewedColumnNames?: string[];
+export type Order = {
+
+
+Column: string;
+
+SortOrder: number;
+
+
+};
+
+export type SkewedInfo = {
+
+
+SkewedColumnNames?: string[];
 
 SkewedColumnValues?: string[];
 
-SkewedColumnValueLocationMaps?: JSONString; };
+SkewedColumnValueLocationMaps?: JSONString;
 
-export type StorageDescriptor = { StoredAsSubDirectories?: boolean;
+
+};
+
+export type StorageDescriptor = {
+
+
+StoredAsSubDirectories?: boolean;
 
 Parameters?: JSONString;
 
@@ -3076,207 +5896,325 @@ SkewedInfo?: AWS.Glue.Table.SkewedInfo;
 
 InputFormat?: string;
 
-Location?: string; };
+Location?: string;
 
-export type SchemaReference = { SchemaId?: AWS.Glue.Table.SchemaId;
+
+};
+
+export type SchemaReference = {
+
+
+SchemaId?: AWS.Glue.Table.SchemaId;
 
 SchemaVersionNumber?: number;
 
-SchameVersionId?: string; };
+SchameVersionId?: string;
 
-export type TableIdentifier = { DatabaseName?: string;
+
+};
+
+export type TableIdentifier = {
+
+
+DatabaseName?: string;
 
 CatalogId?: string;
 
-Name?: string; };
+Name?: string;
 
-export type DatabaseName =  string;
 
-export type CatalogId =  string;
+};
 
-}
-
-export namespace Classifier {
-
-export type CsvClassifier =  AWS.Glue.Classifier.CsvClassifier;
-
-export type GrokClassifier =  AWS.Glue.Classifier.GrokClassifier;
-
-export type JsonClassifier =  AWS.Glue.Classifier.JsonClassifier;
-
-export type XMLClassifier =  AWS.Glue.Classifier.XMLClassifier;
 
 }
+
+export type Classifier = {
+
+
+CsvClassifier?: AWS.Glue.Classifier.CsvClassifier;
+
+GrokClassifier?: AWS.Glue.Classifier.GrokClassifier;
+
+JsonClassifier?: AWS.Glue.Classifier.JsonClassifier;
+
+XMLClassifier?: AWS.Glue.Classifier.XMLClassifier;
+
+
+};
+
+export type SecurityConfiguration = {
+
+
+EncryptionConfiguration: AWS.Glue.SecurityConfiguration.EncryptionConfiguration;
+
+S3Encryptions?: AWS.Glue.SecurityConfiguration.S3Encryption[];
+
+Name: string;
+
+
+};
 
 export namespace SecurityConfiguration {
 
-export type EncryptionConfiguration =  AWS.Glue.SecurityConfiguration.EncryptionConfiguration;
 
-export type JobBookmarksEncryption = { KmsKeyArn?: string;
+export type JobBookmarksEncryption = {
 
-JobBookmarksEncryptionMode?: string; };
 
-export type S3Encryptions =  AWS.Glue.SecurityConfiguration.S3Encryption[];
+KmsKeyArn?: string;
 
-export type S3Encryption = { KmsKeyArn?: string;
+JobBookmarksEncryptionMode?: string;
 
-S3EncryptionMode?: string; };
 
-export type CloudWatchEncryption = { KmsKeyArn?: string;
+};
 
-CloudWatchEncryptionMode?: string; };
+export type S3Encryption = {
 
-export type Name =  string;
 
-}
+KmsKeyArn?: string;
 
-export namespace DevEndpoint {
+S3EncryptionMode?: string;
 
-export type ExtraJarsS3Path =  string;
 
-export type PublicKey =  string;
+};
 
-export type NumberOfNodes =  number;
+export type CloudWatchEncryption = {
 
-export type Arguments =  JSONString;
 
-export type SubnetId =  string;
+KmsKeyArn?: string;
 
-export type PublicKeys =  string[];
+CloudWatchEncryptionMode?: string;
 
-export type SecurityGroupIds =  string[];
 
-export type RoleArn =  string;
+};
 
-export type WorkerType =  string;
-
-export type EndpointName =  string;
-
-export type GlueVersion =  string;
-
-export type ExtraPythonLibsS3Path =  string;
-
-export type SecurityConfiguration =  string;
-
-export type NumberOfWorkers =  number;
-
-export type Tags =  JSONString;
 
 }
 
-export namespace SchemaVersionMetadata {
+export type DevEndpoint = {
 
-export type SchemaVersionId =  string;
 
-export type Key =  string;
+ExtraJarsS3Path?: string;
 
-export type Value =  string;
+PublicKey?: string;
 
-}
+NumberOfNodes?: number;
 
-export namespace Workflow {
+Arguments?: JSONString;
 
-export type Description =  string;
+SubnetId?: string;
 
-export type DefaultRunProperties =  JSONString;
+PublicKeys?: string[];
 
-export type Tags =  JSONString;
+SecurityGroupIds?: string[];
 
-export type Name =  string;
+RoleArn: string;
 
-}
+WorkerType?: string;
 
-export namespace Registry {
+EndpointName?: string;
 
-export type Name =  string;
+GlueVersion?: string;
 
-export type Description =  string;
+ExtraPythonLibsS3Path?: string;
 
-export type Tags =  Tag[];
+SecurityConfiguration?: string;
 
-}
+NumberOfWorkers?: number;
+
+Tags?: JSONString;
+
+
+};
+
+export type SchemaVersionMetadata = {
+
+
+SchemaVersionId: string;
+
+Key: string;
+
+Value: string;
+
+
+};
+
+export type Workflow = {
+
+
+Description?: string;
+
+DefaultRunProperties?: JSONString;
+
+Tags?: JSONString;
+
+Name?: string;
+
+
+};
+
+export type Registry = {
+
+
+Name: string;
+
+Description?: string;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace Athena {
 
+
+export type WorkGroup = {
+
+
+WorkGroupConfigurationUpdates?: AWS.Athena.WorkGroup.WorkGroupConfigurationUpdates;
+
+WorkGroupConfiguration?: AWS.Athena.WorkGroup.WorkGroupConfiguration;
+
+Name: string;
+
+Description?: string;
+
+Tags?: Tag[];
+
+State?: string;
+
+RecursiveDeleteOption?: boolean;
+
+
+};
+
 export namespace WorkGroup {
 
-export type WorkGroupConfigurationUpdates =  AWS.Athena.WorkGroup.WorkGroupConfigurationUpdates;
 
-export type ResultConfiguration = { EncryptionConfiguration?: AWS.Athena.WorkGroup.EncryptionConfiguration;
+export type ResultConfiguration = {
 
-OutputLocation?: string; };
 
-export type ResultConfigurationUpdates = { EncryptionConfiguration?: AWS.Athena.WorkGroup.EncryptionConfiguration;
+EncryptionConfiguration?: AWS.Athena.WorkGroup.EncryptionConfiguration;
+
+OutputLocation?: string;
+
+
+};
+
+export type ResultConfigurationUpdates = {
+
+
+EncryptionConfiguration?: AWS.Athena.WorkGroup.EncryptionConfiguration;
 
 OutputLocation?: string;
 
 RemoveEncryptionConfiguration?: boolean;
 
-RemoveOutputLocation?: boolean; };
+RemoveOutputLocation?: boolean;
 
-export type WorkGroupConfiguration =  AWS.Athena.WorkGroup.WorkGroupConfiguration;
 
-export type EncryptionConfiguration = { EncryptionOption: string;
+};
 
-KmsKey?: string; };
+export type EncryptionConfiguration = {
 
-export type EngineVersion = { SelectedEngineVersion?: string;
 
-EffectiveEngineVersion?: string; };
+EncryptionOption: string;
 
-export type Name =  string;
+KmsKey?: string;
 
-export type Description =  string;
 
-export type Tags =  Tag[];
+};
 
-export type State =  string;
+export type EngineVersion = {
 
-export type RecursiveDeleteOption =  boolean;
 
-}
+SelectedEngineVersion?: string;
 
-export namespace DataCatalog {
+EffectiveEngineVersion?: string;
 
-export type Name =  string;
 
-export type Description =  string;
+};
 
-export type Parameters =  Record<string, string>;
-
-export type Tags =  Tag[];
-
-export type Type =  string;
 
 }
 
-export namespace NamedQuery {
+export type DataCatalog = {
 
-export type Name =  string;
 
-export type Database =  string;
+Name: string;
 
-export type Description =  string;
+Description?: string;
 
-export type QueryString =  string;
+Parameters?: Record<string, string>;
 
-export type WorkGroup =  string;
+Tags?: Tag[];
 
-}
+Type: string;
+
+
+};
+
+export type NamedQuery = {
+
+
+Name?: string;
+
+Database: string;
+
+Description?: string;
+
+QueryString: string;
+
+WorkGroup?: string;
+
+
+};
+
 
 }
 
 export namespace SageMaker {
 
+
+export type MonitoringSchedule = {
+
+
+Environment?: any;
+
+MonitoringScheduleConfig: AWS.SageMaker.MonitoringSchedule.MonitoringScheduleConfig;
+
+MonitoringScheduleName: string;
+
+Tags?: Tag[];
+
+EndpointName?: string;
+
+FailureReason?: string;
+
+LastMonitoringExecutionSummary?: AWS.SageMaker.MonitoringSchedule.MonitoringExecutionSummary;
+
+MonitoringScheduleStatus?: string;
+
+
+};
+
 export namespace MonitoringSchedule {
 
-export type Environment =  any;
 
-export type ConstraintsResource = { S3Uri?: string; };
+export type ConstraintsResource = {
 
-export type MonitoringExecutionSummary = { CreationTime: string;
+
+S3Uri?: string;
+
+
+};
+
+export type MonitoringExecutionSummary = {
+
+
+CreationTime: string;
 
 EndpointName?: string;
 
@@ -3290,27 +6228,57 @@ MonitoringScheduleName: string;
 
 ProcessingJobArn?: string;
 
-ScheduledTime: string; };
+ScheduledTime: string;
 
-export type MonitoringOutputConfig = { KmsKeyId?: string;
 
-MonitoringOutputs: AWS.SageMaker.MonitoringSchedule.MonitoringOutput[]; };
+};
 
-export type StatisticsResource = { S3Uri?: string; };
+export type MonitoringOutputConfig = {
 
-export type VpcConfig = { SecurityGroupIds: string[];
 
-Subnets: string[]; };
+KmsKeyId?: string;
 
-export type ClusterConfig = { InstanceCount: number;
+MonitoringOutputs: AWS.SageMaker.MonitoringSchedule.MonitoringOutput[];
+
+
+};
+
+export type StatisticsResource = {
+
+
+S3Uri?: string;
+
+
+};
+
+export type VpcConfig = {
+
+
+SecurityGroupIds: string[];
+
+Subnets: string[];
+
+
+};
+
+export type ClusterConfig = {
+
+
+InstanceCount: number;
 
 InstanceType: string;
 
 VolumeKmsKeyId?: string;
 
-VolumeSizeInGB: number; };
+VolumeSizeInGB: number;
 
-export type MonitoringAppSpecification = { ContainerArguments?: string[];
+
+};
+
+export type MonitoringAppSpecification = {
+
+
+ContainerArguments?: string[];
 
 ContainerEntrypoint?: string[];
 
@@ -3318,9 +6286,15 @@ ImageUri: string;
 
 PostAnalyticsProcessorSourceUri?: string;
 
-RecordPreprocessorSourceUri?: string; };
+RecordPreprocessorSourceUri?: string;
 
-export type MonitoringJobDefinition = { BaselineConfig?: AWS.SageMaker.MonitoringSchedule.BaselineConfig;
+
+};
+
+export type MonitoringJobDefinition = {
+
+
+BaselineConfig?: AWS.SageMaker.MonitoringSchedule.BaselineConfig;
 
 Environment?: AWS.SageMaker.MonitoringSchedule.Environment;
 
@@ -3336,101 +6310,207 @@ NetworkConfig?: AWS.SageMaker.MonitoringSchedule.NetworkConfig;
 
 RoleArn: string;
 
-StoppingCondition?: AWS.SageMaker.MonitoringSchedule.StoppingCondition; };
+StoppingCondition?: AWS.SageMaker.MonitoringSchedule.StoppingCondition;
 
-export type BaselineConfig = { ConstraintsResource?: AWS.SageMaker.MonitoringSchedule.ConstraintsResource;
 
-StatisticsResource?: AWS.SageMaker.MonitoringSchedule.StatisticsResource; };
+};
 
-export type MonitoringOutput = { S3Output: AWS.SageMaker.MonitoringSchedule.S3Output; };
+export type BaselineConfig = {
 
-export type ScheduleConfig = { ScheduleExpression: string; };
 
-export type MonitoringScheduleConfig =  AWS.SageMaker.MonitoringSchedule.MonitoringScheduleConfig;
+ConstraintsResource?: AWS.SageMaker.MonitoringSchedule.ConstraintsResource;
 
-export type EndpointInput = { EndpointName: string;
+StatisticsResource?: AWS.SageMaker.MonitoringSchedule.StatisticsResource;
+
+
+};
+
+export type MonitoringOutput = {
+
+
+S3Output: AWS.SageMaker.MonitoringSchedule.S3Output;
+
+
+};
+
+export type ScheduleConfig = {
+
+
+ScheduleExpression: string;
+
+
+};
+
+export type EndpointInput = {
+
+
+EndpointName: string;
 
 LocalPath: string;
 
 S3DataDistributionType?: string;
 
-S3InputMode?: string; };
+S3InputMode?: string;
 
-export type NetworkConfig = { EnableInterContainerTrafficEncryption?: boolean;
+
+};
+
+export type NetworkConfig = {
+
+
+EnableInterContainerTrafficEncryption?: boolean;
 
 EnableNetworkIsolation?: boolean;
 
-VpcConfig?: AWS.SageMaker.MonitoringSchedule.VpcConfig; };
+VpcConfig?: AWS.SageMaker.MonitoringSchedule.VpcConfig;
 
-export type S3Output = { LocalPath: string;
+
+};
+
+export type S3Output = {
+
+
+LocalPath: string;
 
 S3UploadMode?: string;
 
-S3Uri: string; };
+S3Uri: string;
 
-export type MonitoringResources = { ClusterConfig: AWS.SageMaker.MonitoringSchedule.ClusterConfig; };
 
-export type StoppingCondition = { MaxRuntimeInSeconds: number; };
+};
 
-export type MonitoringInput = { EndpointInput: AWS.SageMaker.MonitoringSchedule.EndpointInput; };
+export type MonitoringResources = {
 
-export type MonitoringScheduleName =  string;
 
-export type Tags =  Tag[];
+ClusterConfig: AWS.SageMaker.MonitoringSchedule.ClusterConfig;
 
-export type EndpointName =  string;
 
-export type FailureReason =  string;
+};
 
-export type LastMonitoringExecutionSummary =  AWS.SageMaker.MonitoringSchedule.MonitoringExecutionSummary;
+export type StoppingCondition = {
 
-export type MonitoringScheduleStatus =  string;
+
+MaxRuntimeInSeconds: number;
+
+
+};
+
+export type MonitoringInput = {
+
+
+EndpointInput: AWS.SageMaker.MonitoringSchedule.EndpointInput;
+
+
+};
+
 
 }
 
+export type ModelBiasJobDefinition = {
+
+
+ModelBiasBaselineConfig?: AWS.SageMaker.ModelBiasJobDefinition.ModelBiasBaselineConfig;
+
+ModelBiasJobInput: AWS.SageMaker.ModelBiasJobDefinition.ModelBiasJobInput;
+
+ModelBiasAppSpecification: AWS.SageMaker.ModelBiasJobDefinition.ModelBiasAppSpecification;
+
+StoppingCondition?: AWS.SageMaker.ModelBiasJobDefinition.StoppingCondition;
+
+Environment?: any;
+
+NetworkConfig?: AWS.SageMaker.ModelBiasJobDefinition.NetworkConfig;
+
+JobDefinitionName?: string;
+
+ModelBiasJobOutputConfig: AWS.SageMaker.ModelBiasJobDefinition.MonitoringOutputConfig;
+
+JobResources: AWS.SageMaker.ModelBiasJobDefinition.MonitoringResources;
+
+RoleArn: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace ModelBiasJobDefinition {
 
-export type ClusterConfig = { InstanceCount: number;
+
+export type ClusterConfig = {
+
+
+InstanceCount: number;
 
 InstanceType: string;
 
 VolumeKmsKeyId?: string;
 
-VolumeSizeInGB: number; };
+VolumeSizeInGB: number;
 
-export type S3Output = { LocalPath: string;
+
+};
+
+export type S3Output = {
+
+
+LocalPath: string;
 
 S3UploadMode?: string;
 
-S3Uri: string; };
+S3Uri: string;
 
-export type ModelBiasBaselineConfig =  AWS.SageMaker.ModelBiasJobDefinition.ModelBiasBaselineConfig;
 
-export type ModelBiasJobInput =  AWS.SageMaker.ModelBiasJobDefinition.ModelBiasJobInput;
+};
 
-export type MonitoringResources = { ClusterConfig: AWS.SageMaker.ModelBiasJobDefinition.ClusterConfig; };
+export type MonitoringResources = {
 
-export type ModelBiasAppSpecification =  AWS.SageMaker.ModelBiasJobDefinition.ModelBiasAppSpecification;
 
-export type MonitoringGroundTruthS3Input = { S3Uri: string; };
+ClusterConfig: AWS.SageMaker.ModelBiasJobDefinition.ClusterConfig;
 
-export type ConstraintsResource = { S3Uri?: string; };
 
-export type StoppingCondition =  AWS.SageMaker.ModelBiasJobDefinition.StoppingCondition;
+};
 
-export type Environment =  any;
+export type MonitoringGroundTruthS3Input = {
 
-export type MonitoringOutputConfig = { KmsKeyId?: string;
 
-MonitoringOutputs: AWS.SageMaker.ModelBiasJobDefinition.MonitoringOutput[]; };
+S3Uri: string;
 
-export type VpcConfig = { SecurityGroupIds: string[];
 
-Subnets: string[]; };
+};
 
-export type NetworkConfig =  AWS.SageMaker.ModelBiasJobDefinition.NetworkConfig;
+export type ConstraintsResource = {
 
-export type EndpointInput = { EndpointName: string;
+
+S3Uri?: string;
+
+
+};
+
+export type MonitoringOutputConfig = {
+
+
+KmsKeyId?: string;
+
+MonitoringOutputs: AWS.SageMaker.ModelBiasJobDefinition.MonitoringOutput[];
+
+
+};
+
+export type VpcConfig = {
+
+
+SecurityGroupIds: string[];
+
+Subnets: string[];
+
+
+};
+
+export type EndpointInput = {
+
+
+EndpointName: string;
 
 LocalPath: string;
 
@@ -3448,151 +6528,307 @@ InferenceAttribute?: string;
 
 ProbabilityAttribute?: string;
 
-ProbabilityThresholdAttribute?: number; };
+ProbabilityThresholdAttribute?: number;
 
-export type MonitoringOutput = { S3Output: AWS.SageMaker.ModelBiasJobDefinition.S3Output; };
 
-export type JobDefinitionName =  string;
+};
 
-export type ModelBiasJobOutputConfig =  AWS.SageMaker.ModelBiasJobDefinition.MonitoringOutputConfig;
+export type MonitoringOutput = {
 
-export type JobResources =  AWS.SageMaker.ModelBiasJobDefinition.MonitoringResources;
 
-export type RoleArn =  string;
+S3Output: AWS.SageMaker.ModelBiasJobDefinition.S3Output;
 
-export type Tags =  Tag[];
+
+};
+
 
 }
 
+export type DataQualityJobDefinition = {
+
+
+DataQualityBaselineConfig?: AWS.SageMaker.DataQualityJobDefinition.DataQualityBaselineConfig;
+
+Environment?: any;
+
+DataQualityJobInput: AWS.SageMaker.DataQualityJobDefinition.DataQualityJobInput;
+
+DataQualityAppSpecification: AWS.SageMaker.DataQualityJobDefinition.DataQualityAppSpecification;
+
+StoppingCondition?: AWS.SageMaker.DataQualityJobDefinition.StoppingCondition;
+
+NetworkConfig?: AWS.SageMaker.DataQualityJobDefinition.NetworkConfig;
+
+JobDefinitionName?: string;
+
+DataQualityJobOutputConfig: AWS.SageMaker.DataQualityJobDefinition.MonitoringOutputConfig;
+
+JobResources: AWS.SageMaker.DataQualityJobDefinition.MonitoringResources;
+
+RoleArn: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace DataQualityJobDefinition {
 
-export type DataQualityBaselineConfig =  AWS.SageMaker.DataQualityJobDefinition.DataQualityBaselineConfig;
 
-export type StatisticsResource = { S3Uri?: string; };
+export type StatisticsResource = {
 
-export type ConstraintsResource = { S3Uri?: string; };
 
-export type Environment =  any;
+S3Uri?: string;
 
-export type DataQualityJobInput =  AWS.SageMaker.DataQualityJobDefinition.DataQualityJobInput;
 
-export type MonitoringResources = { ClusterConfig: AWS.SageMaker.DataQualityJobDefinition.ClusterConfig; };
+};
 
-export type MonitoringOutput = { S3Output: AWS.SageMaker.DataQualityJobDefinition.S3Output; };
+export type ConstraintsResource = {
 
-export type MonitoringOutputConfig = { KmsKeyId?: string;
 
-MonitoringOutputs: AWS.SageMaker.DataQualityJobDefinition.MonitoringOutput[]; };
+S3Uri?: string;
 
-export type DataQualityAppSpecification =  AWS.SageMaker.DataQualityJobDefinition.DataQualityAppSpecification;
 
-export type ClusterConfig = { InstanceCount: number;
+};
+
+export type MonitoringResources = {
+
+
+ClusterConfig: AWS.SageMaker.DataQualityJobDefinition.ClusterConfig;
+
+
+};
+
+export type MonitoringOutput = {
+
+
+S3Output: AWS.SageMaker.DataQualityJobDefinition.S3Output;
+
+
+};
+
+export type MonitoringOutputConfig = {
+
+
+KmsKeyId?: string;
+
+MonitoringOutputs: AWS.SageMaker.DataQualityJobDefinition.MonitoringOutput[];
+
+
+};
+
+export type ClusterConfig = {
+
+
+InstanceCount: number;
 
 InstanceType: string;
 
 VolumeKmsKeyId?: string;
 
-VolumeSizeInGB: number; };
+VolumeSizeInGB: number;
 
-export type VpcConfig = { SecurityGroupIds: string[];
 
-Subnets: string[]; };
+};
 
-export type S3Output = { LocalPath: string;
+export type VpcConfig = {
+
+
+SecurityGroupIds: string[];
+
+Subnets: string[];
+
+
+};
+
+export type S3Output = {
+
+
+LocalPath: string;
 
 S3UploadMode?: string;
 
-S3Uri: string; };
+S3Uri: string;
 
-export type StoppingCondition =  AWS.SageMaker.DataQualityJobDefinition.StoppingCondition;
 
-export type NetworkConfig =  AWS.SageMaker.DataQualityJobDefinition.NetworkConfig;
+};
 
-export type EndpointInput = { EndpointName: string;
+export type EndpointInput = {
+
+
+EndpointName: string;
 
 LocalPath: string;
 
 S3DataDistributionType?: string;
 
-S3InputMode?: string; };
+S3InputMode?: string;
 
-export type JobDefinitionName =  string;
 
-export type DataQualityJobOutputConfig =  AWS.SageMaker.DataQualityJobDefinition.MonitoringOutputConfig;
+};
 
-export type JobResources =  AWS.SageMaker.DataQualityJobDefinition.MonitoringResources;
-
-export type RoleArn =  string;
-
-export type Tags =  Tag[];
 
 }
+
+export type AppImageConfig = {
+
+
+KernelGatewayImageConfig?: AWS.SageMaker.AppImageConfig.KernelGatewayImageConfig;
+
+AppImageConfigName: string;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace AppImageConfig {
 
-export type KernelGatewayImageConfig =  AWS.SageMaker.AppImageConfig.KernelGatewayImageConfig;
 
-export type FileSystemConfig = { DefaultGid?: number;
+export type FileSystemConfig = {
+
+
+DefaultGid?: number;
 
 DefaultUid?: number;
 
-MountPath?: string; };
+MountPath?: string;
 
-export type KernelSpec = { DisplayName?: string;
 
-Name: string; };
+};
 
-export type AppImageConfigName =  string;
+export type KernelSpec = {
 
-export type Tags =  Tag[];
+
+DisplayName?: string;
+
+Name: string;
+
+
+};
+
 
 }
+
+export type Endpoint = {
+
+
+DeploymentConfig?: AWS.SageMaker.Endpoint.DeploymentConfig;
+
+RetainAllVariantProperties?: boolean;
+
+EndpointName?: string;
+
+ExcludeRetainedVariantProperties?: AWS.SageMaker.Endpoint.VariantProperty[];
+
+EndpointConfigName: string;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace Endpoint {
 
-export type Alarm = { AlarmName: string; };
 
-export type AutoRollbackConfig = { Alarms: AWS.SageMaker.Endpoint.Alarm[]; };
+export type Alarm = {
 
-export type TrafficRoutingConfig = { Type: string;
+
+AlarmName: string;
+
+
+};
+
+export type AutoRollbackConfig = {
+
+
+Alarms: AWS.SageMaker.Endpoint.Alarm[];
+
+
+};
+
+export type TrafficRoutingConfig = {
+
+
+Type: string;
 
 CanarySize?: AWS.SageMaker.Endpoint.CapacitySize;
 
-WaitIntervalInSeconds?: number; };
+WaitIntervalInSeconds?: number;
 
-export type DeploymentConfig =  AWS.SageMaker.Endpoint.DeploymentConfig;
 
-export type CapacitySize = { Type: string;
+};
 
-Value: number; };
+export type CapacitySize = {
 
-export type VariantProperty = { VariantPropertyType?: string; };
 
-export type BlueGreenUpdatePolicy = { MaximumExecutionTimeoutInSeconds?: number;
+Type: string;
+
+Value: number;
+
+
+};
+
+export type VariantProperty = {
+
+
+VariantPropertyType?: string;
+
+
+};
+
+export type BlueGreenUpdatePolicy = {
+
+
+MaximumExecutionTimeoutInSeconds?: number;
 
 TerminationWaitInSeconds?: number;
 
-TrafficRoutingConfiguration: AWS.SageMaker.Endpoint.TrafficRoutingConfig; };
+TrafficRoutingConfiguration: AWS.SageMaker.Endpoint.TrafficRoutingConfig;
 
-export type RetainAllVariantProperties =  boolean;
 
-export type EndpointName =  string;
+};
 
-export type ExcludeRetainedVariantProperties =  AWS.SageMaker.Endpoint.VariantProperty[];
-
-export type EndpointConfigName =  string;
-
-export type Tags =  Tag[];
 
 }
 
+export type Model = {
+
+
+VpcConfig?: AWS.SageMaker.Model.VpcConfig;
+
+InferenceExecutionConfig?: AWS.SageMaker.Model.InferenceExecutionConfig;
+
+ExecutionRoleArn: string;
+
+EnableNetworkIsolation?: boolean;
+
+PrimaryContainer?: AWS.SageMaker.Model.ContainerDefinition;
+
+ModelName?: string;
+
+Containers?: AWS.SageMaker.Model.ContainerDefinition[];
+
+Tags?: Tag[];
+
+
+};
+
 export namespace Model {
 
-export type MultiModelConfig = { ModelCacheSetting?: string; };
 
-export type VpcConfig =  AWS.SageMaker.Model.VpcConfig;
+export type MultiModelConfig = {
 
-export type ContainerDefinition = { ImageConfig?: AWS.SageMaker.Model.ImageConfig;
+
+ModelCacheSetting?: string;
+
+
+};
+
+export type ContainerDefinition = {
+
+
+ImageConfig?: AWS.SageMaker.Model.ImageConfig;
 
 ContainerHostname?: string;
 
@@ -3606,31 +6842,59 @@ ModelDataUrl?: string;
 
 Image?: string;
 
-MultiModelConfig?: AWS.SageMaker.Model.MultiModelConfig; };
+MultiModelConfig?: AWS.SageMaker.Model.MultiModelConfig;
 
-export type ImageConfig = { RepositoryAccessMode: string; };
 
-export type InferenceExecutionConfig =  AWS.SageMaker.Model.InferenceExecutionConfig;
+};
 
-export type ExecutionRoleArn =  string;
+export type ImageConfig = {
 
-export type EnableNetworkIsolation =  boolean;
 
-export type PrimaryContainer =  AWS.SageMaker.Model.ContainerDefinition;
+RepositoryAccessMode: string;
 
-export type ModelName =  string;
 
-export type Containers =  AWS.SageMaker.Model.ContainerDefinition[];
+};
 
-export type Tags =  Tag[];
 
 }
 
+export type Domain = {
+
+
+AppNetworkAccessType?: string;
+
+AuthMode: string;
+
+DefaultUserSettings: AWS.SageMaker.Domain.UserSettings;
+
+DomainName: string;
+
+KmsKeyId?: string;
+
+SubnetIds: string[];
+
+Tags?: Tag[];
+
+VpcId: string;
+
+
+};
+
 export namespace Domain {
 
-export type JupyterServerAppSettings = { DefaultResourceSpec?: AWS.SageMaker.Domain.ResourceSpec; };
 
-export type UserSettings = { ExecutionRole?: string;
+export type JupyterServerAppSettings = {
+
+
+DefaultResourceSpec?: AWS.SageMaker.Domain.ResourceSpec;
+
+
+};
+
+export type UserSettings = {
+
+
+ExecutionRole?: string;
 
 JupyterServerAppSettings?: AWS.SageMaker.Domain.JupyterServerAppSettings;
 
@@ -3638,109 +6902,197 @@ KernelGatewayAppSettings?: AWS.SageMaker.Domain.KernelGatewayAppSettings;
 
 SecurityGroups?: string[];
 
-SharingSettings?: AWS.SageMaker.Domain.SharingSettings; };
+SharingSettings?: AWS.SageMaker.Domain.SharingSettings;
 
-export type CustomImage = { AppImageConfigName: string;
+
+};
+
+export type CustomImage = {
+
+
+AppImageConfigName: string;
 
 ImageName: string;
 
-ImageVersionNumber?: number; };
+ImageVersionNumber?: number;
 
-export type ResourceSpec = { InstanceType?: string;
+
+};
+
+export type ResourceSpec = {
+
+
+InstanceType?: string;
 
 SageMakerImageArn?: string;
 
-SageMakerImageVersionArn?: string; };
+SageMakerImageVersionArn?: string;
 
-export type KernelGatewayAppSettings = { CustomImages?: AWS.SageMaker.Domain.CustomImage[];
 
-DefaultResourceSpec?: AWS.SageMaker.Domain.ResourceSpec; };
+};
 
-export type SharingSettings = { NotebookOutputOption?: string;
+export type KernelGatewayAppSettings = {
+
+
+CustomImages?: AWS.SageMaker.Domain.CustomImage[];
+
+DefaultResourceSpec?: AWS.SageMaker.Domain.ResourceSpec;
+
+
+};
+
+export type SharingSettings = {
+
+
+NotebookOutputOption?: string;
 
 S3KmsKeyId?: string;
 
-S3OutputPath?: string; };
+S3OutputPath?: string;
 
-export type AppNetworkAccessType =  string;
 
-export type AuthMode =  string;
+};
 
-export type DefaultUserSettings =  AWS.SageMaker.Domain.UserSettings;
-
-export type DomainName =  string;
-
-export type KmsKeyId =  string;
-
-export type SubnetIds =  string[];
-
-export type Tags =  Tag[];
-
-export type VpcId =  string;
 
 }
+
+export type DeviceFleet = {
+
+
+Description?: string;
+
+DeviceFleetName: string;
+
+OutputConfig: AWS.SageMaker.DeviceFleet.EdgeOutputConfig;
+
+RoleArn: string;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace DeviceFleet {
 
-export type EdgeOutputConfig = { S3OutputLocation: string;
 
-KmsKeyId?: string; };
+export type EdgeOutputConfig = {
 
-export type Description =  string;
 
-export type DeviceFleetName =  string;
+S3OutputLocation: string;
 
-export type OutputConfig =  AWS.SageMaker.DeviceFleet.EdgeOutputConfig;
+KmsKeyId?: string;
 
-export type RoleArn =  string;
 
-export type Tags =  Tag[];
+};
+
 
 }
 
+export type ModelExplainabilityJobDefinition = {
+
+
+ModelExplainabilityAppSpecification: AWS.SageMaker.ModelExplainabilityJobDefinition.ModelExplainabilityAppSpecification;
+
+ModelExplainabilityJobInput: AWS.SageMaker.ModelExplainabilityJobDefinition.ModelExplainabilityJobInput;
+
+StoppingCondition?: AWS.SageMaker.ModelExplainabilityJobDefinition.StoppingCondition;
+
+Environment?: any;
+
+NetworkConfig?: AWS.SageMaker.ModelExplainabilityJobDefinition.NetworkConfig;
+
+ModelExplainabilityBaselineConfig?: AWS.SageMaker.ModelExplainabilityJobDefinition.ModelExplainabilityBaselineConfig;
+
+JobDefinitionName?: string;
+
+ModelExplainabilityJobOutputConfig: AWS.SageMaker.ModelExplainabilityJobDefinition.MonitoringOutputConfig;
+
+JobResources: AWS.SageMaker.ModelExplainabilityJobDefinition.MonitoringResources;
+
+RoleArn: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace ModelExplainabilityJobDefinition {
 
-export type ModelExplainabilityAppSpecification =  AWS.SageMaker.ModelExplainabilityJobDefinition.ModelExplainabilityAppSpecification;
 
-export type ModelExplainabilityJobInput =  AWS.SageMaker.ModelExplainabilityJobDefinition.ModelExplainabilityJobInput;
+export type ClusterConfig = {
 
-export type ClusterConfig = { InstanceCount: number;
+
+InstanceCount: number;
 
 InstanceType: string;
 
 VolumeKmsKeyId?: string;
 
-VolumeSizeInGB: number; };
+VolumeSizeInGB: number;
 
-export type ConstraintsResource = { S3Uri?: string; };
 
-export type StoppingCondition =  AWS.SageMaker.ModelExplainabilityJobDefinition.StoppingCondition;
+};
 
-export type Environment =  any;
+export type ConstraintsResource = {
 
-export type S3Output = { LocalPath: string;
+
+S3Uri?: string;
+
+
+};
+
+export type S3Output = {
+
+
+LocalPath: string;
 
 S3UploadMode?: string;
 
-S3Uri: string; };
+S3Uri: string;
 
-export type NetworkConfig =  AWS.SageMaker.ModelExplainabilityJobDefinition.NetworkConfig;
 
-export type ModelExplainabilityBaselineConfig =  AWS.SageMaker.ModelExplainabilityJobDefinition.ModelExplainabilityBaselineConfig;
+};
 
-export type MonitoringOutput = { S3Output: AWS.SageMaker.ModelExplainabilityJobDefinition.S3Output; };
+export type MonitoringOutput = {
 
-export type MonitoringResources = { ClusterConfig: AWS.SageMaker.ModelExplainabilityJobDefinition.ClusterConfig; };
 
-export type MonitoringOutputConfig = { KmsKeyId?: string;
+S3Output: AWS.SageMaker.ModelExplainabilityJobDefinition.S3Output;
 
-MonitoringOutputs: AWS.SageMaker.ModelExplainabilityJobDefinition.MonitoringOutput[]; };
 
-export type VpcConfig = { SecurityGroupIds: string[];
+};
 
-Subnets: string[]; };
+export type MonitoringResources = {
 
-export type EndpointInput = { EndpointName: string;
+
+ClusterConfig: AWS.SageMaker.ModelExplainabilityJobDefinition.ClusterConfig;
+
+
+};
+
+export type MonitoringOutputConfig = {
+
+
+KmsKeyId?: string;
+
+MonitoringOutputs: AWS.SageMaker.ModelExplainabilityJobDefinition.MonitoringOutput[];
+
+
+};
+
+export type VpcConfig = {
+
+
+SecurityGroupIds: string[];
+
+Subnets: string[];
+
+
+};
+
+export type EndpointInput = {
+
+
+EndpointName: string;
 
 LocalPath: string;
 
@@ -3752,65 +7104,123 @@ FeaturesAttribute?: string;
 
 InferenceAttribute?: string;
 
-ProbabilityAttribute?: string; };
+ProbabilityAttribute?: string;
 
-export type JobDefinitionName =  string;
 
-export type ModelExplainabilityJobOutputConfig =  AWS.SageMaker.ModelExplainabilityJobDefinition.MonitoringOutputConfig;
+};
 
-export type JobResources =  AWS.SageMaker.ModelExplainabilityJobDefinition.MonitoringResources;
-
-export type RoleArn =  string;
-
-export type Tags =  Tag[];
 
 }
+
+export type UserProfile = {
+
+
+UserSettings?: AWS.SageMaker.UserProfile.UserSettings;
+
+DomainId: string;
+
+SingleSignOnUserIdentifier?: string;
+
+SingleSignOnUserValue?: string;
+
+UserProfileName: string;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace UserProfile {
 
-export type JupyterServerAppSettings = { DefaultResourceSpec?: AWS.SageMaker.UserProfile.ResourceSpec; };
 
-export type ResourceSpec = { InstanceType?: string;
+export type JupyterServerAppSettings = {
+
+
+DefaultResourceSpec?: AWS.SageMaker.UserProfile.ResourceSpec;
+
+
+};
+
+export type ResourceSpec = {
+
+
+InstanceType?: string;
 
 SageMakerImageArn?: string;
 
-SageMakerImageVersionArn?: string; };
+SageMakerImageVersionArn?: string;
 
-export type KernelGatewayAppSettings = { CustomImages?: AWS.SageMaker.UserProfile.CustomImage[];
 
-DefaultResourceSpec?: AWS.SageMaker.UserProfile.ResourceSpec; };
+};
 
-export type CustomImage = { AppImageConfigName: string;
+export type KernelGatewayAppSettings = {
+
+
+CustomImages?: AWS.SageMaker.UserProfile.CustomImage[];
+
+DefaultResourceSpec?: AWS.SageMaker.UserProfile.ResourceSpec;
+
+
+};
+
+export type CustomImage = {
+
+
+AppImageConfigName: string;
 
 ImageName: string;
 
-ImageVersionNumber?: number; };
+ImageVersionNumber?: number;
 
-export type SharingSettings = { NotebookOutputOption?: string;
+
+};
+
+export type SharingSettings = {
+
+
+NotebookOutputOption?: string;
 
 S3KmsKeyId?: string;
 
-S3OutputPath?: string; };
+S3OutputPath?: string;
 
-export type UserSettings =  AWS.SageMaker.UserProfile.UserSettings;
 
-export type DomainId =  string;
+};
 
-export type SingleSignOnUserIdentifier =  string;
-
-export type SingleSignOnUserValue =  string;
-
-export type UserProfileName =  string;
-
-export type Tags =  Tag[];
 
 }
 
+export type EndpointConfig = {
+
+
+DataCaptureConfig?: AWS.SageMaker.EndpointConfig.DataCaptureConfig;
+
+ProductionVariants: AWS.SageMaker.EndpointConfig.ProductionVariant[];
+
+KmsKeyId?: string;
+
+EndpointConfigName?: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace EndpointConfig {
 
-export type CaptureOption = { CaptureMode: string; };
 
-export type ProductionVariant = { ModelName: string;
+export type CaptureOption = {
+
+
+CaptureMode: string;
+
+
+};
+
+export type ProductionVariant = {
+
+
+ModelName: string;
 
 VariantName: string;
 
@@ -3820,31 +7230,67 @@ InstanceType: string;
 
 AcceleratorType?: string;
 
-InitialVariantWeight: number; };
+InitialVariantWeight: number;
 
-export type CaptureContentTypeHeader = { JsonContentTypes?: string[];
 
-CsvContentTypes?: string[]; };
+};
 
-export type DataCaptureConfig =  AWS.SageMaker.EndpointConfig.DataCaptureConfig;
+export type CaptureContentTypeHeader = {
 
-export type ProductionVariants =  AWS.SageMaker.EndpointConfig.ProductionVariant[];
 
-export type KmsKeyId =  string;
+JsonContentTypes?: string[];
 
-export type EndpointConfigName =  string;
+CsvContentTypes?: string[];
 
-export type Tags =  Tag[];
+
+};
+
 
 }
 
+export type ModelQualityJobDefinition = {
+
+
+ModelQualityJobInput: AWS.SageMaker.ModelQualityJobDefinition.ModelQualityJobInput;
+
+NetworkConfig?: AWS.SageMaker.ModelQualityJobDefinition.NetworkConfig;
+
+Environment?: any;
+
+ModelQualityAppSpecification: AWS.SageMaker.ModelQualityJobDefinition.ModelQualityAppSpecification;
+
+ModelQualityBaselineConfig?: AWS.SageMaker.ModelQualityJobDefinition.ModelQualityBaselineConfig;
+
+StoppingCondition?: AWS.SageMaker.ModelQualityJobDefinition.StoppingCondition;
+
+JobDefinitionName?: string;
+
+ModelQualityJobOutputConfig: AWS.SageMaker.ModelQualityJobDefinition.MonitoringOutputConfig;
+
+JobResources: AWS.SageMaker.ModelQualityJobDefinition.MonitoringResources;
+
+RoleArn: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace ModelQualityJobDefinition {
 
-export type ModelQualityJobInput =  AWS.SageMaker.ModelQualityJobDefinition.ModelQualityJobInput;
 
-export type MonitoringResources = { ClusterConfig: AWS.SageMaker.ModelQualityJobDefinition.ClusterConfig; };
+export type MonitoringResources = {
 
-export type EndpointInput = { EndpointName: string;
+
+ClusterConfig: AWS.SageMaker.ModelQualityJobDefinition.ClusterConfig;
+
+
+};
+
+export type EndpointInput = {
+
+
+EndpointName: string;
 
 LocalPath: string;
 
@@ -3860,297 +7306,455 @@ InferenceAttribute?: string;
 
 ProbabilityAttribute?: string;
 
-ProbabilityThresholdAttribute?: number; };
+ProbabilityThresholdAttribute?: number;
 
-export type NetworkConfig =  AWS.SageMaker.ModelQualityJobDefinition.NetworkConfig;
 
-export type VpcConfig = { SecurityGroupIds: string[];
+};
 
-Subnets: string[]; };
+export type VpcConfig = {
 
-export type Environment =  any;
 
-export type ModelQualityAppSpecification =  AWS.SageMaker.ModelQualityJobDefinition.ModelQualityAppSpecification;
+SecurityGroupIds: string[];
 
-export type MonitoringOutput = { S3Output: AWS.SageMaker.ModelQualityJobDefinition.S3Output; };
+Subnets: string[];
 
-export type ClusterConfig = { InstanceCount: number;
+
+};
+
+export type MonitoringOutput = {
+
+
+S3Output: AWS.SageMaker.ModelQualityJobDefinition.S3Output;
+
+
+};
+
+export type ClusterConfig = {
+
+
+InstanceCount: number;
 
 InstanceType: string;
 
 VolumeKmsKeyId?: string;
 
-VolumeSizeInGB: number; };
+VolumeSizeInGB: number;
 
-export type ConstraintsResource = { S3Uri?: string; };
 
-export type S3Output = { LocalPath: string;
+};
+
+export type ConstraintsResource = {
+
+
+S3Uri?: string;
+
+
+};
+
+export type S3Output = {
+
+
+LocalPath: string;
 
 S3UploadMode?: string;
 
-S3Uri: string; };
+S3Uri: string;
 
-export type MonitoringGroundTruthS3Input = { S3Uri: string; };
 
-export type ModelQualityBaselineConfig =  AWS.SageMaker.ModelQualityJobDefinition.ModelQualityBaselineConfig;
+};
 
-export type StoppingCondition =  AWS.SageMaker.ModelQualityJobDefinition.StoppingCondition;
+export type MonitoringGroundTruthS3Input = {
 
-export type MonitoringOutputConfig = { KmsKeyId?: string;
 
-MonitoringOutputs: AWS.SageMaker.ModelQualityJobDefinition.MonitoringOutput[]; };
+S3Uri: string;
 
-export type JobDefinitionName =  string;
 
-export type ModelQualityJobOutputConfig =  AWS.SageMaker.ModelQualityJobDefinition.MonitoringOutputConfig;
+};
 
-export type JobResources =  AWS.SageMaker.ModelQualityJobDefinition.MonitoringResources;
+export type MonitoringOutputConfig = {
 
-export type RoleArn =  string;
 
-export type Tags =  Tag[];
+KmsKeyId?: string;
 
-}
+MonitoringOutputs: AWS.SageMaker.ModelQualityJobDefinition.MonitoringOutput[];
 
-export namespace Device {
 
-export type Device =  AWS.SageMaker.Device.Device;
+};
 
-export type DeviceFleetName =  string;
-
-export type Tags =  Tag[];
 
 }
+
+export type Device = {
+
+
+Device?: AWS.SageMaker.Device.Device;
+
+DeviceFleetName: string;
+
+Tags?: Tag[];
+
+
+};
+
+export type Workteam = {
+
+
+NotificationConfiguration?: AWS.SageMaker.Workteam.NotificationConfiguration;
+
+Description?: string;
+
+WorkteamName?: string;
+
+MemberDefinitions?: AWS.SageMaker.Workteam.MemberDefinition[];
+
+Tags?: Tag[];
+
+
+};
 
 export namespace Workteam {
 
-export type NotificationConfiguration =  AWS.SageMaker.Workteam.NotificationConfiguration;
 
-export type CognitoMemberDefinition = { CognitoUserPool: string;
+export type CognitoMemberDefinition = {
+
+
+CognitoUserPool: string;
 
 CognitoClientId: string;
 
-CognitoUserGroup: string; };
+CognitoUserGroup: string;
 
-export type MemberDefinition = { CognitoMemberDefinition: AWS.SageMaker.Workteam.CognitoMemberDefinition; };
 
-export type Description =  string;
+};
 
-export type WorkteamName =  string;
+export type MemberDefinition = {
 
-export type MemberDefinitions =  AWS.SageMaker.Workteam.MemberDefinition[];
 
-export type Tags =  Tag[];
+CognitoMemberDefinition: AWS.SageMaker.Workteam.CognitoMemberDefinition;
+
+
+};
+
 
 }
+
+export type NotebookInstanceLifecycleConfig = {
+
+
+OnStart?: AWS.SageMaker.NotebookInstanceLifecycleConfig.NotebookInstanceLifecycleHook[];
+
+NotebookInstanceLifecycleConfigName?: string;
+
+OnCreate?: AWS.SageMaker.NotebookInstanceLifecycleConfig.NotebookInstanceLifecycleHook[];
+
+
+};
 
 export namespace NotebookInstanceLifecycleConfig {
 
-export type NotebookInstanceLifecycleHook = { Content?: string; };
 
-export type OnStart =  AWS.SageMaker.NotebookInstanceLifecycleConfig.NotebookInstanceLifecycleHook[];
+export type NotebookInstanceLifecycleHook = {
 
-export type NotebookInstanceLifecycleConfigName =  string;
 
-export type OnCreate =  AWS.SageMaker.NotebookInstanceLifecycleConfig.NotebookInstanceLifecycleHook[];
+Content?: string;
 
-}
 
-export namespace CodeRepository {
+};
 
-export type GitConfig =  AWS.SageMaker.CodeRepository.GitConfig;
-
-export type CodeRepositoryName =  string;
-
-export type Tags =  Tag[];
 
 }
 
-export namespace App {
+export type CodeRepository = {
 
-export type ResourceSpec =  AWS.SageMaker.App.ResourceSpec;
 
-export type AppName =  string;
+GitConfig: AWS.SageMaker.CodeRepository.GitConfig;
 
-export type AppType =  string;
+CodeRepositoryName?: string;
 
-export type DomainId =  string;
+Tags?: Tag[];
 
-export type Tags =  Tag[];
 
-export type UserProfileName =  string;
+};
 
-}
+export type App = {
+
+
+ResourceSpec?: AWS.SageMaker.App.ResourceSpec;
+
+AppName: string;
+
+AppType: string;
+
+DomainId: string;
+
+Tags?: Tag[];
+
+UserProfileName: string;
+
+
+};
+
+export type FeatureGroup = {
+
+
+FeatureGroupName: string;
+
+RecordIdentifierFeatureName: string;
+
+EventTimeFeatureName: string;
+
+FeatureDefinitions: AWS.SageMaker.FeatureGroup.FeatureDefinition[];
+
+OnlineStoreConfig?: JSONString;
+
+OfflineStoreConfig?: JSONString;
+
+RoleArn?: string;
+
+Description?: string;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace FeatureGroup {
 
-export type FeatureDefinition = { FeatureName: string;
 
-FeatureType: string; };
+export type FeatureDefinition = {
 
-export type FeatureGroupName =  string;
 
-export type RecordIdentifierFeatureName =  string;
+FeatureName: string;
 
-export type EventTimeFeatureName =  string;
+FeatureType: string;
 
-export type FeatureDefinitions =  AWS.SageMaker.FeatureGroup.FeatureDefinition[];
 
-export type OnlineStoreConfig =  JSONString;
+};
 
-export type OfflineStoreConfig =  JSONString;
-
-export type RoleArn =  string;
-
-export type Description =  string;
-
-export type Tags =  Tag[];
 
 }
 
-export namespace ImageVersion {
+export type ImageVersion = {
 
-export type ImageName =  string;
 
-export type BaseImage =  string;
+ImageName: string;
 
-}
+BaseImage: string;
 
-export namespace ModelPackageGroup {
 
-export type Tags =  Tag[];
+};
 
-export type ModelPackageGroupName =  string;
+export type ModelPackageGroup = {
 
-export type ModelPackageGroupDescription =  string;
 
-export type ModelPackageGroupPolicy =  JSONString;
+Tags?: Tag[];
 
-}
+ModelPackageGroupName: string;
 
-export namespace NotebookInstance {
+ModelPackageGroupDescription?: string;
 
-export type KmsKeyId =  string;
+ModelPackageGroupPolicy?: JSONString;
 
-export type VolumeSizeInGB =  number;
 
-export type AdditionalCodeRepositories =  string[];
+};
 
-export type DefaultCodeRepository =  string;
+export type NotebookInstance = {
 
-export type DirectInternetAccess =  string;
 
-export type AcceleratorTypes =  string[];
+KmsKeyId?: string;
 
-export type SubnetId =  string;
+VolumeSizeInGB?: number;
 
-export type SecurityGroupIds =  string[];
+AdditionalCodeRepositories?: string[];
 
-export type RoleArn =  string;
+DefaultCodeRepository?: string;
 
-export type RootAccess =  string;
+DirectInternetAccess?: string;
 
-export type NotebookInstanceName =  string;
+AcceleratorTypes?: string[];
 
-export type InstanceType =  string;
+SubnetId?: string;
 
-export type LifecycleConfigName =  string;
+SecurityGroupIds?: string[];
 
-export type Tags =  Tag[];
+RoleArn: string;
 
-}
+RootAccess?: string;
 
-export namespace Pipeline {
+NotebookInstanceName?: string;
 
-export type PipelineName =  string;
+InstanceType: string;
 
-export type PipelineDisplayName =  string;
+LifecycleConfigName?: string;
 
-export type PipelineDescription =  string;
+Tags?: Tag[];
 
-export type PipelineDefinition =  JSONString;
 
-export type RoleArn =  string;
+};
 
-export type Tags =  Tag[];
+export type Pipeline = {
 
-}
 
-export namespace Project {
+PipelineName: string;
 
-export type Tags =  Tag[];
+PipelineDisplayName?: string;
 
-export type ProjectName =  string;
+PipelineDescription?: string;
 
-export type ProjectDescription =  string;
+PipelineDefinition: JSONString;
 
-export type ServiceCatalogProvisioningDetails =  JSONString;
+RoleArn: string;
 
-}
+Tags?: Tag[];
 
-export namespace Image {
 
-export type ImageName =  string;
+};
 
-export type ImageRoleArn =  string;
+export type Project = {
 
-export type ImageDisplayName =  string;
 
-export type ImageDescription =  string;
+Tags?: Tag[];
 
-export type Tags =  Tag[];
+ProjectName: string;
 
-}
+ProjectDescription?: string;
+
+ServiceCatalogProvisioningDetails: JSONString;
+
+
+};
+
+export type Image = {
+
+
+ImageName: string;
+
+ImageRoleArn: string;
+
+ImageDisplayName?: string;
+
+ImageDescription?: string;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace S3 {
 
-export namespace AccessPoint {
 
-export type PublicAccessBlockConfiguration =  AWS.S3.AccessPoint.PublicAccessBlockConfiguration;
+export type AccessPoint = {
 
-export type VpcConfiguration =  AWS.S3.AccessPoint.VpcConfiguration;
 
-export type Name =  string;
+PublicAccessBlockConfiguration?: AWS.S3.AccessPoint.PublicAccessBlockConfiguration;
 
-export type Bucket =  string;
+VpcConfiguration?: AWS.S3.AccessPoint.VpcConfiguration;
 
-export type Policy =  JSONString;
+Name?: string;
 
-}
+Bucket: string;
+
+Policy?: JSONString;
+
+
+};
+
+export type StorageLens = {
+
+
+Encryption?: any;
+
+StorageLensConfiguration: AWS.S3.StorageLens.StorageLensConfiguration;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace StorageLens {
 
-export type PrefixLevelStorageMetrics = { IsEnabled?: boolean;
 
-SelectionCriteria?: AWS.S3.StorageLens.SelectionCriteria; };
+export type PrefixLevelStorageMetrics = {
 
-export type SelectionCriteria = { MaxDepth?: number;
+
+IsEnabled?: boolean;
+
+SelectionCriteria?: AWS.S3.StorageLens.SelectionCriteria;
+
+
+};
+
+export type SelectionCriteria = {
+
+
+MaxDepth?: number;
 
 Delimiter?: string;
 
-MinStorageBytesPercentage?: number; };
+MinStorageBytesPercentage?: number;
 
-export type ActivityMetrics = { IsEnabled?: boolean; };
 
-export type BucketLevel = { ActivityMetrics?: AWS.S3.StorageLens.ActivityMetrics;
+};
 
-PrefixLevel?: AWS.S3.StorageLens.PrefixLevel; };
+export type ActivityMetrics = {
 
-export type BucketsAndRegions = { Buckets?: string[];
 
-Regions?: string[]; };
+IsEnabled?: boolean;
 
-export type DataExport = { S3BucketDestination: AWS.S3.StorageLens.S3BucketDestination; };
 
-export type AwsOrg = { Arn: string; };
+};
 
-export type PrefixLevel = { StorageMetrics: AWS.S3.StorageLens.PrefixLevelStorageMetrics; };
+export type BucketLevel = {
 
-export type Encryption =  any;
 
-export type S3BucketDestination = { OutputSchemaVersion: string;
+ActivityMetrics?: AWS.S3.StorageLens.ActivityMetrics;
+
+PrefixLevel?: AWS.S3.StorageLens.PrefixLevel;
+
+
+};
+
+export type BucketsAndRegions = {
+
+
+Buckets?: string[];
+
+Regions?: string[];
+
+
+};
+
+export type DataExport = {
+
+
+S3BucketDestination: AWS.S3.StorageLens.S3BucketDestination;
+
+
+};
+
+export type AwsOrg = {
+
+
+Arn: string;
+
+
+};
+
+export type PrefixLevel = {
+
+
+StorageMetrics: AWS.S3.StorageLens.PrefixLevelStorageMetrics;
+
+
+};
+
+export type S3BucketDestination = {
+
+
+OutputSchemaVersion: string;
 
 Format: string;
 
@@ -4160,25 +7764,85 @@ Arn: string;
 
 Prefix?: string;
 
-Encryption?: AWS.S3.StorageLens.Encryption; };
+Encryption?: AWS.S3.StorageLens.Encryption;
 
-export type StorageLensConfiguration =  AWS.S3.StorageLens.StorageLensConfiguration;
 
-export type AccountLevel = { ActivityMetrics?: AWS.S3.StorageLens.ActivityMetrics;
+};
 
-BucketLevel: AWS.S3.StorageLens.BucketLevel; };
+export type AccountLevel = {
 
-export type Tags =  Tag[];
+
+ActivityMetrics?: AWS.S3.StorageLens.ActivityMetrics;
+
+BucketLevel: AWS.S3.StorageLens.BucketLevel;
+
+
+};
+
 
 }
 
+export type Bucket = {
+
+
+OwnershipControls?: AWS.S3.Bucket.OwnershipControls;
+
+VersioningConfiguration?: AWS.S3.Bucket.VersioningConfiguration;
+
+ObjectLockConfiguration?: AWS.S3.Bucket.ObjectLockConfiguration;
+
+AccelerateConfiguration?: AWS.S3.Bucket.AccelerateConfiguration;
+
+PublicAccessBlockConfiguration?: AWS.S3.Bucket.PublicAccessBlockConfiguration;
+
+BucketEncryption?: AWS.S3.Bucket.BucketEncryption;
+
+LifecycleConfiguration?: AWS.S3.Bucket.LifecycleConfiguration;
+
+NotificationConfiguration?: AWS.S3.Bucket.NotificationConfiguration;
+
+ReplicationConfiguration?: AWS.S3.Bucket.ReplicationConfiguration;
+
+CorsConfiguration?: AWS.S3.Bucket.CorsConfiguration;
+
+LoggingConfiguration?: AWS.S3.Bucket.LoggingConfiguration;
+
+WebsiteConfiguration?: AWS.S3.Bucket.WebsiteConfiguration;
+
+AccessControl?: string;
+
+AnalyticsConfigurations?: AWS.S3.Bucket.AnalyticsConfiguration[];
+
+BucketName?: string;
+
+IntelligentTieringConfigurations?: AWS.S3.Bucket.IntelligentTieringConfiguration[];
+
+InventoryConfigurations?: AWS.S3.Bucket.InventoryConfiguration[];
+
+MetricsConfigurations?: AWS.S3.Bucket.MetricsConfiguration[];
+
+ObjectLockEnabled?: boolean;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace Bucket {
 
-export type OwnershipControls =  AWS.S3.Bucket.OwnershipControls;
 
-export type ReplicaModifications = { Status: string; };
+export type ReplicaModifications = {
 
-export type CorsRule = { AllowedHeaders?: string[];
+
+Status: string;
+
+
+};
+
+export type CorsRule = {
+
+
+AllowedHeaders?: string[];
 
 AllowedMethods: string[];
 
@@ -4188,47 +7852,95 @@ ExposedHeaders?: string[];
 
 Id?: string;
 
-MaxAge?: number; };
+MaxAge?: number;
 
-export type Destination = { BucketAccountId?: string;
+
+};
+
+export type Destination = {
+
+
+BucketAccountId?: string;
 
 BucketArn: string;
 
 Format: string;
 
-Prefix?: string; };
+Prefix?: string;
 
-export type OwnershipControlsRule = { ObjectOwnership?: string; };
 
-export type AccessControlTranslation = { Owner: string; };
+};
 
-export type VersioningConfiguration =  AWS.S3.Bucket.VersioningConfiguration;
+export type OwnershipControlsRule = {
 
-export type ReplicationTime = { Status: string;
 
-Time: AWS.S3.Bucket.ReplicationTimeValue; };
+ObjectOwnership?: string;
 
-export type ServerSideEncryptionByDefault = { KMSMasterKeyID?: string;
 
-SSEAlgorithm: string; };
+};
 
-export type Tiering = { AccessTier: string;
+export type AccessControlTranslation = {
 
-Days: number; };
 
-export type SseKmsEncryptedObjects = { Status: string; };
+Owner: string;
 
-export type QueueConfiguration = { Event: string;
+
+};
+
+export type ReplicationTime = {
+
+
+Status: string;
+
+Time: AWS.S3.Bucket.ReplicationTimeValue;
+
+
+};
+
+export type ServerSideEncryptionByDefault = {
+
+
+KMSMasterKeyID?: string;
+
+SSEAlgorithm: string;
+
+
+};
+
+export type Tiering = {
+
+
+AccessTier: string;
+
+Days: number;
+
+
+};
+
+export type SseKmsEncryptedObjects = {
+
+
+Status: string;
+
+
+};
+
+export type QueueConfiguration = {
+
+
+Event: string;
 
 Filter?: AWS.S3.Bucket.NotificationFilter;
 
-Queue: string; };
+Queue: string;
 
-export type ObjectLockConfiguration =  AWS.S3.Bucket.ObjectLockConfiguration;
 
-export type AccelerateConfiguration =  AWS.S3.Bucket.AccelerateConfiguration;
+};
 
-export type IntelligentTieringConfiguration = { Id: string;
+export type IntelligentTieringConfiguration = {
+
+
+Id: string;
 
 Prefix?: string;
 
@@ -4236,15 +7948,31 @@ Status: string;
 
 TagFilters?: AWS.S3.Bucket.TagFilter[];
 
-Tierings: AWS.S3.Bucket.Tiering[]; };
+Tierings: AWS.S3.Bucket.Tiering[];
 
-export type AbortIncompleteMultipartUpload = { DaysAfterInitiation: number; };
 
-export type DeleteMarkerReplication = { Status?: string; };
+};
 
-export type PublicAccessBlockConfiguration =  AWS.S3.Bucket.PublicAccessBlockConfiguration;
+export type AbortIncompleteMultipartUpload = {
 
-export type ReplicationRule = { DeleteMarkerReplication?: AWS.S3.Bucket.DeleteMarkerReplication;
+
+DaysAfterInitiation: number;
+
+
+};
+
+export type DeleteMarkerReplication = {
+
+
+Status?: string;
+
+
+};
+
+export type ReplicationRule = {
+
+
+DeleteMarkerReplication?: AWS.S3.Bucket.DeleteMarkerReplication;
 
 Destination: AWS.S3.Bucket.ReplicationDestination;
 
@@ -4258,15 +7986,33 @@ Priority?: number;
 
 SourceSelectionCriteria?: AWS.S3.Bucket.SourceSelectionCriteria;
 
-Status: string; };
+Status: string;
 
-export type SourceSelectionCriteria = { ReplicaModifications?: AWS.S3.Bucket.ReplicaModifications;
 
-SseKmsEncryptedObjects?: AWS.S3.Bucket.SseKmsEncryptedObjects; };
+};
 
-export type StorageClassAnalysis = { DataExport?: AWS.S3.Bucket.DataExport; };
+export type SourceSelectionCriteria = {
 
-export type RedirectRule = { HostName?: string;
+
+ReplicaModifications?: AWS.S3.Bucket.ReplicaModifications;
+
+SseKmsEncryptedObjects?: AWS.S3.Bucket.SseKmsEncryptedObjects;
+
+
+};
+
+export type StorageClassAnalysis = {
+
+
+DataExport?: AWS.S3.Bucket.DataExport;
+
+
+};
+
+export type RedirectRule = {
+
+
+HostName?: string;
 
 HttpRedirectCode?: string;
 
@@ -4274,11 +8020,23 @@ Protocol?: string;
 
 ReplaceKeyPrefixWith?: string;
 
-ReplaceKeyWith?: string; };
+ReplaceKeyWith?: string;
 
-export type ObjectLockRule = { DefaultRetention?: AWS.S3.Bucket.DefaultRetention; };
 
-export type Rule = { AbortIncompleteMultipartUpload?: AWS.S3.Bucket.AbortIncompleteMultipartUpload;
+};
+
+export type ObjectLockRule = {
+
+
+DefaultRetention?: AWS.S3.Bucket.DefaultRetention;
+
+
+};
+
+export type Rule = {
+
+
+AbortIncompleteMultipartUpload?: AWS.S3.Bucket.AbortIncompleteMultipartUpload;
 
 ExpirationDate?: Timestamp;
 
@@ -4302,49 +8060,103 @@ TagFilters?: AWS.S3.Bucket.TagFilter[];
 
 Transition?: AWS.S3.Bucket.Transition;
 
-Transitions?: AWS.S3.Bucket.Transition[]; };
+Transitions?: AWS.S3.Bucket.Transition[];
 
-export type MetricsConfiguration = { Id: string;
+
+};
+
+export type MetricsConfiguration = {
+
+
+Id: string;
 
 Prefix?: string;
 
-TagFilters?: AWS.S3.Bucket.TagFilter[]; };
+TagFilters?: AWS.S3.Bucket.TagFilter[];
 
-export type DataExport = { Destination: AWS.S3.Bucket.Destination;
 
-OutputSchemaVersion: string; };
+};
 
-export type ReplicationTimeValue = { Minutes: number; };
+export type DataExport = {
 
-export type FilterRule = { Name: string;
 
-Value: string; };
+Destination: AWS.S3.Bucket.Destination;
 
-export type ReplicationRuleAndOperator = { Prefix?: string;
+OutputSchemaVersion: string;
 
-TagFilters?: AWS.S3.Bucket.TagFilter[]; };
 
-export type BucketEncryption =  AWS.S3.Bucket.BucketEncryption;
+};
 
-export type Metrics = { EventThreshold?: AWS.S3.Bucket.ReplicationTimeValue;
+export type ReplicationTimeValue = {
 
-Status: string; };
 
-export type RoutingRuleCondition = { HttpErrorCodeReturnedEquals?: string;
+Minutes: number;
 
-KeyPrefixEquals?: string; };
 
-export type LifecycleConfiguration =  AWS.S3.Bucket.LifecycleConfiguration;
+};
 
-export type NotificationConfiguration =  AWS.S3.Bucket.NotificationConfiguration;
+export type FilterRule = {
 
-export type RedirectAllRequestsTo = { HostName: string;
 
-Protocol?: string; };
+Name: string;
 
-export type S3KeyFilter = { Rules: AWS.S3.Bucket.FilterRule[]; };
+Value: string;
 
-export type InventoryConfiguration = { Destination: AWS.S3.Bucket.Destination;
+
+};
+
+export type ReplicationRuleAndOperator = {
+
+
+Prefix?: string;
+
+TagFilters?: AWS.S3.Bucket.TagFilter[];
+
+
+};
+
+export type Metrics = {
+
+
+EventThreshold?: AWS.S3.Bucket.ReplicationTimeValue;
+
+Status: string;
+
+
+};
+
+export type RoutingRuleCondition = {
+
+
+HttpErrorCodeReturnedEquals?: string;
+
+KeyPrefixEquals?: string;
+
+
+};
+
+export type RedirectAllRequestsTo = {
+
+
+HostName: string;
+
+Protocol?: string;
+
+
+};
+
+export type S3KeyFilter = {
+
+
+Rules: AWS.S3.Bucket.FilterRule[];
+
+
+};
+
+export type InventoryConfiguration = {
+
+
+Destination: AWS.S3.Bucket.Destination;
 
 Enabled: boolean;
 
@@ -4356,13 +8168,15 @@ OptionalFields?: string[];
 
 Prefix?: string;
 
-ScheduleFrequency: string; };
+ScheduleFrequency: string;
 
-export type ReplicationConfiguration =  AWS.S3.Bucket.ReplicationConfiguration;
 
-export type CorsConfiguration =  AWS.S3.Bucket.CorsConfiguration;
+};
 
-export type ReplicationDestination = { AccessControlTranslation?: AWS.S3.Bucket.AccessControlTranslation;
+export type ReplicationDestination = {
+
+
+AccessControlTranslation?: AWS.S3.Bucket.AccessControlTranslation;
 
 Account?: string;
 
@@ -4374,219 +8188,393 @@ Metrics?: AWS.S3.Bucket.Metrics;
 
 ReplicationTime?: AWS.S3.Bucket.ReplicationTime;
 
-StorageClass?: string; };
+StorageClass?: string;
 
-export type NoncurrentVersionTransition = { StorageClass: string;
 
-TransitionInDays: number; };
+};
 
-export type DefaultRetention = { Days?: number;
+export type NoncurrentVersionTransition = {
+
+
+StorageClass: string;
+
+TransitionInDays: number;
+
+
+};
+
+export type DefaultRetention = {
+
+
+Days?: number;
 
 Mode?: string;
 
-Years?: number; };
+Years?: number;
 
-export type NotificationFilter = { S3Key: AWS.S3.Bucket.S3KeyFilter; };
 
-export type LambdaConfiguration = { Event: string;
+};
+
+export type NotificationFilter = {
+
+
+S3Key: AWS.S3.Bucket.S3KeyFilter;
+
+
+};
+
+export type LambdaConfiguration = {
+
+
+Event: string;
 
 Filter?: AWS.S3.Bucket.NotificationFilter;
 
-Function: string; };
+Function: string;
 
-export type ServerSideEncryptionRule = { BucketKeyEnabled?: boolean;
 
-ServerSideEncryptionByDefault?: AWS.S3.Bucket.ServerSideEncryptionByDefault; };
+};
 
-export type AnalyticsConfiguration = { Id: string;
+export type ServerSideEncryptionRule = {
+
+
+BucketKeyEnabled?: boolean;
+
+ServerSideEncryptionByDefault?: AWS.S3.Bucket.ServerSideEncryptionByDefault;
+
+
+};
+
+export type AnalyticsConfiguration = {
+
+
+Id: string;
 
 Prefix?: string;
 
 StorageClassAnalysis: AWS.S3.Bucket.StorageClassAnalysis;
 
-TagFilters?: AWS.S3.Bucket.TagFilter[]; };
+TagFilters?: AWS.S3.Bucket.TagFilter[];
 
-export type LoggingConfiguration =  AWS.S3.Bucket.LoggingConfiguration;
 
-export type RoutingRule = { RedirectRule: AWS.S3.Bucket.RedirectRule;
+};
 
-RoutingRuleCondition?: AWS.S3.Bucket.RoutingRuleCondition; };
+export type RoutingRule = {
 
-export type EncryptionConfiguration = { ReplicaKmsKeyID: string; };
 
-export type WebsiteConfiguration =  AWS.S3.Bucket.WebsiteConfiguration;
+RedirectRule: AWS.S3.Bucket.RedirectRule;
 
-export type TopicConfiguration = { Event: string;
+RoutingRuleCondition?: AWS.S3.Bucket.RoutingRuleCondition;
+
+
+};
+
+export type EncryptionConfiguration = {
+
+
+ReplicaKmsKeyID: string;
+
+
+};
+
+export type TopicConfiguration = {
+
+
+Event: string;
 
 Filter?: AWS.S3.Bucket.NotificationFilter;
 
-Topic: string; };
+Topic: string;
 
-export type TagFilter = { Key: string;
 
-Value: string; };
+};
 
-export type Transition = { StorageClass: string;
+export type TagFilter = {
+
+
+Key: string;
+
+Value: string;
+
+
+};
+
+export type Transition = {
+
+
+StorageClass: string;
 
 TransitionDate?: Timestamp;
 
-TransitionInDays?: number; };
+TransitionInDays?: number;
 
-export type ReplicationRuleFilter = { And?: AWS.S3.Bucket.ReplicationRuleAndOperator;
+
+};
+
+export type ReplicationRuleFilter = {
+
+
+And?: AWS.S3.Bucket.ReplicationRuleAndOperator;
 
 Prefix?: string;
 
-TagFilter?: AWS.S3.Bucket.TagFilter; };
+TagFilter?: AWS.S3.Bucket.TagFilter;
 
-export type AccessControl =  string;
 
-export type AnalyticsConfigurations =  AWS.S3.Bucket.AnalyticsConfiguration[];
+};
 
-export type BucketName =  string;
-
-export type IntelligentTieringConfigurations =  AWS.S3.Bucket.IntelligentTieringConfiguration[];
-
-export type InventoryConfigurations =  AWS.S3.Bucket.InventoryConfiguration[];
-
-export type MetricsConfigurations =  AWS.S3.Bucket.MetricsConfiguration[];
-
-export type ObjectLockEnabled =  boolean;
-
-export type Tags =  Tag[];
 
 }
 
-export namespace BucketPolicy {
+export type BucketPolicy = {
 
-export type Bucket =  string;
 
-export type PolicyDocument =  JSONString;
+Bucket: string;
 
-}
+PolicyDocument: JSONString;
+
+
+};
+
 
 }
 
 export namespace ElasticBeanstalk {
 
+
+export type Environment = {
+
+
+Tier?: AWS.ElasticBeanstalk.Environment.Tier;
+
+ApplicationName: string;
+
+CNAMEPrefix?: string;
+
+Description?: string;
+
+EnvironmentName?: string;
+
+OperationsRole?: string;
+
+OptionSettings?: AWS.ElasticBeanstalk.Environment.OptionSetting[];
+
+PlatformArn?: string;
+
+SolutionStackName?: string;
+
+Tags?: Tag[];
+
+TemplateName?: string;
+
+VersionLabel?: string;
+
+
+};
+
 export namespace Environment {
 
-export type OptionSetting = { Namespace: string;
+
+export type OptionSetting = {
+
+
+Namespace: string;
 
 OptionName: string;
 
 ResourceName?: string;
 
-Value?: string; };
+Value?: string;
 
-export type Tier =  AWS.ElasticBeanstalk.Environment.Tier;
 
-export type ApplicationName =  string;
+};
 
-export type CNAMEPrefix =  string;
-
-export type Description =  string;
-
-export type EnvironmentName =  string;
-
-export type OperationsRole =  string;
-
-export type OptionSettings =  AWS.ElasticBeanstalk.Environment.OptionSetting[];
-
-export type PlatformArn =  string;
-
-export type SolutionStackName =  string;
-
-export type Tags =  Tag[];
-
-export type TemplateName =  string;
-
-export type VersionLabel =  string;
 
 }
 
-export namespace ApplicationVersion {
+export type ApplicationVersion = {
 
-export type SourceBundle =  AWS.ElasticBeanstalk.ApplicationVersion.SourceBundle;
 
-export type ApplicationName =  string;
+SourceBundle: AWS.ElasticBeanstalk.ApplicationVersion.SourceBundle;
 
-export type Description =  string;
+ApplicationName: string;
 
-}
+Description?: string;
+
+
+};
+
+export type Application = {
+
+
+ApplicationName?: string;
+
+Description?: string;
+
+ResourceLifecycleConfig?: AWS.ElasticBeanstalk.Application.ApplicationResourceLifecycleConfig;
+
+
+};
 
 export namespace Application {
 
-export type MaxAgeRule = { DeleteSourceFromS3?: boolean;
+
+export type MaxAgeRule = {
+
+
+DeleteSourceFromS3?: boolean;
 
 Enabled?: boolean;
 
-MaxAgeInDays?: number; };
+MaxAgeInDays?: number;
 
-export type ApplicationResourceLifecycleConfig = { ServiceRole?: string;
 
-VersionLifecycleConfig?: AWS.ElasticBeanstalk.Application.ApplicationVersionLifecycleConfig; };
+};
 
-export type ApplicationVersionLifecycleConfig = { MaxAgeRule?: AWS.ElasticBeanstalk.Application.MaxAgeRule;
+export type ApplicationResourceLifecycleConfig = {
 
-MaxCountRule?: AWS.ElasticBeanstalk.Application.MaxCountRule; };
 
-export type MaxCountRule = { DeleteSourceFromS3?: boolean;
+ServiceRole?: string;
+
+VersionLifecycleConfig?: AWS.ElasticBeanstalk.Application.ApplicationVersionLifecycleConfig;
+
+
+};
+
+export type ApplicationVersionLifecycleConfig = {
+
+
+MaxAgeRule?: AWS.ElasticBeanstalk.Application.MaxAgeRule;
+
+MaxCountRule?: AWS.ElasticBeanstalk.Application.MaxCountRule;
+
+
+};
+
+export type MaxCountRule = {
+
+
+DeleteSourceFromS3?: boolean;
 
 Enabled?: boolean;
 
-MaxCount?: number; };
+MaxCount?: number;
 
-export type ApplicationName =  string;
 
-export type Description =  string;
+};
 
-export type ResourceLifecycleConfig =  AWS.ElasticBeanstalk.Application.ApplicationResourceLifecycleConfig;
 
 }
 
+export type ConfigurationTemplate = {
+
+
+SourceConfiguration?: AWS.ElasticBeanstalk.ConfigurationTemplate.SourceConfiguration;
+
+ApplicationName: string;
+
+Description?: string;
+
+EnvironmentId?: string;
+
+OptionSettings?: AWS.ElasticBeanstalk.ConfigurationTemplate.ConfigurationOptionSetting[];
+
+PlatformArn?: string;
+
+SolutionStackName?: string;
+
+
+};
+
 export namespace ConfigurationTemplate {
 
-export type SourceConfiguration =  AWS.ElasticBeanstalk.ConfigurationTemplate.SourceConfiguration;
 
-export type ConfigurationOptionSetting = { Namespace: string;
+export type ConfigurationOptionSetting = {
+
+
+Namespace: string;
 
 OptionName: string;
 
 ResourceName?: string;
 
-Value?: string; };
+Value?: string;
 
-export type ApplicationName =  string;
 
-export type Description =  string;
+};
 
-export type EnvironmentId =  string;
-
-export type OptionSettings =  AWS.ElasticBeanstalk.ConfigurationTemplate.ConfigurationOptionSetting[];
-
-export type PlatformArn =  string;
-
-export type SolutionStackName =  string;
 
 }
+
 
 }
 
 export namespace Pinpoint {
 
+
+export type Campaign = {
+
+
+Schedule: AWS.Pinpoint.Campaign.Schedule;
+
+Limits?: AWS.Pinpoint.Campaign.Limits;
+
+MessageConfiguration: AWS.Pinpoint.Campaign.MessageConfiguration;
+
+CampaignHook?: AWS.Pinpoint.Campaign.CampaignHook;
+
+Description?: string;
+
+SegmentId: string;
+
+IsPaused?: boolean;
+
+AdditionalTreatments?: AWS.Pinpoint.Campaign.WriteTreatmentResource[];
+
+Name: string;
+
+SegmentVersion?: number;
+
+TreatmentDescription?: string;
+
+HoldoutPercent?: number;
+
+ApplicationId: string;
+
+Tags?: JSONString;
+
+TreatmentName?: string;
+
+
+};
+
 export namespace Campaign {
 
-export type MetricDimension = { ComparisonOperator?: string;
 
-Value?: number; };
+export type MetricDimension = {
 
-export type Schedule =  AWS.Pinpoint.Campaign.Schedule;
 
-export type QuietTime = { Start: string;
+ComparisonOperator?: string;
 
-End: string; };
+Value?: number;
 
-export type Message = { JsonBody?: string;
+
+};
+
+export type QuietTime = {
+
+
+Start: string;
+
+End: string;
+
+
+};
+
+export type Message = {
+
+
+JsonBody?: string;
 
 Action?: string;
 
@@ -4608,13 +8596,25 @@ Body?: string;
 
 RawContent?: string;
 
-Url?: string; };
+Url?: string;
 
-export type CampaignEventFilter = { FilterType?: string;
 
-Dimensions?: AWS.Pinpoint.Campaign.EventDimensions; };
+};
 
-export type CampaignSmsMessage = { EntityId?: string;
+export type CampaignEventFilter = {
+
+
+FilterType?: string;
+
+Dimensions?: AWS.Pinpoint.Campaign.EventDimensions;
+
+
+};
+
+export type CampaignSmsMessage = {
+
+
+EntityId?: string;
 
 OriginationNumber?: string;
 
@@ -4624,9 +8624,15 @@ Body?: string;
 
 MessageType?: string;
 
-TemplateId?: string; };
+TemplateId?: string;
 
-export type WriteTreatmentResource = { TreatmentDescription?: string;
+
+};
+
+export type WriteTreatmentResource = {
+
+
+TreatmentDescription?: string;
 
 MessageConfiguration?: AWS.Pinpoint.Campaign.MessageConfiguration;
 
@@ -4634,89 +8640,137 @@ Schedule?: AWS.Pinpoint.Campaign.Schedule;
 
 SizePercent?: number;
 
-TreatmentName?: string; };
+TreatmentName?: string;
 
-export type SetDimension = { DimensionType?: string;
 
-Values?: string[]; };
+};
 
-export type EventDimensions = { Metrics?: JSONString;
+export type SetDimension = {
+
+
+DimensionType?: string;
+
+Values?: string[];
+
+
+};
+
+export type EventDimensions = {
+
+
+Metrics?: JSONString;
 
 EventType?: AWS.Pinpoint.Campaign.SetDimension;
 
-Attributes?: JSONString; };
+Attributes?: JSONString;
 
-export type Limits =  AWS.Pinpoint.Campaign.Limits;
 
-export type AttributeDimension = { AttributeType?: string;
+};
 
-Values?: string[]; };
+export type AttributeDimension = {
 
-export type MessageConfiguration =  AWS.Pinpoint.Campaign.MessageConfiguration;
 
-export type CampaignHook =  AWS.Pinpoint.Campaign.CampaignHook;
+AttributeType?: string;
 
-export type CampaignEmailMessage = { FromAddress?: string;
+Values?: string[];
+
+
+};
+
+export type CampaignEmailMessage = {
+
+
+FromAddress?: string;
 
 HtmlBody?: string;
 
 Title?: string;
 
-Body?: string; };
+Body?: string;
 
-export type Description =  string;
 
-export type SegmentId =  string;
+};
 
-export type IsPaused =  boolean;
-
-export type AdditionalTreatments =  AWS.Pinpoint.Campaign.WriteTreatmentResource[];
-
-export type Name =  string;
-
-export type SegmentVersion =  number;
-
-export type TreatmentDescription =  string;
-
-export type HoldoutPercent =  number;
-
-export type ApplicationId =  string;
-
-export type Tags =  JSONString;
-
-export type TreatmentName =  string;
 
 }
 
+export type Segment = {
+
+
+SegmentGroups?: AWS.Pinpoint.Segment.SegmentGroups;
+
+Dimensions?: AWS.Pinpoint.Segment.SegmentDimensions;
+
+ApplicationId: string;
+
+Tags?: JSONString;
+
+Name: string;
+
+
+};
+
 export namespace Segment {
 
-export type AttributeDimension = { AttributeType?: string;
 
-Values?: string[]; };
+export type AttributeDimension = {
 
-export type Recency = { Duration: string;
 
-RecencyType: string; };
+AttributeType?: string;
 
-export type Groups = { Type?: string;
+Values?: string[];
+
+
+};
+
+export type Recency = {
+
+
+Duration: string;
+
+RecencyType: string;
+
+
+};
+
+export type Groups = {
+
+
+Type?: string;
 
 SourceType?: string;
 
 Dimensions?: AWS.Pinpoint.Segment.SegmentDimensions[];
 
-SourceSegments?: AWS.Pinpoint.Segment.SourceSegments[]; };
+SourceSegments?: AWS.Pinpoint.Segment.SourceSegments[];
 
-export type Location = { GPSPoint?: AWS.Pinpoint.Segment.GPSPoint;
 
-Country?: AWS.Pinpoint.Segment.SetDimension; };
+};
 
-export type SegmentGroups =  AWS.Pinpoint.Segment.SegmentGroups;
+export type Location = {
 
-export type Coordinates = { Latitude: number;
 
-Longitude: number; };
+GPSPoint?: AWS.Pinpoint.Segment.GPSPoint;
 
-export type SegmentDimensions = { Demographic?: AWS.Pinpoint.Segment.Demographic;
+Country?: AWS.Pinpoint.Segment.SetDimension;
+
+
+};
+
+export type Coordinates = {
+
+
+Latitude: number;
+
+Longitude: number;
+
+
+};
+
+export type SegmentDimensions = {
+
+
+Demographic?: AWS.Pinpoint.Segment.Demographic;
 
 Metrics?: JSONString;
 
@@ -4726,17 +8780,35 @@ Behavior?: AWS.Pinpoint.Segment.Behavior;
 
 UserAttributes?: JSONString;
 
-Location?: AWS.Pinpoint.Segment.Location; };
+Location?: AWS.Pinpoint.Segment.Location;
 
-export type SourceSegments = { Version?: number;
 
-Id: string; };
+};
 
-export type GPSPoint = { RangeInKilometers: number;
+export type SourceSegments = {
 
-Coordinates: AWS.Pinpoint.Segment.Coordinates; };
 
-export type Demographic = { AppVersion?: AWS.Pinpoint.Segment.SetDimension;
+Version?: number;
+
+Id: string;
+
+
+};
+
+export type GPSPoint = {
+
+
+RangeInKilometers: number;
+
+Coordinates: AWS.Pinpoint.Segment.Coordinates;
+
+
+};
+
+export type Demographic = {
+
+
+AppVersion?: AWS.Pinpoint.Segment.SetDimension;
 
 DeviceType?: AWS.Pinpoint.Segment.SetDimension;
 
@@ -4746,41 +8818,79 @@ Channel?: AWS.Pinpoint.Segment.SetDimension;
 
 Model?: AWS.Pinpoint.Segment.SetDimension;
 
-Make?: AWS.Pinpoint.Segment.SetDimension; };
+Make?: AWS.Pinpoint.Segment.SetDimension;
 
-export type SetDimension = { DimensionType?: string;
 
-Values?: string[]; };
+};
 
-export type Behavior = { Recency?: AWS.Pinpoint.Segment.Recency; };
+export type SetDimension = {
 
-export type Dimensions =  AWS.Pinpoint.Segment.SegmentDimensions;
 
-export type ApplicationId =  string;
+DimensionType?: string;
 
-export type Tags =  JSONString;
+Values?: string[];
 
-export type Name =  string;
 
-}
+};
 
-export namespace ApplicationSettings {
+export type Behavior = {
 
-export type CampaignHook =  AWS.Pinpoint.ApplicationSettings.CampaignHook;
 
-export type Limits =  AWS.Pinpoint.ApplicationSettings.Limits;
+Recency?: AWS.Pinpoint.Segment.Recency;
 
-export type QuietTime =  AWS.Pinpoint.ApplicationSettings.QuietTime;
 
-export type ApplicationId =  string;
+};
 
-export type CloudWatchMetricsEnabled =  boolean;
 
 }
+
+export type ApplicationSettings = {
+
+
+CampaignHook?: AWS.Pinpoint.ApplicationSettings.CampaignHook;
+
+Limits?: AWS.Pinpoint.ApplicationSettings.Limits;
+
+QuietTime?: AWS.Pinpoint.ApplicationSettings.QuietTime;
+
+ApplicationId: string;
+
+CloudWatchMetricsEnabled?: boolean;
+
+
+};
+
+export type PushTemplate = {
+
+
+GCM?: AWS.Pinpoint.PushTemplate.AndroidPushNotificationTemplate;
+
+Baidu?: AWS.Pinpoint.PushTemplate.AndroidPushNotificationTemplate;
+
+TemplateName: string;
+
+ADM?: AWS.Pinpoint.PushTemplate.AndroidPushNotificationTemplate;
+
+APNS?: AWS.Pinpoint.PushTemplate.APNSPushNotificationTemplate;
+
+TemplateDescription?: string;
+
+DefaultSubstitutions?: string;
+
+Default?: AWS.Pinpoint.PushTemplate.DefaultPushNotificationTemplate;
+
+Tags?: JSONString;
+
+
+};
 
 export namespace PushTemplate {
 
-export type DefaultPushNotificationTemplate = { Action?: string;
+
+export type DefaultPushNotificationTemplate = {
+
+
+Action?: string;
 
 Title?: string;
 
@@ -4788,9 +8898,15 @@ Sound?: string;
 
 Body?: string;
 
-Url?: string; };
+Url?: string;
 
-export type AndroidPushNotificationTemplate = { Action?: string;
+
+};
+
+export type AndroidPushNotificationTemplate = {
+
+
+Action?: string;
 
 ImageUrl?: string;
 
@@ -4804,9 +8920,15 @@ Sound?: string;
 
 Body?: string;
 
-Url?: string; };
+Url?: string;
 
-export type APNSPushNotificationTemplate = { Action?: string;
+
+};
+
+export type APNSPushNotificationTemplate = {
+
+
+Action?: string;
 
 MediaUrl?: string;
 
@@ -4816,305 +8938,387 @@ Sound?: string;
 
 Body?: string;
 
-Url?: string; };
+Url?: string;
 
-export type GCM =  AWS.Pinpoint.PushTemplate.AndroidPushNotificationTemplate;
 
-export type Baidu =  AWS.Pinpoint.PushTemplate.AndroidPushNotificationTemplate;
+};
 
-export type TemplateName =  string;
-
-export type ADM =  AWS.Pinpoint.PushTemplate.AndroidPushNotificationTemplate;
-
-export type APNS =  AWS.Pinpoint.PushTemplate.APNSPushNotificationTemplate;
-
-export type TemplateDescription =  string;
-
-export type DefaultSubstitutions =  string;
-
-export type Default =  AWS.Pinpoint.PushTemplate.DefaultPushNotificationTemplate;
-
-export type Tags =  JSONString;
 
 }
 
-export namespace VoiceChannel {
+export type VoiceChannel = {
 
-export type Enabled =  boolean;
 
-export type ApplicationId =  string;
+Enabled?: boolean;
 
-}
+ApplicationId: string;
 
-export namespace EventStream {
 
-export type ApplicationId =  string;
+};
 
-export type DestinationStreamArn =  string;
+export type EventStream = {
 
-export type RoleArn =  string;
 
-}
+ApplicationId: string;
 
-export namespace EmailTemplate {
+DestinationStreamArn: string;
 
-export type HtmlPart =  string;
+RoleArn: string;
 
-export type TextPart =  string;
 
-export type TemplateName =  string;
+};
 
-export type TemplateDescription =  string;
+export type EmailTemplate = {
 
-export type DefaultSubstitutions =  string;
 
-export type Subject =  string;
+HtmlPart?: string;
 
-export type Tags =  JSONString;
+TextPart?: string;
 
-}
+TemplateName: string;
 
-export namespace BaiduChannel {
+TemplateDescription?: string;
 
-export type SecretKey =  string;
+DefaultSubstitutions?: string;
 
-export type ApiKey =  string;
+Subject: string;
 
-export type Enabled =  boolean;
+Tags?: JSONString;
 
-export type ApplicationId =  string;
 
-}
+};
 
-export namespace GCMChannel {
+export type BaiduChannel = {
 
-export type ApiKey =  string;
 
-export type Enabled =  boolean;
+SecretKey: string;
 
-export type ApplicationId =  string;
+ApiKey: string;
 
-}
+Enabled?: boolean;
 
-export namespace APNSChannel {
+ApplicationId: string;
 
-export type BundleId =  string;
 
-export type PrivateKey =  string;
+};
 
-export type Enabled =  boolean;
+export type GCMChannel = {
 
-export type DefaultAuthenticationMethod =  string;
 
-export type TokenKey =  string;
+ApiKey: string;
 
-export type ApplicationId =  string;
+Enabled?: boolean;
 
-export type TeamId =  string;
+ApplicationId: string;
 
-export type Certificate =  string;
 
-export type TokenKeyId =  string;
+};
 
-}
+export type APNSChannel = {
 
-export namespace APNSVoipSandboxChannel {
 
-export type BundleId =  string;
+BundleId?: string;
 
-export type PrivateKey =  string;
+PrivateKey?: string;
 
-export type Enabled =  boolean;
+Enabled?: boolean;
 
-export type DefaultAuthenticationMethod =  string;
+DefaultAuthenticationMethod?: string;
 
-export type TokenKey =  string;
+TokenKey?: string;
 
-export type ApplicationId =  string;
+ApplicationId: string;
 
-export type TeamId =  string;
+TeamId?: string;
 
-export type Certificate =  string;
+Certificate?: string;
 
-export type TokenKeyId =  string;
+TokenKeyId?: string;
 
-}
 
-export namespace APNSVoipChannel {
+};
 
-export type BundleId =  string;
+export type APNSVoipSandboxChannel = {
 
-export type PrivateKey =  string;
 
-export type Enabled =  boolean;
+BundleId?: string;
 
-export type DefaultAuthenticationMethod =  string;
+PrivateKey?: string;
 
-export type TokenKey =  string;
+Enabled?: boolean;
 
-export type ApplicationId =  string;
+DefaultAuthenticationMethod?: string;
 
-export type TeamId =  string;
+TokenKey?: string;
 
-export type Certificate =  string;
+ApplicationId: string;
 
-export type TokenKeyId =  string;
+TeamId?: string;
 
-}
+Certificate?: string;
 
-export namespace EmailChannel {
+TokenKeyId?: string;
 
-export type ConfigurationSet =  string;
 
-export type FromAddress =  string;
+};
 
-export type Enabled =  boolean;
+export type APNSVoipChannel = {
 
-export type ApplicationId =  string;
 
-export type Identity =  string;
+BundleId?: string;
 
-export type RoleArn =  string;
+PrivateKey?: string;
 
-}
+Enabled?: boolean;
 
-export namespace SMSChannel {
+DefaultAuthenticationMethod?: string;
 
-export type ShortCode =  string;
+TokenKey?: string;
 
-export type Enabled =  boolean;
+ApplicationId: string;
 
-export type ApplicationId =  string;
+TeamId?: string;
 
-export type SenderId =  string;
+Certificate?: string;
 
-}
+TokenKeyId?: string;
 
-export namespace SmsTemplate {
 
-export type TemplateName =  string;
+};
 
-export type TemplateDescription =  string;
+export type EmailChannel = {
 
-export type DefaultSubstitutions =  string;
 
-export type Body =  string;
+ConfigurationSet?: string;
 
-export type Tags =  JSONString;
+FromAddress: string;
 
-}
+Enabled?: boolean;
 
-export namespace APNSSandboxChannel {
+ApplicationId: string;
 
-export type BundleId =  string;
+Identity: string;
 
-export type PrivateKey =  string;
+RoleArn?: string;
 
-export type Enabled =  boolean;
 
-export type DefaultAuthenticationMethod =  string;
+};
 
-export type TokenKey =  string;
+export type SMSChannel = {
 
-export type ApplicationId =  string;
 
-export type TeamId =  string;
+ShortCode?: string;
 
-export type Certificate =  string;
+Enabled?: boolean;
 
-export type TokenKeyId =  string;
+ApplicationId: string;
 
-}
+SenderId?: string;
 
-export namespace ADMChannel {
 
-export type ClientSecret =  string;
+};
 
-export type Enabled =  boolean;
+export type SmsTemplate = {
 
-export type ClientId =  string;
 
-export type ApplicationId =  string;
+TemplateName: string;
 
-}
+TemplateDescription?: string;
 
-export namespace App {
+DefaultSubstitutions?: string;
 
-export type Tags =  JSONString;
+Body: string;
 
-export type Name =  string;
+Tags?: JSONString;
 
-}
+
+};
+
+export type APNSSandboxChannel = {
+
+
+BundleId?: string;
+
+PrivateKey?: string;
+
+Enabled?: boolean;
+
+DefaultAuthenticationMethod?: string;
+
+TokenKey?: string;
+
+ApplicationId: string;
+
+TeamId?: string;
+
+Certificate?: string;
+
+TokenKeyId?: string;
+
+
+};
+
+export type ADMChannel = {
+
+
+ClientSecret: string;
+
+Enabled?: boolean;
+
+ClientId: string;
+
+ApplicationId: string;
+
+
+};
+
+export type App = {
+
+
+Tags?: JSONString;
+
+Name: string;
+
+
+};
+
 
 }
 
 export namespace EventSchemas {
 
+
+export type Schema = {
+
+
+Type: string;
+
+Description?: string;
+
+Content: string;
+
+RegistryName: string;
+
+SchemaName?: string;
+
+Tags?: AWS.EventSchemas.Schema.TagsEntry[];
+
+
+};
+
 export namespace Schema {
 
-export type TagsEntry = { Value: string;
 
-Key: string; };
+export type TagsEntry = {
 
-export type Type =  string;
 
-export type Description =  string;
+Value: string;
 
-export type Content =  string;
+Key: string;
 
-export type RegistryName =  string;
 
-export type SchemaName =  string;
+};
 
-export type Tags =  AWS.EventSchemas.Schema.TagsEntry[];
 
 }
+
+export type Discoverer = {
+
+
+Description?: string;
+
+SourceArn: string;
+
+Tags?: AWS.EventSchemas.Discoverer.TagsEntry[];
+
+
+};
 
 export namespace Discoverer {
 
-export type TagsEntry = { Value: string;
 
-Key: string; };
+export type TagsEntry = {
 
-export type Description =  string;
 
-export type SourceArn =  string;
+Value: string;
 
-export type Tags =  AWS.EventSchemas.Discoverer.TagsEntry[];
+Key: string;
+
+
+};
+
 
 }
+
+export type Registry = {
+
+
+Description?: string;
+
+RegistryName?: string;
+
+Tags?: AWS.EventSchemas.Registry.TagsEntry[];
+
+
+};
 
 export namespace Registry {
 
-export type TagsEntry = { Value: string;
 
-Key: string; };
+export type TagsEntry = {
 
-export type Description =  string;
 
-export type RegistryName =  string;
+Value: string;
 
-export type Tags =  AWS.EventSchemas.Registry.TagsEntry[];
+Key: string;
 
-}
 
-export namespace RegistryPolicy {
+};
 
-export type Policy =  JSONString;
-
-export type RegistryName =  string;
-
-export type RevisionId =  string;
 
 }
+
+export type RegistryPolicy = {
+
+
+Policy: JSONString;
+
+RegistryName: string;
+
+RevisionId?: string;
+
+
+};
+
 
 }
 
 export namespace CustomerProfiles {
 
+
+export type Integration = {
+
+
+FlowDefinition?: AWS.CustomerProfiles.Integration.FlowDefinition;
+
+DomainName: string;
+
+Uri?: string;
+
+ObjectTypeName: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace Integration {
 
-export type Task = { ConnectorOperator?: AWS.CustomerProfiles.Integration.ConnectorOperator;
+
+export type Task = {
+
+
+ConnectorOperator?: AWS.CustomerProfiles.Integration.ConnectorOperator;
 
 SourceFields: string[];
 
@@ -5122,11 +9326,23 @@ DestinationField?: string;
 
 TaskType: string;
 
-TaskProperties?: AWS.CustomerProfiles.Integration.TaskPropertiesMap[]; };
+TaskProperties?: AWS.CustomerProfiles.Integration.TaskPropertiesMap[];
 
-export type TriggerProperties = { Scheduled?: AWS.CustomerProfiles.Integration.ScheduledTriggerProperties; };
 
-export type ScheduledTriggerProperties = { ScheduleExpression: string;
+};
+
+export type TriggerProperties = {
+
+
+Scheduled?: AWS.CustomerProfiles.Integration.ScheduledTriggerProperties;
+
+
+};
+
+export type ScheduledTriggerProperties = {
+
+
+ScheduleExpression: string;
 
 DataPullMode?: string;
 
@@ -5138,23 +9354,51 @@ Timezone?: string;
 
 ScheduleOffset?: number;
 
-FirstExecutionFrom?: number; };
+FirstExecutionFrom?: number;
 
-export type S3SourceProperties = { BucketName: string;
 
-BucketPrefix?: string; };
+};
 
-export type FlowDefinition =  AWS.CustomerProfiles.Integration.FlowDefinition;
+export type S3SourceProperties = {
 
-export type IncrementalPullConfig = { DatetimeTypeFieldName?: string; };
 
-export type MarketoSourceProperties = { Object: string; };
+BucketName: string;
 
-export type TaskPropertiesMap = { OperatorPropertyKey: string;
+BucketPrefix?: string;
 
-Property: string; };
 
-export type ConnectorOperator = { Marketo?: string;
+};
+
+export type IncrementalPullConfig = {
+
+
+DatetimeTypeFieldName?: string;
+
+
+};
+
+export type MarketoSourceProperties = {
+
+
+Object: string;
+
+
+};
+
+export type TaskPropertiesMap = {
+
+
+OperatorPropertyKey: string;
+
+Property: string;
+
+
+};
+
+export type ConnectorOperator = {
+
+
+Marketo?: string;
 
 S3?: string;
 
@@ -5162,11 +9406,23 @@ Salesforce?: string;
 
 ServiceNow?: string;
 
-Zendesk?: string; };
+Zendesk?: string;
 
-export type ZendeskSourceProperties = { Object: string; };
 
-export type SourceConnectorProperties = { Marketo?: AWS.CustomerProfiles.Integration.MarketoSourceProperties;
+};
+
+export type ZendeskSourceProperties = {
+
+
+Object: string;
+
+
+};
+
+export type SourceConnectorProperties = {
+
+
+Marketo?: AWS.CustomerProfiles.Integration.MarketoSourceProperties;
 
 S3?: AWS.CustomerProfiles.Integration.S3SourceProperties;
 
@@ -5174,121 +9430,213 @@ Salesforce?: AWS.CustomerProfiles.Integration.SalesforceSourceProperties;
 
 ServiceNow?: AWS.CustomerProfiles.Integration.ServiceNowSourceProperties;
 
-Zendesk?: AWS.CustomerProfiles.Integration.ZendeskSourceProperties; };
+Zendesk?: AWS.CustomerProfiles.Integration.ZendeskSourceProperties;
 
-export type ServiceNowSourceProperties = { Object: string; };
 
-export type SalesforceSourceProperties = { Object: string;
+};
+
+export type ServiceNowSourceProperties = {
+
+
+Object: string;
+
+
+};
+
+export type SalesforceSourceProperties = {
+
+
+Object: string;
 
 EnableDynamicFieldUpdate?: boolean;
 
-IncludeDeletedRecords?: boolean; };
+IncludeDeletedRecords?: boolean;
 
-export type TriggerConfig = { TriggerType: string;
 
-TriggerProperties?: AWS.CustomerProfiles.Integration.TriggerProperties; };
+};
 
-export type SourceFlowConfig = { ConnectorType: string;
+export type TriggerConfig = {
+
+
+TriggerType: string;
+
+TriggerProperties?: AWS.CustomerProfiles.Integration.TriggerProperties;
+
+
+};
+
+export type SourceFlowConfig = {
+
+
+ConnectorType: string;
 
 ConnectorProfileName?: string;
 
 IncrementalPullConfig?: AWS.CustomerProfiles.Integration.IncrementalPullConfig;
 
-SourceConnectorProperties: AWS.CustomerProfiles.Integration.SourceConnectorProperties; };
+SourceConnectorProperties: AWS.CustomerProfiles.Integration.SourceConnectorProperties;
 
-export type DomainName =  string;
 
-export type Uri =  string;
+};
 
-export type ObjectTypeName =  string;
-
-export type Tags =  Tag[];
 
 }
+
+export type ObjectType = {
+
+
+DomainName: string;
+
+ObjectTypeName?: string;
+
+AllowProfileCreation?: boolean;
+
+Description?: string;
+
+EncryptionKey?: string;
+
+ExpirationDays?: number;
+
+Fields?: AWS.CustomerProfiles.ObjectType.FieldMap[];
+
+Keys?: AWS.CustomerProfiles.ObjectType.KeyMap[];
+
+Tags?: Tag[];
+
+TemplateId?: string;
+
+
+};
 
 export namespace ObjectType {
 
-export type KeyMap = { Name?: string;
 
-ObjectTypeKeyList?: AWS.CustomerProfiles.ObjectType.ObjectTypeKey[]; };
+export type KeyMap = {
 
-export type FieldMap = { Name?: string;
 
-ObjectTypeField?: AWS.CustomerProfiles.ObjectType.ObjectTypeField; };
+Name?: string;
 
-export type ObjectTypeField = { Source?: string;
+ObjectTypeKeyList?: AWS.CustomerProfiles.ObjectType.ObjectTypeKey[];
+
+
+};
+
+export type FieldMap = {
+
+
+Name?: string;
+
+ObjectTypeField?: AWS.CustomerProfiles.ObjectType.ObjectTypeField;
+
+
+};
+
+export type ObjectTypeField = {
+
+
+Source?: string;
 
 Target?: string;
 
-ContentType?: string; };
+ContentType?: string;
 
-export type ObjectTypeKey = { FieldNames?: string[];
 
-StandardIdentifiers?: string[]; };
+};
 
-export type DomainName =  string;
+export type ObjectTypeKey = {
 
-export type ObjectTypeName =  string;
 
-export type AllowProfileCreation =  boolean;
+FieldNames?: string[];
 
-export type Description =  string;
+StandardIdentifiers?: string[];
 
-export type EncryptionKey =  string;
 
-export type ExpirationDays =  number;
+};
 
-export type Fields =  AWS.CustomerProfiles.ObjectType.FieldMap[];
-
-export type Keys =  AWS.CustomerProfiles.ObjectType.KeyMap[];
-
-export type Tags =  Tag[];
-
-export type TemplateId =  string;
 
 }
 
-export namespace Domain {
+export type Domain = {
 
-export type DomainName =  string;
 
-export type DeadLetterQueueUrl =  string;
+DomainName: string;
 
-export type DefaultEncryptionKey =  string;
+DeadLetterQueueUrl?: string;
 
-export type DefaultExpirationDays =  number;
+DefaultEncryptionKey?: string;
 
-export type Tags =  Tag[];
+DefaultExpirationDays?: number;
 
-}
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace AppRunner {
 
+
+export type Service = {
+
+
+InstanceConfiguration?: AWS.AppRunner.Service.InstanceConfiguration;
+
+EncryptionConfiguration?: AWS.AppRunner.Service.EncryptionConfiguration;
+
+HealthCheckConfiguration?: AWS.AppRunner.Service.HealthCheckConfiguration;
+
+SourceConfiguration: AWS.AppRunner.Service.SourceConfiguration;
+
+ServiceName?: string;
+
+Tags?: Tag[];
+
+AutoScalingConfigurationArn?: string;
+
+
+};
+
 export namespace Service {
 
-export type ImageConfiguration = { StartCommand?: string;
+
+export type ImageConfiguration = {
+
+
+StartCommand?: string;
 
 Port?: string;
 
-RuntimeEnvironmentVariables?: AWS.AppRunner.Service.KeyValuePair[]; };
+RuntimeEnvironmentVariables?: AWS.AppRunner.Service.KeyValuePair[];
 
-export type InstanceConfiguration =  AWS.AppRunner.Service.InstanceConfiguration;
 
-export type AuthenticationConfiguration = { ConnectionArn?: string;
+};
 
-AccessRoleArn?: string; };
+export type AuthenticationConfiguration = {
 
-export type KeyValuePair = { Name?: string;
 
-Value?: string; };
+ConnectionArn?: string;
 
-export type EncryptionConfiguration =  AWS.AppRunner.Service.EncryptionConfiguration;
+AccessRoleArn?: string;
 
-export type HealthCheckConfiguration =  AWS.AppRunner.Service.HealthCheckConfiguration;
 
-export type CodeConfigurationValues = { Runtime: string;
+};
+
+export type KeyValuePair = {
+
+
+Name?: string;
+
+Value?: string;
+
+
+};
+
+export type CodeConfigurationValues = {
+
+
+Runtime: string;
 
 BuildCommand?: string;
 
@@ -5296,273 +9644,415 @@ StartCommand?: string;
 
 Port?: string;
 
-RuntimeEnvironmentVariables?: AWS.AppRunner.Service.KeyValuePair[]; };
+RuntimeEnvironmentVariables?: AWS.AppRunner.Service.KeyValuePair[];
 
-export type SourceCodeVersion = { Type: string;
 
-Value: string; };
+};
 
-export type ImageRepository = { ImageIdentifier: string;
+export type SourceCodeVersion = {
+
+
+Type: string;
+
+Value: string;
+
+
+};
+
+export type ImageRepository = {
+
+
+ImageIdentifier: string;
 
 ImageConfiguration?: AWS.AppRunner.Service.ImageConfiguration;
 
-ImageRepositoryType: string; };
+ImageRepositoryType: string;
 
-export type SourceConfiguration =  AWS.AppRunner.Service.SourceConfiguration;
 
-export type CodeRepository = { RepositoryUrl: string;
+};
+
+export type CodeRepository = {
+
+
+RepositoryUrl: string;
 
 SourceCodeVersion: AWS.AppRunner.Service.SourceCodeVersion;
 
-CodeConfiguration?: AWS.AppRunner.Service.CodeConfiguration; };
+CodeConfiguration?: AWS.AppRunner.Service.CodeConfiguration;
 
-export type CodeConfiguration = { ConfigurationSource: string;
 
-CodeConfigurationValues?: AWS.AppRunner.Service.CodeConfigurationValues; };
+};
 
-export type ServiceName =  string;
+export type CodeConfiguration = {
 
-export type Tags =  Tag[];
 
-export type AutoScalingConfigurationArn =  string;
+ConfigurationSource: string;
+
+CodeConfigurationValues?: AWS.AppRunner.Service.CodeConfigurationValues;
+
+
+};
+
 
 }
+
 
 }
 
 export namespace DMS {
 
-export namespace Endpoint {
 
-export type KinesisSettings =  AWS.DMS.Endpoint.KinesisSettings;
+export type Endpoint = {
 
-export type S3Settings =  AWS.DMS.Endpoint.S3Settings;
 
-export type PostgreSqlSettings =  AWS.DMS.Endpoint.PostgreSqlSettings;
+KinesisSettings?: AWS.DMS.Endpoint.KinesisSettings;
 
-export type MicrosoftSqlServerSettings =  AWS.DMS.Endpoint.MicrosoftSqlServerSettings;
+S3Settings?: AWS.DMS.Endpoint.S3Settings;
 
-export type MongoDbSettings =  AWS.DMS.Endpoint.MongoDbSettings;
+PostgreSqlSettings?: AWS.DMS.Endpoint.PostgreSqlSettings;
 
-export type KafkaSettings =  AWS.DMS.Endpoint.KafkaSettings;
+MicrosoftSqlServerSettings?: AWS.DMS.Endpoint.MicrosoftSqlServerSettings;
 
-export type MySqlSettings =  AWS.DMS.Endpoint.MySqlSettings;
+MongoDbSettings?: AWS.DMS.Endpoint.MongoDbSettings;
 
-export type NeptuneSettings =  AWS.DMS.Endpoint.NeptuneSettings;
+KafkaSettings?: AWS.DMS.Endpoint.KafkaSettings;
 
-export type IbmDb2Settings =  AWS.DMS.Endpoint.IbmDb2Settings;
+MySqlSettings?: AWS.DMS.Endpoint.MySqlSettings;
 
-export type ElasticsearchSettings =  AWS.DMS.Endpoint.ElasticsearchSettings;
+NeptuneSettings?: AWS.DMS.Endpoint.NeptuneSettings;
 
-export type OracleSettings =  AWS.DMS.Endpoint.OracleSettings;
+IbmDb2Settings?: AWS.DMS.Endpoint.IbmDb2Settings;
 
-export type DynamoDbSettings =  AWS.DMS.Endpoint.DynamoDbSettings;
+ElasticsearchSettings?: AWS.DMS.Endpoint.ElasticsearchSettings;
 
-export type DocDbSettings =  AWS.DMS.Endpoint.DocDbSettings;
+OracleSettings?: AWS.DMS.Endpoint.OracleSettings;
 
-export type SybaseSettings =  AWS.DMS.Endpoint.SybaseSettings;
+DynamoDbSettings?: AWS.DMS.Endpoint.DynamoDbSettings;
 
-export type RedshiftSettings =  AWS.DMS.Endpoint.RedshiftSettings;
+DocDbSettings?: AWS.DMS.Endpoint.DocDbSettings;
 
-export type Port =  number;
+SybaseSettings?: AWS.DMS.Endpoint.SybaseSettings;
 
-export type ResourceIdentifier =  string;
+RedshiftSettings?: AWS.DMS.Endpoint.RedshiftSettings;
 
-export type SslMode =  string;
+Port?: number;
 
-export type EndpointType =  string;
+ResourceIdentifier?: string;
 
-export type Tags =  Tag[];
+SslMode?: string;
 
-export type Password =  string;
+EndpointType: string;
 
-export type KmsKeyId =  string;
+Tags?: Tag[];
 
-export type DatabaseName =  string;
+Password?: string;
 
-export type EngineName =  string;
+KmsKeyId?: string;
 
-export type Username =  string;
+DatabaseName?: string;
 
-export type ServerName =  string;
+EngineName: string;
 
-export type ExtraConnectionAttributes =  string;
+Username?: string;
 
-export type EndpointIdentifier =  string;
+ServerName?: string;
 
-export type CertificateArn =  string;
+ExtraConnectionAttributes?: string;
 
-}
+EndpointIdentifier?: string;
 
-export namespace ReplicationSubnetGroup {
+CertificateArn?: string;
 
-export type ReplicationSubnetGroupDescription =  string;
 
-export type ReplicationSubnetGroupIdentifier =  string;
+};
 
-export type SubnetIds =  string[];
+export type ReplicationSubnetGroup = {
 
-export type Tags =  Tag[];
 
-}
+ReplicationSubnetGroupDescription: string;
 
-export namespace EventSubscription {
+ReplicationSubnetGroupIdentifier?: string;
 
-export type SourceType =  string;
+SubnetIds: string[];
 
-export type EventCategories =  string[];
+Tags?: Tag[];
 
-export type Enabled =  boolean;
 
-export type SubscriptionName =  string;
+};
 
-export type SnsTopicArn =  string;
+export type EventSubscription = {
 
-export type SourceIds =  string[];
 
-export type Tags =  Tag[];
+SourceType?: string;
 
-}
+EventCategories?: string[];
 
-export namespace Certificate {
+Enabled?: boolean;
 
-export type CertificateIdentifier =  string;
+SubscriptionName?: string;
 
-export type CertificatePem =  string;
+SnsTopicArn: string;
 
-export type CertificateWallet =  string;
+SourceIds?: string[];
 
-}
+Tags?: Tag[];
 
-export namespace ReplicationTask {
 
-export type ReplicationTaskSettings =  string;
+};
 
-export type CdcStartPosition =  string;
+export type Certificate = {
 
-export type CdcStopPosition =  string;
 
-export type MigrationType =  string;
+CertificateIdentifier?: string;
 
-export type TargetEndpointArn =  string;
+CertificatePem?: string;
 
-export type ReplicationInstanceArn =  string;
+CertificateWallet?: string;
 
-export type TaskData =  string;
 
-export type CdcStartTime =  number;
+};
 
-export type ResourceIdentifier =  string;
+export type ReplicationTask = {
 
-export type TableMappings =  string;
 
-export type ReplicationTaskIdentifier =  string;
+ReplicationTaskSettings?: string;
 
-export type SourceEndpointArn =  string;
+CdcStartPosition?: string;
 
-export type Tags =  Tag[];
+CdcStopPosition?: string;
 
-}
+MigrationType: string;
 
-export namespace ReplicationInstance {
+TargetEndpointArn: string;
 
-export type ReplicationInstanceIdentifier =  string;
+ReplicationInstanceArn: string;
 
-export type EngineVersion =  string;
+TaskData?: string;
 
-export type KmsKeyId =  string;
+CdcStartTime?: number;
 
-export type AvailabilityZone =  string;
+ResourceIdentifier?: string;
 
-export type PreferredMaintenanceWindow =  string;
+TableMappings: string;
 
-export type AutoMinorVersionUpgrade =  boolean;
+ReplicationTaskIdentifier?: string;
 
-export type ReplicationSubnetGroupIdentifier =  string;
+SourceEndpointArn: string;
 
-export type AllocatedStorage =  number;
+Tags?: Tag[];
 
-export type ResourceIdentifier =  string;
 
-export type VpcSecurityGroupIds =  string[];
+};
 
-export type AllowMajorVersionUpgrade =  boolean;
+export type ReplicationInstance = {
 
-export type ReplicationInstanceClass =  string;
 
-export type PubliclyAccessible =  boolean;
+ReplicationInstanceIdentifier?: string;
 
-export type MultiAZ =  boolean;
+EngineVersion?: string;
 
-export type Tags =  Tag[];
+KmsKeyId?: string;
 
-}
+AvailabilityZone?: string;
+
+PreferredMaintenanceWindow?: string;
+
+AutoMinorVersionUpgrade?: boolean;
+
+ReplicationSubnetGroupIdentifier?: string;
+
+AllocatedStorage?: number;
+
+ResourceIdentifier?: string;
+
+VpcSecurityGroupIds?: string[];
+
+AllowMajorVersionUpgrade?: boolean;
+
+ReplicationInstanceClass: string;
+
+PubliclyAccessible?: boolean;
+
+MultiAZ?: boolean;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace IoTAnalytics {
 
+
+export type Dataset = {
+
+
+VersioningConfiguration?: AWS.IoTAnalytics.Dataset.VersioningConfiguration;
+
+RetentionPeriod?: AWS.IoTAnalytics.Dataset.RetentionPeriod;
+
+Actions: AWS.IoTAnalytics.Dataset.Action[];
+
+LateDataRules?: AWS.IoTAnalytics.Dataset.LateDataRule[];
+
+DatasetName?: string;
+
+ContentDeliveryRules?: AWS.IoTAnalytics.Dataset.DatasetContentDeliveryRule[];
+
+Triggers?: AWS.IoTAnalytics.Dataset.Trigger[];
+
+Tags?: Tag[];
+
+
+};
+
 export namespace Dataset {
 
-export type DatasetContentVersionValue = { DatasetName?: string; };
 
-export type GlueConfiguration = { TableName: string;
+export type DatasetContentVersionValue = {
 
-DatabaseName: string; };
 
-export type DeltaTimeSessionWindowConfiguration = { TimeoutInMinutes: number; };
+DatasetName?: string;
 
-export type OutputFileUriValue = { FileName?: string; };
 
-export type Filter = { DeltaTime?: AWS.IoTAnalytics.Dataset.DeltaTime; };
+};
 
-export type DatasetContentDeliveryRule = { Destination: AWS.IoTAnalytics.Dataset.DatasetContentDeliveryRuleDestination;
+export type GlueConfiguration = {
 
-EntryName?: string; };
 
-export type Action = { ActionName: string;
+TableName: string;
+
+DatabaseName: string;
+
+
+};
+
+export type DeltaTimeSessionWindowConfiguration = {
+
+
+TimeoutInMinutes: number;
+
+
+};
+
+export type OutputFileUriValue = {
+
+
+FileName?: string;
+
+
+};
+
+export type Filter = {
+
+
+DeltaTime?: AWS.IoTAnalytics.Dataset.DeltaTime;
+
+
+};
+
+export type DatasetContentDeliveryRule = {
+
+
+Destination: AWS.IoTAnalytics.Dataset.DatasetContentDeliveryRuleDestination;
+
+EntryName?: string;
+
+
+};
+
+export type Action = {
+
+
+ActionName: string;
 
 ContainerAction?: AWS.IoTAnalytics.Dataset.ContainerAction;
 
-QueryAction?: AWS.IoTAnalytics.Dataset.QueryAction; };
+QueryAction?: AWS.IoTAnalytics.Dataset.QueryAction;
 
-export type LateDataRuleConfiguration = { DeltaTimeSessionWindowConfiguration?: AWS.IoTAnalytics.Dataset.DeltaTimeSessionWindowConfiguration; };
 
-export type ContainerAction = { Variables?: AWS.IoTAnalytics.Dataset.Variable[];
+};
+
+export type LateDataRuleConfiguration = {
+
+
+DeltaTimeSessionWindowConfiguration?: AWS.IoTAnalytics.Dataset.DeltaTimeSessionWindowConfiguration;
+
+
+};
+
+export type ContainerAction = {
+
+
+Variables?: AWS.IoTAnalytics.Dataset.Variable[];
 
 ExecutionRoleArn: string;
 
 Image: string;
 
-ResourceConfiguration: AWS.IoTAnalytics.Dataset.ResourceConfiguration; };
+ResourceConfiguration: AWS.IoTAnalytics.Dataset.ResourceConfiguration;
 
-export type LateDataRule = { RuleConfiguration: AWS.IoTAnalytics.Dataset.LateDataRuleConfiguration;
 
-RuleName?: string; };
+};
 
-export type QueryAction = { Filters?: AWS.IoTAnalytics.Dataset.Filter[];
+export type LateDataRule = {
 
-SqlQuery: string; };
 
-export type DatasetContentDeliveryRuleDestination = { IotEventsDestinationConfiguration?: AWS.IoTAnalytics.Dataset.IotEventsDestinationConfiguration;
+RuleConfiguration: AWS.IoTAnalytics.Dataset.LateDataRuleConfiguration;
 
-S3DestinationConfiguration?: AWS.IoTAnalytics.Dataset.S3DestinationConfiguration; };
+RuleName?: string;
 
-export type VersioningConfiguration =  AWS.IoTAnalytics.Dataset.VersioningConfiguration;
 
-export type Schedule = { ScheduleExpression: string; };
+};
 
-export type RetentionPeriod =  AWS.IoTAnalytics.Dataset.RetentionPeriod;
+export type QueryAction = {
 
-export type S3DestinationConfiguration = { GlueConfiguration?: AWS.IoTAnalytics.Dataset.GlueConfiguration;
+
+Filters?: AWS.IoTAnalytics.Dataset.Filter[];
+
+SqlQuery: string;
+
+
+};
+
+export type DatasetContentDeliveryRuleDestination = {
+
+
+IotEventsDestinationConfiguration?: AWS.IoTAnalytics.Dataset.IotEventsDestinationConfiguration;
+
+S3DestinationConfiguration?: AWS.IoTAnalytics.Dataset.S3DestinationConfiguration;
+
+
+};
+
+export type Schedule = {
+
+
+ScheduleExpression: string;
+
+
+};
+
+export type S3DestinationConfiguration = {
+
+
+GlueConfiguration?: AWS.IoTAnalytics.Dataset.GlueConfiguration;
 
 Bucket: string;
 
 Key: string;
 
-RoleArn: string; };
+RoleArn: string;
 
-export type Variable = { DatasetContentVersionValue?: AWS.IoTAnalytics.Dataset.DatasetContentVersionValue;
+
+};
+
+export type Variable = {
+
+
+DatasetContentVersionValue?: AWS.IoTAnalytics.Dataset.DatasetContentVersionValue;
 
 DoubleValue?: number;
 
@@ -5570,43 +10060,81 @@ OutputFileUriValue?: AWS.IoTAnalytics.Dataset.OutputFileUriValue;
 
 VariableName: string;
 
-StringValue?: string; };
+StringValue?: string;
 
-export type DeltaTime = { TimeExpression: string;
 
-OffsetSeconds: number; };
+};
 
-export type Trigger = { Schedule?: AWS.IoTAnalytics.Dataset.Schedule;
+export type DeltaTime = {
 
-TriggeringDataset?: AWS.IoTAnalytics.Dataset.TriggeringDataset; };
 
-export type IotEventsDestinationConfiguration = { InputName: string;
+TimeExpression: string;
 
-RoleArn: string; };
+OffsetSeconds: number;
 
-export type ResourceConfiguration = { VolumeSizeInGB: number;
 
-ComputeType: string; };
+};
 
-export type TriggeringDataset = { DatasetName: string; };
+export type Trigger = {
 
-export type Actions =  AWS.IoTAnalytics.Dataset.Action[];
 
-export type LateDataRules =  AWS.IoTAnalytics.Dataset.LateDataRule[];
+Schedule?: AWS.IoTAnalytics.Dataset.Schedule;
 
-export type DatasetName =  string;
+TriggeringDataset?: AWS.IoTAnalytics.Dataset.TriggeringDataset;
 
-export type ContentDeliveryRules =  AWS.IoTAnalytics.Dataset.DatasetContentDeliveryRule[];
 
-export type Triggers =  AWS.IoTAnalytics.Dataset.Trigger[];
+};
 
-export type Tags =  Tag[];
+export type IotEventsDestinationConfiguration = {
+
+
+InputName: string;
+
+RoleArn: string;
+
+
+};
+
+export type ResourceConfiguration = {
+
+
+VolumeSizeInGB: number;
+
+ComputeType: string;
+
+
+};
+
+export type TriggeringDataset = {
+
+
+DatasetName: string;
+
+
+};
+
 
 }
 
+export type Pipeline = {
+
+
+PipelineName?: string;
+
+Tags?: Tag[];
+
+PipelineActivities: AWS.IoTAnalytics.Pipeline.Activity[];
+
+
+};
+
 export namespace Pipeline {
 
-export type DeviceShadowEnrich = { Attribute?: string;
+
+export type DeviceShadowEnrich = {
+
+
+Attribute?: string;
 
 Next?: string;
 
@@ -5614,25 +10142,49 @@ ThingName?: string;
 
 RoleArn?: string;
 
-Name?: string; };
+Name?: string;
 
-export type SelectAttributes = { Next?: string;
+
+};
+
+export type SelectAttributes = {
+
+
+Next?: string;
 
 Attributes?: string[];
 
-Name?: string; };
+Name?: string;
 
-export type RemoveAttributes = { Next?: string;
+
+};
+
+export type RemoveAttributes = {
+
+
+Next?: string;
 
 Attributes?: string[];
 
-Name?: string; };
+Name?: string;
 
-export type Datastore = { DatastoreName?: string;
 
-Name?: string; };
+};
 
-export type DeviceRegistryEnrich = { Attribute?: string;
+export type Datastore = {
+
+
+DatastoreName?: string;
+
+Name?: string;
+
+
+};
+
+export type DeviceRegistryEnrich = {
+
+
+Attribute?: string;
 
 Next?: string;
 
@@ -5640,29 +10192,53 @@ ThingName?: string;
 
 RoleArn?: string;
 
-Name?: string; };
+Name?: string;
 
-export type Lambda = { BatchSize?: number;
+
+};
+
+export type Lambda = {
+
+
+BatchSize?: number;
 
 Next?: string;
 
 LambdaName?: string;
 
-Name?: string; };
+Name?: string;
 
-export type Channel = { ChannelName?: string;
+
+};
+
+export type Channel = {
+
+
+ChannelName?: string;
 
 Next?: string;
 
-Name?: string; };
+Name?: string;
 
-export type Filter = { Filter?: string;
+
+};
+
+export type Filter = {
+
+
+Filter?: string;
 
 Next?: string;
 
-Name?: string; };
+Name?: string;
 
-export type Activity = { SelectAttributes?: AWS.IoTAnalytics.Pipeline.SelectAttributes;
+
+};
+
+export type Activity = {
+
+
+SelectAttributes?: AWS.IoTAnalytics.Pipeline.SelectAttributes;
 
 Datastore?: AWS.IoTAnalytics.Pipeline.Datastore;
 
@@ -5680,145 +10256,259 @@ Lambda?: AWS.IoTAnalytics.Pipeline.Lambda;
 
 DeviceRegistryEnrich?: AWS.IoTAnalytics.Pipeline.DeviceRegistryEnrich;
 
-RemoveAttributes?: AWS.IoTAnalytics.Pipeline.RemoveAttributes; };
+RemoveAttributes?: AWS.IoTAnalytics.Pipeline.RemoveAttributes;
 
-export type Math = { Attribute?: string;
+
+};
+
+export type Math = {
+
+
+Attribute?: string;
 
 Next?: string;
 
 Math?: string;
 
-Name?: string; };
+Name?: string;
 
-export type AddAttributes = { Next?: string;
+
+};
+
+export type AddAttributes = {
+
+
+Next?: string;
 
 Attributes?: JSONString;
 
-Name?: string; };
+Name?: string;
 
-export type PipelineName =  string;
 
-export type Tags =  Tag[];
+};
 
-export type PipelineActivities =  AWS.IoTAnalytics.Pipeline.Activity[];
 
 }
+
+export type Datastore = {
+
+
+FileFormatConfiguration?: AWS.IoTAnalytics.Datastore.FileFormatConfiguration;
+
+RetentionPeriod?: AWS.IoTAnalytics.Datastore.RetentionPeriod;
+
+DatastorePartitions?: AWS.IoTAnalytics.Datastore.DatastorePartitions;
+
+DatastoreStorage?: AWS.IoTAnalytics.Datastore.DatastoreStorage;
+
+DatastoreName?: string;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace Datastore {
 
-export type FileFormatConfiguration =  AWS.IoTAnalytics.Datastore.FileFormatConfiguration;
 
-export type ServiceManagedS3 = {  };
 
-export type RetentionPeriod =  AWS.IoTAnalytics.Datastore.RetentionPeriod;
 
-export type CustomerManagedS3 = { Bucket: string;
+export type CustomerManagedS3 = {
+
+
+Bucket: string;
 
 RoleArn: string;
 
-KeyPrefix?: string; };
+KeyPrefix?: string;
 
-export type DatastorePartitions =  AWS.IoTAnalytics.Datastore.DatastorePartitions;
 
-export type SchemaDefinition = { Columns?: AWS.IoTAnalytics.Datastore.Column[]; };
+};
 
-export type Column = { Type: string;
+export type SchemaDefinition = {
 
-Name: string; };
 
-export type ParquetConfiguration = { SchemaDefinition?: AWS.IoTAnalytics.Datastore.SchemaDefinition; };
+Columns?: AWS.IoTAnalytics.Datastore.Column[];
 
-export type DatastoreStorage =  AWS.IoTAnalytics.Datastore.DatastoreStorage;
 
-export type Partition = { AttributeName: string; };
+};
 
-export type DatastorePartition = { Partition?: AWS.IoTAnalytics.Datastore.Partition;
+export type Column = {
 
-TimestampPartition?: AWS.IoTAnalytics.Datastore.TimestampPartition; };
 
-export type TimestampPartition = { AttributeName: string;
+Type: string;
 
-TimestampFormat?: string; };
+Name: string;
 
-export type JsonConfiguration = {  };
 
-export type DatastoreName =  string;
+};
 
-export type Tags =  Tag[];
+export type ParquetConfiguration = {
+
+
+SchemaDefinition?: AWS.IoTAnalytics.Datastore.SchemaDefinition;
+
+
+};
+
+export type Partition = {
+
+
+AttributeName: string;
+
+
+};
+
+export type DatastorePartition = {
+
+
+Partition?: AWS.IoTAnalytics.Datastore.Partition;
+
+TimestampPartition?: AWS.IoTAnalytics.Datastore.TimestampPartition;
+
+
+};
+
+export type TimestampPartition = {
+
+
+AttributeName: string;
+
+TimestampFormat?: string;
+
+
+};
+
+
+
 
 }
+
+export type Channel = {
+
+
+RetentionPeriod?: AWS.IoTAnalytics.Channel.RetentionPeriod;
+
+ChannelStorage?: AWS.IoTAnalytics.Channel.ChannelStorage;
+
+ChannelName?: string;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace Channel {
 
-export type CustomerManagedS3 = { Bucket: string;
+
+export type CustomerManagedS3 = {
+
+
+Bucket: string;
 
 RoleArn: string;
 
-KeyPrefix?: string; };
+KeyPrefix?: string;
 
-export type RetentionPeriod =  AWS.IoTAnalytics.Channel.RetentionPeriod;
 
-export type ServiceManagedS3 = {  };
+};
 
-export type ChannelStorage =  AWS.IoTAnalytics.Channel.ChannelStorage;
 
-export type ChannelName =  string;
 
-export type Tags =  Tag[];
 
 }
+
 
 }
 
 export namespace CloudTrail {
 
+
+export type Trail = {
+
+
+CloudWatchLogsLogGroupArn?: string;
+
+CloudWatchLogsRoleArn?: string;
+
+EnableLogFileValidation?: boolean;
+
+EventSelectors?: AWS.CloudTrail.Trail.EventSelector[];
+
+IncludeGlobalServiceEvents?: boolean;
+
+IsLogging: boolean;
+
+IsMultiRegionTrail?: boolean;
+
+KMSKeyId?: string;
+
+S3BucketName: string;
+
+S3KeyPrefix?: string;
+
+SnsTopicName?: string;
+
+Tags?: Tag[];
+
+TrailName?: string;
+
+
+};
+
 export namespace Trail {
 
-export type EventSelector = { DataResources?: AWS.CloudTrail.Trail.DataResource[];
+
+export type EventSelector = {
+
+
+DataResources?: AWS.CloudTrail.Trail.DataResource[];
 
 IncludeManagementEvents?: boolean;
 
-ReadWriteType?: string; };
+ReadWriteType?: string;
 
-export type DataResource = { Type: string;
 
-Values?: string[]; };
+};
 
-export type CloudWatchLogsLogGroupArn =  string;
+export type DataResource = {
 
-export type CloudWatchLogsRoleArn =  string;
 
-export type EnableLogFileValidation =  boolean;
+Type: string;
 
-export type EventSelectors =  AWS.CloudTrail.Trail.EventSelector[];
+Values?: string[];
 
-export type IncludeGlobalServiceEvents =  boolean;
 
-export type IsLogging =  boolean;
+};
 
-export type IsMultiRegionTrail =  boolean;
-
-export type KMSKeyId =  string;
-
-export type S3BucketName =  string;
-
-export type S3KeyPrefix =  string;
-
-export type SnsTopicName =  string;
-
-export type Tags =  Tag[];
-
-export type TrailName =  string;
 
 }
+
 
 }
 
 export namespace SES {
 
+
+export type ReceiptRule = {
+
+
+Rule: AWS.SES.ReceiptRule.Rule;
+
+After?: string;
+
+RuleSetName: string;
+
+
+};
+
 export namespace ReceiptRule {
 
-export type BounceAction = { Sender: string;
+
+export type BounceAction = {
+
+
+Sender: string;
 
 SmtpReplyCode: string;
 
@@ -5826,9 +10516,15 @@ Message: string;
 
 TopicArn?: string;
 
-StatusCode?: string; };
+StatusCode?: string;
 
-export type Action = { BounceAction?: AWS.SES.ReceiptRule.BounceAction;
+
+};
+
+export type Action = {
+
+
+BounceAction?: AWS.SES.ReceiptRule.BounceAction;
 
 S3Action?: AWS.SES.ReceiptRule.S3Action;
 
@@ -5840,255 +10536,455 @@ WorkmailAction?: AWS.SES.ReceiptRule.WorkmailAction;
 
 AddHeaderAction?: AWS.SES.ReceiptRule.AddHeaderAction;
 
-LambdaAction?: AWS.SES.ReceiptRule.LambdaAction; };
+LambdaAction?: AWS.SES.ReceiptRule.LambdaAction;
 
-export type StopAction = { Scope: string;
 
-TopicArn?: string; };
+};
 
-export type SNSAction = { TopicArn?: string;
+export type StopAction = {
 
-Encoding?: string; };
 
-export type S3Action = { BucketName: string;
+Scope: string;
+
+TopicArn?: string;
+
+
+};
+
+export type SNSAction = {
+
+
+TopicArn?: string;
+
+Encoding?: string;
+
+
+};
+
+export type S3Action = {
+
+
+BucketName: string;
 
 KmsKeyArn?: string;
 
 TopicArn?: string;
 
-ObjectKeyPrefix?: string; };
+ObjectKeyPrefix?: string;
 
-export type WorkmailAction = { TopicArn?: string;
 
-OrganizationArn: string; };
+};
 
-export type Rule =  AWS.SES.ReceiptRule.Rule;
+export type WorkmailAction = {
 
-export type LambdaAction = { FunctionArn: string;
 
 TopicArn?: string;
 
-InvocationType?: string; };
+OrganizationArn: string;
 
-export type AddHeaderAction = { HeaderValue: string;
 
-HeaderName: string; };
+};
 
-export type After =  string;
+export type LambdaAction = {
 
-export type RuleSetName =  string;
+
+FunctionArn: string;
+
+TopicArn?: string;
+
+InvocationType?: string;
+
+
+};
+
+export type AddHeaderAction = {
+
+
+HeaderValue: string;
+
+HeaderName: string;
+
+
+};
+
 
 }
+
+export type ReceiptFilter = {
+
+
+Filter: AWS.SES.ReceiptFilter.Filter;
+
+
+};
 
 export namespace ReceiptFilter {
 
-export type Filter =  AWS.SES.ReceiptFilter.Filter;
 
-export type IpFilter = { Policy: string;
+export type IpFilter = {
 
-Cidr: string; };
+
+Policy: string;
+
+Cidr: string;
+
+
+};
+
 
 }
+
+export type ConfigurationSetEventDestination = {
+
+
+EventDestination: AWS.SES.ConfigurationSetEventDestination.EventDestination;
+
+ConfigurationSetName: string;
+
+
+};
 
 export namespace ConfigurationSetEventDestination {
 
-export type EventDestination =  AWS.SES.ConfigurationSetEventDestination.EventDestination;
 
-export type DimensionConfiguration = { DimensionValueSource: string;
+export type DimensionConfiguration = {
+
+
+DimensionValueSource: string;
 
 DefaultDimensionValue: string;
 
-DimensionName: string; };
+DimensionName: string;
 
-export type KinesisFirehoseDestination = { IAMRoleARN: string;
 
-DeliveryStreamARN: string; };
+};
 
-export type CloudWatchDestination = { DimensionConfigurations?: AWS.SES.ConfigurationSetEventDestination.DimensionConfiguration[]; };
+export type KinesisFirehoseDestination = {
 
-export type ConfigurationSetName =  string;
+
+IAMRoleARN: string;
+
+DeliveryStreamARN: string;
+
+
+};
+
+export type CloudWatchDestination = {
+
+
+DimensionConfigurations?: AWS.SES.ConfigurationSetEventDestination.DimensionConfiguration[];
+
+
+};
+
 
 }
 
-export namespace Template {
+export type Template = {
 
-export type Template =  AWS.SES.Template.Template;
 
-}
+Template?: AWS.SES.Template.Template;
+
+
+};
+
+export type ContactList = {
+
+
+ContactListName?: string;
+
+Description?: string;
+
+Topics?: AWS.SES.ContactList.Topic[];
+
+Tags?: Tag[];
+
+
+};
 
 export namespace ContactList {
 
-export type Topic = { TopicName: string;
+
+export type Topic = {
+
+
+TopicName: string;
 
 DisplayName: string;
 
 Description?: string;
 
-DefaultSubscriptionStatus: string; };
+DefaultSubscriptionStatus: string;
 
-export type ContactListName =  string;
 
-export type Description =  string;
+};
 
-export type Topics =  AWS.SES.ContactList.Topic[];
-
-export type Tags =  Tag[];
 
 }
 
-export namespace ConfigurationSet {
+export type ConfigurationSet = {
 
-export type Name =  string;
 
-}
+Name?: string;
 
-export namespace ReceiptRuleSet {
 
-export type RuleSetName =  string;
+};
 
-}
+export type ReceiptRuleSet = {
+
+
+RuleSetName?: string;
+
+
+};
+
 
 }
 
 export namespace XRay {
 
-export namespace Group {
 
-export type InsightsConfiguration =  AWS.XRay.Group.InsightsConfiguration;
+export type Group = {
 
-export type FilterExpression =  string;
 
-export type GroupName =  string;
+InsightsConfiguration?: AWS.XRay.Group.InsightsConfiguration;
 
-export type Tags =  JSONString[];
+FilterExpression?: string;
 
-}
+GroupName?: string;
 
-export namespace SamplingRule {
+Tags?: JSONString[];
 
-export type SamplingRuleUpdate =  AWS.XRay.SamplingRule.SamplingRuleUpdate;
 
-export type SamplingRuleRecord =  AWS.XRay.SamplingRule.SamplingRuleRecord;
+};
 
-export type SamplingRule =  AWS.XRay.SamplingRule.SamplingRule;
+export type SamplingRule = {
 
-export type RuleName =  string;
 
-export type Tags =  JSONString[];
+SamplingRuleUpdate?: AWS.XRay.SamplingRule.SamplingRuleUpdate;
 
-}
+SamplingRuleRecord?: AWS.XRay.SamplingRule.SamplingRuleRecord;
+
+SamplingRule?: AWS.XRay.SamplingRule.SamplingRule;
+
+RuleName?: string;
+
+Tags?: JSONString[];
+
+
+};
+
 
 }
 
 export namespace PinpointEmail {
 
+
+export type ConfigurationSetEventDestination = {
+
+
+EventDestination?: AWS.PinpointEmail.ConfigurationSetEventDestination.EventDestination;
+
+EventDestinationName: string;
+
+ConfigurationSetName: string;
+
+
+};
+
 export namespace ConfigurationSetEventDestination {
 
-export type DimensionConfiguration = { DimensionValueSource: string;
+
+export type DimensionConfiguration = {
+
+
+DimensionValueSource: string;
 
 DefaultDimensionValue: string;
 
-DimensionName: string; };
+DimensionName: string;
 
-export type CloudWatchDestination = { DimensionConfigurations?: AWS.PinpointEmail.ConfigurationSetEventDestination.DimensionConfiguration[]; };
 
-export type SnsDestination = { TopicArn: string; };
+};
 
-export type PinpointDestination = { ApplicationArn?: string; };
+export type CloudWatchDestination = {
 
-export type KinesisFirehoseDestination = { DeliveryStreamArn: string;
 
-IamRoleArn: string; };
+DimensionConfigurations?: AWS.PinpointEmail.ConfigurationSetEventDestination.DimensionConfiguration[];
 
-export type EventDestination =  AWS.PinpointEmail.ConfigurationSetEventDestination.EventDestination;
 
-export type EventDestinationName =  string;
+};
 
-export type ConfigurationSetName =  string;
+export type SnsDestination = {
 
-}
 
-export namespace ConfigurationSet {
+TopicArn: string;
 
-export type SendingOptions =  AWS.PinpointEmail.ConfigurationSet.SendingOptions;
 
-export type ReputationOptions =  AWS.PinpointEmail.ConfigurationSet.ReputationOptions;
+};
 
-export type TrackingOptions =  AWS.PinpointEmail.ConfigurationSet.TrackingOptions;
+export type PinpointDestination = {
 
-export type Tags =  AWS.PinpointEmail.ConfigurationSet.Tags[];
 
-export type DeliveryOptions =  AWS.PinpointEmail.ConfigurationSet.DeliveryOptions;
+ApplicationArn?: string;
 
-export type Name =  string;
 
-}
+};
 
-export namespace DedicatedIpPool {
+export type KinesisFirehoseDestination = {
 
-export type Tags =  AWS.PinpointEmail.DedicatedIpPool.Tags[];
 
-export type PoolName =  string;
+DeliveryStreamArn: string;
+
+IamRoleArn: string;
+
+
+};
+
 
 }
 
-export namespace Identity {
+export type ConfigurationSet = {
 
-export type Tags =  AWS.PinpointEmail.Identity.Tags[];
 
-export type MailFromAttributes =  AWS.PinpointEmail.Identity.MailFromAttributes;
+SendingOptions?: AWS.PinpointEmail.ConfigurationSet.SendingOptions;
 
-export type FeedbackForwardingEnabled =  boolean;
+ReputationOptions?: AWS.PinpointEmail.ConfigurationSet.ReputationOptions;
 
-export type DkimSigningEnabled =  boolean;
+TrackingOptions?: AWS.PinpointEmail.ConfigurationSet.TrackingOptions;
 
-export type Name =  string;
+Tags?: AWS.PinpointEmail.ConfigurationSet.Tags[];
 
-}
+DeliveryOptions?: AWS.PinpointEmail.ConfigurationSet.DeliveryOptions;
+
+Name: string;
+
+
+};
+
+export type DedicatedIpPool = {
+
+
+Tags?: AWS.PinpointEmail.DedicatedIpPool.Tags[];
+
+PoolName?: string;
+
+
+};
+
+export type Identity = {
+
+
+Tags?: AWS.PinpointEmail.Identity.Tags[];
+
+MailFromAttributes?: AWS.PinpointEmail.Identity.MailFromAttributes;
+
+FeedbackForwardingEnabled?: boolean;
+
+DkimSigningEnabled?: boolean;
+
+Name: string;
+
+
+};
+
 
 }
 
 export namespace IoT {
 
+
+export type TopicRule = {
+
+
+TopicRulePayload: AWS.IoT.TopicRule.TopicRulePayload;
+
+RuleName?: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace TopicRule {
 
-export type AssetPropertyVariant = { StringValue?: string;
+
+export type AssetPropertyVariant = {
+
+
+StringValue?: string;
 
 DoubleValue?: string;
 
 BooleanValue?: string;
 
-IntegerValue?: string; };
+IntegerValue?: string;
 
-export type SigV4Authorization = { ServiceName: string;
+
+};
+
+export type SigV4Authorization = {
+
+
+ServiceName: string;
 
 SigningRegion: string;
 
-RoleArn: string; };
+RoleArn: string;
 
-export type SqsAction = { RoleArn: string;
+
+};
+
+export type SqsAction = {
+
+
+RoleArn: string;
 
 UseBase64?: boolean;
 
-QueueUrl: string; };
+QueueUrl: string;
 
-export type PutItemInput = { TableName: string; };
 
-export type SnsAction = { TargetArn: string;
+};
+
+export type PutItemInput = {
+
+
+TableName: string;
+
+
+};
+
+export type SnsAction = {
+
+
+TargetArn: string;
 
 MessageFormat?: string;
 
-RoleArn: string; };
+RoleArn: string;
 
-export type HttpAction = { ConfirmationUrl?: string;
+
+};
+
+export type HttpAction = {
+
+
+ConfirmationUrl?: string;
 
 Headers?: AWS.IoT.TopicRule.HttpActionHeader[];
 
 Url: string;
 
-Auth?: AWS.IoT.TopicRule.HttpAuthorization; };
+Auth?: AWS.IoT.TopicRule.HttpAuthorization;
 
-export type PutAssetPropertyValueEntry = { PropertyAlias?: string;
+
+};
+
+export type PutAssetPropertyValueEntry = {
+
+
+PropertyAlias?: string;
 
 PropertyValues: AWS.IoT.TopicRule.AssetPropertyValue[];
 
@@ -6096,11 +10992,23 @@ AssetId?: string;
 
 EntryId?: string;
 
-PropertyId?: string; };
+PropertyId?: string;
 
-export type LambdaAction = { FunctionArn?: string; };
 
-export type DynamoDBAction = { TableName: string;
+};
+
+export type LambdaAction = {
+
+
+FunctionArn?: string;
+
+
+};
+
+export type DynamoDBAction = {
+
+
+TableName: string;
 
 PayloadField?: string;
 
@@ -6116,23 +11024,41 @@ HashKeyType?: string;
 
 HashKeyValue: string;
 
-RoleArn: string; };
+RoleArn: string;
 
-export type IotAnalyticsAction = { RoleArn: string;
+
+};
+
+export type IotAnalyticsAction = {
+
+
+RoleArn: string;
 
 ChannelName: string;
 
-BatchMode?: boolean; };
+BatchMode?: boolean;
 
-export type IotEventsAction = { InputName: string;
+
+};
+
+export type IotEventsAction = {
+
+
+InputName: string;
 
 RoleArn: string;
 
 MessageId?: string;
 
-BatchMode?: boolean; };
+BatchMode?: boolean;
 
-export type KafkaAction = { DestinationArn: string;
+
+};
+
+export type KafkaAction = {
+
+
+DestinationArn: string;
 
 Topic: string;
 
@@ -6140,9 +11066,15 @@ Key?: string;
 
 Partition?: string;
 
-ClientProperties: Record<string, string>; };
+ClientProperties: Record<string, string>;
 
-export type TimestreamAction = { RoleArn: string;
+
+};
+
+export type TimestreamAction = {
+
+
+RoleArn: string;
 
 DatabaseName: string;
 
@@ -6152,17 +11084,35 @@ Dimensions: AWS.IoT.TopicRule.TimestreamDimension[];
 
 Timestamp?: AWS.IoT.TopicRule.TimestreamTimestamp;
 
-BatchMode?: boolean; };
+BatchMode?: boolean;
 
-export type IotSiteWiseAction = { RoleArn: string;
 
-PutAssetPropertyValueEntries: AWS.IoT.TopicRule.PutAssetPropertyValueEntry[]; };
+};
 
-export type DynamoDBv2Action = { PutItem?: AWS.IoT.TopicRule.PutItemInput;
+export type IotSiteWiseAction = {
 
-RoleArn?: string; };
 
-export type CloudwatchMetricAction = { MetricName: string;
+RoleArn: string;
+
+PutAssetPropertyValueEntries: AWS.IoT.TopicRule.PutAssetPropertyValueEntry[];
+
+
+};
+
+export type DynamoDBv2Action = {
+
+
+PutItem?: AWS.IoT.TopicRule.PutItemInput;
+
+RoleArn?: string;
+
+
+};
+
+export type CloudwatchMetricAction = {
+
+
+MetricName: string;
 
 MetricValue: string;
 
@@ -6172,35 +11122,65 @@ MetricUnit: string;
 
 RoleArn: string;
 
-MetricTimestamp?: string; };
+MetricTimestamp?: string;
 
-export type S3Action = { BucketName: string;
+
+};
+
+export type S3Action = {
+
+
+BucketName: string;
 
 Key: string;
 
 RoleArn: string;
 
-CannedAcl?: string; };
+CannedAcl?: string;
 
-export type FirehoseAction = { DeliveryStreamName: string;
+
+};
+
+export type FirehoseAction = {
+
+
+DeliveryStreamName: string;
 
 RoleArn: string;
 
 Separator?: string;
 
-BatchMode?: boolean; };
+BatchMode?: boolean;
 
-export type AssetPropertyTimestamp = { TimeInSeconds: string;
 
-OffsetInNanos?: string; };
+};
 
-export type AssetPropertyValue = { Value: AWS.IoT.TopicRule.AssetPropertyVariant;
+export type AssetPropertyTimestamp = {
+
+
+TimeInSeconds: string;
+
+OffsetInNanos?: string;
+
+
+};
+
+export type AssetPropertyValue = {
+
+
+Value: AWS.IoT.TopicRule.AssetPropertyVariant;
 
 Timestamp: AWS.IoT.TopicRule.AssetPropertyTimestamp;
 
-Quality?: string; };
+Quality?: string;
 
-export type ElasticsearchAction = { Type: string;
+
+};
+
+export type ElasticsearchAction = {
+
+
+Type: string;
 
 Index: string;
 
@@ -6208,15 +11188,27 @@ Id: string;
 
 Endpoint: string;
 
-RoleArn: string; };
+RoleArn: string;
 
-export type KinesisAction = { PartitionKey?: string;
+
+};
+
+export type KinesisAction = {
+
+
+PartitionKey?: string;
 
 StreamName: string;
 
-RoleArn: string; };
+RoleArn: string;
 
-export type Action = { S3?: AWS.IoT.TopicRule.S3Action;
+
+};
+
+export type Action = {
+
+
+S3?: AWS.IoT.TopicRule.S3Action;
 
 CloudwatchAlarm?: AWS.IoT.TopicRule.CloudwatchAlarmAction;
 
@@ -6254,115 +11246,267 @@ Lambda?: AWS.IoT.TopicRule.LambdaAction;
 
 Timestream?: AWS.IoT.TopicRule.TimestreamAction;
 
-Kafka?: AWS.IoT.TopicRule.KafkaAction; };
+Kafka?: AWS.IoT.TopicRule.KafkaAction;
 
-export type HttpAuthorization = { Sigv4?: AWS.IoT.TopicRule.SigV4Authorization; };
 
-export type HttpActionHeader = { Value: string;
+};
 
-Key: string; };
+export type HttpAuthorization = {
 
-export type RepublishAction = { Qos?: number;
+
+Sigv4?: AWS.IoT.TopicRule.SigV4Authorization;
+
+
+};
+
+export type HttpActionHeader = {
+
+
+Value: string;
+
+Key: string;
+
+
+};
+
+export type RepublishAction = {
+
+
+Qos?: number;
 
 Topic: string;
 
-RoleArn: string; };
+RoleArn: string;
 
-export type StepFunctionsAction = { ExecutionNamePrefix?: string;
+
+};
+
+export type StepFunctionsAction = {
+
+
+ExecutionNamePrefix?: string;
 
 StateMachineName: string;
 
-RoleArn: string; };
+RoleArn: string;
 
-export type TopicRulePayload =  AWS.IoT.TopicRule.TopicRulePayload;
 
-export type CloudwatchAlarmAction = { StateValue: string;
+};
+
+export type CloudwatchAlarmAction = {
+
+
+StateValue: string;
 
 AlarmName: string;
 
 StateReason: string;
 
-RoleArn: string; };
+RoleArn: string;
 
-export type CloudwatchLogsAction = { LogGroupName: string;
 
-RoleArn: string; };
+};
 
-export type TimestreamDimension = { Name: string;
+export type CloudwatchLogsAction = {
 
-Value: string; };
 
-export type TimestreamTimestamp = { Value: string;
+LogGroupName: string;
 
-Unit: string; };
+RoleArn: string;
 
-export type RuleName =  string;
 
-export type Tags =  Tag[];
+};
+
+export type TimestreamDimension = {
+
+
+Name: string;
+
+Value: string;
+
+
+};
+
+export type TimestreamTimestamp = {
+
+
+Value: string;
+
+Unit: string;
+
+
+};
+
 
 }
+
+export type MitigationAction = {
+
+
+ActionParams: AWS.IoT.MitigationAction.ActionParams;
+
+ActionName?: string;
+
+RoleArn: string;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace MitigationAction {
 
-export type AddThingsToThingGroupParams = { OverrideDynamicGroups?: boolean;
 
-ThingGroupNames: string[]; };
+export type AddThingsToThingGroupParams = {
 
-export type UpdateCACertificateParams = { Action: string; };
 
-export type UpdateDeviceCertificateParams = { Action: string; };
+OverrideDynamicGroups?: boolean;
 
-export type ReplaceDefaultPolicyVersionParams = { TemplateName: string; };
+ThingGroupNames: string[];
 
-export type EnableIoTLoggingParams = { LogLevel: string;
 
-RoleArnForLogging: string; };
+};
 
-export type ActionParams =  AWS.IoT.MitigationAction.ActionParams;
+export type UpdateCACertificateParams = {
 
-export type PublishFindingToSnsParams = { TopicArn: string; };
 
-export type ActionName =  string;
+Action: string;
 
-export type RoleArn =  string;
 
-export type Tags =  Tag[];
+};
+
+export type UpdateDeviceCertificateParams = {
+
+
+Action: string;
+
+
+};
+
+export type ReplaceDefaultPolicyVersionParams = {
+
+
+TemplateName: string;
+
+
+};
+
+export type EnableIoTLoggingParams = {
+
+
+LogLevel: string;
+
+RoleArnForLogging: string;
+
+
+};
+
+export type PublishFindingToSnsParams = {
+
+
+TopicArn: string;
+
+
+};
+
 
 }
 
+export type TopicRuleDestination = {
+
+
+Status?: string;
+
+HttpUrlProperties?: AWS.IoT.TopicRuleDestination.HttpUrlDestinationSummary;
+
+VpcProperties?: AWS.IoT.TopicRuleDestination.VpcDestinationProperties;
+
+
+};
+
 export namespace TopicRuleDestination {
 
-export type VpcDestinationProperties = { SubnetIds?: string[];
+
+export type VpcDestinationProperties = {
+
+
+SubnetIds?: string[];
 
 SecurityGroups?: string[];
 
 VpcId?: string;
 
-RoleArn?: string; };
+RoleArn?: string;
 
-export type HttpUrlDestinationSummary = { ConfirmationUrl?: string; };
 
-export type Status =  string;
+};
 
-export type HttpUrlProperties =  AWS.IoT.TopicRuleDestination.HttpUrlDestinationSummary;
+export type HttpUrlDestinationSummary = {
 
-export type VpcProperties =  AWS.IoT.TopicRuleDestination.VpcDestinationProperties;
+
+ConfirmationUrl?: string;
+
+
+};
+
 
 }
 
+export type SecurityProfile = {
+
+
+SecurityProfileName?: string;
+
+SecurityProfileDescription?: string;
+
+Behaviors?: AWS.IoT.SecurityProfile.Behavior[];
+
+AlertTargets?: Record<string, AWS.IoT.SecurityProfile.AlertTarget>;
+
+AdditionalMetricsToRetainV2?: AWS.IoT.SecurityProfile.MetricToRetain[];
+
+Tags?: Tag[];
+
+TargetArns?: string[];
+
+
+};
+
 export namespace SecurityProfile {
 
-export type MetricToRetain = { Metric: string;
 
-MetricDimension?: AWS.IoT.SecurityProfile.MetricDimension; };
+export type MetricToRetain = {
 
-export type MachineLearningDetectionConfig = { ConfidenceLevel?: string; };
 
-export type MetricDimension = { DimensionName: string;
+Metric: string;
 
-Operator?: string; };
+MetricDimension?: AWS.IoT.SecurityProfile.MetricDimension;
 
-export type MetricValue = { Count?: string;
+
+};
+
+export type MachineLearningDetectionConfig = {
+
+
+ConfidenceLevel?: string;
+
+
+};
+
+export type MetricDimension = {
+
+
+DimensionName: string;
+
+Operator?: string;
+
+
+};
+
+export type MetricValue = {
+
+
+Count?: string;
 
 Cidrs?: string[];
 
@@ -6372,13 +11516,25 @@ Number?: number;
 
 Numbers?: number[];
 
-Strings?: string[]; };
+Strings?: string[];
 
-export type AlertTarget = { AlertTargetArn: string;
 
-RoleArn: string; };
+};
 
-export type Behavior = { Name: string;
+export type AlertTarget = {
+
+
+AlertTargetArn: string;
+
+RoleArn: string;
+
+
+};
+
+export type Behavior = {
+
+
+Name: string;
 
 Metric?: string;
 
@@ -6386,9 +11542,15 @@ MetricDimension?: AWS.IoT.SecurityProfile.MetricDimension;
 
 Criteria?: AWS.IoT.SecurityProfile.BehaviorCriteria;
 
-SuppressAlerts?: boolean; };
+SuppressAlerts?: boolean;
 
-export type BehaviorCriteria = { ComparisonOperator?: string;
+
+};
+
+export type BehaviorCriteria = {
+
+
+ComparisonOperator?: string;
 
 Value?: AWS.IoT.SecurityProfile.MetricValue;
 
@@ -6400,215 +11562,331 @@ ConsecutiveDatapointsToClear?: number;
 
 StatisticalThreshold?: AWS.IoT.SecurityProfile.StatisticalThreshold;
 
-MlDetectionConfig?: AWS.IoT.SecurityProfile.MachineLearningDetectionConfig; };
+MlDetectionConfig?: AWS.IoT.SecurityProfile.MachineLearningDetectionConfig;
 
-export type StatisticalThreshold = { Statistic?: string; };
 
-export type SecurityProfileName =  string;
+};
 
-export type SecurityProfileDescription =  string;
+export type StatisticalThreshold = {
 
-export type Behaviors =  AWS.IoT.SecurityProfile.Behavior[];
 
-export type AlertTargets =  Record<string, AWS.IoT.SecurityProfile.AlertTarget>;
+Statistic?: string;
 
-export type AdditionalMetricsToRetainV2 =  AWS.IoT.SecurityProfile.MetricToRetain[];
 
-export type Tags =  Tag[];
+};
 
-export type TargetArns =  string[];
 
 }
+
+export type AccountAuditConfiguration = {
+
+
+AuditNotificationTargetConfigurations?: AWS.IoT.AccountAuditConfiguration.AuditNotificationTargetConfigurations;
+
+AuditCheckConfigurations: AWS.IoT.AccountAuditConfiguration.AuditCheckConfigurations;
+
+AccountId: string;
+
+RoleArn: string;
+
+
+};
 
 export namespace AccountAuditConfiguration {
 
-export type AuditCheckConfiguration = { Enabled?: boolean; };
 
-export type AuditNotificationTargetConfigurations =  AWS.IoT.AccountAuditConfiguration.AuditNotificationTargetConfigurations;
+export type AuditCheckConfiguration = {
 
-export type AuditNotificationTarget = { TargetArn?: string;
+
+Enabled?: boolean;
+
+
+};
+
+export type AuditNotificationTarget = {
+
+
+TargetArn?: string;
 
 RoleArn?: string;
 
-Enabled?: boolean; };
+Enabled?: boolean;
 
-export type AuditCheckConfigurations =  AWS.IoT.AccountAuditConfiguration.AuditCheckConfigurations;
 
-export type AccountId =  string;
+};
 
-export type RoleArn =  string;
 
 }
+
+export type ProvisioningTemplate = {
+
+
+TemplateName?: string;
+
+Description?: string;
+
+Enabled?: boolean;
+
+ProvisioningRoleArn: string;
+
+TemplateBody: string;
+
+PreProvisioningHook?: AWS.IoT.ProvisioningTemplate.ProvisioningHook;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace ProvisioningTemplate {
 
-export type ProvisioningHook = { TargetArn?: string;
 
-PayloadVersion?: string; };
+export type ProvisioningHook = {
 
-export type TemplateName =  string;
 
-export type Description =  string;
+TargetArn?: string;
 
-export type Enabled =  boolean;
+PayloadVersion?: string;
 
-export type ProvisioningRoleArn =  string;
 
-export type TemplateBody =  string;
+};
 
-export type PreProvisioningHook =  AWS.IoT.ProvisioningTemplate.ProvisioningHook;
-
-export type Tags =  Tag[];
 
 }
 
-export namespace Thing {
+export type Thing = {
 
-export type AttributePayload =  AWS.IoT.Thing.AttributePayload;
 
-export type ThingName =  string;
+AttributePayload?: AWS.IoT.Thing.AttributePayload;
 
-}
+ThingName?: string;
+
+
+};
+
+export type DomainConfiguration = {
+
+
+AuthorizerConfig?: AWS.IoT.DomainConfiguration.AuthorizerConfig;
+
+DomainConfigurationName?: string;
+
+DomainName?: string;
+
+ServerCertificateArns?: string[];
+
+ServiceType?: string;
+
+ValidationCertificateArn?: string;
+
+DomainConfigurationStatus?: string;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace DomainConfiguration {
 
-export type AuthorizerConfig =  AWS.IoT.DomainConfiguration.AuthorizerConfig;
 
-export type ServerCertificateSummary = { ServerCertificateArn?: string;
+export type ServerCertificateSummary = {
+
+
+ServerCertificateArn?: string;
 
 ServerCertificateStatus?: string;
 
-ServerCertificateStatusDetail?: string; };
+ServerCertificateStatusDetail?: string;
 
-export type DomainConfigurationName =  string;
 
-export type DomainName =  string;
+};
 
-export type ServerCertificateArns =  string[];
-
-export type ServiceType =  string;
-
-export type ValidationCertificateArn =  string;
-
-export type DomainConfigurationStatus =  string;
-
-export type Tags =  Tag[];
 
 }
 
-export namespace CustomMetric {
+export type CustomMetric = {
 
-export type MetricName =  string;
 
-export type DisplayName =  string;
+MetricName?: string;
 
-export type MetricType =  string;
+DisplayName?: string;
 
-export type Tags =  Tag[];
+MetricType: string;
 
-}
+Tags?: Tag[];
 
-export namespace Authorizer {
 
-export type AuthorizerFunctionArn =  string;
+};
 
-export type AuthorizerName =  string;
+export type Authorizer = {
 
-export type SigningDisabled =  boolean;
 
-export type Status =  string;
+AuthorizerFunctionArn: string;
 
-export type TokenKeyName =  string;
+AuthorizerName?: string;
 
-export type TokenSigningPublicKeys =  Record<string, string>;
+SigningDisabled?: boolean;
 
-export type Tags =  Tag[];
+Status?: string;
 
-}
+TokenKeyName?: string;
 
-export namespace Dimension {
+TokenSigningPublicKeys?: Record<string, string>;
 
-export type Name =  string;
+Tags?: Tag[];
 
-export type Type =  string;
 
-export type StringValues =  string[];
+};
 
-export type Tags =  Tag[];
+export type Dimension = {
 
-}
 
-export namespace ThingPrincipalAttachment {
+Name?: string;
 
-export type Principal =  string;
+Type: string;
 
-export type ThingName =  string;
+StringValues: string[];
 
-}
+Tags?: Tag[];
 
-export namespace Policy {
 
-export type PolicyDocument =  JSONString;
+};
 
-export type PolicyName =  string;
+export type ThingPrincipalAttachment = {
 
-}
 
-export namespace ScheduledAudit {
+Principal: string;
 
-export type ScheduledAuditName =  string;
+ThingName: string;
 
-export type Frequency =  string;
 
-export type DayOfMonth =  string;
+};
 
-export type DayOfWeek =  string;
+export type Policy = {
 
-export type TargetCheckNames =  string[];
 
-export type Tags =  Tag[];
+PolicyDocument: JSONString;
 
-}
+PolicyName?: string;
 
-export namespace PolicyPrincipalAttachment {
 
-export type PolicyName =  string;
+};
 
-export type Principal =  string;
+export type ScheduledAudit = {
 
-}
 
-export namespace Certificate {
+ScheduledAuditName?: string;
 
-export type CACertificatePem =  string;
+Frequency: string;
 
-export type CertificatePem =  string;
+DayOfMonth?: string;
 
-export type CertificateSigningRequest =  string;
+DayOfWeek?: string;
 
-export type CertificateMode =  string;
+TargetCheckNames: string[];
 
-export type Status =  string;
+Tags?: Tag[];
 
-}
+
+};
+
+export type PolicyPrincipalAttachment = {
+
+
+PolicyName: string;
+
+Principal: string;
+
+
+};
+
+export type Certificate = {
+
+
+CACertificatePem?: string;
+
+CertificatePem?: string;
+
+CertificateSigningRequest?: string;
+
+CertificateMode?: string;
+
+Status: string;
+
+
+};
+
 
 }
 
 export namespace AutoScaling {
 
+
+export type LaunchConfiguration = {
+
+
+MetadataOptions?: AWS.AutoScaling.LaunchConfiguration.MetadataOptions;
+
+AssociatePublicIpAddress?: boolean;
+
+BlockDeviceMappings?: AWS.AutoScaling.LaunchConfiguration.BlockDeviceMapping[];
+
+ClassicLinkVPCId?: string;
+
+ClassicLinkVPCSecurityGroups?: string[];
+
+EbsOptimized?: boolean;
+
+IamInstanceProfile?: string;
+
+ImageId: string;
+
+InstanceId?: string;
+
+InstanceMonitoring?: boolean;
+
+InstanceType: string;
+
+KernelId?: string;
+
+KeyName?: string;
+
+LaunchConfigurationName?: string;
+
+PlacementTenancy?: string;
+
+RamDiskId?: string;
+
+SecurityGroups?: string[];
+
+SpotPrice?: string;
+
+UserData?: string;
+
+
+};
+
 export namespace LaunchConfiguration {
 
-export type BlockDeviceMapping = { DeviceName: string;
+
+export type BlockDeviceMapping = {
+
+
+DeviceName: string;
 
 Ebs?: AWS.AutoScaling.LaunchConfiguration.BlockDevice;
 
 NoDevice?: boolean;
 
-VirtualName?: string; };
+VirtualName?: string;
 
-export type MetadataOptions =  AWS.AutoScaling.LaunchConfiguration.MetadataOptions;
 
-export type BlockDevice = { DeleteOnTermination?: boolean;
+};
+
+export type BlockDevice = {
+
+
+DeleteOnTermination?: boolean;
 
 Encrypted?: boolean;
 
@@ -6620,57 +11898,91 @@ Throughput?: number;
 
 VolumeSize?: number;
 
-VolumeType?: string; };
+VolumeType?: string;
 
-export type AssociatePublicIpAddress =  boolean;
 
-export type BlockDeviceMappings =  AWS.AutoScaling.LaunchConfiguration.BlockDeviceMapping[];
+};
 
-export type ClassicLinkVPCId =  string;
-
-export type ClassicLinkVPCSecurityGroups =  string[];
-
-export type EbsOptimized =  boolean;
-
-export type IamInstanceProfile =  string;
-
-export type ImageId =  string;
-
-export type InstanceId =  string;
-
-export type InstanceMonitoring =  boolean;
-
-export type InstanceType =  string;
-
-export type KernelId =  string;
-
-export type KeyName =  string;
-
-export type LaunchConfigurationName =  string;
-
-export type PlacementTenancy =  string;
-
-export type RamDiskId =  string;
-
-export type SecurityGroups =  string[];
-
-export type SpotPrice =  string;
-
-export type UserData =  string;
 
 }
 
+export type AutoScalingGroup = {
+
+
+MetricsCollection?: AWS.AutoScaling.AutoScalingGroup.MetricsCollection[];
+
+MixedInstancesPolicy?: AWS.AutoScaling.AutoScalingGroup.MixedInstancesPolicy;
+
+LaunchTemplate?: AWS.AutoScaling.AutoScalingGroup.LaunchTemplateSpecification;
+
+AutoScalingGroupName?: string;
+
+AvailabilityZones?: string[];
+
+CapacityRebalance?: boolean;
+
+Context?: string;
+
+Cooldown?: string;
+
+DesiredCapacity?: string;
+
+HealthCheckGracePeriod?: number;
+
+HealthCheckType?: string;
+
+InstanceId?: string;
+
+LaunchConfigurationName?: string;
+
+LifecycleHookSpecificationList?: AWS.AutoScaling.AutoScalingGroup.LifecycleHookSpecification[];
+
+LoadBalancerNames?: string[];
+
+MaxInstanceLifetime?: number;
+
+MaxSize: string;
+
+MinSize: string;
+
+NewInstancesProtectedFromScaleIn?: boolean;
+
+NotificationConfigurations?: AWS.AutoScaling.AutoScalingGroup.NotificationConfiguration[];
+
+PlacementGroup?: string;
+
+ServiceLinkedRoleARN?: string;
+
+Tags?: AWS.AutoScaling.AutoScalingGroup.TagProperty[];
+
+TargetGroupARNs?: string[];
+
+TerminationPolicies?: string[];
+
+VPCZoneIdentifier?: string[];
+
+
+};
+
 export namespace AutoScalingGroup {
 
-export type LaunchTemplateOverrides = { InstanceType?: string;
+
+export type LaunchTemplateOverrides = {
+
+
+InstanceType?: string;
 
 LaunchTemplateSpecification?: AWS.AutoScaling.AutoScalingGroup.LaunchTemplateSpecification;
 
-WeightedCapacity?: string; };
+WeightedCapacity?: string;
 
-export type MetricsCollection =  AWS.AutoScaling.AutoScalingGroup.MetricsCollection[];
 
-export type InstancesDistribution = { OnDemandAllocationStrategy?: string;
+};
+
+export type InstancesDistribution = {
+
+
+OnDemandAllocationStrategy?: string;
 
 OnDemandBaseCapacity?: number;
 
@@ -6680,9 +11992,15 @@ SpotAllocationStrategy?: string;
 
 SpotInstancePools?: number;
 
-SpotMaxPrice?: string; };
+SpotMaxPrice?: string;
 
-export type LifecycleHookSpecification = { DefaultResult?: string;
+
+};
+
+export type LifecycleHookSpecification = {
+
+
+DefaultResult?: string;
 
 HeartbeatTimeout?: number;
 
@@ -6694,79 +12012,81 @@ NotificationMetadata?: string;
 
 NotificationTargetARN?: string;
 
-RoleARN?: string; };
+RoleARN?: string;
 
-export type LaunchTemplateSpecification = { LaunchTemplateId?: string;
+
+};
+
+export type LaunchTemplateSpecification = {
+
+
+LaunchTemplateId?: string;
 
 LaunchTemplateName?: string;
 
-Version: string; };
+Version: string;
 
-export type MixedInstancesPolicy =  AWS.AutoScaling.AutoScalingGroup.MixedInstancesPolicy;
 
-export type NotificationConfiguration = { NotificationTypes?: string[];
+};
 
-TopicARN: string; };
+export type NotificationConfiguration = {
 
-export type LaunchTemplate =  AWS.AutoScaling.AutoScalingGroup.LaunchTemplateSpecification;
 
-export type TagProperty = { Key: string;
+NotificationTypes?: string[];
+
+TopicARN: string;
+
+
+};
+
+export type TagProperty = {
+
+
+Key: string;
 
 PropagateAtLaunch: boolean;
 
-Value: string; };
+Value: string;
 
-export type AutoScalingGroupName =  string;
 
-export type AvailabilityZones =  string[];
+};
 
-export type CapacityRebalance =  boolean;
-
-export type Context =  string;
-
-export type Cooldown =  string;
-
-export type DesiredCapacity =  string;
-
-export type HealthCheckGracePeriod =  number;
-
-export type HealthCheckType =  string;
-
-export type InstanceId =  string;
-
-export type LaunchConfigurationName =  string;
-
-export type LifecycleHookSpecificationList =  AWS.AutoScaling.AutoScalingGroup.LifecycleHookSpecification[];
-
-export type LoadBalancerNames =  string[];
-
-export type MaxInstanceLifetime =  number;
-
-export type MaxSize =  string;
-
-export type MinSize =  string;
-
-export type NewInstancesProtectedFromScaleIn =  boolean;
-
-export type NotificationConfigurations =  AWS.AutoScaling.AutoScalingGroup.NotificationConfiguration[];
-
-export type PlacementGroup =  string;
-
-export type ServiceLinkedRoleARN =  string;
-
-export type Tags =  AWS.AutoScaling.AutoScalingGroup.TagProperty[];
-
-export type TargetGroupARNs =  string[];
-
-export type TerminationPolicies =  string[];
-
-export type VPCZoneIdentifier =  string[];
 
 }
 
+export type ScalingPolicy = {
+
+
+TargetTrackingConfiguration?: AWS.AutoScaling.ScalingPolicy.TargetTrackingConfiguration;
+
+AdjustmentType?: string;
+
+AutoScalingGroupName: string;
+
+Cooldown?: string;
+
+EstimatedInstanceWarmup?: number;
+
+MetricAggregationType?: string;
+
+MinAdjustmentMagnitude?: number;
+
+PolicyType?: string;
+
+ScalingAdjustment?: number;
+
+StepAdjustments?: AWS.AutoScaling.ScalingPolicy.StepAdjustment[];
+
+
+};
+
 export namespace ScalingPolicy {
 
-export type CustomizedMetricSpecification = { Dimensions?: AWS.AutoScaling.ScalingPolicy.MetricDimension[];
+
+export type CustomizedMetricSpecification = {
+
+
+Dimensions?: AWS.AutoScaling.ScalingPolicy.MetricDimension[];
 
 MetricName: string;
 
@@ -6774,123 +12094,169 @@ Namespace: string;
 
 Statistic: string;
 
-Unit?: string; };
+Unit?: string;
 
-export type MetricDimension = { Name: string;
 
-Value: string; };
+};
 
-export type TargetTrackingConfiguration =  AWS.AutoScaling.ScalingPolicy.TargetTrackingConfiguration;
+export type MetricDimension = {
 
-export type StepAdjustment = { MetricIntervalLowerBound?: number;
+
+Name: string;
+
+Value: string;
+
+
+};
+
+export type StepAdjustment = {
+
+
+MetricIntervalLowerBound?: number;
 
 MetricIntervalUpperBound?: number;
 
-ScalingAdjustment: number; };
+ScalingAdjustment: number;
 
-export type PredefinedMetricSpecification = { PredefinedMetricType: string;
 
-ResourceLabel?: string; };
+};
 
-export type AdjustmentType =  string;
+export type PredefinedMetricSpecification = {
 
-export type AutoScalingGroupName =  string;
 
-export type Cooldown =  string;
+PredefinedMetricType: string;
 
-export type EstimatedInstanceWarmup =  number;
+ResourceLabel?: string;
 
-export type MetricAggregationType =  string;
 
-export type MinAdjustmentMagnitude =  number;
+};
 
-export type PolicyType =  string;
-
-export type ScalingAdjustment =  number;
-
-export type StepAdjustments =  AWS.AutoScaling.ScalingPolicy.StepAdjustment[];
 
 }
 
-export namespace ScheduledAction {
+export type ScheduledAction = {
 
-export type AutoScalingGroupName =  string;
 
-export type DesiredCapacity =  number;
+AutoScalingGroupName: string;
 
-export type EndTime =  string;
+DesiredCapacity?: number;
 
-export type MaxSize =  number;
+EndTime?: string;
 
-export type MinSize =  number;
+MaxSize?: number;
 
-export type Recurrence =  string;
+MinSize?: number;
 
-export type StartTime =  string;
+Recurrence?: string;
 
-export type TimeZone =  string;
+StartTime?: string;
 
-}
+TimeZone?: string;
 
-export namespace LifecycleHook {
 
-export type AutoScalingGroupName =  string;
+};
 
-export type DefaultResult =  string;
+export type LifecycleHook = {
 
-export type HeartbeatTimeout =  number;
 
-export type LifecycleHookName =  string;
+AutoScalingGroupName: string;
 
-export type LifecycleTransition =  string;
+DefaultResult?: string;
 
-export type NotificationMetadata =  string;
+HeartbeatTimeout?: number;
 
-export type NotificationTargetARN =  string;
+LifecycleHookName?: string;
 
-export type RoleARN =  string;
+LifecycleTransition: string;
 
-}
+NotificationMetadata?: string;
 
-export namespace WarmPool {
+NotificationTargetARN?: string;
 
-export type AutoScalingGroupName =  string;
+RoleARN?: string;
 
-export type MaxGroupPreparedCapacity =  number;
 
-export type MinSize =  number;
+};
 
-export type PoolState =  string;
+export type WarmPool = {
 
-}
+
+AutoScalingGroupName: string;
+
+MaxGroupPreparedCapacity?: number;
+
+MinSize?: number;
+
+PoolState?: string;
+
+
+};
+
 
 }
 
 export namespace CloudFront {
 
+
+export type Distribution = {
+
+
+DistributionConfig: AWS.CloudFront.Distribution.DistributionConfig;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace Distribution {
 
-export type Cookies = { Forward: string;
 
-WhitelistedNames?: string[]; };
+export type Cookies = {
 
-export type DistributionConfig =  AWS.CloudFront.Distribution.DistributionConfig;
 
-export type LegacyS3Origin = { DNSName: string;
+Forward: string;
 
-OriginAccessIdentity?: string; };
+WhitelistedNames?: string[];
 
-export type OriginCustomHeader = { HeaderName: string;
 
-HeaderValue: string; };
+};
 
-export type OriginGroup = { FailoverCriteria: AWS.CloudFront.Distribution.OriginGroupFailoverCriteria;
+export type LegacyS3Origin = {
+
+
+DNSName: string;
+
+OriginAccessIdentity?: string;
+
+
+};
+
+export type OriginCustomHeader = {
+
+
+HeaderName: string;
+
+HeaderValue: string;
+
+
+};
+
+export type OriginGroup = {
+
+
+FailoverCriteria: AWS.CloudFront.Distribution.OriginGroupFailoverCriteria;
 
 Id: string;
 
-Members: AWS.CloudFront.Distribution.OriginGroupMembers; };
+Members: AWS.CloudFront.Distribution.OriginGroupMembers;
 
-export type CustomOriginConfig = { HTTPPort?: number;
+
+};
+
+export type CustomOriginConfig = {
+
+
+HTTPPort?: number;
 
 HTTPSPort?: number;
 
@@ -6900,21 +12266,45 @@ OriginProtocolPolicy: string;
 
 OriginReadTimeout?: number;
 
-OriginSSLProtocols?: string[]; };
+OriginSSLProtocols?: string[];
 
-export type OriginGroups = { Items?: AWS.CloudFront.Distribution.OriginGroup[];
 
-Quantity: number; };
+};
 
-export type OriginGroupMembers = { Items: AWS.CloudFront.Distribution.OriginGroupMember[];
+export type OriginGroups = {
 
-Quantity: number; };
 
-export type GeoRestriction = { Locations?: string[];
+Items?: AWS.CloudFront.Distribution.OriginGroup[];
 
-RestrictionType: string; };
+Quantity: number;
 
-export type ViewerCertificate = { AcmCertificateArn?: string;
+
+};
+
+export type OriginGroupMembers = {
+
+
+Items: AWS.CloudFront.Distribution.OriginGroupMember[];
+
+Quantity: number;
+
+
+};
+
+export type GeoRestriction = {
+
+
+Locations?: string[];
+
+RestrictionType: string;
+
+
+};
+
+export type ViewerCertificate = {
+
+
+AcmCertificateArn?: string;
 
 CloudFrontDefaultCertificate?: boolean;
 
@@ -6922,25 +12312,49 @@ IamCertificateId?: string;
 
 MinimumProtocolVersion?: string;
 
-SslSupportMethod?: string; };
+SslSupportMethod?: string;
 
-export type CustomErrorResponse = { ErrorCachingMinTTL?: number;
+
+};
+
+export type CustomErrorResponse = {
+
+
+ErrorCachingMinTTL?: number;
 
 ErrorCode: number;
 
 ResponseCode?: number;
 
-ResponsePagePath?: string; };
+ResponsePagePath?: string;
 
-export type LambdaFunctionAssociation = { EventType?: string;
+
+};
+
+export type LambdaFunctionAssociation = {
+
+
+EventType?: string;
 
 IncludeBody?: boolean;
 
-LambdaFunctionARN?: string; };
+LambdaFunctionARN?: string;
 
-export type OriginGroupMember = { OriginId: string; };
 
-export type CacheBehavior = { AllowedMethods?: string[];
+};
+
+export type OriginGroupMember = {
+
+
+OriginId: string;
+
+
+};
+
+export type CacheBehavior = {
+
+
+AllowedMethods?: string[];
 
 CachePolicyId?: string;
 
@@ -6976,9 +12390,15 @@ TrustedKeyGroups?: string[];
 
 TrustedSigners?: string[];
 
-ViewerProtocolPolicy: string; };
+ViewerProtocolPolicy: string;
 
-export type LegacyCustomOrigin = { DNSName: string;
+
+};
+
+export type LegacyCustomOrigin = {
+
+
+DNSName: string;
 
 HTTPPort?: number;
 
@@ -6986,9 +12406,15 @@ HTTPSPort?: number;
 
 OriginProtocolPolicy: string;
 
-OriginSSLProtocols: string[]; };
+OriginSSLProtocols: string[];
 
-export type DefaultCacheBehavior = { AllowedMethods?: string[];
+
+};
+
+export type DefaultCacheBehavior = {
+
+
+AllowedMethods?: string[];
 
 CachePolicyId?: string;
 
@@ -7022,11 +12448,23 @@ TrustedKeyGroups?: string[];
 
 TrustedSigners?: string[];
 
-ViewerProtocolPolicy: string; };
+ViewerProtocolPolicy: string;
 
-export type Restrictions = { GeoRestriction: AWS.CloudFront.Distribution.GeoRestriction; };
 
-export type Origin = { ConnectionAttempts?: number;
+};
+
+export type Restrictions = {
+
+
+GeoRestriction: AWS.CloudFront.Distribution.GeoRestriction;
+
+
+};
+
+export type Origin = {
+
+
+ConnectionAttempts?: number;
 
 ConnectionTimeout?: number;
 
@@ -7042,51 +12480,111 @@ OriginPath?: string;
 
 OriginShield?: AWS.CloudFront.Distribution.OriginShield;
 
-S3OriginConfig?: AWS.CloudFront.Distribution.S3OriginConfig; };
+S3OriginConfig?: AWS.CloudFront.Distribution.S3OriginConfig;
 
-export type StatusCodes = { Items: number[];
 
-Quantity: number; };
+};
 
-export type OriginGroupFailoverCriteria = { StatusCodes: AWS.CloudFront.Distribution.StatusCodes; };
+export type StatusCodes = {
 
-export type ForwardedValues = { Cookies?: AWS.CloudFront.Distribution.Cookies;
+
+Items: number[];
+
+Quantity: number;
+
+
+};
+
+export type OriginGroupFailoverCriteria = {
+
+
+StatusCodes: AWS.CloudFront.Distribution.StatusCodes;
+
+
+};
+
+export type ForwardedValues = {
+
+
+Cookies?: AWS.CloudFront.Distribution.Cookies;
 
 Headers?: string[];
 
 QueryString: boolean;
 
-QueryStringCacheKeys?: string[]; };
+QueryStringCacheKeys?: string[];
 
-export type OriginShield = { Enabled?: boolean;
 
-OriginShieldRegion?: string; };
+};
 
-export type S3OriginConfig = { OriginAccessIdentity?: string; };
+export type OriginShield = {
 
-export type Logging = { Bucket: string;
+
+Enabled?: boolean;
+
+OriginShieldRegion?: string;
+
+
+};
+
+export type S3OriginConfig = {
+
+
+OriginAccessIdentity?: string;
+
+
+};
+
+export type Logging = {
+
+
+Bucket: string;
 
 IncludeCookies?: boolean;
 
-Prefix?: string; };
+Prefix?: string;
 
-export type FunctionAssociation = { EventType?: string;
 
-FunctionARN?: string; };
+};
 
-export type Tags =  Tag[];
+export type FunctionAssociation = {
+
+
+EventType?: string;
+
+FunctionARN?: string;
+
+
+};
+
 
 }
 
+export type CachePolicy = {
+
+
+CachePolicyConfig: AWS.CloudFront.CachePolicy.CachePolicyConfig;
+
+
+};
+
 export namespace CachePolicy {
 
-export type HeadersConfig = { HeaderBehavior: string;
 
-Headers?: string[]; };
+export type HeadersConfig = {
 
-export type CachePolicyConfig =  AWS.CloudFront.CachePolicy.CachePolicyConfig;
 
-export type ParametersInCacheKeyAndForwardedToOrigin = { CookiesConfig: AWS.CloudFront.CachePolicy.CookiesConfig;
+HeaderBehavior: string;
+
+Headers?: string[];
+
+
+};
+
+export type ParametersInCacheKeyAndForwardedToOrigin = {
+
+
+CookiesConfig: AWS.CloudFront.CachePolicy.CookiesConfig;
 
 EnableAcceptEncodingBrotli?: boolean;
 
@@ -7094,141 +12592,313 @@ EnableAcceptEncodingGzip: boolean;
 
 HeadersConfig: AWS.CloudFront.CachePolicy.HeadersConfig;
 
-QueryStringsConfig: AWS.CloudFront.CachePolicy.QueryStringsConfig; };
+QueryStringsConfig: AWS.CloudFront.CachePolicy.QueryStringsConfig;
 
-export type QueryStringsConfig = { QueryStringBehavior: string;
 
-QueryStrings?: string[]; };
+};
 
-export type CookiesConfig = { CookieBehavior: string;
+export type QueryStringsConfig = {
 
-Cookies?: string[]; };
+
+QueryStringBehavior: string;
+
+QueryStrings?: string[];
+
+
+};
+
+export type CookiesConfig = {
+
+
+CookieBehavior: string;
+
+Cookies?: string[];
+
+
+};
+
 
 }
 
-export namespace KeyGroup {
+export type KeyGroup = {
 
-export type KeyGroupConfig =  AWS.CloudFront.KeyGroup.KeyGroupConfig;
 
-}
+KeyGroupConfig: AWS.CloudFront.KeyGroup.KeyGroupConfig;
+
+
+};
+
+export type OriginRequestPolicy = {
+
+
+OriginRequestPolicyConfig: AWS.CloudFront.OriginRequestPolicy.OriginRequestPolicyConfig;
+
+
+};
 
 export namespace OriginRequestPolicy {
 
-export type OriginRequestPolicyConfig =  AWS.CloudFront.OriginRequestPolicy.OriginRequestPolicyConfig;
 
-export type CookiesConfig = { CookieBehavior: string;
+export type CookiesConfig = {
 
-Cookies?: string[]; };
 
-export type QueryStringsConfig = { QueryStringBehavior: string;
+CookieBehavior: string;
 
-QueryStrings?: string[]; };
+Cookies?: string[];
 
-export type HeadersConfig = { HeaderBehavior: string;
 
-Headers?: string[]; };
+};
+
+export type QueryStringsConfig = {
+
+
+QueryStringBehavior: string;
+
+QueryStrings?: string[];
+
+
+};
+
+export type HeadersConfig = {
+
+
+HeaderBehavior: string;
+
+Headers?: string[];
+
+
+};
+
 
 }
+
+export type StreamingDistribution = {
+
+
+StreamingDistributionConfig: AWS.CloudFront.StreamingDistribution.StreamingDistributionConfig;
+
+Tags: Tag[];
+
+
+};
 
 export namespace StreamingDistribution {
 
-export type S3Origin = { DomainName: string;
 
-OriginAccessIdentity: string; };
+export type S3Origin = {
 
-export type Logging = { Bucket: string;
+
+DomainName: string;
+
+OriginAccessIdentity: string;
+
+
+};
+
+export type Logging = {
+
+
+Bucket: string;
 
 Enabled: boolean;
 
-Prefix: string; };
+Prefix: string;
 
-export type StreamingDistributionConfig =  AWS.CloudFront.StreamingDistribution.StreamingDistributionConfig;
 
-export type TrustedSigners = { Enabled: boolean;
+};
 
-AwsAccountNumbers?: string[]; };
+export type TrustedSigners = {
 
-export type Tags =  Tag[];
+
+Enabled: boolean;
+
+AwsAccountNumbers?: string[];
+
+
+};
+
 
 }
 
-export namespace CloudFrontOriginAccessIdentity {
+export type CloudFrontOriginAccessIdentity = {
 
-export type CloudFrontOriginAccessIdentityConfig =  AWS.CloudFront.CloudFrontOriginAccessIdentity.CloudFrontOriginAccessIdentityConfig;
 
-}
+CloudFrontOriginAccessIdentityConfig: AWS.CloudFront.CloudFrontOriginAccessIdentity.CloudFrontOriginAccessIdentityConfig;
+
+
+};
+
+export type RealtimeLogConfig = {
+
+
+EndPoints: AWS.CloudFront.RealtimeLogConfig.EndPoint[];
+
+Fields: string[];
+
+Name: string;
+
+SamplingRate: number;
+
+
+};
 
 export namespace RealtimeLogConfig {
 
-export type EndPoint = { KinesisStreamConfig: AWS.CloudFront.RealtimeLogConfig.KinesisStreamConfig;
 
-StreamType: string; };
+export type EndPoint = {
 
-export type KinesisStreamConfig = { RoleArn: string;
 
-StreamArn: string; };
+KinesisStreamConfig: AWS.CloudFront.RealtimeLogConfig.KinesisStreamConfig;
 
-export type EndPoints =  AWS.CloudFront.RealtimeLogConfig.EndPoint[];
+StreamType: string;
 
-export type Fields =  string[];
 
-export type Name =  string;
+};
 
-export type SamplingRate =  number;
+export type KinesisStreamConfig = {
 
-}
 
-export namespace PublicKey {
+RoleArn: string;
 
-export type PublicKeyConfig =  AWS.CloudFront.PublicKey.PublicKeyConfig;
+StreamArn: string;
 
-}
 
-export namespace Function {
+};
 
-export type FunctionConfig =  AWS.CloudFront.Function.FunctionConfig;
-
-export type FunctionMetadata =  AWS.CloudFront.Function.FunctionMetadata;
-
-export type AutoPublish =  boolean;
-
-export type FunctionCode =  string;
-
-export type Name =  string;
 
 }
+
+export type PublicKey = {
+
+
+PublicKeyConfig: AWS.CloudFront.PublicKey.PublicKeyConfig;
+
+
+};
+
+export type Function = {
+
+
+FunctionConfig?: AWS.CloudFront.Function.FunctionConfig;
+
+FunctionMetadata?: AWS.CloudFront.Function.FunctionMetadata;
+
+AutoPublish?: boolean;
+
+FunctionCode?: string;
+
+Name: string;
+
+
+};
+
 
 }
 
 export namespace EMR {
 
+
+export type Step = {
+
+
+ActionOnFailure: string;
+
+HadoopJarStep: AWS.EMR.Step.HadoopJarStepConfig;
+
+JobFlowId: string;
+
+Name: string;
+
+
+};
+
 export namespace Step {
 
-export type HadoopJarStepConfig = { Args?: string[];
+
+export type HadoopJarStepConfig = {
+
+
+Args?: string[];
 
 Jar: string;
 
 MainClass?: string;
 
-StepProperties?: AWS.EMR.Step.KeyValue[]; };
+StepProperties?: AWS.EMR.Step.KeyValue[];
 
-export type KeyValue = { Key?: string;
 
-Value?: string; };
+};
 
-export type ActionOnFailure =  string;
+export type KeyValue = {
 
-export type HadoopJarStep =  AWS.EMR.Step.HadoopJarStepConfig;
 
-export type JobFlowId =  string;
+Key?: string;
 
-export type Name =  string;
+Value?: string;
+
+
+};
+
 
 }
 
+export type Cluster = {
+
+
+ManagedScalingPolicy?: AWS.EMR.Cluster.ManagedScalingPolicy;
+
+KerberosAttributes?: AWS.EMR.Cluster.KerberosAttributes;
+
+AdditionalInfo?: JSONString;
+
+Applications?: AWS.EMR.Cluster.Application[];
+
+AutoScalingRole?: string;
+
+BootstrapActions?: AWS.EMR.Cluster.BootstrapActionConfig[];
+
+Configurations?: AWS.EMR.Cluster.Configuration[];
+
+CustomAmiId?: string;
+
+EbsRootVolumeSize?: number;
+
+Instances: AWS.EMR.Cluster.JobFlowInstancesConfig;
+
+JobFlowRole: string;
+
+LogEncryptionKmsKeyId?: string;
+
+LogUri?: string;
+
+Name: string;
+
+ReleaseLabel?: string;
+
+ScaleDownBehavior?: string;
+
+SecurityConfiguration?: string;
+
+ServiceRole: string;
+
+StepConcurrencyLevel?: number;
+
+Steps?: AWS.EMR.Cluster.StepConfig[];
+
+Tags?: Tag[];
+
+VisibleToAllUsers?: boolean;
+
+
+};
+
 export namespace Cluster {
 
-export type ComputeLimits = { MaximumCapacityUnits: number;
+
+export type ComputeLimits = {
+
+
+MaximumCapacityUnits: number;
 
 MaximumCoreCapacityUnits?: number;
 
@@ -7236,33 +12906,61 @@ MaximumOnDemandCapacityUnits?: number;
 
 MinimumCapacityUnits: number;
 
-UnitType: string; };
+UnitType: string;
 
-export type SpotProvisioningSpecification = { AllocationStrategy?: string;
+
+};
+
+export type SpotProvisioningSpecification = {
+
+
+AllocationStrategy?: string;
 
 BlockDurationMinutes?: number;
 
 TimeoutAction: string;
 
-TimeoutDurationMinutes: number; };
+TimeoutDurationMinutes: number;
 
-export type BootstrapActionConfig = { Name: string;
 
-ScriptBootstrapAction: AWS.EMR.Cluster.ScriptBootstrapActionConfig; };
+};
 
-export type StepConfig = { ActionOnFailure?: string;
+export type BootstrapActionConfig = {
+
+
+Name: string;
+
+ScriptBootstrapAction: AWS.EMR.Cluster.ScriptBootstrapActionConfig;
+
+
+};
+
+export type StepConfig = {
+
+
+ActionOnFailure?: string;
 
 HadoopJarStep: AWS.EMR.Cluster.HadoopJarStepConfig;
 
-Name: string; };
+Name: string;
 
-export type EbsBlockDeviceConfig = { VolumeSpecification: AWS.EMR.Cluster.VolumeSpecification;
 
-VolumesPerInstance?: number; };
+};
 
-export type ManagedScalingPolicy =  AWS.EMR.Cluster.ManagedScalingPolicy;
+export type EbsBlockDeviceConfig = {
 
-export type CloudWatchAlarmDefinition = { ComparisonOperator: string;
+
+VolumeSpecification: AWS.EMR.Cluster.VolumeSpecification;
+
+VolumesPerInstance?: number;
+
+
+};
+
+export type CloudWatchAlarmDefinition = {
+
+
+ComparisonOperator: string;
 
 Dimensions?: AWS.EMR.Cluster.MetricDimension[];
 
@@ -7278,23 +12976,47 @@ Statistic?: string;
 
 Threshold: number;
 
-Unit?: string; };
+Unit?: string;
 
-export type KeyValue = { Key?: string;
 
-Value?: string; };
+};
 
-export type VolumeSpecification = { Iops?: number;
+export type KeyValue = {
+
+
+Key?: string;
+
+Value?: string;
+
+
+};
+
+export type VolumeSpecification = {
+
+
+Iops?: number;
 
 SizeInGB: number;
 
-VolumeType: string; };
+VolumeType: string;
 
-export type InstanceFleetProvisioningSpecifications = { OnDemandSpecification?: AWS.EMR.Cluster.OnDemandProvisioningSpecification;
 
-SpotSpecification?: AWS.EMR.Cluster.SpotProvisioningSpecification; };
+};
 
-export type InstanceGroupConfig = { AutoScalingPolicy?: AWS.EMR.Cluster.AutoScalingPolicy;
+export type InstanceFleetProvisioningSpecifications = {
+
+
+OnDemandSpecification?: AWS.EMR.Cluster.OnDemandProvisioningSpecification;
+
+SpotSpecification?: AWS.EMR.Cluster.SpotProvisioningSpecification;
+
+
+};
+
+export type InstanceGroupConfig = {
+
+
+AutoScalingPolicy?: AWS.EMR.Cluster.AutoScalingPolicy;
 
 BidPrice?: string;
 
@@ -7308,33 +13030,61 @@ InstanceType: string;
 
 Market?: string;
 
-Name?: string; };
+Name?: string;
 
-export type KerberosAttributes =  AWS.EMR.Cluster.KerberosAttributes;
 
-export type Application = { AdditionalInfo?: Record<string, string>;
+};
+
+export type Application = {
+
+
+AdditionalInfo?: Record<string, string>;
 
 Args?: string[];
 
 Name?: string;
 
-Version?: string; };
+Version?: string;
 
-export type Configuration = { Classification?: string;
+
+};
+
+export type Configuration = {
+
+
+Classification?: string;
 
 ConfigurationProperties?: Record<string, string>;
 
-Configurations?: AWS.EMR.Cluster.Configuration[]; };
+Configurations?: AWS.EMR.Cluster.Configuration[];
 
-export type ScriptBootstrapActionConfig = { Args?: string[];
 
-Path: string; };
+};
 
-export type EbsConfiguration = { EbsBlockDeviceConfigs?: AWS.EMR.Cluster.EbsBlockDeviceConfig[];
+export type ScriptBootstrapActionConfig = {
 
-EbsOptimized?: boolean; };
 
-export type InstanceTypeConfig = { BidPrice?: string;
+Args?: string[];
+
+Path: string;
+
+
+};
+
+export type EbsConfiguration = {
+
+
+EbsBlockDeviceConfigs?: AWS.EMR.Cluster.EbsBlockDeviceConfig[];
+
+EbsOptimized?: boolean;
+
+
+};
+
+export type InstanceTypeConfig = {
+
+
+BidPrice?: string;
 
 BidPriceAsPercentageOfOnDemandPrice?: number;
 
@@ -7344,17 +13094,41 @@ EbsConfiguration?: AWS.EMR.Cluster.EbsConfiguration;
 
 InstanceType: string;
 
-WeightedCapacity?: number; };
+WeightedCapacity?: number;
 
-export type MetricDimension = { Key: string;
 
-Value: string; };
+};
 
-export type OnDemandProvisioningSpecification = { AllocationStrategy: string; };
+export type MetricDimension = {
 
-export type ScalingTrigger = { CloudWatchAlarmDefinition: AWS.EMR.Cluster.CloudWatchAlarmDefinition; };
 
-export type InstanceFleetConfig = { InstanceTypeConfigs?: AWS.EMR.Cluster.InstanceTypeConfig[];
+Key: string;
+
+Value: string;
+
+
+};
+
+export type OnDemandProvisioningSpecification = {
+
+
+AllocationStrategy: string;
+
+
+};
+
+export type ScalingTrigger = {
+
+
+CloudWatchAlarmDefinition: AWS.EMR.Cluster.CloudWatchAlarmDefinition;
+
+
+};
+
+export type InstanceFleetConfig = {
+
+
+InstanceTypeConfigs?: AWS.EMR.Cluster.InstanceTypeConfig[];
 
 LaunchSpecifications?: AWS.EMR.Cluster.InstanceFleetProvisioningSpecifications;
 
@@ -7362,9 +13136,15 @@ Name?: string;
 
 TargetOnDemandCapacity?: number;
 
-TargetSpotCapacity?: number; };
+TargetSpotCapacity?: number;
 
-export type JobFlowInstancesConfig = { AdditionalMasterSecurityGroups?: string[];
+
+};
+
+export type JobFlowInstancesConfig = {
+
+
+AdditionalMasterSecurityGroups?: string[];
 
 AdditionalSlaveSecurityGroups?: string[];
 
@@ -7394,115 +13174,173 @@ Placement?: AWS.EMR.Cluster.PlacementType;
 
 ServiceAccessSecurityGroup?: string;
 
-TerminationProtected?: boolean; };
+TerminationProtected?: boolean;
 
-export type ScalingConstraints = { MaxCapacity: number;
 
-MinCapacity: number; };
+};
 
-export type ScalingAction = { Market?: string;
+export type ScalingConstraints = {
 
-SimpleScalingPolicyConfiguration: AWS.EMR.Cluster.SimpleScalingPolicyConfiguration; };
 
-export type SimpleScalingPolicyConfiguration = { AdjustmentType?: string;
+MaxCapacity: number;
+
+MinCapacity: number;
+
+
+};
+
+export type ScalingAction = {
+
+
+Market?: string;
+
+SimpleScalingPolicyConfiguration: AWS.EMR.Cluster.SimpleScalingPolicyConfiguration;
+
+
+};
+
+export type SimpleScalingPolicyConfiguration = {
+
+
+AdjustmentType?: string;
 
 CoolDown?: number;
 
-ScalingAdjustment: number; };
+ScalingAdjustment: number;
 
-export type PlacementType = { AvailabilityZone: string; };
 
-export type ScalingRule = { Action: AWS.EMR.Cluster.ScalingAction;
+};
+
+export type PlacementType = {
+
+
+AvailabilityZone: string;
+
+
+};
+
+export type ScalingRule = {
+
+
+Action: AWS.EMR.Cluster.ScalingAction;
 
 Description?: string;
 
 Name: string;
 
-Trigger: AWS.EMR.Cluster.ScalingTrigger; };
+Trigger: AWS.EMR.Cluster.ScalingTrigger;
 
-export type AutoScalingPolicy = { Constraints: AWS.EMR.Cluster.ScalingConstraints;
 
-Rules: AWS.EMR.Cluster.ScalingRule[]; };
+};
 
-export type HadoopJarStepConfig = { Args?: string[];
+export type AutoScalingPolicy = {
+
+
+Constraints: AWS.EMR.Cluster.ScalingConstraints;
+
+Rules: AWS.EMR.Cluster.ScalingRule[];
+
+
+};
+
+export type HadoopJarStepConfig = {
+
+
+Args?: string[];
 
 Jar: string;
 
 MainClass?: string;
 
-StepProperties?: AWS.EMR.Cluster.KeyValue[]; };
+StepProperties?: AWS.EMR.Cluster.KeyValue[];
 
-export type AdditionalInfo =  JSONString;
 
-export type Applications =  AWS.EMR.Cluster.Application[];
+};
 
-export type AutoScalingRole =  string;
-
-export type BootstrapActions =  AWS.EMR.Cluster.BootstrapActionConfig[];
-
-export type Configurations =  AWS.EMR.Cluster.Configuration[];
-
-export type CustomAmiId =  string;
-
-export type EbsRootVolumeSize =  number;
-
-export type Instances =  AWS.EMR.Cluster.JobFlowInstancesConfig;
-
-export type JobFlowRole =  string;
-
-export type LogEncryptionKmsKeyId =  string;
-
-export type LogUri =  string;
-
-export type Name =  string;
-
-export type ReleaseLabel =  string;
-
-export type ScaleDownBehavior =  string;
-
-export type SecurityConfiguration =  string;
-
-export type ServiceRole =  string;
-
-export type StepConcurrencyLevel =  number;
-
-export type Steps =  AWS.EMR.Cluster.StepConfig[];
-
-export type Tags =  Tag[];
-
-export type VisibleToAllUsers =  boolean;
 
 }
 
+export type InstanceGroupConfig = {
+
+
+AutoScalingPolicy?: AWS.EMR.InstanceGroupConfig.AutoScalingPolicy;
+
+EbsConfiguration?: AWS.EMR.InstanceGroupConfig.EbsConfiguration;
+
+BidPrice?: string;
+
+Configurations?: AWS.EMR.InstanceGroupConfig.Configuration[];
+
+InstanceCount: number;
+
+InstanceRole: string;
+
+InstanceType: string;
+
+JobFlowId: string;
+
+Market?: string;
+
+Name?: string;
+
+
+};
+
 export namespace InstanceGroupConfig {
 
-export type AutoScalingPolicy =  AWS.EMR.InstanceGroupConfig.AutoScalingPolicy;
 
-export type Configuration = { Classification?: string;
+export type Configuration = {
+
+
+Classification?: string;
 
 ConfigurationProperties?: Record<string, string>;
 
-Configurations?: AWS.EMR.InstanceGroupConfig.Configuration[]; };
+Configurations?: AWS.EMR.InstanceGroupConfig.Configuration[];
 
-export type MetricDimension = { Key: string;
 
-Value: string; };
+};
 
-export type SimpleScalingPolicyConfiguration = { AdjustmentType?: string;
+export type MetricDimension = {
+
+
+Key: string;
+
+Value: string;
+
+
+};
+
+export type SimpleScalingPolicyConfiguration = {
+
+
+AdjustmentType?: string;
 
 CoolDown?: number;
 
-ScalingAdjustment: number; };
+ScalingAdjustment: number;
 
-export type ScalingRule = { Action: AWS.EMR.InstanceGroupConfig.ScalingAction;
+
+};
+
+export type ScalingRule = {
+
+
+Action: AWS.EMR.InstanceGroupConfig.ScalingAction;
 
 Description?: string;
 
 Name: string;
 
-Trigger: AWS.EMR.InstanceGroupConfig.ScalingTrigger; };
+Trigger: AWS.EMR.InstanceGroupConfig.ScalingTrigger;
 
-export type CloudWatchAlarmDefinition = { ComparisonOperator: string;
+
+};
+
+export type CloudWatchAlarmDefinition = {
+
+
+ComparisonOperator: string;
 
 Dimensions?: AWS.EMR.InstanceGroupConfig.MetricDimension[];
 
@@ -7518,57 +13356,103 @@ Statistic?: string;
 
 Threshold: number;
 
-Unit?: string; };
+Unit?: string;
 
-export type EbsBlockDeviceConfig = { VolumeSpecification: AWS.EMR.InstanceGroupConfig.VolumeSpecification;
 
-VolumesPerInstance?: number; };
+};
 
-export type ScalingAction = { Market?: string;
+export type EbsBlockDeviceConfig = {
 
-SimpleScalingPolicyConfiguration: AWS.EMR.InstanceGroupConfig.SimpleScalingPolicyConfiguration; };
 
-export type ScalingTrigger = { CloudWatchAlarmDefinition: AWS.EMR.InstanceGroupConfig.CloudWatchAlarmDefinition; };
+VolumeSpecification: AWS.EMR.InstanceGroupConfig.VolumeSpecification;
 
-export type VolumeSpecification = { Iops?: number;
+VolumesPerInstance?: number;
+
+
+};
+
+export type ScalingAction = {
+
+
+Market?: string;
+
+SimpleScalingPolicyConfiguration: AWS.EMR.InstanceGroupConfig.SimpleScalingPolicyConfiguration;
+
+
+};
+
+export type ScalingTrigger = {
+
+
+CloudWatchAlarmDefinition: AWS.EMR.InstanceGroupConfig.CloudWatchAlarmDefinition;
+
+
+};
+
+export type VolumeSpecification = {
+
+
+Iops?: number;
 
 SizeInGB: number;
 
-VolumeType: string; };
+VolumeType: string;
 
-export type EbsConfiguration =  AWS.EMR.InstanceGroupConfig.EbsConfiguration;
 
-export type ScalingConstraints = { MaxCapacity: number;
+};
 
-MinCapacity: number; };
+export type ScalingConstraints = {
 
-export type BidPrice =  string;
 
-export type Configurations =  AWS.EMR.InstanceGroupConfig.Configuration[];
+MaxCapacity: number;
 
-export type InstanceCount =  number;
+MinCapacity: number;
 
-export type InstanceRole =  string;
 
-export type InstanceType =  string;
+};
 
-export type JobFlowId =  string;
-
-export type Market =  string;
-
-export type Name =  string;
 
 }
 
+export type InstanceFleetConfig = {
+
+
+ClusterId: string;
+
+InstanceFleetType: string;
+
+InstanceTypeConfigs?: AWS.EMR.InstanceFleetConfig.InstanceTypeConfig[];
+
+LaunchSpecifications?: AWS.EMR.InstanceFleetConfig.InstanceFleetProvisioningSpecifications;
+
+Name?: string;
+
+TargetOnDemandCapacity?: number;
+
+TargetSpotCapacity?: number;
+
+
+};
+
 export namespace InstanceFleetConfig {
 
-export type Configuration = { Classification?: string;
+
+export type Configuration = {
+
+
+Classification?: string;
 
 ConfigurationProperties?: Record<string, string>;
 
-Configurations?: AWS.EMR.InstanceFleetConfig.Configuration[]; };
+Configurations?: AWS.EMR.InstanceFleetConfig.Configuration[];
 
-export type InstanceTypeConfig = { BidPrice?: string;
+
+};
+
+export type InstanceTypeConfig = {
+
+
+BidPrice?: string;
 
 BidPriceAsPercentageOfOnDemandPrice?: number;
 
@@ -7578,167 +13462,281 @@ EbsConfiguration?: AWS.EMR.InstanceFleetConfig.EbsConfiguration;
 
 InstanceType: string;
 
-WeightedCapacity?: number; };
+WeightedCapacity?: number;
 
-export type SpotProvisioningSpecification = { AllocationStrategy?: string;
+
+};
+
+export type SpotProvisioningSpecification = {
+
+
+AllocationStrategy?: string;
 
 BlockDurationMinutes?: number;
 
 TimeoutAction: string;
 
-TimeoutDurationMinutes: number; };
+TimeoutDurationMinutes: number;
 
-export type EbsConfiguration = { EbsBlockDeviceConfigs?: AWS.EMR.InstanceFleetConfig.EbsBlockDeviceConfig[];
 
-EbsOptimized?: boolean; };
+};
 
-export type OnDemandProvisioningSpecification = { AllocationStrategy: string; };
+export type EbsConfiguration = {
 
-export type VolumeSpecification = { Iops?: number;
+
+EbsBlockDeviceConfigs?: AWS.EMR.InstanceFleetConfig.EbsBlockDeviceConfig[];
+
+EbsOptimized?: boolean;
+
+
+};
+
+export type OnDemandProvisioningSpecification = {
+
+
+AllocationStrategy: string;
+
+
+};
+
+export type VolumeSpecification = {
+
+
+Iops?: number;
 
 SizeInGB: number;
 
-VolumeType: string; };
+VolumeType: string;
 
-export type InstanceFleetProvisioningSpecifications = { OnDemandSpecification?: AWS.EMR.InstanceFleetConfig.OnDemandProvisioningSpecification;
 
-SpotSpecification?: AWS.EMR.InstanceFleetConfig.SpotProvisioningSpecification; };
+};
 
-export type EbsBlockDeviceConfig = { VolumeSpecification: AWS.EMR.InstanceFleetConfig.VolumeSpecification;
+export type InstanceFleetProvisioningSpecifications = {
 
-VolumesPerInstance?: number; };
 
-export type ClusterId =  string;
+OnDemandSpecification?: AWS.EMR.InstanceFleetConfig.OnDemandProvisioningSpecification;
 
-export type InstanceFleetType =  string;
+SpotSpecification?: AWS.EMR.InstanceFleetConfig.SpotProvisioningSpecification;
 
-export type InstanceTypeConfigs =  AWS.EMR.InstanceFleetConfig.InstanceTypeConfig[];
 
-export type LaunchSpecifications =  AWS.EMR.InstanceFleetConfig.InstanceFleetProvisioningSpecifications;
+};
 
-export type Name =  string;
+export type EbsBlockDeviceConfig = {
 
-export type TargetOnDemandCapacity =  number;
 
-export type TargetSpotCapacity =  number;
+VolumeSpecification: AWS.EMR.InstanceFleetConfig.VolumeSpecification;
 
-}
+VolumesPerInstance?: number;
 
-export namespace SecurityConfiguration {
 
-export type Name =  string;
+};
 
-export type SecurityConfiguration =  JSONString;
 
 }
 
-export namespace StudioSessionMapping {
+export type SecurityConfiguration = {
 
-export type IdentityName =  string;
 
-export type IdentityType =  string;
+Name?: string;
 
-export type SessionPolicyArn =  string;
+SecurityConfiguration: JSONString;
 
-export type StudioId =  string;
 
-}
+};
 
-export namespace Studio {
+export type StudioSessionMapping = {
 
-export type AuthMode =  string;
 
-export type DefaultS3Location =  string;
+IdentityName: string;
 
-export type Description =  string;
+IdentityType: string;
 
-export type EngineSecurityGroupId =  string;
+SessionPolicyArn: string;
 
-export type Name =  string;
+StudioId: string;
 
-export type ServiceRole =  string;
 
-export type SubnetIds =  string[];
+};
 
-export type Tags =  Tag[];
+export type Studio = {
 
-export type UserRole =  string;
 
-export type VpcId =  string;
+AuthMode: string;
 
-export type WorkspaceSecurityGroupId =  string;
+DefaultS3Location: string;
 
-}
+Description?: string;
+
+EngineSecurityGroupId: string;
+
+Name: string;
+
+ServiceRole: string;
+
+SubnetIds: string[];
+
+Tags?: Tag[];
+
+UserRole: string;
+
+VpcId: string;
+
+WorkspaceSecurityGroupId: string;
+
+
+};
+
 
 }
 
 export namespace Cassandra {
 
+
+export type Table = {
+
+
+BillingMode?: AWS.Cassandra.Table.BillingMode;
+
+KeyspaceName: string;
+
+TableName?: string;
+
+RegularColumns?: AWS.Cassandra.Table.Column[];
+
+PartitionKeyColumns: AWS.Cassandra.Table.Column[];
+
+ClusteringKeyColumns?: AWS.Cassandra.Table.ClusteringKeyColumn[];
+
+PointInTimeRecoveryEnabled?: boolean;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace Table {
 
-export type BillingMode =  AWS.Cassandra.Table.BillingMode;
 
-export type Column = { ColumnName: string;
+export type Column = {
 
-ColumnType: string; };
 
-export type ClusteringKeyColumn = { Column: AWS.Cassandra.Table.Column;
+ColumnName: string;
 
-OrderBy?: string; };
+ColumnType: string;
 
-export type ProvisionedThroughput = { ReadCapacityUnits: number;
 
-WriteCapacityUnits: number; };
+};
 
-export type KeyspaceName =  string;
+export type ClusteringKeyColumn = {
 
-export type TableName =  string;
 
-export type RegularColumns =  AWS.Cassandra.Table.Column[];
+Column: AWS.Cassandra.Table.Column;
 
-export type PartitionKeyColumns =  AWS.Cassandra.Table.Column[];
+OrderBy?: string;
 
-export type ClusteringKeyColumns =  AWS.Cassandra.Table.ClusteringKeyColumn[];
 
-export type PointInTimeRecoveryEnabled =  boolean;
+};
 
-export type Tags =  Tag[];
+export type ProvisionedThroughput = {
 
-}
 
-export namespace Keyspace {
+ReadCapacityUnits: number;
 
-export type KeyspaceName =  string;
+WriteCapacityUnits: number;
 
-export type Tags =  Tag[];
+
+};
+
 
 }
+
+export type Keyspace = {
+
+
+KeyspaceName?: string;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace WAFv2 {
 
+
+export type RuleGroup = {
+
+
+VisibilityConfig: AWS.WAFv2.RuleGroup.VisibilityConfig;
+
+Capacity: number;
+
+Description?: string;
+
+Name?: string;
+
+Scope: string;
+
+Rules?: AWS.WAFv2.RuleGroup.Rule[];
+
+Tags?: Tag[];
+
+CustomResponseBodies?: Record<string, AWS.WAFv2.RuleGroup.CustomResponseBody>;
+
+
+};
+
 export namespace RuleGroup {
 
-export type JsonMatchPattern = { All?: JSONString;
 
-IncludedPaths?: string[]; };
+export type JsonMatchPattern = {
 
-export type XssMatchStatement = { FieldToMatch: AWS.WAFv2.RuleGroup.FieldToMatch;
 
-TextTransformations: AWS.WAFv2.RuleGroup.TextTransformation[]; };
+All?: JSONString;
 
-export type LabelMatchStatement = { Scope: string;
+IncludedPaths?: string[];
 
-Key: string; };
 
-export type RuleAction = { Allow?: JSONString;
+};
+
+export type XssMatchStatement = {
+
+
+FieldToMatch: AWS.WAFv2.RuleGroup.FieldToMatch;
+
+TextTransformations: AWS.WAFv2.RuleGroup.TextTransformation[];
+
+
+};
+
+export type LabelMatchStatement = {
+
+
+Scope: string;
+
+Key: string;
+
+
+};
+
+export type RuleAction = {
+
+
+Allow?: JSONString;
 
 Block?: JSONString;
 
-Count?: JSONString; };
+Count?: JSONString;
 
-export type Statement = { ByteMatchStatement?: AWS.WAFv2.RuleGroup.ByteMatchStatement;
+
+};
+
+export type Statement = {
+
+
+ByteMatchStatement?: AWS.WAFv2.RuleGroup.ByteMatchStatement;
 
 SqliMatchStatement?: AWS.WAFv2.RuleGroup.SqliMatchStatement;
 
@@ -7760,11 +13758,23 @@ OrStatement?: AWS.WAFv2.RuleGroup.OrStatement;
 
 NotStatement?: AWS.WAFv2.RuleGroup.NotStatement;
 
-LabelMatchStatement?: AWS.WAFv2.RuleGroup.LabelMatchStatement; };
+LabelMatchStatement?: AWS.WAFv2.RuleGroup.LabelMatchStatement;
 
-export type LabelSummary = { Name?: string; };
 
-export type FieldToMatch = { SingleHeader?: JSONString;
+};
+
+export type LabelSummary = {
+
+
+Name?: string;
+
+
+};
+
+export type FieldToMatch = {
+
+
+SingleHeader?: JSONString;
 
 SingleQueryArgument?: JSONString;
 
@@ -7778,39 +13788,79 @@ Body?: JSONString;
 
 Method?: JSONString;
 
-JsonBody?: AWS.WAFv2.RuleGroup.JsonBody; };
+JsonBody?: AWS.WAFv2.RuleGroup.JsonBody;
 
-export type IPSetReferenceStatement = { Arn: string;
 
-IPSetForwardedIPConfig?: AWS.WAFv2.RuleGroup.IPSetForwardedIPConfiguration; };
+};
 
-export type RateBasedStatement = { Limit: number;
+export type IPSetReferenceStatement = {
+
+
+Arn: string;
+
+IPSetForwardedIPConfig?: AWS.WAFv2.RuleGroup.IPSetForwardedIPConfiguration;
+
+
+};
+
+export type RateBasedStatement = {
+
+
+Limit: number;
 
 AggregateKeyType: string;
 
 ScopeDownStatement?: AWS.WAFv2.RuleGroup.Statement;
 
-ForwardedIPConfig?: AWS.WAFv2.RuleGroup.ForwardedIPConfiguration; };
+ForwardedIPConfig?: AWS.WAFv2.RuleGroup.ForwardedIPConfiguration;
 
-export type VisibilityConfig =  AWS.WAFv2.RuleGroup.VisibilityConfig;
 
-export type GeoMatchStatement = { CountryCodes?: string[];
+};
 
-ForwardedIPConfig?: AWS.WAFv2.RuleGroup.ForwardedIPConfiguration; };
+export type GeoMatchStatement = {
 
-export type AndStatement = { Statements: AWS.WAFv2.RuleGroup.Statement[]; };
 
-export type IPSetForwardedIPConfiguration = { HeaderName: string;
+CountryCodes?: string[];
+
+ForwardedIPConfig?: AWS.WAFv2.RuleGroup.ForwardedIPConfiguration;
+
+
+};
+
+export type AndStatement = {
+
+
+Statements: AWS.WAFv2.RuleGroup.Statement[];
+
+
+};
+
+export type IPSetForwardedIPConfiguration = {
+
+
+HeaderName: string;
 
 FallbackBehavior: string;
 
-Position: string; };
+Position: string;
 
-export type TextTransformation = { Priority: number;
 
-Type: string; };
+};
 
-export type ByteMatchStatement = { SearchString?: string;
+export type TextTransformation = {
+
+
+Priority: number;
+
+Type: string;
+
+
+};
+
+export type ByteMatchStatement = {
+
+
+SearchString?: string;
 
 SearchStringBase64?: string;
 
@@ -7818,17 +13868,35 @@ FieldToMatch: AWS.WAFv2.RuleGroup.FieldToMatch;
 
 TextTransformations: AWS.WAFv2.RuleGroup.TextTransformation[];
 
-PositionalConstraint: string; };
+PositionalConstraint: string;
 
-export type RegexPatternSetReferenceStatement = { Arn: string;
+
+};
+
+export type RegexPatternSetReferenceStatement = {
+
+
+Arn: string;
 
 FieldToMatch: AWS.WAFv2.RuleGroup.FieldToMatch;
 
-TextTransformations: AWS.WAFv2.RuleGroup.TextTransformation[]; };
+TextTransformations: AWS.WAFv2.RuleGroup.TextTransformation[];
 
-export type OrStatement = { Statements: AWS.WAFv2.RuleGroup.Statement[]; };
 
-export type Rule = { Name: string;
+};
+
+export type OrStatement = {
+
+
+Statements: AWS.WAFv2.RuleGroup.Statement[];
+
+
+};
+
+export type Rule = {
+
+
+Name: string;
 
 Priority: number;
 
@@ -7838,79 +13906,165 @@ Action?: AWS.WAFv2.RuleGroup.RuleAction;
 
 RuleLabels?: AWS.WAFv2.RuleGroup.Label[];
 
-VisibilityConfig: AWS.WAFv2.RuleGroup.VisibilityConfig; };
+VisibilityConfig: AWS.WAFv2.RuleGroup.VisibilityConfig;
 
-export type JsonBody = { MatchPattern: AWS.WAFv2.RuleGroup.JsonMatchPattern;
+
+};
+
+export type JsonBody = {
+
+
+MatchPattern: AWS.WAFv2.RuleGroup.JsonMatchPattern;
 
 MatchScope: string;
 
-InvalidFallbackBehavior?: string; };
+InvalidFallbackBehavior?: string;
 
-export type CustomResponseBody = { ContentType: string;
 
-Content: string; };
+};
 
-export type Label = { Name: string; };
+export type CustomResponseBody = {
 
-export type SqliMatchStatement = { FieldToMatch: AWS.WAFv2.RuleGroup.FieldToMatch;
 
-TextTransformations: AWS.WAFv2.RuleGroup.TextTransformation[]; };
+ContentType: string;
 
-export type NotStatement = { Statement: AWS.WAFv2.RuleGroup.Statement; };
+Content: string;
 
-export type ForwardedIPConfiguration = { HeaderName: string;
 
-FallbackBehavior: string; };
+};
 
-export type SizeConstraintStatement = { FieldToMatch: AWS.WAFv2.RuleGroup.FieldToMatch;
+export type Label = {
+
+
+Name: string;
+
+
+};
+
+export type SqliMatchStatement = {
+
+
+FieldToMatch: AWS.WAFv2.RuleGroup.FieldToMatch;
+
+TextTransformations: AWS.WAFv2.RuleGroup.TextTransformation[];
+
+
+};
+
+export type NotStatement = {
+
+
+Statement: AWS.WAFv2.RuleGroup.Statement;
+
+
+};
+
+export type ForwardedIPConfiguration = {
+
+
+HeaderName: string;
+
+FallbackBehavior: string;
+
+
+};
+
+export type SizeConstraintStatement = {
+
+
+FieldToMatch: AWS.WAFv2.RuleGroup.FieldToMatch;
 
 ComparisonOperator: string;
 
 Size: number;
 
-TextTransformations: AWS.WAFv2.RuleGroup.TextTransformation[]; };
+TextTransformations: AWS.WAFv2.RuleGroup.TextTransformation[];
 
-export type Capacity =  number;
 
-export type Description =  string;
+};
 
-export type Name =  string;
-
-export type Scope =  string;
-
-export type Rules =  AWS.WAFv2.RuleGroup.Rule[];
-
-export type Tags =  Tag[];
-
-export type CustomResponseBodies =  Record<string, AWS.WAFv2.RuleGroup.CustomResponseBody>;
 
 }
 
+export type WebACL = {
+
+
+DefaultAction: AWS.WAFv2.WebACL.DefaultAction;
+
+VisibilityConfig: AWS.WAFv2.WebACL.VisibilityConfig;
+
+Description?: string;
+
+Name?: string;
+
+Scope: string;
+
+Rules?: AWS.WAFv2.WebACL.Rule[];
+
+Tags?: Tag[];
+
+CustomResponseBodies?: Record<string, AWS.WAFv2.WebACL.CustomResponseBody>;
+
+
+};
+
 export namespace WebACL {
 
-export type CustomRequestHandling = { InsertHeaders: AWS.WAFv2.WebACL.CustomHTTPHeader[]; };
 
-export type ManagedRuleGroupStatement = { Name: string;
+export type CustomRequestHandling = {
+
+
+InsertHeaders: AWS.WAFv2.WebACL.CustomHTTPHeader[];
+
+
+};
+
+export type ManagedRuleGroupStatement = {
+
+
+Name: string;
 
 VendorName: string;
 
 ExcludedRules?: AWS.WAFv2.WebACL.ExcludedRule[];
 
-ScopeDownStatement?: AWS.WAFv2.WebACL.Statement; };
+ScopeDownStatement?: AWS.WAFv2.WebACL.Statement;
 
-export type TextTransformation = { Priority: number;
 
-Type: string; };
+};
 
-export type AllowAction = { CustomRequestHandling?: AWS.WAFv2.WebACL.CustomRequestHandling; };
+export type TextTransformation = {
 
-export type DefaultAction =  AWS.WAFv2.WebACL.DefaultAction;
 
-export type XssMatchStatement = { FieldToMatch: AWS.WAFv2.WebACL.FieldToMatch;
+Priority: number;
 
-TextTransformations: AWS.WAFv2.WebACL.TextTransformation[]; };
+Type: string;
 
-export type ByteMatchStatement = { SearchString?: string;
+
+};
+
+export type AllowAction = {
+
+
+CustomRequestHandling?: AWS.WAFv2.WebACL.CustomRequestHandling;
+
+
+};
+
+export type XssMatchStatement = {
+
+
+FieldToMatch: AWS.WAFv2.WebACL.FieldToMatch;
+
+TextTransformations: AWS.WAFv2.WebACL.TextTransformation[];
+
+
+};
+
+export type ByteMatchStatement = {
+
+
+SearchString?: string;
 
 SearchStringBase64?: string;
 
@@ -7918,37 +14072,85 @@ FieldToMatch: AWS.WAFv2.WebACL.FieldToMatch;
 
 TextTransformations: AWS.WAFv2.WebACL.TextTransformation[];
 
-PositionalConstraint: string; };
+PositionalConstraint: string;
 
-export type ForwardedIPConfiguration = { HeaderName: string;
 
-FallbackBehavior: string; };
+};
 
-export type OrStatement = { Statements: AWS.WAFv2.WebACL.Statement[]; };
+export type ForwardedIPConfiguration = {
 
-export type Label = { Name: string; };
 
-export type CustomHTTPHeader = { Name: string;
-
-Value: string; };
-
-export type RegexPatternSetReferenceStatement = { Arn: string;
-
-FieldToMatch: AWS.WAFv2.WebACL.FieldToMatch;
-
-TextTransformations: AWS.WAFv2.WebACL.TextTransformation[]; };
-
-export type IPSetForwardedIPConfiguration = { HeaderName: string;
+HeaderName: string;
 
 FallbackBehavior: string;
 
-Position: string; };
 
-export type CustomResponseBody = { ContentType: string;
+};
 
-Content: string; };
+export type OrStatement = {
 
-export type Statement = { ByteMatchStatement?: AWS.WAFv2.WebACL.ByteMatchStatement;
+
+Statements: AWS.WAFv2.WebACL.Statement[];
+
+
+};
+
+export type Label = {
+
+
+Name: string;
+
+
+};
+
+export type CustomHTTPHeader = {
+
+
+Name: string;
+
+Value: string;
+
+
+};
+
+export type RegexPatternSetReferenceStatement = {
+
+
+Arn: string;
+
+FieldToMatch: AWS.WAFv2.WebACL.FieldToMatch;
+
+TextTransformations: AWS.WAFv2.WebACL.TextTransformation[];
+
+
+};
+
+export type IPSetForwardedIPConfiguration = {
+
+
+HeaderName: string;
+
+FallbackBehavior: string;
+
+Position: string;
+
+
+};
+
+export type CustomResponseBody = {
+
+
+ContentType: string;
+
+Content: string;
+
+
+};
+
+export type Statement = {
+
+
+ByteMatchStatement?: AWS.WAFv2.WebACL.ByteMatchStatement;
 
 SqliMatchStatement?: AWS.WAFv2.WebACL.SqliMatchStatement;
 
@@ -7974,35 +14176,83 @@ OrStatement?: AWS.WAFv2.WebACL.OrStatement;
 
 NotStatement?: AWS.WAFv2.WebACL.NotStatement;
 
-LabelMatchStatement?: AWS.WAFv2.WebACL.LabelMatchStatement; };
+LabelMatchStatement?: AWS.WAFv2.WebACL.LabelMatchStatement;
 
-export type BlockAction = { CustomResponse?: AWS.WAFv2.WebACL.CustomResponse; };
 
-export type RuleGroupReferenceStatement = { Arn: string;
+};
 
-ExcludedRules?: AWS.WAFv2.WebACL.ExcludedRule[]; };
+export type BlockAction = {
 
-export type LabelMatchStatement = { Scope: string;
 
-Key: string; };
+CustomResponse?: AWS.WAFv2.WebACL.CustomResponse;
 
-export type JsonMatchPattern = { All?: JSONString;
 
-IncludedPaths?: string[]; };
+};
 
-export type AndStatement = { Statements: AWS.WAFv2.WebACL.Statement[]; };
+export type RuleGroupReferenceStatement = {
 
-export type CountAction = { CustomRequestHandling?: AWS.WAFv2.WebACL.CustomRequestHandling; };
 
-export type SizeConstraintStatement = { FieldToMatch: AWS.WAFv2.WebACL.FieldToMatch;
+Arn: string;
+
+ExcludedRules?: AWS.WAFv2.WebACL.ExcludedRule[];
+
+
+};
+
+export type LabelMatchStatement = {
+
+
+Scope: string;
+
+Key: string;
+
+
+};
+
+export type JsonMatchPattern = {
+
+
+All?: JSONString;
+
+IncludedPaths?: string[];
+
+
+};
+
+export type AndStatement = {
+
+
+Statements: AWS.WAFv2.WebACL.Statement[];
+
+
+};
+
+export type CountAction = {
+
+
+CustomRequestHandling?: AWS.WAFv2.WebACL.CustomRequestHandling;
+
+
+};
+
+export type SizeConstraintStatement = {
+
+
+FieldToMatch: AWS.WAFv2.WebACL.FieldToMatch;
 
 ComparisonOperator: string;
 
 Size: number;
 
-TextTransformations: AWS.WAFv2.WebACL.TextTransformation[]; };
+TextTransformations: AWS.WAFv2.WebACL.TextTransformation[];
 
-export type FieldToMatch = { SingleHeader?: JSONString;
+
+};
+
+export type FieldToMatch = {
+
+
+SingleHeader?: JSONString;
 
 SingleQueryArgument?: JSONString;
 
@@ -8016,35 +14266,77 @@ Body?: JSONString;
 
 Method?: JSONString;
 
-JsonBody?: AWS.WAFv2.WebACL.JsonBody; };
+JsonBody?: AWS.WAFv2.WebACL.JsonBody;
 
-export type SqliMatchStatement = { FieldToMatch: AWS.WAFv2.WebACL.FieldToMatch;
 
-TextTransformations: AWS.WAFv2.WebACL.TextTransformation[]; };
+};
 
-export type GeoMatchStatement = { CountryCodes?: string[];
+export type SqliMatchStatement = {
 
-ForwardedIPConfig?: AWS.WAFv2.WebACL.ForwardedIPConfiguration; };
 
-export type RuleAction = { Allow?: AWS.WAFv2.WebACL.AllowAction;
+FieldToMatch: AWS.WAFv2.WebACL.FieldToMatch;
+
+TextTransformations: AWS.WAFv2.WebACL.TextTransformation[];
+
+
+};
+
+export type GeoMatchStatement = {
+
+
+CountryCodes?: string[];
+
+ForwardedIPConfig?: AWS.WAFv2.WebACL.ForwardedIPConfiguration;
+
+
+};
+
+export type RuleAction = {
+
+
+Allow?: AWS.WAFv2.WebACL.AllowAction;
 
 Block?: AWS.WAFv2.WebACL.BlockAction;
 
-Count?: AWS.WAFv2.WebACL.CountAction; };
+Count?: AWS.WAFv2.WebACL.CountAction;
 
-export type JsonBody = { MatchPattern: AWS.WAFv2.WebACL.JsonMatchPattern;
+
+};
+
+export type JsonBody = {
+
+
+MatchPattern: AWS.WAFv2.WebACL.JsonMatchPattern;
 
 MatchScope: string;
 
-InvalidFallbackBehavior?: string; };
+InvalidFallbackBehavior?: string;
 
-export type NotStatement = { Statement: AWS.WAFv2.WebACL.Statement; };
 
-export type OverrideAction = { Count?: JSONString;
+};
 
-None?: JSONString; };
+export type NotStatement = {
 
-export type Rule = { Name: string;
+
+Statement: AWS.WAFv2.WebACL.Statement;
+
+
+};
+
+export type OverrideAction = {
+
+
+Count?: JSONString;
+
+None?: JSONString;
+
+
+};
+
+export type Rule = {
+
+
+Name: string;
 
 Priority: number;
 
@@ -8056,107 +14348,179 @@ OverrideAction?: AWS.WAFv2.WebACL.OverrideAction;
 
 RuleLabels?: AWS.WAFv2.WebACL.Label[];
 
-VisibilityConfig: AWS.WAFv2.WebACL.VisibilityConfig; };
+VisibilityConfig: AWS.WAFv2.WebACL.VisibilityConfig;
 
-export type CustomResponse = { ResponseCode: number;
+
+};
+
+export type CustomResponse = {
+
+
+ResponseCode: number;
 
 CustomResponseBodyKey?: string;
 
-ResponseHeaders?: AWS.WAFv2.WebACL.CustomHTTPHeader[]; };
+ResponseHeaders?: AWS.WAFv2.WebACL.CustomHTTPHeader[];
 
-export type RateBasedStatement = { Limit: number;
+
+};
+
+export type RateBasedStatement = {
+
+
+Limit: number;
 
 AggregateKeyType: string;
 
 ScopeDownStatement?: AWS.WAFv2.WebACL.Statement;
 
-ForwardedIPConfig?: AWS.WAFv2.WebACL.ForwardedIPConfiguration; };
+ForwardedIPConfig?: AWS.WAFv2.WebACL.ForwardedIPConfiguration;
 
-export type ExcludedRule = { Name: string; };
 
-export type VisibilityConfig =  AWS.WAFv2.WebACL.VisibilityConfig;
+};
 
-export type IPSetReferenceStatement = { Arn: string;
+export type ExcludedRule = {
 
-IPSetForwardedIPConfig?: AWS.WAFv2.WebACL.IPSetForwardedIPConfiguration; };
 
-export type Description =  string;
+Name: string;
 
-export type Name =  string;
 
-export type Scope =  string;
+};
 
-export type Rules =  AWS.WAFv2.WebACL.Rule[];
+export type IPSetReferenceStatement = {
 
-export type Tags =  Tag[];
 
-export type CustomResponseBodies =  Record<string, AWS.WAFv2.WebACL.CustomResponseBody>;
+Arn: string;
 
-}
+IPSetForwardedIPConfig?: AWS.WAFv2.WebACL.IPSetForwardedIPConfiguration;
 
-export namespace RegexPatternSet {
 
-export type Description =  string;
+};
 
-export type Name =  string;
-
-export type RegularExpressionList =  string[];
-
-export type Scope =  string;
-
-export type Tags =  Tag[];
 
 }
 
-export namespace IPSet {
+export type RegexPatternSet = {
 
-export type Description =  string;
 
-export type Name =  string;
+Description?: string;
 
-export type Scope =  string;
+Name?: string;
 
-export type IPAddressVersion =  string;
+RegularExpressionList: string[];
 
-export type Addresses =  string[];
+Scope: string;
 
-export type Tags =  Tag[];
+Tags?: Tag[];
 
-}
 
-export namespace WebACLAssociation {
+};
 
-export type ResourceArn =  string;
+export type IPSet = {
 
-export type WebACLArn =  string;
 
-}
+Description?: string;
+
+Name?: string;
+
+Scope: string;
+
+IPAddressVersion: string;
+
+Addresses: string[];
+
+Tags?: Tag[];
+
+
+};
+
+export type WebACLAssociation = {
+
+
+ResourceArn: string;
+
+WebACLArn: string;
+
+
+};
+
 
 }
 
 export namespace MediaPackage {
 
+
+export type OriginEndpoint = {
+
+
+CmafPackage?: AWS.MediaPackage.OriginEndpoint.CmafPackage;
+
+Authorization?: AWS.MediaPackage.OriginEndpoint.Authorization;
+
+DashPackage?: AWS.MediaPackage.OriginEndpoint.DashPackage;
+
+MssPackage?: AWS.MediaPackage.OriginEndpoint.MssPackage;
+
+HlsPackage?: AWS.MediaPackage.OriginEndpoint.HlsPackage;
+
+Id: string;
+
+ChannelId: string;
+
+Description?: string;
+
+Whitelist?: string[];
+
+StartoverWindowSeconds?: number;
+
+TimeDelaySeconds?: number;
+
+ManifestName?: string;
+
+Origination?: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace OriginEndpoint {
 
-export type StreamSelection = { MinVideoBitsPerSecond?: number;
+
+export type StreamSelection = {
+
+
+MinVideoBitsPerSecond?: number;
 
 MaxVideoBitsPerSecond?: number;
 
-StreamOrder?: string; };
+StreamOrder?: string;
 
-export type CmafPackage =  AWS.MediaPackage.OriginEndpoint.CmafPackage;
 
-export type MssEncryption = { SpekeKeyProvider: AWS.MediaPackage.OriginEndpoint.SpekeKeyProvider; };
+};
 
-export type Authorization =  AWS.MediaPackage.OriginEndpoint.Authorization;
+export type MssEncryption = {
 
-export type DashPackage =  AWS.MediaPackage.OriginEndpoint.DashPackage;
 
-export type DashEncryption = { KeyRotationIntervalSeconds?: number;
+SpekeKeyProvider: AWS.MediaPackage.OriginEndpoint.SpekeKeyProvider;
 
-SpekeKeyProvider: AWS.MediaPackage.OriginEndpoint.SpekeKeyProvider; };
 
-export type HlsManifest = { Id: string;
+};
+
+export type DashEncryption = {
+
+
+KeyRotationIntervalSeconds?: number;
+
+SpekeKeyProvider: AWS.MediaPackage.OriginEndpoint.SpekeKeyProvider;
+
+
+};
+
+export type HlsManifest = {
+
+
+Id: string;
 
 ManifestName?: string;
 
@@ -8174,9 +14538,15 @@ IncludeIframeOnlyStream?: boolean;
 
 AdTriggers?: string[];
 
-AdsOnDeliveryRestrictions?: string; };
+AdsOnDeliveryRestrictions?: string;
 
-export type SpekeKeyProvider = { ResourceId: string;
+
+};
+
+export type SpekeKeyProvider = {
+
+
+ResourceId: string;
 
 SystemIds: string[];
 
@@ -8184,15 +14554,27 @@ Url: string;
 
 RoleArn: string;
 
-CertificateArn?: string; };
+CertificateArn?: string;
 
-export type CmafEncryption = { KeyRotationIntervalSeconds?: number;
+
+};
+
+export type CmafEncryption = {
+
+
+KeyRotationIntervalSeconds?: number;
 
 SpekeKeyProvider: AWS.MediaPackage.OriginEndpoint.SpekeKeyProvider;
 
-ConstantInitializationVector?: string; };
+ConstantInitializationVector?: string;
 
-export type HlsEncryption = { EncryptionMethod?: string;
+
+};
+
+export type HlsEncryption = {
+
+
+EncryptionMethod?: string;
 
 ConstantInitializationVector?: string;
 
@@ -8200,47 +14582,61 @@ KeyRotationIntervalSeconds?: number;
 
 RepeatExtXKey?: boolean;
 
-SpekeKeyProvider: AWS.MediaPackage.OriginEndpoint.SpekeKeyProvider; };
+SpekeKeyProvider: AWS.MediaPackage.OriginEndpoint.SpekeKeyProvider;
 
-export type MssPackage =  AWS.MediaPackage.OriginEndpoint.MssPackage;
 
-export type HlsPackage =  AWS.MediaPackage.OriginEndpoint.HlsPackage;
+};
 
-export type Id =  string;
-
-export type ChannelId =  string;
-
-export type Description =  string;
-
-export type Whitelist =  string[];
-
-export type StartoverWindowSeconds =  number;
-
-export type TimeDelaySeconds =  number;
-
-export type ManifestName =  string;
-
-export type Origination =  string;
-
-export type Tags =  Tag[];
 
 }
 
+export type PackagingConfiguration = {
+
+
+CmafPackage?: AWS.MediaPackage.PackagingConfiguration.CmafPackage;
+
+DashPackage?: AWS.MediaPackage.PackagingConfiguration.DashPackage;
+
+MssPackage?: AWS.MediaPackage.PackagingConfiguration.MssPackage;
+
+HlsPackage?: AWS.MediaPackage.PackagingConfiguration.HlsPackage;
+
+Id: string;
+
+PackagingGroupId: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace PackagingConfiguration {
 
-export type DashEncryption = { SpekeKeyProvider: AWS.MediaPackage.PackagingConfiguration.SpekeKeyProvider; };
 
-export type SpekeKeyProvider = { RoleArn: string;
+export type DashEncryption = {
+
+
+SpekeKeyProvider: AWS.MediaPackage.PackagingConfiguration.SpekeKeyProvider;
+
+
+};
+
+export type SpekeKeyProvider = {
+
+
+RoleArn: string;
 
 SystemIds: string[];
 
-Url: string; };
+Url: string;
 
-export type CmafPackage =  AWS.MediaPackage.PackagingConfiguration.CmafPackage;
 
-export type DashPackage =  AWS.MediaPackage.PackagingConfiguration.DashPackage;
+};
 
-export type DashManifest = { ManifestLayout?: string;
+export type DashManifest = {
+
+
+ManifestLayout?: string;
 
 ManifestName?: string;
 
@@ -8248,33 +14644,65 @@ MinBufferTimeSeconds?: number;
 
 Profile?: string;
 
-StreamSelection?: AWS.MediaPackage.PackagingConfiguration.StreamSelection; };
+StreamSelection?: AWS.MediaPackage.PackagingConfiguration.StreamSelection;
 
-export type HlsEncryption = { ConstantInitializationVector?: string;
+
+};
+
+export type HlsEncryption = {
+
+
+ConstantInitializationVector?: string;
 
 EncryptionMethod?: string;
 
-SpekeKeyProvider: AWS.MediaPackage.PackagingConfiguration.SpekeKeyProvider; };
+SpekeKeyProvider: AWS.MediaPackage.PackagingConfiguration.SpekeKeyProvider;
 
-export type MssManifest = { ManifestName?: string;
 
-StreamSelection?: AWS.MediaPackage.PackagingConfiguration.StreamSelection; };
+};
 
-export type CmafEncryption = { SpekeKeyProvider: AWS.MediaPackage.PackagingConfiguration.SpekeKeyProvider; };
+export type MssManifest = {
 
-export type MssEncryption = { SpekeKeyProvider: AWS.MediaPackage.PackagingConfiguration.SpekeKeyProvider; };
 
-export type StreamSelection = { MaxVideoBitsPerSecond?: number;
+ManifestName?: string;
+
+StreamSelection?: AWS.MediaPackage.PackagingConfiguration.StreamSelection;
+
+
+};
+
+export type CmafEncryption = {
+
+
+SpekeKeyProvider: AWS.MediaPackage.PackagingConfiguration.SpekeKeyProvider;
+
+
+};
+
+export type MssEncryption = {
+
+
+SpekeKeyProvider: AWS.MediaPackage.PackagingConfiguration.SpekeKeyProvider;
+
+
+};
+
+export type StreamSelection = {
+
+
+MaxVideoBitsPerSecond?: number;
 
 MinVideoBitsPerSecond?: number;
 
-StreamOrder?: string; };
+StreamOrder?: string;
 
-export type MssPackage =  AWS.MediaPackage.PackagingConfiguration.MssPackage;
 
-export type HlsPackage =  AWS.MediaPackage.PackagingConfiguration.HlsPackage;
+};
 
-export type HlsManifest = { AdMarkers?: string;
+export type HlsManifest = {
+
+
+AdMarkers?: string;
 
 IncludeIframeOnlyStream?: boolean;
 
@@ -8284,81 +14712,153 @@ ProgramDateTimeIntervalSeconds?: number;
 
 RepeatExtXKey?: boolean;
 
-StreamSelection?: AWS.MediaPackage.PackagingConfiguration.StreamSelection; };
+StreamSelection?: AWS.MediaPackage.PackagingConfiguration.StreamSelection;
 
-export type Id =  string;
 
-export type PackagingGroupId =  string;
+};
 
-export type Tags =  Tag[];
 
 }
+
+export type PackagingGroup = {
+
+
+Authorization?: AWS.MediaPackage.PackagingGroup.Authorization;
+
+Id: string;
+
+Tags?: Tag[];
+
+EgressAccessLogs?: AWS.MediaPackage.PackagingGroup.LogConfiguration;
+
+
+};
 
 export namespace PackagingGroup {
 
-export type LogConfiguration = { LogGroupName?: string; };
 
-export type Authorization =  AWS.MediaPackage.PackagingGroup.Authorization;
+export type LogConfiguration = {
 
-export type Id =  string;
 
-export type Tags =  Tag[];
+LogGroupName?: string;
 
-export type EgressAccessLogs =  AWS.MediaPackage.PackagingGroup.LogConfiguration;
+
+};
+
 
 }
+
+export type Channel = {
+
+
+Id: string;
+
+Description?: string;
+
+Tags?: Tag[];
+
+EgressAccessLogs?: AWS.MediaPackage.Channel.LogConfiguration;
+
+IngressAccessLogs?: AWS.MediaPackage.Channel.LogConfiguration;
+
+
+};
 
 export namespace Channel {
 
-export type LogConfiguration = { LogGroupName?: string; };
 
-export type Id =  string;
+export type LogConfiguration = {
 
-export type Description =  string;
 
-export type Tags =  Tag[];
+LogGroupName?: string;
 
-export type EgressAccessLogs =  AWS.MediaPackage.Channel.LogConfiguration;
 
-export type IngressAccessLogs =  AWS.MediaPackage.Channel.LogConfiguration;
+};
+
 
 }
+
+export type Asset = {
+
+
+Id: string;
+
+PackagingGroupId: string;
+
+ResourceId?: string;
+
+SourceArn: string;
+
+SourceRoleArn: string;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace Asset {
 
-export type EgressEndpoint = { PackagingConfigurationId: string;
 
-Url: string; };
+export type EgressEndpoint = {
 
-export type Id =  string;
 
-export type PackagingGroupId =  string;
+PackagingConfigurationId: string;
 
-export type ResourceId =  string;
+Url: string;
 
-export type SourceArn =  string;
 
-export type SourceRoleArn =  string;
+};
 
-export type Tags =  Tag[];
 
 }
+
 
 }
 
 export namespace ACMPCA {
 
+
+export type Certificate = {
+
+
+ApiPassthrough?: AWS.ACMPCA.Certificate.ApiPassthrough;
+
+Validity: AWS.ACMPCA.Certificate.Validity;
+
+CertificateAuthorityArn: string;
+
+CertificateSigningRequest: string;
+
+SigningAlgorithm: string;
+
+TemplateArn?: string;
+
+ValidityNotBefore?: AWS.ACMPCA.Certificate.Validity;
+
+
+};
+
 export namespace Certificate {
 
-export type Extensions = { CertificatePolicies?: AWS.ACMPCA.Certificate.PolicyInformation[];
+
+export type Extensions = {
+
+
+CertificatePolicies?: AWS.ACMPCA.Certificate.PolicyInformation[];
 
 ExtendedKeyUsage?: AWS.ACMPCA.Certificate.ExtendedKeyUsage[];
 
 KeyUsage?: AWS.ACMPCA.Certificate.KeyUsage;
 
-SubjectAlternativeNames?: AWS.ACMPCA.Certificate.GeneralName[]; };
+SubjectAlternativeNames?: AWS.ACMPCA.Certificate.GeneralName[];
 
-export type Subject = { Country?: string;
+
+};
+
+export type Subject = {
+
+
+Country?: string;
 
 Organization?: string;
 
@@ -8384,19 +14884,43 @@ Initials?: string;
 
 Pseudonym?: string;
 
-GenerationQualifier?: string; };
+GenerationQualifier?: string;
 
-export type PolicyInformation = { CertPolicyId: string;
 
-PolicyQualifiers?: AWS.ACMPCA.Certificate.PolicyQualifierInfo[]; };
+};
 
-export type PolicyQualifierInfo = { PolicyQualifierId: string;
+export type PolicyInformation = {
 
-Qualifier: AWS.ACMPCA.Certificate.Qualifier; };
 
-export type Qualifier = { CpsUri: string; };
+CertPolicyId: string;
 
-export type GeneralName = { OtherName?: AWS.ACMPCA.Certificate.OtherName;
+PolicyQualifiers?: AWS.ACMPCA.Certificate.PolicyQualifierInfo[];
+
+
+};
+
+export type PolicyQualifierInfo = {
+
+
+PolicyQualifierId: string;
+
+Qualifier: AWS.ACMPCA.Certificate.Qualifier;
+
+
+};
+
+export type Qualifier = {
+
+
+CpsUri: string;
+
+
+};
+
+export type GeneralName = {
+
+
+OtherName?: AWS.ACMPCA.Certificate.OtherName;
 
 Rfc822Name?: string;
 
@@ -8410,25 +14934,45 @@ UniformResourceIdentifier?: string;
 
 IpAddress?: string;
 
-RegisteredId?: string; };
+RegisteredId?: string;
 
-export type ApiPassthrough =  AWS.ACMPCA.Certificate.ApiPassthrough;
 
-export type EdiPartyName = { PartyName: string;
+};
 
-NameAssigner: string; };
+export type EdiPartyName = {
 
-export type OtherName = { TypeId: string;
 
-Value: string; };
+PartyName: string;
 
-export type Validity =  AWS.ACMPCA.Certificate.Validity;
+NameAssigner: string;
 
-export type ExtendedKeyUsage = { ExtendedKeyUsageType?: string;
 
-ExtendedKeyUsageObjectIdentifier?: string; };
+};
 
-export type KeyUsage = { DigitalSignature?: boolean;
+export type OtherName = {
+
+
+TypeId: string;
+
+Value: string;
+
+
+};
+
+export type ExtendedKeyUsage = {
+
+
+ExtendedKeyUsageType?: string;
+
+ExtendedKeyUsageObjectIdentifier?: string;
+
+
+};
+
+export type KeyUsage = {
+
+
+DigitalSignature?: boolean;
 
 NonRepudiation?: boolean;
 
@@ -8444,25 +14988,43 @@ CRLSign?: boolean;
 
 EncipherOnly?: boolean;
 
-DecipherOnly?: boolean; };
+DecipherOnly?: boolean;
 
-export type CertificateAuthorityArn =  string;
 
-export type CertificateSigningRequest =  string;
+};
 
-export type SigningAlgorithm =  string;
-
-export type TemplateArn =  string;
-
-export type ValidityNotBefore =  AWS.ACMPCA.Certificate.Validity;
 
 }
 
+export type CertificateAuthority = {
+
+
+RevocationConfiguration?: AWS.ACMPCA.CertificateAuthority.RevocationConfiguration;
+
+CsrExtensions?: AWS.ACMPCA.CertificateAuthority.CsrExtensions;
+
+Subject: AWS.ACMPCA.CertificateAuthority.Subject;
+
+Type: string;
+
+KeyAlgorithm: string;
+
+SigningAlgorithm: string;
+
+Tags?: Tag[];
+
+KeyStorageSecurityStandard?: string;
+
+
+};
+
 export namespace CertificateAuthority {
 
-export type RevocationConfiguration =  AWS.ACMPCA.CertificateAuthority.RevocationConfiguration;
 
-export type KeyUsage = { DigitalSignature?: boolean;
+export type KeyUsage = {
+
+
+DigitalSignature?: boolean;
 
 NonRepudiation?: boolean;
 
@@ -8478,29 +15040,55 @@ CRLSign?: boolean;
 
 EncipherOnly?: boolean;
 
-DecipherOnly?: boolean; };
+DecipherOnly?: boolean;
 
-export type CsrExtensions =  AWS.ACMPCA.CertificateAuthority.CsrExtensions;
 
-export type AccessDescription = { AccessMethod: AWS.ACMPCA.CertificateAuthority.AccessMethod;
+};
 
-AccessLocation: AWS.ACMPCA.CertificateAuthority.GeneralName; };
+export type AccessDescription = {
 
-export type EdiPartyName = { PartyName: string;
 
-NameAssigner: string; };
+AccessMethod: AWS.ACMPCA.CertificateAuthority.AccessMethod;
 
-export type Subject =  AWS.ACMPCA.CertificateAuthority.Subject;
+AccessLocation: AWS.ACMPCA.CertificateAuthority.GeneralName;
 
-export type AccessMethod = { CustomObjectIdentifier?: string;
 
-AccessMethodType?: string; };
+};
 
-export type OtherName = { TypeId: string;
+export type EdiPartyName = {
 
-Value: string; };
 
-export type CrlConfiguration = { Enabled?: boolean;
+PartyName: string;
+
+NameAssigner: string;
+
+
+};
+
+export type AccessMethod = {
+
+
+CustomObjectIdentifier?: string;
+
+AccessMethodType?: string;
+
+
+};
+
+export type OtherName = {
+
+
+TypeId: string;
+
+Value: string;
+
+
+};
+
+export type CrlConfiguration = {
+
+
+Enabled?: boolean;
 
 ExpirationInDays?: number;
 
@@ -8508,9 +15096,15 @@ CustomCname?: string;
 
 S3BucketName?: string;
 
-S3ObjectAcl?: string; };
+S3ObjectAcl?: string;
 
-export type GeneralName = { OtherName?: AWS.ACMPCA.CertificateAuthority.OtherName;
+
+};
+
+export type GeneralName = {
+
+
+OtherName?: AWS.ACMPCA.CertificateAuthority.OtherName;
 
 Rfc822Name?: string;
 
@@ -8524,43 +15118,73 @@ UniformResourceIdentifier?: string;
 
 IpAddress?: string;
 
-RegisteredId?: string; };
+RegisteredId?: string;
 
-export type Type =  string;
 
-export type KeyAlgorithm =  string;
+};
 
-export type SigningAlgorithm =  string;
-
-export type Tags =  Tag[];
-
-export type KeyStorageSecurityStandard =  string;
 
 }
 
-export namespace CertificateAuthorityActivation {
+export type CertificateAuthorityActivation = {
 
-export type CertificateAuthorityArn =  string;
 
-export type Certificate =  string;
+CertificateAuthorityArn: string;
 
-export type CertificateChain =  string;
+Certificate: string;
 
-export type Status =  string;
+CertificateChain?: string;
 
-}
+Status?: string;
+
+
+};
+
 
 }
 
 export namespace IoTWireless {
 
+
+export type WirelessDevice = {
+
+
+Type: string;
+
+Name?: string;
+
+Description?: string;
+
+DestinationName: string;
+
+LoRaWAN?: AWS.IoTWireless.WirelessDevice.LoRaWANDevice;
+
+Tags?: Tag[];
+
+ThingArn?: string;
+
+LastUplinkReceivedAt?: string;
+
+
+};
+
 export namespace WirelessDevice {
 
-export type AbpV11 = { DevAddr: string;
 
-SessionKeys: AWS.IoTWireless.WirelessDevice.SessionKeysAbpV11; };
+export type AbpV11 = {
 
-export type LoRaWANDevice = { DevEui?: string;
+
+DevAddr: string;
+
+SessionKeys: AWS.IoTWireless.WirelessDevice.SessionKeysAbpV11;
+
+
+};
+
+export type LoRaWANDevice = {
+
+
+DevEui?: string;
 
 DeviceProfileId?: string;
 
@@ -8572,91 +15196,151 @@ OtaaV10x?: AWS.IoTWireless.WirelessDevice.OtaaV10x;
 
 AbpV11?: AWS.IoTWireless.WirelessDevice.AbpV11;
 
-AbpV10x?: AWS.IoTWireless.WirelessDevice.AbpV10x; };
+AbpV10x?: AWS.IoTWireless.WirelessDevice.AbpV10x;
 
-export type SessionKeysAbpV11 = { FNwkSIntKey: string;
+
+};
+
+export type SessionKeysAbpV11 = {
+
+
+FNwkSIntKey: string;
 
 SNwkSIntKey: string;
 
 NwkSEncKey: string;
 
-AppSKey: string; };
+AppSKey: string;
 
-export type AbpV10x = { DevAddr: string;
 
-SessionKeys: AWS.IoTWireless.WirelessDevice.SessionKeysAbpV10x; };
+};
 
-export type OtaaV11 = { AppKey: string;
+export type AbpV10x = {
+
+
+DevAddr: string;
+
+SessionKeys: AWS.IoTWireless.WirelessDevice.SessionKeysAbpV10x;
+
+
+};
+
+export type OtaaV11 = {
+
+
+AppKey: string;
 
 NwkKey: string;
 
-JoinEui: string; };
+JoinEui: string;
 
-export type SessionKeysAbpV10x = { NwkSKey: string;
 
-AppSKey: string; };
+};
 
-export type OtaaV10x = { AppKey: string;
+export type SessionKeysAbpV10x = {
 
-AppEui: string; };
 
-export type Type =  string;
+NwkSKey: string;
 
-export type Name =  string;
+AppSKey: string;
 
-export type Description =  string;
 
-export type DestinationName =  string;
+};
 
-export type LoRaWAN =  AWS.IoTWireless.WirelessDevice.LoRaWANDevice;
+export type OtaaV10x = {
 
-export type Tags =  Tag[];
 
-export type ThingArn =  string;
+AppKey: string;
 
-export type LastUplinkReceivedAt =  string;
+AppEui: string;
+
+
+};
+
 
 }
 
+export type TaskDefinition = {
+
+
+LoRaWANUpdateGatewayTaskEntry?: AWS.IoTWireless.TaskDefinition.LoRaWANUpdateGatewayTaskEntry;
+
+Name?: string;
+
+AutoCreateTasks: boolean;
+
+Update?: AWS.IoTWireless.TaskDefinition.UpdateWirelessGatewayTaskCreate;
+
+TaskDefinitionType?: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace TaskDefinition {
 
-export type UpdateWirelessGatewayTaskCreate = { UpdateDataSource?: string;
+
+export type UpdateWirelessGatewayTaskCreate = {
+
+
+UpdateDataSource?: string;
 
 UpdateDataRole?: string;
 
-LoRaWAN?: AWS.IoTWireless.TaskDefinition.LoRaWANUpdateGatewayTaskCreate; };
+LoRaWAN?: AWS.IoTWireless.TaskDefinition.LoRaWANUpdateGatewayTaskCreate;
 
-export type LoRaWANUpdateGatewayTaskEntry =  AWS.IoTWireless.TaskDefinition.LoRaWANUpdateGatewayTaskEntry;
 
-export type LoRaWANGatewayVersion = { PackageVersion?: string;
+};
+
+export type LoRaWANGatewayVersion = {
+
+
+PackageVersion?: string;
 
 Model?: string;
 
-Station?: string; };
+Station?: string;
 
-export type LoRaWANUpdateGatewayTaskCreate = { UpdateSignature?: string;
+
+};
+
+export type LoRaWANUpdateGatewayTaskCreate = {
+
+
+UpdateSignature?: string;
 
 SigKeyCrc?: number;
 
 CurrentVersion?: AWS.IoTWireless.TaskDefinition.LoRaWANGatewayVersion;
 
-UpdateVersion?: AWS.IoTWireless.TaskDefinition.LoRaWANGatewayVersion; };
+UpdateVersion?: AWS.IoTWireless.TaskDefinition.LoRaWANGatewayVersion;
 
-export type Name =  string;
 
-export type AutoCreateTasks =  boolean;
+};
 
-export type Update =  AWS.IoTWireless.TaskDefinition.UpdateWirelessGatewayTaskCreate;
-
-export type TaskDefinitionType =  string;
-
-export type Tags =  Tag[];
 
 }
 
+export type DeviceProfile = {
+
+
+Name?: string;
+
+LoRaWAN?: AWS.IoTWireless.DeviceProfile.LoRaWANDeviceProfile;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace DeviceProfile {
 
-export type LoRaWANDeviceProfile = { SupportsClassB?: boolean;
+
+export type LoRaWANDeviceProfile = {
+
+
+SupportsClassB?: boolean;
 
 ClassBTimeout?: number;
 
@@ -8682,61 +15366,109 @@ SupportsJoin?: boolean;
 
 RfRegion?: string;
 
-Supports32BitFCnt?: boolean; };
+Supports32BitFCnt?: boolean;
 
-export type Name =  string;
 
-export type LoRaWAN =  AWS.IoTWireless.DeviceProfile.LoRaWANDeviceProfile;
+};
 
-export type Tags =  Tag[];
 
 }
+
+export type PartnerAccount = {
+
+
+Sidewalk?: AWS.IoTWireless.PartnerAccount.SidewalkAccountInfo;
+
+PartnerAccountId?: string;
+
+PartnerType?: string;
+
+AccountLinked?: boolean;
+
+SidewalkUpdate?: AWS.IoTWireless.PartnerAccount.SidewalkUpdateAccount;
+
+Fingerprint?: string;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace PartnerAccount {
 
-export type SidewalkAccountInfo = { AppServerPrivateKey: string; };
 
-export type SidewalkUpdateAccount = { AppServerPrivateKey?: string; };
+export type SidewalkAccountInfo = {
 
-export type Sidewalk =  AWS.IoTWireless.PartnerAccount.SidewalkAccountInfo;
 
-export type PartnerAccountId =  string;
+AppServerPrivateKey: string;
 
-export type PartnerType =  string;
 
-export type AccountLinked =  boolean;
+};
 
-export type SidewalkUpdate =  AWS.IoTWireless.PartnerAccount.SidewalkUpdateAccount;
+export type SidewalkUpdateAccount = {
 
-export type Fingerprint =  string;
 
-export type Tags =  Tag[];
+AppServerPrivateKey?: string;
+
+
+};
+
 
 }
+
+export type WirelessGateway = {
+
+
+Name?: string;
+
+Description?: string;
+
+Tags?: Tag[];
+
+LoRaWAN: AWS.IoTWireless.WirelessGateway.LoRaWANGateway;
+
+ThingArn?: string;
+
+LastUplinkReceivedAt?: string;
+
+
+};
 
 export namespace WirelessGateway {
 
-export type LoRaWANGateway = { GatewayEui: string;
 
-RfRegion: string; };
+export type LoRaWANGateway = {
 
-export type Name =  string;
 
-export type Description =  string;
+GatewayEui: string;
 
-export type Tags =  Tag[];
+RfRegion: string;
 
-export type LoRaWAN =  AWS.IoTWireless.WirelessGateway.LoRaWANGateway;
 
-export type ThingArn =  string;
+};
 
-export type LastUplinkReceivedAt =  string;
 
 }
 
+export type ServiceProfile = {
+
+
+Name?: string;
+
+LoRaWAN?: AWS.IoTWireless.ServiceProfile.LoRaWANServiceProfile;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace ServiceProfile {
 
-export type LoRaWANServiceProfile = { UlRate?: number;
+
+export type LoRaWANServiceProfile = {
+
+
+UlRate?: number;
 
 UlBucketSize?: number;
 
@@ -8772,107 +15504,227 @@ NwkGeoLoc?: boolean;
 
 TargetPer?: number;
 
-MinGwDiversity?: number; };
+MinGwDiversity?: number;
 
-export type Name =  string;
 
-export type LoRaWAN =  AWS.IoTWireless.ServiceProfile.LoRaWANServiceProfile;
+};
 
-export type Tags =  Tag[];
 
 }
 
-export namespace Destination {
+export type Destination = {
 
-export type Name =  string;
 
-export type Expression =  string;
+Name: string;
 
-export type ExpressionType =  string;
+Expression: string;
 
-export type Description =  string;
+ExpressionType: string;
 
-export type Tags =  Tag[];
+Description?: string;
 
-export type RoleArn =  string;
+Tags?: Tag[];
 
-}
+RoleArn: string;
+
+
+};
+
 
 }
 
 export namespace KinesisAnalyticsV2 {
 
+
+export type ApplicationReferenceDataSource = {
+
+
+ReferenceDataSource: AWS.KinesisAnalyticsV2.ApplicationReferenceDataSource.ReferenceDataSource;
+
+ApplicationName: string;
+
+
+};
+
 export namespace ApplicationReferenceDataSource {
 
-export type RecordColumn = { Mapping?: string;
+
+export type RecordColumn = {
+
+
+Mapping?: string;
 
 SqlType: string;
 
-Name: string; };
+Name: string;
 
-export type RecordFormat = { MappingParameters?: AWS.KinesisAnalyticsV2.ApplicationReferenceDataSource.MappingParameters;
 
-RecordFormatType: string; };
+};
 
-export type JSONMappingParameters = { RecordRowPath: string; };
+export type RecordFormat = {
 
-export type ReferenceDataSource =  AWS.KinesisAnalyticsV2.ApplicationReferenceDataSource.ReferenceDataSource;
 
-export type MappingParameters = { JSONMappingParameters?: AWS.KinesisAnalyticsV2.ApplicationReferenceDataSource.JSONMappingParameters;
+MappingParameters?: AWS.KinesisAnalyticsV2.ApplicationReferenceDataSource.MappingParameters;
 
-CSVMappingParameters?: AWS.KinesisAnalyticsV2.ApplicationReferenceDataSource.CSVMappingParameters; };
+RecordFormatType: string;
 
-export type S3ReferenceDataSource = { BucketARN: string;
 
-FileKey: string; };
+};
 
-export type ReferenceSchema = { RecordEncoding?: string;
+export type JSONMappingParameters = {
+
+
+RecordRowPath: string;
+
+
+};
+
+export type MappingParameters = {
+
+
+JSONMappingParameters?: AWS.KinesisAnalyticsV2.ApplicationReferenceDataSource.JSONMappingParameters;
+
+CSVMappingParameters?: AWS.KinesisAnalyticsV2.ApplicationReferenceDataSource.CSVMappingParameters;
+
+
+};
+
+export type S3ReferenceDataSource = {
+
+
+BucketARN: string;
+
+FileKey: string;
+
+
+};
+
+export type ReferenceSchema = {
+
+
+RecordEncoding?: string;
 
 RecordColumns: AWS.KinesisAnalyticsV2.ApplicationReferenceDataSource.RecordColumn[];
 
-RecordFormat: AWS.KinesisAnalyticsV2.ApplicationReferenceDataSource.RecordFormat; };
+RecordFormat: AWS.KinesisAnalyticsV2.ApplicationReferenceDataSource.RecordFormat;
 
-export type CSVMappingParameters = { RecordRowDelimiter: string;
 
-RecordColumnDelimiter: string; };
+};
 
-export type ApplicationName =  string;
+export type CSVMappingParameters = {
+
+
+RecordRowDelimiter: string;
+
+RecordColumnDelimiter: string;
+
+
+};
+
 
 }
 
+export type Application = {
+
+
+CustomArtifactsConfiguration?: AWS.KinesisAnalyticsV2.Application.CustomArtifactConfiguration[];
+
+ApplicationConfiguration?: AWS.KinesisAnalyticsV2.Application.ApplicationConfiguration;
+
+ApplicationName?: string;
+
+RuntimeEnvironment: string;
+
+ApplicationMode?: string;
+
+ApplicationDescription?: string;
+
+Tags?: Tag[];
+
+ServiceExecutionRole: string;
+
+
+};
+
 export namespace Application {
 
-export type CustomArtifactConfiguration = { MavenReference?: AWS.KinesisAnalyticsV2.Application.MavenReference;
+
+export type CustomArtifactConfiguration = {
+
+
+MavenReference?: AWS.KinesisAnalyticsV2.Application.MavenReference;
 
 S3ContentLocation?: AWS.KinesisAnalyticsV2.Application.S3ContentLocation;
 
-ArtifactType: string; };
+ArtifactType: string;
 
-export type S3ContentLocation = { BucketARN?: string;
+
+};
+
+export type S3ContentLocation = {
+
+
+BucketARN?: string;
 
 FileKey?: string;
 
-ObjectVersion?: string; };
+ObjectVersion?: string;
 
-export type DeployAsApplicationConfiguration = { S3ContentLocation: AWS.KinesisAnalyticsV2.Application.S3ContentBaseLocation; };
 
-export type PropertyGroup = { PropertyMap?: JSONString;
+};
 
-PropertyGroupId?: string; };
+export type DeployAsApplicationConfiguration = {
 
-export type MappingParameters = { JSONMappingParameters?: AWS.KinesisAnalyticsV2.Application.JSONMappingParameters;
 
-CSVMappingParameters?: AWS.KinesisAnalyticsV2.Application.CSVMappingParameters; };
+S3ContentLocation: AWS.KinesisAnalyticsV2.Application.S3ContentBaseLocation;
 
-export type InputParallelism = { Count?: number; };
 
-export type FlinkApplicationConfiguration = { CheckpointConfiguration?: AWS.KinesisAnalyticsV2.Application.CheckpointConfiguration;
+};
+
+export type PropertyGroup = {
+
+
+PropertyMap?: JSONString;
+
+PropertyGroupId?: string;
+
+
+};
+
+export type MappingParameters = {
+
+
+JSONMappingParameters?: AWS.KinesisAnalyticsV2.Application.JSONMappingParameters;
+
+CSVMappingParameters?: AWS.KinesisAnalyticsV2.Application.CSVMappingParameters;
+
+
+};
+
+export type InputParallelism = {
+
+
+Count?: number;
+
+
+};
+
+export type FlinkApplicationConfiguration = {
+
+
+CheckpointConfiguration?: AWS.KinesisAnalyticsV2.Application.CheckpointConfiguration;
 
 ParallelismConfiguration?: AWS.KinesisAnalyticsV2.Application.ParallelismConfiguration;
 
-MonitoringConfiguration?: AWS.KinesisAnalyticsV2.Application.MonitoringConfiguration; };
+MonitoringConfiguration?: AWS.KinesisAnalyticsV2.Application.MonitoringConfiguration;
 
-export type Input = { NamePrefix: string;
+
+};
+
+export type Input = {
+
+
+NamePrefix: string;
 
 InputSchema: AWS.KinesisAnalyticsV2.Application.InputSchema;
 
@@ -8882,149 +15734,365 @@ KinesisFirehoseInput?: AWS.KinesisAnalyticsV2.Application.KinesisFirehoseInput;
 
 InputProcessingConfiguration?: AWS.KinesisAnalyticsV2.Application.InputProcessingConfiguration;
 
-InputParallelism?: AWS.KinesisAnalyticsV2.Application.InputParallelism; };
+InputParallelism?: AWS.KinesisAnalyticsV2.Application.InputParallelism;
 
-export type ApplicationSnapshotConfiguration = { SnapshotsEnabled: boolean; };
 
-export type KinesisFirehoseInput = { ResourceARN: string; };
+};
 
-export type InputSchema = { RecordEncoding?: string;
+export type ApplicationSnapshotConfiguration = {
+
+
+SnapshotsEnabled: boolean;
+
+
+};
+
+export type KinesisFirehoseInput = {
+
+
+ResourceARN: string;
+
+
+};
+
+export type InputSchema = {
+
+
+RecordEncoding?: string;
 
 RecordColumns: AWS.KinesisAnalyticsV2.Application.RecordColumn[];
 
-RecordFormat: AWS.KinesisAnalyticsV2.Application.RecordFormat; };
+RecordFormat: AWS.KinesisAnalyticsV2.Application.RecordFormat;
 
-export type ParallelismConfiguration = { ConfigurationType: string;
+
+};
+
+export type ParallelismConfiguration = {
+
+
+ConfigurationType: string;
 
 ParallelismPerKPU?: number;
 
 AutoScalingEnabled?: boolean;
 
-Parallelism?: number; };
+Parallelism?: number;
 
-export type MonitoringConfiguration = { ConfigurationType: string;
+
+};
+
+export type MonitoringConfiguration = {
+
+
+ConfigurationType: string;
 
 MetricsLevel?: string;
 
-LogLevel?: string; };
+LogLevel?: string;
 
-export type CustomArtifactsConfiguration =  AWS.KinesisAnalyticsV2.Application.CustomArtifactConfiguration[];
 
-export type SqlApplicationConfiguration = { Inputs?: AWS.KinesisAnalyticsV2.Application.Input[]; };
+};
 
-export type InputProcessingConfiguration = { InputLambdaProcessor?: AWS.KinesisAnalyticsV2.Application.InputLambdaProcessor; };
+export type SqlApplicationConfiguration = {
 
-export type ApplicationCodeConfiguration = { CodeContentType: string;
 
-CodeContent: AWS.KinesisAnalyticsV2.Application.CodeContent; };
+Inputs?: AWS.KinesisAnalyticsV2.Application.Input[];
 
-export type ZeppelinApplicationConfiguration = { CatalogConfiguration?: AWS.KinesisAnalyticsV2.Application.CatalogConfiguration;
+
+};
+
+export type InputProcessingConfiguration = {
+
+
+InputLambdaProcessor?: AWS.KinesisAnalyticsV2.Application.InputLambdaProcessor;
+
+
+};
+
+export type ApplicationCodeConfiguration = {
+
+
+CodeContentType: string;
+
+CodeContent: AWS.KinesisAnalyticsV2.Application.CodeContent;
+
+
+};
+
+export type ZeppelinApplicationConfiguration = {
+
+
+CatalogConfiguration?: AWS.KinesisAnalyticsV2.Application.CatalogConfiguration;
 
 MonitoringConfiguration?: AWS.KinesisAnalyticsV2.Application.ZeppelinMonitoringConfiguration;
 
 DeployAsApplicationConfiguration?: AWS.KinesisAnalyticsV2.Application.DeployAsApplicationConfiguration;
 
-CustomArtifactsConfiguration?: AWS.KinesisAnalyticsV2.Application.CustomArtifactsConfiguration; };
+CustomArtifactsConfiguration?: AWS.KinesisAnalyticsV2.Application.CustomArtifactsConfiguration;
 
-export type MavenReference = { ArtifactId: string;
+
+};
+
+export type MavenReference = {
+
+
+ArtifactId: string;
 
 Version: string;
 
-GroupId: string; };
+GroupId: string;
 
-export type KinesisStreamsInput = { ResourceARN: string; };
 
-export type CheckpointConfiguration = { ConfigurationType: string;
+};
+
+export type KinesisStreamsInput = {
+
+
+ResourceARN: string;
+
+
+};
+
+export type CheckpointConfiguration = {
+
+
+ConfigurationType: string;
 
 CheckpointInterval?: number;
 
 MinPauseBetweenCheckpoints?: number;
 
-CheckpointingEnabled?: boolean; };
+CheckpointingEnabled?: boolean;
 
-export type ZeppelinMonitoringConfiguration = { LogLevel?: string; };
 
-export type S3ContentBaseLocation = { BucketARN: string;
+};
 
-BasePath: string; };
+export type ZeppelinMonitoringConfiguration = {
 
-export type InputLambdaProcessor = { ResourceARN: string; };
 
-export type RecordColumn = { Mapping?: string;
+LogLevel?: string;
+
+
+};
+
+export type S3ContentBaseLocation = {
+
+
+BucketARN: string;
+
+BasePath: string;
+
+
+};
+
+export type InputLambdaProcessor = {
+
+
+ResourceARN: string;
+
+
+};
+
+export type RecordColumn = {
+
+
+Mapping?: string;
 
 SqlType: string;
 
-Name: string; };
+Name: string;
 
-export type CSVMappingParameters = { RecordRowDelimiter: string;
 
-RecordColumnDelimiter: string; };
+};
 
-export type RecordFormat = { MappingParameters?: AWS.KinesisAnalyticsV2.Application.MappingParameters;
+export type CSVMappingParameters = {
 
-RecordFormatType: string; };
 
-export type GlueDataCatalogConfiguration = { DatabaseARN?: string; };
+RecordRowDelimiter: string;
 
-export type JSONMappingParameters = { RecordRowPath: string; };
+RecordColumnDelimiter: string;
 
-export type CodeContent = { ZipFileContent?: string;
+
+};
+
+export type RecordFormat = {
+
+
+MappingParameters?: AWS.KinesisAnalyticsV2.Application.MappingParameters;
+
+RecordFormatType: string;
+
+
+};
+
+export type GlueDataCatalogConfiguration = {
+
+
+DatabaseARN?: string;
+
+
+};
+
+export type JSONMappingParameters = {
+
+
+RecordRowPath: string;
+
+
+};
+
+export type CodeContent = {
+
+
+ZipFileContent?: string;
 
 S3ContentLocation?: AWS.KinesisAnalyticsV2.Application.S3ContentLocation;
 
-TextContent?: string; };
+TextContent?: string;
 
-export type ApplicationConfiguration =  AWS.KinesisAnalyticsV2.Application.ApplicationConfiguration;
 
-export type EnvironmentProperties = { PropertyGroups?: AWS.KinesisAnalyticsV2.Application.PropertyGroup[]; };
+};
 
-export type CatalogConfiguration = { GlueDataCatalogConfiguration?: AWS.KinesisAnalyticsV2.Application.GlueDataCatalogConfiguration; };
+export type EnvironmentProperties = {
 
-export type ApplicationName =  string;
 
-export type RuntimeEnvironment =  string;
+PropertyGroups?: AWS.KinesisAnalyticsV2.Application.PropertyGroup[];
 
-export type ApplicationMode =  string;
 
-export type ApplicationDescription =  string;
+};
 
-export type Tags =  Tag[];
+export type CatalogConfiguration = {
 
-export type ServiceExecutionRole =  string;
+
+GlueDataCatalogConfiguration?: AWS.KinesisAnalyticsV2.Application.GlueDataCatalogConfiguration;
+
+
+};
+
 
 }
+
+export type ApplicationOutput = {
+
+
+Output: AWS.KinesisAnalyticsV2.ApplicationOutput.Output;
+
+ApplicationName: string;
+
+
+};
 
 export namespace ApplicationOutput {
 
-export type KinesisFirehoseOutput = { ResourceARN: string; };
 
-export type KinesisStreamsOutput = { ResourceARN: string; };
+export type KinesisFirehoseOutput = {
 
-export type DestinationSchema = { RecordFormatType?: string; };
 
-export type Output =  AWS.KinesisAnalyticsV2.ApplicationOutput.Output;
+ResourceARN: string;
 
-export type LambdaOutput = { ResourceARN: string; };
 
-export type ApplicationName =  string;
+};
+
+export type KinesisStreamsOutput = {
+
+
+ResourceARN: string;
+
+
+};
+
+export type DestinationSchema = {
+
+
+RecordFormatType?: string;
+
+
+};
+
+export type LambdaOutput = {
+
+
+ResourceARN: string;
+
+
+};
+
 
 }
 
-export namespace ApplicationCloudWatchLoggingOption {
+export type ApplicationCloudWatchLoggingOption = {
 
-export type CloudWatchLoggingOption =  AWS.KinesisAnalyticsV2.ApplicationCloudWatchLoggingOption.CloudWatchLoggingOption;
 
-export type ApplicationName =  string;
+CloudWatchLoggingOption: AWS.KinesisAnalyticsV2.ApplicationCloudWatchLoggingOption.CloudWatchLoggingOption;
 
-}
+ApplicationName: string;
+
+
+};
+
 
 }
 
 export namespace Cognito {
 
+
+export type UserPool = {
+
+
+AdminCreateUserConfig?: AWS.Cognito.UserPool.AdminCreateUserConfig;
+
+SmsConfiguration?: AWS.Cognito.UserPool.SmsConfiguration;
+
+VerificationMessageTemplate?: AWS.Cognito.UserPool.VerificationMessageTemplate;
+
+LambdaConfig?: AWS.Cognito.UserPool.LambdaConfig;
+
+EmailConfiguration?: AWS.Cognito.UserPool.EmailConfiguration;
+
+AccountRecoverySetting?: AWS.Cognito.UserPool.AccountRecoverySetting;
+
+UserPoolAddOns?: AWS.Cognito.UserPool.UserPoolAddOns;
+
+Policies?: AWS.Cognito.UserPool.Policies;
+
+DeviceConfiguration?: AWS.Cognito.UserPool.DeviceConfiguration;
+
+UsernameConfiguration?: AWS.Cognito.UserPool.UsernameConfiguration;
+
+UserPoolTags?: JSONString;
+
+MfaConfiguration?: string;
+
+Schema?: AWS.Cognito.UserPool.SchemaAttribute[];
+
+SmsAuthenticationMessage?: string;
+
+UserPoolName?: string;
+
+SmsVerificationMessage?: string;
+
+AliasAttributes?: string[];
+
+EnabledMfas?: string[];
+
+EmailVerificationSubject?: string;
+
+UsernameAttributes?: string[];
+
+AutoVerifiedAttributes?: string[];
+
+EmailVerificationMessage?: string;
+
+
+};
+
 export namespace UserPool {
 
-export type PasswordPolicy = { RequireNumbers?: boolean;
+
+export type PasswordPolicy = {
+
+
+RequireNumbers?: boolean;
 
 MinimumLength?: number;
 
@@ -9034,33 +16102,47 @@ RequireUppercase?: boolean;
 
 RequireLowercase?: boolean;
 
-RequireSymbols?: boolean; };
+RequireSymbols?: boolean;
 
-export type RecoveryOption = { Priority?: number;
 
-Name?: string; };
+};
 
-export type AdminCreateUserConfig =  AWS.Cognito.UserPool.AdminCreateUserConfig;
+export type RecoveryOption = {
 
-export type SmsConfiguration =  AWS.Cognito.UserPool.SmsConfiguration;
 
-export type StringAttributeConstraints = { MinLength?: string;
+Priority?: number;
 
-MaxLength?: string; };
+Name?: string;
 
-export type VerificationMessageTemplate =  AWS.Cognito.UserPool.VerificationMessageTemplate;
 
-export type LambdaConfig =  AWS.Cognito.UserPool.LambdaConfig;
+};
 
-export type InviteMessageTemplate = { EmailMessage?: string;
+export type StringAttributeConstraints = {
+
+
+MinLength?: string;
+
+MaxLength?: string;
+
+
+};
+
+export type InviteMessageTemplate = {
+
+
+EmailMessage?: string;
 
 SMSMessage?: string;
 
-EmailSubject?: string; };
+EmailSubject?: string;
 
-export type EmailConfiguration =  AWS.Cognito.UserPool.EmailConfiguration;
 
-export type SchemaAttribute = { DeveloperOnlyAttribute?: boolean;
+};
+
+export type SchemaAttribute = {
+
+
+DeveloperOnlyAttribute?: boolean;
 
 Mutable?: boolean;
 
@@ -9072,101 +16154,159 @@ Required?: boolean;
 
 NumberAttributeConstraints?: AWS.Cognito.UserPool.NumberAttributeConstraints;
 
-Name?: string; };
+Name?: string;
 
-export type NumberAttributeConstraints = { MinValue?: string;
 
-MaxValue?: string; };
+};
 
-export type CustomSMSSender = { LambdaArn?: string;
+export type NumberAttributeConstraints = {
 
-LambdaVersion?: string; };
 
-export type AccountRecoverySetting =  AWS.Cognito.UserPool.AccountRecoverySetting;
+MinValue?: string;
 
-export type UserPoolAddOns =  AWS.Cognito.UserPool.UserPoolAddOns;
+MaxValue?: string;
 
-export type Policies =  AWS.Cognito.UserPool.Policies;
 
-export type CustomEmailSender = { LambdaArn?: string;
+};
 
-LambdaVersion?: string; };
+export type CustomSMSSender = {
 
-export type DeviceConfiguration =  AWS.Cognito.UserPool.DeviceConfiguration;
 
-export type UsernameConfiguration =  AWS.Cognito.UserPool.UsernameConfiguration;
+LambdaArn?: string;
 
-export type UserPoolTags =  JSONString;
+LambdaVersion?: string;
 
-export type MfaConfiguration =  string;
 
-export type Schema =  AWS.Cognito.UserPool.SchemaAttribute[];
+};
 
-export type SmsAuthenticationMessage =  string;
+export type CustomEmailSender = {
 
-export type UserPoolName =  string;
 
-export type SmsVerificationMessage =  string;
+LambdaArn?: string;
 
-export type AliasAttributes =  string[];
+LambdaVersion?: string;
 
-export type EnabledMfas =  string[];
 
-export type EmailVerificationSubject =  string;
+};
 
-export type UsernameAttributes =  string[];
-
-export type AutoVerifiedAttributes =  string[];
-
-export type EmailVerificationMessage =  string;
 
 }
+
+export type UserPoolResourceServer = {
+
+
+UserPoolId: string;
+
+Identifier: string;
+
+Scopes?: AWS.Cognito.UserPoolResourceServer.ResourceServerScopeType[];
+
+Name: string;
+
+
+};
 
 export namespace UserPoolResourceServer {
 
-export type ResourceServerScopeType = { ScopeName: string;
 
-ScopeDescription: string; };
+export type ResourceServerScopeType = {
 
-export type UserPoolId =  string;
 
-export type Identifier =  string;
+ScopeName: string;
 
-export type Scopes =  AWS.Cognito.UserPoolResourceServer.ResourceServerScopeType[];
+ScopeDescription: string;
 
-export type Name =  string;
+
+};
+
 
 }
 
+export type UserPoolRiskConfigurationAttachment = {
+
+
+CompromisedCredentialsRiskConfiguration?: AWS.Cognito.UserPoolRiskConfigurationAttachment.CompromisedCredentialsRiskConfigurationType;
+
+UserPoolId: string;
+
+ClientId: string;
+
+AccountTakeoverRiskConfiguration?: AWS.Cognito.UserPoolRiskConfigurationAttachment.AccountTakeoverRiskConfigurationType;
+
+RiskExceptionConfiguration?: AWS.Cognito.UserPoolRiskConfigurationAttachment.RiskExceptionConfigurationType;
+
+
+};
+
 export namespace UserPoolRiskConfigurationAttachment {
 
-export type AccountTakeoverActionsType = { HighAction?: AWS.Cognito.UserPoolRiskConfigurationAttachment.AccountTakeoverActionType;
+
+export type AccountTakeoverActionsType = {
+
+
+HighAction?: AWS.Cognito.UserPoolRiskConfigurationAttachment.AccountTakeoverActionType;
 
 LowAction?: AWS.Cognito.UserPoolRiskConfigurationAttachment.AccountTakeoverActionType;
 
-MediumAction?: AWS.Cognito.UserPoolRiskConfigurationAttachment.AccountTakeoverActionType; };
+MediumAction?: AWS.Cognito.UserPoolRiskConfigurationAttachment.AccountTakeoverActionType;
 
-export type RiskExceptionConfigurationType = { BlockedIPRangeList?: string[];
 
-SkippedIPRangeList?: string[]; };
+};
 
-export type AccountTakeoverActionType = { Notify: boolean;
+export type RiskExceptionConfigurationType = {
 
-EventAction: string; };
 
-export type CompromisedCredentialsRiskConfigurationType = { Actions: AWS.Cognito.UserPoolRiskConfigurationAttachment.CompromisedCredentialsActionsType;
+BlockedIPRangeList?: string[];
 
-EventFilter?: string[]; };
+SkippedIPRangeList?: string[];
 
-export type NotifyEmailType = { TextBody?: string;
+
+};
+
+export type AccountTakeoverActionType = {
+
+
+Notify: boolean;
+
+EventAction: string;
+
+
+};
+
+export type CompromisedCredentialsRiskConfigurationType = {
+
+
+Actions: AWS.Cognito.UserPoolRiskConfigurationAttachment.CompromisedCredentialsActionsType;
+
+EventFilter?: string[];
+
+
+};
+
+export type NotifyEmailType = {
+
+
+TextBody?: string;
 
 HtmlBody?: string;
 
-Subject: string; };
+Subject: string;
 
-export type CompromisedCredentialsActionsType = { EventAction: string; };
 
-export type NotifyConfigurationType = { BlockEmail?: AWS.Cognito.UserPoolRiskConfigurationAttachment.NotifyEmailType;
+};
+
+export type CompromisedCredentialsActionsType = {
+
+
+EventAction: string;
+
+
+};
+
+export type NotifyConfigurationType = {
+
+
+BlockEmail?: AWS.Cognito.UserPoolRiskConfigurationAttachment.NotifyEmailType;
 
 ReplyTo?: string;
 
@@ -9176,253 +16316,407 @@ NoActionEmail?: AWS.Cognito.UserPoolRiskConfigurationAttachment.NotifyEmailType;
 
 From?: string;
 
-MfaEmail?: AWS.Cognito.UserPoolRiskConfigurationAttachment.NotifyEmailType; };
+MfaEmail?: AWS.Cognito.UserPoolRiskConfigurationAttachment.NotifyEmailType;
 
-export type AccountTakeoverRiskConfigurationType = { Actions: AWS.Cognito.UserPoolRiskConfigurationAttachment.AccountTakeoverActionsType;
 
-NotifyConfiguration?: AWS.Cognito.UserPoolRiskConfigurationAttachment.NotifyConfigurationType; };
+};
 
-export type CompromisedCredentialsRiskConfiguration =  AWS.Cognito.UserPoolRiskConfigurationAttachment.CompromisedCredentialsRiskConfigurationType;
+export type AccountTakeoverRiskConfigurationType = {
 
-export type UserPoolId =  string;
 
-export type ClientId =  string;
+Actions: AWS.Cognito.UserPoolRiskConfigurationAttachment.AccountTakeoverActionsType;
 
-export type AccountTakeoverRiskConfiguration =  AWS.Cognito.UserPoolRiskConfigurationAttachment.AccountTakeoverRiskConfigurationType;
+NotifyConfiguration?: AWS.Cognito.UserPoolRiskConfigurationAttachment.NotifyConfigurationType;
 
-export type RiskExceptionConfiguration =  AWS.Cognito.UserPoolRiskConfigurationAttachment.RiskExceptionConfigurationType;
+
+};
+
 
 }
 
+export type IdentityPoolRoleAttachment = {
+
+
+RoleMappings?: JSONString;
+
+IdentityPoolId: string;
+
+Roles?: JSONString;
+
+
+};
+
 export namespace IdentityPoolRoleAttachment {
 
-export type RoleMapping = { Type: string;
+
+export type RoleMapping = {
+
+
+Type: string;
 
 AmbiguousRoleResolution?: string;
 
 RulesConfiguration?: AWS.Cognito.IdentityPoolRoleAttachment.RulesConfigurationType;
 
-IdentityProvider?: string; };
+IdentityProvider?: string;
 
-export type MappingRule = { MatchType: string;
+
+};
+
+export type MappingRule = {
+
+
+MatchType: string;
 
 Value: string;
 
 Claim: string;
 
-RoleARN: string; };
+RoleARN: string;
 
-export type RulesConfigurationType = { Rules: AWS.Cognito.IdentityPoolRoleAttachment.MappingRule[]; };
 
-export type RoleMappings =  JSONString;
+};
 
-export type IdentityPoolId =  string;
+export type RulesConfigurationType = {
 
-export type Roles =  JSONString;
+
+Rules: AWS.Cognito.IdentityPoolRoleAttachment.MappingRule[];
+
+
+};
+
 
 }
+
+export type IdentityPool = {
+
+
+CognitoStreams?: AWS.Cognito.IdentityPool.CognitoStreams;
+
+PushSync?: AWS.Cognito.IdentityPool.PushSync;
+
+CognitoIdentityProviders?: AWS.Cognito.IdentityPool.CognitoIdentityProvider[];
+
+CognitoEvents?: JSONString;
+
+DeveloperProviderName?: string;
+
+IdentityPoolName?: string;
+
+AllowUnauthenticatedIdentities: boolean;
+
+SupportedLoginProviders?: JSONString;
+
+SamlProviderARNs?: string[];
+
+OpenIdConnectProviderARNs?: string[];
+
+AllowClassicFlow?: boolean;
+
+
+};
 
 export namespace IdentityPool {
 
-export type CognitoStreams =  AWS.Cognito.IdentityPool.CognitoStreams;
 
-export type PushSync =  AWS.Cognito.IdentityPool.PushSync;
+export type CognitoIdentityProvider = {
 
-export type CognitoIdentityProvider = { ServerSideTokenCheck?: boolean;
+
+ServerSideTokenCheck?: boolean;
 
 ProviderName?: string;
 
-ClientId?: string; };
+ClientId?: string;
 
-export type CognitoIdentityProviders =  AWS.Cognito.IdentityPool.CognitoIdentityProvider[];
 
-export type CognitoEvents =  JSONString;
+};
 
-export type DeveloperProviderName =  string;
-
-export type IdentityPoolName =  string;
-
-export type AllowUnauthenticatedIdentities =  boolean;
-
-export type SupportedLoginProviders =  JSONString;
-
-export type SamlProviderARNs =  string[];
-
-export type OpenIdConnectProviderARNs =  string[];
-
-export type AllowClassicFlow =  boolean;
 
 }
+
+export type UserPoolUser = {
+
+
+ValidationData?: AWS.Cognito.UserPoolUser.AttributeType[];
+
+UserPoolId: string;
+
+Username?: string;
+
+MessageAction?: string;
+
+ClientMetadata?: JSONString;
+
+DesiredDeliveryMediums?: string[];
+
+ForceAliasCreation?: boolean;
+
+UserAttributes?: AWS.Cognito.UserPoolUser.AttributeType[];
+
+
+};
 
 export namespace UserPoolUser {
 
-export type AttributeType = { Value?: string;
 
-Name?: string; };
+export type AttributeType = {
 
-export type ValidationData =  AWS.Cognito.UserPoolUser.AttributeType[];
 
-export type UserPoolId =  string;
+Value?: string;
 
-export type Username =  string;
+Name?: string;
 
-export type MessageAction =  string;
 
-export type ClientMetadata =  JSONString;
+};
 
-export type DesiredDeliveryMediums =  string[];
-
-export type ForceAliasCreation =  boolean;
-
-export type UserAttributes =  AWS.Cognito.UserPoolUser.AttributeType[];
 
 }
 
-export namespace UserPoolClient {
+export type UserPoolClient = {
 
-export type TokenValidityUnits =  AWS.Cognito.UserPoolClient.TokenValidityUnits;
 
-export type AnalyticsConfiguration =  AWS.Cognito.UserPoolClient.AnalyticsConfiguration;
+TokenValidityUnits?: AWS.Cognito.UserPoolClient.TokenValidityUnits;
 
-export type GenerateSecret =  boolean;
+AnalyticsConfiguration?: AWS.Cognito.UserPoolClient.AnalyticsConfiguration;
 
-export type CallbackURLs =  string[];
+GenerateSecret?: boolean;
 
-export type IdTokenValidity =  number;
+CallbackURLs?: string[];
 
-export type AllowedOAuthScopes =  string[];
+IdTokenValidity?: number;
 
-export type ReadAttributes =  string[];
+AllowedOAuthScopes?: string[];
 
-export type AllowedOAuthFlowsUserPoolClient =  boolean;
+ReadAttributes?: string[];
 
-export type DefaultRedirectURI =  string;
+AllowedOAuthFlowsUserPoolClient?: boolean;
 
-export type SupportedIdentityProviders =  string[];
+DefaultRedirectURI?: string;
 
-export type ClientName =  string;
+SupportedIdentityProviders?: string[];
 
-export type UserPoolId =  string;
+ClientName?: string;
 
-export type AllowedOAuthFlows =  string[];
+UserPoolId: string;
 
-export type ExplicitAuthFlows =  string[];
+AllowedOAuthFlows?: string[];
 
-export type LogoutURLs =  string[];
+ExplicitAuthFlows?: string[];
 
-export type AccessTokenValidity =  number;
+LogoutURLs?: string[];
 
-export type RefreshTokenValidity =  number;
+AccessTokenValidity?: number;
 
-export type WriteAttributes =  string[];
+RefreshTokenValidity?: number;
 
-export type PreventUserExistenceErrors =  string;
+WriteAttributes?: string[];
 
-export type EnableTokenRevocation =  boolean;
+PreventUserExistenceErrors?: string;
 
-}
+EnableTokenRevocation?: boolean;
+
+
+};
+
+export type UserPoolDomain = {
+
+
+UserPoolId: string;
+
+CustomDomainConfig?: AWS.Cognito.UserPoolDomain.CustomDomainConfigType;
+
+Domain: string;
+
+
+};
 
 export namespace UserPoolDomain {
 
-export type CustomDomainConfigType = { CertificateArn?: string; };
 
-export type UserPoolId =  string;
+export type CustomDomainConfigType = {
 
-export type CustomDomainConfig =  AWS.Cognito.UserPoolDomain.CustomDomainConfigType;
 
-export type Domain =  string;
+CertificateArn?: string;
 
-}
 
-export namespace UserPoolIdentityProvider {
+};
 
-export type ProviderName =  string;
-
-export type UserPoolId =  string;
-
-export type AttributeMapping =  JSONString;
-
-export type ProviderDetails =  JSONString;
-
-export type ProviderType =  string;
-
-export type IdpIdentifiers =  string[];
 
 }
 
-export namespace UserPoolUserToGroupAttachment {
+export type UserPoolIdentityProvider = {
 
-export type GroupName =  string;
 
-export type UserPoolId =  string;
+ProviderName: string;
 
-export type Username =  string;
+UserPoolId: string;
 
-}
+AttributeMapping?: JSONString;
 
-export namespace UserPoolUICustomizationAttachment {
+ProviderDetails?: JSONString;
 
-export type CSS =  string;
+ProviderType: string;
 
-export type UserPoolId =  string;
+IdpIdentifiers?: string[];
 
-export type ClientId =  string;
 
-}
+};
 
-export namespace UserPoolGroup {
+export type UserPoolUserToGroupAttachment = {
 
-export type GroupName =  string;
 
-export type Description =  string;
+GroupName: string;
 
-export type UserPoolId =  string;
+UserPoolId: string;
 
-export type Precedence =  number;
+Username: string;
 
-export type RoleArn =  string;
 
-}
+};
+
+export type UserPoolUICustomizationAttachment = {
+
+
+CSS?: string;
+
+UserPoolId: string;
+
+ClientId: string;
+
+
+};
+
+export type UserPoolGroup = {
+
+
+GroupName?: string;
+
+Description?: string;
+
+UserPoolId: string;
+
+Precedence?: number;
+
+RoleArn?: string;
+
+
+};
+
 
 }
 
 export namespace ECS {
 
+
+export type ClusterCapacityProviderAssociations = {
+
+
+CapacityProviders: string[];
+
+Cluster: string;
+
+DefaultCapacityProviderStrategy: AWS.ECS.ClusterCapacityProviderAssociations.CapacityProviderStrategy[];
+
+
+};
+
 export namespace ClusterCapacityProviderAssociations {
 
-export type CapacityProviderStrategy = { Base?: number;
+
+export type CapacityProviderStrategy = {
+
+
+Base?: number;
 
 Weight?: number;
 
-CapacityProvider: string; };
+CapacityProvider: string;
 
-export type CapacityProviders =  string[];
 
-export type Cluster =  string;
+};
 
-export type DefaultCapacityProviderStrategy =  AWS.ECS.ClusterCapacityProviderAssociations.CapacityProviderStrategy[];
 
 }
 
+export type TaskDefinition = {
+
+
+EphemeralStorage?: AWS.ECS.TaskDefinition.EphemeralStorage;
+
+ProxyConfiguration?: AWS.ECS.TaskDefinition.ProxyConfiguration;
+
+Family?: string;
+
+ContainerDefinitions?: AWS.ECS.TaskDefinition.ContainerDefinition[];
+
+Cpu?: string;
+
+ExecutionRoleArn?: string;
+
+InferenceAccelerators?: AWS.ECS.TaskDefinition.InferenceAccelerator[];
+
+Memory?: string;
+
+NetworkMode?: string;
+
+PlacementConstraints?: AWS.ECS.TaskDefinition.TaskDefinitionPlacementConstraint[];
+
+RequiresCompatibilities?: string[];
+
+TaskRoleArn?: string;
+
+Volumes?: AWS.ECS.TaskDefinition.Volume[];
+
+PidMode?: string;
+
+IpcMode?: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace TaskDefinition {
 
-export type LogConfiguration = { LogDriver: string;
+
+export type LogConfiguration = {
+
+
+LogDriver: string;
 
 Options?: Record<string, string>;
 
-SecretOptions?: AWS.ECS.TaskDefinition.Secret[]; };
+SecretOptions?: AWS.ECS.TaskDefinition.Secret[];
 
-export type FirelensConfiguration = { Type?: string;
 
-Options?: Record<string, string>; };
+};
 
-export type Device = { ContainerPath?: string;
+export type FirelensConfiguration = {
+
+
+Type?: string;
+
+Options?: Record<string, string>;
+
+
+};
+
+export type Device = {
+
+
+ContainerPath?: string;
 
 HostPath?: string;
 
-Permissions?: string[]; };
+Permissions?: string[];
 
-export type EFSVolumeConfiguration = { FilesystemId: string;
+
+};
+
+export type EFSVolumeConfiguration = {
+
+
+FilesystemId: string;
 
 RootDirectory?: string;
 
@@ -9430,19 +16724,35 @@ TransitEncryption?: string;
 
 TransitEncryptionPort?: number;
 
-AuthorizationConfig?: AWS.ECS.TaskDefinition.AuthorizationConfig; };
+AuthorizationConfig?: AWS.ECS.TaskDefinition.AuthorizationConfig;
 
-export type SystemControl = { Namespace?: string;
 
-Value?: string; };
+};
 
-export type EphemeralStorage =  AWS.ECS.TaskDefinition.EphemeralStorage;
+export type SystemControl = {
 
-export type ResourceRequirement = { Type: string;
 
-Value: string; };
+Namespace?: string;
 
-export type DockerVolumeConfiguration = { Autoprovision?: boolean;
+Value?: string;
+
+
+};
+
+export type ResourceRequirement = {
+
+
+Type: string;
+
+Value: string;
+
+
+};
+
+export type DockerVolumeConfiguration = {
+
+
+Autoprovision?: boolean;
 
 Driver?: string;
 
@@ -9450,81 +16760,183 @@ DriverOpts?: Record<string, string>;
 
 Labels?: Record<string, string>;
 
-Scope?: string; };
+Scope?: string;
 
-export type AuthorizationConfig = { IAM?: string;
 
-AccessPointId?: string; };
+};
 
-export type MountPoint = { ContainerPath?: string;
+export type AuthorizationConfig = {
+
+
+IAM?: string;
+
+AccessPointId?: string;
+
+
+};
+
+export type MountPoint = {
+
+
+ContainerPath?: string;
 
 ReadOnly?: boolean;
 
-SourceVolume?: string; };
+SourceVolume?: string;
 
-export type KernelCapabilities = { Add?: string[];
 
-Drop?: string[]; };
+};
 
-export type PortMapping = { ContainerPort?: number;
+export type KernelCapabilities = {
+
+
+Add?: string[];
+
+Drop?: string[];
+
+
+};
+
+export type PortMapping = {
+
+
+ContainerPort?: number;
 
 HostPort?: number;
 
-Protocol?: string; };
+Protocol?: string;
 
-export type Ulimit = { HardLimit: number;
+
+};
+
+export type Ulimit = {
+
+
+HardLimit: number;
 
 Name: string;
 
-SoftLimit: number; };
+SoftLimit: number;
 
-export type ContainerDependency = { ContainerName?: string;
 
-Condition?: string; };
+};
 
-export type HostVolumeProperties = { SourcePath?: string; };
+export type ContainerDependency = {
 
-export type RepositoryCredentials = { CredentialsParameter?: string; };
 
-export type InferenceAccelerator = { DeviceName?: string;
+ContainerName?: string;
 
-DeviceType?: string; };
+Condition?: string;
 
-export type Secret = { Name: string;
 
-ValueFrom: string; };
+};
 
-export type EnvironmentFile = { Value?: string;
+export type HostVolumeProperties = {
 
-Type?: string; };
 
-export type VolumeFrom = { ReadOnly?: boolean;
+SourcePath?: string;
 
-SourceContainer?: string; };
 
-export type HostEntry = { Hostname?: string;
+};
 
-IpAddress?: string; };
+export type RepositoryCredentials = {
 
-export type TaskDefinitionPlacementConstraint = { Type: string;
 
-Expression?: string; };
+CredentialsParameter?: string;
 
-export type Volume = { DockerVolumeConfiguration?: AWS.ECS.TaskDefinition.DockerVolumeConfiguration;
+
+};
+
+export type InferenceAccelerator = {
+
+
+DeviceName?: string;
+
+DeviceType?: string;
+
+
+};
+
+export type Secret = {
+
+
+Name: string;
+
+ValueFrom: string;
+
+
+};
+
+export type EnvironmentFile = {
+
+
+Value?: string;
+
+Type?: string;
+
+
+};
+
+export type VolumeFrom = {
+
+
+ReadOnly?: boolean;
+
+SourceContainer?: string;
+
+
+};
+
+export type HostEntry = {
+
+
+Hostname?: string;
+
+IpAddress?: string;
+
+
+};
+
+export type TaskDefinitionPlacementConstraint = {
+
+
+Type: string;
+
+Expression?: string;
+
+
+};
+
+export type Volume = {
+
+
+DockerVolumeConfiguration?: AWS.ECS.TaskDefinition.DockerVolumeConfiguration;
 
 EFSVolumeConfiguration?: AWS.ECS.TaskDefinition.EFSVolumeConfiguration;
 
 Host?: AWS.ECS.TaskDefinition.HostVolumeProperties;
 
-Name?: string; };
+Name?: string;
 
-export type Tmpfs = { ContainerPath?: string;
+
+};
+
+export type Tmpfs = {
+
+
+ContainerPath?: string;
 
 MountOptions?: string[];
 
-Size: number; };
+Size: number;
 
-export type ContainerDefinition = { Command?: string[];
+
+};
+
+export type ContainerDefinition = {
+
+
+Command?: string[];
 
 Cpu?: number;
 
@@ -9600,13 +17012,25 @@ Interactive?: boolean;
 
 PseudoTerminal?: boolean;
 
-SystemControls?: AWS.ECS.TaskDefinition.SystemControl[]; };
+SystemControls?: AWS.ECS.TaskDefinition.SystemControl[];
 
-export type KeyValuePair = { Name?: string;
 
-Value?: string; };
+};
 
-export type HealthCheck = { Command?: string[];
+export type KeyValuePair = {
+
+
+Name?: string;
+
+Value?: string;
+
+
+};
+
+export type HealthCheck = {
+
+
+Command?: string[];
 
 Interval?: number;
 
@@ -9614,9 +17038,15 @@ Timeout?: number;
 
 Retries?: number;
 
-StartPeriod?: number; };
+StartPeriod?: number;
 
-export type LinuxParameters = { Capabilities?: AWS.ECS.TaskDefinition.KernelCapabilities;
+
+};
+
+export type LinuxParameters = {
+
+
+Capabilities?: AWS.ECS.TaskDefinition.KernelCapabilities;
 
 Devices?: AWS.ECS.TaskDefinition.Device[];
 
@@ -9628,177 +17058,247 @@ SharedMemorySize?: number;
 
 Swappiness?: number;
 
-Tmpfs?: AWS.ECS.TaskDefinition.Tmpfs[]; };
+Tmpfs?: AWS.ECS.TaskDefinition.Tmpfs[];
 
-export type ProxyConfiguration =  AWS.ECS.TaskDefinition.ProxyConfiguration;
 
-export type Family =  string;
+};
 
-export type ContainerDefinitions =  AWS.ECS.TaskDefinition.ContainerDefinition[];
-
-export type Cpu =  string;
-
-export type ExecutionRoleArn =  string;
-
-export type InferenceAccelerators =  AWS.ECS.TaskDefinition.InferenceAccelerator[];
-
-export type Memory =  string;
-
-export type NetworkMode =  string;
-
-export type PlacementConstraints =  AWS.ECS.TaskDefinition.TaskDefinitionPlacementConstraint[];
-
-export type RequiresCompatibilities =  string[];
-
-export type TaskRoleArn =  string;
-
-export type Volumes =  AWS.ECS.TaskDefinition.Volume[];
-
-export type PidMode =  string;
-
-export type IpcMode =  string;
-
-export type Tags =  Tag[];
 
 }
+
+export type Service = {
+
+
+DeploymentController?: AWS.ECS.Service.DeploymentController;
+
+DeploymentConfiguration?: AWS.ECS.Service.DeploymentConfiguration;
+
+NetworkConfiguration?: AWS.ECS.Service.NetworkConfiguration;
+
+CapacityProviderStrategy?: AWS.ECS.Service.CapacityProviderStrategyItem[];
+
+Cluster?: string;
+
+DesiredCount?: number;
+
+EnableECSManagedTags?: boolean;
+
+EnableExecuteCommand?: boolean;
+
+HealthCheckGracePeriodSeconds?: number;
+
+LaunchType?: string;
+
+LoadBalancers?: AWS.ECS.Service.LoadBalancer[];
+
+PlacementConstraints?: AWS.ECS.Service.PlacementConstraint[];
+
+PlacementStrategies?: AWS.ECS.Service.PlacementStrategy[];
+
+PlatformVersion?: string;
+
+PropagateTags?: string;
+
+Role?: string;
+
+SchedulingStrategy?: string;
+
+ServiceName?: string;
+
+ServiceRegistries?: AWS.ECS.Service.ServiceRegistry[];
+
+Tags?: Tag[];
+
+TaskDefinition?: string;
+
+
+};
 
 export namespace Service {
 
-export type PlacementStrategy = { Field?: string;
 
-Type: string; };
+export type PlacementStrategy = {
 
-export type DeploymentController =  AWS.ECS.Service.DeploymentController;
 
-export type PlacementConstraint = { Expression?: string;
+Field?: string;
 
-Type: string; };
+Type: string;
 
-export type LoadBalancer = { ContainerName?: string;
+
+};
+
+export type PlacementConstraint = {
+
+
+Expression?: string;
+
+Type: string;
+
+
+};
+
+export type LoadBalancer = {
+
+
+ContainerName?: string;
 
 ContainerPort?: number;
 
 LoadBalancerName?: string;
 
-TargetGroupArn?: string; };
+TargetGroupArn?: string;
 
-export type DeploymentConfiguration =  AWS.ECS.Service.DeploymentConfiguration;
 
-export type AwsVpcConfiguration = { AssignPublicIp?: string;
+};
+
+export type AwsVpcConfiguration = {
+
+
+AssignPublicIp?: string;
 
 SecurityGroups?: string[];
 
-Subnets?: string[]; };
+Subnets?: string[];
 
-export type NetworkConfiguration =  AWS.ECS.Service.NetworkConfiguration;
 
-export type CapacityProviderStrategyItem = { Base?: number;
+};
+
+export type CapacityProviderStrategyItem = {
+
+
+Base?: number;
 
 CapacityProvider?: string;
 
-Weight?: number; };
+Weight?: number;
 
-export type DeploymentCircuitBreaker = { Enable: boolean;
 
-Rollback: boolean; };
+};
 
-export type ServiceRegistry = { ContainerName?: string;
+export type DeploymentCircuitBreaker = {
+
+
+Enable: boolean;
+
+Rollback: boolean;
+
+
+};
+
+export type ServiceRegistry = {
+
+
+ContainerName?: string;
 
 ContainerPort?: number;
 
 Port?: number;
 
-RegistryArn?: string; };
+RegistryArn?: string;
 
-export type CapacityProviderStrategy =  AWS.ECS.Service.CapacityProviderStrategyItem[];
 
-export type Cluster =  string;
+};
 
-export type DesiredCount =  number;
-
-export type EnableECSManagedTags =  boolean;
-
-export type EnableExecuteCommand =  boolean;
-
-export type HealthCheckGracePeriodSeconds =  number;
-
-export type LaunchType =  string;
-
-export type LoadBalancers =  AWS.ECS.Service.LoadBalancer[];
-
-export type PlacementConstraints =  AWS.ECS.Service.PlacementConstraint[];
-
-export type PlacementStrategies =  AWS.ECS.Service.PlacementStrategy[];
-
-export type PlatformVersion =  string;
-
-export type PropagateTags =  string;
-
-export type Role =  string;
-
-export type SchedulingStrategy =  string;
-
-export type ServiceName =  string;
-
-export type ServiceRegistries =  AWS.ECS.Service.ServiceRegistry[];
-
-export type Tags =  Tag[];
-
-export type TaskDefinition =  string;
 
 }
 
+export type TaskSet = {
+
+
+NetworkConfiguration?: AWS.ECS.TaskSet.NetworkConfiguration;
+
+Scale?: AWS.ECS.TaskSet.Scale;
+
+Cluster: string;
+
+ExternalId?: string;
+
+LaunchType?: string;
+
+LoadBalancers?: AWS.ECS.TaskSet.LoadBalancer[];
+
+PlatformVersion?: string;
+
+Service: string;
+
+ServiceRegistries?: AWS.ECS.TaskSet.ServiceRegistry[];
+
+TaskDefinition: string;
+
+
+};
+
 export namespace TaskSet {
 
-export type NetworkConfiguration =  AWS.ECS.TaskSet.NetworkConfiguration;
 
-export type ServiceRegistry = { ContainerName?: string;
+export type ServiceRegistry = {
+
+
+ContainerName?: string;
 
 ContainerPort?: number;
 
 Port?: number;
 
-RegistryArn?: string; };
+RegistryArn?: string;
 
-export type LoadBalancer = { ContainerName?: string;
+
+};
+
+export type LoadBalancer = {
+
+
+ContainerName?: string;
 
 ContainerPort?: number;
 
 LoadBalancerName?: string;
 
-TargetGroupArn?: string; };
+TargetGroupArn?: string;
 
-export type AwsVpcConfiguration = { AssignPublicIp?: string;
+
+};
+
+export type AwsVpcConfiguration = {
+
+
+AssignPublicIp?: string;
 
 SecurityGroups?: string[];
 
-Subnets: string[]; };
+Subnets: string[];
 
-export type Scale =  AWS.ECS.TaskSet.Scale;
 
-export type Cluster =  string;
+};
 
-export type ExternalId =  string;
-
-export type LaunchType =  string;
-
-export type LoadBalancers =  AWS.ECS.TaskSet.LoadBalancer[];
-
-export type PlatformVersion =  string;
-
-export type Service =  string;
-
-export type ServiceRegistries =  AWS.ECS.TaskSet.ServiceRegistry[];
-
-export type TaskDefinition =  string;
 
 }
 
+export type Cluster = {
+
+
+ClusterSettings?: AWS.ECS.Cluster.ClusterSettings[];
+
+Tags?: Tag[];
+
+ClusterName?: string;
+
+Configuration?: AWS.ECS.Cluster.ClusterConfiguration;
+
+CapacityProviders?: string[];
+
+DefaultCapacityProviderStrategy?: AWS.ECS.Cluster.CapacityProviderStrategyItem[];
+
+
+};
+
 export namespace Cluster {
 
-export type ClusterSettings =  AWS.ECS.Cluster.ClusterSettings[];
 
-export type ExecuteCommandLogConfiguration = { CloudWatchLogGroupName?: string;
+export type ExecuteCommandLogConfiguration = {
+
+
+CloudWatchLogGroupName?: string;
 
 CloudWatchEncryptionEnabled?: boolean;
 
@@ -9806,39 +17306,65 @@ S3BucketName?: string;
 
 S3EncryptionEnabled?: boolean;
 
-S3KeyPrefix?: string; };
+S3KeyPrefix?: string;
 
-export type ExecuteCommandConfiguration = { KmsKeyId?: string;
+
+};
+
+export type ExecuteCommandConfiguration = {
+
+
+KmsKeyId?: string;
 
 Logging?: string;
 
-LogConfiguration?: AWS.ECS.Cluster.ExecuteCommandLogConfiguration; };
+LogConfiguration?: AWS.ECS.Cluster.ExecuteCommandLogConfiguration;
 
-export type ClusterConfiguration = { ExecuteCommandConfiguration?: AWS.ECS.Cluster.ExecuteCommandConfiguration; };
 
-export type CapacityProviderStrategyItem = { CapacityProvider?: string;
+};
+
+export type ClusterConfiguration = {
+
+
+ExecuteCommandConfiguration?: AWS.ECS.Cluster.ExecuteCommandConfiguration;
+
+
+};
+
+export type CapacityProviderStrategyItem = {
+
+
+CapacityProvider?: string;
 
 Weight?: number;
 
-Base?: number; };
+Base?: number;
 
-export type Tags =  Tag[];
 
-export type ClusterName =  string;
+};
 
-export type Configuration =  AWS.ECS.Cluster.ClusterConfiguration;
-
-export type CapacityProviders =  string[];
-
-export type DefaultCapacityProviderStrategy =  AWS.ECS.Cluster.CapacityProviderStrategyItem[];
 
 }
 
+export type CapacityProvider = {
+
+
+AutoScalingGroupProvider: AWS.ECS.CapacityProvider.AutoScalingGroupProvider;
+
+Name?: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace CapacityProvider {
 
-export type AutoScalingGroupProvider =  AWS.ECS.CapacityProvider.AutoScalingGroupProvider;
 
-export type ManagedScaling = { MinimumScalingStepSize?: number;
+export type ManagedScaling = {
+
+
+MinimumScalingStepSize?: number;
 
 MaximumScalingStepSize?: number;
 
@@ -9846,57 +17372,117 @@ Status?: string;
 
 TargetCapacity?: number;
 
-InstanceWarmupPeriod?: number; };
+InstanceWarmupPeriod?: number;
 
-export type Name =  string;
 
-export type Tags =  Tag[];
+};
 
-}
-
-export namespace PrimaryTaskSet {
-
-export type Cluster =  string;
-
-export type TaskSetId =  string;
-
-export type Service =  string;
 
 }
+
+export type PrimaryTaskSet = {
+
+
+Cluster: string;
+
+TaskSetId: string;
+
+Service: string;
+
+
+};
+
 
 }
 
 export namespace KinesisAnalytics {
 
+
+export type ApplicationOutput = {
+
+
+Output: AWS.KinesisAnalytics.ApplicationOutput.Output;
+
+ApplicationName: string;
+
+
+};
+
 export namespace ApplicationOutput {
 
-export type KinesisFirehoseOutput = { ResourceARN: string;
 
-RoleARN: string; };
+export type KinesisFirehoseOutput = {
 
-export type KinesisStreamsOutput = { ResourceARN: string;
 
-RoleARN: string; };
+ResourceARN: string;
 
-export type LambdaOutput = { ResourceARN: string;
+RoleARN: string;
 
-RoleARN: string; };
 
-export type Output =  AWS.KinesisAnalytics.ApplicationOutput.Output;
+};
 
-export type DestinationSchema = { RecordFormatType?: string; };
+export type KinesisStreamsOutput = {
 
-export type ApplicationName =  string;
+
+ResourceARN: string;
+
+RoleARN: string;
+
+
+};
+
+export type LambdaOutput = {
+
+
+ResourceARN: string;
+
+RoleARN: string;
+
+
+};
+
+export type DestinationSchema = {
+
+
+RecordFormatType?: string;
+
+
+};
+
 
 }
 
+export type Application = {
+
+
+ApplicationName?: string;
+
+Inputs: AWS.KinesisAnalytics.Application.Input[];
+
+ApplicationDescription?: string;
+
+ApplicationCode?: string;
+
+
+};
+
 export namespace Application {
 
-export type CSVMappingParameters = { RecordRowDelimiter: string;
 
-RecordColumnDelimiter: string; };
+export type CSVMappingParameters = {
 
-export type Input = { NamePrefix: string;
+
+RecordRowDelimiter: string;
+
+RecordColumnDelimiter: string;
+
+
+};
+
+export type Input = {
+
+
+NamePrefix: string;
 
 InputSchema: AWS.KinesisAnalytics.Application.InputSchema;
 
@@ -9906,289 +17492,551 @@ KinesisFirehoseInput?: AWS.KinesisAnalytics.Application.KinesisFirehoseInput;
 
 InputProcessingConfiguration?: AWS.KinesisAnalytics.Application.InputProcessingConfiguration;
 
-InputParallelism?: AWS.KinesisAnalytics.Application.InputParallelism; };
+InputParallelism?: AWS.KinesisAnalytics.Application.InputParallelism;
 
-export type JSONMappingParameters = { RecordRowPath: string; };
 
-export type KinesisStreamsInput = { ResourceARN: string;
+};
 
-RoleARN: string; };
+export type JSONMappingParameters = {
 
-export type RecordColumn = { Mapping?: string;
+
+RecordRowPath: string;
+
+
+};
+
+export type KinesisStreamsInput = {
+
+
+ResourceARN: string;
+
+RoleARN: string;
+
+
+};
+
+export type RecordColumn = {
+
+
+Mapping?: string;
 
 SqlType: string;
 
-Name: string; };
+Name: string;
 
-export type KinesisFirehoseInput = { ResourceARN: string;
 
-RoleARN: string; };
+};
 
-export type InputParallelism = { Count?: number; };
+export type KinesisFirehoseInput = {
 
-export type InputSchema = { RecordEncoding?: string;
+
+ResourceARN: string;
+
+RoleARN: string;
+
+
+};
+
+export type InputParallelism = {
+
+
+Count?: number;
+
+
+};
+
+export type InputSchema = {
+
+
+RecordEncoding?: string;
 
 RecordColumns: AWS.KinesisAnalytics.Application.RecordColumn[];
 
-RecordFormat: AWS.KinesisAnalytics.Application.RecordFormat; };
+RecordFormat: AWS.KinesisAnalytics.Application.RecordFormat;
 
-export type MappingParameters = { JSONMappingParameters?: AWS.KinesisAnalytics.Application.JSONMappingParameters;
 
-CSVMappingParameters?: AWS.KinesisAnalytics.Application.CSVMappingParameters; };
+};
 
-export type RecordFormat = { MappingParameters?: AWS.KinesisAnalytics.Application.MappingParameters;
+export type MappingParameters = {
 
-RecordFormatType: string; };
 
-export type InputProcessingConfiguration = { InputLambdaProcessor?: AWS.KinesisAnalytics.Application.InputLambdaProcessor; };
+JSONMappingParameters?: AWS.KinesisAnalytics.Application.JSONMappingParameters;
 
-export type InputLambdaProcessor = { ResourceARN: string;
+CSVMappingParameters?: AWS.KinesisAnalytics.Application.CSVMappingParameters;
 
-RoleARN: string; };
 
-export type ApplicationName =  string;
+};
 
-export type Inputs =  AWS.KinesisAnalytics.Application.Input[];
+export type RecordFormat = {
 
-export type ApplicationDescription =  string;
 
-export type ApplicationCode =  string;
+MappingParameters?: AWS.KinesisAnalytics.Application.MappingParameters;
+
+RecordFormatType: string;
+
+
+};
+
+export type InputProcessingConfiguration = {
+
+
+InputLambdaProcessor?: AWS.KinesisAnalytics.Application.InputLambdaProcessor;
+
+
+};
+
+export type InputLambdaProcessor = {
+
+
+ResourceARN: string;
+
+RoleARN: string;
+
+
+};
+
 
 }
+
+export type ApplicationReferenceDataSource = {
+
+
+ReferenceDataSource: AWS.KinesisAnalytics.ApplicationReferenceDataSource.ReferenceDataSource;
+
+ApplicationName: string;
+
+
+};
 
 export namespace ApplicationReferenceDataSource {
 
-export type RecordFormat = { MappingParameters?: AWS.KinesisAnalytics.ApplicationReferenceDataSource.MappingParameters;
 
-RecordFormatType: string; };
+export type RecordFormat = {
 
-export type CSVMappingParameters = { RecordRowDelimiter: string;
 
-RecordColumnDelimiter: string; };
+MappingParameters?: AWS.KinesisAnalytics.ApplicationReferenceDataSource.MappingParameters;
 
-export type S3ReferenceDataSource = { BucketARN: string;
+RecordFormatType: string;
+
+
+};
+
+export type CSVMappingParameters = {
+
+
+RecordRowDelimiter: string;
+
+RecordColumnDelimiter: string;
+
+
+};
+
+export type S3ReferenceDataSource = {
+
+
+BucketARN: string;
 
 FileKey: string;
 
-ReferenceRoleARN: string; };
+ReferenceRoleARN: string;
 
-export type RecordColumn = { Mapping?: string;
+
+};
+
+export type RecordColumn = {
+
+
+Mapping?: string;
 
 SqlType: string;
 
-Name: string; };
+Name: string;
 
-export type ReferenceSchema = { RecordEncoding?: string;
+
+};
+
+export type ReferenceSchema = {
+
+
+RecordEncoding?: string;
 
 RecordColumns: AWS.KinesisAnalytics.ApplicationReferenceDataSource.RecordColumn[];
 
-RecordFormat: AWS.KinesisAnalytics.ApplicationReferenceDataSource.RecordFormat; };
+RecordFormat: AWS.KinesisAnalytics.ApplicationReferenceDataSource.RecordFormat;
 
-export type MappingParameters = { JSONMappingParameters?: AWS.KinesisAnalytics.ApplicationReferenceDataSource.JSONMappingParameters;
 
-CSVMappingParameters?: AWS.KinesisAnalytics.ApplicationReferenceDataSource.CSVMappingParameters; };
+};
 
-export type JSONMappingParameters = { RecordRowPath: string; };
+export type MappingParameters = {
 
-export type ReferenceDataSource =  AWS.KinesisAnalytics.ApplicationReferenceDataSource.ReferenceDataSource;
 
-export type ApplicationName =  string;
+JSONMappingParameters?: AWS.KinesisAnalytics.ApplicationReferenceDataSource.JSONMappingParameters;
+
+CSVMappingParameters?: AWS.KinesisAnalytics.ApplicationReferenceDataSource.CSVMappingParameters;
+
+
+};
+
+export type JSONMappingParameters = {
+
+
+RecordRowPath: string;
+
+
+};
+
 
 }
+
 
 }
 
 export namespace Config {
 
+
+export type ConfigurationAggregator = {
+
+
+OrganizationAggregationSource?: AWS.Config.ConfigurationAggregator.OrganizationAggregationSource;
+
+AccountAggregationSources?: AWS.Config.ConfigurationAggregator.AccountAggregationSource[];
+
+ConfigurationAggregatorName?: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace ConfigurationAggregator {
 
-export type OrganizationAggregationSource =  AWS.Config.ConfigurationAggregator.OrganizationAggregationSource;
 
-export type AccountAggregationSource = { AllAwsRegions?: boolean;
+export type AccountAggregationSource = {
+
+
+AllAwsRegions?: boolean;
 
 AwsRegions?: string[];
 
-AccountIds: string[]; };
+AccountIds: string[];
 
-export type AccountAggregationSources =  AWS.Config.ConfigurationAggregator.AccountAggregationSource[];
 
-export type ConfigurationAggregatorName =  string;
+};
 
-export type Tags =  Tag[];
 
 }
 
-export namespace DeliveryChannel {
+export type DeliveryChannel = {
 
-export type ConfigSnapshotDeliveryProperties =  AWS.Config.DeliveryChannel.ConfigSnapshotDeliveryProperties;
 
-export type Name =  string;
+ConfigSnapshotDeliveryProperties?: AWS.Config.DeliveryChannel.ConfigSnapshotDeliveryProperties;
 
-export type S3BucketName =  string;
+Name?: string;
 
-export type S3KeyPrefix =  string;
+S3BucketName: string;
 
-export type S3KmsKeyArn =  string;
+S3KeyPrefix?: string;
 
-export type SnsTopicARN =  string;
+S3KmsKeyArn?: string;
 
-}
+SnsTopicARN?: string;
 
-export namespace ConfigurationRecorder {
 
-export type RecordingGroup =  AWS.Config.ConfigurationRecorder.RecordingGroup;
+};
 
-export type Name =  string;
+export type ConfigurationRecorder = {
 
-export type RoleARN =  string;
 
-}
+RecordingGroup?: AWS.Config.ConfigurationRecorder.RecordingGroup;
+
+Name?: string;
+
+RoleARN: string;
+
+
+};
+
+export type RemediationConfiguration = {
+
+
+ExecutionControls?: AWS.Config.RemediationConfiguration.ExecutionControls;
+
+TargetVersion?: string;
+
+Parameters?: JSONString;
+
+TargetType: string;
+
+ConfigRuleName: string;
+
+ResourceType?: string;
+
+RetryAttemptSeconds?: number;
+
+MaximumAutomaticAttempts?: number;
+
+TargetId: string;
+
+Automatic?: boolean;
+
+
+};
 
 export namespace RemediationConfiguration {
 
-export type ResourceValue = { Value?: string; };
 
-export type RemediationParameterValue = { ResourceValue?: AWS.Config.RemediationConfiguration.ResourceValue;
+export type ResourceValue = {
 
-StaticValue?: AWS.Config.RemediationConfiguration.StaticValue; };
 
-export type SsmControls = { ErrorPercentage?: number;
+Value?: string;
 
-ConcurrentExecutionRatePercentage?: number; };
 
-export type StaticValue = { Values?: string[]; };
+};
 
-export type ExecutionControls =  AWS.Config.RemediationConfiguration.ExecutionControls;
+export type RemediationParameterValue = {
 
-export type TargetVersion =  string;
 
-export type Parameters =  JSONString;
+ResourceValue?: AWS.Config.RemediationConfiguration.ResourceValue;
 
-export type TargetType =  string;
+StaticValue?: AWS.Config.RemediationConfiguration.StaticValue;
 
-export type ConfigRuleName =  string;
 
-export type ResourceType =  string;
+};
 
-export type RetryAttemptSeconds =  number;
+export type SsmControls = {
 
-export type MaximumAutomaticAttempts =  number;
 
-export type TargetId =  string;
+ErrorPercentage?: number;
 
-export type Automatic =  boolean;
+ConcurrentExecutionRatePercentage?: number;
+
+
+};
+
+export type StaticValue = {
+
+
+Values?: string[];
+
+
+};
+
 
 }
+
+export type ConformancePack = {
+
+
+ConformancePackName: string;
+
+DeliveryS3Bucket?: string;
+
+DeliveryS3KeyPrefix?: string;
+
+TemplateBody?: string;
+
+TemplateS3Uri?: string;
+
+ConformancePackInputParameters?: AWS.Config.ConformancePack.ConformancePackInputParameter[];
+
+
+};
 
 export namespace ConformancePack {
 
-export type ConformancePackInputParameter = { ParameterName: string;
 
-ParameterValue: string; };
+export type ConformancePackInputParameter = {
 
-export type ConformancePackName =  string;
 
-export type DeliveryS3Bucket =  string;
+ParameterName: string;
 
-export type DeliveryS3KeyPrefix =  string;
+ParameterValue: string;
 
-export type TemplateBody =  string;
 
-export type TemplateS3Uri =  string;
+};
 
-export type ConformancePackInputParameters =  AWS.Config.ConformancePack.ConformancePackInputParameter[];
 
 }
 
-export namespace ConfigRule {
+export type ConfigRule = {
 
-export type Source =  AWS.Config.ConfigRule.Source;
 
-export type Scope =  AWS.Config.ConfigRule.Scope;
+Source: AWS.Config.ConfigRule.Source;
 
-export type SourceDetail = { EventSource: string;
+Scope?: AWS.Config.ConfigRule.Scope;
+
+ConfigRuleName?: string;
+
+Description?: string;
+
+InputParameters?: JSONString;
 
 MaximumExecutionFrequency?: string;
 
-MessageType: string; };
 
-export type ConfigRuleName =  string;
+};
 
-export type Description =  string;
+export namespace ConfigRule {
 
-export type InputParameters =  JSONString;
 
-export type MaximumExecutionFrequency =  string;
+export type SourceDetail = {
+
+
+EventSource: string;
+
+MaximumExecutionFrequency?: string;
+
+MessageType: string;
+
+
+};
+
 
 }
+
+export type OrganizationConformancePack = {
+
+
+OrganizationConformancePackName: string;
+
+TemplateS3Uri?: string;
+
+TemplateBody?: string;
+
+DeliveryS3Bucket?: string;
+
+DeliveryS3KeyPrefix?: string;
+
+ConformancePackInputParameters?: AWS.Config.OrganizationConformancePack.ConformancePackInputParameter[];
+
+ExcludedAccounts?: string[];
+
+
+};
 
 export namespace OrganizationConformancePack {
 
-export type ConformancePackInputParameter = { ParameterName: string;
 
-ParameterValue: string; };
+export type ConformancePackInputParameter = {
 
-export type OrganizationConformancePackName =  string;
 
-export type TemplateS3Uri =  string;
+ParameterName: string;
 
-export type TemplateBody =  string;
+ParameterValue: string;
 
-export type DeliveryS3Bucket =  string;
 
-export type DeliveryS3KeyPrefix =  string;
+};
 
-export type ConformancePackInputParameters =  AWS.Config.OrganizationConformancePack.ConformancePackInputParameter[];
-
-export type ExcludedAccounts =  string[];
 
 }
 
-export namespace OrganizationConfigRule {
+export type OrganizationConfigRule = {
 
-export type OrganizationManagedRuleMetadata =  AWS.Config.OrganizationConfigRule.OrganizationManagedRuleMetadata;
 
-export type OrganizationCustomRuleMetadata =  AWS.Config.OrganizationConfigRule.OrganizationCustomRuleMetadata;
+OrganizationManagedRuleMetadata?: AWS.Config.OrganizationConfigRule.OrganizationManagedRuleMetadata;
 
-export type OrganizationConfigRuleName =  string;
+OrganizationCustomRuleMetadata?: AWS.Config.OrganizationConfigRule.OrganizationCustomRuleMetadata;
 
-export type ExcludedAccounts =  string[];
+OrganizationConfigRuleName: string;
 
-}
+ExcludedAccounts?: string[];
 
-export namespace StoredQuery {
 
-export type QueryName =  string;
+};
 
-export type QueryDescription =  string;
+export type StoredQuery = {
 
-export type QueryExpression =  string;
 
-export type Tags =  Tag[];
+QueryName: string;
 
-}
+QueryDescription?: string;
 
-export namespace AggregationAuthorization {
+QueryExpression: string;
 
-export type AuthorizedAccountId =  string;
+Tags?: Tag[];
 
-export type AuthorizedAwsRegion =  string;
 
-export type Tags =  Tag[];
+};
 
-}
+export type AggregationAuthorization = {
+
+
+AuthorizedAccountId: string;
+
+AuthorizedAwsRegion: string;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace OpsWorks {
 
+
+export type Layer = {
+
+
+LifecycleEventConfiguration?: AWS.OpsWorks.Layer.LifecycleEventConfiguration;
+
+LoadBasedAutoScaling?: AWS.OpsWorks.Layer.LoadBasedAutoScaling;
+
+Attributes?: Record<string, string>;
+
+AutoAssignElasticIps: boolean;
+
+AutoAssignPublicIps: boolean;
+
+CustomInstanceProfileArn?: string;
+
+CustomJson?: JSONString;
+
+CustomRecipes?: AWS.OpsWorks.Layer.Recipes;
+
+CustomSecurityGroupIds?: string[];
+
+EnableAutoHealing: boolean;
+
+InstallUpdatesOnBoot?: boolean;
+
+Name: string;
+
+Packages?: string[];
+
+Shortname: string;
+
+StackId: string;
+
+Tags?: Tag[];
+
+Type: string;
+
+UseEbsOptimizedInstances?: boolean;
+
+VolumeConfigurations?: AWS.OpsWorks.Layer.VolumeConfiguration[];
+
+
+};
+
 export namespace Layer {
 
-export type ShutdownEventConfiguration = { DelayUntilElbConnectionsDrained?: boolean;
 
-ExecutionTimeout?: number; };
+export type ShutdownEventConfiguration = {
 
-export type VolumeConfiguration = { Encrypted?: boolean;
+
+DelayUntilElbConnectionsDrained?: boolean;
+
+ExecutionTimeout?: number;
+
+
+};
+
+export type VolumeConfiguration = {
+
+
+Encrypted?: boolean;
 
 Iops?: number;
 
@@ -10200,9 +18048,15 @@ RaidLevel?: number;
 
 Size?: number;
 
-VolumeType?: string; };
+VolumeType?: string;
 
-export type Recipes = { Configure?: string[];
+
+};
+
+export type Recipes = {
+
+
+Configure?: string[];
 
 Deploy?: string[];
 
@@ -10210,13 +18064,15 @@ Setup?: string[];
 
 Shutdown?: string[];
 
-Undeploy?: string[]; };
+Undeploy?: string[];
 
-export type LifecycleEventConfiguration =  AWS.OpsWorks.Layer.LifecycleEventConfiguration;
 
-export type LoadBasedAutoScaling =  AWS.OpsWorks.Layer.LoadBasedAutoScaling;
+};
 
-export type AutoScalingThresholds = { CpuThreshold?: number;
+export type AutoScalingThresholds = {
+
+
+CpuThreshold?: number;
 
 IgnoreMetricsTime?: number;
 
@@ -10226,61 +18082,75 @@ LoadThreshold?: number;
 
 MemoryThreshold?: number;
 
-ThresholdsWaitTime?: number; };
+ThresholdsWaitTime?: number;
 
-export type Attributes =  Record<string, string>;
 
-export type AutoAssignElasticIps =  boolean;
+};
 
-export type AutoAssignPublicIps =  boolean;
-
-export type CustomInstanceProfileArn =  string;
-
-export type CustomJson =  JSONString;
-
-export type CustomRecipes =  AWS.OpsWorks.Layer.Recipes;
-
-export type CustomSecurityGroupIds =  string[];
-
-export type EnableAutoHealing =  boolean;
-
-export type InstallUpdatesOnBoot =  boolean;
-
-export type Name =  string;
-
-export type Packages =  string[];
-
-export type Shortname =  string;
-
-export type StackId =  string;
-
-export type Tags =  Tag[];
-
-export type Type =  string;
-
-export type UseEbsOptimizedInstances =  boolean;
-
-export type VolumeConfigurations =  AWS.OpsWorks.Layer.VolumeConfiguration[];
 
 }
 
+export type App = {
+
+
+SslConfiguration?: AWS.OpsWorks.App.SslConfiguration;
+
+AppSource?: AWS.OpsWorks.App.Source;
+
+Attributes?: Record<string, string>;
+
+DataSources?: AWS.OpsWorks.App.DataSource[];
+
+Description?: string;
+
+Domains?: string[];
+
+EnableSsl?: boolean;
+
+Environment?: AWS.OpsWorks.App.EnvironmentVariable[];
+
+Name: string;
+
+Shortname?: string;
+
+StackId: string;
+
+Type: string;
+
+
+};
+
 export namespace App {
 
-export type DataSource = { Arn?: string;
+
+export type DataSource = {
+
+
+Arn?: string;
 
 DatabaseName?: string;
 
-Type?: string; };
+Type?: string;
 
-export type SslConfiguration =  AWS.OpsWorks.App.SslConfiguration;
 
-export type EnvironmentVariable = { Key: string;
+};
+
+export type EnvironmentVariable = {
+
+
+Key: string;
 
 Secure?: boolean;
 
-Value: string; };
+Value: string;
 
-export type Source = { Password?: string;
+
+};
+
+export type Source = {
+
+
+Password?: string;
 
 Revision?: string;
 
@@ -10290,45 +18160,83 @@ Type?: string;
 
 Url?: string;
 
-Username?: string; };
+Username?: string;
 
-export type AppSource =  AWS.OpsWorks.App.Source;
 
-export type Attributes =  Record<string, string>;
+};
 
-export type DataSources =  AWS.OpsWorks.App.DataSource[];
-
-export type Description =  string;
-
-export type Domains =  string[];
-
-export type EnableSsl =  boolean;
-
-export type Environment =  AWS.OpsWorks.App.EnvironmentVariable[];
-
-export type Name =  string;
-
-export type Shortname =  string;
-
-export type StackId =  string;
-
-export type Type =  string;
 
 }
 
+export type Instance = {
+
+
+TimeBasedAutoScaling?: AWS.OpsWorks.Instance.TimeBasedAutoScaling;
+
+AgentVersion?: string;
+
+AmiId?: string;
+
+Architecture?: string;
+
+AutoScalingType?: string;
+
+AvailabilityZone?: string;
+
+BlockDeviceMappings?: AWS.OpsWorks.Instance.BlockDeviceMapping[];
+
+EbsOptimized?: boolean;
+
+ElasticIps?: string[];
+
+Hostname?: string;
+
+InstallUpdatesOnBoot?: boolean;
+
+InstanceType: string;
+
+LayerIds: string[];
+
+Os?: string;
+
+RootDeviceType?: string;
+
+SshKeyName?: string;
+
+StackId: string;
+
+SubnetId?: string;
+
+Tenancy?: string;
+
+VirtualizationType?: string;
+
+Volumes?: string[];
+
+
+};
+
 export namespace Instance {
 
-export type BlockDeviceMapping = { DeviceName?: string;
+
+export type BlockDeviceMapping = {
+
+
+DeviceName?: string;
 
 Ebs?: AWS.OpsWorks.Instance.EbsBlockDevice;
 
 NoDevice?: string;
 
-VirtualName?: string; };
+VirtualName?: string;
 
-export type TimeBasedAutoScaling =  AWS.OpsWorks.Instance.TimeBasedAutoScaling;
 
-export type EbsBlockDevice = { DeleteOnTermination?: boolean;
+};
+
+export type EbsBlockDevice = {
+
+
+DeleteOnTermination?: boolean;
 
 Iops?: number;
 
@@ -10336,63 +18244,99 @@ SnapshotId?: string;
 
 VolumeSize?: number;
 
-VolumeType?: string; };
+VolumeType?: string;
 
-export type AgentVersion =  string;
 
-export type AmiId =  string;
+};
 
-export type Architecture =  string;
-
-export type AutoScalingType =  string;
-
-export type AvailabilityZone =  string;
-
-export type BlockDeviceMappings =  AWS.OpsWorks.Instance.BlockDeviceMapping[];
-
-export type EbsOptimized =  boolean;
-
-export type ElasticIps =  string[];
-
-export type Hostname =  string;
-
-export type InstallUpdatesOnBoot =  boolean;
-
-export type InstanceType =  string;
-
-export type LayerIds =  string[];
-
-export type Os =  string;
-
-export type RootDeviceType =  string;
-
-export type SshKeyName =  string;
-
-export type StackId =  string;
-
-export type SubnetId =  string;
-
-export type Tenancy =  string;
-
-export type VirtualizationType =  string;
-
-export type Volumes =  string[];
 
 }
 
+export type Stack = {
+
+
+ChefConfiguration?: AWS.OpsWorks.Stack.ChefConfiguration;
+
+AgentVersion?: string;
+
+Attributes?: Record<string, string>;
+
+CloneAppIds?: string[];
+
+ClonePermissions?: boolean;
+
+ConfigurationManager?: AWS.OpsWorks.Stack.StackConfigurationManager;
+
+CustomCookbooksSource?: AWS.OpsWorks.Stack.Source;
+
+CustomJson?: JSONString;
+
+DefaultAvailabilityZone?: string;
+
+DefaultInstanceProfileArn: string;
+
+DefaultOs?: string;
+
+DefaultRootDeviceType?: string;
+
+DefaultSshKeyName?: string;
+
+DefaultSubnetId?: string;
+
+EcsClusterArn?: string;
+
+ElasticIps?: AWS.OpsWorks.Stack.ElasticIp[];
+
+HostnameTheme?: string;
+
+Name: string;
+
+RdsDbInstances?: AWS.OpsWorks.Stack.RdsDbInstance[];
+
+ServiceRoleArn: string;
+
+SourceStackId?: string;
+
+Tags?: Tag[];
+
+UseCustomCookbooks?: boolean;
+
+UseOpsworksSecurityGroups?: boolean;
+
+VpcId?: string;
+
+
+};
+
 export namespace Stack {
 
-export type StackConfigurationManager = { Name?: string;
 
-Version?: string; };
+export type StackConfigurationManager = {
 
-export type RdsDbInstance = { DbPassword: string;
+
+Name?: string;
+
+Version?: string;
+
+
+};
+
+export type RdsDbInstance = {
+
+
+DbPassword: string;
 
 DbUser: string;
 
-RdsDbInstanceArn: string; };
+RdsDbInstanceArn: string;
 
-export type Source = { Password?: string;
+
+};
+
+export type Source = {
+
+
+Password?: string;
 
 Revision?: string;
 
@@ -10402,163 +18346,225 @@ Type?: string;
 
 Url?: string;
 
-Username?: string; };
+Username?: string;
 
-export type ChefConfiguration =  AWS.OpsWorks.Stack.ChefConfiguration;
 
-export type ElasticIp = { Ip: string;
+};
 
-Name?: string; };
+export type ElasticIp = {
 
-export type AgentVersion =  string;
 
-export type Attributes =  Record<string, string>;
+Ip: string;
 
-export type CloneAppIds =  string[];
+Name?: string;
 
-export type ClonePermissions =  boolean;
 
-export type ConfigurationManager =  AWS.OpsWorks.Stack.StackConfigurationManager;
+};
 
-export type CustomCookbooksSource =  AWS.OpsWorks.Stack.Source;
-
-export type CustomJson =  JSONString;
-
-export type DefaultAvailabilityZone =  string;
-
-export type DefaultInstanceProfileArn =  string;
-
-export type DefaultOs =  string;
-
-export type DefaultRootDeviceType =  string;
-
-export type DefaultSshKeyName =  string;
-
-export type DefaultSubnetId =  string;
-
-export type EcsClusterArn =  string;
-
-export type ElasticIps =  AWS.OpsWorks.Stack.ElasticIp[];
-
-export type HostnameTheme =  string;
-
-export type Name =  string;
-
-export type RdsDbInstances =  AWS.OpsWorks.Stack.RdsDbInstance[];
-
-export type ServiceRoleArn =  string;
-
-export type SourceStackId =  string;
-
-export type Tags =  Tag[];
-
-export type UseCustomCookbooks =  boolean;
-
-export type UseOpsworksSecurityGroups =  boolean;
-
-export type VpcId =  string;
 
 }
 
-export namespace UserProfile {
+export type UserProfile = {
 
-export type AllowSelfManagement =  boolean;
 
-export type IamUserArn =  string;
+AllowSelfManagement?: boolean;
 
-export type SshPublicKey =  string;
+IamUserArn: string;
 
-export type SshUsername =  string;
+SshPublicKey?: string;
 
-}
+SshUsername?: string;
 
-export namespace Volume {
 
-export type Ec2VolumeId =  string;
+};
 
-export type MountPoint =  string;
+export type Volume = {
 
-export type Name =  string;
 
-export type StackId =  string;
+Ec2VolumeId: string;
 
-}
+MountPoint?: string;
 
-export namespace ElasticLoadBalancerAttachment {
+Name?: string;
 
-export type ElasticLoadBalancerName =  string;
+StackId: string;
 
-export type LayerId =  string;
 
-}
+};
+
+export type ElasticLoadBalancerAttachment = {
+
+
+ElasticLoadBalancerName: string;
+
+LayerId: string;
+
+
+};
+
 
 }
 
 export namespace CodeDeploy {
 
+
+export type DeploymentConfig = {
+
+
+MinimumHealthyHosts?: AWS.CodeDeploy.DeploymentConfig.MinimumHealthyHosts;
+
+TrafficRoutingConfig?: AWS.CodeDeploy.DeploymentConfig.TrafficRoutingConfig;
+
+ComputePlatform?: string;
+
+DeploymentConfigName?: string;
+
+
+};
+
 export namespace DeploymentConfig {
 
-export type TimeBasedCanary = { CanaryInterval: number;
 
-CanaryPercentage: number; };
+export type TimeBasedCanary = {
 
-export type MinimumHealthyHosts =  AWS.CodeDeploy.DeploymentConfig.MinimumHealthyHosts;
 
-export type TrafficRoutingConfig =  AWS.CodeDeploy.DeploymentConfig.TrafficRoutingConfig;
+CanaryInterval: number;
 
-export type TimeBasedLinear = { LinearInterval: number;
+CanaryPercentage: number;
 
-LinearPercentage: number; };
 
-export type ComputePlatform =  string;
+};
 
-export type DeploymentConfigName =  string;
+export type TimeBasedLinear = {
+
+
+LinearInterval: number;
+
+LinearPercentage: number;
+
+
+};
+
 
 }
 
+export type DeploymentGroup = {
+
+
+DeploymentStyle?: AWS.CodeDeploy.DeploymentGroup.DeploymentStyle;
+
+OnPremisesTagSet?: AWS.CodeDeploy.DeploymentGroup.OnPremisesTagSet;
+
+LoadBalancerInfo?: AWS.CodeDeploy.DeploymentGroup.LoadBalancerInfo;
+
+AlarmConfiguration?: AWS.CodeDeploy.DeploymentGroup.AlarmConfiguration;
+
+BlueGreenDeploymentConfiguration?: AWS.CodeDeploy.DeploymentGroup.BlueGreenDeploymentConfiguration;
+
+AutoRollbackConfiguration?: AWS.CodeDeploy.DeploymentGroup.AutoRollbackConfiguration;
+
+Deployment?: AWS.CodeDeploy.DeploymentGroup.Deployment;
+
+ApplicationName: string;
+
+AutoScalingGroups?: string[];
+
+DeploymentConfigName?: string;
+
+DeploymentGroupName?: string;
+
+ECSServices?: AWS.CodeDeploy.DeploymentGroup.ECSService[];
+
+Ec2TagFilters?: AWS.CodeDeploy.DeploymentGroup.EC2TagFilter[];
+
+Ec2TagSet?: AWS.CodeDeploy.DeploymentGroup.EC2TagSet;
+
+OnPremisesInstanceTagFilters?: AWS.CodeDeploy.DeploymentGroup.TagFilter[];
+
+ServiceRoleArn: string;
+
+TriggerConfigurations?: AWS.CodeDeploy.DeploymentGroup.TriggerConfig[];
+
+
+};
+
 export namespace DeploymentGroup {
 
-export type TargetGroupInfo = { Name?: string; };
 
-export type OnPremisesTagSetListObject = { OnPremisesTagGroup?: AWS.CodeDeploy.DeploymentGroup.TagFilter[]; };
+export type TargetGroupInfo = {
 
-export type DeploymentStyle =  AWS.CodeDeploy.DeploymentGroup.DeploymentStyle;
 
-export type EC2TagFilter = { Key?: string;
+Name?: string;
+
+
+};
+
+export type OnPremisesTagSetListObject = {
+
+
+OnPremisesTagGroup?: AWS.CodeDeploy.DeploymentGroup.TagFilter[];
+
+
+};
+
+export type EC2TagFilter = {
+
+
+Key?: string;
 
 Type?: string;
 
-Value?: string; };
+Value?: string;
 
-export type OnPremisesTagSet =  AWS.CodeDeploy.DeploymentGroup.OnPremisesTagSet;
 
-export type LoadBalancerInfo =  AWS.CodeDeploy.DeploymentGroup.LoadBalancerInfo;
+};
 
-export type RevisionLocation = { GitHubLocation?: AWS.CodeDeploy.DeploymentGroup.GitHubLocation;
+export type RevisionLocation = {
+
+
+GitHubLocation?: AWS.CodeDeploy.DeploymentGroup.GitHubLocation;
 
 RevisionType?: string;
 
-S3Location?: AWS.CodeDeploy.DeploymentGroup.S3Location; };
+S3Location?: AWS.CodeDeploy.DeploymentGroup.S3Location;
 
-export type TriggerConfig = { TriggerEvents?: string[];
+
+};
+
+export type TriggerConfig = {
+
+
+TriggerEvents?: string[];
 
 TriggerName?: string;
 
-TriggerTargetArn?: string; };
+TriggerTargetArn?: string;
 
-export type EC2TagSet = { Ec2TagSetList?: AWS.CodeDeploy.DeploymentGroup.EC2TagSetListObject[]; };
 
-export type AlarmConfiguration =  AWS.CodeDeploy.DeploymentGroup.AlarmConfiguration;
+};
 
-export type BlueGreenDeploymentConfiguration =  AWS.CodeDeploy.DeploymentGroup.BlueGreenDeploymentConfiguration;
+export type EC2TagSet = {
 
-export type DeploymentReadyOption = { ActionOnTimeout?: string;
 
-WaitTimeInMinutes?: number; };
+Ec2TagSetList?: AWS.CodeDeploy.DeploymentGroup.EC2TagSetListObject[];
 
-export type AutoRollbackConfiguration =  AWS.CodeDeploy.DeploymentGroup.AutoRollbackConfiguration;
 
-export type S3Location = { Bucket: string;
+};
+
+export type DeploymentReadyOption = {
+
+
+ActionOnTimeout?: string;
+
+WaitTimeInMinutes?: number;
+
+
+};
+
+export type S3Location = {
+
+
+Bucket: string;
 
 BundleType?: string;
 
@@ -10566,133 +18572,257 @@ ETag?: string;
 
 Key: string;
 
-Version?: string; };
+Version?: string;
 
-export type BlueInstanceTerminationOption = { Action?: string;
 
-TerminationWaitTimeInMinutes?: number; };
+};
 
-export type TagFilter = { Key?: string;
+export type BlueInstanceTerminationOption = {
+
+
+Action?: string;
+
+TerminationWaitTimeInMinutes?: number;
+
+
+};
+
+export type TagFilter = {
+
+
+Key?: string;
 
 Type?: string;
 
-Value?: string; };
+Value?: string;
 
-export type GitHubLocation = { CommitId: string;
 
-Repository: string; };
+};
 
-export type ELBInfo = { Name?: string; };
+export type GitHubLocation = {
 
-export type Alarm = { Name?: string; };
 
-export type GreenFleetProvisioningOption = { Action?: string; };
+CommitId: string;
 
-export type Deployment =  AWS.CodeDeploy.DeploymentGroup.Deployment;
+Repository: string;
 
-export type ECSService = { ClusterName: string;
 
-ServiceName: string; };
+};
 
-export type EC2TagSetListObject = { Ec2TagGroup?: AWS.CodeDeploy.DeploymentGroup.EC2TagFilter[]; };
+export type ELBInfo = {
 
-export type ApplicationName =  string;
 
-export type AutoScalingGroups =  string[];
+Name?: string;
 
-export type DeploymentConfigName =  string;
 
-export type DeploymentGroupName =  string;
+};
 
-export type ECSServices =  AWS.CodeDeploy.DeploymentGroup.ECSService[];
+export type Alarm = {
 
-export type Ec2TagFilters =  AWS.CodeDeploy.DeploymentGroup.EC2TagFilter[];
 
-export type Ec2TagSet =  AWS.CodeDeploy.DeploymentGroup.EC2TagSet;
+Name?: string;
 
-export type OnPremisesInstanceTagFilters =  AWS.CodeDeploy.DeploymentGroup.TagFilter[];
 
-export type ServiceRoleArn =  string;
+};
 
-export type TriggerConfigurations =  AWS.CodeDeploy.DeploymentGroup.TriggerConfig[];
+export type GreenFleetProvisioningOption = {
+
+
+Action?: string;
+
+
+};
+
+export type ECSService = {
+
+
+ClusterName: string;
+
+ServiceName: string;
+
+
+};
+
+export type EC2TagSetListObject = {
+
+
+Ec2TagGroup?: AWS.CodeDeploy.DeploymentGroup.EC2TagFilter[];
+
+
+};
+
 
 }
 
-export namespace Application {
+export type Application = {
 
-export type ApplicationName =  string;
 
-export type ComputePlatform =  string;
+ApplicationName?: string;
 
-export type Tags =  Tag[];
+ComputePlatform?: string;
 
-}
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace Batch {
 
+
+export type JobDefinition = {
+
+
+NodeProperties?: AWS.Batch.JobDefinition.NodeProperties;
+
+RetryStrategy?: AWS.Batch.JobDefinition.RetryStrategy;
+
+ContainerProperties?: AWS.Batch.JobDefinition.ContainerProperties;
+
+Timeout?: AWS.Batch.JobDefinition.Timeout;
+
+Type: string;
+
+Parameters?: JSONString;
+
+JobDefinitionName?: string;
+
+PropagateTags?: boolean;
+
+PlatformCapabilities?: string[];
+
+Tags?: JSONString;
+
+
+};
+
 export namespace JobDefinition {
 
-export type Volumes = { Host?: AWS.Batch.JobDefinition.VolumesHost;
+
+export type Volumes = {
+
+
+Host?: AWS.Batch.JobDefinition.VolumesHost;
 
 EfsVolumeConfiguration?: AWS.Batch.JobDefinition.EfsVolumeConfiguration;
 
-Name?: string; };
+Name?: string;
 
-export type AuthorizationConfig = { Iam?: string;
 
-AccessPointId?: string; };
+};
 
-export type ResourceRequirement = { Type?: string;
+export type AuthorizationConfig = {
 
-Value?: string; };
 
-export type Environment = { Value?: string;
+Iam?: string;
 
-Name?: string; };
+AccessPointId?: string;
 
-export type VolumesHost = { SourcePath?: string; };
 
-export type NodeProperties =  AWS.Batch.JobDefinition.NodeProperties;
+};
 
-export type RetryStrategy =  AWS.Batch.JobDefinition.RetryStrategy;
+export type ResourceRequirement = {
 
-export type Secret = { ValueFrom: string;
 
-Name: string; };
+Type?: string;
 
-export type NetworkConfiguration = { AssignPublicIp?: string; };
+Value?: string;
 
-export type LogConfiguration = { SecretOptions?: AWS.Batch.JobDefinition.Secret[];
+
+};
+
+export type Environment = {
+
+
+Value?: string;
+
+Name?: string;
+
+
+};
+
+export type VolumesHost = {
+
+
+SourcePath?: string;
+
+
+};
+
+export type Secret = {
+
+
+ValueFrom: string;
+
+Name: string;
+
+
+};
+
+export type NetworkConfiguration = {
+
+
+AssignPublicIp?: string;
+
+
+};
+
+export type LogConfiguration = {
+
+
+SecretOptions?: AWS.Batch.JobDefinition.Secret[];
 
 Options?: JSONString;
 
-LogDriver: string; };
+LogDriver: string;
 
-export type ContainerProperties =  AWS.Batch.JobDefinition.ContainerProperties;
 
-export type MountPoints = { ReadOnly?: boolean;
+};
+
+export type MountPoints = {
+
+
+ReadOnly?: boolean;
 
 SourceVolume?: string;
 
-ContainerPath?: string; };
+ContainerPath?: string;
 
-export type EvaluateOnExit = { Action: string;
+
+};
+
+export type EvaluateOnExit = {
+
+
+Action: string;
 
 OnExitCode?: string;
 
 OnReason?: string;
 
-OnStatusReason?: string; };
+OnStatusReason?: string;
 
-export type Ulimit = { SoftLimit: number;
+
+};
+
+export type Ulimit = {
+
+
+SoftLimit: number;
 
 HardLimit: number;
 
-Name: string; };
+Name: string;
 
-export type LinuxParameters = { Swappiness?: number;
+
+};
+
+export type LinuxParameters = {
+
+
+Swappiness?: number;
 
 Tmpfs?: AWS.Batch.JobDefinition.Tmpfs[];
 
@@ -10702,23 +18832,45 @@ Devices?: AWS.Batch.JobDefinition.Device[];
 
 InitProcessEnabled?: boolean;
 
-MaxSwap?: number; };
+MaxSwap?: number;
 
-export type FargatePlatformConfiguration = { PlatformVersion?: string; };
 
-export type Timeout =  AWS.Batch.JobDefinition.Timeout;
+};
 
-export type Tmpfs = { Size: number;
+export type FargatePlatformConfiguration = {
+
+
+PlatformVersion?: string;
+
+
+};
+
+export type Tmpfs = {
+
+
+Size: number;
 
 ContainerPath: string;
 
-MountOptions?: string[]; };
+MountOptions?: string[];
 
-export type NodeRangeProperty = { Container?: AWS.Batch.JobDefinition.ContainerProperties;
 
-TargetNodes: string; };
+};
 
-export type EfsVolumeConfiguration = { TransitEncryption?: string;
+export type NodeRangeProperty = {
+
+
+Container?: AWS.Batch.JobDefinition.ContainerProperties;
+
+TargetNodes: string;
+
+
+};
+
+export type EfsVolumeConfiguration = {
+
+
+TransitEncryption?: string;
 
 AuthorizationConfig?: AWS.Batch.JobDefinition.AuthorizationConfig;
 
@@ -10726,91 +18878,151 @@ FileSystemId: string;
 
 RootDirectory?: string;
 
-TransitEncryptionPort?: number; };
+TransitEncryptionPort?: number;
 
-export type Device = { HostPath?: string;
+
+};
+
+export type Device = {
+
+
+HostPath?: string;
 
 Permissions?: string[];
 
-ContainerPath?: string; };
+ContainerPath?: string;
 
-export type Type =  string;
 
-export type Parameters =  JSONString;
+};
 
-export type JobDefinitionName =  string;
-
-export type PropagateTags =  boolean;
-
-export type PlatformCapabilities =  string[];
-
-export type Tags =  JSONString;
 
 }
+
+export type ComputeEnvironment = {
+
+
+ComputeResources?: AWS.Batch.ComputeEnvironment.ComputeResources;
+
+Type: string;
+
+ServiceRole?: string;
+
+ComputeEnvironmentName?: string;
+
+State?: string;
+
+Tags?: JSONString;
+
+
+};
 
 export namespace ComputeEnvironment {
 
-export type ComputeResources =  AWS.Batch.ComputeEnvironment.ComputeResources;
 
-export type LaunchTemplateSpecification = { LaunchTemplateName?: string;
+export type LaunchTemplateSpecification = {
+
+
+LaunchTemplateName?: string;
 
 Version?: string;
 
-LaunchTemplateId?: string; };
+LaunchTemplateId?: string;
 
-export type Ec2ConfigurationObject = { ImageIdOverride?: string;
 
-ImageType: string; };
+};
 
-export type Type =  string;
+export type Ec2ConfigurationObject = {
 
-export type ServiceRole =  string;
 
-export type ComputeEnvironmentName =  string;
+ImageIdOverride?: string;
 
-export type State =  string;
+ImageType: string;
 
-export type Tags =  JSONString;
 
-}
+};
 
-export namespace JobQueue {
-
-export type ComputeEnvironmentOrder =  AWS.Batch.JobQueue.ComputeEnvironmentOrder[];
-
-export type Priority =  number;
-
-export type State =  string;
-
-export type JobQueueName =  string;
-
-export type Tags =  JSONString;
 
 }
+
+export type JobQueue = {
+
+
+ComputeEnvironmentOrder: AWS.Batch.JobQueue.ComputeEnvironmentOrder[];
+
+Priority: number;
+
+State?: string;
+
+JobQueueName?: string;
+
+Tags?: JSONString;
+
+
+};
+
 
 }
 
 export namespace DataBrew {
 
+
+export type Dataset = {
+
+
+PathOptions?: AWS.DataBrew.Dataset.PathOptions;
+
+FormatOptions?: AWS.DataBrew.Dataset.FormatOptions;
+
+Input: AWS.DataBrew.Dataset.Input;
+
+Name: string;
+
+Format?: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace Dataset {
 
-export type FilterExpression = { Expression: string;
 
-ValuesMap: AWS.DataBrew.Dataset.FilterValue[]; };
+export type FilterExpression = {
 
-export type PathParameter = { PathParameterName: string;
 
-DatasetParameter: AWS.DataBrew.Dataset.DatasetParameter; };
+Expression: string;
 
-export type DatabaseInputDefinition = { GlueConnectionName?: string;
+ValuesMap: AWS.DataBrew.Dataset.FilterValue[];
+
+
+};
+
+export type PathParameter = {
+
+
+PathParameterName: string;
+
+DatasetParameter: AWS.DataBrew.Dataset.DatasetParameter;
+
+
+};
+
+export type DatabaseInputDefinition = {
+
+
+GlueConnectionName?: string;
 
 DatabaseTableName?: string;
 
-TempDirectory?: AWS.DataBrew.Dataset.S3Location; };
+TempDirectory?: AWS.DataBrew.Dataset.S3Location;
 
-export type PathOptions =  AWS.DataBrew.Dataset.PathOptions;
 
-export type DatasetParameter = { Name: string;
+};
+
+export type DatasetParameter = {
+
+
+Name: string;
 
 Type: string;
 
@@ -10818,75 +19030,155 @@ DatetimeOptions?: AWS.DataBrew.Dataset.DatetimeOptions;
 
 CreateColumn?: boolean;
 
-Filter?: AWS.DataBrew.Dataset.FilterExpression; };
+Filter?: AWS.DataBrew.Dataset.FilterExpression;
 
-export type FilesLimit = { MaxFiles: number;
+
+};
+
+export type FilesLimit = {
+
+
+MaxFiles: number;
 
 OrderedBy?: string;
 
-Order?: string; };
+Order?: string;
 
-export type CsvOptions = { Delimiter?: string;
 
-HeaderRow?: boolean; };
+};
 
-export type FormatOptions =  AWS.DataBrew.Dataset.FormatOptions;
+export type CsvOptions = {
 
-export type ExcelOptions = { SheetNames?: string[];
+
+Delimiter?: string;
+
+HeaderRow?: boolean;
+
+
+};
+
+export type ExcelOptions = {
+
+
+SheetNames?: string[];
 
 SheetIndexes?: number[];
 
-HeaderRow?: boolean; };
+HeaderRow?: boolean;
 
-export type JsonOptions = { MultiLine?: boolean; };
 
-export type Input =  AWS.DataBrew.Dataset.Input;
+};
 
-export type FilterValue = { ValueReference: string;
+export type JsonOptions = {
 
-Value: string; };
 
-export type DataCatalogInputDefinition = { CatalogId?: string;
+MultiLine?: boolean;
+
+
+};
+
+export type FilterValue = {
+
+
+ValueReference: string;
+
+Value: string;
+
+
+};
+
+export type DataCatalogInputDefinition = {
+
+
+CatalogId?: string;
 
 DatabaseName?: string;
 
 TableName?: string;
 
-TempDirectory?: AWS.DataBrew.Dataset.S3Location; };
+TempDirectory?: AWS.DataBrew.Dataset.S3Location;
 
-export type DatetimeOptions = { Format: string;
+
+};
+
+export type DatetimeOptions = {
+
+
+Format: string;
 
 TimezoneOffset?: string;
 
-LocaleCode?: string; };
+LocaleCode?: string;
 
-export type S3Location = { Bucket: string;
 
-Key?: string; };
+};
 
-export type Name =  string;
+export type S3Location = {
 
-export type Format =  string;
 
-export type Tags =  Tag[];
+Bucket: string;
+
+Key?: string;
+
+
+};
+
 
 }
 
+export type Recipe = {
+
+
+ParameterMap?: any;
+
+Description?: string;
+
+Name: string;
+
+Steps: AWS.DataBrew.Recipe.RecipeStep[];
+
+Tags?: Tag[];
+
+
+};
+
 export namespace Recipe {
 
-export type RecipeStep = { Action: AWS.DataBrew.Recipe.Action;
 
-ConditionExpressions?: AWS.DataBrew.Recipe.ConditionExpression[]; };
+export type RecipeStep = {
 
-export type SecondaryInput = { S3InputDefinition?: AWS.DataBrew.Recipe.S3Location;
 
-DataCatalogInputDefinition?: AWS.DataBrew.Recipe.DataCatalogInputDefinition; };
+Action: AWS.DataBrew.Recipe.Action;
 
-export type Action = { Operation: string;
+ConditionExpressions?: AWS.DataBrew.Recipe.ConditionExpression[];
 
-Parameters?: AWS.DataBrew.Recipe.ParameterMap; };
 
-export type RecipeParameters = { AggregateFunction?: string;
+};
+
+export type SecondaryInput = {
+
+
+S3InputDefinition?: AWS.DataBrew.Recipe.S3Location;
+
+DataCatalogInputDefinition?: AWS.DataBrew.Recipe.DataCatalogInputDefinition;
+
+
+};
+
+export type Action = {
+
+
+Operation: string;
+
+Parameters?: AWS.DataBrew.Recipe.ParameterMap;
+
+
+};
+
+export type RecipeParameters = {
+
+
+AggregateFunction?: string;
 
 Base?: string;
 
@@ -11086,41 +19378,97 @@ ValueColumn?: string;
 
 ViewFrame?: string;
 
-Input?: JSONString; };
+Input?: JSONString;
 
-export type S3Location = { Bucket: string;
 
-Key?: string; };
+};
 
-export type ParameterMap =  any;
+export type S3Location = {
 
-export type ConditionExpression = { Condition: string;
+
+Bucket: string;
+
+Key?: string;
+
+
+};
+
+export type ConditionExpression = {
+
+
+Condition: string;
 
 Value?: string;
 
-TargetColumn: string; };
+TargetColumn: string;
 
-export type DataCatalogInputDefinition = { CatalogId?: string;
+
+};
+
+export type DataCatalogInputDefinition = {
+
+
+CatalogId?: string;
 
 DatabaseName?: string;
 
 TableName?: string;
 
-TempDirectory?: AWS.DataBrew.Recipe.S3Location; };
+TempDirectory?: AWS.DataBrew.Recipe.S3Location;
 
-export type Description =  string;
 
-export type Name =  string;
+};
 
-export type Steps =  AWS.DataBrew.Recipe.RecipeStep[];
-
-export type Tags =  Tag[];
 
 }
 
+export type Job = {
+
+
+Recipe?: AWS.DataBrew.Job.Recipe;
+
+OutputLocation?: AWS.DataBrew.Job.OutputLocation;
+
+JobSample?: AWS.DataBrew.Job.JobSample;
+
+DatasetName?: string;
+
+EncryptionKeyArn?: string;
+
+EncryptionMode?: string;
+
+Name: string;
+
+Type: string;
+
+LogSubscription?: string;
+
+MaxCapacity?: number;
+
+MaxRetries?: number;
+
+Outputs?: AWS.DataBrew.Job.Output[];
+
+DataCatalogOutputs?: AWS.DataBrew.Job.DataCatalogOutput[];
+
+ProjectName?: string;
+
+RoleArn: string;
+
+Tags?: Tag[];
+
+Timeout?: number;
+
+
+};
+
 export namespace Job {
 
-export type DataCatalogOutput = { CatalogId?: string;
+
+export type DataCatalogOutput = {
+
+
+CatalogId?: string;
 
 DatabaseName: string;
 
@@ -11130,21 +19478,49 @@ S3Options?: AWS.DataBrew.Job.S3TableOutputOptions;
 
 DatabaseOptions?: AWS.DataBrew.Job.DatabaseTableOutputOptions;
 
-Overwrite?: boolean; };
+Overwrite?: boolean;
 
-export type S3Location = { Bucket: string;
 
-Key?: string; };
+};
 
-export type OutputFormatOptions = { Csv?: AWS.DataBrew.Job.CsvOutputOptions; };
+export type S3Location = {
 
-export type CsvOutputOptions = { Delimiter?: string; };
 
-export type Recipe =  AWS.DataBrew.Job.Recipe;
+Bucket: string;
 
-export type S3TableOutputOptions = { Location: AWS.DataBrew.Job.S3Location; };
+Key?: string;
 
-export type Output = { CompressionFormat?: string;
+
+};
+
+export type OutputFormatOptions = {
+
+
+Csv?: AWS.DataBrew.Job.CsvOutputOptions;
+
+
+};
+
+export type CsvOutputOptions = {
+
+
+Delimiter?: string;
+
+
+};
+
+export type S3TableOutputOptions = {
+
+
+Location: AWS.DataBrew.Job.S3Location;
+
+
+};
+
+export type Output = {
+
+
+CompressionFormat?: string;
 
 Format?: string;
 
@@ -11154,87 +19530,101 @@ PartitionColumns?: string[];
 
 Location: AWS.DataBrew.Job.S3Location;
 
-Overwrite?: boolean; };
+Overwrite?: boolean;
 
-export type OutputLocation =  AWS.DataBrew.Job.OutputLocation;
 
-export type DatabaseTableOutputOptions = { TempDirectory?: AWS.DataBrew.Job.S3Location;
+};
 
-TableName: string; };
+export type DatabaseTableOutputOptions = {
 
-export type JobSample =  AWS.DataBrew.Job.JobSample;
 
-export type DatasetName =  string;
+TempDirectory?: AWS.DataBrew.Job.S3Location;
 
-export type EncryptionKeyArn =  string;
+TableName: string;
 
-export type EncryptionMode =  string;
 
-export type Name =  string;
+};
 
-export type Type =  string;
-
-export type LogSubscription =  string;
-
-export type MaxCapacity =  number;
-
-export type MaxRetries =  number;
-
-export type Outputs =  AWS.DataBrew.Job.Output[];
-
-export type DataCatalogOutputs =  AWS.DataBrew.Job.DataCatalogOutput[];
-
-export type ProjectName =  string;
-
-export type RoleArn =  string;
-
-export type Tags =  Tag[];
-
-export type Timeout =  number;
 
 }
 
-export namespace Project {
+export type Project = {
 
-export type Sample =  AWS.DataBrew.Project.Sample;
 
-export type DatasetName =  string;
+Sample?: AWS.DataBrew.Project.Sample;
 
-export type Name =  string;
+DatasetName: string;
 
-export type RecipeName =  string;
+Name: string;
 
-export type RoleArn =  string;
+RecipeName: string;
 
-export type Tags =  Tag[];
+RoleArn: string;
 
-}
+Tags?: Tag[];
 
-export namespace Schedule {
 
-export type JobNames =  string[];
+};
 
-export type CronExpression =  string;
+export type Schedule = {
 
-export type Name =  string;
 
-export type Tags =  Tag[];
+JobNames?: string[];
 
-}
+CronExpression: string;
+
+Name: string;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace ApplicationAutoScaling {
 
+
+export type ScalingPolicy = {
+
+
+StepScalingPolicyConfiguration?: AWS.ApplicationAutoScaling.ScalingPolicy.StepScalingPolicyConfiguration;
+
+TargetTrackingScalingPolicyConfiguration?: AWS.ApplicationAutoScaling.ScalingPolicy.TargetTrackingScalingPolicyConfiguration;
+
+PolicyName: string;
+
+PolicyType: string;
+
+ResourceId?: string;
+
+ScalableDimension?: string;
+
+ScalingTargetId?: string;
+
+ServiceNamespace?: string;
+
+
+};
+
 export namespace ScalingPolicy {
 
-export type StepScalingPolicyConfiguration =  AWS.ApplicationAutoScaling.ScalingPolicy.StepScalingPolicyConfiguration;
 
-export type PredefinedMetricSpecification = { PredefinedMetricType: string;
+export type PredefinedMetricSpecification = {
 
-ResourceLabel?: string; };
 
-export type CustomizedMetricSpecification = { Dimensions?: AWS.ApplicationAutoScaling.ScalingPolicy.MetricDimension[];
+PredefinedMetricType: string;
+
+ResourceLabel?: string;
+
+
+};
+
+export type CustomizedMetricSpecification = {
+
+
+Dimensions?: AWS.ApplicationAutoScaling.ScalingPolicy.MetricDimension[];
 
 MetricName: string;
 
@@ -11242,39 +19632,65 @@ Namespace: string;
 
 Statistic: string;
 
-Unit?: string; };
+Unit?: string;
 
-export type MetricDimension = { Name: string;
 
-Value: string; };
+};
 
-export type StepAdjustment = { MetricIntervalLowerBound?: number;
+export type MetricDimension = {
+
+
+Name: string;
+
+Value: string;
+
+
+};
+
+export type StepAdjustment = {
+
+
+MetricIntervalLowerBound?: number;
 
 MetricIntervalUpperBound?: number;
 
-ScalingAdjustment: number; };
+ScalingAdjustment: number;
 
-export type TargetTrackingScalingPolicyConfiguration =  AWS.ApplicationAutoScaling.ScalingPolicy.TargetTrackingScalingPolicyConfiguration;
 
-export type PolicyName =  string;
+};
 
-export type PolicyType =  string;
-
-export type ResourceId =  string;
-
-export type ScalableDimension =  string;
-
-export type ScalingTargetId =  string;
-
-export type ServiceNamespace =  string;
 
 }
 
+export type ScalableTarget = {
+
+
+SuspendedState?: AWS.ApplicationAutoScaling.ScalableTarget.SuspendedState;
+
+MaxCapacity: number;
+
+MinCapacity: number;
+
+ResourceId: string;
+
+RoleARN: string;
+
+ScalableDimension: string;
+
+ScheduledActions?: AWS.ApplicationAutoScaling.ScalableTarget.ScheduledAction[];
+
+ServiceNamespace: string;
+
+
+};
+
 export namespace ScalableTarget {
 
-export type SuspendedState =  AWS.ApplicationAutoScaling.ScalableTarget.SuspendedState;
 
-export type ScheduledAction = { EndTime?: Timestamp;
+export type ScheduledAction = {
+
+
+EndTime?: Timestamp;
 
 ScalableTargetAction?: AWS.ApplicationAutoScaling.ScalableTarget.ScalableTargetAction;
 
@@ -11284,71 +19700,147 @@ ScheduledActionName: string;
 
 StartTime?: Timestamp;
 
-Timezone?: string; };
+Timezone?: string;
 
-export type ScalableTargetAction = { MaxCapacity?: number;
 
-MinCapacity?: number; };
+};
 
-export type MaxCapacity =  number;
+export type ScalableTargetAction = {
 
-export type MinCapacity =  number;
 
-export type ResourceId =  string;
+MaxCapacity?: number;
 
-export type RoleARN =  string;
+MinCapacity?: number;
 
-export type ScalableDimension =  string;
 
-export type ScheduledActions =  AWS.ApplicationAutoScaling.ScalableTarget.ScheduledAction[];
+};
 
-export type ServiceNamespace =  string;
 
 }
+
 
 }
 
 export namespace EC2 {
 
+
+export type TransitGatewayConnect = {
+
+
+TransportTransitGatewayAttachmentId: string;
+
+Tags?: Tag[];
+
+Options: AWS.EC2.TransitGatewayConnect.TransitGatewayConnectOptions;
+
+
+};
+
 export namespace TransitGatewayConnect {
 
-export type TransitGatewayConnectOptions = { Protocol?: string; };
 
-export type TransportTransitGatewayAttachmentId =  string;
+export type TransitGatewayConnectOptions = {
 
-export type Tags =  Tag[];
 
-export type Options =  AWS.EC2.TransitGatewayConnect.TransitGatewayConnectOptions;
+Protocol?: string;
+
+
+};
+
 
 }
 
+export type EC2Fleet = {
+
+
+TargetCapacitySpecification: AWS.EC2.EC2Fleet.TargetCapacitySpecificationRequest;
+
+OnDemandOptions?: AWS.EC2.EC2Fleet.OnDemandOptionsRequest;
+
+Type?: string;
+
+ExcessCapacityTerminationPolicy?: string;
+
+TagSpecifications?: AWS.EC2.EC2Fleet.TagSpecification[];
+
+SpotOptions?: AWS.EC2.EC2Fleet.SpotOptionsRequest;
+
+ValidFrom?: string;
+
+ReplaceUnhealthyInstances?: boolean;
+
+LaunchTemplateConfigs: AWS.EC2.EC2Fleet.FleetLaunchTemplateConfigRequest[];
+
+TerminateInstancesWithExpiration?: boolean;
+
+ValidUntil?: string;
+
+Context?: string;
+
+
+};
+
 export namespace EC2Fleet {
 
-export type FleetLaunchTemplateSpecificationRequest = { LaunchTemplateName?: string;
+
+export type FleetLaunchTemplateSpecificationRequest = {
+
+
+LaunchTemplateName?: string;
 
 LaunchTemplateId?: string;
 
-Version?: string; };
+Version?: string;
 
-export type TargetCapacitySpecificationRequest = { DefaultTargetCapacityType?: string;
+
+};
+
+export type TargetCapacitySpecificationRequest = {
+
+
+DefaultTargetCapacityType?: string;
 
 TotalTargetCapacity: number;
 
 OnDemandTargetCapacity?: number;
 
-SpotTargetCapacity?: number; };
+SpotTargetCapacity?: number;
 
-export type CapacityReservationOptionsRequest = { UsageStrategy?: string; };
 
-export type FleetLaunchTemplateConfigRequest = { LaunchTemplateSpecification?: AWS.EC2.EC2Fleet.FleetLaunchTemplateSpecificationRequest;
+};
 
-Overrides?: AWS.EC2.EC2Fleet.FleetLaunchTemplateOverridesRequest[]; };
+export type CapacityReservationOptionsRequest = {
 
-export type TagSpecification = { ResourceType?: string;
 
-Tags?: Tag[]; };
+UsageStrategy?: string;
 
-export type SpotOptionsRequest = { SingleAvailabilityZone?: boolean;
+
+};
+
+export type FleetLaunchTemplateConfigRequest = {
+
+
+LaunchTemplateSpecification?: AWS.EC2.EC2Fleet.FleetLaunchTemplateSpecificationRequest;
+
+Overrides?: AWS.EC2.EC2Fleet.FleetLaunchTemplateOverridesRequest[];
+
+
+};
+
+export type TagSpecification = {
+
+
+ResourceType?: string;
+
+Tags?: Tag[];
+
+
+};
+
+export type SpotOptionsRequest = {
+
+
+SingleAvailabilityZone?: boolean;
 
 AllocationStrategy?: string;
 
@@ -11360,9 +19852,15 @@ MaxTotalPrice?: string;
 
 InstanceInterruptionBehavior?: string;
 
-InstancePoolsToUseCount?: number; };
+InstancePoolsToUseCount?: number;
 
-export type OnDemandOptionsRequest = { SingleAvailabilityZone?: boolean;
+
+};
+
+export type OnDemandOptionsRequest = {
+
+
+SingleAvailabilityZone?: boolean;
 
 AllocationStrategy?: string;
 
@@ -11372,9 +19870,15 @@ MinTargetCapacity?: number;
 
 MaxTotalPrice?: string;
 
-CapacityReservationOptions?: AWS.EC2.EC2Fleet.CapacityReservationOptionsRequest; };
+CapacityReservationOptions?: AWS.EC2.EC2Fleet.CapacityReservationOptionsRequest;
 
-export type FleetLaunchTemplateOverridesRequest = { WeightedCapacity?: number;
+
+};
+
+export type FleetLaunchTemplateOverridesRequest = {
+
+
+WeightedCapacity?: number;
 
 Placement?: AWS.EC2.EC2Fleet.Placement;
 
@@ -11386,9 +19890,15 @@ SubnetId?: string;
 
 InstanceType?: string;
 
-MaxPrice?: string; };
+MaxPrice?: string;
 
-export type Placement = { GroupName?: string;
+
+};
+
+export type Placement = {
+
+
+GroupName?: string;
 
 Tenancy?: string;
 
@@ -11402,95 +19912,125 @@ Affinity?: string;
 
 HostId?: string;
 
-HostResourceGroupArn?: string; };
+HostResourceGroupArn?: string;
 
-export type TargetCapacitySpecification =  AWS.EC2.EC2Fleet.TargetCapacitySpecificationRequest;
 
-export type OnDemandOptions =  AWS.EC2.EC2Fleet.OnDemandOptionsRequest;
+};
 
-export type Type =  string;
-
-export type ExcessCapacityTerminationPolicy =  string;
-
-export type TagSpecifications =  AWS.EC2.EC2Fleet.TagSpecification[];
-
-export type SpotOptions =  AWS.EC2.EC2Fleet.SpotOptionsRequest;
-
-export type ValidFrom =  string;
-
-export type ReplaceUnhealthyInstances =  boolean;
-
-export type LaunchTemplateConfigs =  AWS.EC2.EC2Fleet.FleetLaunchTemplateConfigRequest[];
-
-export type TerminateInstancesWithExpiration =  boolean;
-
-export type ValidUntil =  string;
-
-export type Context =  string;
 
 }
+
+export type VPNConnection = {
+
+
+CustomerGatewayId: string;
+
+StaticRoutesOnly?: boolean;
+
+Tags?: Tag[];
+
+TransitGatewayId?: string;
+
+Type: string;
+
+VpnGatewayId?: string;
+
+VpnTunnelOptionsSpecifications?: AWS.EC2.VPNConnection.VpnTunnelOptionsSpecification[];
+
+
+};
 
 export namespace VPNConnection {
 
-export type VpnTunnelOptionsSpecification = { PreSharedKey?: string;
 
-TunnelInsideCidr?: string; };
+export type VpnTunnelOptionsSpecification = {
 
-export type CustomerGatewayId =  string;
 
-export type StaticRoutesOnly =  boolean;
+PreSharedKey?: string;
 
-export type Tags =  Tag[];
+TunnelInsideCidr?: string;
 
-export type TransitGatewayId =  string;
 
-export type Type =  string;
+};
 
-export type VpnGatewayId =  string;
-
-export type VpnTunnelOptionsSpecifications =  AWS.EC2.VPNConnection.VpnTunnelOptionsSpecification[];
 
 }
+
+export type TrafficMirrorFilterRule = {
+
+
+DestinationPortRange?: AWS.EC2.TrafficMirrorFilterRule.TrafficMirrorPortRange;
+
+Description?: string;
+
+SourcePortRange?: AWS.EC2.TrafficMirrorFilterRule.TrafficMirrorPortRange;
+
+RuleAction: string;
+
+SourceCidrBlock: string;
+
+RuleNumber: number;
+
+DestinationCidrBlock: string;
+
+TrafficMirrorFilterId: string;
+
+TrafficDirection: string;
+
+Protocol?: number;
+
+
+};
 
 export namespace TrafficMirrorFilterRule {
 
-export type TrafficMirrorPortRange = { FromPort: number;
 
-ToPort: number; };
+export type TrafficMirrorPortRange = {
 
-export type DestinationPortRange =  AWS.EC2.TrafficMirrorFilterRule.TrafficMirrorPortRange;
 
-export type Description =  string;
+FromPort: number;
 
-export type SourcePortRange =  AWS.EC2.TrafficMirrorFilterRule.TrafficMirrorPortRange;
+ToPort: number;
 
-export type RuleAction =  string;
 
-export type SourceCidrBlock =  string;
+};
 
-export type RuleNumber =  number;
-
-export type DestinationCidrBlock =  string;
-
-export type TrafficMirrorFilterId =  string;
-
-export type TrafficDirection =  string;
-
-export type Protocol =  number;
 
 }
 
+export type LaunchTemplate = {
+
+
+LaunchTemplateData?: AWS.EC2.LaunchTemplate.LaunchTemplateData;
+
+LaunchTemplateName?: string;
+
+TagSpecifications?: AWS.EC2.LaunchTemplate.LaunchTemplateTagSpecification[];
+
+
+};
+
 export namespace LaunchTemplate {
 
-export type BlockDeviceMapping = { Ebs?: AWS.EC2.LaunchTemplate.Ebs;
+
+export type BlockDeviceMapping = {
+
+
+Ebs?: AWS.EC2.LaunchTemplate.Ebs;
 
 NoDevice?: string;
 
 VirtualName?: string;
 
-DeviceName?: string; };
+DeviceName?: string;
 
-export type SpotOptions = { SpotInstanceType?: string;
+
+};
+
+export type SpotOptions = {
+
+
+SpotInstanceType?: string;
 
 InstanceInterruptionBehavior?: string;
 
@@ -11498,15 +20038,33 @@ MaxPrice?: string;
 
 BlockDurationMinutes?: number;
 
-ValidUntil?: string; };
+ValidUntil?: string;
 
-export type ElasticGpuSpecification = { Type?: string; };
 
-export type TagSpecification = { ResourceType?: string;
+};
 
-Tags?: Tag[]; };
+export type ElasticGpuSpecification = {
 
-export type Ebs = { SnapshotId?: string;
+
+Type?: string;
+
+
+};
+
+export type TagSpecification = {
+
+
+ResourceType?: string;
+
+Tags?: Tag[];
+
+
+};
+
+export type Ebs = {
+
+
+SnapshotId?: string;
 
 VolumeType?: string;
 
@@ -11520,51 +20078,127 @@ Iops?: number;
 
 VolumeSize?: number;
 
-DeleteOnTermination?: boolean; };
+DeleteOnTermination?: boolean;
 
-export type EnclaveOptions = { Enabled?: boolean; };
 
-export type LaunchTemplateData =  AWS.EC2.LaunchTemplate.LaunchTemplateData;
+};
 
-export type MetadataOptions = { HttpPutResponseHopLimit?: number;
+export type EnclaveOptions = {
+
+
+Enabled?: boolean;
+
+
+};
+
+export type MetadataOptions = {
+
+
+HttpPutResponseHopLimit?: number;
 
 HttpTokens?: string;
 
-HttpEndpoint?: string; };
+HttpEndpoint?: string;
 
-export type CapacityReservationSpecification = { CapacityReservationPreference?: string;
 
-CapacityReservationTarget?: AWS.EC2.LaunchTemplate.CapacityReservationTarget; };
+};
 
-export type CapacityReservationTarget = { CapacityReservationResourceGroupArn?: string;
+export type CapacityReservationSpecification = {
 
-CapacityReservationId?: string; };
 
-export type CpuOptions = { ThreadsPerCore?: number;
+CapacityReservationPreference?: string;
 
-CoreCount?: number; };
+CapacityReservationTarget?: AWS.EC2.LaunchTemplate.CapacityReservationTarget;
 
-export type PrivateIpAdd = { PrivateIpAddress?: string;
 
-Primary?: boolean; };
+};
 
-export type IamInstanceProfile = { Arn?: string;
+export type CapacityReservationTarget = {
 
-Name?: string; };
 
-export type LicenseSpecification = { LicenseConfigurationArn?: string; };
+CapacityReservationResourceGroupArn?: string;
 
-export type HibernationOptions = { Configured?: boolean; };
+CapacityReservationId?: string;
 
-export type InstanceMarketOptions = { SpotOptions?: AWS.EC2.LaunchTemplate.SpotOptions;
 
-MarketType?: string; };
+};
 
-export type CreditSpecification = { CpuCredits?: string; };
+export type CpuOptions = {
 
-export type Monitoring = { Enabled?: boolean; };
 
-export type Placement = { GroupName?: string;
+ThreadsPerCore?: number;
+
+CoreCount?: number;
+
+
+};
+
+export type PrivateIpAdd = {
+
+
+PrivateIpAddress?: string;
+
+Primary?: boolean;
+
+
+};
+
+export type IamInstanceProfile = {
+
+
+Arn?: string;
+
+Name?: string;
+
+
+};
+
+export type LicenseSpecification = {
+
+
+LicenseConfigurationArn?: string;
+
+
+};
+
+export type HibernationOptions = {
+
+
+Configured?: boolean;
+
+
+};
+
+export type InstanceMarketOptions = {
+
+
+SpotOptions?: AWS.EC2.LaunchTemplate.SpotOptions;
+
+MarketType?: string;
+
+
+};
+
+export type CreditSpecification = {
+
+
+CpuCredits?: string;
+
+
+};
+
+export type Monitoring = {
+
+
+Enabled?: boolean;
+
+
+};
+
+export type Placement = {
+
+
+GroupName?: string;
 
 Tenancy?: string;
 
@@ -11578,11 +20212,23 @@ Affinity?: string;
 
 HostId?: string;
 
-HostResourceGroupArn?: string; };
+HostResourceGroupArn?: string;
 
-export type Ipv6Add = { Ipv6Address?: string; };
 
-export type NetworkInterface = { Description?: string;
+};
+
+export type Ipv6Add = {
+
+
+Ipv6Address?: string;
+
+
+};
+
+export type NetworkInterface = {
+
+
+Description?: string;
 
 PrivateIpAddress?: string;
 
@@ -11610,27 +20256,123 @@ Ipv6AddressCount?: number;
 
 Groups?: string[];
 
-DeleteOnTermination?: boolean; };
+DeleteOnTermination?: boolean;
 
-export type LaunchTemplateElasticInferenceAccelerator = { Type?: string;
 
-Count?: number; };
+};
 
-export type LaunchTemplateTagSpecification = { ResourceType?: string;
+export type LaunchTemplateElasticInferenceAccelerator = {
 
-Tags?: Tag[]; };
 
-export type LaunchTemplateName =  string;
+Type?: string;
 
-export type TagSpecifications =  AWS.EC2.LaunchTemplate.LaunchTemplateTagSpecification[];
+Count?: number;
+
+
+};
+
+export type LaunchTemplateTagSpecification = {
+
+
+ResourceType?: string;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
+export type Instance = {
+
+
+HibernationOptions?: AWS.EC2.Instance.HibernationOptions;
+
+CreditSpecification?: AWS.EC2.Instance.CreditSpecification;
+
+CpuOptions?: AWS.EC2.Instance.CpuOptions;
+
+EnclaveOptions?: AWS.EC2.Instance.EnclaveOptions;
+
+AdditionalInfo?: string;
+
+Affinity?: string;
+
+AvailabilityZone?: string;
+
+BlockDeviceMappings?: AWS.EC2.Instance.BlockDeviceMapping[];
+
+DisableApiTermination?: boolean;
+
+EbsOptimized?: boolean;
+
+ElasticGpuSpecifications?: AWS.EC2.Instance.ElasticGpuSpecification[];
+
+ElasticInferenceAccelerators?: AWS.EC2.Instance.ElasticInferenceAccelerator[];
+
+HostId?: string;
+
+HostResourceGroupArn?: string;
+
+IamInstanceProfile?: string;
+
+ImageId?: string;
+
+InstanceInitiatedShutdownBehavior?: string;
+
+InstanceType?: string;
+
+Ipv6AddressCount?: number;
+
+Ipv6Addresses?: AWS.EC2.Instance.InstanceIpv6Address[];
+
+KernelId?: string;
+
+KeyName?: string;
+
+LaunchTemplate?: AWS.EC2.Instance.LaunchTemplateSpecification;
+
+LicenseSpecifications?: AWS.EC2.Instance.LicenseSpecification[];
+
+Monitoring?: boolean;
+
+NetworkInterfaces?: AWS.EC2.Instance.NetworkInterface[];
+
+PlacementGroupName?: string;
+
+PrivateIpAddress?: string;
+
+RamdiskId?: string;
+
+SecurityGroupIds?: string[];
+
+SecurityGroups?: string[];
+
+SourceDestCheck?: boolean;
+
+SsmAssociations?: AWS.EC2.Instance.SsmAssociation[];
+
+SubnetId?: string;
+
+Tags?: Tag[];
+
+Tenancy?: string;
+
+UserData?: string;
+
+Volumes?: AWS.EC2.Instance.Volume[];
+
+
+};
+
 export namespace Instance {
 
-export type HibernationOptions =  AWS.EC2.Instance.HibernationOptions;
 
-export type Ebs = { DeleteOnTermination?: boolean;
+export type Ebs = {
+
+
+DeleteOnTermination?: boolean;
 
 Encrypted?: boolean;
 
@@ -11642,39 +20384,71 @@ SnapshotId?: string;
 
 VolumeSize?: number;
 
-VolumeType?: string; };
+VolumeType?: string;
 
-export type NoDevice = {  };
 
-export type CreditSpecification =  AWS.EC2.Instance.CreditSpecification;
+};
 
-export type ElasticGpuSpecification = { Type: string; };
 
-export type CpuOptions =  AWS.EC2.Instance.CpuOptions;
 
-export type LaunchTemplateSpecification = { LaunchTemplateId?: string;
+export type ElasticGpuSpecification = {
+
+
+Type: string;
+
+
+};
+
+export type LaunchTemplateSpecification = {
+
+
+LaunchTemplateId?: string;
 
 LaunchTemplateName?: string;
 
-Version: string; };
+Version: string;
 
-export type BlockDeviceMapping = { DeviceName: string;
+
+};
+
+export type BlockDeviceMapping = {
+
+
+DeviceName: string;
 
 Ebs?: AWS.EC2.Instance.Ebs;
 
 NoDevice?: AWS.EC2.Instance.NoDevice;
 
-VirtualName?: string; };
+VirtualName?: string;
 
-export type PrivateIpAddressSpecification = { Primary: boolean;
 
-PrivateIpAddress: string; };
+};
 
-export type Volume = { Device: string;
+export type PrivateIpAddressSpecification = {
 
-VolumeId: string; };
 
-export type NetworkInterface = { AssociatePublicIpAddress?: boolean;
+Primary: boolean;
+
+PrivateIpAddress: string;
+
+
+};
+
+export type Volume = {
+
+
+Device: string;
+
+VolumeId: string;
+
+
+};
+
+export type NetworkInterface = {
+
+
+AssociatePublicIpAddress?: boolean;
 
 DeleteOnTermination?: boolean;
 
@@ -11696,105 +20470,87 @@ PrivateIpAddresses?: AWS.EC2.Instance.PrivateIpAddressSpecification[];
 
 SecondaryPrivateIpAddressCount?: number;
 
-SubnetId?: string; };
+SubnetId?: string;
 
-export type InstanceIpv6Address = { Ipv6Address: string; };
 
-export type AssociationParameter = { Key: string;
+};
 
-Value: string[]; };
+export type InstanceIpv6Address = {
 
-export type EnclaveOptions =  AWS.EC2.Instance.EnclaveOptions;
 
-export type LicenseSpecification = { LicenseConfigurationArn: string; };
+Ipv6Address: string;
 
-export type SsmAssociation = { AssociationParameters?: AWS.EC2.Instance.AssociationParameter[];
 
-DocumentName: string; };
+};
 
-export type ElasticInferenceAccelerator = { Count?: number;
+export type AssociationParameter = {
 
-Type: string; };
 
-export type AdditionalInfo =  string;
+Key: string;
 
-export type Affinity =  string;
+Value: string[];
 
-export type AvailabilityZone =  string;
 
-export type BlockDeviceMappings =  AWS.EC2.Instance.BlockDeviceMapping[];
+};
 
-export type DisableApiTermination =  boolean;
+export type LicenseSpecification = {
 
-export type EbsOptimized =  boolean;
 
-export type ElasticGpuSpecifications =  AWS.EC2.Instance.ElasticGpuSpecification[];
+LicenseConfigurationArn: string;
 
-export type ElasticInferenceAccelerators =  AWS.EC2.Instance.ElasticInferenceAccelerator[];
 
-export type HostId =  string;
+};
 
-export type HostResourceGroupArn =  string;
+export type SsmAssociation = {
 
-export type IamInstanceProfile =  string;
 
-export type ImageId =  string;
+AssociationParameters?: AWS.EC2.Instance.AssociationParameter[];
 
-export type InstanceInitiatedShutdownBehavior =  string;
+DocumentName: string;
 
-export type InstanceType =  string;
 
-export type Ipv6AddressCount =  number;
+};
 
-export type Ipv6Addresses =  AWS.EC2.Instance.InstanceIpv6Address[];
+export type ElasticInferenceAccelerator = {
 
-export type KernelId =  string;
 
-export type KeyName =  string;
+Count?: number;
 
-export type LaunchTemplate =  AWS.EC2.Instance.LaunchTemplateSpecification;
+Type: string;
 
-export type LicenseSpecifications =  AWS.EC2.Instance.LicenseSpecification[];
 
-export type Monitoring =  boolean;
+};
 
-export type NetworkInterfaces =  AWS.EC2.Instance.NetworkInterface[];
-
-export type PlacementGroupName =  string;
-
-export type PrivateIpAddress =  string;
-
-export type RamdiskId =  string;
-
-export type SecurityGroupIds =  string[];
-
-export type SecurityGroups =  string[];
-
-export type SourceDestCheck =  boolean;
-
-export type SsmAssociations =  AWS.EC2.Instance.SsmAssociation[];
-
-export type SubnetId =  string;
-
-export type Tags =  Tag[];
-
-export type Tenancy =  string;
-
-export type UserData =  string;
-
-export type Volumes =  AWS.EC2.Instance.Volume[];
 
 }
 
+export type SpotFleet = {
+
+
+SpotFleetRequestConfigData: AWS.EC2.SpotFleet.SpotFleetRequestConfigData;
+
+
+};
+
 export namespace SpotFleet {
 
-export type SpotPlacement = { AvailabilityZone?: string;
+
+export type SpotPlacement = {
+
+
+AvailabilityZone?: string;
 
 GroupName?: string;
 
-Tenancy?: string; };
+Tenancy?: string;
 
-export type LaunchTemplateOverrides = { AvailabilityZone?: string;
+
+};
+
+export type LaunchTemplateOverrides = {
+
+
+AvailabilityZone?: string;
 
 InstanceType?: string;
 
@@ -11802,11 +20558,23 @@ SpotPrice?: string;
 
 SubnetId?: string;
 
-WeightedCapacity?: number; };
+WeightedCapacity?: number;
 
-export type IamInstanceProfileSpecification = { Arn?: string; };
 
-export type InstanceNetworkInterfaceSpecification = { AssociatePublicIpAddress?: boolean;
+};
+
+export type IamInstanceProfileSpecification = {
+
+
+Arn?: string;
+
+
+};
+
+export type InstanceNetworkInterfaceSpecification = {
+
+
+AssociatePublicIpAddress?: boolean;
 
 DeleteOnTermination?: boolean;
 
@@ -11826,9 +20594,15 @@ PrivateIpAddresses?: AWS.EC2.SpotFleet.PrivateIpAddressSpecification[];
 
 SecondaryPrivateIpAddressCount?: number;
 
-SubnetId?: string; };
+SubnetId?: string;
 
-export type SpotFleetLaunchSpecification = { BlockDeviceMappings?: AWS.EC2.SpotFleet.BlockDeviceMapping[];
+
+};
+
+export type SpotFleetLaunchSpecification = {
+
+
+BlockDeviceMappings?: AWS.EC2.SpotFleet.BlockDeviceMapping[];
 
 EbsOptimized?: boolean;
 
@@ -11860,23 +20634,59 @@ TagSpecifications?: AWS.EC2.SpotFleet.SpotFleetTagSpecification[];
 
 UserData?: string;
 
-WeightedCapacity?: number; };
+WeightedCapacity?: number;
 
-export type ClassicLoadBalancersConfig = { ClassicLoadBalancers: AWS.EC2.SpotFleet.ClassicLoadBalancer[]; };
 
-export type SpotMaintenanceStrategies = { CapacityRebalance?: AWS.EC2.SpotFleet.SpotCapacityRebalance; };
+};
 
-export type SpotFleetTagSpecification = { ResourceType?: string;
+export type ClassicLoadBalancersConfig = {
 
-Tags?: Tag[]; };
 
-export type PrivateIpAddressSpecification = { Primary?: boolean;
+ClassicLoadBalancers: AWS.EC2.SpotFleet.ClassicLoadBalancer[];
 
-PrivateIpAddress: string; };
 
-export type SpotCapacityRebalance = { ReplacementStrategy?: string; };
+};
 
-export type EbsBlockDevice = { DeleteOnTermination?: boolean;
+export type SpotMaintenanceStrategies = {
+
+
+CapacityRebalance?: AWS.EC2.SpotFleet.SpotCapacityRebalance;
+
+
+};
+
+export type SpotFleetTagSpecification = {
+
+
+ResourceType?: string;
+
+Tags?: Tag[];
+
+
+};
+
+export type PrivateIpAddressSpecification = {
+
+
+Primary?: boolean;
+
+PrivateIpAddress: string;
+
+
+};
+
+export type SpotCapacityRebalance = {
+
+
+ReplacementStrategy?: string;
+
+
+};
+
+export type EbsBlockDevice = {
+
+
+DeleteOnTermination?: boolean;
 
 Encrypted?: boolean;
 
@@ -11886,81 +20696,179 @@ SnapshotId?: string;
 
 VolumeSize?: number;
 
-VolumeType?: string; };
+VolumeType?: string;
 
-export type LoadBalancersConfig = { ClassicLoadBalancersConfig?: AWS.EC2.SpotFleet.ClassicLoadBalancersConfig;
 
-TargetGroupsConfig?: AWS.EC2.SpotFleet.TargetGroupsConfig; };
+};
 
-export type FleetLaunchTemplateSpecification = { LaunchTemplateId?: string;
+export type LoadBalancersConfig = {
+
+
+ClassicLoadBalancersConfig?: AWS.EC2.SpotFleet.ClassicLoadBalancersConfig;
+
+TargetGroupsConfig?: AWS.EC2.SpotFleet.TargetGroupsConfig;
+
+
+};
+
+export type FleetLaunchTemplateSpecification = {
+
+
+LaunchTemplateId?: string;
 
 LaunchTemplateName?: string;
 
-Version: string; };
+Version: string;
 
-export type TargetGroup = { Arn: string; };
 
-export type SpotFleetMonitoring = { Enabled?: boolean; };
+};
 
-export type ClassicLoadBalancer = { Name: string; };
+export type TargetGroup = {
 
-export type LaunchTemplateConfig = { LaunchTemplateSpecification?: AWS.EC2.SpotFleet.FleetLaunchTemplateSpecification;
 
-Overrides?: AWS.EC2.SpotFleet.LaunchTemplateOverrides[]; };
+Arn: string;
 
-export type SpotFleetRequestConfigData =  AWS.EC2.SpotFleet.SpotFleetRequestConfigData;
 
-export type InstanceIpv6Address = { Ipv6Address: string; };
+};
 
-export type TargetGroupsConfig = { TargetGroups: AWS.EC2.SpotFleet.TargetGroup[]; };
+export type SpotFleetMonitoring = {
 
-export type GroupIdentifier = { GroupId: string; };
 
-export type BlockDeviceMapping = { DeviceName: string;
+Enabled?: boolean;
+
+
+};
+
+export type ClassicLoadBalancer = {
+
+
+Name: string;
+
+
+};
+
+export type LaunchTemplateConfig = {
+
+
+LaunchTemplateSpecification?: AWS.EC2.SpotFleet.FleetLaunchTemplateSpecification;
+
+Overrides?: AWS.EC2.SpotFleet.LaunchTemplateOverrides[];
+
+
+};
+
+export type InstanceIpv6Address = {
+
+
+Ipv6Address: string;
+
+
+};
+
+export type TargetGroupsConfig = {
+
+
+TargetGroups: AWS.EC2.SpotFleet.TargetGroup[];
+
+
+};
+
+export type GroupIdentifier = {
+
+
+GroupId: string;
+
+
+};
+
+export type BlockDeviceMapping = {
+
+
+DeviceName: string;
 
 Ebs?: AWS.EC2.SpotFleet.EbsBlockDevice;
 
 NoDevice?: string;
 
-VirtualName?: string; };
+VirtualName?: string;
+
+
+};
+
 
 }
+
+export type NetworkInterface = {
+
+
+Description?: string;
+
+GroupSet?: string[];
+
+InterfaceType?: string;
+
+Ipv6AddressCount?: number;
+
+Ipv6Addresses?: AWS.EC2.NetworkInterface.InstanceIpv6Address[];
+
+PrivateIpAddress?: string;
+
+PrivateIpAddresses?: AWS.EC2.NetworkInterface.PrivateIpAddressSpecification[];
+
+SecondaryPrivateIpAddressCount?: number;
+
+SourceDestCheck?: boolean;
+
+SubnetId: string;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace NetworkInterface {
 
-export type InstanceIpv6Address = { Ipv6Address: string; };
 
-export type PrivateIpAddressSpecification = { Primary: boolean;
+export type InstanceIpv6Address = {
 
-PrivateIpAddress: string; };
 
-export type Description =  string;
+Ipv6Address: string;
 
-export type GroupSet =  string[];
 
-export type InterfaceType =  string;
+};
 
-export type Ipv6AddressCount =  number;
+export type PrivateIpAddressSpecification = {
 
-export type Ipv6Addresses =  AWS.EC2.NetworkInterface.InstanceIpv6Address[];
 
-export type PrivateIpAddress =  string;
+Primary: boolean;
 
-export type PrivateIpAddresses =  AWS.EC2.NetworkInterface.PrivateIpAddressSpecification[];
+PrivateIpAddress: string;
 
-export type SecondaryPrivateIpAddressCount =  number;
 
-export type SourceDestCheck =  boolean;
+};
 
-export type SubnetId =  string;
-
-export type Tags =  Tag[];
 
 }
 
+export type NetworkInsightsAnalysis = {
+
+
+NetworkInsightsPathId: string;
+
+FilterInArns?: string[];
+
+Tags?: Tag[];
+
+
+};
+
 export namespace NetworkInsightsAnalysis {
 
-export type AnalysisAclRule = { Cidr?: string;
+
+export type AnalysisAclRule = {
+
+
+Cidr?: string;
 
 Egress?: boolean;
 
@@ -11970,13 +20878,25 @@ Protocol?: string;
 
 RuleAction?: string;
 
-RuleNumber?: number; };
+RuleNumber?: number;
 
-export type AlternatePathHint = { ComponentId?: string;
 
-ComponentArn?: string; };
+};
 
-export type Explanation = { Acl?: AWS.EC2.NetworkInsightsAnalysis.AnalysisComponent;
+export type AlternatePathHint = {
+
+
+ComponentId?: string;
+
+ComponentArn?: string;
+
+
+};
+
+export type Explanation = {
+
+
+Acl?: AWS.EC2.NetworkInsightsAnalysis.AnalysisComponent;
 
 AclRule?: AWS.EC2.NetworkInsightsAnalysis.AnalysisAclRule;
 
@@ -12064,21 +20984,39 @@ vpcEndpoint?: AWS.EC2.NetworkInsightsAnalysis.AnalysisComponent;
 
 VpnConnection?: AWS.EC2.NetworkInsightsAnalysis.AnalysisComponent;
 
-VpnGateway?: AWS.EC2.NetworkInsightsAnalysis.AnalysisComponent; };
+VpnGateway?: AWS.EC2.NetworkInsightsAnalysis.AnalysisComponent;
 
-export type AnalysisLoadBalancerListener = { InstancePort?: number;
 
-LoadBalancerPort?: number; };
+};
 
-export type AnalysisLoadBalancerTarget = { Address?: string;
+export type AnalysisLoadBalancerListener = {
+
+
+InstancePort?: number;
+
+LoadBalancerPort?: number;
+
+
+};
+
+export type AnalysisLoadBalancerTarget = {
+
+
+Address?: string;
 
 AvailabilityZone?: string;
 
 Instance?: AWS.EC2.NetworkInsightsAnalysis.AnalysisComponent;
 
-Port?: number; };
+Port?: number;
 
-export type AnalysisRouteTableRoute = { destinationCidr?: string;
+
+};
+
+export type AnalysisRouteTableRoute = {
+
+
+destinationCidr?: string;
 
 destinationPrefixListId?: string;
 
@@ -12096,9 +21034,15 @@ Origin?: string;
 
 TransitGatewayId?: string;
 
-VpcPeeringConnectionId?: string; };
+VpcPeeringConnectionId?: string;
 
-export type AnalysisPacketHeader = { DestinationAddresses?: string[];
+
+};
+
+export type AnalysisPacketHeader = {
+
+
+DestinationAddresses?: string[];
 
 DestinationPortRanges?: AWS.EC2.NetworkInsightsAnalysis.PortRange[];
 
@@ -12106,9 +21050,15 @@ Protocol?: string;
 
 SourceAddresses?: string[];
 
-SourcePortRanges?: AWS.EC2.NetworkInsightsAnalysis.PortRange[]; };
+SourcePortRanges?: AWS.EC2.NetworkInsightsAnalysis.PortRange[];
 
-export type PathComponent = { SequenceNumber?: number;
+
+};
+
+export type PathComponent = {
+
+
+SequenceNumber?: number;
 
 AclRule?: AWS.EC2.NetworkInsightsAnalysis.AnalysisAclRule;
 
@@ -12128,17 +21078,35 @@ SourceVpc?: AWS.EC2.NetworkInsightsAnalysis.AnalysisComponent;
 
 Subnet?: AWS.EC2.NetworkInsightsAnalysis.AnalysisComponent;
 
-Vpc?: AWS.EC2.NetworkInsightsAnalysis.AnalysisComponent; };
+Vpc?: AWS.EC2.NetworkInsightsAnalysis.AnalysisComponent;
 
-export type AnalysisComponent = { Id?: string;
 
-Arn?: string; };
+};
 
-export type PortRange = { From?: number;
+export type AnalysisComponent = {
 
-To?: number; };
 
-export type AnalysisSecurityGroupRule = { Cidr?: string;
+Id?: string;
+
+Arn?: string;
+
+
+};
+
+export type PortRange = {
+
+
+From?: number;
+
+To?: number;
+
+
+};
+
+export type AnalysisSecurityGroupRule = {
+
+
+Cidr?: string;
 
 Direction?: string;
 
@@ -12148,123 +21116,197 @@ PortRange?: AWS.EC2.NetworkInsightsAnalysis.PortRange;
 
 PrefixListId?: string;
 
-Protocol?: string; };
+Protocol?: string;
 
-export type NetworkInsightsPathId =  string;
 
-export type FilterInArns =  string[];
+};
 
-export type Tags =  Tag[];
 
 }
 
+export type ClientVpnEndpoint = {
+
+
+ClientConnectOptions?: AWS.EC2.ClientVpnEndpoint.ClientConnectOptions;
+
+ConnectionLogOptions: AWS.EC2.ClientVpnEndpoint.ConnectionLogOptions;
+
+ClientCidrBlock: string;
+
+Description?: string;
+
+TagSpecifications?: AWS.EC2.ClientVpnEndpoint.TagSpecification[];
+
+AuthenticationOptions: AWS.EC2.ClientVpnEndpoint.ClientAuthenticationRequest[];
+
+ServerCertificateArn: string;
+
+DnsServers?: string[];
+
+SecurityGroupIds?: string[];
+
+SplitTunnel?: boolean;
+
+VpcId?: string;
+
+SelfServicePortal?: string;
+
+TransportProtocol?: string;
+
+VpnPort?: number;
+
+
+};
+
 export namespace ClientVpnEndpoint {
 
-export type ClientConnectOptions =  AWS.EC2.ClientVpnEndpoint.ClientConnectOptions;
 
-export type DirectoryServiceAuthenticationRequest = { DirectoryId: string; };
+export type DirectoryServiceAuthenticationRequest = {
 
-export type TagSpecification = { ResourceType: string;
 
-Tags: Tag[]; };
+DirectoryId: string;
 
-export type ClientAuthenticationRequest = { MutualAuthentication?: AWS.EC2.ClientVpnEndpoint.CertificateAuthenticationRequest;
+
+};
+
+export type TagSpecification = {
+
+
+ResourceType: string;
+
+Tags: Tag[];
+
+
+};
+
+export type ClientAuthenticationRequest = {
+
+
+MutualAuthentication?: AWS.EC2.ClientVpnEndpoint.CertificateAuthenticationRequest;
 
 Type: string;
 
 FederatedAuthentication?: AWS.EC2.ClientVpnEndpoint.FederatedAuthenticationRequest;
 
-ActiveDirectory?: AWS.EC2.ClientVpnEndpoint.DirectoryServiceAuthenticationRequest; };
+ActiveDirectory?: AWS.EC2.ClientVpnEndpoint.DirectoryServiceAuthenticationRequest;
 
-export type FederatedAuthenticationRequest = { SelfServiceSAMLProviderArn?: string;
 
-SAMLProviderArn: string; };
+};
 
-export type ConnectionLogOptions =  AWS.EC2.ClientVpnEndpoint.ConnectionLogOptions;
+export type FederatedAuthenticationRequest = {
 
-export type CertificateAuthenticationRequest = { ClientRootCertificateChainArn: string; };
 
-export type ClientCidrBlock =  string;
+SelfServiceSAMLProviderArn?: string;
 
-export type Description =  string;
+SAMLProviderArn: string;
 
-export type TagSpecifications =  AWS.EC2.ClientVpnEndpoint.TagSpecification[];
 
-export type AuthenticationOptions =  AWS.EC2.ClientVpnEndpoint.ClientAuthenticationRequest[];
+};
 
-export type ServerCertificateArn =  string;
+export type CertificateAuthenticationRequest = {
 
-export type DnsServers =  string[];
 
-export type SecurityGroupIds =  string[];
+ClientRootCertificateChainArn: string;
 
-export type SplitTunnel =  boolean;
 
-export type VpcId =  string;
+};
 
-export type SelfServicePortal =  string;
-
-export type TransportProtocol =  string;
-
-export type VpnPort =  number;
 
 }
+
+export type CapacityReservation = {
+
+
+Tenancy?: string;
+
+EndDateType?: string;
+
+InstanceCount: number;
+
+TagSpecifications?: AWS.EC2.CapacityReservation.TagSpecification[];
+
+AvailabilityZone: string;
+
+InstancePlatform: string;
+
+InstanceType: string;
+
+EphemeralStorage?: boolean;
+
+InstanceMatchCriteria?: string;
+
+EndDate?: string;
+
+EbsOptimized?: boolean;
+
+
+};
 
 export namespace CapacityReservation {
 
-export type TagSpecification = { ResourceType?: string;
 
-Tags?: Tag[]; };
+export type TagSpecification = {
 
-export type Tenancy =  string;
 
-export type EndDateType =  string;
+ResourceType?: string;
 
-export type InstanceCount =  number;
+Tags?: Tag[];
 
-export type TagSpecifications =  AWS.EC2.CapacityReservation.TagSpecification[];
 
-export type AvailabilityZone =  string;
+};
 
-export type InstancePlatform =  string;
-
-export type InstanceType =  string;
-
-export type EphemeralStorage =  boolean;
-
-export type InstanceMatchCriteria =  string;
-
-export type EndDate =  string;
-
-export type EbsOptimized =  boolean;
 
 }
 
-export namespace NetworkAclEntry {
+export type NetworkAclEntry = {
 
-export type PortRange =  AWS.EC2.NetworkAclEntry.PortRange;
 
-export type Icmp =  AWS.EC2.NetworkAclEntry.Icmp;
+PortRange?: AWS.EC2.NetworkAclEntry.PortRange;
 
-export type CidrBlock =  string;
+Icmp?: AWS.EC2.NetworkAclEntry.Icmp;
 
-export type Egress =  boolean;
+CidrBlock?: string;
 
-export type Ipv6CidrBlock =  string;
+Egress?: boolean;
 
-export type NetworkAclId =  string;
+Ipv6CidrBlock?: string;
 
-export type Protocol =  number;
+NetworkAclId: string;
 
-export type RuleAction =  string;
+Protocol: number;
 
-export type RuleNumber =  number;
+RuleAction: string;
 
-}
+RuleNumber: number;
+
+
+};
+
+export type SecurityGroup = {
+
+
+GroupDescription: string;
+
+GroupName?: string;
+
+SecurityGroupEgress?: AWS.EC2.SecurityGroup.Egress[];
+
+SecurityGroupIngress?: AWS.EC2.SecurityGroup.Ingress[];
+
+Tags?: Tag[];
+
+VpcId?: string;
+
+
+};
 
 export namespace SecurityGroup {
 
-export type Egress = { CidrIp?: string;
+
+export type Egress = {
+
+
+CidrIp?: string;
 
 CidrIpv6?: string;
 
@@ -12278,9 +21320,15 @@ FromPort?: number;
 
 IpProtocol: string;
 
-ToPort?: number; };
+ToPort?: number;
 
-export type Ingress = { CidrIp?: string;
+
+};
+
+export type Ingress = {
+
+
+CidrIp?: string;
 
 CidrIpv6?: string;
 
@@ -12298,799 +21346,963 @@ SourceSecurityGroupName?: string;
 
 SourceSecurityGroupOwnerId?: string;
 
-ToPort?: number; };
+ToPort?: number;
 
-export type GroupDescription =  string;
 
-export type GroupName =  string;
+};
 
-export type SecurityGroupEgress =  AWS.EC2.SecurityGroup.Egress[];
-
-export type SecurityGroupIngress =  AWS.EC2.SecurityGroup.Ingress[];
-
-export type Tags =  Tag[];
-
-export type VpcId =  string;
 
 }
+
+export type PrefixList = {
+
+
+PrefixListName: string;
+
+AddressFamily: string;
+
+MaxEntries: number;
+
+Tags?: Tag[];
+
+Entries?: AWS.EC2.PrefixList.Entry[];
+
+
+};
 
 export namespace PrefixList {
 
-export type Entry = { Cidr: string;
 
-Description?: string; };
+export type Entry = {
 
-export type PrefixListName =  string;
 
-export type AddressFamily =  string;
+Cidr: string;
 
-export type MaxEntries =  number;
+Description?: string;
 
-export type Tags =  Tag[];
 
-export type Entries =  AWS.EC2.PrefixList.Entry[];
+};
+
 
 }
 
-export namespace VPCPeeringConnection {
+export type VPCPeeringConnection = {
 
-export type PeerOwnerId =  string;
 
-export type PeerRegion =  string;
+PeerOwnerId?: string;
 
-export type PeerRoleArn =  string;
+PeerRegion?: string;
 
-export type PeerVpcId =  string;
+PeerRoleArn?: string;
 
-export type Tags =  Tag[];
+PeerVpcId: string;
 
-export type VpcId =  string;
+Tags?: Tag[];
 
-}
+VpcId: string;
 
-export namespace VPCEndpointServicePermissions {
 
-export type AllowedPrincipals =  string[];
+};
 
-export type ServiceId =  string;
+export type VPCEndpointServicePermissions = {
 
-}
 
-export namespace TransitGatewayRouteTableAssociation {
+AllowedPrincipals?: string[];
 
-export type TransitGatewayRouteTableId =  string;
+ServiceId: string;
 
-export type TransitGatewayAttachmentId =  string;
 
-}
+};
 
-export namespace EIP {
+export type TransitGatewayRouteTableAssociation = {
 
-export type Domain =  string;
 
-export type InstanceId =  string;
+TransitGatewayRouteTableId: string;
 
-export type PublicIpv4Pool =  string;
+TransitGatewayAttachmentId: string;
 
-export type Tags =  Tag[];
 
-}
+};
 
-export namespace SecurityGroupEgress {
+export type EIP = {
 
-export type CidrIp =  string;
 
-export type CidrIpv6 =  string;
+Domain?: string;
 
-export type Description =  string;
+InstanceId?: string;
 
-export type DestinationPrefixListId =  string;
+PublicIpv4Pool?: string;
 
-export type DestinationSecurityGroupId =  string;
+Tags?: Tag[];
 
-export type FromPort =  number;
 
-export type GroupId =  string;
+};
 
-export type IpProtocol =  string;
+export type SecurityGroupEgress = {
 
-export type ToPort =  number;
 
-}
+CidrIp?: string;
 
-export namespace TransitGatewayAttachment {
+CidrIpv6?: string;
 
-export type TransitGatewayId =  string;
+Description?: string;
 
-export type VpcId =  string;
+DestinationPrefixListId?: string;
 
-export type SubnetIds =  string[];
+DestinationSecurityGroupId?: string;
 
-export type Tags =  Tag[];
+FromPort?: number;
 
-}
+GroupId: string;
 
-export namespace TransitGatewayMulticastDomainAssociation {
+IpProtocol: string;
 
-export type TransitGatewayMulticastDomainId =  string;
+ToPort?: number;
 
-export type TransitGatewayAttachmentId =  string;
 
-export type SubnetId =  string;
+};
 
-}
+export type TransitGatewayAttachment = {
 
-export namespace DHCPOptions {
 
-export type DomainName =  string;
+TransitGatewayId: string;
 
-export type DomainNameServers =  string[];
+VpcId: string;
 
-export type NetbiosNameServers =  string[];
+SubnetIds: string[];
 
-export type NetbiosNodeType =  number;
+Tags?: Tag[];
 
-export type NtpServers =  string[];
 
-export type Tags =  Tag[];
+};
 
-}
+export type TransitGatewayMulticastDomainAssociation = {
 
-export namespace EgressOnlyInternetGateway {
 
-export type VpcId =  string;
+TransitGatewayMulticastDomainId: string;
 
-}
+TransitGatewayAttachmentId: string;
 
-export namespace NetworkInterfaceAttachment {
+SubnetId: string;
 
-export type DeleteOnTermination =  boolean;
 
-export type DeviceIndex =  string;
+};
 
-export type InstanceId =  string;
+export type DHCPOptions = {
 
-export type NetworkInterfaceId =  string;
 
-}
+DomainName?: string;
 
-export namespace CustomerGateway {
+DomainNameServers?: string[];
 
-export type BgpAsn =  number;
+NetbiosNameServers?: string[];
 
-export type IpAddress =  string;
+NetbiosNodeType?: number;
 
-export type Tags =  Tag[];
+NtpServers?: string[];
 
-export type Type =  string;
+Tags?: Tag[];
 
-}
 
-export namespace ClientVpnRoute {
+};
 
-export type ClientVpnEndpointId =  string;
+export type EgressOnlyInternetGateway = {
 
-export type TargetVpcSubnetId =  string;
 
-export type Description =  string;
+VpcId: string;
 
-export type DestinationCidrBlock =  string;
 
-}
+};
 
-export namespace PlacementGroup {
+export type NetworkInterfaceAttachment = {
 
-export type Strategy =  string;
 
-}
+DeleteOnTermination?: boolean;
 
-export namespace InternetGateway {
+DeviceIndex: string;
 
-export type Tags =  Tag[];
+InstanceId: string;
 
-}
+NetworkInterfaceId: string;
 
-export namespace VPNConnectionRoute {
 
-export type DestinationCidrBlock =  string;
+};
 
-export type VpnConnectionId =  string;
+export type CustomerGateway = {
 
-}
 
-export namespace NetworkInterfacePermission {
+BgpAsn: number;
 
-export type AwsAccountId =  string;
+IpAddress: string;
 
-export type NetworkInterfaceId =  string;
+Tags?: Tag[];
 
-export type Permission =  string;
+Type: string;
 
-}
 
-export namespace TransitGatewayMulticastGroupMember {
+};
 
-export type GroupIpAddress =  string;
+export type ClientVpnRoute = {
 
-export type TransitGatewayMulticastDomainId =  string;
 
-export type NetworkInterfaceId =  string;
+ClientVpnEndpointId: string;
 
-}
+TargetVpcSubnetId: string;
 
-export namespace LocalGatewayRouteTableVPCAssociation {
+Description?: string;
 
-export type LocalGatewayRouteTableId =  string;
+DestinationCidrBlock: string;
 
-export type VpcId =  string;
 
-export type Tags =  Tag[];
+};
 
-}
+export type PlacementGroup = {
 
-export namespace TransitGatewayMulticastGroupSource {
 
-export type GroupIpAddress =  string;
+Strategy?: string;
 
-export type TransitGatewayMulticastDomainId =  string;
 
-export type NetworkInterfaceId =  string;
+};
 
-}
+export type InternetGateway = {
 
-export namespace ClientVpnAuthorizationRule {
 
-export type ClientVpnEndpointId =  string;
+Tags?: Tag[];
 
-export type Description =  string;
 
-export type AccessGroupId =  string;
+};
 
-export type TargetNetworkCidr =  string;
+export type VPNConnectionRoute = {
 
-export type AuthorizeAllGroups =  boolean;
 
-}
+DestinationCidrBlock: string;
 
-export namespace NatGateway {
+VpnConnectionId: string;
 
-export type AllocationId =  string;
 
-export type ConnectivityType =  string;
+};
 
-export type SubnetId =  string;
+export type NetworkInterfacePermission = {
 
-export type Tags =  Tag[];
 
-}
+AwsAccountId: string;
 
-export namespace TransitGatewayMulticastDomain {
+NetworkInterfaceId: string;
 
-export type TransitGatewayId =  string;
+Permission: string;
 
-export type Tags =  Tag[];
 
-export type Options =  JSONString;
+};
 
-}
+export type TransitGatewayMulticastGroupMember = {
 
-export namespace VPCDHCPOptionsAssociation {
 
-export type DhcpOptionsId =  string;
+GroupIpAddress: string;
 
-export type VpcId =  string;
+TransitGatewayMulticastDomainId: string;
 
-}
+NetworkInterfaceId: string;
 
-export namespace EnclaveCertificateIamRoleAssociation {
 
-export type CertificateArn =  string;
+};
 
-export type RoleArn =  string;
+export type LocalGatewayRouteTableVPCAssociation = {
 
-}
 
-export namespace TrafficMirrorTarget {
+LocalGatewayRouteTableId: string;
 
-export type NetworkLoadBalancerArn =  string;
+VpcId: string;
 
-export type Description =  string;
+Tags?: Tag[];
 
-export type NetworkInterfaceId =  string;
 
-export type Tags =  Tag[];
+};
 
-}
+export type TransitGatewayMulticastGroupSource = {
 
-export namespace RouteTable {
 
-export type Tags =  Tag[];
+GroupIpAddress: string;
 
-export type VpcId =  string;
+TransitGatewayMulticastDomainId: string;
 
-}
+NetworkInterfaceId: string;
 
-export namespace TransitGateway {
 
-export type DefaultRouteTablePropagation =  string;
+};
 
-export type Description =  string;
+export type ClientVpnAuthorizationRule = {
 
-export type AutoAcceptSharedAttachments =  string;
 
-export type DefaultRouteTableAssociation =  string;
+ClientVpnEndpointId: string;
 
-export type VpnEcmpSupport =  string;
+Description?: string;
 
-export type DnsSupport =  string;
+AccessGroupId?: string;
 
-export type MulticastSupport =  string;
+TargetNetworkCidr: string;
 
-export type AmazonSideAsn =  number;
+AuthorizeAllGroups?: boolean;
 
-export type Tags =  Tag[];
 
-}
+};
 
-export namespace Volume {
+export type NatGateway = {
 
-export type AutoEnableIO =  boolean;
 
-export type AvailabilityZone =  string;
+AllocationId?: string;
 
-export type Encrypted =  boolean;
+ConnectivityType?: string;
 
-export type Iops =  number;
+SubnetId: string;
 
-export type KmsKeyId =  string;
+Tags?: Tag[];
 
-export type MultiAttachEnabled =  boolean;
 
-export type OutpostArn =  string;
+};
 
-export type Size =  number;
+export type TransitGatewayMulticastDomain = {
 
-export type SnapshotId =  string;
 
-export type Tags =  Tag[];
+TransitGatewayId: string;
 
-export type Throughput =  number;
+Tags?: Tag[];
 
-export type VolumeType =  string;
+Options?: JSONString;
 
-}
 
-export namespace LocalGatewayRoute {
+};
 
-export type DestinationCidrBlock =  string;
+export type VPCDHCPOptionsAssociation = {
 
-export type LocalGatewayRouteTableId =  string;
 
-export type LocalGatewayVirtualInterfaceGroupId =  string;
+DhcpOptionsId: string;
 
-}
+VpcId: string;
 
-export namespace VPCEndpointConnectionNotification {
 
-export type ConnectionEvents =  string[];
+};
 
-export type VPCEndpointId =  string;
+export type EnclaveCertificateIamRoleAssociation = {
 
-export type ServiceId =  string;
 
-export type ConnectionNotificationArn =  string;
+CertificateArn: string;
 
-}
+RoleArn: string;
 
-export namespace FlowLog {
 
-export type DeliverLogsPermissionArn =  string;
+};
 
-export type LogDestination =  string;
+export type TrafficMirrorTarget = {
 
-export type LogDestinationType =  string;
 
-export type LogFormat =  string;
+NetworkLoadBalancerArn?: string;
 
-export type LogGroupName =  string;
+Description?: string;
 
-export type MaxAggregationInterval =  number;
+NetworkInterfaceId?: string;
 
-export type ResourceId =  string;
+Tags?: Tag[];
 
-export type ResourceType =  string;
 
-export type Tags =  Tag[];
+};
 
-export type TrafficType =  string;
+export type RouteTable = {
 
-}
 
-export namespace Subnet {
+Tags?: Tag[];
 
-export type AssignIpv6AddressOnCreation =  boolean;
+VpcId: string;
 
-export type AvailabilityZone =  string;
 
-export type CidrBlock =  string;
+};
 
-export type Ipv6CidrBlock =  string;
+export type TransitGateway = {
 
-export type MapPublicIpOnLaunch =  boolean;
 
-export type OutpostArn =  string;
+DefaultRouteTablePropagation?: string;
 
-export type Tags =  Tag[];
+Description?: string;
 
-export type VpcId =  string;
+AutoAcceptSharedAttachments?: string;
 
-}
+DefaultRouteTableAssociation?: string;
 
-export namespace CarrierGateway {
+VpnEcmpSupport?: string;
 
-export type VpcId =  string;
+DnsSupport?: string;
 
-export type Tags =  Tag[];
+MulticastSupport?: string;
 
-}
+AmazonSideAsn?: number;
 
-export namespace NetworkInsightsPath {
+Tags?: Tag[];
 
-export type SourceIp =  string;
 
-export type DestinationIp =  string;
+};
 
-export type Source =  string;
+export type Volume = {
 
-export type Destination =  string;
 
-export type Protocol =  string;
+AutoEnableIO?: boolean;
 
-export type DestinationPort =  number;
+AvailabilityZone: string;
 
-export type Tags =  Tag[];
+Encrypted?: boolean;
 
-}
+Iops?: number;
 
-export namespace EIPAssociation {
+KmsKeyId?: string;
 
-export type AllocationId =  string;
+MultiAttachEnabled?: boolean;
 
-export type EIP =  string;
+OutpostArn?: string;
 
-export type InstanceId =  string;
+Size?: number;
 
-export type NetworkInterfaceId =  string;
+SnapshotId?: string;
 
-export type PrivateIpAddress =  string;
+Tags?: Tag[];
 
-}
+Throughput?: number;
 
-export namespace VPNGateway {
+VolumeType?: string;
 
-export type AmazonSideAsn =  number;
 
-export type Tags =  Tag[];
+};
 
-export type Type =  string;
+export type LocalGatewayRoute = {
 
-}
 
-export namespace TransitGatewayRouteTable {
+DestinationCidrBlock: string;
 
-export type TransitGatewayId =  string;
+LocalGatewayRouteTableId: string;
 
-export type Tags =  Tag[];
+LocalGatewayVirtualInterfaceGroupId: string;
 
-}
 
-export namespace VPCEndpointService {
+};
 
-export type NetworkLoadBalancerArns =  string[];
+export type VPCEndpointConnectionNotification = {
 
-export type AcceptanceRequired =  boolean;
 
-export type GatewayLoadBalancerArns =  string[];
+ConnectionEvents: string[];
 
-}
+VPCEndpointId?: string;
 
-export namespace GatewayRouteTableAssociation {
+ServiceId?: string;
 
-export type RouteTableId =  string;
+ConnectionNotificationArn: string;
 
-export type GatewayId =  string;
 
-}
+};
 
-export namespace TrafficMirrorFilter {
+export type FlowLog = {
 
-export type Description =  string;
 
-export type NetworkServices =  string[];
+DeliverLogsPermissionArn?: string;
 
-export type Tags =  Tag[];
+LogDestination?: string;
 
-}
+LogDestinationType?: string;
 
-export namespace SecurityGroupIngress {
+LogFormat?: string;
 
-export type CidrIp =  string;
+LogGroupName?: string;
 
-export type CidrIpv6 =  string;
+MaxAggregationInterval?: number;
 
-export type Description =  string;
+ResourceId: string;
 
-export type FromPort =  number;
+ResourceType: string;
 
-export type GroupId =  string;
+Tags?: Tag[];
 
-export type GroupName =  string;
+TrafficType: string;
 
-export type IpProtocol =  string;
 
-export type SourcePrefixListId =  string;
+};
 
-export type SourceSecurityGroupId =  string;
+export type Subnet = {
 
-export type SourceSecurityGroupName =  string;
 
-export type SourceSecurityGroupOwnerId =  string;
+AssignIpv6AddressOnCreation?: boolean;
 
-export type ToPort =  number;
+AvailabilityZone?: string;
 
-}
+CidrBlock: string;
 
-export namespace SubnetRouteTableAssociation {
+Ipv6CidrBlock?: string;
 
-export type RouteTableId =  string;
+MapPublicIpOnLaunch?: boolean;
 
-export type SubnetId =  string;
+OutpostArn?: string;
 
-}
+Tags?: Tag[];
 
-export namespace Route {
+VpcId: string;
 
-export type CarrierGatewayId =  string;
 
-export type DestinationCidrBlock =  string;
+};
 
-export type DestinationIpv6CidrBlock =  string;
+export type CarrierGateway = {
 
-export type EgressOnlyInternetGatewayId =  string;
 
-export type GatewayId =  string;
+VpcId: string;
 
-export type InstanceId =  string;
+Tags?: Tag[];
 
-export type LocalGatewayId =  string;
 
-export type NatGatewayId =  string;
+};
 
-export type NetworkInterfaceId =  string;
+export type NetworkInsightsPath = {
 
-export type RouteTableId =  string;
 
-export type TransitGatewayId =  string;
+SourceIp?: string;
 
-export type VpcEndpointId =  string;
+DestinationIp?: string;
 
-export type VpcPeeringConnectionId =  string;
+Source: string;
 
-}
+Destination: string;
 
-export namespace TransitGatewayRouteTablePropagation {
+Protocol: string;
 
-export type TransitGatewayRouteTableId =  string;
+DestinationPort?: number;
 
-export type TransitGatewayAttachmentId =  string;
+Tags?: Tag[];
 
-}
 
-export namespace SubnetNetworkAclAssociation {
+};
 
-export type NetworkAclId =  string;
+export type EIPAssociation = {
 
-export type SubnetId =  string;
 
-}
+AllocationId?: string;
 
-export namespace TrafficMirrorSession {
+EIP?: string;
 
-export type TrafficMirrorTargetId =  string;
+InstanceId?: string;
 
-export type Description =  string;
+NetworkInterfaceId?: string;
 
-export type SessionNumber =  number;
+PrivateIpAddress?: string;
 
-export type VirtualNetworkId =  number;
 
-export type PacketLength =  number;
+};
 
-export type NetworkInterfaceId =  string;
+export type VPNGateway = {
 
-export type TrafficMirrorFilterId =  string;
 
-export type Tags =  Tag[];
+AmazonSideAsn?: number;
 
-}
+Tags?: Tag[];
 
-export namespace SubnetCidrBlock {
+Type: string;
 
-export type Ipv6CidrBlock =  string;
 
-export type SubnetId =  string;
+};
 
-}
+export type TransitGatewayRouteTable = {
 
-export namespace VPC {
 
-export type CidrBlock =  string;
+TransitGatewayId: string;
 
-export type EnableDnsHostnames =  boolean;
+Tags?: Tag[];
 
-export type EnableDnsSupport =  boolean;
 
-export type InstanceTenancy =  string;
+};
 
-export type Tags =  Tag[];
+export type VPCEndpointService = {
 
-}
 
-export namespace TransitGatewayRoute {
+NetworkLoadBalancerArns?: string[];
 
-export type TransitGatewayRouteTableId =  string;
+AcceptanceRequired?: boolean;
 
-export type DestinationCidrBlock =  string;
+GatewayLoadBalancerArns?: string[];
 
-export type Blackhole =  boolean;
 
-export type TransitGatewayAttachmentId =  string;
+};
 
-}
+export type GatewayRouteTableAssociation = {
 
-export namespace NetworkAcl {
 
-export type Tags =  Tag[];
+RouteTableId: string;
 
-export type VpcId =  string;
+GatewayId: string;
 
-}
 
-export namespace VPNGatewayRoutePropagation {
+};
 
-export type RouteTableIds =  string[];
+export type TrafficMirrorFilter = {
 
-export type VpnGatewayId =  string;
 
-}
+Description?: string;
 
-export namespace ClientVpnTargetNetworkAssociation {
+NetworkServices?: string[];
 
-export type ClientVpnEndpointId =  string;
+Tags?: Tag[];
 
-export type SubnetId =  string;
 
-}
+};
 
-export namespace TransitGatewayPeeringAttachment {
+export type SecurityGroupIngress = {
 
-export type TransitGatewayId =  string;
 
-export type PeerTransitGatewayId =  string;
+CidrIp?: string;
 
-export type PeerAccountId =  string;
+CidrIpv6?: string;
 
-export type PeerRegion =  string;
+Description?: string;
 
-export type Tags =  Tag[];
+FromPort?: number;
 
-}
+GroupId?: string;
 
-export namespace VolumeAttachment {
+GroupName?: string;
 
-export type Device =  string;
+IpProtocol: string;
 
-export type InstanceId =  string;
+SourcePrefixListId?: string;
 
-export type VolumeId =  string;
+SourceSecurityGroupId?: string;
 
-}
+SourceSecurityGroupName?: string;
 
-export namespace Host {
+SourceSecurityGroupOwnerId?: string;
 
-export type AutoPlacement =  string;
+ToPort?: number;
 
-export type AvailabilityZone =  string;
 
-export type HostRecovery =  string;
+};
 
-export type InstanceType =  string;
+export type SubnetRouteTableAssociation = {
 
-}
 
-export namespace VPCEndpoint {
+RouteTableId: string;
 
-export type PolicyDocument =  JSONString;
+SubnetId: string;
 
-export type PrivateDnsEnabled =  boolean;
 
-export type RouteTableIds =  string[];
+};
 
-export type SecurityGroupIds =  string[];
+export type Route = {
 
-export type ServiceName =  string;
 
-export type SubnetIds =  string[];
+CarrierGatewayId?: string;
 
-export type VpcEndpointType =  string;
+DestinationCidrBlock?: string;
 
-export type VpcId =  string;
+DestinationIpv6CidrBlock?: string;
 
-}
+EgressOnlyInternetGatewayId?: string;
 
-export namespace VPCGatewayAttachment {
+GatewayId?: string;
 
-export type InternetGatewayId =  string;
+InstanceId?: string;
 
-export type VpcId =  string;
+LocalGatewayId?: string;
 
-export type VpnGatewayId =  string;
+NatGatewayId?: string;
 
-}
+NetworkInterfaceId?: string;
 
-export namespace VPCCidrBlock {
+RouteTableId: string;
 
-export type AmazonProvidedIpv6CidrBlock =  boolean;
+TransitGatewayId?: string;
 
-export type CidrBlock =  string;
+VpcEndpointId?: string;
 
-export type VpcId =  string;
+VpcPeeringConnectionId?: string;
 
-}
+
+};
+
+export type TransitGatewayRouteTablePropagation = {
+
+
+TransitGatewayRouteTableId: string;
+
+TransitGatewayAttachmentId: string;
+
+
+};
+
+export type SubnetNetworkAclAssociation = {
+
+
+NetworkAclId: string;
+
+SubnetId: string;
+
+
+};
+
+export type TrafficMirrorSession = {
+
+
+TrafficMirrorTargetId: string;
+
+Description?: string;
+
+SessionNumber: number;
+
+VirtualNetworkId?: number;
+
+PacketLength?: number;
+
+NetworkInterfaceId: string;
+
+TrafficMirrorFilterId: string;
+
+Tags?: Tag[];
+
+
+};
+
+export type SubnetCidrBlock = {
+
+
+Ipv6CidrBlock: string;
+
+SubnetId: string;
+
+
+};
+
+export type VPC = {
+
+
+CidrBlock: string;
+
+EnableDnsHostnames?: boolean;
+
+EnableDnsSupport?: boolean;
+
+InstanceTenancy?: string;
+
+Tags?: Tag[];
+
+
+};
+
+export type TransitGatewayRoute = {
+
+
+TransitGatewayRouteTableId: string;
+
+DestinationCidrBlock?: string;
+
+Blackhole?: boolean;
+
+TransitGatewayAttachmentId?: string;
+
+
+};
+
+export type NetworkAcl = {
+
+
+Tags?: Tag[];
+
+VpcId: string;
+
+
+};
+
+export type VPNGatewayRoutePropagation = {
+
+
+RouteTableIds: string[];
+
+VpnGatewayId: string;
+
+
+};
+
+export type ClientVpnTargetNetworkAssociation = {
+
+
+ClientVpnEndpointId: string;
+
+SubnetId: string;
+
+
+};
+
+export type TransitGatewayPeeringAttachment = {
+
+
+TransitGatewayId: string;
+
+PeerTransitGatewayId: string;
+
+PeerAccountId: string;
+
+PeerRegion: string;
+
+Tags?: Tag[];
+
+
+};
+
+export type VolumeAttachment = {
+
+
+Device: string;
+
+InstanceId: string;
+
+VolumeId: string;
+
+
+};
+
+export type Host = {
+
+
+AutoPlacement?: string;
+
+AvailabilityZone: string;
+
+HostRecovery?: string;
+
+InstanceType: string;
+
+
+};
+
+export type VPCEndpoint = {
+
+
+PolicyDocument?: JSONString;
+
+PrivateDnsEnabled?: boolean;
+
+RouteTableIds?: string[];
+
+SecurityGroupIds?: string[];
+
+ServiceName: string;
+
+SubnetIds?: string[];
+
+VpcEndpointType?: string;
+
+VpcId: string;
+
+
+};
+
+export type VPCGatewayAttachment = {
+
+
+InternetGatewayId?: string;
+
+VpcId: string;
+
+VpnGatewayId?: string;
+
+
+};
+
+export type VPCCidrBlock = {
+
+
+AmazonProvidedIpv6CidrBlock?: boolean;
+
+CidrBlock?: string;
+
+VpcId: string;
+
+
+};
+
 
 }
 
 export namespace ImageBuilder {
 
-export namespace ImagePipeline {
 
-export type ImageTestsConfiguration =  AWS.ImageBuilder.ImagePipeline.ImageTestsConfiguration;
+export type ImagePipeline = {
 
-export type Schedule =  AWS.ImageBuilder.ImagePipeline.Schedule;
 
-export type Name =  string;
+ImageTestsConfiguration?: AWS.ImageBuilder.ImagePipeline.ImageTestsConfiguration;
 
-export type Description =  string;
+Schedule?: AWS.ImageBuilder.ImagePipeline.Schedule;
 
-export type Status =  string;
+Name: string;
 
-export type ImageRecipeArn =  string;
+Description?: string;
 
-export type ContainerRecipeArn =  string;
+Status?: string;
 
-export type DistributionConfigurationArn =  string;
+ImageRecipeArn?: string;
 
-export type InfrastructureConfigurationArn =  string;
+ContainerRecipeArn?: string;
 
-export type EnhancedImageMetadataEnabled =  boolean;
+DistributionConfigurationArn?: string;
 
-export type Tags =  Record<string, string>;
+InfrastructureConfigurationArn: string;
 
-}
+EnhancedImageMetadataEnabled?: boolean;
+
+Tags?: Record<string, string>;
+
+
+};
+
+export type ImageRecipe = {
+
+
+Name: string;
+
+Description?: string;
+
+Version: string;
+
+Components: AWS.ImageBuilder.ImageRecipe.ComponentConfiguration[];
+
+BlockDeviceMappings?: AWS.ImageBuilder.ImageRecipe.InstanceBlockDeviceMapping[];
+
+ParentImage: string;
+
+WorkingDirectory?: string;
+
+Tags?: Record<string, string>;
+
+
+};
 
 export namespace ImageRecipe {
 
-export type InstanceBlockDeviceMapping = { DeviceName?: string;
+
+export type InstanceBlockDeviceMapping = {
+
+
+DeviceName?: string;
 
 VirtualName?: string;
 
 NoDevice?: string;
 
-Ebs?: AWS.ImageBuilder.ImageRecipe.EbsInstanceBlockDeviceSpecification; };
+Ebs?: AWS.ImageBuilder.ImageRecipe.EbsInstanceBlockDeviceSpecification;
 
-export type ComponentConfiguration = { ComponentArn?: string; };
 
-export type EbsInstanceBlockDeviceSpecification = { Encrypted?: boolean;
+};
+
+export type ComponentConfiguration = {
+
+
+ComponentArn?: string;
+
+
+};
+
+export type EbsInstanceBlockDeviceSpecification = {
+
+
+Encrypted?: boolean;
 
 DeleteOnTermination?: boolean;
 
@@ -13102,31 +22314,65 @@ SnapshotId?: string;
 
 VolumeSize?: number;
 
-VolumeType?: string; };
+VolumeType?: string;
 
-export type Name =  string;
 
-export type Description =  string;
+};
 
-export type Version =  string;
-
-export type Components =  AWS.ImageBuilder.ImageRecipe.ComponentConfiguration[];
-
-export type BlockDeviceMappings =  AWS.ImageBuilder.ImageRecipe.InstanceBlockDeviceMapping[];
-
-export type ParentImage =  string;
-
-export type WorkingDirectory =  string;
-
-export type Tags =  Record<string, string>;
 
 }
+
+export type ContainerRecipe = {
+
+
+InstanceConfiguration?: AWS.ImageBuilder.ContainerRecipe.InstanceConfiguration;
+
+Name: string;
+
+Description?: string;
+
+Version: string;
+
+Components: AWS.ImageBuilder.ContainerRecipe.ComponentConfiguration[];
+
+DockerfileTemplateData?: string;
+
+DockerfileTemplateUri?: string;
+
+PlatformOverride?: string;
+
+ContainerType: string;
+
+ImageOsVersionOverride?: string;
+
+TargetRepository: AWS.ImageBuilder.ContainerRecipe.TargetContainerRepository;
+
+KmsKeyId?: string;
+
+ParentImage: string;
+
+WorkingDirectory?: string;
+
+Tags?: Record<string, string>;
+
+
+};
 
 export namespace ContainerRecipe {
 
-export type ComponentConfiguration = { ComponentArn?: string; };
 
-export type EbsInstanceBlockDeviceSpecification = { Encrypted?: boolean;
+export type ComponentConfiguration = {
+
+
+ComponentArn?: string;
+
+
+};
+
+export type EbsInstanceBlockDeviceSpecification = {
+
+
+Encrypted?: boolean;
 
 DeleteOnTermination?: boolean;
 
@@ -13138,87 +22384,105 @@ SnapshotId?: string;
 
 VolumeSize?: number;
 
-VolumeType?: string; };
+VolumeType?: string;
 
-export type InstanceBlockDeviceMapping = { DeviceName?: string;
+
+};
+
+export type InstanceBlockDeviceMapping = {
+
+
+DeviceName?: string;
 
 VirtualName?: string;
 
 NoDevice?: string;
 
-Ebs?: AWS.ImageBuilder.ContainerRecipe.EbsInstanceBlockDeviceSpecification; };
+Ebs?: AWS.ImageBuilder.ContainerRecipe.EbsInstanceBlockDeviceSpecification;
 
-export type InstanceConfiguration =  AWS.ImageBuilder.ContainerRecipe.InstanceConfiguration;
 
-export type TargetContainerRepository = { Service?: string;
+};
 
-RepositoryName?: string; };
+export type TargetContainerRepository = {
 
-export type Name =  string;
 
-export type Description =  string;
+Service?: string;
 
-export type Version =  string;
+RepositoryName?: string;
 
-export type Components =  AWS.ImageBuilder.ContainerRecipe.ComponentConfiguration[];
 
-export type DockerfileTemplateData =  string;
+};
 
-export type DockerfileTemplateUri =  string;
-
-export type PlatformOverride =  string;
-
-export type ContainerType =  string;
-
-export type ImageOsVersionOverride =  string;
-
-export type TargetRepository =  AWS.ImageBuilder.ContainerRecipe.TargetContainerRepository;
-
-export type KmsKeyId =  string;
-
-export type ParentImage =  string;
-
-export type WorkingDirectory =  string;
-
-export type Tags =  Record<string, string>;
 
 }
+
+export type InfrastructureConfiguration = {
+
+
+Logging?: AWS.ImageBuilder.InfrastructureConfiguration.Logging;
+
+Name: string;
+
+Description?: string;
+
+InstanceTypes?: string[];
+
+SecurityGroupIds?: string[];
+
+SubnetId?: string;
+
+KeyPair?: string;
+
+TerminateInstanceOnFailure?: boolean;
+
+InstanceProfileName: string;
+
+SnsTopicArn?: string;
+
+ResourceTags?: Record<string, string>;
+
+Tags?: Record<string, string>;
+
+
+};
 
 export namespace InfrastructureConfiguration {
 
-export type Logging =  AWS.ImageBuilder.InfrastructureConfiguration.Logging;
 
-export type S3Logs = { S3BucketName?: string;
+export type S3Logs = {
 
-S3KeyPrefix?: string; };
 
-export type Name =  string;
+S3BucketName?: string;
 
-export type Description =  string;
+S3KeyPrefix?: string;
 
-export type InstanceTypes =  string[];
 
-export type SecurityGroupIds =  string[];
+};
 
-export type SubnetId =  string;
-
-export type KeyPair =  string;
-
-export type TerminateInstanceOnFailure =  boolean;
-
-export type InstanceProfileName =  string;
-
-export type SnsTopicArn =  string;
-
-export type ResourceTags =  Record<string, string>;
-
-export type Tags =  Record<string, string>;
 
 }
 
+export type DistributionConfiguration = {
+
+
+Name: string;
+
+Description?: string;
+
+Distributions: AWS.ImageBuilder.DistributionConfiguration.Distribution[];
+
+Tags?: Record<string, string>;
+
+
+};
+
 export namespace DistributionConfiguration {
 
-export type Distribution = { Region: string;
+
+export type Distribution = {
+
+
+Region: string;
 
 AmiDistributionConfiguration?: JSONString;
 
@@ -13226,81 +22490,127 @@ ContainerDistributionConfiguration?: JSONString;
 
 LicenseConfigurationArns?: string[];
 
-LaunchTemplateConfigurations?: AWS.ImageBuilder.DistributionConfiguration.LaunchTemplateConfiguration[]; };
+LaunchTemplateConfigurations?: AWS.ImageBuilder.DistributionConfiguration.LaunchTemplateConfiguration[];
 
-export type LaunchTemplateConfiguration = { LaunchTemplateId?: string;
+
+};
+
+export type LaunchTemplateConfiguration = {
+
+
+LaunchTemplateId?: string;
 
 AccountId?: string;
 
-SetDefaultVersion?: boolean; };
+SetDefaultVersion?: boolean;
 
-export type Name =  string;
 
-export type Description =  string;
+};
 
-export type Distributions =  AWS.ImageBuilder.DistributionConfiguration.Distribution[];
-
-export type Tags =  Record<string, string>;
 
 }
 
-export namespace Image {
+export type Image = {
 
-export type ImageTestsConfiguration =  AWS.ImageBuilder.Image.ImageTestsConfiguration;
 
-export type ImageRecipeArn =  string;
+ImageTestsConfiguration?: AWS.ImageBuilder.Image.ImageTestsConfiguration;
 
-export type ContainerRecipeArn =  string;
+ImageRecipeArn?: string;
 
-export type DistributionConfigurationArn =  string;
+ContainerRecipeArn?: string;
 
-export type InfrastructureConfigurationArn =  string;
+DistributionConfigurationArn?: string;
 
-export type EnhancedImageMetadataEnabled =  boolean;
+InfrastructureConfigurationArn: string;
 
-export type Tags =  Record<string, string>;
+EnhancedImageMetadataEnabled?: boolean;
 
-}
+Tags?: Record<string, string>;
 
-export namespace Component {
 
-export type Name =  string;
+};
 
-export type Version =  string;
+export type Component = {
 
-export type Description =  string;
 
-export type ChangeDescription =  string;
+Name: string;
 
-export type Platform =  string;
+Version: string;
 
-export type Data =  string;
+Description?: string;
 
-export type KmsKeyId =  string;
+ChangeDescription?: string;
 
-export type Tags =  Record<string, string>;
+Platform: string;
 
-export type Uri =  string;
+Data?: string;
 
-export type SupportedOsVersions =  string[];
+KmsKeyId?: string;
 
-}
+Tags?: Record<string, string>;
+
+Uri?: string;
+
+SupportedOsVersions?: string[];
+
+
+};
+
 
 }
 
 export namespace MediaLive {
 
+
+export type Channel = {
+
+
+InputSpecification?: AWS.MediaLive.Channel.InputSpecification;
+
+EncoderSettings?: AWS.MediaLive.Channel.EncoderSettings;
+
+CdiInputSpecification?: AWS.MediaLive.Channel.CdiInputSpecification;
+
+InputAttachments?: AWS.MediaLive.Channel.InputAttachment[];
+
+ChannelClass?: string;
+
+Destinations?: AWS.MediaLive.Channel.OutputDestination[];
+
+Vpc?: AWS.MediaLive.Channel.VpcOutputSettings;
+
+LogLevel?: string;
+
+RoleArn?: string;
+
+Tags?: JSONString;
+
+Name?: string;
+
+
+};
+
 export namespace Channel {
 
-export type HlsInputSettings = { BufferSegments?: number;
+
+export type HlsInputSettings = {
+
+
+BufferSegments?: number;
 
 Retries?: number;
 
 Bandwidth?: number;
 
-RetryInterval?: number; };
+RetryInterval?: number;
 
-export type DvbSubDestinationSettings = { BackgroundOpacity?: number;
+
+};
+
+export type DvbSubDestinationSettings = {
+
+
+BackgroundOpacity?: number;
 
 FontResolution?: number;
 
@@ -13332,35 +22642,71 @@ FontOpacity?: number;
 
 ShadowXOffset?: number;
 
-BackgroundColor?: string; };
+BackgroundColor?: string;
 
-export type Rec709Settings = {  };
 
-export type VideoCodecSettings = { Mpeg2Settings?: AWS.MediaLive.Channel.Mpeg2Settings;
+};
+
+
+
+export type VideoCodecSettings = {
+
+
+Mpeg2Settings?: AWS.MediaLive.Channel.Mpeg2Settings;
 
 FrameCaptureSettings?: AWS.MediaLive.Channel.FrameCaptureSettings;
 
 H264Settings?: AWS.MediaLive.Channel.H264Settings;
 
-H265Settings?: AWS.MediaLive.Channel.H265Settings; };
+H265Settings?: AWS.MediaLive.Channel.H265Settings;
 
-export type HlsSettings = { StandardHlsSettings?: AWS.MediaLive.Channel.StandardHlsSettings;
+
+};
+
+export type HlsSettings = {
+
+
+StandardHlsSettings?: AWS.MediaLive.Channel.StandardHlsSettings;
 
 AudioOnlyHlsSettings?: AWS.MediaLive.Channel.AudioOnlyHlsSettings;
 
 Fmp4HlsSettings?: AWS.MediaLive.Channel.Fmp4HlsSettings;
 
-FrameCaptureHlsSettings?: AWS.MediaLive.Channel.FrameCaptureHlsSettings; };
+FrameCaptureHlsSettings?: AWS.MediaLive.Channel.FrameCaptureHlsSettings;
 
-export type FrameCaptureSettings = { CaptureInterval?: number;
 
-CaptureIntervalUnits?: string; };
+};
 
-export type MotionGraphicsSettings = { HtmlMotionGraphicsSettings?: AWS.MediaLive.Channel.HtmlMotionGraphicsSettings; };
+export type FrameCaptureSettings = {
 
-export type FrameCaptureCdnSettings = { FrameCaptureS3Settings?: AWS.MediaLive.Channel.FrameCaptureS3Settings; };
 
-export type InputLossBehavior = { InputLossImageColor?: string;
+CaptureInterval?: number;
+
+CaptureIntervalUnits?: string;
+
+
+};
+
+export type MotionGraphicsSettings = {
+
+
+HtmlMotionGraphicsSettings?: AWS.MediaLive.Channel.HtmlMotionGraphicsSettings;
+
+
+};
+
+export type FrameCaptureCdnSettings = {
+
+
+FrameCaptureS3Settings?: AWS.MediaLive.Channel.FrameCaptureS3Settings;
+
+
+};
+
+export type InputLossBehavior = {
+
+
+InputLossImageColor?: string;
 
 BlackFrameMsec?: number;
 
@@ -13368,13 +22714,25 @@ InputLossImageType?: string;
 
 InputLossImageSlate?: AWS.MediaLive.Channel.InputLocation;
 
-RepeatFrameMsec?: number; };
+RepeatFrameMsec?: number;
 
-export type MultiplexProgramChannelDestinationSettings = { MultiplexId?: string;
 
-ProgramName?: string; };
+};
 
-export type HlsCdnSettings = { HlsWebdavSettings?: AWS.MediaLive.Channel.HlsWebdavSettings;
+export type MultiplexProgramChannelDestinationSettings = {
+
+
+MultiplexId?: string;
+
+ProgramName?: string;
+
+
+};
+
+export type HlsCdnSettings = {
+
+
+HlsWebdavSettings?: AWS.MediaLive.Channel.HlsWebdavSettings;
 
 HlsS3Settings?: AWS.MediaLive.Channel.HlsS3Settings;
 
@@ -13382,113 +22740,251 @@ HlsAkamaiSettings?: AWS.MediaLive.Channel.HlsAkamaiSettings;
 
 HlsBasicPutSettings?: AWS.MediaLive.Channel.HlsBasicPutSettings;
 
-HlsMediaStoreSettings?: AWS.MediaLive.Channel.HlsMediaStoreSettings; };
+HlsMediaStoreSettings?: AWS.MediaLive.Channel.HlsMediaStoreSettings;
 
-export type HlsOutputSettings = { NameModifier?: string;
+
+};
+
+export type HlsOutputSettings = {
+
+
+NameModifier?: string;
 
 HlsSettings?: AWS.MediaLive.Channel.HlsSettings;
 
 H265PackagingType?: string;
 
-SegmentModifier?: string; };
+SegmentModifier?: string;
 
-export type EmbeddedPlusScte20DestinationSettings = {  };
 
-export type FrameCaptureS3Settings = { CannedAcl?: string; };
+};
 
-export type ArchiveCdnSettings = { ArchiveS3Settings?: AWS.MediaLive.Channel.ArchiveS3Settings; };
 
-export type Scte27SourceSettings = { Pid?: number; };
 
-export type AudioTrackSelection = { Tracks?: AWS.MediaLive.Channel.AudioTrack[]; };
+export type FrameCaptureS3Settings = {
 
-export type EbuTtDDestinationSettings = { FontFamily?: string;
+
+CannedAcl?: string;
+
+
+};
+
+export type ArchiveCdnSettings = {
+
+
+ArchiveS3Settings?: AWS.MediaLive.Channel.ArchiveS3Settings;
+
+
+};
+
+export type Scte27SourceSettings = {
+
+
+Pid?: number;
+
+
+};
+
+export type AudioTrackSelection = {
+
+
+Tracks?: AWS.MediaLive.Channel.AudioTrack[];
+
+
+};
+
+export type EbuTtDDestinationSettings = {
+
+
+FontFamily?: string;
 
 FillLineGap?: string;
 
 StyleControl?: string;
 
-CopyrightHolder?: string; };
+CopyrightHolder?: string;
 
-export type VideoSelectorPid = { Pid?: number; };
 
-export type FailoverCondition = { FailoverConditionSettings?: AWS.MediaLive.Channel.FailoverConditionSettings; };
+};
 
-export type Hdr10Settings = { MaxCll?: number;
+export type VideoSelectorPid = {
 
-MaxFall?: number; };
 
-export type StaticKeySettings = { KeyProviderServer?: AWS.MediaLive.Channel.InputLocation;
+Pid?: number;
 
-StaticKeyValue?: string; };
 
-export type InputLocation = { Username?: string;
+};
+
+export type FailoverCondition = {
+
+
+FailoverConditionSettings?: AWS.MediaLive.Channel.FailoverConditionSettings;
+
+
+};
+
+export type Hdr10Settings = {
+
+
+MaxCll?: number;
+
+MaxFall?: number;
+
+
+};
+
+export type StaticKeySettings = {
+
+
+KeyProviderServer?: AWS.MediaLive.Channel.InputLocation;
+
+StaticKeyValue?: string;
+
+
+};
+
+export type InputLocation = {
+
+
+Username?: string;
 
 PasswordParam?: string;
 
-Uri?: string; };
+Uri?: string;
 
-export type AudioLanguageSelection = { LanguageCode?: string;
 
-LanguageSelectionPolicy?: string; };
+};
 
-export type CaptionRectangle = { TopOffset?: number;
+export type AudioLanguageSelection = {
+
+
+LanguageCode?: string;
+
+LanguageSelectionPolicy?: string;
+
+
+};
+
+export type CaptionRectangle = {
+
+
+TopOffset?: number;
 
 Height?: number;
 
 Width?: number;
 
-LeftOffset?: number; };
+LeftOffset?: number;
 
-export type ArchiveS3Settings = { CannedAcl?: string; };
 
-export type SmpteTtDestinationSettings = {  };
+};
 
-export type AribSourceSettings = {  };
+export type ArchiveS3Settings = {
 
-export type Mp2Settings = { CodingMode?: string;
+
+CannedAcl?: string;
+
+
+};
+
+
+
+
+
+export type Mp2Settings = {
+
+
+CodingMode?: string;
 
 SampleRate?: number;
 
-Bitrate?: number; };
+Bitrate?: number;
 
-export type AudioSilenceFailoverSettings = { AudioSelectorName?: string;
 
-AudioSilenceThresholdMsec?: number; };
+};
 
-export type Fmp4HlsSettings = { AudioRenditionSets?: string;
+export type AudioSilenceFailoverSettings = {
+
+
+AudioSelectorName?: string;
+
+AudioSilenceThresholdMsec?: number;
+
+
+};
+
+export type Fmp4HlsSettings = {
+
+
+AudioRenditionSets?: string;
 
 NielsenId3Behavior?: string;
 
-TimedMetadataBehavior?: string; };
+TimedMetadataBehavior?: string;
 
-export type Scte35SpliceInsert = { AdAvailOffset?: number;
+
+};
+
+export type Scte35SpliceInsert = {
+
+
+AdAvailOffset?: number;
 
 WebDeliveryAllowedFlag?: string;
 
-NoRegionalBlackoutFlag?: string; };
+NoRegionalBlackoutFlag?: string;
 
-export type AudioChannelMapping = { OutputChannel?: number;
 
-InputChannelLevels?: AWS.MediaLive.Channel.InputChannelLevel[]; };
+};
 
-export type FeatureActivations = { InputPrepareScheduleActions?: string; };
+export type AudioChannelMapping = {
 
-export type OutputGroup = { Outputs?: AWS.MediaLive.Channel.Output[];
+
+OutputChannel?: number;
+
+InputChannelLevels?: AWS.MediaLive.Channel.InputChannelLevel[];
+
+
+};
+
+export type FeatureActivations = {
+
+
+InputPrepareScheduleActions?: string;
+
+
+};
+
+export type OutputGroup = {
+
+
+Outputs?: AWS.MediaLive.Channel.Output[];
 
 OutputGroupSettings?: AWS.MediaLive.Channel.OutputGroupSettings;
 
-Name?: string; };
+Name?: string;
 
-export type UdpOutputSettings = { Destination?: AWS.MediaLive.Channel.OutputLocationRef;
+
+};
+
+export type UdpOutputSettings = {
+
+
+Destination?: AWS.MediaLive.Channel.OutputLocationRef;
 
 FecOutputSettings?: AWS.MediaLive.Channel.FecOutputSettings;
 
 ContainerSettings?: AWS.MediaLive.Channel.UdpContainerSettings;
 
-BufferMsec?: number; };
+BufferMsec?: number;
 
-export type Ac3Settings = { CodingMode?: string;
+
+};
+
+export type Ac3Settings = {
+
+
+CodingMode?: string;
 
 DrcProfile?: string;
 
@@ -13500,9 +22996,15 @@ LfeFilter?: string;
 
 BitstreamMode?: string;
 
-Bitrate?: number; };
+Bitrate?: number;
 
-export type Eac3Settings = { CodingMode?: string;
+
+};
+
+export type Eac3Settings = {
+
+
+CodingMode?: string;
 
 SurroundMode?: string;
 
@@ -13540,13 +23042,19 @@ BitstreamMode?: string;
 
 SurroundExMode?: string;
 
-StereoDownmix?: string; };
+StereoDownmix?: string;
 
-export type MediaPackageOutputSettings = {  };
 
-export type Rec601Settings = {  };
+};
 
-export type H264Settings = { NumRefFrames?: number;
+
+
+
+
+export type H264Settings = {
+
+
+NumRefFrames?: number;
 
 TemporalAq?: string;
 
@@ -13626,17 +23134,35 @@ Syntax?: string;
 
 SubgopLength?: string;
 
-GopNumBFrames?: number; };
+GopNumBFrames?: number;
 
-export type H264FilterSettings = { TemporalFilterSettings?: AWS.MediaLive.Channel.TemporalFilterSettings; };
 
-export type FailoverConditionSettings = { AudioSilenceSettings?: AWS.MediaLive.Channel.AudioSilenceFailoverSettings;
+};
+
+export type H264FilterSettings = {
+
+
+TemporalFilterSettings?: AWS.MediaLive.Channel.TemporalFilterSettings;
+
+
+};
+
+export type FailoverConditionSettings = {
+
+
+AudioSilenceSettings?: AWS.MediaLive.Channel.AudioSilenceFailoverSettings;
 
 VideoBlackSettings?: AWS.MediaLive.Channel.VideoBlackFailoverSettings;
 
-InputLossSettings?: AWS.MediaLive.Channel.InputLossFailoverSettings; };
+InputLossSettings?: AWS.MediaLive.Channel.InputLossFailoverSettings;
 
-export type Mpeg2Settings = { ColorSpace?: string;
+
+};
+
+export type Mpeg2Settings = {
+
+
+ColorSpace?: string;
 
 FixedAfd?: string;
 
@@ -13666,31 +23192,67 @@ SubgopLength?: string;
 
 FilterSettings?: AWS.MediaLive.Channel.Mpeg2FilterSettings;
 
-GopNumBFrames?: number; };
+GopNumBFrames?: number;
 
-export type AudioSelectorSettings = { AudioPidSelection?: AWS.MediaLive.Channel.AudioPidSelection;
+
+};
+
+export type AudioSelectorSettings = {
+
+
+AudioPidSelection?: AWS.MediaLive.Channel.AudioPidSelection;
 
 AudioLanguageSelection?: AWS.MediaLive.Channel.AudioLanguageSelection;
 
-AudioTrackSelection?: AWS.MediaLive.Channel.AudioTrackSelection; };
+AudioTrackSelection?: AWS.MediaLive.Channel.AudioTrackSelection;
 
-export type UdpContainerSettings = { M2tsSettings?: AWS.MediaLive.Channel.M2tsSettings; };
 
-export type TimecodeConfig = { SyncThreshold?: number;
+};
 
-Source?: string; };
+export type UdpContainerSettings = {
 
-export type VideoSelector = { ColorSpaceSettings?: AWS.MediaLive.Channel.VideoSelectorColorSpaceSettings;
+
+M2tsSettings?: AWS.MediaLive.Channel.M2tsSettings;
+
+
+};
+
+export type TimecodeConfig = {
+
+
+SyncThreshold?: number;
+
+Source?: string;
+
+
+};
+
+export type VideoSelector = {
+
+
+ColorSpaceSettings?: AWS.MediaLive.Channel.VideoSelectorColorSpaceSettings;
 
 SelectorSettings?: AWS.MediaLive.Channel.VideoSelectorSettings;
 
 ColorSpace?: string;
 
-ColorSpaceUsage?: string; };
+ColorSpaceUsage?: string;
 
-export type DvbTdtSettings = { RepInterval?: number; };
 
-export type HlsGroupSettings = { SegmentationMode?: string;
+};
+
+export type DvbTdtSettings = {
+
+
+RepInterval?: number;
+
+
+};
+
+export type HlsGroupSettings = {
+
+
+SegmentationMode?: string;
 
 Destination?: AWS.MediaLive.Channel.OutputLocationRef;
 
@@ -13772,21 +23334,39 @@ SegmentsPerSubdirectory?: number;
 
 BaseUrlContent?: string;
 
-BaseUrlManifest?: string; };
+BaseUrlManifest?: string;
 
-export type OutputDestinationSettings = { StreamName?: string;
+
+};
+
+export type OutputDestinationSettings = {
+
+
+StreamName?: string;
 
 Username?: string;
 
 PasswordParam?: string;
 
-Url?: string; };
+Url?: string;
 
-export type AvailConfiguration = { AvailSettings?: AWS.MediaLive.Channel.AvailSettings; };
 
-export type TeletextDestinationSettings = {  };
+};
 
-export type H265Settings = { Slices?: number;
+export type AvailConfiguration = {
+
+
+AvailSettings?: AWS.MediaLive.Channel.AvailSettings;
+
+
+};
+
+
+
+export type H265Settings = {
+
+
+Slices?: number;
 
 QvbrQualityLevel?: number;
 
@@ -13842,9 +23422,15 @@ LookAheadRateControl?: string;
 
 Level?: string;
 
-MaxBitrate?: number; };
+MaxBitrate?: number;
 
-export type AudioCodecSettings = { Eac3Settings?: AWS.MediaLive.Channel.Eac3Settings;
+
+};
+
+export type AudioCodecSettings = {
+
+
+Eac3Settings?: AWS.MediaLive.Channel.Eac3Settings;
 
 Ac3Settings?: AWS.MediaLive.Channel.Ac3Settings;
 
@@ -13854,17 +23440,29 @@ PassThroughSettings?: AWS.MediaLive.Channel.PassThroughSettings;
 
 WavSettings?: AWS.MediaLive.Channel.WavSettings;
 
-AacSettings?: AWS.MediaLive.Channel.AacSettings; };
+AacSettings?: AWS.MediaLive.Channel.AacSettings;
 
-export type DvbNitSettings = { NetworkName?: string;
+
+};
+
+export type DvbNitSettings = {
+
+
+NetworkName?: string;
 
 RepInterval?: number;
 
-NetworkId?: number; };
+NetworkId?: number;
 
-export type WebvttDestinationSettings = {  };
 
-export type AacSettings = { CodingMode?: string;
+};
+
+
+
+export type AacSettings = {
+
+
+CodingMode?: string;
 
 RateControlMode?: string;
 
@@ -13880,55 +23478,115 @@ Spec?: string;
 
 Bitrate?: number;
 
-Profile?: string; };
+Profile?: string;
 
-export type Scte35TimeSignalApos = { AdAvailOffset?: number;
+
+};
+
+export type Scte35TimeSignalApos = {
+
+
+AdAvailOffset?: number;
 
 WebDeliveryAllowedFlag?: string;
 
-NoRegionalBlackoutFlag?: string; };
+NoRegionalBlackoutFlag?: string;
 
-export type FecOutputSettings = { RowLength?: number;
+
+};
+
+export type FecOutputSettings = {
+
+
+RowLength?: number;
 
 ColumnDepth?: number;
 
-IncludeFec?: string; };
+IncludeFec?: string;
 
-export type OutputDestination = { MultiplexSettings?: AWS.MediaLive.Channel.MultiplexProgramChannelDestinationSettings;
+
+};
+
+export type OutputDestination = {
+
+
+MultiplexSettings?: AWS.MediaLive.Channel.MultiplexProgramChannelDestinationSettings;
 
 Id?: string;
 
 Settings?: AWS.MediaLive.Channel.OutputDestinationSettings[];
 
-MediaPackageSettings?: AWS.MediaLive.Channel.MediaPackageOutputDestinationSettings[]; };
+MediaPackageSettings?: AWS.MediaLive.Channel.MediaPackageOutputDestinationSettings[];
 
-export type AncillarySourceSettings = { SourceAncillaryChannelNumber?: number; };
 
-export type Mpeg2FilterSettings = { TemporalFilterSettings?: AWS.MediaLive.Channel.TemporalFilterSettings; };
+};
 
-export type CaptionSelector = { LanguageCode?: string;
+export type AncillarySourceSettings = {
+
+
+SourceAncillaryChannelNumber?: number;
+
+
+};
+
+export type Mpeg2FilterSettings = {
+
+
+TemporalFilterSettings?: AWS.MediaLive.Channel.TemporalFilterSettings;
+
+
+};
+
+export type CaptionSelector = {
+
+
+LanguageCode?: string;
 
 SelectorSettings?: AWS.MediaLive.Channel.CaptionSelectorSettings;
 
-Name?: string; };
+Name?: string;
 
-export type VideoBlackFailoverSettings = { VideoBlackThresholdMsec?: number;
 
-BlackDetectThreshold?: number; };
+};
 
-export type RtmpOutputSettings = { Destination?: AWS.MediaLive.Channel.OutputLocationRef;
+export type VideoBlackFailoverSettings = {
+
+
+VideoBlackThresholdMsec?: number;
+
+BlackDetectThreshold?: number;
+
+
+};
+
+export type RtmpOutputSettings = {
+
+
+Destination?: AWS.MediaLive.Channel.OutputLocationRef;
 
 CertificateMode?: string;
 
 NumRetries?: number;
 
-ConnectionRetryInterval?: number; };
+ConnectionRetryInterval?: number;
 
-export type RtmpCaptionInfoDestinationSettings = {  };
 
-export type TtmlDestinationSettings = { StyleControl?: string; };
+};
 
-export type M2tsSettings = { EtvPlatformPid?: string;
+
+
+export type TtmlDestinationSettings = {
+
+
+StyleControl?: string;
+
+
+};
+
+export type M2tsSettings = {
+
+
+EtvPlatformPid?: string;
 
 PatInterval?: number;
 
@@ -14020,9 +23678,15 @@ Ebif?: string;
 
 AribCaptionsPidControl?: string;
 
-PcrControl?: string; };
+PcrControl?: string;
 
-export type HlsWebdavSettings = { FilecacheDuration?: number;
+
+};
+
+export type HlsWebdavSettings = {
+
+
+FilecacheDuration?: number;
 
 NumRetries?: number;
 
@@ -14030,13 +23694,25 @@ RestartDelay?: number;
 
 ConnectionRetryInterval?: number;
 
-HttpTransferMode?: string; };
+HttpTransferMode?: string;
 
-export type NielsenConfiguration = { DistributorId?: string;
 
-NielsenPcmToId3Tagging?: string; };
+};
 
-export type GlobalConfiguration = { InputEndAction?: string;
+export type NielsenConfiguration = {
+
+
+DistributorId?: string;
+
+NielsenPcmToId3Tagging?: string;
+
+
+};
+
+export type GlobalConfiguration = {
+
+
+InputEndAction?: string;
 
 OutputTimingSource?: string;
 
@@ -14046,123 +23722,251 @@ SupportLowFramerateInputs?: string;
 
 InitialAudioGain?: number;
 
-InputLossBehavior?: AWS.MediaLive.Channel.InputLossBehavior; };
+InputLossBehavior?: AWS.MediaLive.Channel.InputLossBehavior;
 
-export type MediaPackageOutputDestinationSettings = { ChannelId?: string; };
 
-export type AudioOnlyHlsSettings = { SegmentType?: string;
+};
+
+export type MediaPackageOutputDestinationSettings = {
+
+
+ChannelId?: string;
+
+
+};
+
+export type AudioOnlyHlsSettings = {
+
+
+SegmentType?: string;
 
 AudioTrackType?: string;
 
 AudioOnlyImage?: AWS.MediaLive.Channel.InputLocation;
 
-AudioGroupId?: string; };
+AudioGroupId?: string;
 
-export type OutputLocationRef = { DestinationRefId?: string; };
 
-export type Scte27DestinationSettings = {  };
+};
 
-export type AutomaticInputFailoverSettings = { FailoverConditions?: AWS.MediaLive.Channel.FailoverCondition[];
+export type OutputLocationRef = {
+
+
+DestinationRefId?: string;
+
+
+};
+
+
+
+export type AutomaticInputFailoverSettings = {
+
+
+FailoverConditions?: AWS.MediaLive.Channel.FailoverCondition[];
 
 InputPreference?: string;
 
 SecondaryInputId?: string;
 
-ErrorClearTimeMsec?: number; };
+ErrorClearTimeMsec?: number;
 
-export type FrameCaptureGroupSettings = { FrameCaptureCdnSettings?: AWS.MediaLive.Channel.FrameCaptureCdnSettings;
 
-Destination?: AWS.MediaLive.Channel.OutputLocationRef; };
+};
 
-export type ArchiveOutputSettings = { Extension?: string;
+export type FrameCaptureGroupSettings = {
+
+
+FrameCaptureCdnSettings?: AWS.MediaLive.Channel.FrameCaptureCdnSettings;
+
+Destination?: AWS.MediaLive.Channel.OutputLocationRef;
+
+
+};
+
+export type ArchiveOutputSettings = {
+
+
+Extension?: string;
 
 NameModifier?: string;
 
-ContainerSettings?: AWS.MediaLive.Channel.ArchiveContainerSettings; };
+ContainerSettings?: AWS.MediaLive.Channel.ArchiveContainerSettings;
 
-export type ArchiveGroupSettings = { Destination?: AWS.MediaLive.Channel.OutputLocationRef;
+
+};
+
+export type ArchiveGroupSettings = {
+
+
+Destination?: AWS.MediaLive.Channel.OutputLocationRef;
 
 ArchiveCdnSettings?: AWS.MediaLive.Channel.ArchiveCdnSettings;
 
-RolloverInterval?: number; };
+RolloverInterval?: number;
 
-export type RawSettings = {  };
 
-export type DvbSdtSettings = { ServiceProviderName?: string;
+};
+
+
+
+export type DvbSdtSettings = {
+
+
+ServiceProviderName?: string;
 
 OutputSdt?: string;
 
 ServiceName?: string;
 
-RepInterval?: number; };
+RepInterval?: number;
 
-export type VideoSelectorProgramId = { ProgramId?: number; };
 
-export type InputAttachment = { InputAttachmentName?: string;
+};
+
+export type VideoSelectorProgramId = {
+
+
+ProgramId?: number;
+
+
+};
+
+export type InputAttachment = {
+
+
+InputAttachmentName?: string;
 
 InputId?: string;
 
 AutomaticInputFailoverSettings?: AWS.MediaLive.Channel.AutomaticInputFailoverSettings;
 
-InputSettings?: AWS.MediaLive.Channel.InputSettings; };
+InputSettings?: AWS.MediaLive.Channel.InputSettings;
 
-export type InputChannelLevel = { InputChannel?: number;
 
-Gain?: number; };
+};
 
-export type StandardHlsSettings = { AudioRenditionSets?: string;
+export type InputChannelLevel = {
 
-M3u8Settings?: AWS.MediaLive.Channel.M3u8Settings; };
 
-export type PassThroughSettings = {  };
+InputChannel?: number;
 
-export type ArchiveContainerSettings = { RawSettings?: AWS.MediaLive.Channel.RawSettings;
+Gain?: number;
 
-M2tsSettings?: AWS.MediaLive.Channel.M2tsSettings; };
 
-export type EmbeddedSourceSettings = { Source608ChannelNumber?: number;
+};
+
+export type StandardHlsSettings = {
+
+
+AudioRenditionSets?: string;
+
+M3u8Settings?: AWS.MediaLive.Channel.M3u8Settings;
+
+
+};
+
+
+
+export type ArchiveContainerSettings = {
+
+
+RawSettings?: AWS.MediaLive.Channel.RawSettings;
+
+M2tsSettings?: AWS.MediaLive.Channel.M2tsSettings;
+
+
+};
+
+export type EmbeddedSourceSettings = {
+
+
+Source608ChannelNumber?: number;
 
 Scte20Detection?: string;
 
 Source608TrackNumber?: number;
 
-Convert608To708?: string; };
+Convert608To708?: string;
 
-export type InputSpecification =  AWS.MediaLive.Channel.InputSpecification;
 
-export type FrameCaptureOutputSettings = { NameModifier?: string; };
+};
 
-export type EncoderSettings =  AWS.MediaLive.Channel.EncoderSettings;
+export type FrameCaptureOutputSettings = {
 
-export type AvailSettings = { Scte35SpliceInsert?: AWS.MediaLive.Channel.Scte35SpliceInsert;
 
-Scte35TimeSignalApos?: AWS.MediaLive.Channel.Scte35TimeSignalApos; };
+NameModifier?: string;
 
-export type H264ColorSpaceSettings = { Rec601Settings?: AWS.MediaLive.Channel.Rec601Settings;
 
-Rec709Settings?: AWS.MediaLive.Channel.Rec709Settings;
+};
 
-ColorSpacePassthroughSettings?: AWS.MediaLive.Channel.ColorSpacePassthroughSettings; };
+export type AvailSettings = {
 
-export type MediaPackageGroupSettings = { Destination?: AWS.MediaLive.Channel.OutputLocationRef; };
 
-export type MultiplexOutputSettings = { Destination?: AWS.MediaLive.Channel.OutputLocationRef; };
+Scte35SpliceInsert?: AWS.MediaLive.Channel.Scte35SpliceInsert;
 
-export type H265ColorSpaceSettings = { Rec601Settings?: AWS.MediaLive.Channel.Rec601Settings;
+Scte35TimeSignalApos?: AWS.MediaLive.Channel.Scte35TimeSignalApos;
+
+
+};
+
+export type H264ColorSpaceSettings = {
+
+
+Rec601Settings?: AWS.MediaLive.Channel.Rec601Settings;
 
 Rec709Settings?: AWS.MediaLive.Channel.Rec709Settings;
 
 ColorSpacePassthroughSettings?: AWS.MediaLive.Channel.ColorSpacePassthroughSettings;
 
-Hdr10Settings?: AWS.MediaLive.Channel.Hdr10Settings; };
 
-export type EmbeddedDestinationSettings = {  };
+};
 
-export type AvailBlanking = { State?: string;
+export type MediaPackageGroupSettings = {
 
-AvailBlankingImage?: AWS.MediaLive.Channel.InputLocation; };
 
-export type InputSettings = { DeblockFilter?: string;
+Destination?: AWS.MediaLive.Channel.OutputLocationRef;
+
+
+};
+
+export type MultiplexOutputSettings = {
+
+
+Destination?: AWS.MediaLive.Channel.OutputLocationRef;
+
+
+};
+
+export type H265ColorSpaceSettings = {
+
+
+Rec601Settings?: AWS.MediaLive.Channel.Rec601Settings;
+
+Rec709Settings?: AWS.MediaLive.Channel.Rec709Settings;
+
+ColorSpacePassthroughSettings?: AWS.MediaLive.Channel.ColorSpacePassthroughSettings;
+
+Hdr10Settings?: AWS.MediaLive.Channel.Hdr10Settings;
+
+
+};
+
+
+
+export type AvailBlanking = {
+
+
+State?: string;
+
+AvailBlankingImage?: AWS.MediaLive.Channel.InputLocation;
+
+
+};
+
+export type InputSettings = {
+
+
+DeblockFilter?: string;
 
 FilterStrength?: number;
 
@@ -14180,33 +23984,75 @@ CaptionSelectors?: AWS.MediaLive.Channel.CaptionSelector[];
 
 DenoiseFilter?: string;
 
-NetworkInputSettings?: AWS.MediaLive.Channel.NetworkInputSettings; };
+NetworkInputSettings?: AWS.MediaLive.Channel.NetworkInputSettings;
 
-export type AudioNormalizationSettings = { TargetLkfs?: number;
+
+};
+
+export type AudioNormalizationSettings = {
+
+
+TargetLkfs?: number;
 
 Algorithm?: string;
 
-AlgorithmControl?: string; };
+AlgorithmControl?: string;
 
-export type MultiplexGroupSettings = {  };
 
-export type InputLossFailoverSettings = { InputLossThresholdMsec?: number; };
+};
 
-export type AudioSelector = { SelectorSettings?: AWS.MediaLive.Channel.AudioSelectorSettings;
 
-Name?: string; };
 
-export type AudioPidSelection = { Pid?: number; };
+export type InputLossFailoverSettings = {
 
-export type CaptionLanguageMapping = { LanguageCode?: string;
+
+InputLossThresholdMsec?: number;
+
+
+};
+
+export type AudioSelector = {
+
+
+SelectorSettings?: AWS.MediaLive.Channel.AudioSelectorSettings;
+
+Name?: string;
+
+
+};
+
+export type AudioPidSelection = {
+
+
+Pid?: number;
+
+
+};
+
+export type CaptionLanguageMapping = {
+
+
+LanguageCode?: string;
 
 LanguageDescription?: string;
 
-CaptionChannel?: number; };
+CaptionChannel?: number;
 
-export type DvbSubSourceSettings = { Pid?: number; };
 
-export type CaptionSelectorSettings = { DvbSubSourceSettings?: AWS.MediaLive.Channel.DvbSubSourceSettings;
+};
+
+export type DvbSubSourceSettings = {
+
+
+Pid?: number;
+
+
+};
+
+export type CaptionSelectorSettings = {
+
+
+DvbSubSourceSettings?: AWS.MediaLive.Channel.DvbSubSourceSettings;
 
 Scte27SourceSettings?: AWS.MediaLive.Channel.Scte27SourceSettings;
 
@@ -14218,23 +24064,47 @@ Scte20SourceSettings?: AWS.MediaLive.Channel.Scte20SourceSettings;
 
 TeletextSourceSettings?: AWS.MediaLive.Channel.TeletextSourceSettings;
 
-AncillarySourceSettings?: AWS.MediaLive.Channel.AncillarySourceSettings; };
+AncillarySourceSettings?: AWS.MediaLive.Channel.AncillarySourceSettings;
 
-export type VideoSelectorSettings = { VideoSelectorProgramId?: AWS.MediaLive.Channel.VideoSelectorProgramId;
 
-VideoSelectorPid?: AWS.MediaLive.Channel.VideoSelectorPid; };
+};
 
-export type VpcOutputSettings = { PublicAddressAllocationIds?: string[];
+export type VideoSelectorSettings = {
+
+
+VideoSelectorProgramId?: AWS.MediaLive.Channel.VideoSelectorProgramId;
+
+VideoSelectorPid?: AWS.MediaLive.Channel.VideoSelectorPid;
+
+
+};
+
+export type VpcOutputSettings = {
+
+
+PublicAddressAllocationIds?: string[];
 
 SecurityGroupIds?: string[];
 
-SubnetIds?: string[]; };
+SubnetIds?: string[];
 
-export type TeletextSourceSettings = { OutputRectangle?: AWS.MediaLive.Channel.CaptionRectangle;
 
-PageNumber?: string; };
+};
 
-export type CaptionDescription = { DestinationSettings?: AWS.MediaLive.Channel.CaptionDestinationSettings;
+export type TeletextSourceSettings = {
+
+
+OutputRectangle?: AWS.MediaLive.Channel.CaptionRectangle;
+
+PageNumber?: string;
+
+
+};
+
+export type CaptionDescription = {
+
+
+DestinationSettings?: AWS.MediaLive.Channel.CaptionDestinationSettings;
 
 LanguageCode?: string;
 
@@ -14242,15 +24112,33 @@ LanguageDescription?: string;
 
 CaptionSelectorName?: string;
 
-Name?: string; };
+Name?: string;
 
-export type MotionGraphicsConfiguration = { MotionGraphicsSettings?: AWS.MediaLive.Channel.MotionGraphicsSettings;
 
-MotionGraphicsInsertion?: string; };
+};
 
-export type VideoSelectorColorSpaceSettings = { Hdr10Settings?: AWS.MediaLive.Channel.Hdr10Settings; };
+export type MotionGraphicsConfiguration = {
 
-export type Output = { OutputSettings?: AWS.MediaLive.Channel.OutputSettings;
+
+MotionGraphicsSettings?: AWS.MediaLive.Channel.MotionGraphicsSettings;
+
+MotionGraphicsInsertion?: string;
+
+
+};
+
+export type VideoSelectorColorSpaceSettings = {
+
+
+Hdr10Settings?: AWS.MediaLive.Channel.Hdr10Settings;
+
+
+};
+
+export type Output = {
+
+
+OutputSettings?: AWS.MediaLive.Channel.OutputSettings;
 
 CaptionDescriptionNames?: string[];
 
@@ -14258,31 +24146,67 @@ AudioDescriptionNames?: string[];
 
 OutputName?: string;
 
-VideoDescriptionName?: string; };
+VideoDescriptionName?: string;
 
-export type NetworkInputSettings = { ServerValidation?: string;
 
-HlsInputSettings?: AWS.MediaLive.Channel.HlsInputSettings; };
+};
 
-export type H265FilterSettings = { TemporalFilterSettings?: AWS.MediaLive.Channel.TemporalFilterSettings; };
+export type NetworkInputSettings = {
 
-export type HlsBasicPutSettings = { FilecacheDuration?: number;
+
+ServerValidation?: string;
+
+HlsInputSettings?: AWS.MediaLive.Channel.HlsInputSettings;
+
+
+};
+
+export type H265FilterSettings = {
+
+
+TemporalFilterSettings?: AWS.MediaLive.Channel.TemporalFilterSettings;
+
+
+};
+
+export type HlsBasicPutSettings = {
+
+
+FilecacheDuration?: number;
 
 NumRetries?: number;
 
 RestartDelay?: number;
 
-ConnectionRetryInterval?: number; };
+ConnectionRetryInterval?: number;
 
-export type Scte20PlusEmbeddedDestinationSettings = {  };
 
-export type Scte20SourceSettings = { Source608ChannelNumber?: number;
+};
 
-Convert608To708?: string; };
 
-export type AudioTrack = { Track?: number; };
 
-export type AudioDescription = { AudioNormalizationSettings?: AWS.MediaLive.Channel.AudioNormalizationSettings;
+export type Scte20SourceSettings = {
+
+
+Source608ChannelNumber?: number;
+
+Convert608To708?: string;
+
+
+};
+
+export type AudioTrack = {
+
+
+Track?: number;
+
+
+};
+
+export type AudioDescription = {
+
+
+AudioNormalizationSettings?: AWS.MediaLive.Channel.AudioNormalizationSettings;
 
 LanguageCode?: string;
 
@@ -14300,9 +24224,15 @@ AudioTypeControl?: string;
 
 CodecSettings?: AWS.MediaLive.Channel.AudioCodecSettings;
 
-Name?: string; };
+Name?: string;
 
-export type BurnInDestinationSettings = { BackgroundOpacity?: number;
+
+};
+
+export type BurnInDestinationSettings = {
+
+
+BackgroundOpacity?: number;
 
 FontResolution?: number;
 
@@ -14334,9 +24264,15 @@ FontOpacity?: number;
 
 ShadowXOffset?: number;
 
-BackgroundColor?: string; };
+BackgroundColor?: string;
 
-export type RtmpGroupSettings = { AuthenticationScheme?: string;
+
+};
+
+export type RtmpGroupSettings = {
+
+
+AuthenticationScheme?: string;
 
 CacheLength?: number;
 
@@ -14348,13 +24284,25 @@ RestartDelay?: number;
 
 CaptionData?: string;
 
-CacheFullBehavior?: string; };
+CacheFullBehavior?: string;
 
-export type MsSmoothOutputSettings = { NameModifier?: string;
 
-H265PackagingType?: string; };
+};
 
-export type CaptionDestinationSettings = { AribDestinationSettings?: AWS.MediaLive.Channel.AribDestinationSettings;
+export type MsSmoothOutputSettings = {
+
+
+NameModifier?: string;
+
+H265PackagingType?: string;
+
+
+};
+
+export type CaptionDestinationSettings = {
+
+
+AribDestinationSettings?: AWS.MediaLive.Channel.AribDestinationSettings;
 
 EbuTtDDestinationSettings?: AWS.MediaLive.Channel.EbuTtDDestinationSettings;
 
@@ -14378,9 +24326,15 @@ EmbeddedDestinationSettings?: AWS.MediaLive.Channel.EmbeddedDestinationSettings;
 
 RtmpCaptionInfoDestinationSettings?: AWS.MediaLive.Channel.RtmpCaptionInfoDestinationSettings;
 
-Scte27DestinationSettings?: AWS.MediaLive.Channel.Scte27DestinationSettings; };
+Scte27DestinationSettings?: AWS.MediaLive.Channel.Scte27DestinationSettings;
 
-export type MsSmoothGroupSettings = { SegmentationMode?: string;
+
+};
+
+export type MsSmoothGroupSettings = {
+
+
+SegmentationMode?: string;
 
 Destination?: AWS.MediaLive.Channel.OutputLocationRef;
 
@@ -14416,19 +24370,35 @@ EventId?: string;
 
 SendDelayMs?: number;
 
-ConnectionRetryInterval?: number; };
+ConnectionRetryInterval?: number;
 
-export type WavSettings = { CodingMode?: string;
+
+};
+
+export type WavSettings = {
+
+
+CodingMode?: string;
 
 SampleRate?: number;
 
-BitDepth?: number; };
+BitDepth?: number;
 
-export type KeyProviderSettings = { StaticKeySettings?: AWS.MediaLive.Channel.StaticKeySettings; };
 
-export type CdiInputSpecification =  AWS.MediaLive.Channel.CdiInputSpecification;
+};
 
-export type OutputGroupSettings = { HlsGroupSettings?: AWS.MediaLive.Channel.HlsGroupSettings;
+export type KeyProviderSettings = {
+
+
+StaticKeySettings?: AWS.MediaLive.Channel.StaticKeySettings;
+
+
+};
+
+export type OutputGroupSettings = {
+
+
+HlsGroupSettings?: AWS.MediaLive.Channel.HlsGroupSettings;
 
 FrameCaptureGroupSettings?: AWS.MediaLive.Channel.FrameCaptureGroupSettings;
 
@@ -14442,11 +24412,17 @@ UdpGroupSettings?: AWS.MediaLive.Channel.UdpGroupSettings;
 
 MsSmoothGroupSettings?: AWS.MediaLive.Channel.MsSmoothGroupSettings;
 
-RtmpGroupSettings?: AWS.MediaLive.Channel.RtmpGroupSettings; };
+RtmpGroupSettings?: AWS.MediaLive.Channel.RtmpGroupSettings;
 
-export type HtmlMotionGraphicsSettings = {  };
 
-export type OutputSettings = { MediaPackageOutputSettings?: AWS.MediaLive.Channel.MediaPackageOutputSettings;
+};
+
+
+
+export type OutputSettings = {
+
+
+MediaPackageOutputSettings?: AWS.MediaLive.Channel.MediaPackageOutputSettings;
 
 MsSmoothOutputSettings?: AWS.MediaLive.Channel.MsSmoothOutputSettings;
 
@@ -14460,11 +24436,23 @@ UdpOutputSettings?: AWS.MediaLive.Channel.UdpOutputSettings;
 
 MultiplexOutputSettings?: AWS.MediaLive.Channel.MultiplexOutputSettings;
 
-ArchiveOutputSettings?: AWS.MediaLive.Channel.ArchiveOutputSettings; };
+ArchiveOutputSettings?: AWS.MediaLive.Channel.ArchiveOutputSettings;
 
-export type HlsS3Settings = { CannedAcl?: string; };
 
-export type VideoDescription = { ScalingBehavior?: string;
+};
+
+export type HlsS3Settings = {
+
+
+CannedAcl?: string;
+
+
+};
+
+export type VideoDescription = {
+
+
+ScalingBehavior?: string;
 
 RespondToAfd?: string;
 
@@ -14476,9 +24464,15 @@ Width?: number;
 
 CodecSettings?: AWS.MediaLive.Channel.VideoCodecSettings;
 
-Name?: string; };
+Name?: string;
 
-export type BlackoutSlate = { NetworkEndBlackout?: string;
+
+};
+
+export type BlackoutSlate = {
+
+
+NetworkEndBlackout?: string;
 
 State?: string;
 
@@ -14486,11 +24480,17 @@ NetworkId?: string;
 
 NetworkEndBlackoutImage?: AWS.MediaLive.Channel.InputLocation;
 
-BlackoutSlateImage?: AWS.MediaLive.Channel.InputLocation; };
+BlackoutSlateImage?: AWS.MediaLive.Channel.InputLocation;
 
-export type ColorSpacePassthroughSettings = {  };
 
-export type HlsMediaStoreSettings = { FilecacheDuration?: number;
+};
+
+
+
+export type HlsMediaStoreSettings = {
+
+
+FilecacheDuration?: number;
 
 NumRetries?: number;
 
@@ -14498,9 +24498,15 @@ MediaStoreStorageClass?: string;
 
 RestartDelay?: number;
 
-ConnectionRetryInterval?: number; };
+ConnectionRetryInterval?: number;
 
-export type M3u8Settings = { PatInterval?: number;
+
+};
+
+export type M3u8Settings = {
+
+
+PatInterval?: number;
 
 ProgramNum?: number;
 
@@ -14532,29 +24538,53 @@ AudioPids?: string;
 
 PcrControl?: string;
 
-TimedMetadataBehavior?: string; };
+TimedMetadataBehavior?: string;
 
-export type AribDestinationSettings = {  };
 
-export type UdpGroupSettings = { TimedMetadataId3Frame?: string;
+};
+
+
+
+export type UdpGroupSettings = {
+
+
+TimedMetadataId3Frame?: string;
 
 TimedMetadataId3Period?: number;
 
-InputLossAction?: string; };
+InputLossAction?: string;
 
-export type FrameCaptureHlsSettings = {  };
 
-export type RemixSettings = { ChannelsOut?: number;
+};
+
+
+
+export type RemixSettings = {
+
+
+ChannelsOut?: number;
 
 ChannelMappings?: AWS.MediaLive.Channel.AudioChannelMapping[];
 
-ChannelsIn?: number; };
+ChannelsIn?: number;
 
-export type TemporalFilterSettings = { PostFilterSharpening?: string;
 
-Strength?: string; };
+};
 
-export type HlsAkamaiSettings = { Salt?: string;
+export type TemporalFilterSettings = {
+
+
+PostFilterSharpening?: string;
+
+Strength?: string;
+
+
+};
+
+export type HlsAkamaiSettings = {
+
+
+Salt?: string;
 
 FilecacheDuration?: number;
 
@@ -14566,143 +24596,231 @@ RestartDelay?: number;
 
 ConnectionRetryInterval?: number;
 
-HttpTransferMode?: string; };
+HttpTransferMode?: string;
 
-export type InputAttachments =  AWS.MediaLive.Channel.InputAttachment[];
 
-export type ChannelClass =  string;
+};
 
-export type Destinations =  AWS.MediaLive.Channel.OutputDestination[];
-
-export type Vpc =  AWS.MediaLive.Channel.VpcOutputSettings;
-
-export type LogLevel =  string;
-
-export type RoleArn =  string;
-
-export type Tags =  JSONString;
-
-export type Name =  string;
 
 }
+
+export type Input = {
+
+
+Type?: string;
+
+Destinations?: AWS.MediaLive.Input.InputDestinationRequest[];
+
+Vpc?: AWS.MediaLive.Input.InputVpcRequest;
+
+MediaConnectFlows?: AWS.MediaLive.Input.MediaConnectFlowRequest[];
+
+InputSecurityGroups?: string[];
+
+InputDevices?: AWS.MediaLive.Input.InputDeviceSettings[];
+
+Sources?: AWS.MediaLive.Input.InputSourceRequest[];
+
+RoleArn?: string;
+
+Tags?: JSONString;
+
+Name?: string;
+
+
+};
 
 export namespace Input {
 
-export type InputSourceRequest = { Username?: string;
+
+export type InputSourceRequest = {
+
+
+Username?: string;
 
 PasswordParam?: string;
 
-Url?: string; };
+Url?: string;
 
-export type InputDeviceRequest = { Id?: string; };
 
-export type InputDeviceSettings = { Id?: string; };
+};
 
-export type InputVpcRequest = { SecurityGroupIds?: string[];
+export type InputDeviceRequest = {
 
-SubnetIds?: string[]; };
 
-export type InputDestinationRequest = { StreamName?: string; };
+Id?: string;
 
-export type MediaConnectFlowRequest = { FlowArn?: string; };
 
-export type Type =  string;
+};
 
-export type Destinations =  AWS.MediaLive.Input.InputDestinationRequest[];
+export type InputDeviceSettings = {
 
-export type Vpc =  AWS.MediaLive.Input.InputVpcRequest;
 
-export type MediaConnectFlows =  AWS.MediaLive.Input.MediaConnectFlowRequest[];
+Id?: string;
 
-export type InputSecurityGroups =  string[];
 
-export type InputDevices =  AWS.MediaLive.Input.InputDeviceSettings[];
+};
 
-export type Sources =  AWS.MediaLive.Input.InputSourceRequest[];
+export type InputVpcRequest = {
 
-export type RoleArn =  string;
 
-export type Tags =  JSONString;
+SecurityGroupIds?: string[];
 
-export type Name =  string;
+SubnetIds?: string[];
+
+
+};
+
+export type InputDestinationRequest = {
+
+
+StreamName?: string;
+
+
+};
+
+export type MediaConnectFlowRequest = {
+
+
+FlowArn?: string;
+
+
+};
+
 
 }
+
+export type InputSecurityGroup = {
+
+
+WhitelistRules?: AWS.MediaLive.InputSecurityGroup.InputWhitelistRuleCidr[];
+
+Tags?: JSONString;
+
+
+};
 
 export namespace InputSecurityGroup {
 
-export type InputWhitelistRuleCidr = { Cidr?: string; };
 
-export type WhitelistRules =  AWS.MediaLive.InputSecurityGroup.InputWhitelistRuleCidr[];
+export type InputWhitelistRuleCidr = {
 
-export type Tags =  JSONString;
+
+Cidr?: string;
+
+
+};
+
 
 }
+
 
 }
 
 export namespace DirectoryService {
 
-export namespace MicrosoftAD {
 
-export type VpcSettings =  AWS.DirectoryService.MicrosoftAD.VpcSettings;
+export type MicrosoftAD = {
 
-export type CreateAlias =  boolean;
 
-export type Edition =  string;
+VpcSettings: AWS.DirectoryService.MicrosoftAD.VpcSettings;
 
-export type EnableSso =  boolean;
+CreateAlias?: boolean;
 
-export type Name =  string;
+Edition?: string;
 
-export type Password =  string;
+EnableSso?: boolean;
 
-export type ShortName =  string;
+Name: string;
 
-}
+Password: string;
 
-export namespace SimpleAD {
+ShortName?: string;
 
-export type VpcSettings =  AWS.DirectoryService.SimpleAD.VpcSettings;
 
-export type CreateAlias =  boolean;
+};
 
-export type Description =  string;
+export type SimpleAD = {
 
-export type EnableSso =  boolean;
 
-export type Name =  string;
+VpcSettings: AWS.DirectoryService.SimpleAD.VpcSettings;
 
-export type Password =  string;
+CreateAlias?: boolean;
 
-export type ShortName =  string;
+Description?: string;
 
-export type Size =  string;
+EnableSso?: boolean;
 
-}
+Name: string;
+
+Password: string;
+
+ShortName?: string;
+
+Size: string;
+
+
+};
+
 
 }
 
 export namespace AppSync {
 
+
+export type DataSource = {
+
+
+RelationalDatabaseConfig?: AWS.AppSync.DataSource.RelationalDatabaseConfig;
+
+LambdaConfig?: AWS.AppSync.DataSource.LambdaConfig;
+
+HttpConfig?: AWS.AppSync.DataSource.HttpConfig;
+
+DynamoDBConfig?: AWS.AppSync.DataSource.DynamoDBConfig;
+
+ElasticsearchConfig?: AWS.AppSync.DataSource.ElasticsearchConfig;
+
+Type: string;
+
+Description?: string;
+
+ServiceRoleArn?: string;
+
+ApiId: string;
+
+Name: string;
+
+
+};
+
 export namespace DataSource {
 
-export type RelationalDatabaseConfig =  AWS.AppSync.DataSource.RelationalDatabaseConfig;
 
-export type LambdaConfig =  AWS.AppSync.DataSource.LambdaConfig;
+export type AwsIamConfig = {
 
-export type HttpConfig =  AWS.AppSync.DataSource.HttpConfig;
 
-export type AwsIamConfig = { SigningRegion?: string;
+SigningRegion?: string;
 
-SigningServiceName?: string; };
+SigningServiceName?: string;
 
-export type DynamoDBConfig =  AWS.AppSync.DataSource.DynamoDBConfig;
 
-export type AuthorizationConfig = { AwsIamConfig?: AWS.AppSync.DataSource.AwsIamConfig;
+};
 
-AuthorizationType: string; };
+export type AuthorizationConfig = {
 
-export type RdsHttpEndpointConfig = { AwsRegion: string;
+
+AwsIamConfig?: AWS.AppSync.DataSource.AwsIamConfig;
+
+AuthorizationType: string;
+
+
+};
+
+export type RdsHttpEndpointConfig = {
+
+
+AwsRegion: string;
 
 Schema?: string;
 
@@ -14710,561 +24828,941 @@ DatabaseName?: string;
 
 DbClusterIdentifier: string;
 
-AwsSecretStoreArn: string; };
+AwsSecretStoreArn: string;
 
-export type ElasticsearchConfig =  AWS.AppSync.DataSource.ElasticsearchConfig;
 
-export type DeltaSyncConfig = { BaseTableTTL: string;
+};
+
+export type DeltaSyncConfig = {
+
+
+BaseTableTTL: string;
 
 DeltaSyncTableTTL: string;
 
-DeltaSyncTableName: string; };
+DeltaSyncTableName: string;
 
-export type Type =  string;
 
-export type Description =  string;
+};
 
-export type ServiceRoleArn =  string;
-
-export type ApiId =  string;
-
-export type Name =  string;
 
 }
+
+export type GraphQLApi = {
+
+
+Tags?: AWS.AppSync.GraphQLApi.Tags;
+
+OpenIDConnectConfig?: AWS.AppSync.GraphQLApi.OpenIDConnectConfig;
+
+AdditionalAuthenticationProviders?: AWS.AppSync.GraphQLApi.AdditionalAuthenticationProviders;
+
+UserPoolConfig?: AWS.AppSync.GraphQLApi.UserPoolConfig;
+
+LogConfig?: AWS.AppSync.GraphQLApi.LogConfig;
+
+XrayEnabled?: boolean;
+
+Name: string;
+
+AuthenticationType: string;
+
+
+};
 
 export namespace GraphQLApi {
 
-export type Tags =  AWS.AppSync.GraphQLApi.Tags;
 
-export type OpenIDConnectConfig =  AWS.AppSync.GraphQLApi.OpenIDConnectConfig;
+export type CognitoUserPoolConfig = {
 
-export type CognitoUserPoolConfig = { AppIdClientRegex?: string;
+
+AppIdClientRegex?: string;
 
 UserPoolId?: string;
 
-AwsRegion?: string; };
+AwsRegion?: string;
 
-export type AdditionalAuthenticationProviders =  AWS.AppSync.GraphQLApi.AdditionalAuthenticationProviders;
 
-export type UserPoolConfig =  AWS.AppSync.GraphQLApi.UserPoolConfig;
+};
 
-export type LogConfig =  AWS.AppSync.GraphQLApi.LogConfig;
+export type AdditionalAuthenticationProvider = {
 
-export type AdditionalAuthenticationProvider = { OpenIDConnectConfig?: AWS.AppSync.GraphQLApi.OpenIDConnectConfig;
+
+OpenIDConnectConfig?: AWS.AppSync.GraphQLApi.OpenIDConnectConfig;
 
 UserPoolConfig?: AWS.AppSync.GraphQLApi.CognitoUserPoolConfig;
 
-AuthenticationType: string; };
+AuthenticationType: string;
 
-export type XrayEnabled =  boolean;
 
-export type Name =  string;
+};
 
-export type AuthenticationType =  string;
 
 }
+
+export type FunctionConfiguration = {
+
+
+SyncConfig?: AWS.AppSync.FunctionConfiguration.SyncConfig;
+
+ResponseMappingTemplateS3Location?: string;
+
+Description?: string;
+
+DataSourceName: string;
+
+RequestMappingTemplate?: string;
+
+ResponseMappingTemplate?: string;
+
+FunctionVersion: string;
+
+RequestMappingTemplateS3Location?: string;
+
+ApiId: string;
+
+Name: string;
+
+
+};
 
 export namespace FunctionConfiguration {
 
-export type SyncConfig =  AWS.AppSync.FunctionConfiguration.SyncConfig;
 
-export type LambdaConflictHandlerConfig = { LambdaConflictHandlerArn?: string; };
+export type LambdaConflictHandlerConfig = {
 
-export type ResponseMappingTemplateS3Location =  string;
 
-export type Description =  string;
+LambdaConflictHandlerArn?: string;
 
-export type DataSourceName =  string;
 
-export type RequestMappingTemplate =  string;
+};
 
-export type ResponseMappingTemplate =  string;
-
-export type FunctionVersion =  string;
-
-export type RequestMappingTemplateS3Location =  string;
-
-export type ApiId =  string;
-
-export type Name =  string;
 
 }
+
+export type Resolver = {
+
+
+PipelineConfig?: AWS.AppSync.Resolver.PipelineConfig;
+
+SyncConfig?: AWS.AppSync.Resolver.SyncConfig;
+
+CachingConfig?: AWS.AppSync.Resolver.CachingConfig;
+
+ResponseMappingTemplateS3Location?: string;
+
+TypeName: string;
+
+DataSourceName?: string;
+
+RequestMappingTemplate?: string;
+
+ResponseMappingTemplate?: string;
+
+Kind?: string;
+
+RequestMappingTemplateS3Location?: string;
+
+ApiId: string;
+
+FieldName: string;
+
+
+};
 
 export namespace Resolver {
 
-export type LambdaConflictHandlerConfig = { LambdaConflictHandlerArn?: string; };
 
-export type PipelineConfig =  AWS.AppSync.Resolver.PipelineConfig;
+export type LambdaConflictHandlerConfig = {
 
-export type SyncConfig =  AWS.AppSync.Resolver.SyncConfig;
 
-export type CachingConfig =  AWS.AppSync.Resolver.CachingConfig;
+LambdaConflictHandlerArn?: string;
 
-export type ResponseMappingTemplateS3Location =  string;
 
-export type TypeName =  string;
+};
 
-export type DataSourceName =  string;
-
-export type RequestMappingTemplate =  string;
-
-export type ResponseMappingTemplate =  string;
-
-export type Kind =  string;
-
-export type RequestMappingTemplateS3Location =  string;
-
-export type ApiId =  string;
-
-export type FieldName =  string;
 
 }
 
-export namespace GraphQLSchema {
+export type GraphQLSchema = {
 
-export type Definition =  string;
 
-export type DefinitionS3Location =  string;
+Definition?: string;
 
-export type ApiId =  string;
+DefinitionS3Location?: string;
 
-}
+ApiId: string;
 
-export namespace ApiKey {
 
-export type Description =  string;
+};
 
-export type ApiKeyId =  string;
+export type ApiKey = {
 
-export type Expires =  number;
 
-export type ApiId =  string;
+Description?: string;
 
-}
+ApiKeyId?: string;
 
-export namespace ApiCache {
+Expires?: number;
 
-export type Type =  string;
+ApiId: string;
 
-export type TransitEncryptionEnabled =  boolean;
 
-export type AtRestEncryptionEnabled =  boolean;
+};
 
-export type ApiId =  string;
+export type ApiCache = {
 
-export type ApiCachingBehavior =  string;
 
-export type Ttl =  number;
+Type: string;
 
-}
+TransitEncryptionEnabled?: boolean;
+
+AtRestEncryptionEnabled?: boolean;
+
+ApiId: string;
+
+ApiCachingBehavior: string;
+
+Ttl: number;
+
+
+};
+
 
 }
 
 export namespace Lambda {
 
+
+export type Function = {
+
+
+VpcConfig?: AWS.Lambda.Function.VpcConfig;
+
+DeadLetterConfig?: AWS.Lambda.Function.DeadLetterConfig;
+
+Code: AWS.Lambda.Function.Code;
+
+TracingConfig?: AWS.Lambda.Function.TracingConfig;
+
+Environment?: AWS.Lambda.Function.Environment;
+
+ImageConfig?: AWS.Lambda.Function.ImageConfig;
+
+Description?: string;
+
+FileSystemConfigs?: AWS.Lambda.Function.FileSystemConfig[];
+
+FunctionName?: string;
+
+Handler?: string;
+
+KmsKeyArn?: string;
+
+Layers?: string[];
+
+MemorySize?: number;
+
+ReservedConcurrentExecutions?: number;
+
+Role: string;
+
+Runtime?: string;
+
+Tags?: Tag[];
+
+Timeout?: number;
+
+CodeSigningConfigArn?: string;
+
+PackageType?: string;
+
+
+};
+
 export namespace Function {
 
-export type VpcConfig =  AWS.Lambda.Function.VpcConfig;
 
-export type DeadLetterConfig =  AWS.Lambda.Function.DeadLetterConfig;
+export type FileSystemConfig = {
 
-export type FileSystemConfig = { Arn: string;
 
-LocalMountPath: string; };
+Arn: string;
 
-export type Code =  AWS.Lambda.Function.Code;
+LocalMountPath: string;
 
-export type TracingConfig =  AWS.Lambda.Function.TracingConfig;
 
-export type Environment =  AWS.Lambda.Function.Environment;
+};
 
-export type ImageConfig =  AWS.Lambda.Function.ImageConfig;
-
-export type Description =  string;
-
-export type FileSystemConfigs =  AWS.Lambda.Function.FileSystemConfig[];
-
-export type FunctionName =  string;
-
-export type Handler =  string;
-
-export type KmsKeyArn =  string;
-
-export type Layers =  string[];
-
-export type MemorySize =  number;
-
-export type ReservedConcurrentExecutions =  number;
-
-export type Role =  string;
-
-export type Runtime =  string;
-
-export type Tags =  Tag[];
-
-export type Timeout =  number;
-
-export type CodeSigningConfigArn =  string;
-
-export type PackageType =  string;
 
 }
+
+export type Alias = {
+
+
+Description?: string;
+
+FunctionName: string;
+
+FunctionVersion: string;
+
+Name: string;
+
+ProvisionedConcurrencyConfig?: AWS.Lambda.Alias.ProvisionedConcurrencyConfiguration;
+
+RoutingConfig?: AWS.Lambda.Alias.AliasRoutingConfiguration;
+
+
+};
 
 export namespace Alias {
 
-export type ProvisionedConcurrencyConfiguration = { ProvisionedConcurrentExecutions: number; };
 
-export type AliasRoutingConfiguration = { AdditionalVersionWeights: AWS.Lambda.Alias.VersionWeight[]; };
+export type ProvisionedConcurrencyConfiguration = {
 
-export type VersionWeight = { FunctionVersion: string;
 
-FunctionWeight: number; };
+ProvisionedConcurrentExecutions: number;
 
-export type Description =  string;
 
-export type FunctionName =  string;
+};
 
-export type FunctionVersion =  string;
+export type AliasRoutingConfiguration = {
 
-export type Name =  string;
 
-export type ProvisionedConcurrencyConfig =  AWS.Lambda.Alias.ProvisionedConcurrencyConfiguration;
+AdditionalVersionWeights: AWS.Lambda.Alias.VersionWeight[];
 
-export type RoutingConfig =  AWS.Lambda.Alias.AliasRoutingConfiguration;
+
+};
+
+export type VersionWeight = {
+
+
+FunctionVersion: string;
+
+FunctionWeight: number;
+
+
+};
+
 
 }
+
+export type EventInvokeConfig = {
+
+
+DestinationConfig?: AWS.Lambda.EventInvokeConfig.DestinationConfig;
+
+FunctionName: string;
+
+MaximumRetryAttempts?: number;
+
+Qualifier: string;
+
+MaximumEventAgeInSeconds?: number;
+
+
+};
 
 export namespace EventInvokeConfig {
 
-export type OnFailure = { Destination: string; };
 
-export type OnSuccess = { Destination: string; };
+export type OnFailure = {
 
-export type DestinationConfig =  AWS.Lambda.EventInvokeConfig.DestinationConfig;
 
-export type FunctionName =  string;
+Destination: string;
 
-export type MaximumRetryAttempts =  number;
 
-export type Qualifier =  string;
+};
 
-export type MaximumEventAgeInSeconds =  number;
+export type OnSuccess = {
+
+
+Destination: string;
+
+
+};
+
 
 }
+
+export type EventSourceMapping = {
+
+
+SelfManagedEventSource?: AWS.Lambda.EventSourceMapping.SelfManagedEventSource;
+
+DestinationConfig?: AWS.Lambda.EventSourceMapping.DestinationConfig;
+
+BatchSize?: number;
+
+BisectBatchOnFunctionError?: boolean;
+
+Enabled?: boolean;
+
+EventSourceArn?: string;
+
+FunctionName: string;
+
+MaximumBatchingWindowInSeconds?: number;
+
+MaximumRecordAgeInSeconds?: number;
+
+MaximumRetryAttempts?: number;
+
+ParallelizationFactor?: number;
+
+StartingPosition?: string;
+
+StartingPositionTimestamp?: number;
+
+Topics?: string[];
+
+Queues?: string[];
+
+SourceAccessConfigurations?: AWS.Lambda.EventSourceMapping.SourceAccessConfiguration[];
+
+TumblingWindowInSeconds?: number;
+
+FunctionResponseTypes?: string[];
+
+
+};
 
 export namespace EventSourceMapping {
 
-export type SelfManagedEventSource =  AWS.Lambda.EventSourceMapping.SelfManagedEventSource;
 
-export type OnFailure = { Destination?: string; };
+export type OnFailure = {
 
-export type SourceAccessConfiguration = { Type?: string;
 
-URI?: string; };
+Destination?: string;
 
-export type Endpoints = { KafkaBootstrapServers?: string[]; };
 
-export type DestinationConfig =  AWS.Lambda.EventSourceMapping.DestinationConfig;
+};
 
-export type BatchSize =  number;
+export type SourceAccessConfiguration = {
 
-export type BisectBatchOnFunctionError =  boolean;
 
-export type Enabled =  boolean;
+Type?: string;
 
-export type EventSourceArn =  string;
+URI?: string;
 
-export type FunctionName =  string;
 
-export type MaximumBatchingWindowInSeconds =  number;
+};
 
-export type MaximumRecordAgeInSeconds =  number;
+export type Endpoints = {
 
-export type MaximumRetryAttempts =  number;
 
-export type ParallelizationFactor =  number;
+KafkaBootstrapServers?: string[];
 
-export type StartingPosition =  string;
 
-export type StartingPositionTimestamp =  number;
+};
 
-export type Topics =  string[];
-
-export type Queues =  string[];
-
-export type SourceAccessConfigurations =  AWS.Lambda.EventSourceMapping.SourceAccessConfiguration[];
-
-export type TumblingWindowInSeconds =  number;
-
-export type FunctionResponseTypes =  string[];
 
 }
 
-export namespace LayerVersion {
+export type LayerVersion = {
 
-export type Content =  AWS.Lambda.LayerVersion.Content;
 
-export type CompatibleRuntimes =  string[];
+Content: AWS.Lambda.LayerVersion.Content;
 
-export type LicenseInfo =  string;
+CompatibleRuntimes?: string[];
 
-export type Description =  string;
+LicenseInfo?: string;
 
-export type LayerName =  string;
+Description?: string;
 
-}
+LayerName?: string;
 
-export namespace CodeSigningConfig {
 
-export type CodeSigningPolicies =  AWS.Lambda.CodeSigningConfig.CodeSigningPolicies;
+};
 
-export type AllowedPublishers =  AWS.Lambda.CodeSigningConfig.AllowedPublishers;
+export type CodeSigningConfig = {
 
-export type Description =  string;
 
-}
+CodeSigningPolicies?: AWS.Lambda.CodeSigningConfig.CodeSigningPolicies;
+
+AllowedPublishers: AWS.Lambda.CodeSigningConfig.AllowedPublishers;
+
+Description?: string;
+
+
+};
+
+export type Version = {
+
+
+CodeSha256?: string;
+
+Description?: string;
+
+FunctionName: string;
+
+ProvisionedConcurrencyConfig?: AWS.Lambda.Version.ProvisionedConcurrencyConfiguration;
+
+
+};
 
 export namespace Version {
 
-export type ProvisionedConcurrencyConfiguration = { ProvisionedConcurrentExecutions: number; };
 
-export type CodeSha256 =  string;
+export type ProvisionedConcurrencyConfiguration = {
 
-export type Description =  string;
 
-export type FunctionName =  string;
+ProvisionedConcurrentExecutions: number;
 
-export type ProvisionedConcurrencyConfig =  AWS.Lambda.Version.ProvisionedConcurrencyConfiguration;
 
-}
+};
 
-export namespace LayerVersionPermission {
-
-export type Action =  string;
-
-export type LayerVersionArn =  string;
-
-export type OrganizationId =  string;
-
-export type Principal =  string;
 
 }
 
-export namespace Permission {
+export type LayerVersionPermission = {
 
-export type Action =  string;
 
-export type EventSourceToken =  string;
+Action: string;
 
-export type FunctionName =  string;
+LayerVersionArn: string;
 
-export type Principal =  string;
+OrganizationId?: string;
 
-export type SourceAccount =  string;
+Principal: string;
 
-export type SourceArn =  string;
 
-}
+};
+
+export type Permission = {
+
+
+Action: string;
+
+EventSourceToken?: string;
+
+FunctionName: string;
+
+Principal: string;
+
+SourceAccount?: string;
+
+SourceArn?: string;
+
+
+};
+
 
 }
 
 export namespace Elasticsearch {
 
+
+export type Domain = {
+
+
+DomainEndpointOptions?: AWS.Elasticsearch.Domain.DomainEndpointOptions;
+
+NodeToNodeEncryptionOptions?: AWS.Elasticsearch.Domain.NodeToNodeEncryptionOptions;
+
+ElasticsearchClusterConfig?: AWS.Elasticsearch.Domain.ElasticsearchClusterConfig;
+
+SnapshotOptions?: AWS.Elasticsearch.Domain.SnapshotOptions;
+
+CognitoOptions?: AWS.Elasticsearch.Domain.CognitoOptions;
+
+VPCOptions?: AWS.Elasticsearch.Domain.VPCOptions;
+
+EBSOptions?: AWS.Elasticsearch.Domain.EBSOptions;
+
+EncryptionAtRestOptions?: AWS.Elasticsearch.Domain.EncryptionAtRestOptions;
+
+AccessPolicies?: JSONString;
+
+AdvancedOptions?: Record<string, string>;
+
+AdvancedSecurityOptions?: AWS.Elasticsearch.Domain.AdvancedSecurityOptionsInput;
+
+DomainName?: string;
+
+ElasticsearchVersion?: string;
+
+LogPublishingOptions?: Record<string, AWS.Elasticsearch.Domain.LogPublishingOption>;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace Domain {
 
-export type DomainEndpointOptions =  AWS.Elasticsearch.Domain.DomainEndpointOptions;
 
-export type NodeToNodeEncryptionOptions =  AWS.Elasticsearch.Domain.NodeToNodeEncryptionOptions;
+export type AdvancedSecurityOptionsInput = {
 
-export type ElasticsearchClusterConfig =  AWS.Elasticsearch.Domain.ElasticsearchClusterConfig;
 
-export type AdvancedSecurityOptionsInput = { Enabled?: boolean;
+Enabled?: boolean;
 
 InternalUserDatabaseEnabled?: boolean;
 
-MasterUserOptions?: AWS.Elasticsearch.Domain.MasterUserOptions; };
+MasterUserOptions?: AWS.Elasticsearch.Domain.MasterUserOptions;
 
-export type ZoneAwarenessConfig = { AvailabilityZoneCount?: number; };
 
-export type SnapshotOptions =  AWS.Elasticsearch.Domain.SnapshotOptions;
+};
 
-export type CognitoOptions =  AWS.Elasticsearch.Domain.CognitoOptions;
+export type ZoneAwarenessConfig = {
 
-export type VPCOptions =  AWS.Elasticsearch.Domain.VPCOptions;
 
-export type MasterUserOptions = { MasterUserARN?: string;
+AvailabilityZoneCount?: number;
+
+
+};
+
+export type MasterUserOptions = {
+
+
+MasterUserARN?: string;
 
 MasterUserName?: string;
 
-MasterUserPassword?: string; };
+MasterUserPassword?: string;
 
-export type LogPublishingOption = { CloudWatchLogsLogGroupArn?: string;
 
-Enabled?: boolean; };
+};
 
-export type EBSOptions =  AWS.Elasticsearch.Domain.EBSOptions;
+export type LogPublishingOption = {
 
-export type EncryptionAtRestOptions =  AWS.Elasticsearch.Domain.EncryptionAtRestOptions;
 
-export type AccessPolicies =  JSONString;
+CloudWatchLogsLogGroupArn?: string;
 
-export type AdvancedOptions =  Record<string, string>;
+Enabled?: boolean;
 
-export type AdvancedSecurityOptions =  AWS.Elasticsearch.Domain.AdvancedSecurityOptionsInput;
 
-export type DomainName =  string;
+};
 
-export type ElasticsearchVersion =  string;
-
-export type LogPublishingOptions =  Record<string, AWS.Elasticsearch.Domain.LogPublishingOption>;
-
-export type Tags =  Tag[];
 
 }
+
 
 }
 
 export namespace GroundStation {
 
+
+export type Config = {
+
+
+ConfigData: AWS.GroundStation.Config.ConfigData;
+
+Name: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace Config {
 
-export type S3RecordingConfig = { BucketArn?: string;
+
+export type S3RecordingConfig = {
+
+
+BucketArn?: string;
 
 RoleArn?: string;
 
-Prefix?: string; };
+Prefix?: string;
 
-export type UplinkEchoConfig = { Enabled?: boolean;
 
-AntennaUplinkConfigArn?: string; };
+};
 
-export type DataflowEndpointConfig = { DataflowEndpointName?: string;
+export type UplinkEchoConfig = {
 
-DataflowEndpointRegion?: string; };
 
-export type AntennaDownlinkConfig = { SpectrumConfig?: AWS.GroundStation.Config.SpectrumConfig; };
+Enabled?: boolean;
 
-export type DemodulationConfig = { UnvalidatedJSON?: string; };
+AntennaUplinkConfigArn?: string;
 
-export type AntennaDownlinkDemodDecodeConfig = { SpectrumConfig?: AWS.GroundStation.Config.SpectrumConfig;
+
+};
+
+export type DataflowEndpointConfig = {
+
+
+DataflowEndpointName?: string;
+
+DataflowEndpointRegion?: string;
+
+
+};
+
+export type AntennaDownlinkConfig = {
+
+
+SpectrumConfig?: AWS.GroundStation.Config.SpectrumConfig;
+
+
+};
+
+export type DemodulationConfig = {
+
+
+UnvalidatedJSON?: string;
+
+
+};
+
+export type AntennaDownlinkDemodDecodeConfig = {
+
+
+SpectrumConfig?: AWS.GroundStation.Config.SpectrumConfig;
 
 DemodulationConfig?: AWS.GroundStation.Config.DemodulationConfig;
 
-DecodeConfig?: AWS.GroundStation.Config.DecodeConfig; };
+DecodeConfig?: AWS.GroundStation.Config.DecodeConfig;
 
-export type UplinkSpectrumConfig = { CenterFrequency?: AWS.GroundStation.Config.Frequency;
 
-Polarization?: string; };
+};
 
-export type Frequency = { Value?: number;
+export type UplinkSpectrumConfig = {
 
-Units?: string; };
 
-export type SpectrumConfig = { CenterFrequency?: AWS.GroundStation.Config.Frequency;
+CenterFrequency?: AWS.GroundStation.Config.Frequency;
+
+Polarization?: string;
+
+
+};
+
+export type Frequency = {
+
+
+Value?: number;
+
+Units?: string;
+
+
+};
+
+export type SpectrumConfig = {
+
+
+CenterFrequency?: AWS.GroundStation.Config.Frequency;
 
 Bandwidth?: AWS.GroundStation.Config.FrequencyBandwidth;
 
-Polarization?: string; };
+Polarization?: string;
 
-export type FrequencyBandwidth = { Value?: number;
 
-Units?: string; };
+};
 
-export type TrackingConfig = { Autotrack?: string; };
+export type FrequencyBandwidth = {
 
-export type ConfigData =  AWS.GroundStation.Config.ConfigData;
 
-export type AntennaUplinkConfig = { SpectrumConfig?: AWS.GroundStation.Config.UplinkSpectrumConfig;
+Value?: number;
+
+Units?: string;
+
+
+};
+
+export type TrackingConfig = {
+
+
+Autotrack?: string;
+
+
+};
+
+export type AntennaUplinkConfig = {
+
+
+SpectrumConfig?: AWS.GroundStation.Config.UplinkSpectrumConfig;
 
 TargetEirp?: AWS.GroundStation.Config.Eirp;
 
-TransmitDisabled?: boolean; };
+TransmitDisabled?: boolean;
 
-export type DecodeConfig = { UnvalidatedJSON?: string; };
 
-export type Eirp = { Value?: number;
+};
 
-Units?: string; };
+export type DecodeConfig = {
 
-export type Name =  string;
 
-export type Tags =  Tag[];
+UnvalidatedJSON?: string;
+
+
+};
+
+export type Eirp = {
+
+
+Value?: number;
+
+Units?: string;
+
+
+};
+
 
 }
+
+export type MissionProfile = {
+
+
+Name: string;
+
+ContactPrePassDurationSeconds?: number;
+
+ContactPostPassDurationSeconds?: number;
+
+MinimumViableContactDurationSeconds: number;
+
+DataflowEdges: AWS.GroundStation.MissionProfile.DataflowEdge[];
+
+TrackingConfigArn: string;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace MissionProfile {
 
-export type DataflowEdge = { Source?: string;
 
-Destination?: string; };
+export type DataflowEdge = {
 
-export type Name =  string;
 
-export type ContactPrePassDurationSeconds =  number;
+Source?: string;
 
-export type ContactPostPassDurationSeconds =  number;
+Destination?: string;
 
-export type MinimumViableContactDurationSeconds =  number;
 
-export type DataflowEdges =  AWS.GroundStation.MissionProfile.DataflowEdge[];
+};
 
-export type TrackingConfigArn =  string;
-
-export type Tags =  Tag[];
 
 }
+
+export type DataflowEndpointGroup = {
+
+
+EndpointDetails: AWS.GroundStation.DataflowEndpointGroup.EndpointDetails[];
+
+Tags?: Tag[];
+
+
+};
 
 export namespace DataflowEndpointGroup {
 
-export type DataflowEndpoint = { Name?: string;
+
+export type DataflowEndpoint = {
+
+
+Name?: string;
 
 Address?: AWS.GroundStation.DataflowEndpointGroup.SocketAddress;
 
-Mtu?: number; };
+Mtu?: number;
 
-export type SecurityDetails = { SubnetIds?: string[];
+
+};
+
+export type SecurityDetails = {
+
+
+SubnetIds?: string[];
 
 SecurityGroupIds?: string[];
 
-RoleArn?: string; };
+RoleArn?: string;
 
-export type SocketAddress = { Name?: string;
 
-Port?: number; };
+};
 
-export type EndpointDetails =  AWS.GroundStation.DataflowEndpointGroup.EndpointDetails[];
+export type SocketAddress = {
 
-export type Tags =  Tag[];
+
+Name?: string;
+
+Port?: number;
+
+
+};
+
 
 }
+
 
 }
 
 export namespace IoTEvents {
 
+
+export type DetectorModel = {
+
+
+DetectorModelDefinition: AWS.IoTEvents.DetectorModel.DetectorModelDefinition;
+
+DetectorModelDescription?: string;
+
+DetectorModelName?: string;
+
+EvaluationMethod?: string;
+
+Key?: string;
+
+RoleArn: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace DetectorModel {
 
-export type SetTimer = { DurationExpression?: string;
+
+export type SetTimer = {
+
+
+DurationExpression?: string;
 
 Seconds?: number;
 
-TimerName: string; };
+TimerName: string;
 
-export type ResetTimer = { TimerName: string; };
 
-export type IotEvents = { InputName: string;
+};
 
-Payload?: AWS.IoTEvents.DetectorModel.Payload; };
+export type ResetTimer = {
 
-export type TransitionEvent = { Actions?: AWS.IoTEvents.DetectorModel.Action[];
+
+TimerName: string;
+
+
+};
+
+export type IotEvents = {
+
+
+InputName: string;
+
+Payload?: AWS.IoTEvents.DetectorModel.Payload;
+
+
+};
+
+export type TransitionEvent = {
+
+
+Actions?: AWS.IoTEvents.DetectorModel.Action[];
 
 Condition: string;
 
 EventName: string;
 
-NextState: string; };
+NextState: string;
 
-export type IotSiteWise = { AssetId?: string;
+
+};
+
+export type IotSiteWise = {
+
+
+AssetId?: string;
 
 EntryId?: string;
 
@@ -15272,9 +25770,15 @@ PropertyAlias?: string;
 
 PropertyId?: string;
 
-PropertyValue: AWS.IoTEvents.DetectorModel.AssetPropertyValue; };
+PropertyValue: AWS.IoTEvents.DetectorModel.AssetPropertyValue;
 
-export type DynamoDB = { HashKeyField: string;
+
+};
+
+export type DynamoDB = {
+
+
+HashKeyField: string;
 
 HashKeyType?: string;
 
@@ -15292,49 +25796,101 @@ RangeKeyType?: string;
 
 RangeKeyValue?: string;
 
-TableName: string; };
+TableName: string;
 
-export type Firehose = { DeliveryStreamName: string;
+
+};
+
+export type Firehose = {
+
+
+DeliveryStreamName: string;
 
 Payload?: AWS.IoTEvents.DetectorModel.Payload;
 
-Separator?: string; };
+Separator?: string;
 
-export type ClearTimer = { TimerName: string; };
 
-export type State = { OnEnter?: AWS.IoTEvents.DetectorModel.OnEnter;
+};
+
+export type ClearTimer = {
+
+
+TimerName: string;
+
+
+};
+
+export type State = {
+
+
+OnEnter?: AWS.IoTEvents.DetectorModel.OnEnter;
 
 OnExit?: AWS.IoTEvents.DetectorModel.OnExit;
 
 OnInput?: AWS.IoTEvents.DetectorModel.OnInput;
 
-StateName: string; };
+StateName: string;
 
-export type Event = { Actions?: AWS.IoTEvents.DetectorModel.Action[];
+
+};
+
+export type Event = {
+
+
+Actions?: AWS.IoTEvents.DetectorModel.Action[];
 
 Condition?: string;
 
-EventName: string; };
+EventName: string;
 
-export type Sns = { Payload?: AWS.IoTEvents.DetectorModel.Payload;
 
-TargetArn: string; };
+};
 
-export type OnExit = { Events?: AWS.IoTEvents.DetectorModel.Event[]; };
+export type Sns = {
 
-export type Sqs = { Payload?: AWS.IoTEvents.DetectorModel.Payload;
+
+Payload?: AWS.IoTEvents.DetectorModel.Payload;
+
+TargetArn: string;
+
+
+};
+
+export type OnExit = {
+
+
+Events?: AWS.IoTEvents.DetectorModel.Event[];
+
+
+};
+
+export type Sqs = {
+
+
+Payload?: AWS.IoTEvents.DetectorModel.Payload;
 
 QueueUrl: string;
 
-UseBase64?: boolean; };
+UseBase64?: boolean;
 
-export type DetectorModelDefinition =  AWS.IoTEvents.DetectorModel.DetectorModelDefinition;
 
-export type IotTopicPublish = { MqttTopic: string;
+};
 
-Payload?: AWS.IoTEvents.DetectorModel.Payload; };
+export type IotTopicPublish = {
 
-export type Action = { ClearTimer?: AWS.IoTEvents.DetectorModel.ClearTimer;
+
+MqttTopic: string;
+
+Payload?: AWS.IoTEvents.DetectorModel.Payload;
+
+
+};
+
+export type Action = {
+
+
+ClearTimer?: AWS.IoTEvents.DetectorModel.ClearTimer;
 
 DynamoDB?: AWS.IoTEvents.DetectorModel.DynamoDB;
 
@@ -15358,103 +25914,199 @@ SetVariable?: AWS.IoTEvents.DetectorModel.SetVariable;
 
 Sns?: AWS.IoTEvents.DetectorModel.Sns;
 
-Sqs?: AWS.IoTEvents.DetectorModel.Sqs; };
+Sqs?: AWS.IoTEvents.DetectorModel.Sqs;
 
-export type AssetPropertyTimestamp = { OffsetInNanos?: string;
 
-TimeInSeconds: string; };
+};
 
-export type DynamoDBv2 = { Payload?: AWS.IoTEvents.DetectorModel.Payload;
+export type AssetPropertyTimestamp = {
 
-TableName: string; };
 
-export type OnInput = { Events?: AWS.IoTEvents.DetectorModel.Event[];
+OffsetInNanos?: string;
 
-TransitionEvents?: AWS.IoTEvents.DetectorModel.TransitionEvent[]; };
+TimeInSeconds: string;
 
-export type AssetPropertyVariant = { BooleanValue?: string;
+
+};
+
+export type DynamoDBv2 = {
+
+
+Payload?: AWS.IoTEvents.DetectorModel.Payload;
+
+TableName: string;
+
+
+};
+
+export type OnInput = {
+
+
+Events?: AWS.IoTEvents.DetectorModel.Event[];
+
+TransitionEvents?: AWS.IoTEvents.DetectorModel.TransitionEvent[];
+
+
+};
+
+export type AssetPropertyVariant = {
+
+
+BooleanValue?: string;
 
 DoubleValue?: string;
 
 IntegerValue?: string;
 
-StringValue?: string; };
+StringValue?: string;
 
-export type SetVariable = { Value: string;
 
-VariableName: string; };
+};
 
-export type Payload = { ContentExpression: string;
+export type SetVariable = {
 
-Type: string; };
 
-export type OnEnter = { Events?: AWS.IoTEvents.DetectorModel.Event[]; };
+Value: string;
 
-export type AssetPropertyValue = { Quality?: string;
+VariableName: string;
+
+
+};
+
+export type Payload = {
+
+
+ContentExpression: string;
+
+Type: string;
+
+
+};
+
+export type OnEnter = {
+
+
+Events?: AWS.IoTEvents.DetectorModel.Event[];
+
+
+};
+
+export type AssetPropertyValue = {
+
+
+Quality?: string;
 
 Timestamp?: AWS.IoTEvents.DetectorModel.AssetPropertyTimestamp;
 
-Value: AWS.IoTEvents.DetectorModel.AssetPropertyVariant; };
+Value: AWS.IoTEvents.DetectorModel.AssetPropertyVariant;
 
-export type Lambda = { FunctionArn: string;
 
-Payload?: AWS.IoTEvents.DetectorModel.Payload; };
+};
 
-export type DetectorModelDescription =  string;
+export type Lambda = {
 
-export type DetectorModelName =  string;
 
-export type EvaluationMethod =  string;
+FunctionArn: string;
 
-export type Key =  string;
+Payload?: AWS.IoTEvents.DetectorModel.Payload;
 
-export type RoleArn =  string;
 
-export type Tags =  Tag[];
+};
+
 
 }
+
+export type Input = {
+
+
+InputDefinition: AWS.IoTEvents.Input.InputDefinition;
+
+InputDescription?: string;
+
+InputName?: string;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace Input {
 
-export type Attribute = { JsonPath: string; };
 
-export type InputDefinition =  AWS.IoTEvents.Input.InputDefinition;
+export type Attribute = {
 
-export type InputDescription =  string;
 
-export type InputName =  string;
+JsonPath: string;
 
-export type Tags =  Tag[];
+
+};
+
 
 }
+
 
 }
 
 export namespace GreengrassV2 {
 
+
+export type ComponentVersion = {
+
+
+InlineRecipe?: string;
+
+LambdaFunction?: AWS.GreengrassV2.ComponentVersion.LambdaFunctionRecipeSource;
+
+Tags?: Record<string, string>;
+
+
+};
+
 export namespace ComponentVersion {
 
-export type ComponentPlatform = { Name?: string;
 
-Attributes?: Record<string, string>; };
+export type ComponentPlatform = {
 
-export type LambdaContainerParams = { MemorySizeInKB?: number;
+
+Name?: string;
+
+Attributes?: Record<string, string>;
+
+
+};
+
+export type LambdaContainerParams = {
+
+
+MemorySizeInKB?: number;
 
 MountROSysfs?: boolean;
 
 Volumes?: AWS.GreengrassV2.ComponentVersion.LambdaVolumeMount[];
 
-Devices?: AWS.GreengrassV2.ComponentVersion.LambdaDeviceMount[]; };
+Devices?: AWS.GreengrassV2.ComponentVersion.LambdaDeviceMount[];
 
-export type LambdaVolumeMount = { SourcePath?: string;
+
+};
+
+export type LambdaVolumeMount = {
+
+
+SourcePath?: string;
 
 DestinationPath?: string;
 
 Permission?: string;
 
-AddGroupOwner?: boolean; };
+AddGroupOwner?: boolean;
 
-export type LambdaFunctionRecipeSource = { LambdaArn?: string;
+
+};
+
+export type LambdaFunctionRecipeSource = {
+
+
+LambdaArn?: string;
 
 ComponentName?: string;
 
@@ -15464,27 +26116,57 @@ ComponentPlatforms?: AWS.GreengrassV2.ComponentVersion.ComponentPlatform[];
 
 ComponentDependencies?: Record<string, AWS.GreengrassV2.ComponentVersion.ComponentDependencyRequirement>;
 
-ComponentLambdaParameters?: AWS.GreengrassV2.ComponentVersion.LambdaExecutionParameters; };
+ComponentLambdaParameters?: AWS.GreengrassV2.ComponentVersion.LambdaExecutionParameters;
 
-export type ComponentDependencyRequirement = { VersionRequirement?: string;
 
-DependencyType?: string; };
+};
 
-export type LambdaDeviceMount = { Path?: string;
+export type ComponentDependencyRequirement = {
+
+
+VersionRequirement?: string;
+
+DependencyType?: string;
+
+
+};
+
+export type LambdaDeviceMount = {
+
+
+Path?: string;
 
 Permission?: string;
 
-AddGroupOwner?: boolean; };
+AddGroupOwner?: boolean;
 
-export type LambdaLinuxProcessParams = { IsolationMode?: string;
 
-ContainerParams?: AWS.GreengrassV2.ComponentVersion.LambdaContainerParams; };
+};
 
-export type LambdaEventSource = { Topic?: string;
+export type LambdaLinuxProcessParams = {
 
-Type?: string; };
 
-export type LambdaExecutionParameters = { EventSources?: AWS.GreengrassV2.ComponentVersion.LambdaEventSource[];
+IsolationMode?: string;
+
+ContainerParams?: AWS.GreengrassV2.ComponentVersion.LambdaContainerParams;
+
+
+};
+
+export type LambdaEventSource = {
+
+
+Topic?: string;
+
+Type?: string;
+
+
+};
+
+export type LambdaExecutionParameters = {
+
+
+EventSources?: AWS.GreengrassV2.ComponentVersion.LambdaEventSource[];
 
 MaxQueueSize?: number;
 
@@ -15504,103 +26186,205 @@ ExecArgs?: string[];
 
 EnvironmentVariables?: Record<string, string>;
 
-LinuxProcessParams?: AWS.GreengrassV2.ComponentVersion.LambdaLinuxProcessParams; };
+LinuxProcessParams?: AWS.GreengrassV2.ComponentVersion.LambdaLinuxProcessParams;
 
-export type InlineRecipe =  string;
 
-export type LambdaFunction =  AWS.GreengrassV2.ComponentVersion.LambdaFunctionRecipeSource;
+};
 
-export type Tags =  Record<string, string>;
 
 }
+
 
 }
 
 export namespace ManagedBlockchain {
 
-export namespace Node {
 
-export type NodeConfiguration =  AWS.ManagedBlockchain.Node.NodeConfiguration;
+export type Node = {
 
-export type MemberId =  string;
 
-export type NetworkId =  string;
+NodeConfiguration: AWS.ManagedBlockchain.Node.NodeConfiguration;
 
-}
+MemberId?: string;
+
+NetworkId: string;
+
+
+};
+
+export type Member = {
+
+
+NetworkConfiguration?: AWS.ManagedBlockchain.Member.NetworkConfiguration;
+
+MemberConfiguration: AWS.ManagedBlockchain.Member.MemberConfiguration;
+
+NetworkId?: string;
+
+InvitationId?: string;
+
+
+};
 
 export namespace Member {
 
-export type NetworkFrameworkConfiguration = { NetworkFabricConfiguration?: AWS.ManagedBlockchain.Member.NetworkFabricConfiguration; };
 
-export type NetworkConfiguration =  AWS.ManagedBlockchain.Member.NetworkConfiguration;
+export type NetworkFrameworkConfiguration = {
 
-export type NetworkFabricConfiguration = { Edition: string; };
 
-export type MemberConfiguration =  AWS.ManagedBlockchain.Member.MemberConfiguration;
+NetworkFabricConfiguration?: AWS.ManagedBlockchain.Member.NetworkFabricConfiguration;
 
-export type ApprovalThresholdPolicy = { ThresholdComparator?: string;
+
+};
+
+export type NetworkFabricConfiguration = {
+
+
+Edition: string;
+
+
+};
+
+export type ApprovalThresholdPolicy = {
+
+
+ThresholdComparator?: string;
 
 ThresholdPercentage?: number;
 
-ProposalDurationInHours?: number; };
+ProposalDurationInHours?: number;
 
-export type MemberFrameworkConfiguration = { MemberFabricConfiguration?: AWS.ManagedBlockchain.Member.MemberFabricConfiguration; };
 
-export type VotingPolicy = { ApprovalThresholdPolicy?: AWS.ManagedBlockchain.Member.ApprovalThresholdPolicy; };
+};
 
-export type MemberFabricConfiguration = { AdminUsername: string;
+export type MemberFrameworkConfiguration = {
 
-AdminPassword: string; };
 
-export type NetworkId =  string;
+MemberFabricConfiguration?: AWS.ManagedBlockchain.Member.MemberFabricConfiguration;
 
-export type InvitationId =  string;
+
+};
+
+export type VotingPolicy = {
+
+
+ApprovalThresholdPolicy?: AWS.ManagedBlockchain.Member.ApprovalThresholdPolicy;
+
+
+};
+
+export type MemberFabricConfiguration = {
+
+
+AdminUsername: string;
+
+AdminPassword: string;
+
+
+};
+
 
 }
+
 
 }
 
 export namespace WAF {
 
+
+export type WebACL = {
+
+
+DefaultAction: AWS.WAF.WebACL.WafAction;
+
+MetricName: string;
+
+Name: string;
+
+Rules?: AWS.WAF.WebACL.ActivatedRule[];
+
+
+};
+
 export namespace WebACL {
 
-export type WafAction = { Type: string; };
 
-export type ActivatedRule = { Action?: AWS.WAF.WebACL.WafAction;
+export type WafAction = {
+
+
+Type: string;
+
+
+};
+
+export type ActivatedRule = {
+
+
+Action?: AWS.WAF.WebACL.WafAction;
 
 Priority: number;
 
-RuleId: string; };
+RuleId: string;
 
-export type DefaultAction =  AWS.WAF.WebACL.WafAction;
 
-export type MetricName =  string;
+};
 
-export type Name =  string;
-
-export type Rules =  AWS.WAF.WebACL.ActivatedRule[];
 
 }
+
+export type IPSet = {
+
+
+IPSetDescriptors?: AWS.WAF.IPSet.IPSetDescriptor[];
+
+Name: string;
+
+
+};
 
 export namespace IPSet {
 
-export type IPSetDescriptor = { Type: string;
 
-Value: string; };
+export type IPSetDescriptor = {
 
-export type IPSetDescriptors =  AWS.WAF.IPSet.IPSetDescriptor[];
 
-export type Name =  string;
+Type: string;
+
+Value: string;
+
+
+};
+
 
 }
 
+export type ByteMatchSet = {
+
+
+ByteMatchTuples?: AWS.WAF.ByteMatchSet.ByteMatchTuple[];
+
+Name: string;
+
+
+};
+
 export namespace ByteMatchSet {
 
-export type FieldToMatch = { Data?: string;
 
-Type: string; };
+export type FieldToMatch = {
 
-export type ByteMatchTuple = { FieldToMatch: AWS.WAF.ByteMatchSet.FieldToMatch;
+
+Data?: string;
+
+Type: string;
+
+
+};
+
+export type ByteMatchTuple = {
+
+
+FieldToMatch: AWS.WAF.ByteMatchSet.FieldToMatch;
 
 PositionalConstraint: string;
 
@@ -15608,95 +26392,205 @@ TargetString?: string;
 
 TargetStringBase64?: string;
 
-TextTransformation: string; };
+TextTransformation: string;
 
-export type ByteMatchTuples =  AWS.WAF.ByteMatchSet.ByteMatchTuple[];
 
-export type Name =  string;
+};
+
 
 }
+
+export type SqlInjectionMatchSet = {
+
+
+Name: string;
+
+SqlInjectionMatchTuples?: AWS.WAF.SqlInjectionMatchSet.SqlInjectionMatchTuple[];
+
+
+};
 
 export namespace SqlInjectionMatchSet {
 
-export type FieldToMatch = { Data?: string;
 
-Type: string; };
+export type FieldToMatch = {
 
-export type SqlInjectionMatchTuple = { FieldToMatch: AWS.WAF.SqlInjectionMatchSet.FieldToMatch;
 
-TextTransformation: string; };
+Data?: string;
 
-export type Name =  string;
+Type: string;
 
-export type SqlInjectionMatchTuples =  AWS.WAF.SqlInjectionMatchSet.SqlInjectionMatchTuple[];
+
+};
+
+export type SqlInjectionMatchTuple = {
+
+
+FieldToMatch: AWS.WAF.SqlInjectionMatchSet.FieldToMatch;
+
+TextTransformation: string;
+
+
+};
+
 
 }
+
+export type XssMatchSet = {
+
+
+Name: string;
+
+XssMatchTuples: AWS.WAF.XssMatchSet.XssMatchTuple[];
+
+
+};
 
 export namespace XssMatchSet {
 
-export type XssMatchTuple = { FieldToMatch: AWS.WAF.XssMatchSet.FieldToMatch;
 
-TextTransformation: string; };
+export type XssMatchTuple = {
 
-export type FieldToMatch = { Data?: string;
 
-Type: string; };
+FieldToMatch: AWS.WAF.XssMatchSet.FieldToMatch;
 
-export type Name =  string;
+TextTransformation: string;
 
-export type XssMatchTuples =  AWS.WAF.XssMatchSet.XssMatchTuple[];
+
+};
+
+export type FieldToMatch = {
+
+
+Data?: string;
+
+Type: string;
+
+
+};
+
 
 }
+
+export type Rule = {
+
+
+MetricName: string;
+
+Name: string;
+
+Predicates?: AWS.WAF.Rule.Predicate[];
+
+
+};
 
 export namespace Rule {
 
-export type Predicate = { DataId: string;
+
+export type Predicate = {
+
+
+DataId: string;
 
 Negated: boolean;
 
-Type: string; };
+Type: string;
 
-export type MetricName =  string;
 
-export type Name =  string;
+};
 
-export type Predicates =  AWS.WAF.Rule.Predicate[];
 
 }
 
+export type SizeConstraintSet = {
+
+
+Name: string;
+
+SizeConstraints: AWS.WAF.SizeConstraintSet.SizeConstraint[];
+
+
+};
+
 export namespace SizeConstraintSet {
 
-export type FieldToMatch = { Data?: string;
 
-Type: string; };
+export type FieldToMatch = {
 
-export type SizeConstraint = { ComparisonOperator: string;
+
+Data?: string;
+
+Type: string;
+
+
+};
+
+export type SizeConstraint = {
+
+
+ComparisonOperator: string;
 
 FieldToMatch: AWS.WAF.SizeConstraintSet.FieldToMatch;
 
 Size: number;
 
-TextTransformation: string; };
+TextTransformation: string;
 
-export type Name =  string;
 
-export type SizeConstraints =  AWS.WAF.SizeConstraintSet.SizeConstraint[];
+};
+
 
 }
+
 
 }
 
 export namespace NetworkFirewall {
 
+
+export type RuleGroup = {
+
+
+RuleGroup?: AWS.NetworkFirewall.RuleGroup.RuleGroup;
+
+RuleGroupName: string;
+
+Type: string;
+
+Capacity: number;
+
+Description?: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace RuleGroup {
 
-export type ActionDefinition = { PublishMetricAction?: AWS.NetworkFirewall.RuleGroup.PublishMetricAction; };
 
-export type TCPFlagField = { Flags: string[];
+export type ActionDefinition = {
 
-Masks?: string[]; };
 
-export type Header = { Protocol: string;
+PublishMetricAction?: AWS.NetworkFirewall.RuleGroup.PublishMetricAction;
+
+
+};
+
+export type TCPFlagField = {
+
+
+Flags: string[];
+
+Masks?: string[];
+
+
+};
+
+export type Header = {
+
+
+Protocol: string;
 
 Source: string;
 
@@ -15706,47 +26600,111 @@ Direction: string;
 
 Destination: string;
 
-DestinationPort: string; };
+DestinationPort: string;
 
-export type Dimension = { Value: string; };
 
-export type StatelessRulesAndCustomActions = { StatelessRules: AWS.NetworkFirewall.RuleGroup.StatelessRule[];
+};
 
-CustomActions?: AWS.NetworkFirewall.RuleGroup.CustomAction[]; };
+export type Dimension = {
 
-export type RuleOption = { Keyword: string;
 
-Settings?: string[]; };
+Value: string;
 
-export type RuleDefinition = { MatchAttributes: AWS.NetworkFirewall.RuleGroup.MatchAttributes;
 
-Actions: string[]; };
+};
 
-export type RuleGroup =  AWS.NetworkFirewall.RuleGroup.RuleGroup;
+export type StatelessRulesAndCustomActions = {
 
-export type RulesSourceList = { Targets: string[];
+
+StatelessRules: AWS.NetworkFirewall.RuleGroup.StatelessRule[];
+
+CustomActions?: AWS.NetworkFirewall.RuleGroup.CustomAction[];
+
+
+};
+
+export type RuleOption = {
+
+
+Keyword: string;
+
+Settings?: string[];
+
+
+};
+
+export type RuleDefinition = {
+
+
+MatchAttributes: AWS.NetworkFirewall.RuleGroup.MatchAttributes;
+
+Actions: string[];
+
+
+};
+
+export type RulesSourceList = {
+
+
+Targets: string[];
 
 TargetTypes: string[];
 
-GeneratedRulesType: string; };
+GeneratedRulesType: string;
 
-export type StatelessRule = { RuleDefinition: AWS.NetworkFirewall.RuleGroup.RuleDefinition;
 
-Priority: number; };
+};
 
-export type PortRange = { FromPort: number;
+export type StatelessRule = {
 
-ToPort: number; };
 
-export type IPSet = { Definition?: string[]; };
+RuleDefinition: AWS.NetworkFirewall.RuleGroup.RuleDefinition;
 
-export type CustomAction = { ActionName: string;
+Priority: number;
 
-ActionDefinition: AWS.NetworkFirewall.RuleGroup.ActionDefinition; };
 
-export type PortSet = { Definition?: string[]; };
+};
 
-export type MatchAttributes = { Sources?: AWS.NetworkFirewall.RuleGroup.Address[];
+export type PortRange = {
+
+
+FromPort: number;
+
+ToPort: number;
+
+
+};
+
+export type IPSet = {
+
+
+Definition?: string[];
+
+
+};
+
+export type CustomAction = {
+
+
+ActionName: string;
+
+ActionDefinition: AWS.NetworkFirewall.RuleGroup.ActionDefinition;
+
+
+};
+
+export type PortSet = {
+
+
+Definition?: string[];
+
+
+};
+
+export type MatchAttributes = {
+
+
+Sources?: AWS.NetworkFirewall.RuleGroup.Address[];
 
 Destinations?: AWS.NetworkFirewall.RuleGroup.Address[];
 
@@ -15756,263 +26714,417 @@ DestinationPorts?: AWS.NetworkFirewall.RuleGroup.PortRange[];
 
 Protocols?: number[];
 
-TCPFlags?: AWS.NetworkFirewall.RuleGroup.TCPFlagField[]; };
+TCPFlags?: AWS.NetworkFirewall.RuleGroup.TCPFlagField[];
 
-export type RuleVariables = { IPSets?: Record<string, AWS.NetworkFirewall.RuleGroup.IPSet>;
 
-PortSets?: Record<string, AWS.NetworkFirewall.RuleGroup.PortSet>; };
+};
 
-export type PublishMetricAction = { Dimensions: AWS.NetworkFirewall.RuleGroup.Dimension[]; };
+export type RuleVariables = {
 
-export type Address = { AddressDefinition: string; };
 
-export type RulesSource = { RulesString?: string;
+IPSets?: Record<string, AWS.NetworkFirewall.RuleGroup.IPSet>;
+
+PortSets?: Record<string, AWS.NetworkFirewall.RuleGroup.PortSet>;
+
+
+};
+
+export type PublishMetricAction = {
+
+
+Dimensions: AWS.NetworkFirewall.RuleGroup.Dimension[];
+
+
+};
+
+export type Address = {
+
+
+AddressDefinition: string;
+
+
+};
+
+export type RulesSource = {
+
+
+RulesString?: string;
 
 RulesSourceList?: AWS.NetworkFirewall.RuleGroup.RulesSourceList;
 
 StatefulRules?: AWS.NetworkFirewall.RuleGroup.StatefulRule[];
 
-StatelessRulesAndCustomActions?: AWS.NetworkFirewall.RuleGroup.StatelessRulesAndCustomActions; };
+StatelessRulesAndCustomActions?: AWS.NetworkFirewall.RuleGroup.StatelessRulesAndCustomActions;
 
-export type StatefulRule = { Action: string;
+
+};
+
+export type StatefulRule = {
+
+
+Action: string;
 
 Header: AWS.NetworkFirewall.RuleGroup.Header;
 
-RuleOptions: AWS.NetworkFirewall.RuleGroup.RuleOption[]; };
+RuleOptions: AWS.NetworkFirewall.RuleGroup.RuleOption[];
 
-export type RuleGroupName =  string;
 
-export type Type =  string;
+};
 
-export type Capacity =  number;
-
-export type Description =  string;
-
-export type Tags =  Tag[];
 
 }
+
+export type FirewallPolicy = {
+
+
+FirewallPolicy: AWS.NetworkFirewall.FirewallPolicy.FirewallPolicy;
+
+FirewallPolicyName: string;
+
+Description?: string;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace FirewallPolicy {
 
-export type CustomAction = { ActionName: string;
 
-ActionDefinition: AWS.NetworkFirewall.FirewallPolicy.ActionDefinition; };
+export type CustomAction = {
 
-export type StatelessRuleGroupReference = { ResourceArn: string;
 
-Priority: number; };
+ActionName: string;
 
-export type StatefulRuleGroupReference = { ResourceArn: string; };
+ActionDefinition: AWS.NetworkFirewall.FirewallPolicy.ActionDefinition;
 
-export type PublishMetricAction = { Dimensions: AWS.NetworkFirewall.FirewallPolicy.Dimension[]; };
 
-export type ActionDefinition = { PublishMetricAction?: AWS.NetworkFirewall.FirewallPolicy.PublishMetricAction; };
+};
 
-export type Dimension = { Value: string; };
+export type StatelessRuleGroupReference = {
 
-export type FirewallPolicy =  AWS.NetworkFirewall.FirewallPolicy.FirewallPolicy;
 
-export type FirewallPolicyName =  string;
+ResourceArn: string;
 
-export type Description =  string;
+Priority: number;
 
-export type Tags =  Tag[];
+
+};
+
+export type StatefulRuleGroupReference = {
+
+
+ResourceArn: string;
+
+
+};
+
+export type PublishMetricAction = {
+
+
+Dimensions: AWS.NetworkFirewall.FirewallPolicy.Dimension[];
+
+
+};
+
+export type ActionDefinition = {
+
+
+PublishMetricAction?: AWS.NetworkFirewall.FirewallPolicy.PublishMetricAction;
+
+
+};
+
+export type Dimension = {
+
+
+Value: string;
+
+
+};
+
 
 }
+
+export type LoggingConfiguration = {
+
+
+LoggingConfiguration: AWS.NetworkFirewall.LoggingConfiguration.LoggingConfiguration;
+
+FirewallName?: string;
+
+FirewallArn: string;
+
+
+};
 
 export namespace LoggingConfiguration {
 
-export type LogDestinationConfig = { LogType: string;
+
+export type LogDestinationConfig = {
+
+
+LogType: string;
 
 LogDestinationType: string;
 
-LogDestination: Record<string, string>; };
+LogDestination: Record<string, string>;
 
-export type LoggingConfiguration =  AWS.NetworkFirewall.LoggingConfiguration.LoggingConfiguration;
 
-export type FirewallName =  string;
+};
 
-export type FirewallArn =  string;
 
 }
+
+export type Firewall = {
+
+
+FirewallName: string;
+
+FirewallPolicyArn: string;
+
+VpcId: string;
+
+SubnetMappings: AWS.NetworkFirewall.Firewall.SubnetMapping[];
+
+DeleteProtection?: boolean;
+
+SubnetChangeProtection?: boolean;
+
+FirewallPolicyChangeProtection?: boolean;
+
+Description?: string;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace Firewall {
 
-export type SubnetMapping = { SubnetId: string; };
 
-export type FirewallName =  string;
+export type SubnetMapping = {
 
-export type FirewallPolicyArn =  string;
 
-export type VpcId =  string;
+SubnetId: string;
 
-export type SubnetMappings =  AWS.NetworkFirewall.Firewall.SubnetMapping[];
 
-export type DeleteProtection =  boolean;
+};
 
-export type SubnetChangeProtection =  boolean;
-
-export type FirewallPolicyChangeProtection =  boolean;
-
-export type Description =  string;
-
-export type Tags =  Tag[];
 
 }
+
 
 }
 
 export namespace DataSync {
 
+
+export type Task = {
+
+
+Options?: AWS.DataSync.Task.Options;
+
+Excludes?: AWS.DataSync.Task.FilterRule[];
+
+Tags?: Tag[];
+
+CloudWatchLogGroupArn?: string;
+
+DestinationLocationArn: string;
+
+Name?: string;
+
+Schedule?: AWS.DataSync.Task.TaskSchedule;
+
+SourceLocationArn: string;
+
+
+};
+
 export namespace Task {
 
-export type FilterRule = { FilterType?: string;
 
-Value?: string; };
+export type FilterRule = {
 
-export type Options =  AWS.DataSync.Task.Options;
 
-export type TaskSchedule = { ScheduleExpression: string; };
+FilterType?: string;
 
-export type Excludes =  AWS.DataSync.Task.FilterRule[];
+Value?: string;
 
-export type Tags =  Tag[];
 
-export type CloudWatchLogGroupArn =  string;
+};
 
-export type DestinationLocationArn =  string;
+export type TaskSchedule = {
 
-export type Name =  string;
 
-export type Schedule =  AWS.DataSync.Task.TaskSchedule;
+ScheduleExpression: string;
 
-export type SourceLocationArn =  string;
+
+};
+
 
 }
 
-export namespace LocationS3 {
+export type LocationS3 = {
 
-export type S3Config =  AWS.DataSync.LocationS3.S3Config;
 
-export type S3BucketArn =  string;
+S3Config: AWS.DataSync.LocationS3.S3Config;
 
-export type Subdirectory =  string;
+S3BucketArn: string;
 
-export type S3StorageClass =  string;
+Subdirectory?: string;
 
-export type Tags =  Tag[];
+S3StorageClass?: string;
 
-}
+Tags?: Tag[];
 
-export namespace LocationNFS {
 
-export type OnPremConfig =  AWS.DataSync.LocationNFS.OnPremConfig;
+};
 
-export type MountOptions =  AWS.DataSync.LocationNFS.MountOptions;
+export type LocationNFS = {
 
-export type ServerHostname =  string;
 
-export type Subdirectory =  string;
+OnPremConfig: AWS.DataSync.LocationNFS.OnPremConfig;
 
-export type Tags =  Tag[];
+MountOptions?: AWS.DataSync.LocationNFS.MountOptions;
 
-}
+ServerHostname: string;
 
-export namespace LocationEFS {
+Subdirectory: string;
 
-export type Ec2Config =  AWS.DataSync.LocationEFS.Ec2Config;
+Tags?: Tag[];
 
-export type EfsFilesystemArn =  string;
 
-export type Subdirectory =  string;
+};
 
-export type Tags =  Tag[];
+export type LocationEFS = {
 
-}
 
-export namespace LocationSMB {
+Ec2Config: AWS.DataSync.LocationEFS.Ec2Config;
 
-export type MountOptions =  AWS.DataSync.LocationSMB.MountOptions;
+EfsFilesystemArn: string;
 
-export type AgentArns =  string[];
+Subdirectory?: string;
 
-export type Domain =  string;
+Tags?: Tag[];
 
-export type Password =  string;
 
-export type ServerHostname =  string;
+};
 
-export type Subdirectory =  string;
+export type LocationSMB = {
 
-export type User =  string;
 
-export type Tags =  Tag[];
+MountOptions?: AWS.DataSync.LocationSMB.MountOptions;
 
-}
+AgentArns: string[];
 
-export namespace Agent {
+Domain?: string;
 
-export type AgentName =  string;
+Password: string;
 
-export type ActivationKey =  string;
+ServerHostname: string;
 
-export type SecurityGroupArns =  string[];
+Subdirectory: string;
 
-export type SubnetArns =  string[];
+User: string;
 
-export type VpcEndpointId =  string;
+Tags?: Tag[];
 
-export type Tags =  Tag[];
 
-}
+};
 
-export namespace LocationFSxWindows {
+export type Agent = {
 
-export type Domain =  string;
 
-export type FsxFilesystemArn =  string;
+AgentName?: string;
 
-export type Password =  string;
+ActivationKey: string;
 
-export type SecurityGroupArns =  string[];
+SecurityGroupArns?: string[];
 
-export type Subdirectory =  string;
+SubnetArns?: string[];
 
-export type User =  string;
+VpcEndpointId?: string;
 
-export type Tags =  Tag[];
+Tags?: Tag[];
 
-}
 
-export namespace LocationObjectStorage {
+};
 
-export type AccessKey =  string;
+export type LocationFSxWindows = {
 
-export type AgentArns =  string[];
 
-export type BucketName =  string;
+Domain?: string;
 
-export type SecretKey =  string;
+FsxFilesystemArn: string;
 
-export type ServerHostname =  string;
+Password: string;
 
-export type ServerPort =  number;
+SecurityGroupArns: string[];
 
-export type ServerProtocol =  string;
+Subdirectory?: string;
 
-export type Subdirectory =  string;
+User: string;
 
-export type Tags =  Tag[];
+Tags?: Tag[];
 
-}
+
+};
+
+export type LocationObjectStorage = {
+
+
+AccessKey?: string;
+
+AgentArns: string[];
+
+BucketName: string;
+
+SecretKey?: string;
+
+ServerHostname: string;
+
+ServerPort?: number;
+
+ServerProtocol?: string;
+
+Subdirectory?: string;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace ApiGateway {
 
+
+export type Deployment = {
+
+
+DeploymentCanarySettings?: AWS.ApiGateway.Deployment.DeploymentCanarySettings;
+
+StageDescription?: AWS.ApiGateway.Deployment.StageDescription;
+
+Description?: string;
+
+RestApiId: string;
+
+StageName?: string;
+
+
+};
+
 export namespace Deployment {
 
-export type MethodSetting = { CacheDataEncrypted?: boolean;
+
+export type MethodSetting = {
+
+
+CacheDataEncrypted?: boolean;
 
 CacheTtlInSeconds?: number;
 
@@ -16030,107 +27142,195 @@ ResourcePath?: string;
 
 ThrottlingBurstLimit?: number;
 
-ThrottlingRateLimit?: number; };
+ThrottlingRateLimit?: number;
 
-export type AccessLogSetting = { DestinationArn?: string;
 
-Format?: string; };
+};
 
-export type DeploymentCanarySettings =  AWS.ApiGateway.Deployment.DeploymentCanarySettings;
+export type AccessLogSetting = {
 
-export type StageDescription =  AWS.ApiGateway.Deployment.StageDescription;
 
-export type CanarySetting = { PercentTraffic?: number;
+DestinationArn?: string;
+
+Format?: string;
+
+
+};
+
+export type CanarySetting = {
+
+
+PercentTraffic?: number;
 
 StageVariableOverrides?: Record<string, string>;
 
-UseStageCache?: boolean; };
+UseStageCache?: boolean;
 
-export type Description =  string;
 
-export type RestApiId =  string;
+};
 
-export type StageName =  string;
 
 }
+
+export type UsagePlan = {
+
+
+ApiStages?: AWS.ApiGateway.UsagePlan.ApiStage[];
+
+Description?: string;
+
+Quota?: AWS.ApiGateway.UsagePlan.QuotaSettings;
+
+Tags?: Tag[];
+
+Throttle?: AWS.ApiGateway.UsagePlan.ThrottleSettings;
+
+UsagePlanName?: string;
+
+
+};
 
 export namespace UsagePlan {
 
-export type ApiStage = { ApiId?: string;
+
+export type ApiStage = {
+
+
+ApiId?: string;
 
 Stage?: string;
 
-Throttle?: Record<string, AWS.ApiGateway.UsagePlan.ThrottleSettings>; };
+Throttle?: Record<string, AWS.ApiGateway.UsagePlan.ThrottleSettings>;
 
-export type ThrottleSettings = { BurstLimit?: number;
 
-RateLimit?: number; };
+};
 
-export type QuotaSettings = { Limit?: number;
+export type ThrottleSettings = {
+
+
+BurstLimit?: number;
+
+RateLimit?: number;
+
+
+};
+
+export type QuotaSettings = {
+
+
+Limit?: number;
 
 Offset?: number;
 
-Period?: string; };
+Period?: string;
 
-export type ApiStages =  AWS.ApiGateway.UsagePlan.ApiStage[];
 
-export type Description =  string;
+};
 
-export type Quota =  AWS.ApiGateway.UsagePlan.QuotaSettings;
-
-export type Tags =  Tag[];
-
-export type Throttle =  AWS.ApiGateway.UsagePlan.ThrottleSettings;
-
-export type UsagePlanName =  string;
 
 }
+
+export type ApiKey = {
+
+
+CustomerId?: string;
+
+Description?: string;
+
+Enabled?: boolean;
+
+GenerateDistinctId?: boolean;
+
+Name?: string;
+
+StageKeys?: AWS.ApiGateway.ApiKey.StageKey[];
+
+Tags?: Tag[];
+
+Value?: string;
+
+
+};
 
 export namespace ApiKey {
 
-export type StageKey = { RestApiId?: string;
 
-StageName?: string; };
+export type StageKey = {
 
-export type CustomerId =  string;
 
-export type Description =  string;
+RestApiId?: string;
 
-export type Enabled =  boolean;
+StageName?: string;
 
-export type GenerateDistinctId =  boolean;
 
-export type Name =  string;
+};
 
-export type StageKeys =  AWS.ApiGateway.ApiKey.StageKey[];
-
-export type Tags =  Tag[];
-
-export type Value =  string;
 
 }
 
-export namespace DocumentationPart {
+export type DocumentationPart = {
 
-export type Location =  AWS.ApiGateway.DocumentationPart.Location;
 
-export type Properties =  string;
+Location: AWS.ApiGateway.DocumentationPart.Location;
 
-export type RestApiId =  string;
+Properties: string;
 
-}
+RestApiId: string;
+
+
+};
+
+export type Method = {
+
+
+Integration?: AWS.ApiGateway.Method.Integration;
+
+ApiKeyRequired?: boolean;
+
+AuthorizationScopes?: string[];
+
+AuthorizationType?: string;
+
+AuthorizerId?: string;
+
+HttpMethod: string;
+
+MethodResponses?: AWS.ApiGateway.Method.MethodResponse[];
+
+OperationName?: string;
+
+RequestModels?: Record<string, string>;
+
+RequestParameters?: Record<string, boolean>;
+
+RequestValidatorId?: string;
+
+ResourceId: string;
+
+RestApiId: string;
+
+
+};
 
 export namespace Method {
 
-export type MethodResponse = { ResponseModels?: Record<string, string>;
+
+export type MethodResponse = {
+
+
+ResponseModels?: Record<string, string>;
 
 ResponseParameters?: Record<string, boolean>;
 
-StatusCode: string; };
+StatusCode: string;
 
-export type Integration =  AWS.ApiGateway.Method.Integration;
 
-export type IntegrationResponse = { ContentHandling?: string;
+};
+
+export type IntegrationResponse = {
+
+
+ContentHandling?: string;
 
 ResponseParameters?: Record<string, string>;
 
@@ -16138,101 +27338,131 @@ ResponseTemplates?: Record<string, string>;
 
 SelectionPattern?: string;
 
-StatusCode: string; };
+StatusCode: string;
 
-export type ApiKeyRequired =  boolean;
 
-export type AuthorizationScopes =  string[];
+};
 
-export type AuthorizationType =  string;
-
-export type AuthorizerId =  string;
-
-export type HttpMethod =  string;
-
-export type MethodResponses =  AWS.ApiGateway.Method.MethodResponse[];
-
-export type OperationName =  string;
-
-export type RequestModels =  Record<string, string>;
-
-export type RequestParameters =  Record<string, boolean>;
-
-export type RequestValidatorId =  string;
-
-export type ResourceId =  string;
-
-export type RestApiId =  string;
 
 }
 
-export namespace DomainName {
+export type DomainName = {
 
-export type MutualTlsAuthentication =  AWS.ApiGateway.DomainName.MutualTlsAuthentication;
 
-export type EndpointConfiguration =  AWS.ApiGateway.DomainName.EndpointConfiguration;
+MutualTlsAuthentication?: AWS.ApiGateway.DomainName.MutualTlsAuthentication;
 
-export type DomainName =  string;
+EndpointConfiguration?: AWS.ApiGateway.DomainName.EndpointConfiguration;
 
-export type CertificateArn =  string;
+DomainName?: string;
 
-export type RegionalCertificateArn =  string;
+CertificateArn?: string;
 
-export type SecurityPolicy =  string;
+RegionalCertificateArn?: string;
 
-export type Tags =  Tag[];
+SecurityPolicy?: string;
 
-}
+Tags?: Tag[];
+
+
+};
+
+export type RestApi = {
+
+
+EndpointConfiguration?: AWS.ApiGateway.RestApi.EndpointConfiguration;
+
+ApiKeySourceType?: string;
+
+BinaryMediaTypes?: string[];
+
+Body?: JSONString;
+
+BodyS3Location?: AWS.ApiGateway.RestApi.S3Location;
+
+CloneFrom?: string;
+
+Description?: string;
+
+DisableExecuteApiEndpoint?: boolean;
+
+FailOnWarnings?: boolean;
+
+MinimumCompressionSize?: number;
+
+Mode?: string;
+
+Name?: string;
+
+Parameters?: Record<string, string>;
+
+Policy?: JSONString;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace RestApi {
 
-export type S3Location = { Bucket?: string;
+
+export type S3Location = {
+
+
+Bucket?: string;
 
 ETag?: string;
 
 Key?: string;
 
-Version?: string; };
+Version?: string;
 
-export type EndpointConfiguration =  AWS.ApiGateway.RestApi.EndpointConfiguration;
 
-export type ApiKeySourceType =  string;
+};
 
-export type BinaryMediaTypes =  string[];
-
-export type Body =  JSONString;
-
-export type BodyS3Location =  AWS.ApiGateway.RestApi.S3Location;
-
-export type CloneFrom =  string;
-
-export type Description =  string;
-
-export type DisableExecuteApiEndpoint =  boolean;
-
-export type FailOnWarnings =  boolean;
-
-export type MinimumCompressionSize =  number;
-
-export type Mode =  string;
-
-export type Name =  string;
-
-export type Parameters =  Record<string, string>;
-
-export type Policy =  JSONString;
-
-export type Tags =  Tag[];
 
 }
 
+export type Stage = {
+
+
+CanarySetting?: AWS.ApiGateway.Stage.CanarySetting;
+
+AccessLogSetting?: AWS.ApiGateway.Stage.AccessLogSetting;
+
+CacheClusterEnabled?: boolean;
+
+CacheClusterSize?: string;
+
+ClientCertificateId?: string;
+
+DeploymentId?: string;
+
+Description?: string;
+
+DocumentationVersion?: string;
+
+MethodSettings?: AWS.ApiGateway.Stage.MethodSetting[];
+
+RestApiId: string;
+
+StageName?: string;
+
+Tags?: Tag[];
+
+TracingEnabled?: boolean;
+
+Variables?: Record<string, string>;
+
+
+};
+
 export namespace Stage {
 
-export type CanarySetting =  AWS.ApiGateway.Stage.CanarySetting;
 
-export type AccessLogSetting =  AWS.ApiGateway.Stage.AccessLogSetting;
+export type MethodSetting = {
 
-export type MethodSetting = { CacheDataEncrypted?: boolean;
+
+CacheDataEncrypted?: boolean;
 
 CacheTtlInSeconds?: number;
 
@@ -16250,529 +27480,799 @@ ResourcePath?: string;
 
 ThrottlingBurstLimit?: number;
 
-ThrottlingRateLimit?: number; };
+ThrottlingRateLimit?: number;
 
-export type CacheClusterEnabled =  boolean;
 
-export type CacheClusterSize =  string;
+};
 
-export type ClientCertificateId =  string;
-
-export type DeploymentId =  string;
-
-export type Description =  string;
-
-export type DocumentationVersion =  string;
-
-export type MethodSettings =  AWS.ApiGateway.Stage.MethodSetting[];
-
-export type RestApiId =  string;
-
-export type StageName =  string;
-
-export type Tags =  Tag[];
-
-export type TracingEnabled =  boolean;
-
-export type Variables =  Record<string, string>;
 
 }
 
-export namespace GatewayResponse {
+export type GatewayResponse = {
 
-export type ResponseParameters =  Record<string, string>;
 
-export type ResponseTemplates =  Record<string, string>;
+ResponseParameters?: Record<string, string>;
 
-export type ResponseType =  string;
+ResponseTemplates?: Record<string, string>;
 
-export type RestApiId =  string;
+ResponseType: string;
 
-export type StatusCode =  string;
+RestApiId: string;
 
-}
+StatusCode?: string;
 
-export namespace UsagePlanKey {
 
-export type KeyId =  string;
+};
 
-export type KeyType =  string;
+export type UsagePlanKey = {
 
-export type UsagePlanId =  string;
 
-}
+KeyId: string;
 
-export namespace RequestValidator {
+KeyType: string;
 
-export type Name =  string;
+UsagePlanId: string;
 
-export type RestApiId =  string;
 
-export type ValidateRequestBody =  boolean;
+};
 
-export type ValidateRequestParameters =  boolean;
+export type RequestValidator = {
 
-}
 
-export namespace Resource {
+Name?: string;
 
-export type ParentId =  string;
+RestApiId: string;
 
-export type PathPart =  string;
+ValidateRequestBody?: boolean;
 
-export type RestApiId =  string;
+ValidateRequestParameters?: boolean;
 
-}
 
-export namespace Account {
+};
 
-export type CloudWatchRoleArn =  string;
+export type Resource = {
 
-}
 
-export namespace Authorizer {
+ParentId: string;
 
-export type AuthType =  string;
+PathPart: string;
 
-export type AuthorizerCredentials =  string;
+RestApiId: string;
 
-export type AuthorizerResultTtlInSeconds =  number;
 
-export type AuthorizerUri =  string;
+};
 
-export type IdentitySource =  string;
+export type Account = {
 
-export type IdentityValidationExpression =  string;
 
-export type Name =  string;
+CloudWatchRoleArn?: string;
 
-export type ProviderARNs =  string[];
 
-export type RestApiId =  string;
+};
 
-export type Type =  string;
+export type Authorizer = {
 
-}
 
-export namespace Model {
+AuthType?: string;
 
-export type ContentType =  string;
+AuthorizerCredentials?: string;
 
-export type Description =  string;
+AuthorizerResultTtlInSeconds?: number;
 
-export type Name =  string;
+AuthorizerUri?: string;
 
-export type RestApiId =  string;
+IdentitySource?: string;
 
-export type Schema =  JSONString;
+IdentityValidationExpression?: string;
 
-}
+Name?: string;
 
-export namespace BasePathMapping {
+ProviderARNs?: string[];
 
-export type BasePath =  string;
+RestApiId: string;
 
-export type DomainName =  string;
+Type: string;
 
-export type RestApiId =  string;
 
-export type Stage =  string;
+};
 
-}
+export type Model = {
 
-export namespace ClientCertificate {
 
-export type Description =  string;
+ContentType?: string;
 
-export type Tags =  Tag[];
+Description?: string;
 
-}
+Name?: string;
 
-export namespace DocumentationVersion {
+RestApiId: string;
 
-export type Description =  string;
+Schema?: JSONString;
 
-export type DocumentationVersion =  string;
 
-export type RestApiId =  string;
+};
 
-}
+export type BasePathMapping = {
 
-export namespace VpcLink {
 
-export type Description =  string;
+BasePath?: string;
 
-export type TargetArns =  string[];
+DomainName: string;
 
-export type Name =  string;
+RestApiId?: string;
 
-}
+Stage?: string;
+
+
+};
+
+export type ClientCertificate = {
+
+
+Description?: string;
+
+Tags?: Tag[];
+
+
+};
+
+export type DocumentationVersion = {
+
+
+Description?: string;
+
+DocumentationVersion: string;
+
+RestApiId: string;
+
+
+};
+
+export type VpcLink = {
+
+
+Description?: string;
+
+TargetArns: string[];
+
+Name: string;
+
+
+};
+
 
 }
 
 export namespace AppConfig {
 
-export namespace Deployment {
 
-export type Tags =  AWS.AppConfig.Deployment.Tags[];
+export type Deployment = {
 
-export type DeploymentStrategyId =  string;
 
-export type ConfigurationProfileId =  string;
+Tags?: AWS.AppConfig.Deployment.Tags[];
 
-export type EnvironmentId =  string;
+DeploymentStrategyId: string;
 
-export type Description =  string;
+ConfigurationProfileId: string;
 
-export type ConfigurationVersion =  string;
+EnvironmentId: string;
 
-export type ApplicationId =  string;
+Description?: string;
 
-}
+ConfigurationVersion: string;
 
-export namespace DeploymentStrategy {
+ApplicationId: string;
 
-export type Tags =  AWS.AppConfig.DeploymentStrategy.Tags[];
 
-export type ReplicateTo =  string;
+};
 
-export type GrowthType =  string;
+export type DeploymentStrategy = {
 
-export type Description =  string;
 
-export type DeploymentDurationInMinutes =  number;
+Tags?: AWS.AppConfig.DeploymentStrategy.Tags[];
 
-export type GrowthFactor =  number;
+ReplicateTo: string;
 
-export type FinalBakeTimeInMinutes =  number;
+GrowthType?: string;
 
-export type Name =  string;
+Description?: string;
 
-}
+DeploymentDurationInMinutes: number;
 
-export namespace Environment {
+GrowthFactor: number;
 
-export type Monitors =  AWS.AppConfig.Environment.Monitors[];
+FinalBakeTimeInMinutes?: number;
 
-export type Tags =  AWS.AppConfig.Environment.Tags[];
+Name: string;
 
-export type Description =  string;
 
-export type ApplicationId =  string;
+};
 
-export type Name =  string;
+export type Environment = {
 
-}
 
-export namespace ConfigurationProfile {
+Monitors?: AWS.AppConfig.Environment.Monitors[];
 
-export type Validators =  AWS.AppConfig.ConfigurationProfile.Validators[];
+Tags?: AWS.AppConfig.Environment.Tags[];
 
-export type Tags =  AWS.AppConfig.ConfigurationProfile.Tags[];
+Description?: string;
 
-export type LocationUri =  string;
+ApplicationId: string;
 
-export type Description =  string;
+Name: string;
 
-export type RetrievalRoleArn =  string;
 
-export type ApplicationId =  string;
+};
 
-export type Name =  string;
+export type ConfigurationProfile = {
 
-}
 
-export namespace Application {
+Validators?: AWS.AppConfig.ConfigurationProfile.Validators[];
 
-export type Tags =  AWS.AppConfig.Application.Tags[];
+Tags?: AWS.AppConfig.ConfigurationProfile.Tags[];
 
-export type Description =  string;
+LocationUri: string;
 
-export type Name =  string;
+Description?: string;
 
-}
+RetrievalRoleArn?: string;
 
-export namespace HostedConfigurationVersion {
+ApplicationId: string;
 
-export type ConfigurationProfileId =  string;
+Name: string;
 
-export type Description =  string;
 
-export type ContentType =  string;
+};
 
-export type LatestVersionNumber =  number;
+export type Application = {
 
-export type Content =  string;
 
-export type ApplicationId =  string;
+Tags?: AWS.AppConfig.Application.Tags[];
 
-}
+Description?: string;
+
+Name: string;
+
+
+};
+
+export type HostedConfigurationVersion = {
+
+
+ConfigurationProfileId: string;
+
+Description?: string;
+
+ContentType: string;
+
+LatestVersionNumber?: number;
+
+Content: string;
+
+ApplicationId: string;
+
+
+};
+
 
 }
 
 export namespace DevOpsGuru {
 
+
+export type NotificationChannel = {
+
+
+Config: AWS.DevOpsGuru.NotificationChannel.NotificationChannelConfig;
+
+
+};
+
 export namespace NotificationChannel {
 
-export type NotificationChannelConfig = { Sns?: AWS.DevOpsGuru.NotificationChannel.SnsChannelConfig; };
 
-export type SnsChannelConfig = { TopicArn?: string; };
+export type NotificationChannelConfig = {
 
-export type Config =  AWS.DevOpsGuru.NotificationChannel.NotificationChannelConfig;
+
+Sns?: AWS.DevOpsGuru.NotificationChannel.SnsChannelConfig;
+
+
+};
+
+export type SnsChannelConfig = {
+
+
+TopicArn?: string;
+
+
+};
+
 
 }
+
+export type ResourceCollection = {
+
+
+ResourceCollectionFilter: AWS.DevOpsGuru.ResourceCollection.ResourceCollectionFilter;
+
+
+};
 
 export namespace ResourceCollection {
 
-export type ResourceCollectionFilter =  AWS.DevOpsGuru.ResourceCollection.ResourceCollectionFilter;
 
-export type CloudFormationCollectionFilter = { StackNames?: string[]; };
+export type CloudFormationCollectionFilter = {
+
+
+StackNames?: string[];
+
+
+};
+
 
 }
+
 
 }
 
 export namespace ResourceGroups {
 
+
+export type Group = {
+
+
+ResourceQuery?: AWS.ResourceGroups.Group.ResourceQuery;
+
+Name: string;
+
+Description?: string;
+
+Tags?: Tag[];
+
+Configuration?: AWS.ResourceGroups.Group.ConfigurationItem[];
+
+Resources?: string[];
+
+
+};
+
 export namespace Group {
 
-export type TagFilter = { Key?: string;
 
-Values?: string[]; };
+export type TagFilter = {
 
-export type Query = { ResourceTypeFilters?: string[];
+
+Key?: string;
+
+Values?: string[];
+
+
+};
+
+export type Query = {
+
+
+ResourceTypeFilters?: string[];
 
 StackIdentifier?: string;
 
-TagFilters?: AWS.ResourceGroups.Group.TagFilter[]; };
+TagFilters?: AWS.ResourceGroups.Group.TagFilter[];
 
-export type ConfigurationParameter = { Name?: string;
 
-Values?: string[]; };
+};
 
-export type ConfigurationItem = { Type?: string;
+export type ConfigurationParameter = {
 
-Parameters?: AWS.ResourceGroups.Group.ConfigurationParameter[]; };
 
-export type ResourceQuery =  AWS.ResourceGroups.Group.ResourceQuery;
+Name?: string;
 
-export type Name =  string;
+Values?: string[];
 
-export type Description =  string;
 
-export type Tags =  Tag[];
+};
 
-export type Configuration =  AWS.ResourceGroups.Group.ConfigurationItem[];
+export type ConfigurationItem = {
 
-export type Resources =  string[];
+
+Type?: string;
+
+Parameters?: AWS.ResourceGroups.Group.ConfigurationParameter[];
+
+
+};
+
 
 }
+
 
 }
 
 export namespace ECR {
 
+
+export type ReplicationConfiguration = {
+
+
+ReplicationConfiguration: AWS.ECR.ReplicationConfiguration.ReplicationConfiguration;
+
+
+};
+
 export namespace ReplicationConfiguration {
 
-export type ReplicationConfiguration =  AWS.ECR.ReplicationConfiguration.ReplicationConfiguration;
 
-export type ReplicationDestination = { Region: string;
+export type ReplicationDestination = {
 
-RegistryId: string; };
 
-export type ReplicationRule = { Destinations: AWS.ECR.ReplicationConfiguration.ReplicationDestination[]; };
+Region: string;
 
-}
+RegistryId: string;
 
-export namespace Repository {
 
-export type LifecyclePolicy =  AWS.ECR.Repository.LifecyclePolicy;
+};
 
-export type ImageScanningConfiguration =  AWS.ECR.Repository.ImageScanningConfiguration;
+export type ReplicationRule = {
 
-export type EncryptionConfiguration =  AWS.ECR.Repository.EncryptionConfiguration;
 
-export type RepositoryName =  string;
+Destinations: AWS.ECR.ReplicationConfiguration.ReplicationDestination[];
 
-export type RepositoryPolicyText =  JSONString;
 
-export type Tags =  Tag[];
+};
 
-export type ImageTagMutability =  string;
 
 }
 
-export namespace RegistryPolicy {
+export type Repository = {
 
-export type PolicyText =  JSONString;
 
-}
+LifecyclePolicy?: AWS.ECR.Repository.LifecyclePolicy;
 
-export namespace PublicRepository {
+ImageScanningConfiguration?: AWS.ECR.Repository.ImageScanningConfiguration;
 
-export type RepositoryName =  string;
+EncryptionConfiguration?: AWS.ECR.Repository.EncryptionConfiguration;
 
-export type RepositoryPolicyText =  JSONString;
+RepositoryName?: string;
 
-export type RepositoryCatalogData =  JSONString;
+RepositoryPolicyText?: JSONString;
 
-export type Tags =  Tag[];
+Tags?: Tag[];
 
-}
+ImageTagMutability?: string;
+
+
+};
+
+export type RegistryPolicy = {
+
+
+PolicyText: JSONString;
+
+
+};
+
+export type PublicRepository = {
+
+
+RepositoryName?: string;
+
+RepositoryPolicyText?: JSONString;
+
+RepositoryCatalogData?: JSONString;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace EFS {
 
+
+export type AccessPoint = {
+
+
+RootDirectory?: AWS.EFS.AccessPoint.RootDirectory;
+
+PosixUser?: AWS.EFS.AccessPoint.PosixUser;
+
+ClientToken?: string;
+
+AccessPointTags?: AWS.EFS.AccessPoint.AccessPointTag[];
+
+FileSystemId: string;
+
+
+};
+
 export namespace AccessPoint {
 
-export type AccessPointTag = { Key?: string;
 
-Value?: string; };
+export type AccessPointTag = {
 
-export type RootDirectory =  AWS.EFS.AccessPoint.RootDirectory;
 
-export type CreationInfo = { OwnerUid: string;
+Key?: string;
+
+Value?: string;
+
+
+};
+
+export type CreationInfo = {
+
+
+OwnerUid: string;
 
 OwnerGid: string;
 
-Permissions: string; };
+Permissions: string;
 
-export type PosixUser =  AWS.EFS.AccessPoint.PosixUser;
 
-export type ClientToken =  string;
+};
 
-export type AccessPointTags =  AWS.EFS.AccessPoint.AccessPointTag[];
-
-export type FileSystemId =  string;
 
 }
+
+export type FileSystem = {
+
+
+BackupPolicy?: AWS.EFS.FileSystem.BackupPolicy;
+
+Encrypted?: boolean;
+
+FileSystemTags?: AWS.EFS.FileSystem.ElasticFileSystemTag[];
+
+KmsKeyId?: string;
+
+LifecyclePolicies?: AWS.EFS.FileSystem.LifecyclePolicy[];
+
+PerformanceMode?: string;
+
+ProvisionedThroughputInMibps?: number;
+
+ThroughputMode?: string;
+
+FileSystemPolicy?: JSONString;
+
+BypassPolicyLockoutSafetyCheck?: boolean;
+
+AvailabilityZoneName?: string;
+
+
+};
 
 export namespace FileSystem {
 
-export type ElasticFileSystemTag = { Key: string;
 
-Value: string; };
+export type ElasticFileSystemTag = {
 
-export type LifecyclePolicy = { TransitionToIA: string; };
 
-export type BackupPolicy =  AWS.EFS.FileSystem.BackupPolicy;
+Key: string;
 
-export type Encrypted =  boolean;
+Value: string;
 
-export type FileSystemTags =  AWS.EFS.FileSystem.ElasticFileSystemTag[];
 
-export type KmsKeyId =  string;
+};
 
-export type LifecyclePolicies =  AWS.EFS.FileSystem.LifecyclePolicy[];
+export type LifecyclePolicy = {
 
-export type PerformanceMode =  string;
 
-export type ProvisionedThroughputInMibps =  number;
+TransitionToIA: string;
 
-export type ThroughputMode =  string;
 
-export type FileSystemPolicy =  JSONString;
+};
 
-export type BypassPolicyLockoutSafetyCheck =  boolean;
-
-export type AvailabilityZoneName =  string;
 
 }
 
-export namespace MountTarget {
+export type MountTarget = {
 
-export type FileSystemId =  string;
 
-export type IpAddress =  string;
+FileSystemId: string;
 
-export type SecurityGroups =  string[];
+IpAddress?: string;
 
-export type SubnetId =  string;
+SecurityGroups: string[];
 
-}
+SubnetId: string;
+
+
+};
+
 
 }
 
 export namespace StepFunctions {
 
+
+export type Activity = {
+
+
+Tags?: AWS.StepFunctions.Activity.TagsEntry[];
+
+Name: string;
+
+
+};
+
 export namespace Activity {
 
-export type TagsEntry = { Value: string;
 
-Key: string; };
+export type TagsEntry = {
 
-export type Tags =  AWS.StepFunctions.Activity.TagsEntry[];
 
-export type Name =  string;
-
-}
-
-export namespace StateMachine {
-
-export type Definition =  AWS.StepFunctions.StateMachine.Definition;
-
-export type LogDestination = { CloudWatchLogsLogGroup?: AWS.StepFunctions.StateMachine.CloudWatchLogsLogGroup; };
-
-export type TagsEntry = { Key: string;
-
-Value: string; };
-
-export type LoggingConfiguration =  AWS.StepFunctions.StateMachine.LoggingConfiguration;
-
-export type S3Location = { Bucket: string;
+Value: string;
 
 Key: string;
 
-Version?: string; };
 
-export type CloudWatchLogsLogGroup = { LogGroupArn?: string; };
+};
 
-export type TracingConfiguration =  AWS.StepFunctions.StateMachine.TracingConfiguration;
-
-export type DefinitionString =  string;
-
-export type RoleArn =  string;
-
-export type StateMachineName =  string;
-
-export type StateMachineType =  string;
-
-export type DefinitionS3Location =  AWS.StepFunctions.StateMachine.S3Location;
-
-export type DefinitionSubstitutions =  Record<string, string>;
-
-export type Tags =  AWS.StepFunctions.StateMachine.TagsEntry[];
 
 }
+
+export type StateMachine = {
+
+
+Definition?: AWS.StepFunctions.StateMachine.Definition;
+
+LoggingConfiguration?: AWS.StepFunctions.StateMachine.LoggingConfiguration;
+
+TracingConfiguration?: AWS.StepFunctions.StateMachine.TracingConfiguration;
+
+DefinitionString?: string;
+
+RoleArn: string;
+
+StateMachineName?: string;
+
+StateMachineType?: string;
+
+DefinitionS3Location?: AWS.StepFunctions.StateMachine.S3Location;
+
+DefinitionSubstitutions?: Record<string, string>;
+
+Tags?: AWS.StepFunctions.StateMachine.TagsEntry[];
+
+
+};
+
+export namespace StateMachine {
+
+
+export type LogDestination = {
+
+
+CloudWatchLogsLogGroup?: AWS.StepFunctions.StateMachine.CloudWatchLogsLogGroup;
+
+
+};
+
+export type TagsEntry = {
+
+
+Key: string;
+
+Value: string;
+
+
+};
+
+export type S3Location = {
+
+
+Bucket: string;
+
+Key: string;
+
+Version?: string;
+
+
+};
+
+export type CloudWatchLogsLogGroup = {
+
+
+LogGroupArn?: string;
+
+
+};
+
+
+}
+
 
 }
 
 export namespace KinesisFirehose {
 
+
+export type DeliveryStream = {
+
+
+SplunkDestinationConfiguration?: AWS.KinesisFirehose.DeliveryStream.SplunkDestinationConfiguration;
+
+DeliveryStreamEncryptionConfigurationInput?: AWS.KinesisFirehose.DeliveryStream.DeliveryStreamEncryptionConfigurationInput;
+
+ElasticsearchDestinationConfiguration?: AWS.KinesisFirehose.DeliveryStream.ElasticsearchDestinationConfiguration;
+
+KinesisStreamSourceConfiguration?: AWS.KinesisFirehose.DeliveryStream.KinesisStreamSourceConfiguration;
+
+S3DestinationConfiguration?: AWS.KinesisFirehose.DeliveryStream.S3DestinationConfiguration;
+
+ExtendedS3DestinationConfiguration?: AWS.KinesisFirehose.DeliveryStream.ExtendedS3DestinationConfiguration;
+
+RedshiftDestinationConfiguration?: AWS.KinesisFirehose.DeliveryStream.RedshiftDestinationConfiguration;
+
+HttpEndpointDestinationConfiguration?: AWS.KinesisFirehose.DeliveryStream.HttpEndpointDestinationConfiguration;
+
+DeliveryStreamName?: string;
+
+DeliveryStreamType?: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace DeliveryStream {
 
-export type EncryptionConfiguration = { KMSEncryptionConfig?: AWS.KinesisFirehose.DeliveryStream.KMSEncryptionConfig;
 
-NoEncryptionConfig?: string; };
+export type EncryptionConfiguration = {
 
-export type InputFormatConfiguration = { Deserializer?: AWS.KinesisFirehose.DeliveryStream.Deserializer; };
 
-export type HiveJsonSerDe = { TimestampFormats?: string[]; };
+KMSEncryptionConfig?: AWS.KinesisFirehose.DeliveryStream.KMSEncryptionConfig;
 
-export type Processor = { Parameters?: AWS.KinesisFirehose.DeliveryStream.ProcessorParameter[];
+NoEncryptionConfig?: string;
 
-Type: string; };
 
-export type DataFormatConversionConfiguration = { Enabled?: boolean;
+};
+
+export type InputFormatConfiguration = {
+
+
+Deserializer?: AWS.KinesisFirehose.DeliveryStream.Deserializer;
+
+
+};
+
+export type HiveJsonSerDe = {
+
+
+TimestampFormats?: string[];
+
+
+};
+
+export type Processor = {
+
+
+Parameters?: AWS.KinesisFirehose.DeliveryStream.ProcessorParameter[];
+
+Type: string;
+
+
+};
+
+export type DataFormatConversionConfiguration = {
+
+
+Enabled?: boolean;
 
 InputFormatConfiguration?: AWS.KinesisFirehose.DeliveryStream.InputFormatConfiguration;
 
 OutputFormatConfiguration?: AWS.KinesisFirehose.DeliveryStream.OutputFormatConfiguration;
 
-SchemaConfiguration?: AWS.KinesisFirehose.DeliveryStream.SchemaConfiguration; };
+SchemaConfiguration?: AWS.KinesisFirehose.DeliveryStream.SchemaConfiguration;
 
-export type SchemaConfiguration = { CatalogId?: string;
+
+};
+
+export type SchemaConfiguration = {
+
+
+CatalogId?: string;
 
 DatabaseName?: string;
 
@@ -16782,37 +28282,79 @@ RoleARN?: string;
 
 TableName?: string;
 
-VersionId?: string; };
+VersionId?: string;
 
-export type SplunkRetryOptions = { DurationInSeconds?: number; };
 
-export type HttpEndpointRequestConfiguration = { ContentEncoding?: string;
+};
 
-CommonAttributes?: AWS.KinesisFirehose.DeliveryStream.HttpEndpointCommonAttribute[]; };
+export type SplunkRetryOptions = {
 
-export type HttpEndpointConfiguration = { Url: string;
+
+DurationInSeconds?: number;
+
+
+};
+
+export type HttpEndpointRequestConfiguration = {
+
+
+ContentEncoding?: string;
+
+CommonAttributes?: AWS.KinesisFirehose.DeliveryStream.HttpEndpointCommonAttribute[];
+
+
+};
+
+export type HttpEndpointConfiguration = {
+
+
+Url: string;
 
 AccessKey?: string;
 
-Name?: string; };
+Name?: string;
 
-export type Serializer = { OrcSerDe?: AWS.KinesisFirehose.DeliveryStream.OrcSerDe;
 
-ParquetSerDe?: AWS.KinesisFirehose.DeliveryStream.ParquetSerDe; };
+};
 
-export type CopyCommand = { CopyOptions?: string;
+export type Serializer = {
+
+
+OrcSerDe?: AWS.KinesisFirehose.DeliveryStream.OrcSerDe;
+
+ParquetSerDe?: AWS.KinesisFirehose.DeliveryStream.ParquetSerDe;
+
+
+};
+
+export type CopyCommand = {
+
+
+CopyOptions?: string;
 
 DataTableColumns?: string;
 
-DataTableName: string; };
+DataTableName: string;
 
-export type OpenXJsonSerDe = { CaseInsensitive?: boolean;
+
+};
+
+export type OpenXJsonSerDe = {
+
+
+CaseInsensitive?: boolean;
 
 ColumnToJsonKeyMappings?: Record<string, string>;
 
-ConvertDotsInJsonKeysToUnderscores?: boolean; };
+ConvertDotsInJsonKeysToUnderscores?: boolean;
 
-export type OrcSerDe = { BlockSizeBytes?: number;
+
+};
+
+export type OrcSerDe = {
+
+
+BlockSizeBytes?: number;
 
 BloomFilterColumns?: string[];
 
@@ -16830,53 +28372,117 @@ PaddingTolerance?: number;
 
 RowIndexStride?: number;
 
-StripeSizeBytes?: number; };
+StripeSizeBytes?: number;
 
-export type ElasticsearchBufferingHints = { IntervalInSeconds?: number;
 
-SizeInMBs?: number; };
+};
 
-export type SplunkDestinationConfiguration =  AWS.KinesisFirehose.DeliveryStream.SplunkDestinationConfiguration;
+export type ElasticsearchBufferingHints = {
 
-export type CloudWatchLoggingOptions = { Enabled?: boolean;
+
+IntervalInSeconds?: number;
+
+SizeInMBs?: number;
+
+
+};
+
+export type CloudWatchLoggingOptions = {
+
+
+Enabled?: boolean;
 
 LogGroupName?: string;
 
-LogStreamName?: string; };
+LogStreamName?: string;
 
-export type ProcessingConfiguration = { Enabled?: boolean;
 
-Processors?: AWS.KinesisFirehose.DeliveryStream.Processor[]; };
+};
 
-export type BufferingHints = { IntervalInSeconds?: number;
+export type ProcessingConfiguration = {
 
-SizeInMBs?: number; };
 
-export type ProcessorParameter = { ParameterName: string;
+Enabled?: boolean;
 
-ParameterValue: string; };
+Processors?: AWS.KinesisFirehose.DeliveryStream.Processor[];
 
-export type DeliveryStreamEncryptionConfigurationInput =  AWS.KinesisFirehose.DeliveryStream.DeliveryStreamEncryptionConfigurationInput;
 
-export type ElasticsearchRetryOptions = { DurationInSeconds?: number; };
+};
 
-export type KMSEncryptionConfig = { AWSKMSKeyARN: string; };
+export type BufferingHints = {
 
-export type OutputFormatConfiguration = { Serializer?: AWS.KinesisFirehose.DeliveryStream.Serializer; };
 
-export type ElasticsearchDestinationConfiguration =  AWS.KinesisFirehose.DeliveryStream.ElasticsearchDestinationConfiguration;
+IntervalInSeconds?: number;
 
-export type Deserializer = { HiveJsonSerDe?: AWS.KinesisFirehose.DeliveryStream.HiveJsonSerDe;
+SizeInMBs?: number;
 
-OpenXJsonSerDe?: AWS.KinesisFirehose.DeliveryStream.OpenXJsonSerDe; };
 
-export type KinesisStreamSourceConfiguration =  AWS.KinesisFirehose.DeliveryStream.KinesisStreamSourceConfiguration;
+};
 
-export type RedshiftRetryOptions = { DurationInSeconds?: number; };
+export type ProcessorParameter = {
 
-export type RetryOptions = { DurationInSeconds?: number; };
 
-export type ParquetSerDe = { BlockSizeBytes?: number;
+ParameterName: string;
+
+ParameterValue: string;
+
+
+};
+
+export type ElasticsearchRetryOptions = {
+
+
+DurationInSeconds?: number;
+
+
+};
+
+export type KMSEncryptionConfig = {
+
+
+AWSKMSKeyARN: string;
+
+
+};
+
+export type OutputFormatConfiguration = {
+
+
+Serializer?: AWS.KinesisFirehose.DeliveryStream.Serializer;
+
+
+};
+
+export type Deserializer = {
+
+
+HiveJsonSerDe?: AWS.KinesisFirehose.DeliveryStream.HiveJsonSerDe;
+
+OpenXJsonSerDe?: AWS.KinesisFirehose.DeliveryStream.OpenXJsonSerDe;
+
+
+};
+
+export type RedshiftRetryOptions = {
+
+
+DurationInSeconds?: number;
+
+
+};
+
+export type RetryOptions = {
+
+
+DurationInSeconds?: number;
+
+
+};
+
+export type ParquetSerDe = {
+
+
+BlockSizeBytes?: number;
 
 Compression?: string;
 
@@ -16886,263 +28492,361 @@ MaxPaddingBytes?: number;
 
 PageSizeBytes?: number;
 
-WriterVersion?: string; };
+WriterVersion?: string;
 
-export type S3DestinationConfiguration =  AWS.KinesisFirehose.DeliveryStream.S3DestinationConfiguration;
 
-export type VpcConfiguration = { RoleARN: string;
+};
+
+export type VpcConfiguration = {
+
+
+RoleARN: string;
 
 SubnetIds: string[];
 
-SecurityGroupIds: string[]; };
+SecurityGroupIds: string[];
 
-export type ExtendedS3DestinationConfiguration =  AWS.KinesisFirehose.DeliveryStream.ExtendedS3DestinationConfiguration;
 
-export type RedshiftDestinationConfiguration =  AWS.KinesisFirehose.DeliveryStream.RedshiftDestinationConfiguration;
+};
 
-export type HttpEndpointCommonAttribute = { AttributeName: string;
+export type HttpEndpointCommonAttribute = {
 
-AttributeValue: string; };
 
-export type HttpEndpointDestinationConfiguration =  AWS.KinesisFirehose.DeliveryStream.HttpEndpointDestinationConfiguration;
+AttributeName: string;
 
-export type DeliveryStreamName =  string;
+AttributeValue: string;
 
-export type DeliveryStreamType =  string;
 
-export type Tags =  Tag[];
+};
+
 
 }
+
 
 }
 
 export namespace AppStream {
 
+
+export type ImageBuilder = {
+
+
+VpcConfig?: AWS.AppStream.ImageBuilder.VpcConfig;
+
+DomainJoinInfo?: AWS.AppStream.ImageBuilder.DomainJoinInfo;
+
+Description?: string;
+
+EnableDefaultInternetAccess?: boolean;
+
+AppstreamAgentVersion?: string;
+
+Name: string;
+
+ImageName?: string;
+
+DisplayName?: string;
+
+IamRoleArn?: string;
+
+InstanceType: string;
+
+Tags?: Tag[];
+
+ImageArn?: string;
+
+AccessEndpoints?: AWS.AppStream.ImageBuilder.AccessEndpoint[];
+
+
+};
+
 export namespace ImageBuilder {
 
-export type VpcConfig =  AWS.AppStream.ImageBuilder.VpcConfig;
 
-export type AccessEndpoint = { EndpointType: string;
+export type AccessEndpoint = {
 
-VpceId: string; };
 
-export type DomainJoinInfo =  AWS.AppStream.ImageBuilder.DomainJoinInfo;
+EndpointType: string;
 
-export type Description =  string;
+VpceId: string;
 
-export type EnableDefaultInternetAccess =  boolean;
 
-export type AppstreamAgentVersion =  string;
+};
 
-export type Name =  string;
-
-export type ImageName =  string;
-
-export type DisplayName =  string;
-
-export type IamRoleArn =  string;
-
-export type InstanceType =  string;
-
-export type Tags =  Tag[];
-
-export type ImageArn =  string;
-
-export type AccessEndpoints =  AWS.AppStream.ImageBuilder.AccessEndpoint[];
 
 }
 
-export namespace Fleet {
+export type Fleet = {
 
-export type DomainJoinInfo =  AWS.AppStream.Fleet.DomainJoinInfo;
 
-export type VpcConfig =  AWS.AppStream.Fleet.VpcConfig;
+DomainJoinInfo?: AWS.AppStream.Fleet.DomainJoinInfo;
 
-export type ComputeCapacity =  AWS.AppStream.Fleet.ComputeCapacity;
+VpcConfig?: AWS.AppStream.Fleet.VpcConfig;
 
-export type Description =  string;
+ComputeCapacity: AWS.AppStream.Fleet.ComputeCapacity;
 
-export type FleetType =  string;
+Description?: string;
 
-export type EnableDefaultInternetAccess =  boolean;
+FleetType?: string;
 
-export type Name =  string;
+EnableDefaultInternetAccess?: boolean;
 
-export type ImageName =  string;
+Name: string;
 
-export type MaxUserDurationInSeconds =  number;
+ImageName?: string;
 
-export type IdleDisconnectTimeoutInSeconds =  number;
+MaxUserDurationInSeconds?: number;
 
-export type DisconnectTimeoutInSeconds =  number;
+IdleDisconnectTimeoutInSeconds?: number;
 
-export type DisplayName =  string;
+DisconnectTimeoutInSeconds?: number;
 
-export type StreamView =  string;
+DisplayName?: string;
 
-export type IamRoleArn =  string;
+StreamView?: string;
 
-export type InstanceType =  string;
+IamRoleArn?: string;
 
-export type Tags =  Tag[];
+InstanceType: string;
 
-export type ImageArn =  string;
+Tags?: Tag[];
 
-}
+ImageArn?: string;
+
+
+};
+
+export type Stack = {
+
+
+ApplicationSettings?: AWS.AppStream.Stack.ApplicationSettings;
+
+Description?: string;
+
+StorageConnectors?: AWS.AppStream.Stack.StorageConnector[];
+
+DeleteStorageConnectors?: boolean;
+
+EmbedHostDomains?: string[];
+
+UserSettings?: AWS.AppStream.Stack.UserSetting[];
+
+AttributesToDelete?: string[];
+
+RedirectURL?: string;
+
+Name?: string;
+
+FeedbackURL?: string;
+
+DisplayName?: string;
+
+Tags?: Tag[];
+
+AccessEndpoints?: AWS.AppStream.Stack.AccessEndpoint[];
+
+
+};
 
 export namespace Stack {
 
-export type AccessEndpoint = { EndpointType: string;
 
-VpceId: string; };
+export type AccessEndpoint = {
 
-export type UserSetting = { Action: string;
 
-Permission: string; };
+EndpointType: string;
 
-export type ApplicationSettings =  AWS.AppStream.Stack.ApplicationSettings;
+VpceId: string;
 
-export type StorageConnector = { Domains?: string[];
+
+};
+
+export type UserSetting = {
+
+
+Action: string;
+
+Permission: string;
+
+
+};
+
+export type StorageConnector = {
+
+
+Domains?: string[];
 
 ResourceIdentifier?: string;
 
-ConnectorType: string; };
+ConnectorType: string;
 
-export type Description =  string;
 
-export type StorageConnectors =  AWS.AppStream.Stack.StorageConnector[];
+};
 
-export type DeleteStorageConnectors =  boolean;
-
-export type EmbedHostDomains =  string[];
-
-export type UserSettings =  AWS.AppStream.Stack.UserSetting[];
-
-export type AttributesToDelete =  string[];
-
-export type RedirectURL =  string;
-
-export type Name =  string;
-
-export type FeedbackURL =  string;
-
-export type DisplayName =  string;
-
-export type Tags =  Tag[];
-
-export type AccessEndpoints =  AWS.AppStream.Stack.AccessEndpoint[];
 
 }
 
-export namespace DirectoryConfig {
+export type DirectoryConfig = {
 
-export type ServiceAccountCredentials =  AWS.AppStream.DirectoryConfig.ServiceAccountCredentials;
 
-export type OrganizationalUnitDistinguishedNames =  string[];
+ServiceAccountCredentials: AWS.AppStream.DirectoryConfig.ServiceAccountCredentials;
 
-export type DirectoryName =  string;
+OrganizationalUnitDistinguishedNames: string[];
 
-}
+DirectoryName: string;
 
-export namespace User {
 
-export type UserName =  string;
+};
 
-export type FirstName =  string;
+export type User = {
 
-export type MessageAction =  string;
 
-export type LastName =  string;
+UserName: string;
 
-export type AuthenticationType =  string;
+FirstName?: string;
 
-}
+MessageAction?: string;
 
-export namespace StackUserAssociation {
+LastName?: string;
 
-export type SendEmailNotification =  boolean;
+AuthenticationType: string;
 
-export type UserName =  string;
 
-export type StackName =  string;
+};
 
-export type AuthenticationType =  string;
+export type StackUserAssociation = {
 
-}
 
-export namespace StackFleetAssociation {
+SendEmailNotification?: boolean;
 
-export type FleetName =  string;
+UserName: string;
 
-export type StackName =  string;
+StackName: string;
 
-}
+AuthenticationType: string;
+
+
+};
+
+export type StackFleetAssociation = {
+
+
+FleetName: string;
+
+StackName: string;
+
+
+};
+
 
 }
 
 export namespace ElasticLoadBalancing {
 
-export namespace LoadBalancer {
 
-export type AccessLoggingPolicy =  AWS.ElasticLoadBalancing.LoadBalancer.AccessLoggingPolicy;
+export type LoadBalancer = {
 
-export type HealthCheck =  AWS.ElasticLoadBalancing.LoadBalancer.HealthCheck;
 
-export type ConnectionSettings =  AWS.ElasticLoadBalancing.LoadBalancer.ConnectionSettings;
+AccessLoggingPolicy?: AWS.ElasticLoadBalancing.LoadBalancer.AccessLoggingPolicy;
 
-export type ConnectionDrainingPolicy =  AWS.ElasticLoadBalancing.LoadBalancer.ConnectionDrainingPolicy;
+HealthCheck?: AWS.ElasticLoadBalancing.LoadBalancer.HealthCheck;
 
-export type AppCookieStickinessPolicy =  AWS.ElasticLoadBalancing.LoadBalancer.AppCookieStickinessPolicy[];
+ConnectionSettings?: AWS.ElasticLoadBalancing.LoadBalancer.ConnectionSettings;
 
-export type LBCookieStickinessPolicy =  AWS.ElasticLoadBalancing.LoadBalancer.LBCookieStickinessPolicy[];
+ConnectionDrainingPolicy?: AWS.ElasticLoadBalancing.LoadBalancer.ConnectionDrainingPolicy;
 
-export type Listeners =  AWS.ElasticLoadBalancing.LoadBalancer.Listeners[];
+AppCookieStickinessPolicy?: AWS.ElasticLoadBalancing.LoadBalancer.AppCookieStickinessPolicy[];
 
-export type Policies =  AWS.ElasticLoadBalancing.LoadBalancer.Policies[];
+LBCookieStickinessPolicy?: AWS.ElasticLoadBalancing.LoadBalancer.LBCookieStickinessPolicy[];
 
-export type AvailabilityZones =  string[];
+Listeners: AWS.ElasticLoadBalancing.LoadBalancer.Listeners[];
 
-export type CrossZone =  boolean;
+Policies?: AWS.ElasticLoadBalancing.LoadBalancer.Policies[];
 
-export type Instances =  string[];
+AvailabilityZones?: string[];
 
-export type LoadBalancerName =  string;
+CrossZone?: boolean;
 
-export type Scheme =  string;
+Instances?: string[];
 
-export type SecurityGroups =  string[];
+LoadBalancerName?: string;
 
-export type Subnets =  string[];
+Scheme?: string;
 
-export type Tags =  Tag[];
+SecurityGroups?: string[];
 
-}
+Subnets?: string[];
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace Backup {
 
+
+export type BackupPlan = {
+
+
+BackupPlan: AWS.Backup.BackupPlan.BackupPlanResourceType;
+
+BackupPlanTags?: Record<string, string>;
+
+
+};
+
 export namespace BackupPlan {
 
-export type CopyActionResourceType = { Lifecycle?: AWS.Backup.BackupPlan.LifecycleResourceType;
 
-DestinationBackupVaultArn: string; };
+export type CopyActionResourceType = {
 
-export type BackupPlanResourceType = { BackupPlanName: string;
+
+Lifecycle?: AWS.Backup.BackupPlan.LifecycleResourceType;
+
+DestinationBackupVaultArn: string;
+
+
+};
+
+export type BackupPlanResourceType = {
+
+
+BackupPlanName: string;
 
 AdvancedBackupSettings?: AWS.Backup.BackupPlan.AdvancedBackupSettingResourceType[];
 
-BackupPlanRule: AWS.Backup.BackupPlan.BackupRuleResourceType[]; };
+BackupPlanRule: AWS.Backup.BackupPlan.BackupRuleResourceType[];
 
-export type AdvancedBackupSettingResourceType = { BackupOptions: JSONString;
 
-ResourceType: string; };
+};
 
-export type LifecycleResourceType = { MoveToColdStorageAfterDays?: number;
+export type AdvancedBackupSettingResourceType = {
 
-DeleteAfterDays?: number; };
 
-export type BackupRuleResourceType = { RuleName: string;
+BackupOptions: JSONString;
+
+ResourceType: string;
+
+
+};
+
+export type LifecycleResourceType = {
+
+
+MoveToColdStorageAfterDays?: number;
+
+DeleteAfterDays?: number;
+
+
+};
+
+export type BackupRuleResourceType = {
+
+
+RuleName: string;
 
 TargetBackupVault: string;
 
@@ -17158,283 +28862,459 @@ CopyActions?: AWS.Backup.BackupPlan.CopyActionResourceType[];
 
 Lifecycle?: AWS.Backup.BackupPlan.LifecycleResourceType;
 
-EnableContinuousBackup?: boolean; };
+EnableContinuousBackup?: boolean;
 
-export type BackupPlan =  AWS.Backup.BackupPlan.BackupPlanResourceType;
 
-export type BackupPlanTags =  Record<string, string>;
+};
+
 
 }
 
+export type BackupSelection = {
+
+
+BackupPlanId: string;
+
+BackupSelection: AWS.Backup.BackupSelection.BackupSelectionResourceType;
+
+
+};
+
 export namespace BackupSelection {
 
-export type ConditionResourceType = { ConditionKey: string;
+
+export type ConditionResourceType = {
+
+
+ConditionKey: string;
 
 ConditionValue: string;
 
-ConditionType: string; };
+ConditionType: string;
 
-export type BackupSelectionResourceType = { IamRoleArn: string;
+
+};
+
+export type BackupSelectionResourceType = {
+
+
+IamRoleArn: string;
 
 ListOfTags?: AWS.Backup.BackupSelection.ConditionResourceType[];
 
 Resources?: string[];
 
-SelectionName: string; };
+SelectionName: string;
 
-export type BackupPlanId =  string;
 
-export type BackupSelection =  AWS.Backup.BackupSelection.BackupSelectionResourceType;
+};
+
 
 }
+
+export type BackupVault = {
+
+
+AccessPolicy?: JSONString;
+
+BackupVaultName: string;
+
+BackupVaultTags?: Record<string, string>;
+
+EncryptionKeyArn?: string;
+
+Notifications?: AWS.Backup.BackupVault.NotificationObjectType;
+
+
+};
 
 export namespace BackupVault {
 
-export type NotificationObjectType = { BackupVaultEvents: string[];
 
-SNSTopicArn: string; };
+export type NotificationObjectType = {
 
-export type AccessPolicy =  JSONString;
 
-export type BackupVaultName =  string;
+BackupVaultEvents: string[];
 
-export type BackupVaultTags =  Record<string, string>;
+SNSTopicArn: string;
 
-export type EncryptionKeyArn =  string;
 
-export type Notifications =  AWS.Backup.BackupVault.NotificationObjectType;
+};
+
 
 }
+
 
 }
 
 export namespace GameLift {
 
+
+export type GameServerGroup = {
+
+
+LaunchTemplate: AWS.GameLift.GameServerGroup.LaunchTemplate;
+
+AutoScalingPolicy?: AWS.GameLift.GameServerGroup.AutoScalingPolicy;
+
+BalancingStrategy?: string;
+
+DeleteOption?: string;
+
+GameServerGroupName: string;
+
+GameServerProtectionPolicy?: string;
+
+InstanceDefinitions: AWS.GameLift.GameServerGroup.InstanceDefinition[];
+
+MaxSize?: number;
+
+MinSize?: number;
+
+RoleArn: string;
+
+Tags?: Tag[];
+
+VpcSubnets?: string[];
+
+
+};
+
 export namespace GameServerGroup {
 
-export type TargetTrackingConfiguration = { TargetValue: number; };
 
-export type LaunchTemplate =  AWS.GameLift.GameServerGroup.LaunchTemplate;
+export type TargetTrackingConfiguration = {
 
-export type AutoScalingPolicy =  AWS.GameLift.GameServerGroup.AutoScalingPolicy;
 
-export type InstanceDefinition = { InstanceType: string;
+TargetValue: number;
 
-WeightedCapacity?: string; };
 
-export type BalancingStrategy =  string;
+};
 
-export type DeleteOption =  string;
+export type InstanceDefinition = {
 
-export type GameServerGroupName =  string;
 
-export type GameServerProtectionPolicy =  string;
+InstanceType: string;
 
-export type InstanceDefinitions =  AWS.GameLift.GameServerGroup.InstanceDefinition[];
+WeightedCapacity?: string;
 
-export type MaxSize =  number;
 
-export type MinSize =  number;
+};
 
-export type RoleArn =  string;
-
-export type Tags =  Tag[];
-
-export type VpcSubnets =  string[];
 
 }
 
+export type Fleet = {
+
+
+CertificateConfiguration?: AWS.GameLift.Fleet.CertificateConfiguration;
+
+ResourceCreationLimitPolicy?: AWS.GameLift.Fleet.ResourceCreationLimitPolicy;
+
+RuntimeConfiguration?: AWS.GameLift.Fleet.RuntimeConfiguration;
+
+Description?: string;
+
+DesiredEC2Instances?: number;
+
+EC2InboundPermissions?: AWS.GameLift.Fleet.IpPermission[];
+
+EC2InstanceType?: string;
+
+FleetType?: string;
+
+InstanceRoleARN?: string;
+
+Locations?: AWS.GameLift.Fleet.LocationConfiguration[];
+
+MaxSize?: number;
+
+MetricGroups?: string[];
+
+MinSize?: number;
+
+Name?: string;
+
+NewGameSessionProtectionPolicy?: string;
+
+PeerVpcAwsAccountId?: string;
+
+PeerVpcId?: string;
+
+BuildId?: string;
+
+ScriptId?: string;
+
+
+};
+
 export namespace Fleet {
 
-export type LocationCapacity = { DesiredEC2Instances: number;
+
+export type LocationCapacity = {
+
+
+DesiredEC2Instances: number;
 
 MinSize: number;
 
-MaxSize: number; };
+MaxSize: number;
 
-export type CertificateConfiguration =  AWS.GameLift.Fleet.CertificateConfiguration;
 
-export type LocationConfiguration = { Location: string;
+};
 
-LocationCapacity?: AWS.GameLift.Fleet.LocationCapacity; };
+export type LocationConfiguration = {
 
-export type IpPermission = { FromPort: number;
+
+Location: string;
+
+LocationCapacity?: AWS.GameLift.Fleet.LocationCapacity;
+
+
+};
+
+export type IpPermission = {
+
+
+FromPort: number;
 
 IpRange: string;
 
 Protocol: string;
 
-ToPort: number; };
+ToPort: number;
 
-export type ServerProcess = { ConcurrentExecutions: number;
+
+};
+
+export type ServerProcess = {
+
+
+ConcurrentExecutions: number;
 
 LaunchPath: string;
 
-Parameters?: string; };
+Parameters?: string;
 
-export type ResourceCreationLimitPolicy =  AWS.GameLift.Fleet.ResourceCreationLimitPolicy;
 
-export type RuntimeConfiguration =  AWS.GameLift.Fleet.RuntimeConfiguration;
+};
 
-export type Description =  string;
-
-export type DesiredEC2Instances =  number;
-
-export type EC2InboundPermissions =  AWS.GameLift.Fleet.IpPermission[];
-
-export type EC2InstanceType =  string;
-
-export type FleetType =  string;
-
-export type InstanceRoleARN =  string;
-
-export type Locations =  AWS.GameLift.Fleet.LocationConfiguration[];
-
-export type MaxSize =  number;
-
-export type MetricGroups =  string[];
-
-export type MinSize =  number;
-
-export type Name =  string;
-
-export type NewGameSessionProtectionPolicy =  string;
-
-export type PeerVpcAwsAccountId =  string;
-
-export type PeerVpcId =  string;
-
-export type BuildId =  string;
-
-export type ScriptId =  string;
 
 }
+
+export type Build = {
+
+
+Name?: string;
+
+OperatingSystem?: string;
+
+StorageLocation?: AWS.GameLift.Build.S3Location;
+
+Version?: string;
+
+
+};
 
 export namespace Build {
 
-export type S3Location = { Bucket: string;
 
-Key: string;
+export type S3Location = {
 
-ObjectVersion?: string;
-
-RoleArn: string; };
-
-export type Name =  string;
-
-export type OperatingSystem =  string;
-
-export type StorageLocation =  AWS.GameLift.Build.S3Location;
-
-export type Version =  string;
-
-}
-
-export namespace Alias {
-
-export type RoutingStrategy =  AWS.GameLift.Alias.RoutingStrategy;
-
-export type Description =  string;
-
-export type Name =  string;
-
-}
-
-export namespace Script {
-
-export type S3Location = { ObjectVersion?: string;
 
 Bucket: string;
 
 Key: string;
 
-RoleArn: string; };
+ObjectVersion?: string;
 
-export type Version =  string;
+RoleArn: string;
 
-export type StorageLocation =  AWS.GameLift.Script.S3Location;
 
-export type Name =  string;
+};
+
 
 }
+
+export type Alias = {
+
+
+RoutingStrategy: AWS.GameLift.Alias.RoutingStrategy;
+
+Description?: string;
+
+Name: string;
+
+
+};
+
+export type Script = {
+
+
+Version?: string;
+
+StorageLocation: AWS.GameLift.Script.S3Location;
+
+Name?: string;
+
+
+};
+
+export namespace Script {
+
+
+export type S3Location = {
+
+
+ObjectVersion?: string;
+
+Bucket: string;
+
+Key: string;
+
+RoleArn: string;
+
+
+};
+
+
+}
+
+export type GameSessionQueue = {
+
+
+FilterConfiguration?: AWS.GameLift.GameSessionQueue.FilterConfiguration;
+
+PriorityConfiguration?: AWS.GameLift.GameSessionQueue.PriorityConfiguration;
+
+TimeoutInSeconds?: number;
+
+PlayerLatencyPolicies?: AWS.GameLift.GameSessionQueue.PlayerLatencyPolicy[];
+
+Destinations?: AWS.GameLift.GameSessionQueue.Destination[];
+
+NotificationTarget?: string;
+
+CustomEventData?: string;
+
+Name: string;
+
+
+};
 
 export namespace GameSessionQueue {
 
-export type PlayerLatencyPolicy = { PolicyDurationSeconds?: number;
 
-MaximumIndividualPlayerLatencyMilliseconds?: number; };
+export type PlayerLatencyPolicy = {
 
-export type Destination = { DestinationArn?: string; };
 
-export type FilterConfiguration =  AWS.GameLift.GameSessionQueue.FilterConfiguration;
+PolicyDurationSeconds?: number;
 
-export type PriorityConfiguration =  AWS.GameLift.GameSessionQueue.PriorityConfiguration;
+MaximumIndividualPlayerLatencyMilliseconds?: number;
 
-export type TimeoutInSeconds =  number;
 
-export type PlayerLatencyPolicies =  AWS.GameLift.GameSessionQueue.PlayerLatencyPolicy[];
+};
 
-export type Destinations =  AWS.GameLift.GameSessionQueue.Destination[];
+export type Destination = {
 
-export type NotificationTarget =  string;
 
-export type CustomEventData =  string;
+DestinationArn?: string;
 
-export type Name =  string;
+
+};
+
 
 }
+
+export type MatchmakingConfiguration = {
+
+
+GameProperties?: AWS.GameLift.MatchmakingConfiguration.GameProperty[];
+
+GameSessionData?: string;
+
+Description?: string;
+
+AcceptanceTimeoutSeconds?: number;
+
+NotificationTarget?: string;
+
+CustomEventData?: string;
+
+Name: string;
+
+AdditionalPlayerCount?: number;
+
+BackfillMode?: string;
+
+RequestTimeoutSeconds: number;
+
+AcceptanceRequired: boolean;
+
+FlexMatchMode?: string;
+
+RuleSetName: string;
+
+GameSessionQueueArns?: string[];
+
+
+};
 
 export namespace MatchmakingConfiguration {
 
-export type GameProperty = { Value: string;
 
-Key: string; };
+export type GameProperty = {
 
-export type GameProperties =  AWS.GameLift.MatchmakingConfiguration.GameProperty[];
 
-export type GameSessionData =  string;
+Value: string;
 
-export type Description =  string;
+Key: string;
 
-export type AcceptanceTimeoutSeconds =  number;
 
-export type NotificationTarget =  string;
+};
 
-export type CustomEventData =  string;
-
-export type Name =  string;
-
-export type AdditionalPlayerCount =  number;
-
-export type BackfillMode =  string;
-
-export type RequestTimeoutSeconds =  number;
-
-export type AcceptanceRequired =  boolean;
-
-export type FlexMatchMode =  string;
-
-export type RuleSetName =  string;
-
-export type GameSessionQueueArns =  string[];
 
 }
 
-export namespace MatchmakingRuleSet {
+export type MatchmakingRuleSet = {
 
-export type RuleSetBody =  string;
 
-export type Name =  string;
+RuleSetBody: string;
 
-}
+Name: string;
+
+
+};
+
 
 }
 
 export namespace RDS {
 
+
+export type DBProxyTargetGroup = {
+
+
+DBProxyName: string;
+
+TargetGroupName: string;
+
+ConnectionPoolConfigurationInfo?: AWS.RDS.DBProxyTargetGroup.ConnectionPoolConfigurationInfoFormat;
+
+DBInstanceIdentifiers?: string[];
+
+DBClusterIdentifiers?: string[];
+
+
+};
+
 export namespace DBProxyTargetGroup {
 
-export type ConnectionPoolConfigurationInfoFormat = { MaxConnectionsPercent?: number;
+
+export type ConnectionPoolConfigurationInfoFormat = {
+
+
+MaxConnectionsPercent?: number;
 
 MaxIdleConnectionsPercent?: number;
 
@@ -17442,237 +29322,315 @@ ConnectionBorrowTimeout?: number;
 
 SessionPinningFilters?: string[];
 
-InitQuery?: string; };
+InitQuery?: string;
 
-export type DBProxyName =  string;
 
-export type TargetGroupName =  string;
+};
 
-export type ConnectionPoolConfigurationInfo =  AWS.RDS.DBProxyTargetGroup.ConnectionPoolConfigurationInfoFormat;
-
-export type DBInstanceIdentifiers =  string[];
-
-export type DBClusterIdentifiers =  string[];
 
 }
+
+export type DBInstance = {
+
+
+AllocatedStorage?: string;
+
+AllowMajorVersionUpgrade?: boolean;
+
+AssociatedRoles?: AWS.RDS.DBInstance.DBInstanceRole[];
+
+AutoMinorVersionUpgrade?: boolean;
+
+AvailabilityZone?: string;
+
+BackupRetentionPeriod?: number;
+
+CACertificateIdentifier?: string;
+
+CharacterSetName?: string;
+
+CopyTagsToSnapshot?: boolean;
+
+DBClusterIdentifier?: string;
+
+DBInstanceClass: string;
+
+DBInstanceIdentifier?: string;
+
+DBName?: string;
+
+DBParameterGroupName?: string;
+
+DBSecurityGroups?: string[];
+
+DBSnapshotIdentifier?: string;
+
+DBSubnetGroupName?: string;
+
+DeleteAutomatedBackups?: boolean;
+
+DeletionProtection?: boolean;
+
+Domain?: string;
+
+DomainIAMRoleName?: string;
+
+EnableCloudwatchLogsExports?: string[];
+
+EnableIAMDatabaseAuthentication?: boolean;
+
+EnablePerformanceInsights?: boolean;
+
+Engine?: string;
+
+EngineVersion?: string;
+
+Iops?: number;
+
+KmsKeyId?: string;
+
+LicenseModel?: string;
+
+MasterUserPassword?: string;
+
+MasterUsername?: string;
+
+MaxAllocatedStorage?: number;
+
+MonitoringInterval?: number;
+
+MonitoringRoleArn?: string;
+
+MultiAZ?: boolean;
+
+OptionGroupName?: string;
+
+PerformanceInsightsKMSKeyId?: string;
+
+PerformanceInsightsRetentionPeriod?: number;
+
+Port?: string;
+
+PreferredBackupWindow?: string;
+
+PreferredMaintenanceWindow?: string;
+
+ProcessorFeatures?: AWS.RDS.DBInstance.ProcessorFeature[];
+
+PromotionTier?: number;
+
+PubliclyAccessible?: boolean;
+
+SourceDBInstanceIdentifier?: string;
+
+SourceRegion?: string;
+
+StorageEncrypted?: boolean;
+
+StorageType?: string;
+
+Tags?: Tag[];
+
+Timezone?: string;
+
+UseDefaultProcessorFeatures?: boolean;
+
+VPCSecurityGroups?: string[];
+
+
+};
 
 export namespace DBInstance {
 
-export type DBInstanceRole = { FeatureName: string;
 
-RoleArn: string; };
+export type DBInstanceRole = {
 
-export type ProcessorFeature = { Name?: string;
 
-Value?: string; };
+FeatureName: string;
 
-export type AllocatedStorage =  string;
+RoleArn: string;
 
-export type AllowMajorVersionUpgrade =  boolean;
 
-export type AssociatedRoles =  AWS.RDS.DBInstance.DBInstanceRole[];
+};
 
-export type AutoMinorVersionUpgrade =  boolean;
+export type ProcessorFeature = {
 
-export type AvailabilityZone =  string;
 
-export type BackupRetentionPeriod =  number;
+Name?: string;
 
-export type CACertificateIdentifier =  string;
+Value?: string;
 
-export type CharacterSetName =  string;
 
-export type CopyTagsToSnapshot =  boolean;
+};
 
-export type DBClusterIdentifier =  string;
-
-export type DBInstanceClass =  string;
-
-export type DBInstanceIdentifier =  string;
-
-export type DBName =  string;
-
-export type DBParameterGroupName =  string;
-
-export type DBSecurityGroups =  string[];
-
-export type DBSnapshotIdentifier =  string;
-
-export type DBSubnetGroupName =  string;
-
-export type DeleteAutomatedBackups =  boolean;
-
-export type DeletionProtection =  boolean;
-
-export type Domain =  string;
-
-export type DomainIAMRoleName =  string;
-
-export type EnableCloudwatchLogsExports =  string[];
-
-export type EnableIAMDatabaseAuthentication =  boolean;
-
-export type EnablePerformanceInsights =  boolean;
-
-export type Engine =  string;
-
-export type EngineVersion =  string;
-
-export type Iops =  number;
-
-export type KmsKeyId =  string;
-
-export type LicenseModel =  string;
-
-export type MasterUserPassword =  string;
-
-export type MasterUsername =  string;
-
-export type MaxAllocatedStorage =  number;
-
-export type MonitoringInterval =  number;
-
-export type MonitoringRoleArn =  string;
-
-export type MultiAZ =  boolean;
-
-export type OptionGroupName =  string;
-
-export type PerformanceInsightsKMSKeyId =  string;
-
-export type PerformanceInsightsRetentionPeriod =  number;
-
-export type Port =  string;
-
-export type PreferredBackupWindow =  string;
-
-export type PreferredMaintenanceWindow =  string;
-
-export type ProcessorFeatures =  AWS.RDS.DBInstance.ProcessorFeature[];
-
-export type PromotionTier =  number;
-
-export type PubliclyAccessible =  boolean;
-
-export type SourceDBInstanceIdentifier =  string;
-
-export type SourceRegion =  string;
-
-export type StorageEncrypted =  boolean;
-
-export type StorageType =  string;
-
-export type Tags =  Tag[];
-
-export type Timezone =  string;
-
-export type UseDefaultProcessorFeatures =  boolean;
-
-export type VPCSecurityGroups =  string[];
 
 }
+
+export type DBCluster = {
+
+
+ScalingConfiguration?: AWS.RDS.DBCluster.ScalingConfiguration;
+
+AssociatedRoles?: AWS.RDS.DBCluster.DBClusterRole[];
+
+AvailabilityZones?: string[];
+
+BacktrackWindow?: number;
+
+BackupRetentionPeriod?: number;
+
+CopyTagsToSnapshot?: boolean;
+
+DBClusterIdentifier?: string;
+
+DBClusterParameterGroupName?: string;
+
+DBSubnetGroupName?: string;
+
+DatabaseName?: string;
+
+DeletionProtection?: boolean;
+
+EnableCloudwatchLogsExports?: string[];
+
+EnableHttpEndpoint?: boolean;
+
+EnableIAMDatabaseAuthentication?: boolean;
+
+Engine: string;
+
+EngineMode?: string;
+
+EngineVersion?: string;
+
+GlobalClusterIdentifier?: string;
+
+KmsKeyId?: string;
+
+MasterUserPassword?: string;
+
+MasterUsername?: string;
+
+Port?: number;
+
+PreferredBackupWindow?: string;
+
+PreferredMaintenanceWindow?: string;
+
+ReplicationSourceIdentifier?: string;
+
+RestoreType?: string;
+
+SnapshotIdentifier?: string;
+
+SourceDBClusterIdentifier?: string;
+
+SourceRegion?: string;
+
+StorageEncrypted?: boolean;
+
+Tags?: Tag[];
+
+UseLatestRestorableTime?: boolean;
+
+VpcSecurityGroupIds?: string[];
+
+
+};
 
 export namespace DBCluster {
 
-export type ScalingConfiguration =  AWS.RDS.DBCluster.ScalingConfiguration;
 
-export type DBClusterRole = { FeatureName?: string;
+export type DBClusterRole = {
 
-RoleArn: string; };
 
-export type AssociatedRoles =  AWS.RDS.DBCluster.DBClusterRole[];
+FeatureName?: string;
 
-export type AvailabilityZones =  string[];
+RoleArn: string;
 
-export type BacktrackWindow =  number;
 
-export type BackupRetentionPeriod =  number;
+};
 
-export type CopyTagsToSnapshot =  boolean;
-
-export type DBClusterIdentifier =  string;
-
-export type DBClusterParameterGroupName =  string;
-
-export type DBSubnetGroupName =  string;
-
-export type DatabaseName =  string;
-
-export type DeletionProtection =  boolean;
-
-export type EnableCloudwatchLogsExports =  string[];
-
-export type EnableHttpEndpoint =  boolean;
-
-export type EnableIAMDatabaseAuthentication =  boolean;
-
-export type Engine =  string;
-
-export type EngineMode =  string;
-
-export type EngineVersion =  string;
-
-export type GlobalClusterIdentifier =  string;
-
-export type KmsKeyId =  string;
-
-export type MasterUserPassword =  string;
-
-export type MasterUsername =  string;
-
-export type Port =  number;
-
-export type PreferredBackupWindow =  string;
-
-export type PreferredMaintenanceWindow =  string;
-
-export type ReplicationSourceIdentifier =  string;
-
-export type RestoreType =  string;
-
-export type SnapshotIdentifier =  string;
-
-export type SourceDBClusterIdentifier =  string;
-
-export type SourceRegion =  string;
-
-export type StorageEncrypted =  boolean;
-
-export type Tags =  Tag[];
-
-export type UseLatestRestorableTime =  boolean;
-
-export type VpcSecurityGroupIds =  string[];
 
 }
 
+export type DBSecurityGroup = {
+
+
+DBSecurityGroupIngress: AWS.RDS.DBSecurityGroup.Ingress[];
+
+EC2VpcId?: string;
+
+GroupDescription: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace DBSecurityGroup {
 
-export type Ingress = { CIDRIP?: string;
+
+export type Ingress = {
+
+
+CIDRIP?: string;
 
 EC2SecurityGroupId?: string;
 
 EC2SecurityGroupName?: string;
 
-EC2SecurityGroupOwnerId?: string; };
+EC2SecurityGroupOwnerId?: string;
 
-export type DBSecurityGroupIngress =  AWS.RDS.DBSecurityGroup.Ingress[];
 
-export type EC2VpcId =  string;
+};
 
-export type GroupDescription =  string;
-
-export type Tags =  Tag[];
 
 }
 
+export type DBProxy = {
+
+
+Auth: AWS.RDS.DBProxy.AuthFormat[];
+
+DBProxyName: string;
+
+DebugLogging?: boolean;
+
+EngineFamily: string;
+
+IdleClientTimeout?: number;
+
+RequireTLS?: boolean;
+
+RoleArn: string;
+
+Tags?: AWS.RDS.DBProxy.TagFormat[];
+
+VpcSecurityGroupIds?: string[];
+
+VpcSubnetIds: string[];
+
+
+};
+
 export namespace DBProxy {
 
-export type TagFormat = { Key?: string;
 
-Value?: string; };
+export type TagFormat = {
 
-export type AuthFormat = { AuthScheme?: string;
+
+Key?: string;
+
+Value?: string;
+
+
+};
+
+export type AuthFormat = {
+
+
+AuthScheme?: string;
 
 Description?: string;
 
@@ -17680,57 +29638,81 @@ IAMAuth?: string;
 
 SecretArn?: string;
 
-UserName?: string; };
+UserName?: string;
 
-export type Auth =  AWS.RDS.DBProxy.AuthFormat[];
 
-export type DBProxyName =  string;
+};
 
-export type DebugLogging =  boolean;
-
-export type EngineFamily =  string;
-
-export type IdleClientTimeout =  number;
-
-export type RequireTLS =  boolean;
-
-export type RoleArn =  string;
-
-export type Tags =  AWS.RDS.DBProxy.TagFormat[];
-
-export type VpcSecurityGroupIds =  string[];
-
-export type VpcSubnetIds =  string[];
 
 }
+
+export type DBProxyEndpoint = {
+
+
+DBProxyEndpointName: string;
+
+DBProxyName: string;
+
+VpcSecurityGroupIds?: string[];
+
+VpcSubnetIds: string[];
+
+TargetRole?: string;
+
+Tags?: AWS.RDS.DBProxyEndpoint.TagFormat[];
+
+
+};
 
 export namespace DBProxyEndpoint {
 
-export type TagFormat = { Key?: string;
 
-Value?: string; };
+export type TagFormat = {
 
-export type DBProxyEndpointName =  string;
 
-export type DBProxyName =  string;
+Key?: string;
 
-export type VpcSecurityGroupIds =  string[];
+Value?: string;
 
-export type VpcSubnetIds =  string[];
 
-export type TargetRole =  string;
+};
 
-export type Tags =  AWS.RDS.DBProxyEndpoint.TagFormat[];
 
 }
 
+export type OptionGroup = {
+
+
+EngineName: string;
+
+MajorEngineVersion: string;
+
+OptionConfigurations: AWS.RDS.OptionGroup.OptionConfiguration[];
+
+OptionGroupDescription: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace OptionGroup {
 
-export type OptionSetting = { Name?: string;
 
-Value?: string; };
+export type OptionSetting = {
 
-export type OptionConfiguration = { DBSecurityGroupMemberships?: string[];
+
+Name?: string;
+
+Value?: string;
+
+
+};
+
+export type OptionConfiguration = {
+
+
+DBSecurityGroupMemberships?: string[];
 
 OptionName: string;
 
@@ -17740,121 +29722,151 @@ OptionVersion?: string;
 
 Port?: number;
 
-VpcSecurityGroupMemberships?: string[]; };
+VpcSecurityGroupMemberships?: string[];
 
-export type EngineName =  string;
 
-export type MajorEngineVersion =  string;
+};
 
-export type OptionConfigurations =  AWS.RDS.OptionGroup.OptionConfiguration[];
-
-export type OptionGroupDescription =  string;
-
-export type Tags =  Tag[];
 
 }
 
-export namespace DBSubnetGroup {
+export type DBSubnetGroup = {
 
-export type DBSubnetGroupDescription =  string;
 
-export type DBSubnetGroupName =  string;
+DBSubnetGroupDescription: string;
 
-export type SubnetIds =  string[];
+DBSubnetGroupName?: string;
 
-export type Tags =  Tag[];
+SubnetIds: string[];
 
-}
+Tags?: Tag[];
 
-export namespace GlobalCluster {
 
-export type Engine =  string;
+};
 
-export type EngineVersion =  string;
+export type GlobalCluster = {
 
-export type DeletionProtection =  boolean;
 
-export type GlobalClusterIdentifier =  string;
+Engine?: string;
 
-export type SourceDBClusterIdentifier =  string;
+EngineVersion?: string;
 
-export type StorageEncrypted =  boolean;
+DeletionProtection?: boolean;
 
-}
+GlobalClusterIdentifier?: string;
 
-export namespace DBSecurityGroupIngress {
+SourceDBClusterIdentifier?: string;
 
-export type CIDRIP =  string;
+StorageEncrypted?: boolean;
 
-export type DBSecurityGroupName =  string;
 
-export type EC2SecurityGroupId =  string;
+};
 
-export type EC2SecurityGroupName =  string;
+export type DBSecurityGroupIngress = {
 
-export type EC2SecurityGroupOwnerId =  string;
 
-}
+CIDRIP?: string;
 
-export namespace EventSubscription {
+DBSecurityGroupName: string;
 
-export type Enabled =  boolean;
+EC2SecurityGroupId?: string;
 
-export type EventCategories =  string[];
+EC2SecurityGroupName?: string;
 
-export type SnsTopicArn =  string;
+EC2SecurityGroupOwnerId?: string;
 
-export type SourceIds =  string[];
 
-export type SourceType =  string;
+};
 
-}
+export type EventSubscription = {
 
-export namespace DBClusterParameterGroup {
 
-export type Description =  string;
+Enabled?: boolean;
 
-export type Family =  string;
+EventCategories?: string[];
 
-export type Parameters =  JSONString;
+SnsTopicArn: string;
 
-export type Tags =  Tag[];
+SourceIds?: string[];
 
-}
+SourceType?: string;
 
-export namespace DBParameterGroup {
 
-export type Description =  string;
+};
 
-export type Family =  string;
+export type DBClusterParameterGroup = {
 
-export type Parameters =  Record<string, string>;
 
-export type Tags =  Tag[];
+Description: string;
 
-}
+Family: string;
+
+Parameters: JSONString;
+
+Tags?: Tag[];
+
+
+};
+
+export type DBParameterGroup = {
+
+
+Description: string;
+
+Family: string;
+
+Parameters?: Record<string, string>;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace DynamoDB {
 
-export namespace Table {
 
-export type LocalSecondaryIndex = { IndexName: string;
+export type Table = {
+
+
+PointInTimeRecoverySpecification?: AWS.DynamoDB.Table.PointInTimeRecoverySpecification;
+
+KinesisStreamSpecification?: AWS.DynamoDB.Table.KinesisStreamSpecification;
+
+ContributorInsightsSpecification?: AWS.DynamoDB.Table.ContributorInsightsSpecification;
 
 KeySchema: AWS.DynamoDB.Table.KeySchema[];
 
-Projection: AWS.DynamoDB.Table.Projection; };
+SSESpecification?: AWS.DynamoDB.Table.SSESpecification;
 
-export type PointInTimeRecoverySpecification =  AWS.DynamoDB.Table.PointInTimeRecoverySpecification;
+TimeToLiveSpecification?: AWS.DynamoDB.Table.TimeToLiveSpecification;
 
-export type KinesisStreamSpecification =  AWS.DynamoDB.Table.KinesisStreamSpecification;
+ProvisionedThroughput?: AWS.DynamoDB.Table.ProvisionedThroughput;
 
-export type AttributeDefinition = { AttributeName: string;
+StreamSpecification?: AWS.DynamoDB.Table.StreamSpecification;
 
-AttributeType: string; };
+AttributeDefinitions?: AWS.DynamoDB.Table.AttributeDefinition[];
 
-export type GlobalSecondaryIndex = { ContributorInsightsSpecification?: AWS.DynamoDB.Table.ContributorInsightsSpecification;
+BillingMode?: string;
+
+GlobalSecondaryIndexes?: AWS.DynamoDB.Table.GlobalSecondaryIndex[];
+
+LocalSecondaryIndexes?: AWS.DynamoDB.Table.LocalSecondaryIndex[];
+
+TableName?: string;
+
+Tags?: Tag[];
+
+
+};
+
+export namespace Table {
+
+
+export type LocalSecondaryIndex = {
+
 
 IndexName: string;
 
@@ -17862,71 +29874,149 @@ KeySchema: AWS.DynamoDB.Table.KeySchema[];
 
 Projection: AWS.DynamoDB.Table.Projection;
 
-ProvisionedThroughput?: AWS.DynamoDB.Table.ProvisionedThroughput; };
 
-export type ContributorInsightsSpecification =  AWS.DynamoDB.Table.ContributorInsightsSpecification;
+};
 
-export type KeySchema =  AWS.DynamoDB.Table.KeySchema[];
+export type AttributeDefinition = {
 
-export type SSESpecification =  AWS.DynamoDB.Table.SSESpecification;
 
-export type TimeToLiveSpecification =  AWS.DynamoDB.Table.TimeToLiveSpecification;
+AttributeName: string;
 
-export type ProvisionedThroughput =  AWS.DynamoDB.Table.ProvisionedThroughput;
+AttributeType: string;
 
-export type Projection = { NonKeyAttributes?: string[];
 
-ProjectionType?: string; };
+};
 
-export type StreamSpecification =  AWS.DynamoDB.Table.StreamSpecification;
+export type GlobalSecondaryIndex = {
 
-export type AttributeDefinitions =  AWS.DynamoDB.Table.AttributeDefinition[];
 
-export type BillingMode =  string;
+ContributorInsightsSpecification?: AWS.DynamoDB.Table.ContributorInsightsSpecification;
 
-export type GlobalSecondaryIndexes =  AWS.DynamoDB.Table.GlobalSecondaryIndex[];
+IndexName: string;
 
-export type LocalSecondaryIndexes =  AWS.DynamoDB.Table.LocalSecondaryIndex[];
+KeySchema: AWS.DynamoDB.Table.KeySchema[];
 
-export type TableName =  string;
+Projection: AWS.DynamoDB.Table.Projection;
 
-export type Tags =  Tag[];
+ProvisionedThroughput?: AWS.DynamoDB.Table.ProvisionedThroughput;
+
+
+};
+
+export type Projection = {
+
+
+NonKeyAttributes?: string[];
+
+ProjectionType?: string;
+
+
+};
+
 
 }
 
+export type GlobalTable = {
+
+
+KeySchema: AWS.DynamoDB.GlobalTable.KeySchema[];
+
+StreamSpecification?: AWS.DynamoDB.GlobalTable.StreamSpecification;
+
+SSESpecification?: AWS.DynamoDB.GlobalTable.SSESpecification;
+
+WriteProvisionedThroughputSettings?: AWS.DynamoDB.GlobalTable.WriteProvisionedThroughputSettings;
+
+TimeToLiveSpecification?: AWS.DynamoDB.GlobalTable.TimeToLiveSpecification;
+
+AttributeDefinitions: AWS.DynamoDB.GlobalTable.AttributeDefinition[];
+
+BillingMode?: string;
+
+GlobalSecondaryIndexes?: AWS.DynamoDB.GlobalTable.GlobalSecondaryIndex[];
+
+LocalSecondaryIndexes?: AWS.DynamoDB.GlobalTable.LocalSecondaryIndex[];
+
+Replicas: AWS.DynamoDB.GlobalTable.ReplicaSpecification[];
+
+TableName?: string;
+
+
+};
+
 export namespace GlobalTable {
 
-export type PointInTimeRecoverySpecification = { PointInTimeRecoveryEnabled?: boolean; };
 
-export type ContributorInsightsSpecification = { Enabled: boolean; };
+export type PointInTimeRecoverySpecification = {
 
-export type CapacityAutoScalingSettings = { MinCapacity: number;
+
+PointInTimeRecoveryEnabled?: boolean;
+
+
+};
+
+export type ContributorInsightsSpecification = {
+
+
+Enabled: boolean;
+
+
+};
+
+export type CapacityAutoScalingSettings = {
+
+
+MinCapacity: number;
 
 MaxCapacity: number;
 
 SeedCapacity?: number;
 
-TargetTrackingScalingPolicyConfiguration: AWS.DynamoDB.GlobalTable.TargetTrackingScalingPolicyConfiguration; };
+TargetTrackingScalingPolicyConfiguration: AWS.DynamoDB.GlobalTable.TargetTrackingScalingPolicyConfiguration;
 
-export type ReadProvisionedThroughputSettings = { ReadCapacityUnits?: number;
 
-ReadCapacityAutoScalingSettings?: AWS.DynamoDB.GlobalTable.CapacityAutoScalingSettings; };
+};
 
-export type LocalSecondaryIndex = { IndexName: string;
+export type ReadProvisionedThroughputSettings = {
+
+
+ReadCapacityUnits?: number;
+
+ReadCapacityAutoScalingSettings?: AWS.DynamoDB.GlobalTable.CapacityAutoScalingSettings;
+
+
+};
+
+export type LocalSecondaryIndex = {
+
+
+IndexName: string;
 
 KeySchema: AWS.DynamoDB.GlobalTable.KeySchema[];
 
-Projection: AWS.DynamoDB.GlobalTable.Projection; };
+Projection: AWS.DynamoDB.GlobalTable.Projection;
 
-export type TargetTrackingScalingPolicyConfiguration = { DisableScaleIn?: boolean;
+
+};
+
+export type TargetTrackingScalingPolicyConfiguration = {
+
+
+DisableScaleIn?: boolean;
 
 ScaleInCooldown?: number;
 
 ScaleOutCooldown?: number;
 
-TargetValue: number; };
+TargetValue: number;
 
-export type ReplicaSpecification = { Region: string;
+
+};
+
+export type ReplicaSpecification = {
+
+
+Region: string;
 
 GlobalSecondaryIndexes?: AWS.DynamoDB.GlobalTable.ReplicaGlobalSecondaryIndexSpecification[];
 
@@ -17938,199 +30028,315 @@ SSESpecification?: AWS.DynamoDB.GlobalTable.ReplicaSSESpecification;
 
 Tags?: Tag[];
 
-ReadProvisionedThroughputSettings?: AWS.DynamoDB.GlobalTable.ReadProvisionedThroughputSettings; };
+ReadProvisionedThroughputSettings?: AWS.DynamoDB.GlobalTable.ReadProvisionedThroughputSettings;
 
-export type GlobalSecondaryIndex = { IndexName: string;
+
+};
+
+export type GlobalSecondaryIndex = {
+
+
+IndexName: string;
 
 KeySchema: AWS.DynamoDB.GlobalTable.KeySchema[];
 
 Projection: AWS.DynamoDB.GlobalTable.Projection;
 
-WriteProvisionedThroughputSettings?: AWS.DynamoDB.GlobalTable.WriteProvisionedThroughputSettings; };
+WriteProvisionedThroughputSettings?: AWS.DynamoDB.GlobalTable.WriteProvisionedThroughputSettings;
 
-export type KeySchema =  AWS.DynamoDB.GlobalTable.KeySchema[];
 
-export type StreamSpecification =  AWS.DynamoDB.GlobalTable.StreamSpecification;
+};
 
-export type Projection = { NonKeyAttributes?: string[];
+export type Projection = {
 
-ProjectionType?: string; };
 
-export type ReplicaGlobalSecondaryIndexSpecification = { IndexName: string;
+NonKeyAttributes?: string[];
+
+ProjectionType?: string;
+
+
+};
+
+export type ReplicaGlobalSecondaryIndexSpecification = {
+
+
+IndexName: string;
 
 ContributorInsightsSpecification?: AWS.DynamoDB.GlobalTable.ContributorInsightsSpecification;
 
-ReadProvisionedThroughputSettings?: AWS.DynamoDB.GlobalTable.ReadProvisionedThroughputSettings; };
+ReadProvisionedThroughputSettings?: AWS.DynamoDB.GlobalTable.ReadProvisionedThroughputSettings;
 
-export type AttributeDefinition = { AttributeName: string;
 
-AttributeType: string; };
+};
 
-export type SSESpecification =  AWS.DynamoDB.GlobalTable.SSESpecification;
+export type AttributeDefinition = {
 
-export type WriteProvisionedThroughputSettings =  AWS.DynamoDB.GlobalTable.WriteProvisionedThroughputSettings;
 
-export type TimeToLiveSpecification =  AWS.DynamoDB.GlobalTable.TimeToLiveSpecification;
+AttributeName: string;
 
-export type ReplicaSSESpecification = { KMSMasterKeyId: string; };
+AttributeType: string;
 
-export type AttributeDefinitions =  AWS.DynamoDB.GlobalTable.AttributeDefinition[];
 
-export type BillingMode =  string;
+};
 
-export type GlobalSecondaryIndexes =  AWS.DynamoDB.GlobalTable.GlobalSecondaryIndex[];
+export type ReplicaSSESpecification = {
 
-export type LocalSecondaryIndexes =  AWS.DynamoDB.GlobalTable.LocalSecondaryIndex[];
 
-export type Replicas =  AWS.DynamoDB.GlobalTable.ReplicaSpecification[];
+KMSMasterKeyId: string;
 
-export type TableName =  string;
+
+};
+
 
 }
+
 
 }
 
 export namespace EKS {
 
+
+export type Cluster = {
+
+
+EncryptionConfig?: AWS.EKS.Cluster.EncryptionConfig[];
+
+KubernetesNetworkConfig?: AWS.EKS.Cluster.KubernetesNetworkConfig;
+
+ResourcesVpcConfig: AWS.EKS.Cluster.ResourcesVpcConfig;
+
+Version?: string;
+
+RoleArn: string;
+
+Name?: string;
+
+
+};
+
 export namespace Cluster {
 
-export type Provider = { KeyArn?: string; };
 
-export type EncryptionConfig =  AWS.EKS.Cluster.EncryptionConfig[];
+export type Provider = {
 
-export type KubernetesNetworkConfig =  AWS.EKS.Cluster.KubernetesNetworkConfig;
 
-export type ResourcesVpcConfig =  AWS.EKS.Cluster.ResourcesVpcConfig;
+KeyArn?: string;
 
-export type Version =  string;
 
-export type RoleArn =  string;
+};
 
-export type Name =  string;
 
 }
+
+export type FargateProfile = {
+
+
+ClusterName: string;
+
+FargateProfileName?: string;
+
+PodExecutionRoleArn: string;
+
+Subnets?: string[];
+
+Selectors: AWS.EKS.FargateProfile.Selector[];
+
+Tags?: Tag[];
+
+
+};
 
 export namespace FargateProfile {
 
-export type Label = { Key: string;
 
-Value: string; };
+export type Label = {
 
-export type Selector = { Namespace: string;
 
-Labels?: AWS.EKS.FargateProfile.Label[]; };
+Key: string;
 
-export type ClusterName =  string;
+Value: string;
 
-export type FargateProfileName =  string;
 
-export type PodExecutionRoleArn =  string;
+};
 
-export type Subnets =  string[];
+export type Selector = {
 
-export type Selectors =  AWS.EKS.FargateProfile.Selector[];
 
-export type Tags =  Tag[];
+Namespace: string;
+
+Labels?: AWS.EKS.FargateProfile.Label[];
+
+
+};
+
 
 }
+
+export type Nodegroup = {
+
+
+UpdateConfig?: AWS.EKS.Nodegroup.UpdateConfig;
+
+ScalingConfig?: AWS.EKS.Nodegroup.ScalingConfig;
+
+RemoteAccess?: AWS.EKS.Nodegroup.RemoteAccess;
+
+Labels?: JSONString;
+
+Taints?: AWS.EKS.Nodegroup.Taint[];
+
+ReleaseVersion?: string;
+
+CapacityType?: string;
+
+NodegroupName?: string;
+
+Subnets: string[];
+
+NodeRole: string;
+
+AmiType?: string;
+
+ForceUpdateEnabled?: boolean;
+
+Version?: string;
+
+LaunchTemplate?: AWS.EKS.Nodegroup.LaunchTemplateSpecification;
+
+DiskSize?: number;
+
+ClusterName: string;
+
+InstanceTypes?: string[];
+
+Tags?: JSONString;
+
+
+};
 
 export namespace Nodegroup {
 
-export type Taint = { Value?: string;
+
+export type Taint = {
+
+
+Value?: string;
 
 Effect?: string;
 
-Key?: string; };
+Key?: string;
 
-export type LaunchTemplateSpecification = { Version?: string;
+
+};
+
+export type LaunchTemplateSpecification = {
+
+
+Version?: string;
 
 Id?: string;
 
-Name?: string; };
+Name?: string;
 
-export type UpdateConfig =  AWS.EKS.Nodegroup.UpdateConfig;
 
-export type ScalingConfig =  AWS.EKS.Nodegroup.ScalingConfig;
+};
 
-export type RemoteAccess =  AWS.EKS.Nodegroup.RemoteAccess;
-
-export type Labels =  JSONString;
-
-export type Taints =  AWS.EKS.Nodegroup.Taint[];
-
-export type ReleaseVersion =  string;
-
-export type CapacityType =  string;
-
-export type NodegroupName =  string;
-
-export type Subnets =  string[];
-
-export type NodeRole =  string;
-
-export type AmiType =  string;
-
-export type ForceUpdateEnabled =  boolean;
-
-export type Version =  string;
-
-export type LaunchTemplate =  AWS.EKS.Nodegroup.LaunchTemplateSpecification;
-
-export type DiskSize =  number;
-
-export type ClusterName =  string;
-
-export type InstanceTypes =  string[];
-
-export type Tags =  JSONString;
 
 }
 
-export namespace Addon {
+export type Addon = {
 
-export type ClusterName =  string;
 
-export type AddonName =  string;
+ClusterName: string;
 
-export type AddonVersion =  string;
+AddonName: string;
 
-export type ResolveConflicts =  string;
+AddonVersion?: string;
 
-export type ServiceAccountRoleArn =  string;
+ResolveConflicts?: string;
 
-export type Tags =  Tag[];
+ServiceAccountRoleArn?: string;
 
-}
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace DLM {
 
+
+export type LifecyclePolicy = {
+
+
+PolicyDetails?: AWS.DLM.LifecyclePolicy.PolicyDetails;
+
+ExecutionRoleArn?: string;
+
+Description?: string;
+
+State?: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace LifecyclePolicy {
 
-export type FastRestoreRule = { IntervalUnit?: string;
+
+export type FastRestoreRule = {
+
+
+IntervalUnit?: string;
 
 AvailabilityZones?: string[];
 
 Count?: number;
 
-Interval?: number; };
+Interval?: number;
 
-export type EventSource = { Type: string;
 
-Parameters?: AWS.DLM.LifecyclePolicy.EventParameters; };
+};
 
-export type EventParameters = { EventType: string;
+export type EventSource = {
+
+
+Type: string;
+
+Parameters?: AWS.DLM.LifecyclePolicy.EventParameters;
+
+
+};
+
+export type EventParameters = {
+
+
+EventType: string;
 
 SnapshotOwner: string[];
 
-DescriptionRegex?: string; };
+DescriptionRegex?: string;
 
-export type Action = { CrossRegionCopy: AWS.DLM.LifecyclePolicy.CrossRegionCopyAction[];
 
-Name: string; };
+};
 
-export type CreateRule = { IntervalUnit?: string;
+export type Action = {
+
+
+CrossRegionCopy: AWS.DLM.LifecyclePolicy.CrossRegionCopyAction[];
+
+Name: string;
+
+
+};
+
+export type CreateRule = {
+
+
+IntervalUnit?: string;
 
 Times?: string[];
 
@@ -18138,25 +30344,47 @@ CronExpression?: string;
 
 Interval?: number;
 
-Location?: string; };
+Location?: string;
 
-export type RetainRule = { IntervalUnit?: string;
+
+};
+
+export type RetainRule = {
+
+
+IntervalUnit?: string;
 
 Count?: number;
 
-Interval?: number; };
+Interval?: number;
 
-export type PolicyDetails =  AWS.DLM.LifecyclePolicy.PolicyDetails;
 
-export type Parameters = { ExcludeBootVolume?: boolean;
+};
 
-NoReboot?: boolean; };
+export type Parameters = {
 
-export type EncryptionConfiguration = { Encrypted: boolean;
 
-CmkArn?: string; };
+ExcludeBootVolume?: boolean;
 
-export type Schedule = { ShareRules?: AWS.DLM.LifecyclePolicy.ShareRule[];
+NoReboot?: boolean;
+
+
+};
+
+export type EncryptionConfiguration = {
+
+
+Encrypted: boolean;
+
+CmkArn?: string;
+
+
+};
+
+export type Schedule = {
+
+
+ShareRules?: AWS.DLM.LifecyclePolicy.ShareRule[];
 
 TagsToAdd?: Tag[];
 
@@ -18172,13 +30400,25 @@ CrossRegionCopyRules?: AWS.DLM.LifecyclePolicy.CrossRegionCopyRule[];
 
 Name?: string;
 
-CopyTags?: boolean; };
+CopyTags?: boolean;
 
-export type CrossRegionCopyRetainRule = { IntervalUnit: string;
 
-Interval: number; };
+};
 
-export type CrossRegionCopyRule = { TargetRegion?: string;
+export type CrossRegionCopyRetainRule = {
+
+
+IntervalUnit: string;
+
+Interval: number;
+
+
+};
+
+export type CrossRegionCopyRule = {
+
+
+TargetRegion?: string;
 
 Target?: string;
 
@@ -18188,39 +30428,69 @@ CmkArn?: string;
 
 RetainRule?: AWS.DLM.LifecyclePolicy.CrossRegionCopyRetainRule;
 
-CopyTags?: boolean; };
+CopyTags?: boolean;
 
-export type CrossRegionCopyAction = { Target: string;
+
+};
+
+export type CrossRegionCopyAction = {
+
+
+Target: string;
 
 EncryptionConfiguration: AWS.DLM.LifecyclePolicy.EncryptionConfiguration;
 
-RetainRule?: AWS.DLM.LifecyclePolicy.CrossRegionCopyRetainRule; };
+RetainRule?: AWS.DLM.LifecyclePolicy.CrossRegionCopyRetainRule;
 
-export type ShareRule = { TargetAccounts?: string[];
+
+};
+
+export type ShareRule = {
+
+
+TargetAccounts?: string[];
 
 UnshareIntervalUnit?: string;
 
-UnshareInterval?: number; };
+UnshareInterval?: number;
 
-export type ExecutionRoleArn =  string;
 
-export type Description =  string;
+};
 
-export type State =  string;
-
-export type Tags =  Tag[];
 
 }
+
 
 }
 
 export namespace GuardDuty {
 
+
+export type Filter = {
+
+
+FindingCriteria: AWS.GuardDuty.Filter.FindingCriteria;
+
+Action: string;
+
+Description: string;
+
+DetectorId: string;
+
+Rank: number;
+
+Name: string;
+
+
+};
+
 export namespace Filter {
 
-export type FindingCriteria =  AWS.GuardDuty.Filter.FindingCriteria;
 
-export type Condition = { Lt?: number;
+export type Condition = {
+
+
+Lt?: number;
 
 Gte?: number;
 
@@ -18228,103 +30498,185 @@ Neq?: string[];
 
 Eq?: string[];
 
-Lte?: number; };
+Lte?: number;
 
-export type Action =  string;
 
-export type Description =  string;
+};
 
-export type DetectorId =  string;
-
-export type Rank =  number;
-
-export type Name =  string;
 
 }
+
+export type Detector = {
+
+
+FindingPublishingFrequency?: string;
+
+DataSources?: AWS.GuardDuty.Detector.CFNDataSourceConfigurations;
+
+Enable: boolean;
+
+
+};
 
 export namespace Detector {
 
-export type CFNDataSourceConfigurations = { S3Logs?: AWS.GuardDuty.Detector.CFNS3LogsConfiguration; };
 
-export type CFNS3LogsConfiguration = { Enable?: boolean; };
+export type CFNDataSourceConfigurations = {
 
-export type FindingPublishingFrequency =  string;
 
-export type DataSources =  AWS.GuardDuty.Detector.CFNDataSourceConfigurations;
+S3Logs?: AWS.GuardDuty.Detector.CFNS3LogsConfiguration;
 
-export type Enable =  boolean;
 
-}
+};
 
-export namespace ThreatIntelSet {
+export type CFNS3LogsConfiguration = {
 
-export type Format =  string;
 
-export type Activate =  boolean;
+Enable?: boolean;
 
-export type DetectorId =  string;
 
-export type Name =  string;
+};
 
-export type Location =  string;
 
 }
 
-export namespace Member {
+export type ThreatIntelSet = {
 
-export type Status =  string;
 
-export type MemberId =  string;
+Format: string;
 
-export type Email =  string;
+Activate: boolean;
 
-export type Message =  string;
+DetectorId: string;
 
-export type DisableEmailNotification =  boolean;
+Name?: string;
 
-export type DetectorId =  string;
+Location: string;
 
-}
 
-export namespace Master {
+};
 
-export type DetectorId =  string;
+export type Member = {
 
-export type MasterId =  string;
 
-export type InvitationId =  string;
+Status?: string;
 
-}
+MemberId: string;
 
-export namespace IPSet {
+Email: string;
 
-export type Format =  string;
+Message?: string;
 
-export type Activate =  boolean;
+DisableEmailNotification?: boolean;
 
-export type DetectorId =  string;
+DetectorId: string;
 
-export type Name =  string;
 
-export type Location =  string;
+};
 
-}
+export type Master = {
+
+
+DetectorId: string;
+
+MasterId: string;
+
+InvitationId?: string;
+
+
+};
+
+export type IPSet = {
+
+
+Format: string;
+
+Activate: boolean;
+
+DetectorId: string;
+
+Name?: string;
+
+Location: string;
+
+
+};
+
 
 }
 
 export namespace CloudWatch {
 
+
+export type Alarm = {
+
+
+ActionsEnabled?: boolean;
+
+AlarmActions?: string[];
+
+AlarmDescription?: string;
+
+AlarmName?: string;
+
+ComparisonOperator: string;
+
+DatapointsToAlarm?: number;
+
+Dimensions?: AWS.CloudWatch.Alarm.Dimension[];
+
+EvaluateLowSampleCountPercentile?: string;
+
+EvaluationPeriods: number;
+
+ExtendedStatistic?: string;
+
+InsufficientDataActions?: string[];
+
+MetricName?: string;
+
+Metrics?: AWS.CloudWatch.Alarm.MetricDataQuery[];
+
+Namespace?: string;
+
+OKActions?: string[];
+
+Period?: number;
+
+Statistic?: string;
+
+Threshold?: number;
+
+ThresholdMetricId?: string;
+
+TreatMissingData?: string;
+
+Unit?: string;
+
+
+};
+
 export namespace Alarm {
 
-export type MetricStat = { Metric: AWS.CloudWatch.Alarm.Metric;
+
+export type MetricStat = {
+
+
+Metric: AWS.CloudWatch.Alarm.Metric;
 
 Period: number;
 
 Stat: string;
 
-Unit?: string; };
+Unit?: string;
 
-export type MetricDataQuery = { Expression?: string;
+
+};
+
+export type MetricDataQuery = {
+
+
+Expression?: string;
 
 Id: string;
 
@@ -18334,187 +30686,265 @@ MetricStat?: AWS.CloudWatch.Alarm.MetricStat;
 
 Period?: number;
 
-ReturnData?: boolean; };
+ReturnData?: boolean;
 
-export type Dimension = { Name: string;
 
-Value: string; };
+};
 
-export type Metric = { Dimensions?: AWS.CloudWatch.Alarm.Dimension[];
+export type Dimension = {
+
+
+Name: string;
+
+Value: string;
+
+
+};
+
+export type Metric = {
+
+
+Dimensions?: AWS.CloudWatch.Alarm.Dimension[];
 
 MetricName?: string;
 
-Namespace?: string; };
+Namespace?: string;
 
-export type ActionsEnabled =  boolean;
 
-export type AlarmActions =  string[];
+};
 
-export type AlarmDescription =  string;
-
-export type AlarmName =  string;
-
-export type ComparisonOperator =  string;
-
-export type DatapointsToAlarm =  number;
-
-export type Dimensions =  AWS.CloudWatch.Alarm.Dimension[];
-
-export type EvaluateLowSampleCountPercentile =  string;
-
-export type EvaluationPeriods =  number;
-
-export type ExtendedStatistic =  string;
-
-export type InsufficientDataActions =  string[];
-
-export type MetricName =  string;
-
-export type Metrics =  AWS.CloudWatch.Alarm.MetricDataQuery[];
-
-export type Namespace =  string;
-
-export type OKActions =  string[];
-
-export type Period =  number;
-
-export type Statistic =  string;
-
-export type Threshold =  number;
-
-export type ThresholdMetricId =  string;
-
-export type TreatMissingData =  string;
-
-export type Unit =  string;
 
 }
+
+export type MetricStream = {
+
+
+ExcludeFilters?: AWS.CloudWatch.MetricStream.MetricStreamFilter[];
+
+FirehoseArn: string;
+
+IncludeFilters?: AWS.CloudWatch.MetricStream.MetricStreamFilter[];
+
+Name?: string;
+
+RoleArn: string;
+
+OutputFormat: string;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace MetricStream {
 
-export type MetricStreamFilter = { Namespace: string; };
 
-export type ExcludeFilters =  AWS.CloudWatch.MetricStream.MetricStreamFilter[];
+export type MetricStreamFilter = {
 
-export type FirehoseArn =  string;
 
-export type IncludeFilters =  AWS.CloudWatch.MetricStream.MetricStreamFilter[];
+Namespace: string;
 
-export type Name =  string;
 
-export type RoleArn =  string;
+};
 
-export type OutputFormat =  string;
-
-export type Tags =  Tag[];
 
 }
+
+export type AnomalyDetector = {
+
+
+Configuration?: AWS.CloudWatch.AnomalyDetector.Configuration;
+
+MetricName: string;
+
+Stat: string;
+
+Dimensions?: AWS.CloudWatch.AnomalyDetector.Dimension[];
+
+Namespace: string;
+
+
+};
 
 export namespace AnomalyDetector {
 
-export type Range = { EndTime: string;
 
-StartTime: string; };
+export type Range = {
 
-export type Dimension = { Value: string;
 
-Name: string; };
+EndTime: string;
 
-export type Configuration =  AWS.CloudWatch.AnomalyDetector.Configuration;
+StartTime: string;
 
-export type MetricName =  string;
 
-export type Stat =  string;
+};
 
-export type Dimensions =  AWS.CloudWatch.AnomalyDetector.Dimension[];
+export type Dimension = {
 
-export type Namespace =  string;
 
-}
+Value: string;
 
-export namespace InsightRule {
+Name: string;
 
-export type Tags =  AWS.CloudWatch.InsightRule.Tags;
 
-export type RuleState =  string;
+};
 
-export type RuleBody =  string;
-
-export type RuleName =  string;
 
 }
 
-export namespace CompositeAlarm {
+export type InsightRule = {
 
-export type AlarmName =  string;
 
-export type AlarmRule =  string;
+Tags?: AWS.CloudWatch.InsightRule.Tags;
 
-export type AlarmDescription =  string;
+RuleState: string;
 
-export type ActionsEnabled =  boolean;
+RuleBody: string;
 
-export type OKActions =  string[];
+RuleName: string;
 
-export type AlarmActions =  string[];
 
-export type InsufficientDataActions =  string[];
+};
 
-}
+export type CompositeAlarm = {
 
-export namespace Dashboard {
 
-export type DashboardName =  string;
+AlarmName: string;
 
-export type DashboardBody =  string;
+AlarmRule: string;
 
-}
+AlarmDescription?: string;
+
+ActionsEnabled?: boolean;
+
+OKActions?: string[];
+
+AlarmActions?: string[];
+
+InsufficientDataActions?: string[];
+
+
+};
+
+export type Dashboard = {
+
+
+DashboardName?: string;
+
+DashboardBody: string;
+
+
+};
+
 
 }
 
 export namespace SSM {
 
+
+export type Document = {
+
+
+Content: JSONString;
+
+Attachments?: AWS.SSM.Document.AttachmentsSource[];
+
+Name?: string;
+
+VersionName?: string;
+
+DocumentType?: string;
+
+DocumentFormat?: string;
+
+TargetType?: string;
+
+Tags?: Tag[];
+
+Requires?: AWS.SSM.Document.DocumentRequires[];
+
+
+};
+
 export namespace Document {
 
-export type DocumentRequires = { Name?: string;
 
-Version?: string; };
+export type DocumentRequires = {
 
-export type AttachmentsSource = { Key?: string;
+
+Name?: string;
+
+Version?: string;
+
+
+};
+
+export type AttachmentsSource = {
+
+
+Key?: string;
 
 Values?: string[];
 
-Name?: string; };
+Name?: string;
 
-export type Content =  JSONString;
 
-export type Attachments =  AWS.SSM.Document.AttachmentsSource[];
+};
 
-export type Name =  string;
-
-export type VersionName =  string;
-
-export type DocumentType =  string;
-
-export type DocumentFormat =  string;
-
-export type TargetType =  string;
-
-export type Tags =  Tag[];
-
-export type Requires =  AWS.SSM.Document.DocumentRequires[];
 
 }
 
+export type PatchBaseline = {
+
+
+PatchStringDate?: string;
+
+OperatingSystem?: string;
+
+Description?: string;
+
+ApprovalRules?: AWS.SSM.PatchBaseline.RuleGroup;
+
+Sources?: AWS.SSM.PatchBaseline.PatchSource[];
+
+Name: string;
+
+RejectedPatches?: string[];
+
+ApprovedPatches?: string[];
+
+RejectedPatchesAction?: string;
+
+PatchGroups?: string[];
+
+ApprovedPatchesComplianceLevel?: string;
+
+ApprovedPatchesEnableNonSecurity?: boolean;
+
+GlobalFilters?: AWS.SSM.PatchBaseline.PatchFilterGroup;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace PatchBaseline {
 
-export type PatchStringDate =  string;
 
-export type PatchFilter = { Values?: string[];
+export type PatchFilter = {
 
-Key?: string; };
 
-export type Rule = { ApproveUntilDate?: AWS.SSM.PatchBaseline.PatchStringDate;
+Values?: string[];
+
+Key?: string;
+
+
+};
+
+export type Rule = {
+
+
+ApproveUntilDate?: AWS.SSM.PatchBaseline.PatchStringDate;
 
 EnableNonSecurity?: boolean;
 
@@ -18522,71 +30952,123 @@ PatchFilterGroup?: AWS.SSM.PatchBaseline.PatchFilterGroup;
 
 ApproveAfterDays?: number;
 
-ComplianceLevel?: string; };
+ComplianceLevel?: string;
 
-export type PatchFilterGroup = { PatchFilters?: AWS.SSM.PatchBaseline.PatchFilter[]; };
 
-export type PatchSource = { Products?: string[];
+};
+
+export type PatchFilterGroup = {
+
+
+PatchFilters?: AWS.SSM.PatchBaseline.PatchFilter[];
+
+
+};
+
+export type PatchSource = {
+
+
+Products?: string[];
 
 Configuration?: string;
 
-Name?: string; };
+Name?: string;
 
-export type RuleGroup = { PatchRules?: AWS.SSM.PatchBaseline.Rule[]; };
 
-export type OperatingSystem =  string;
+};
 
-export type Description =  string;
+export type RuleGroup = {
 
-export type ApprovalRules =  AWS.SSM.PatchBaseline.RuleGroup;
 
-export type Sources =  AWS.SSM.PatchBaseline.PatchSource[];
+PatchRules?: AWS.SSM.PatchBaseline.Rule[];
 
-export type Name =  string;
 
-export type RejectedPatches =  string[];
+};
 
-export type ApprovedPatches =  string[];
-
-export type RejectedPatchesAction =  string;
-
-export type PatchGroups =  string[];
-
-export type ApprovedPatchesComplianceLevel =  string;
-
-export type ApprovedPatchesEnableNonSecurity =  boolean;
-
-export type GlobalFilters =  AWS.SSM.PatchBaseline.PatchFilterGroup;
-
-export type Tags =  Tag[];
 
 }
 
+export type MaintenanceWindowTask = {
+
+
+LoggingInfo?: AWS.SSM.MaintenanceWindowTask.LoggingInfo;
+
+TaskInvocationParameters?: AWS.SSM.MaintenanceWindowTask.TaskInvocationParameters;
+
+MaxErrors?: string;
+
+Description?: string;
+
+ServiceRoleArn?: string;
+
+Priority: number;
+
+MaxConcurrency?: string;
+
+Targets?: AWS.SSM.MaintenanceWindowTask.Target[];
+
+Name?: string;
+
+TaskArn: string;
+
+WindowId: string;
+
+TaskParameters?: JSONString;
+
+TaskType: string;
+
+
+};
+
 export namespace MaintenanceWindowTask {
 
-export type LoggingInfo =  AWS.SSM.MaintenanceWindowTask.LoggingInfo;
 
-export type Target = { Values: string[];
+export type Target = {
 
-Key: string; };
 
-export type NotificationConfig = { NotificationArn: string;
+Values: string[];
+
+Key: string;
+
+
+};
+
+export type NotificationConfig = {
+
+
+NotificationArn: string;
 
 NotificationType?: string;
 
-NotificationEvents?: string[]; };
+NotificationEvents?: string[];
 
-export type MaintenanceWindowAutomationParameters = { Parameters?: JSONString;
 
-DocumentVersion?: string; };
+};
 
-export type TaskInvocationParameters =  AWS.SSM.MaintenanceWindowTask.TaskInvocationParameters;
+export type MaintenanceWindowAutomationParameters = {
 
-export type MaintenanceWindowStepFunctionsParameters = { Input?: string;
 
-Name?: string; };
+Parameters?: JSONString;
 
-export type MaintenanceWindowRunCommandParameters = { TimeoutSeconds?: number;
+DocumentVersion?: string;
+
+
+};
+
+export type MaintenanceWindowStepFunctionsParameters = {
+
+
+Input?: string;
+
+Name?: string;
+
+
+};
+
+export type MaintenanceWindowRunCommandParameters = {
+
+
+TimeoutSeconds?: number;
 
 Comment?: string;
 
@@ -18602,299 +31084,383 @@ NotificationConfig?: AWS.SSM.MaintenanceWindowTask.NotificationConfig;
 
 OutputS3BucketName?: string;
 
-DocumentHash?: string; };
+DocumentHash?: string;
 
-export type MaintenanceWindowLambdaParameters = { ClientContext?: string;
+
+};
+
+export type MaintenanceWindowLambdaParameters = {
+
+
+ClientContext?: string;
 
 Qualifier?: string;
 
-Payload?: string; };
+Payload?: string;
 
-export type MaxErrors =  string;
 
-export type Description =  string;
+};
 
-export type ServiceRoleArn =  string;
-
-export type Priority =  number;
-
-export type MaxConcurrency =  string;
-
-export type Targets =  AWS.SSM.MaintenanceWindowTask.Target[];
-
-export type Name =  string;
-
-export type TaskArn =  string;
-
-export type WindowId =  string;
-
-export type TaskParameters =  JSONString;
-
-export type TaskType =  string;
 
 }
+
+export type Association = {
+
+
+AssociationName?: string;
+
+DocumentVersion?: string;
+
+InstanceId?: string;
+
+Name: string;
+
+Parameters?: Record<string, JSONString>;
+
+ScheduleExpression?: string;
+
+Targets?: AWS.SSM.Association.Target[];
+
+OutputLocation?: AWS.SSM.Association.InstanceAssociationOutputLocation;
+
+AutomationTargetParameterName?: string;
+
+MaxErrors?: string;
+
+MaxConcurrency?: string;
+
+ComplianceSeverity?: string;
+
+SyncCompliance?: string;
+
+WaitForSuccessTimeoutSeconds?: number;
+
+ApplyOnlyAtCronInterval?: boolean;
+
+CalendarNames?: string[];
+
+
+};
 
 export namespace Association {
 
-export type InstanceAssociationOutputLocation = { S3Location?: AWS.SSM.Association.S3OutputLocation; };
 
-export type Target = { Key: string;
+export type InstanceAssociationOutputLocation = {
 
-Values: string[]; };
 
-export type S3OutputLocation = { OutputS3Region?: string;
+S3Location?: AWS.SSM.Association.S3OutputLocation;
+
+
+};
+
+export type Target = {
+
+
+Key: string;
+
+Values: string[];
+
+
+};
+
+export type S3OutputLocation = {
+
+
+OutputS3Region?: string;
 
 OutputS3BucketName?: string;
 
-OutputS3KeyPrefix?: string; };
+OutputS3KeyPrefix?: string;
 
-export type AssociationName =  string;
 
-export type DocumentVersion =  string;
+};
 
-export type InstanceId =  string;
-
-export type Name =  string;
-
-export type Parameters =  Record<string, JSONString>;
-
-export type ScheduleExpression =  string;
-
-export type Targets =  AWS.SSM.Association.Target[];
-
-export type OutputLocation =  AWS.SSM.Association.InstanceAssociationOutputLocation;
-
-export type AutomationTargetParameterName =  string;
-
-export type MaxErrors =  string;
-
-export type MaxConcurrency =  string;
-
-export type ComplianceSeverity =  string;
-
-export type SyncCompliance =  string;
-
-export type WaitForSuccessTimeoutSeconds =  number;
-
-export type ApplyOnlyAtCronInterval =  boolean;
-
-export type CalendarNames =  string[];
 
 }
+
+export type ResourceDataSync = {
+
+
+SyncSource?: AWS.SSM.ResourceDataSync.SyncSource;
+
+S3Destination?: AWS.SSM.ResourceDataSync.S3Destination;
+
+KMSKeyArn?: string;
+
+BucketName?: string;
+
+BucketRegion?: string;
+
+SyncFormat?: string;
+
+SyncName: string;
+
+SyncType?: string;
+
+BucketPrefix?: string;
+
+
+};
 
 export namespace ResourceDataSync {
 
-export type AwsOrganizationsSource = { OrganizationalUnits?: string[];
 
-OrganizationSourceType: string; };
+export type AwsOrganizationsSource = {
 
-export type SyncSource =  AWS.SSM.ResourceDataSync.SyncSource;
 
-export type S3Destination =  AWS.SSM.ResourceDataSync.S3Destination;
+OrganizationalUnits?: string[];
 
-export type KMSKeyArn =  string;
+OrganizationSourceType: string;
 
-export type BucketName =  string;
 
-export type BucketRegion =  string;
+};
 
-export type SyncFormat =  string;
-
-export type SyncName =  string;
-
-export type SyncType =  string;
-
-export type BucketPrefix =  string;
 
 }
 
-export namespace MaintenanceWindowTarget {
+export type MaintenanceWindowTarget = {
 
-export type Targets =  AWS.SSM.MaintenanceWindowTarget.Targets[];
 
-export type OwnerInformation =  string;
+Targets: AWS.SSM.MaintenanceWindowTarget.Targets[];
 
-export type Description =  string;
+OwnerInformation?: string;
 
-export type WindowId =  string;
+Description?: string;
 
-export type ResourceType =  string;
+WindowId: string;
 
-export type Name =  string;
+ResourceType: string;
 
-}
+Name?: string;
 
-export namespace MaintenanceWindow {
 
-export type StartDate =  string;
+};
 
-export type Description =  string;
+export type MaintenanceWindow = {
 
-export type AllowUnassociatedTargets =  boolean;
 
-export type Cutoff =  number;
+StartDate?: string;
 
-export type Schedule =  string;
+Description?: string;
 
-export type Duration =  number;
+AllowUnassociatedTargets: boolean;
 
-export type ScheduleOffset =  number;
+Cutoff: number;
 
-export type EndDate =  string;
+Schedule: string;
 
-export type Tags =  Tag[];
+Duration: number;
 
-export type Name =  string;
+ScheduleOffset?: number;
 
-export type ScheduleTimezone =  string;
+EndDate?: string;
 
-}
+Tags?: Tag[];
 
-export namespace Parameter {
+Name: string;
 
-export type Type =  string;
+ScheduleTimezone?: string;
 
-export type Description =  string;
 
-export type Policies =  string;
+};
 
-export type AllowedPattern =  string;
+export type Parameter = {
 
-export type Tier =  string;
 
-export type Value =  string;
+Type: string;
 
-export type DataType =  string;
+Description?: string;
 
-export type Tags =  JSONString;
+Policies?: string;
 
-export type Name =  string;
+AllowedPattern?: string;
 
-}
+Tier?: string;
+
+Value: string;
+
+DataType?: string;
+
+Tags?: JSONString;
+
+Name?: string;
+
+
+};
+
 
 }
 
 export namespace Redshift {
 
-export namespace Cluster {
 
-export type Endpoint =  AWS.Redshift.Cluster.Endpoint;
+export type Cluster = {
 
-export type LoggingProperties =  AWS.Redshift.Cluster.LoggingProperties;
 
-export type ClusterIdentifier =  string;
+Endpoint?: AWS.Redshift.Cluster.Endpoint;
 
-export type MasterUsername =  string;
+LoggingProperties?: AWS.Redshift.Cluster.LoggingProperties;
 
-export type MasterUserPassword =  string;
+ClusterIdentifier?: string;
 
-export type NodeType =  string;
+MasterUsername: string;
 
-export type AllowVersionUpgrade =  boolean;
+MasterUserPassword: string;
 
-export type AutomatedSnapshotRetentionPeriod =  number;
+NodeType: string;
 
-export type AvailabilityZone =  string;
+AllowVersionUpgrade?: boolean;
 
-export type ClusterParameterGroupName =  string;
+AutomatedSnapshotRetentionPeriod?: number;
 
-export type ClusterType =  string;
+AvailabilityZone?: string;
 
-export type ClusterVersion =  string;
+ClusterParameterGroupName?: string;
 
-export type ClusterSubnetGroupName =  string;
+ClusterType: string;
 
-export type DBName =  string;
+ClusterVersion?: string;
 
-export type ElasticIp =  string;
+ClusterSubnetGroupName?: string;
 
-export type Encrypted =  boolean;
+DBName: string;
 
-export type HsmClientCertificateIdentifier =  string;
+ElasticIp?: string;
 
-export type HsmConfigurationIdentifier =  string;
+Encrypted?: boolean;
 
-export type KmsKeyId =  string;
+HsmClientCertificateIdentifier?: string;
 
-export type NumberOfNodes =  number;
+HsmConfigurationIdentifier?: string;
 
-export type Port =  number;
+KmsKeyId?: string;
 
-export type PreferredMaintenanceWindow =  string;
+NumberOfNodes?: number;
 
-export type PubliclyAccessible =  boolean;
+Port?: number;
 
-export type ClusterSecurityGroups =  string[];
+PreferredMaintenanceWindow?: string;
 
-export type IamRoles =  string[];
+PubliclyAccessible?: boolean;
 
-export type Tags =  Tag[];
+ClusterSecurityGroups?: string[];
 
-export type VpcSecurityGroupIds =  string[];
+IamRoles?: string[];
 
-export type SnapshotClusterIdentifier =  string;
+Tags?: Tag[];
 
-export type SnapshotIdentifier =  string;
+VpcSecurityGroupIds?: string[];
 
-export type OwnerAccount =  string;
+SnapshotClusterIdentifier?: string;
 
-}
+SnapshotIdentifier?: string;
+
+OwnerAccount?: string;
+
+
+};
+
+export type ClusterParameterGroup = {
+
+
+Description: string;
+
+ParameterGroupFamily: string;
+
+Parameters?: AWS.Redshift.ClusterParameterGroup.Parameter[];
+
+Tags?: Tag[];
+
+
+};
 
 export namespace ClusterParameterGroup {
 
-export type Parameter = { ParameterName: string;
 
-ParameterValue: string; };
+export type Parameter = {
 
-export type Description =  string;
 
-export type ParameterGroupFamily =  string;
+ParameterName: string;
 
-export type Parameters =  AWS.Redshift.ClusterParameterGroup.Parameter[];
+ParameterValue: string;
 
-export type Tags =  Tag[];
 
-}
+};
 
-export namespace ClusterSubnetGroup {
-
-export type Description =  string;
-
-export type SubnetIds =  string[];
-
-export type Tags =  Tag[];
 
 }
 
-export namespace ClusterSecurityGroup {
+export type ClusterSubnetGroup = {
 
-export type Description =  string;
 
-export type Tags =  Tag[];
+Description: string;
 
-}
+SubnetIds: string[];
 
-export namespace ClusterSecurityGroupIngress {
+Tags?: Tag[];
 
-export type CIDRIP =  string;
 
-export type ClusterSecurityGroupName =  string;
+};
 
-export type EC2SecurityGroupName =  string;
+export type ClusterSecurityGroup = {
 
-export type EC2SecurityGroupOwnerId =  string;
 
-}
+Description: string;
+
+Tags?: Tag[];
+
+
+};
+
+export type ClusterSecurityGroupIngress = {
+
+
+CIDRIP?: string;
+
+ClusterSecurityGroupName: string;
+
+EC2SecurityGroupName?: string;
+
+EC2SecurityGroupOwnerId?: string;
+
+
+};
+
 
 }
 
 export namespace ElasticLoadBalancingV2 {
 
+
+export type ListenerRule = {
+
+
+ListenerArn: string;
+
+Actions: AWS.ElasticLoadBalancingV2.ListenerRule.Action[];
+
+Priority: number;
+
+Conditions: AWS.ElasticLoadBalancingV2.ListenerRule.RuleCondition[];
+
+
+};
+
 export namespace ListenerRule {
 
-export type SourceIpConfig = { Values?: string[]; };
 
-export type AuthenticateOidcConfig = { OnUnauthenticatedRequest?: string;
+export type SourceIpConfig = {
+
+
+Values?: string[];
+
+
+};
+
+export type AuthenticateOidcConfig = {
+
+
+OnUnauthenticatedRequest?: string;
 
 TokenEndpoint: string;
 
@@ -18916,9 +31482,15 @@ SessionCookieName?: string;
 
 UseExistingClientSecret?: boolean;
 
-AuthenticationRequestExtraParams?: Record<string, string>; };
+AuthenticationRequestExtraParams?: Record<string, string>;
 
-export type AuthenticateCognitoConfig = { OnUnauthenticatedRequest?: string;
+
+};
+
+export type AuthenticateCognitoConfig = {
+
+
+OnUnauthenticatedRequest?: string;
 
 UserPoolClientId: string;
 
@@ -18932,17 +31504,41 @@ SessionCookieName?: string;
 
 UserPoolArn: string;
 
-AuthenticationRequestExtraParams?: Record<string, string>; };
+AuthenticationRequestExtraParams?: Record<string, string>;
 
-export type QueryStringKeyValue = { Value?: string;
 
-Key?: string; };
+};
 
-export type QueryStringConfig = { Values?: AWS.ElasticLoadBalancingV2.ListenerRule.QueryStringKeyValue[]; };
+export type QueryStringKeyValue = {
 
-export type PathPatternConfig = { Values?: string[]; };
 
-export type RuleCondition = { Field?: string;
+Value?: string;
+
+Key?: string;
+
+
+};
+
+export type QueryStringConfig = {
+
+
+Values?: AWS.ElasticLoadBalancingV2.ListenerRule.QueryStringKeyValue[];
+
+
+};
+
+export type PathPatternConfig = {
+
+
+Values?: string[];
+
+
+};
+
+export type RuleCondition = {
+
+
+Field?: string;
 
 Values?: string[];
 
@@ -18956,9 +31552,15 @@ SourceIpConfig?: AWS.ElasticLoadBalancingV2.ListenerRule.SourceIpConfig;
 
 HostHeaderConfig?: AWS.ElasticLoadBalancingV2.ListenerRule.HostHeaderConfig;
 
-QueryStringConfig?: AWS.ElasticLoadBalancingV2.ListenerRule.QueryStringConfig; };
+QueryStringConfig?: AWS.ElasticLoadBalancingV2.ListenerRule.QueryStringConfig;
 
-export type RedirectConfig = { Path?: string;
+
+};
+
+export type RedirectConfig = {
+
+
+Path?: string;
 
 Query?: string;
 
@@ -18968,17 +31570,35 @@ Host?: string;
 
 Protocol?: string;
 
-StatusCode: string; };
+StatusCode: string;
 
-export type HostHeaderConfig = { Values?: string[]; };
 
-export type FixedResponseConfig = { ContentType?: string;
+};
+
+export type HostHeaderConfig = {
+
+
+Values?: string[];
+
+
+};
+
+export type FixedResponseConfig = {
+
+
+ContentType?: string;
 
 StatusCode: string;
 
-MessageBody?: string; };
+MessageBody?: string;
 
-export type Action = { Order?: number;
+
+};
+
+export type Action = {
+
+
+Order?: number;
 
 TargetGroupArn?: string;
 
@@ -18992,77 +31612,153 @@ RedirectConfig?: AWS.ElasticLoadBalancingV2.ListenerRule.RedirectConfig;
 
 ForwardConfig?: AWS.ElasticLoadBalancingV2.ListenerRule.ForwardConfig;
 
-AuthenticateOidcConfig?: AWS.ElasticLoadBalancingV2.ListenerRule.AuthenticateOidcConfig; };
+AuthenticateOidcConfig?: AWS.ElasticLoadBalancingV2.ListenerRule.AuthenticateOidcConfig;
 
-export type HttpHeaderConfig = { Values?: string[];
 
-HttpHeaderName?: string; };
+};
 
-export type ForwardConfig = { TargetGroupStickinessConfig?: AWS.ElasticLoadBalancingV2.ListenerRule.TargetGroupStickinessConfig;
+export type HttpHeaderConfig = {
 
-TargetGroups?: AWS.ElasticLoadBalancingV2.ListenerRule.TargetGroupTuple[]; };
 
-export type TargetGroupTuple = { TargetGroupArn?: string;
+Values?: string[];
 
-Weight?: number; };
+HttpHeaderName?: string;
 
-export type HttpRequestMethodConfig = { Values?: string[]; };
 
-export type TargetGroupStickinessConfig = { Enabled?: boolean;
+};
 
-DurationSeconds?: number; };
+export type ForwardConfig = {
 
-export type ListenerArn =  string;
 
-export type Actions =  AWS.ElasticLoadBalancingV2.ListenerRule.Action[];
+TargetGroupStickinessConfig?: AWS.ElasticLoadBalancingV2.ListenerRule.TargetGroupStickinessConfig;
 
-export type Priority =  number;
+TargetGroups?: AWS.ElasticLoadBalancingV2.ListenerRule.TargetGroupTuple[];
 
-export type Conditions =  AWS.ElasticLoadBalancingV2.ListenerRule.RuleCondition[];
+
+};
+
+export type TargetGroupTuple = {
+
+
+TargetGroupArn?: string;
+
+Weight?: number;
+
+
+};
+
+export type HttpRequestMethodConfig = {
+
+
+Values?: string[];
+
+
+};
+
+export type TargetGroupStickinessConfig = {
+
+
+Enabled?: boolean;
+
+DurationSeconds?: number;
+
+
+};
+
 
 }
 
+export type LoadBalancer = {
+
+
+IpAddressType?: string;
+
+LoadBalancerAttributes?: AWS.ElasticLoadBalancingV2.LoadBalancer.LoadBalancerAttribute[];
+
+Name?: string;
+
+Scheme?: string;
+
+SecurityGroups?: string[];
+
+SubnetMappings?: AWS.ElasticLoadBalancingV2.LoadBalancer.SubnetMapping[];
+
+Subnets?: string[];
+
+Tags?: Tag[];
+
+Type?: string;
+
+
+};
+
 export namespace LoadBalancer {
 
-export type LoadBalancerAttribute = { Key?: string;
 
-Value?: string; };
+export type LoadBalancerAttribute = {
 
-export type SubnetMapping = { AllocationId?: string;
+
+Key?: string;
+
+Value?: string;
+
+
+};
+
+export type SubnetMapping = {
+
+
+AllocationId?: string;
 
 IPv6Address?: string;
 
 PrivateIPv4Address?: string;
 
-SubnetId: string; };
+SubnetId: string;
 
-export type IpAddressType =  string;
 
-export type LoadBalancerAttributes =  AWS.ElasticLoadBalancingV2.LoadBalancer.LoadBalancerAttribute[];
+};
 
-export type Name =  string;
-
-export type Scheme =  string;
-
-export type SecurityGroups =  string[];
-
-export type SubnetMappings =  AWS.ElasticLoadBalancingV2.LoadBalancer.SubnetMapping[];
-
-export type Subnets =  string[];
-
-export type Tags =  Tag[];
-
-export type Type =  string;
 
 }
 
+export type Listener = {
+
+
+SslPolicy?: string;
+
+LoadBalancerArn: string;
+
+DefaultActions: AWS.ElasticLoadBalancingV2.Listener.Action[];
+
+Port?: number;
+
+Certificates?: AWS.ElasticLoadBalancingV2.Listener.Certificate[];
+
+Protocol?: string;
+
+AlpnPolicy?: string[];
+
+
+};
+
 export namespace Listener {
 
-export type ForwardConfig = { TargetGroupStickinessConfig?: AWS.ElasticLoadBalancingV2.Listener.TargetGroupStickinessConfig;
 
-TargetGroups?: AWS.ElasticLoadBalancingV2.Listener.TargetGroupTuple[]; };
+export type ForwardConfig = {
 
-export type AuthenticateOidcConfig = { OnUnauthenticatedRequest?: string;
+
+TargetGroupStickinessConfig?: AWS.ElasticLoadBalancingV2.Listener.TargetGroupStickinessConfig;
+
+TargetGroups?: AWS.ElasticLoadBalancingV2.Listener.TargetGroupTuple[];
+
+
+};
+
+export type AuthenticateOidcConfig = {
+
+
+OnUnauthenticatedRequest?: string;
 
 TokenEndpoint: string;
 
@@ -19082,15 +31778,33 @@ AuthorizationEndpoint: string;
 
 SessionCookieName?: string;
 
-AuthenticationRequestExtraParams?: Record<string, string>; };
+AuthenticationRequestExtraParams?: Record<string, string>;
 
-export type Certificate = { CertificateArn?: string; };
 
-export type TargetGroupStickinessConfig = { Enabled?: boolean;
+};
 
-DurationSeconds?: number; };
+export type Certificate = {
 
-export type AuthenticateCognitoConfig = { OnUnauthenticatedRequest?: string;
+
+CertificateArn?: string;
+
+
+};
+
+export type TargetGroupStickinessConfig = {
+
+
+Enabled?: boolean;
+
+DurationSeconds?: number;
+
+
+};
+
+export type AuthenticateCognitoConfig = {
+
+
+OnUnauthenticatedRequest?: string;
 
 UserPoolClientId: string;
 
@@ -19104,9 +31818,15 @@ SessionCookieName?: string;
 
 UserPoolArn: string;
 
-AuthenticationRequestExtraParams?: Record<string, string>; };
+AuthenticationRequestExtraParams?: Record<string, string>;
 
-export type Action = { Order?: number;
+
+};
+
+export type Action = {
+
+
+Order?: number;
 
 TargetGroupArn?: string;
 
@@ -19120,9 +31840,15 @@ RedirectConfig?: AWS.ElasticLoadBalancingV2.Listener.RedirectConfig;
 
 ForwardConfig?: AWS.ElasticLoadBalancingV2.Listener.ForwardConfig;
 
-AuthenticateOidcConfig?: AWS.ElasticLoadBalancingV2.Listener.AuthenticateOidcConfig; };
+AuthenticateOidcConfig?: AWS.ElasticLoadBalancingV2.Listener.AuthenticateOidcConfig;
 
-export type RedirectConfig = { Path?: string;
+
+};
+
+export type RedirectConfig = {
+
+
+Path?: string;
 
 Query?: string;
 
@@ -19132,101 +31858,153 @@ Host?: string;
 
 Protocol?: string;
 
-StatusCode: string; };
+StatusCode: string;
 
-export type FixedResponseConfig = { ContentType?: string;
+
+};
+
+export type FixedResponseConfig = {
+
+
+ContentType?: string;
 
 StatusCode: string;
 
-MessageBody?: string; };
+MessageBody?: string;
 
-export type TargetGroupTuple = { TargetGroupArn?: string;
 
-Weight?: number; };
+};
 
-export type SslPolicy =  string;
+export type TargetGroupTuple = {
 
-export type LoadBalancerArn =  string;
 
-export type DefaultActions =  AWS.ElasticLoadBalancingV2.Listener.Action[];
+TargetGroupArn?: string;
 
-export type Port =  number;
+Weight?: number;
 
-export type Certificates =  AWS.ElasticLoadBalancingV2.Listener.Certificate[];
 
-export type Protocol =  string;
+};
 
-export type AlpnPolicy =  string[];
 
 }
+
+export type TargetGroup = {
+
+
+Matcher?: AWS.ElasticLoadBalancingV2.TargetGroup.Matcher;
+
+HealthCheckEnabled?: boolean;
+
+HealthCheckIntervalSeconds?: number;
+
+HealthCheckPath?: string;
+
+HealthCheckPort?: string;
+
+HealthCheckProtocol?: string;
+
+HealthCheckTimeoutSeconds?: number;
+
+HealthyThresholdCount?: number;
+
+Name?: string;
+
+Port?: number;
+
+Protocol?: string;
+
+ProtocolVersion?: string;
+
+Tags?: Tag[];
+
+TargetGroupAttributes?: AWS.ElasticLoadBalancingV2.TargetGroup.TargetGroupAttribute[];
+
+TargetType?: string;
+
+Targets?: AWS.ElasticLoadBalancingV2.TargetGroup.TargetDescription[];
+
+UnhealthyThresholdCount?: number;
+
+VpcId?: string;
+
+
+};
 
 export namespace TargetGroup {
 
-export type TargetDescription = { AvailabilityZone?: string;
+
+export type TargetDescription = {
+
+
+AvailabilityZone?: string;
 
 Id: string;
 
-Port?: number; };
+Port?: number;
 
-export type TargetGroupAttribute = { Key?: string;
 
-Value?: string; };
+};
 
-export type Matcher =  AWS.ElasticLoadBalancingV2.TargetGroup.Matcher;
+export type TargetGroupAttribute = {
 
-export type HealthCheckEnabled =  boolean;
 
-export type HealthCheckIntervalSeconds =  number;
+Key?: string;
 
-export type HealthCheckPath =  string;
+Value?: string;
 
-export type HealthCheckPort =  string;
 
-export type HealthCheckProtocol =  string;
+};
 
-export type HealthCheckTimeoutSeconds =  number;
-
-export type HealthyThresholdCount =  number;
-
-export type Name =  string;
-
-export type Port =  number;
-
-export type Protocol =  string;
-
-export type ProtocolVersion =  string;
-
-export type Tags =  Tag[];
-
-export type TargetGroupAttributes =  AWS.ElasticLoadBalancingV2.TargetGroup.TargetGroupAttribute[];
-
-export type TargetType =  string;
-
-export type Targets =  AWS.ElasticLoadBalancingV2.TargetGroup.TargetDescription[];
-
-export type UnhealthyThresholdCount =  number;
-
-export type VpcId =  string;
 
 }
+
+export type ListenerCertificate = {
+
+
+Certificates: AWS.ElasticLoadBalancingV2.ListenerCertificate.Certificate[];
+
+ListenerArn: string;
+
+
+};
 
 export namespace ListenerCertificate {
 
-export type Certificate = { CertificateArn?: string; };
 
-export type Certificates =  AWS.ElasticLoadBalancingV2.ListenerCertificate.Certificate[];
+export type Certificate = {
 
-export type ListenerArn =  string;
+
+CertificateArn?: string;
+
+
+};
+
 
 }
+
 
 }
 
 export namespace Budgets {
 
+
+export type Budget = {
+
+
+NotificationsWithSubscribers?: AWS.Budgets.Budget.NotificationWithSubscribers[];
+
+Budget: AWS.Budgets.Budget.BudgetData;
+
+
+};
+
 export namespace Budget {
 
-export type BudgetData = { BudgetLimit?: AWS.Budgets.Budget.Spend;
+
+export type BudgetData = {
+
+
+BudgetLimit?: AWS.Budgets.Budget.Spend;
 
 TimePeriod?: AWS.Budgets.Budget.TimePeriod;
 
@@ -19240,17 +32018,35 @@ BudgetName?: string;
 
 CostTypes?: AWS.Budgets.Budget.CostTypes;
 
-BudgetType: string; };
+BudgetType: string;
 
-export type Subscriber = { SubscriptionType: string;
 
-Address: string; };
+};
 
-export type TimePeriod = { Start?: string;
+export type Subscriber = {
 
-End?: string; };
 
-export type CostTypes = { IncludeSupport?: boolean;
+SubscriptionType: string;
+
+Address: string;
+
+
+};
+
+export type TimePeriod = {
+
+
+Start?: string;
+
+End?: string;
+
+
+};
+
+export type CostTypes = {
+
+
+IncludeSupport?: boolean;
 
 IncludeOtherSubscription?: boolean;
 
@@ -19270,79 +32066,149 @@ IncludeRecurring?: boolean;
 
 UseAmortized?: boolean;
 
-IncludeRefund?: boolean; };
+IncludeRefund?: boolean;
 
-export type NotificationWithSubscribers = { Subscribers: AWS.Budgets.Budget.Subscriber[];
 
-Notification: AWS.Budgets.Budget.Notification; };
+};
 
-export type Notification = { ComparisonOperator: string;
+export type NotificationWithSubscribers = {
+
+
+Subscribers: AWS.Budgets.Budget.Subscriber[];
+
+Notification: AWS.Budgets.Budget.Notification;
+
+
+};
+
+export type Notification = {
+
+
+ComparisonOperator: string;
 
 NotificationType: string;
 
 Threshold: number;
 
-ThresholdType?: string; };
+ThresholdType?: string;
 
-export type Spend = { Amount: number;
 
-Unit: string; };
+};
 
-export type NotificationsWithSubscribers =  AWS.Budgets.Budget.NotificationWithSubscribers[];
+export type Spend = {
 
-export type Budget =  AWS.Budgets.Budget.BudgetData;
+
+Amount: number;
+
+Unit: string;
+
+
+};
+
 
 }
 
+export type BudgetsAction = {
+
+
+Definition: AWS.Budgets.BudgetsAction.Definition;
+
+ActionThreshold: AWS.Budgets.BudgetsAction.ActionThreshold;
+
+BudgetName: string;
+
+NotificationType: string;
+
+ActionType: string;
+
+ExecutionRoleArn: string;
+
+ApprovalModel?: string;
+
+Subscribers?: AWS.Budgets.BudgetsAction.Subscriber[];
+
+
+};
+
 export namespace BudgetsAction {
 
-export type IamActionDefinition = { PolicyArn: string;
+
+export type IamActionDefinition = {
+
+
+PolicyArn: string;
 
 Roles?: string[];
 
 Groups?: string[];
 
-Users?: string[]; };
+Users?: string[];
 
-export type Definition =  AWS.Budgets.BudgetsAction.Definition;
 
-export type ScpActionDefinition = { PolicyId: string;
+};
 
-TargetIds: string[]; };
+export type ScpActionDefinition = {
 
-export type SsmActionDefinition = { Subtype: string;
+
+PolicyId: string;
+
+TargetIds: string[];
+
+
+};
+
+export type SsmActionDefinition = {
+
+
+Subtype: string;
 
 Region: string;
 
-InstanceIds: string[]; };
+InstanceIds: string[];
 
-export type ActionThreshold =  AWS.Budgets.BudgetsAction.ActionThreshold;
 
-export type Subscriber = { Type: string;
+};
 
-Address: string; };
+export type Subscriber = {
 
-export type BudgetName =  string;
 
-export type NotificationType =  string;
+Type: string;
 
-export type ActionType =  string;
+Address: string;
 
-export type ExecutionRoleArn =  string;
 
-export type ApprovalModel =  string;
+};
 
-export type Subscribers =  AWS.Budgets.BudgetsAction.Subscriber[];
 
 }
+
 
 }
 
 export namespace MediaConnect {
 
+
+export type Flow = {
+
+
+Source: AWS.MediaConnect.Flow.Source;
+
+Name: string;
+
+AvailabilityZone?: string;
+
+SourceFailoverConfig?: AWS.MediaConnect.Flow.FailoverConfig;
+
+
+};
+
 export namespace Flow {
 
-export type Encryption = { Algorithm: string;
+
+export type Encryption = {
+
+
+Algorithm: string;
 
 ConstantInitializationVector?: string;
 
@@ -19358,55 +32224,93 @@ RoleArn: string;
 
 SecretArn?: string;
 
-Url?: string; };
+Url?: string;
 
-export type Source =  AWS.MediaConnect.Flow.Source;
 
-export type FailoverConfig = { State?: string;
+};
 
-RecoveryWindow?: number; };
+export type FailoverConfig = {
 
-export type Name =  string;
 
-export type AvailabilityZone =  string;
+State?: string;
 
-export type SourceFailoverConfig =  AWS.MediaConnect.Flow.FailoverConfig;
+RecoveryWindow?: number;
 
-}
 
-export namespace FlowOutput {
+};
 
-export type Encryption =  AWS.MediaConnect.FlowOutput.Encryption;
-
-export type VpcInterfaceAttachment =  AWS.MediaConnect.FlowOutput.VpcInterfaceAttachment;
-
-export type FlowArn =  string;
-
-export type CidrAllowList =  string[];
-
-export type Description =  string;
-
-export type Destination =  string;
-
-export type MaxLatency =  number;
-
-export type Name =  string;
-
-export type Port =  number;
-
-export type Protocol =  string;
-
-export type RemoteId =  string;
-
-export type SmoothingLatency =  number;
-
-export type StreamId =  string;
 
 }
+
+export type FlowOutput = {
+
+
+Encryption?: AWS.MediaConnect.FlowOutput.Encryption;
+
+VpcInterfaceAttachment?: AWS.MediaConnect.FlowOutput.VpcInterfaceAttachment;
+
+FlowArn: string;
+
+CidrAllowList?: string[];
+
+Description?: string;
+
+Destination?: string;
+
+MaxLatency?: number;
+
+Name?: string;
+
+Port?: number;
+
+Protocol: string;
+
+RemoteId?: string;
+
+SmoothingLatency?: number;
+
+StreamId?: string;
+
+
+};
+
+export type FlowSource = {
+
+
+FlowArn?: string;
+
+Decryption?: AWS.MediaConnect.FlowSource.Encryption;
+
+Description: string;
+
+EntitlementArn?: string;
+
+IngestPort?: number;
+
+MaxBitrate?: number;
+
+MaxLatency?: number;
+
+Name: string;
+
+Protocol?: string;
+
+StreamId?: string;
+
+VpcInterfaceName?: string;
+
+WhitelistCidr?: string;
+
+
+};
 
 export namespace FlowSource {
 
-export type Encryption = { Algorithm: string;
+
+export type Encryption = {
+
+
+Algorithm: string;
 
 ConstantInitializationVector?: string;
 
@@ -19422,149 +32326,215 @@ RoleArn: string;
 
 SecretArn?: string;
 
-Url?: string; };
+Url?: string;
 
-export type FlowArn =  string;
 
-export type Decryption =  AWS.MediaConnect.FlowSource.Encryption;
+};
 
-export type Description =  string;
-
-export type EntitlementArn =  string;
-
-export type IngestPort =  number;
-
-export type MaxBitrate =  number;
-
-export type MaxLatency =  number;
-
-export type Name =  string;
-
-export type Protocol =  string;
-
-export type StreamId =  string;
-
-export type VpcInterfaceName =  string;
-
-export type WhitelistCidr =  string;
 
 }
 
-export namespace FlowEntitlement {
+export type FlowEntitlement = {
 
-export type Encryption =  AWS.MediaConnect.FlowEntitlement.Encryption;
 
-export type FlowArn =  string;
+Encryption?: AWS.MediaConnect.FlowEntitlement.Encryption;
 
-export type DataTransferSubscriberFeePercent =  number;
+FlowArn: string;
 
-export type Description =  string;
+DataTransferSubscriberFeePercent?: number;
 
-export type EntitlementStatus =  string;
+Description: string;
 
-export type Name =  string;
+EntitlementStatus?: string;
 
-export type Subscribers =  string[];
+Name: string;
 
-}
+Subscribers: string[];
 
-export namespace FlowVpcInterface {
 
-export type FlowArn =  string;
+};
 
-export type Name =  string;
+export type FlowVpcInterface = {
 
-export type RoleArn =  string;
 
-export type SecurityGroupIds =  string[];
+FlowArn: string;
 
-export type SubnetId =  string;
+Name: string;
 
-}
+RoleArn: string;
+
+SecurityGroupIds: string[];
+
+SubnetId: string;
+
+
+};
+
 
 }
 
 export namespace CodeStar {
 
+
+export type GitHubRepository = {
+
+
+Code?: AWS.CodeStar.GitHubRepository.Code;
+
+EnableIssues?: boolean;
+
+ConnectionArn?: string;
+
+RepositoryName: string;
+
+RepositoryAccessToken?: string;
+
+RepositoryOwner: string;
+
+IsPrivate?: boolean;
+
+RepositoryDescription?: string;
+
+
+};
+
 export namespace GitHubRepository {
 
-export type Code =  AWS.CodeStar.GitHubRepository.Code;
 
-export type S3 = { ObjectVersion?: string;
+export type S3 = {
+
+
+ObjectVersion?: string;
 
 Bucket: string;
 
-Key: string; };
+Key: string;
 
-export type EnableIssues =  boolean;
 
-export type ConnectionArn =  string;
+};
 
-export type RepositoryName =  string;
-
-export type RepositoryAccessToken =  string;
-
-export type RepositoryOwner =  string;
-
-export type IsPrivate =  boolean;
-
-export type RepositoryDescription =  string;
 
 }
+
 
 }
 
 export namespace SSMContacts {
 
+
+export type Contact = {
+
+
+Alias: string;
+
+DisplayName: string;
+
+Type: string;
+
+Plan: AWS.SSMContacts.Contact.Stage[];
+
+
+};
+
 export namespace Contact {
 
-export type ContactTargetInfo = { ContactId: string;
 
-IsEssential: boolean; };
+export type ContactTargetInfo = {
 
-export type Targets = { ContactTargetInfo?: AWS.SSMContacts.Contact.ContactTargetInfo;
 
-ChannelTargetInfo?: AWS.SSMContacts.Contact.ChannelTargetInfo; };
+ContactId: string;
 
-export type ChannelTargetInfo = { ChannelId: string;
+IsEssential: boolean;
 
-RetryIntervalInMinutes: number; };
 
-export type Stage = { DurationInMinutes: number;
+};
 
-Targets?: AWS.SSMContacts.Contact.Targets[]; };
+export type Targets = {
 
-export type Alias =  string;
 
-export type DisplayName =  string;
+ContactTargetInfo?: AWS.SSMContacts.Contact.ContactTargetInfo;
 
-export type Type =  string;
+ChannelTargetInfo?: AWS.SSMContacts.Contact.ChannelTargetInfo;
 
-export type Plan =  AWS.SSMContacts.Contact.Stage[];
+
+};
+
+export type ChannelTargetInfo = {
+
+
+ChannelId: string;
+
+RetryIntervalInMinutes: number;
+
+
+};
+
+export type Stage = {
+
+
+DurationInMinutes: number;
+
+Targets?: AWS.SSMContacts.Contact.Targets[];
+
+
+};
+
 
 }
 
-export namespace ContactChannel {
+export type ContactChannel = {
 
-export type ContactId =  string;
 
-export type ChannelName =  string;
+ContactId: string;
 
-export type ChannelType =  string;
+ChannelName: string;
 
-export type DeferActivation =  boolean;
+ChannelType: string;
 
-export type ChannelAddress =  string;
+DeferActivation?: boolean;
 
-}
+ChannelAddress: string;
+
+
+};
+
 
 }
 
 export namespace AuditManager {
 
+
+export type Assessment = {
+
+
+AssessmentReportsDestination?: AWS.AuditManager.Assessment.AssessmentReportsDestination;
+
+Scope?: AWS.AuditManager.Assessment.Scope;
+
+FrameworkId?: string;
+
+AwsAccount?: AWS.AuditManager.Assessment.AWSAccount;
+
+Tags?: Tag[];
+
+Roles?: AWS.AuditManager.Assessment.Role[];
+
+Status?: string;
+
+Name?: string;
+
+Description?: string;
+
+
+};
+
 export namespace Assessment {
 
-export type Delegation = { LastUpdated?: number;
+
+export type Delegation = {
+
+
+LastUpdated?: number;
 
 ControlSetId?: string;
 
@@ -19584,71 +32554,115 @@ RoleType?: string;
 
 AssessmentId?: string;
 
-Status?: string; };
+Status?: string;
 
-export type AWSAccount = { Id?: string;
+
+};
+
+export type AWSAccount = {
+
+
+Id?: string;
 
 EmailAddress?: string;
 
-Name?: string; };
+Name?: string;
 
-export type Role = { RoleArn?: string;
 
-RoleType?: string; };
+};
 
-export type AssessmentReportsDestination =  AWS.AuditManager.Assessment.AssessmentReportsDestination;
+export type Role = {
 
-export type AWSService = { ServiceName?: string; };
 
-export type Scope =  AWS.AuditManager.Assessment.Scope;
+RoleArn?: string;
 
-export type FrameworkId =  string;
+RoleType?: string;
 
-export type AwsAccount =  AWS.AuditManager.Assessment.AWSAccount;
 
-export type Tags =  Tag[];
+};
 
-export type Roles =  AWS.AuditManager.Assessment.Role[];
+export type AWSService = {
 
-export type Status =  string;
 
-export type Name =  string;
+ServiceName?: string;
 
-export type Description =  string;
+
+};
+
 
 }
+
 
 }
 
 export namespace LakeFormation {
 
+
+export type Permissions = {
+
+
+Resource: AWS.LakeFormation.Permissions.Resource;
+
+DataLakePrincipal: AWS.LakeFormation.Permissions.DataLakePrincipal;
+
+Permissions?: string[];
+
+PermissionsWithGrantOption?: string[];
+
+
+};
+
 export namespace Permissions {
 
-export type DataLocationResource = { S3Resource?: string;
 
-CatalogId?: string; };
+export type DataLocationResource = {
 
-export type ColumnWildcard = { ExcludedColumnNames?: string[]; };
 
-export type DatabaseResource = { CatalogId?: string;
+S3Resource?: string;
 
-Name?: string; };
+CatalogId?: string;
 
-export type TableWildcard = {  };
 
-export type Resource =  AWS.LakeFormation.Permissions.Resource;
+};
 
-export type DataLakePrincipal =  AWS.LakeFormation.Permissions.DataLakePrincipal;
+export type ColumnWildcard = {
 
-export type TableResource = { DatabaseName?: string;
+
+ExcludedColumnNames?: string[];
+
+
+};
+
+export type DatabaseResource = {
+
+
+CatalogId?: string;
+
+Name?: string;
+
+
+};
+
+
+
+export type TableResource = {
+
+
+DatabaseName?: string;
 
 CatalogId?: string;
 
 TableWildcard?: AWS.LakeFormation.Permissions.TableWildcard;
 
-Name?: string; };
+Name?: string;
 
-export type TableWithColumnsResource = { ColumnNames?: string[];
+
+};
+
+export type TableWithColumnsResource = {
+
+
+ColumnNames?: string[];
 
 DatabaseName?: string;
 
@@ -19656,163 +32670,241 @@ CatalogId?: string;
 
 Name?: string;
 
-ColumnWildcard?: AWS.LakeFormation.Permissions.ColumnWildcard; };
+ColumnWildcard?: AWS.LakeFormation.Permissions.ColumnWildcard;
 
-export type Permissions =  string[];
 
-export type PermissionsWithGrantOption =  string[];
+};
+
 
 }
+
+export type DataLakeSettings = {
+
+
+Admins?: AWS.LakeFormation.DataLakeSettings.Admins;
+
+TrustedResourceOwners?: string[];
+
+
+};
 
 export namespace DataLakeSettings {
 
-export type DataLakePrincipal = { DataLakePrincipalIdentifier?: string; };
 
-export type Admins =  AWS.LakeFormation.DataLakeSettings.Admins;
+export type DataLakePrincipal = {
 
-export type TrustedResourceOwners =  string[];
 
-}
+DataLakePrincipalIdentifier?: string;
 
-export namespace Resource {
 
-export type ResourceArn =  string;
+};
 
-export type UseServiceLinkedRole =  boolean;
-
-export type RoleArn =  string;
 
 }
+
+export type Resource = {
+
+
+ResourceArn: string;
+
+UseServiceLinkedRole: boolean;
+
+RoleArn?: string;
+
+
+};
+
 
 }
 
 export namespace NetworkManager {
 
-export namespace Device {
 
-export type Location =  AWS.NetworkManager.Device.Location;
+export type Device = {
 
-export type Description =  string;
 
-export type Tags =  Tag[];
+Location?: AWS.NetworkManager.Device.Location;
 
-export type GlobalNetworkId =  string;
+Description?: string;
 
-export type Model =  string;
+Tags?: Tag[];
 
-export type SerialNumber =  string;
+GlobalNetworkId: string;
 
-export type SiteId =  string;
+Model?: string;
 
-export type Type =  string;
+SerialNumber?: string;
 
-export type Vendor =  string;
+SiteId?: string;
 
-}
+Type?: string;
 
-export namespace Link {
+Vendor?: string;
 
-export type Bandwidth =  AWS.NetworkManager.Link.Bandwidth;
 
-export type GlobalNetworkId =  string;
+};
 
-export type SiteId =  string;
+export type Link = {
 
-export type Provider =  string;
 
-export type Description =  string;
+Bandwidth: AWS.NetworkManager.Link.Bandwidth;
 
-export type Tags =  Tag[];
+GlobalNetworkId: string;
 
-export type Type =  string;
+SiteId: string;
 
-}
+Provider?: string;
 
-export namespace Site {
+Description?: string;
 
-export type Location =  AWS.NetworkManager.Site.Location;
+Tags?: Tag[];
 
-export type Description =  string;
+Type?: string;
 
-export type Tags =  Tag[];
 
-export type GlobalNetworkId =  string;
+};
 
-}
+export type Site = {
 
-export namespace CustomerGatewayAssociation {
 
-export type GlobalNetworkId =  string;
+Location?: AWS.NetworkManager.Site.Location;
 
-export type CustomerGatewayArn =  string;
+Description?: string;
 
-export type DeviceId =  string;
+Tags?: Tag[];
 
-export type LinkId =  string;
+GlobalNetworkId: string;
 
-}
 
-export namespace LinkAssociation {
+};
 
-export type GlobalNetworkId =  string;
+export type CustomerGatewayAssociation = {
 
-export type DeviceId =  string;
 
-export type LinkId =  string;
+GlobalNetworkId: string;
 
-}
+CustomerGatewayArn: string;
 
-export namespace GlobalNetwork {
+DeviceId: string;
 
-export type Description =  string;
+LinkId?: string;
 
-export type Tags =  Tag[];
 
-}
+};
 
-export namespace TransitGatewayRegistration {
+export type LinkAssociation = {
 
-export type GlobalNetworkId =  string;
 
-export type TransitGatewayArn =  string;
+GlobalNetworkId: string;
 
-}
+DeviceId: string;
+
+LinkId: string;
+
+
+};
+
+export type GlobalNetwork = {
+
+
+Description?: string;
+
+Tags?: Tag[];
+
+
+};
+
+export type TransitGatewayRegistration = {
+
+
+GlobalNetworkId: string;
+
+TransitGatewayArn: string;
+
+
+};
+
 
 }
 
 export namespace Route53 {
 
+
+export type HostedZone = {
+
+
+HostedZoneConfig?: AWS.Route53.HostedZone.HostedZoneConfig;
+
+QueryLoggingConfig?: AWS.Route53.HostedZone.QueryLoggingConfig;
+
+HostedZoneTags?: AWS.Route53.HostedZone.HostedZoneTag[];
+
+Name: string;
+
+VPCs?: AWS.Route53.HostedZone.VPC[];
+
+
+};
+
 export namespace HostedZone {
 
-export type HostedZoneTag = { Key: string;
 
-Value: string; };
+export type HostedZoneTag = {
 
-export type HostedZoneConfig =  AWS.Route53.HostedZone.HostedZoneConfig;
 
-export type QueryLoggingConfig =  AWS.Route53.HostedZone.QueryLoggingConfig;
+Key: string;
 
-export type VPC = { VPCId: string;
+Value: string;
 
-VPCRegion: string; };
 
-export type HostedZoneTags =  AWS.Route53.HostedZone.HostedZoneTag[];
+};
 
-export type Name =  string;
+export type VPC = {
 
-export type VPCs =  AWS.Route53.HostedZone.VPC[];
+
+VPCId: string;
+
+VPCRegion: string;
+
+
+};
+
 
 }
 
+export type RecordSetGroup = {
+
+
+Comment?: string;
+
+HostedZoneId?: string;
+
+HostedZoneName?: string;
+
+RecordSets?: AWS.Route53.RecordSetGroup.RecordSet[];
+
+
+};
+
 export namespace RecordSetGroup {
 
-export type GeoLocation = { ContinentCode?: string;
+
+export type GeoLocation = {
+
+
+ContinentCode?: string;
 
 CountryCode?: string;
 
-SubdivisionCode?: string; };
+SubdivisionCode?: string;
 
-export type RecordSet = { AliasTarget?: AWS.Route53.RecordSetGroup.AliasTarget;
+
+};
+
+export type RecordSet = {
+
+
+AliasTarget?: AWS.Route53.RecordSetGroup.AliasTarget;
 
 Comment?: string;
 
@@ -19840,171 +32932,245 @@ TTL?: string;
 
 Type: string;
 
-Weight?: number; };
+Weight?: number;
 
-export type AliasTarget = { DNSName: string;
+
+};
+
+export type AliasTarget = {
+
+
+DNSName: string;
 
 EvaluateTargetHealth?: boolean;
 
-HostedZoneId: string; };
+HostedZoneId: string;
 
-export type Comment =  string;
 
-export type HostedZoneId =  string;
+};
 
-export type HostedZoneName =  string;
-
-export type RecordSets =  AWS.Route53.RecordSetGroup.RecordSet[];
 
 }
 
-export namespace RecordSet {
+export type RecordSet = {
 
-export type GeoLocation =  AWS.Route53.RecordSet.GeoLocation;
 
-export type AliasTarget =  AWS.Route53.RecordSet.AliasTarget;
+GeoLocation?: AWS.Route53.RecordSet.GeoLocation;
 
-export type Comment =  string;
+AliasTarget?: AWS.Route53.RecordSet.AliasTarget;
 
-export type Failover =  string;
+Comment?: string;
 
-export type HealthCheckId =  string;
+Failover?: string;
 
-export type HostedZoneId =  string;
+HealthCheckId?: string;
 
-export type HostedZoneName =  string;
+HostedZoneId?: string;
 
-export type MultiValueAnswer =  boolean;
+HostedZoneName?: string;
 
-export type Name =  string;
+MultiValueAnswer?: boolean;
 
-export type Region =  string;
+Name: string;
 
-export type ResourceRecords =  string[];
+Region?: string;
 
-export type SetIdentifier =  string;
+ResourceRecords?: string[];
 
-export type TTL =  string;
+SetIdentifier?: string;
 
-export type Type =  string;
+TTL?: string;
 
-export type Weight =  number;
+Type: string;
 
-}
+Weight?: number;
+
+
+};
+
+export type HealthCheck = {
+
+
+HealthCheckConfig: JSONString;
+
+HealthCheckTags?: AWS.Route53.HealthCheck.HealthCheckTag[];
+
+
+};
 
 export namespace HealthCheck {
 
-export type HealthCheckTag = { Key: string;
 
-Value: string; };
+export type HealthCheckTag = {
 
-export type HealthCheckConfig =  JSONString;
 
-export type HealthCheckTags =  AWS.Route53.HealthCheck.HealthCheckTag[];
+Key: string;
 
-}
+Value: string;
 
-export namespace DNSSEC {
 
-export type HostedZoneId =  string;
+};
+
 
 }
 
-export namespace KeySigningKey {
+export type DNSSEC = {
 
-export type HostedZoneId =  string;
 
-export type Status =  string;
+HostedZoneId: string;
 
-export type Name =  string;
 
-export type KeyManagementServiceArn =  string;
+};
 
-}
+export type KeySigningKey = {
+
+
+HostedZoneId: string;
+
+Status: string;
+
+Name: string;
+
+KeyManagementServiceArn: string;
+
+
+};
+
 
 }
 
 export namespace Logs {
 
+
+export type MetricFilter = {
+
+
+FilterPattern: string;
+
+LogGroupName: string;
+
+MetricTransformations: AWS.Logs.MetricFilter.MetricTransformation[];
+
+
+};
+
 export namespace MetricFilter {
 
-export type MetricTransformation = { DefaultValue?: number;
+
+export type MetricTransformation = {
+
+
+DefaultValue?: number;
 
 MetricName: string;
 
 MetricNamespace: string;
 
-MetricValue: string; };
+MetricValue: string;
 
-export type FilterPattern =  string;
 
-export type LogGroupName =  string;
+};
 
-export type MetricTransformations =  AWS.Logs.MetricFilter.MetricTransformation[];
 
 }
 
-export namespace Destination {
+export type Destination = {
 
-export type DestinationName =  string;
 
-export type DestinationPolicy =  string;
+DestinationName: string;
 
-export type RoleArn =  string;
+DestinationPolicy: string;
 
-export type TargetArn =  string;
+RoleArn: string;
 
-}
+TargetArn: string;
 
-export namespace LogGroup {
 
-export type LogGroupName =  string;
+};
 
-export type KmsKeyId =  string;
+export type LogGroup = {
 
-export type RetentionInDays =  number;
 
-}
+LogGroupName?: string;
 
-export namespace LogStream {
+KmsKeyId?: string;
 
-export type LogGroupName =  string;
+RetentionInDays?: number;
 
-export type LogStreamName =  string;
 
-}
+};
 
-export namespace SubscriptionFilter {
+export type LogStream = {
 
-export type DestinationArn =  string;
 
-export type FilterPattern =  string;
+LogGroupName: string;
 
-export type LogGroupName =  string;
+LogStreamName?: string;
 
-export type RoleArn =  string;
 
-}
+};
 
-export namespace QueryDefinition {
+export type SubscriptionFilter = {
 
-export type Name =  string;
 
-export type QueryString =  string;
+DestinationArn: string;
 
-export type LogGroupNames =  string[];
+FilterPattern: string;
 
-}
+LogGroupName: string;
+
+RoleArn?: string;
+
+
+};
+
+export type QueryDefinition = {
+
+
+Name: string;
+
+QueryString: string;
+
+LogGroupNames?: string[];
+
+
+};
+
 
 }
 
 export namespace S3Outposts {
 
+
+export type Bucket = {
+
+
+LifecycleConfiguration?: AWS.S3Outposts.Bucket.LifecycleConfiguration;
+
+BucketName: string;
+
+OutpostId: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace Bucket {
 
-export type AbortIncompleteMultipartUpload = { DaysAfterInitiation: number; };
 
-export type Rule = { Status?: string;
+export type AbortIncompleteMultipartUpload = {
+
+
+DaysAfterInitiation: number;
+
+
+};
+
+export type Rule = {
+
+
+Status?: string;
 
 Id?: string;
 
@@ -20014,121 +33180,193 @@ ExpirationDate?: string;
 
 ExpirationInDays?: number;
 
-Filter?: JSONString; };
+Filter?: JSONString;
 
-export type LifecycleConfiguration =  AWS.S3Outposts.Bucket.LifecycleConfiguration;
 
-export type BucketName =  string;
+};
 
-export type OutpostId =  string;
-
-export type Tags =  Tag[];
 
 }
 
-export namespace AccessPoint {
+export type AccessPoint = {
 
-export type VpcConfiguration =  AWS.S3Outposts.AccessPoint.VpcConfiguration;
 
-export type Bucket =  string;
+VpcConfiguration: AWS.S3Outposts.AccessPoint.VpcConfiguration;
 
-export type Name =  string;
+Bucket: string;
 
-export type Policy =  JSONString;
+Name: string;
 
-}
+Policy?: JSONString;
+
+
+};
+
+export type Endpoint = {
+
+
+OutpostId: string;
+
+SecurityGroupId: string;
+
+SubnetId: string;
+
+
+};
 
 export namespace Endpoint {
 
-export type NetworkInterface = { NetworkInterfaceId: string; };
 
-export type OutpostId =  string;
+export type NetworkInterface = {
 
-export type SecurityGroupId =  string;
 
-export type SubnetId =  string;
+NetworkInterfaceId: string;
 
-}
 
-export namespace BucketPolicy {
+};
 
-export type Bucket =  string;
-
-export type PolicyDocument =  JSONString;
 
 }
+
+export type BucketPolicy = {
+
+
+Bucket: string;
+
+PolicyDocument: JSONString;
+
+
+};
+
 
 }
 
 export namespace SecretsManager {
 
-export namespace RotationSchedule {
 
-export type RotationRules =  AWS.SecretsManager.RotationSchedule.RotationRules;
+export type RotationSchedule = {
 
-export type HostedRotationLambda =  AWS.SecretsManager.RotationSchedule.HostedRotationLambda;
 
-export type SecretId =  string;
+RotationRules?: AWS.SecretsManager.RotationSchedule.RotationRules;
 
-export type RotationLambdaARN =  string;
+HostedRotationLambda?: AWS.SecretsManager.RotationSchedule.HostedRotationLambda;
 
-}
+SecretId: string;
+
+RotationLambdaARN?: string;
+
+
+};
+
+export type Secret = {
+
+
+GenerateSecretString?: AWS.SecretsManager.Secret.GenerateSecretString;
+
+Description?: string;
+
+KmsKeyId?: string;
+
+SecretString?: string;
+
+ReplicaRegions?: AWS.SecretsManager.Secret.ReplicaRegion[];
+
+Tags?: Tag[];
+
+Name?: string;
+
+
+};
 
 export namespace Secret {
 
-export type ReplicaRegion = { KmsKeyId?: string;
 
-Region: string; };
+export type ReplicaRegion = {
 
-export type GenerateSecretString =  AWS.SecretsManager.Secret.GenerateSecretString;
 
-export type Description =  string;
+KmsKeyId?: string;
 
-export type KmsKeyId =  string;
+Region: string;
 
-export type SecretString =  string;
 
-export type ReplicaRegions =  AWS.SecretsManager.Secret.ReplicaRegion[];
+};
 
-export type Tags =  Tag[];
-
-export type Name =  string;
 
 }
 
-export namespace ResourcePolicy {
+export type ResourcePolicy = {
 
-export type BlockPublicPolicy =  boolean;
 
-export type SecretId =  string;
+BlockPublicPolicy?: boolean;
 
-export type ResourcePolicy =  JSONString;
+SecretId: string;
 
-}
+ResourcePolicy: JSONString;
 
-export namespace SecretTargetAttachment {
 
-export type SecretId =  string;
+};
 
-export type TargetType =  string;
+export type SecretTargetAttachment = {
 
-export type TargetId =  string;
 
-}
+SecretId: string;
+
+TargetType: string;
+
+TargetId: string;
+
+
+};
+
 
 }
 
 export namespace ApplicationInsights {
 
+
+export type Application = {
+
+
+ResourceGroupName: string;
+
+CWEMonitorEnabled?: boolean;
+
+OpsCenterEnabled?: boolean;
+
+OpsItemSNSTopicArn?: string;
+
+Tags?: Tag[];
+
+CustomComponents?: AWS.ApplicationInsights.Application.CustomComponent[];
+
+LogPatternSets?: AWS.ApplicationInsights.Application.LogPatternSet[];
+
+AutoConfigurationEnabled?: boolean;
+
+ComponentMonitoringSettings?: AWS.ApplicationInsights.Application.ComponentMonitoringSetting[];
+
+
+};
+
 export namespace Application {
 
-export type SubComponentConfigurationDetails = { AlarmMetrics?: AWS.ApplicationInsights.Application.AlarmMetric[];
+
+export type SubComponentConfigurationDetails = {
+
+
+AlarmMetrics?: AWS.ApplicationInsights.Application.AlarmMetric[];
 
 Logs?: AWS.ApplicationInsights.Application.Log[];
 
-WindowsEvents?: AWS.ApplicationInsights.Application.WindowsEvent[]; };
+WindowsEvents?: AWS.ApplicationInsights.Application.WindowsEvent[];
 
-export type ComponentMonitoringSetting = { ComponentName?: string;
+
+};
+
+export type ComponentMonitoringSetting = {
+
+
+ComponentName?: string;
 
 ComponentARN?: string;
 
@@ -20138,47 +33376,101 @@ ComponentConfigurationMode: string;
 
 DefaultOverwriteComponentConfiguration?: AWS.ApplicationInsights.Application.ComponentConfiguration;
 
-CustomComponentConfiguration?: AWS.ApplicationInsights.Application.ComponentConfiguration; };
+CustomComponentConfiguration?: AWS.ApplicationInsights.Application.ComponentConfiguration;
 
-export type LogPattern = { PatternName: string;
+
+};
+
+export type LogPattern = {
+
+
+PatternName: string;
 
 Pattern: string;
 
-Rank: number; };
+Rank: number;
 
-export type LogPatternSet = { PatternSetName: string;
 
-LogPatterns: AWS.ApplicationInsights.Application.LogPattern[]; };
+};
 
-export type Alarm = { AlarmName: string;
+export type LogPatternSet = {
 
-Severity?: string; };
 
-export type WindowsEvent = { LogGroupName: string;
+PatternSetName: string;
+
+LogPatterns: AWS.ApplicationInsights.Application.LogPattern[];
+
+
+};
+
+export type Alarm = {
+
+
+AlarmName: string;
+
+Severity?: string;
+
+
+};
+
+export type WindowsEvent = {
+
+
+LogGroupName: string;
 
 EventName: string;
 
 EventLevels: string[];
 
-PatternSet?: string; };
+PatternSet?: string;
 
-export type ComponentConfiguration = { ConfigurationDetails?: AWS.ApplicationInsights.Application.ConfigurationDetails;
 
-SubComponentTypeConfigurations?: AWS.ApplicationInsights.Application.SubComponentTypeConfiguration[]; };
+};
 
-export type CustomComponent = { ComponentName: string;
+export type ComponentConfiguration = {
 
-ResourceList: string[]; };
 
-export type JMXPrometheusExporter = { JMXURL?: string;
+ConfigurationDetails?: AWS.ApplicationInsights.Application.ConfigurationDetails;
+
+SubComponentTypeConfigurations?: AWS.ApplicationInsights.Application.SubComponentTypeConfiguration[];
+
+
+};
+
+export type CustomComponent = {
+
+
+ComponentName: string;
+
+ResourceList: string[];
+
+
+};
+
+export type JMXPrometheusExporter = {
+
+
+JMXURL?: string;
 
 HostPort?: string;
 
-PrometheusPort?: string; };
+PrometheusPort?: string;
 
-export type AlarmMetric = { AlarmMetricName: string; };
 
-export type ConfigurationDetails = { AlarmMetrics?: AWS.ApplicationInsights.Application.AlarmMetric[];
+};
+
+export type AlarmMetric = {
+
+
+AlarmMetricName: string;
+
+
+};
+
+export type ConfigurationDetails = {
+
+
+AlarmMetrics?: AWS.ApplicationInsights.Application.AlarmMetric[];
 
 Logs?: AWS.ApplicationInsights.Application.Log[];
 
@@ -20186,9 +33478,15 @@ WindowsEvents?: AWS.ApplicationInsights.Application.WindowsEvent[];
 
 Alarms?: AWS.ApplicationInsights.Application.Alarm[];
 
-JMXPrometheusExporter?: AWS.ApplicationInsights.Application.JMXPrometheusExporter; };
+JMXPrometheusExporter?: AWS.ApplicationInsights.Application.JMXPrometheusExporter;
 
-export type Log = { LogGroupName?: string;
+
+};
+
+export type Log = {
+
+
+LogGroupName?: string;
 
 LogPath?: string;
 
@@ -20196,95 +33494,187 @@ LogType: string;
 
 Encoding?: string;
 
-PatternSet?: string; };
+PatternSet?: string;
 
-export type SubComponentTypeConfiguration = { SubComponentType: string;
 
-SubComponentConfigurationDetails: AWS.ApplicationInsights.Application.SubComponentConfigurationDetails; };
+};
 
-export type ResourceGroupName =  string;
+export type SubComponentTypeConfiguration = {
 
-export type CWEMonitorEnabled =  boolean;
 
-export type OpsCenterEnabled =  boolean;
+SubComponentType: string;
 
-export type OpsItemSNSTopicArn =  string;
+SubComponentConfigurationDetails: AWS.ApplicationInsights.Application.SubComponentConfigurationDetails;
 
-export type Tags =  Tag[];
 
-export type CustomComponents =  AWS.ApplicationInsights.Application.CustomComponent[];
+};
 
-export type LogPatternSets =  AWS.ApplicationInsights.Application.LogPatternSet[];
-
-export type AutoConfigurationEnabled =  boolean;
-
-export type ComponentMonitoringSettings =  AWS.ApplicationInsights.Application.ComponentMonitoringSetting[];
 
 }
+
 
 }
 
 export namespace CodeBuild {
 
+
+export type Project = {
+
+
+Environment: AWS.CodeBuild.Project.Environment;
+
+VpcConfig?: AWS.CodeBuild.Project.VpcConfig;
+
+Artifacts: AWS.CodeBuild.Project.Artifacts;
+
+FilterGroup?: AWS.CodeBuild.Project.WebhookFilter[];
+
+Source: AWS.CodeBuild.Project.Source;
+
+LogsConfig?: AWS.CodeBuild.Project.LogsConfig;
+
+Description?: string;
+
+SecondarySources?: AWS.CodeBuild.Project.Source[];
+
+EncryptionKey?: string;
+
+SourceVersion?: string;
+
+Triggers?: AWS.CodeBuild.Project.ProjectTriggers;
+
+SecondaryArtifacts?: AWS.CodeBuild.Project.Artifacts[];
+
+Name?: string;
+
+BadgeEnabled?: boolean;
+
+ServiceRole: string;
+
+QueuedTimeoutInMinutes?: number;
+
+FileSystemLocations?: AWS.CodeBuild.Project.ProjectFileSystemLocation[];
+
+SecondarySourceVersions?: AWS.CodeBuild.Project.ProjectSourceVersion[];
+
+ConcurrentBuildLimit?: number;
+
+BuildBatchConfig?: AWS.CodeBuild.Project.ProjectBuildBatchConfig;
+
+Tags?: Tag[];
+
+TimeoutInMinutes?: number;
+
+Cache?: AWS.CodeBuild.Project.ProjectCache;
+
+
+};
+
 export namespace Project {
 
-export type Environment =  AWS.CodeBuild.Project.Environment;
 
-export type GitSubmodulesConfig = { FetchSubmodules: boolean; };
+export type GitSubmodulesConfig = {
 
-export type VpcConfig =  AWS.CodeBuild.Project.VpcConfig;
 
-export type Artifacts =  AWS.CodeBuild.Project.Artifacts;
+FetchSubmodules: boolean;
 
-export type RegistryCredential = { Credential: string;
 
-CredentialProvider: string; };
+};
 
-export type CloudWatchLogsConfig = { Status: string;
+export type RegistryCredential = {
+
+
+Credential: string;
+
+CredentialProvider: string;
+
+
+};
+
+export type CloudWatchLogsConfig = {
+
+
+Status: string;
 
 GroupName?: string;
 
-StreamName?: string; };
+StreamName?: string;
 
-export type ProjectCache = { Modes?: string[];
+
+};
+
+export type ProjectCache = {
+
+
+Modes?: string[];
 
 Type: string;
 
-Location?: string; };
+Location?: string;
 
-export type ProjectBuildBatchConfig = { CombineArtifacts?: boolean;
+
+};
+
+export type ProjectBuildBatchConfig = {
+
+
+CombineArtifacts?: boolean;
 
 ServiceRole?: string;
 
 TimeoutInMins?: number;
 
-Restrictions?: AWS.CodeBuild.Project.BatchRestrictions; };
+Restrictions?: AWS.CodeBuild.Project.BatchRestrictions;
 
-export type FilterGroup =  AWS.CodeBuild.Project.WebhookFilter[];
 
-export type BatchRestrictions = { ComputeTypesAllowed?: string[];
+};
 
-MaximumBuildsAllowed?: number; };
+export type BatchRestrictions = {
 
-export type ProjectTriggers = { FilterGroups?: AWS.CodeBuild.Project.FilterGroup[];
+
+ComputeTypesAllowed?: string[];
+
+MaximumBuildsAllowed?: number;
+
+
+};
+
+export type ProjectTriggers = {
+
+
+FilterGroups?: AWS.CodeBuild.Project.FilterGroup[];
 
 BuildType?: string;
 
-Webhook?: boolean; };
+Webhook?: boolean;
 
-export type Source =  AWS.CodeBuild.Project.Source;
 
-export type ProjectSourceVersion = { SourceIdentifier: string;
+};
 
-SourceVersion?: string; };
+export type ProjectSourceVersion = {
 
-export type LogsConfig =  AWS.CodeBuild.Project.LogsConfig;
 
-export type SourceAuth = { Type: string;
+SourceIdentifier: string;
 
-Resource?: string; };
+SourceVersion?: string;
 
-export type ProjectFileSystemLocation = { MountPoint: string;
+
+};
+
+export type SourceAuth = {
+
+
+Type: string;
+
+Resource?: string;
+
+
+};
+
+export type ProjectFileSystemLocation = {
+
+
+MountPoint: string;
 
 Type: string;
 
@@ -20292,73 +33682,93 @@ Identifier: string;
 
 MountOptions?: string;
 
-Location: string; };
+Location: string;
 
-export type S3LogsConfig = { Status: string;
+
+};
+
+export type S3LogsConfig = {
+
+
+Status: string;
 
 EncryptionDisabled?: boolean;
 
-Location?: string; };
+Location?: string;
 
-export type WebhookFilter = { Pattern: string;
+
+};
+
+export type WebhookFilter = {
+
+
+Pattern: string;
 
 Type: string;
 
-ExcludeMatchedPattern?: boolean; };
+ExcludeMatchedPattern?: boolean;
 
-export type BuildStatusConfig = { Context?: string;
 
-TargetUrl?: string; };
+};
 
-export type EnvironmentVariable = { Type?: string;
+export type BuildStatusConfig = {
+
+
+Context?: string;
+
+TargetUrl?: string;
+
+
+};
+
+export type EnvironmentVariable = {
+
+
+Type?: string;
 
 Value: string;
 
-Name: string; };
+Name: string;
 
-export type Description =  string;
 
-export type SecondarySources =  AWS.CodeBuild.Project.Source[];
+};
 
-export type EncryptionKey =  string;
-
-export type SourceVersion =  string;
-
-export type Triggers =  AWS.CodeBuild.Project.ProjectTriggers;
-
-export type SecondaryArtifacts =  AWS.CodeBuild.Project.Artifacts[];
-
-export type Name =  string;
-
-export type BadgeEnabled =  boolean;
-
-export type ServiceRole =  string;
-
-export type QueuedTimeoutInMinutes =  number;
-
-export type FileSystemLocations =  AWS.CodeBuild.Project.ProjectFileSystemLocation[];
-
-export type SecondarySourceVersions =  AWS.CodeBuild.Project.ProjectSourceVersion[];
-
-export type ConcurrentBuildLimit =  number;
-
-export type BuildBatchConfig =  AWS.CodeBuild.Project.ProjectBuildBatchConfig;
-
-export type Tags =  Tag[];
-
-export type TimeoutInMinutes =  number;
-
-export type Cache =  AWS.CodeBuild.Project.ProjectCache;
 
 }
 
+export type ReportGroup = {
+
+
+Type: string;
+
+ExportConfig: AWS.CodeBuild.ReportGroup.ReportExportConfig;
+
+DeleteReports?: boolean;
+
+Tags?: Tag[];
+
+Name?: string;
+
+
+};
+
 export namespace ReportGroup {
 
-export type ReportExportConfig = { S3Destination?: AWS.CodeBuild.ReportGroup.S3ReportExportConfig;
 
-ExportConfigType: string; };
+export type ReportExportConfig = {
 
-export type S3ReportExportConfig = { Path?: string;
+
+S3Destination?: AWS.CodeBuild.ReportGroup.S3ReportExportConfig;
+
+ExportConfigType: string;
+
+
+};
+
+export type S3ReportExportConfig = {
+
+
+Path?: string;
 
 Bucket: string;
 
@@ -20368,115 +33778,247 @@ EncryptionKey?: string;
 
 BucketOwner?: string;
 
-EncryptionDisabled?: boolean; };
+EncryptionDisabled?: boolean;
 
-export type Type =  string;
 
-export type ExportConfig =  AWS.CodeBuild.ReportGroup.ReportExportConfig;
+};
 
-export type DeleteReports =  boolean;
-
-export type Tags =  Tag[];
-
-export type Name =  string;
 
 }
 
-export namespace SourceCredential {
+export type SourceCredential = {
 
-export type ServerType =  string;
 
-export type Username =  string;
+ServerType: string;
 
-export type Token =  string;
+Username?: string;
 
-export type AuthType =  string;
+Token: string;
 
-}
+AuthType: string;
+
+
+};
+
 
 }
 
 export namespace IoTSiteWise {
 
+
+export type AccessPolicy = {
+
+
+AccessPolicyResource: AWS.IoTSiteWise.AccessPolicy.AccessPolicyResource;
+
+AccessPolicyIdentity: AWS.IoTSiteWise.AccessPolicy.AccessPolicyIdentity;
+
+AccessPolicyPermission: string;
+
+
+};
+
 export namespace AccessPolicy {
 
-export type Project = { id?: string; };
 
-export type IamRole = { arn?: string; };
+export type Project = {
 
-export type AccessPolicyResource =  AWS.IoTSiteWise.AccessPolicy.AccessPolicyResource;
 
-export type User = { id?: string; };
+id?: string;
 
-export type IamUser = { arn?: string; };
 
-export type Portal = { id?: string; };
+};
 
-export type AccessPolicyIdentity =  AWS.IoTSiteWise.AccessPolicy.AccessPolicyIdentity;
+export type IamRole = {
 
-export type AccessPolicyPermission =  string;
+
+arn?: string;
+
+
+};
+
+export type User = {
+
+
+id?: string;
+
+
+};
+
+export type IamUser = {
+
+
+arn?: string;
+
+
+};
+
+export type Portal = {
+
+
+id?: string;
+
+
+};
+
 
 }
+
+export type Gateway = {
+
+
+GatewayPlatform: AWS.IoTSiteWise.Gateway.GatewayPlatform;
+
+GatewayName: string;
+
+Tags?: Tag[];
+
+GatewayCapabilitySummaries?: AWS.IoTSiteWise.Gateway.GatewayCapabilitySummary[];
+
+
+};
 
 export namespace Gateway {
 
-export type Greengrass = { GroupArn: string; };
 
-export type GatewayCapabilitySummary = { CapabilityNamespace: string;
+export type Greengrass = {
 
-CapabilityConfiguration?: string; };
 
-export type GatewayPlatform =  AWS.IoTSiteWise.Gateway.GatewayPlatform;
+GroupArn: string;
 
-export type GatewayName =  string;
 
-export type Tags =  Tag[];
+};
 
-export type GatewayCapabilitySummaries =  AWS.IoTSiteWise.Gateway.GatewayCapabilitySummary[];
+export type GatewayCapabilitySummary = {
+
+
+CapabilityNamespace: string;
+
+CapabilityConfiguration?: string;
+
+
+};
+
 
 }
 
+export type AssetModel = {
+
+
+AssetModelName: string;
+
+AssetModelDescription?: string;
+
+AssetModelProperties?: AWS.IoTSiteWise.AssetModel.AssetModelProperty[];
+
+AssetModelCompositeModels?: AWS.IoTSiteWise.AssetModel.AssetModelCompositeModel[];
+
+AssetModelHierarchies?: AWS.IoTSiteWise.AssetModel.AssetModelHierarchy[];
+
+Tags?: Tag[];
+
+
+};
+
 export namespace AssetModel {
 
-export type AssetModelCompositeModel = { Description?: string;
+
+export type AssetModelCompositeModel = {
+
+
+Description?: string;
 
 Name: string;
 
 Type: string;
 
-CompositeModelProperties?: AWS.IoTSiteWise.AssetModel.AssetModelProperty[]; };
+CompositeModelProperties?: AWS.IoTSiteWise.AssetModel.AssetModelProperty[];
 
-export type MetricWindow = { Tumbling?: AWS.IoTSiteWise.AssetModel.TumblingWindow; };
 
-export type TumblingWindow = { Interval: string; };
+};
 
-export type Attribute = { DefaultValue?: string; };
+export type MetricWindow = {
 
-export type ExpressionVariable = { Name: string;
 
-Value: AWS.IoTSiteWise.AssetModel.VariableValue; };
+Tumbling?: AWS.IoTSiteWise.AssetModel.TumblingWindow;
 
-export type VariableValue = { PropertyLogicalId: string;
 
-HierarchyLogicalId?: string; };
+};
 
-export type Transform = { Expression: string;
+export type TumblingWindow = {
 
-Variables: AWS.IoTSiteWise.AssetModel.ExpressionVariable[]; };
 
-export type AssetModelHierarchy = { LogicalId: string;
+Interval: string;
+
+
+};
+
+export type Attribute = {
+
+
+DefaultValue?: string;
+
+
+};
+
+export type ExpressionVariable = {
+
 
 Name: string;
 
-ChildAssetModelId: string; };
+Value: AWS.IoTSiteWise.AssetModel.VariableValue;
 
-export type Metric = { Expression: string;
+
+};
+
+export type VariableValue = {
+
+
+PropertyLogicalId: string;
+
+HierarchyLogicalId?: string;
+
+
+};
+
+export type Transform = {
+
+
+Expression: string;
 
 Variables: AWS.IoTSiteWise.AssetModel.ExpressionVariable[];
 
-Window: AWS.IoTSiteWise.AssetModel.MetricWindow; };
 
-export type AssetModelProperty = { LogicalId: string;
+};
+
+export type AssetModelHierarchy = {
+
+
+LogicalId: string;
+
+Name: string;
+
+ChildAssetModelId: string;
+
+
+};
+
+export type Metric = {
+
+
+Expression: string;
+
+Variables: AWS.IoTSiteWise.AssetModel.ExpressionVariable[];
+
+Window: AWS.IoTSiteWise.AssetModel.MetricWindow;
+
+
+};
+
+export type AssetModelProperty = {
+
+
+LogicalId: string;
 
 Name: string;
 
@@ -20486,297 +34028,399 @@ DataTypeSpec?: string;
 
 Unit?: string;
 
-Type: AWS.IoTSiteWise.AssetModel.PropertyType; };
+Type: AWS.IoTSiteWise.AssetModel.PropertyType;
 
-export type PropertyType = { TypeName: string;
+
+};
+
+export type PropertyType = {
+
+
+TypeName: string;
 
 Attribute?: AWS.IoTSiteWise.AssetModel.Attribute;
 
 Transform?: AWS.IoTSiteWise.AssetModel.Transform;
 
-Metric?: AWS.IoTSiteWise.AssetModel.Metric; };
+Metric?: AWS.IoTSiteWise.AssetModel.Metric;
 
-export type AssetModelName =  string;
 
-export type AssetModelDescription =  string;
+};
 
-export type AssetModelProperties =  AWS.IoTSiteWise.AssetModel.AssetModelProperty[];
-
-export type AssetModelCompositeModels =  AWS.IoTSiteWise.AssetModel.AssetModelCompositeModel[];
-
-export type AssetModelHierarchies =  AWS.IoTSiteWise.AssetModel.AssetModelHierarchy[];
-
-export type Tags =  Tag[];
 
 }
+
+export type Asset = {
+
+
+AssetModelId: string;
+
+AssetName: string;
+
+AssetProperties?: AWS.IoTSiteWise.Asset.AssetProperty[];
+
+AssetHierarchies?: AWS.IoTSiteWise.Asset.AssetHierarchy[];
+
+Tags?: Tag[];
+
+
+};
 
 export namespace Asset {
 
-export type AssetHierarchy = { LogicalId: string;
 
-ChildAssetId: string; };
+export type AssetHierarchy = {
 
-export type AssetProperty = { LogicalId: string;
+
+LogicalId: string;
+
+ChildAssetId: string;
+
+
+};
+
+export type AssetProperty = {
+
+
+LogicalId: string;
 
 Alias?: string;
 
-NotificationState?: string; };
+NotificationState?: string;
 
-export type AssetModelId =  string;
 
-export type AssetName =  string;
+};
 
-export type AssetProperties =  AWS.IoTSiteWise.Asset.AssetProperty[];
-
-export type AssetHierarchies =  AWS.IoTSiteWise.Asset.AssetHierarchy[];
-
-export type Tags =  Tag[];
 
 }
 
-export namespace Dashboard {
+export type Dashboard = {
 
-export type ProjectId =  string;
 
-export type DashboardName =  string;
+ProjectId?: string;
 
-export type DashboardDescription =  string;
+DashboardName: string;
 
-export type DashboardDefinition =  string;
+DashboardDescription: string;
 
-export type Tags =  Tag[];
+DashboardDefinition: string;
 
-}
+Tags?: Tag[];
 
-export namespace Portal {
 
-export type PortalAuthMode =  string;
+};
 
-export type PortalContactEmail =  string;
+export type Portal = {
 
-export type PortalDescription =  string;
 
-export type PortalName =  string;
+PortalAuthMode?: string;
 
-export type RoleArn =  string;
+PortalContactEmail: string;
 
-export type NotificationSenderEmail =  string;
+PortalDescription?: string;
 
-export type Alarms =  JSONString;
+PortalName: string;
 
-export type Tags =  Tag[];
+RoleArn: string;
 
-}
+NotificationSenderEmail?: string;
 
-export namespace Project {
+Alarms?: JSONString;
 
-export type PortalId =  string;
+Tags?: Tag[];
 
-export type ProjectName =  string;
 
-export type ProjectDescription =  string;
+};
 
-export type Tags =  Tag[];
+export type Project = {
 
-}
+
+PortalId: string;
+
+ProjectName: string;
+
+ProjectDescription?: string;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace CloudFormation {
 
+
+export type StackSet = {
+
+
+AutoDeployment?: AWS.CloudFormation.StackSet.AutoDeployment;
+
+OperationPreferences?: AWS.CloudFormation.StackSet.OperationPreferences;
+
+StackSetName: string;
+
+AdministrationRoleARN?: string;
+
+Capabilities?: string[];
+
+Description?: string;
+
+ExecutionRoleName?: string;
+
+StackInstancesGroup?: AWS.CloudFormation.StackSet.StackInstances[];
+
+Parameters?: AWS.CloudFormation.StackSet.Parameter[];
+
+PermissionModel: string;
+
+Tags?: Tag[];
+
+TemplateBody?: string;
+
+TemplateURL?: string;
+
+CallAs?: string;
+
+
+};
+
 export namespace StackSet {
 
-export type StackInstances = { DeploymentTargets: AWS.CloudFormation.StackSet.DeploymentTargets;
+
+export type StackInstances = {
+
+
+DeploymentTargets: AWS.CloudFormation.StackSet.DeploymentTargets;
 
 Regions: string[];
 
-ParameterOverrides?: AWS.CloudFormation.StackSet.Parameter[]; };
+ParameterOverrides?: AWS.CloudFormation.StackSet.Parameter[];
 
-export type AutoDeployment =  AWS.CloudFormation.StackSet.AutoDeployment;
 
-export type DeploymentTargets = { Accounts?: string[];
+};
 
-OrganizationalUnitIds?: string[]; };
+export type DeploymentTargets = {
 
-export type OperationPreferences =  AWS.CloudFormation.StackSet.OperationPreferences;
 
-export type Parameter = { ParameterKey: string;
+Accounts?: string[];
 
-ParameterValue: string; };
+OrganizationalUnitIds?: string[];
 
-export type StackSetName =  string;
 
-export type AdministrationRoleARN =  string;
+};
 
-export type Capabilities =  string[];
+export type Parameter = {
 
-export type Description =  string;
 
-export type ExecutionRoleName =  string;
+ParameterKey: string;
 
-export type StackInstancesGroup =  AWS.CloudFormation.StackSet.StackInstances[];
+ParameterValue: string;
 
-export type Parameters =  AWS.CloudFormation.StackSet.Parameter[];
 
-export type PermissionModel =  string;
+};
 
-export type Tags =  Tag[];
-
-export type TemplateBody =  string;
-
-export type TemplateURL =  string;
-
-export type CallAs =  string;
 
 }
 
-export namespace ResourceVersion {
+export type ResourceVersion = {
 
-export type LoggingConfig =  AWS.CloudFormation.ResourceVersion.LoggingConfig;
 
-export type ExecutionRoleArn =  string;
+LoggingConfig?: AWS.CloudFormation.ResourceVersion.LoggingConfig;
 
-export type SchemaHandlerPackage =  string;
+ExecutionRoleArn?: string;
 
-export type TypeName =  string;
+SchemaHandlerPackage: string;
 
-}
+TypeName: string;
 
-export namespace TypeActivation {
 
-export type LoggingConfig =  AWS.CloudFormation.TypeActivation.LoggingConfig;
+};
 
-export type ExecutionRoleArn =  string;
+export type TypeActivation = {
 
-export type PublisherId =  string;
 
-export type PublicTypeArn =  string;
+LoggingConfig?: AWS.CloudFormation.TypeActivation.LoggingConfig;
 
-export type AutoUpdate =  boolean;
+ExecutionRoleArn?: string;
 
-export type TypeNameAlias =  string;
+PublisherId?: string;
 
-export type VersionBump =  string;
+PublicTypeArn?: string;
 
-export type MajorVersion =  string;
+AutoUpdate?: boolean;
 
-export type TypeName =  string;
+TypeNameAlias?: string;
 
-export type Type =  string;
+VersionBump?: string;
 
-}
+MajorVersion?: string;
 
-export namespace ResourceDefaultVersion {
+TypeName?: string;
 
-export type TypeVersionArn =  string;
+Type?: string;
 
-export type TypeName =  string;
 
-export type VersionId =  string;
+};
 
-}
+export type ResourceDefaultVersion = {
 
-export namespace CustomResource {
 
-export type ServiceToken =  string;
+TypeVersionArn?: string;
 
-}
+TypeName?: string;
 
-export namespace PublicTypeVersion {
+VersionId?: string;
 
-export type Arn =  string;
 
-export type PublicVersionNumber =  string;
+};
 
-export type TypeName =  string;
+export type CustomResource = {
 
-export type LogDeliveryBucket =  string;
 
-export type Type =  string;
+ServiceToken: string;
 
-}
 
-export namespace Macro {
+};
 
-export type Description =  string;
+export type PublicTypeVersion = {
 
-export type FunctionName =  string;
 
-export type LogGroupName =  string;
+Arn?: string;
 
-export type LogRoleARN =  string;
+PublicVersionNumber?: string;
 
-export type Name =  string;
+TypeName?: string;
 
-}
+LogDeliveryBucket?: string;
 
-export namespace ModuleDefaultVersion {
+Type?: string;
 
-export type Arn =  string;
 
-export type ModuleName =  string;
+};
 
-export type VersionId =  string;
+export type Macro = {
 
-}
 
-export namespace Stack {
+Description?: string;
 
-export type NotificationARNs =  string[];
+FunctionName: string;
 
-export type Parameters =  Record<string, string>;
+LogGroupName?: string;
 
-export type Tags =  Tag[];
+LogRoleARN?: string;
 
-export type TemplateURL =  string;
+Name: string;
 
-export type TimeoutInMinutes =  number;
 
-}
+};
 
-export namespace Publisher {
+export type ModuleDefaultVersion = {
 
-export type AcceptTermsAndConditions =  boolean;
 
-export type ConnectionArn =  string;
+Arn?: string;
 
-}
+ModuleName?: string;
 
-export namespace WaitCondition {
+VersionId?: string;
 
-export type Count =  number;
 
-export type Handle =  string;
+};
 
-export type Timeout =  string;
+export type Stack = {
 
-}
 
-export namespace WaitConditionHandle {
+NotificationARNs?: string[];
 
+Parameters?: Record<string, string>;
 
+Tags?: Tag[];
 
-}
+TemplateURL: string;
 
-export namespace ModuleVersion {
+TimeoutInMinutes?: number;
 
-export type ModuleName =  string;
 
-export type ModulePackage =  string;
+};
 
-}
+export type Publisher = {
+
+
+AcceptTermsAndConditions: boolean;
+
+ConnectionArn?: string;
+
+
+};
+
+export type WaitCondition = {
+
+
+Count?: number;
+
+Handle?: string;
+
+Timeout?: string;
+
+
+};
+
+
+
+export type ModuleVersion = {
+
+
+ModuleName: string;
+
+ModulePackage: string;
+
+
+};
+
 
 }
 
 export namespace SSMIncidents {
 
+
+export type ResponsePlan = {
+
+
+ChatChannel?: AWS.SSMIncidents.ResponsePlan.ChatChannel;
+
+IncidentTemplate: AWS.SSMIncidents.ResponsePlan.IncidentTemplate;
+
+Name: string;
+
+DisplayName?: string;
+
+Engagements?: string[];
+
+Actions?: AWS.SSMIncidents.ResponsePlan.Action[];
+
+Tags?: Tag[];
+
+
+};
+
 export namespace ResponsePlan {
 
-export type SsmParameter = { Key: string;
 
-Values: string[]; };
+export type SsmParameter = {
 
-export type SsmAutomation = { RoleArn: string;
+
+Key: string;
+
+Values: string[];
+
+
+};
+
+export type SsmAutomation = {
+
+
+RoleArn: string;
 
 DocumentName: string;
 
@@ -20784,49 +34428,89 @@ DocumentVersion?: string;
 
 TargetAccount?: string;
 
-Parameters?: AWS.SSMIncidents.ResponsePlan.SsmParameter[]; };
+Parameters?: AWS.SSMIncidents.ResponsePlan.SsmParameter[];
 
-export type Action = { SsmAutomation?: AWS.SSMIncidents.ResponsePlan.SsmAutomation; };
 
-export type NotificationTargetItem = { SnsTopicArn?: string; };
+};
 
-export type ChatChannel =  AWS.SSMIncidents.ResponsePlan.ChatChannel;
+export type Action = {
 
-export type IncidentTemplate =  AWS.SSMIncidents.ResponsePlan.IncidentTemplate;
 
-export type Name =  string;
+SsmAutomation?: AWS.SSMIncidents.ResponsePlan.SsmAutomation;
 
-export type DisplayName =  string;
 
-export type Engagements =  string[];
+};
 
-export type Actions =  AWS.SSMIncidents.ResponsePlan.Action[];
+export type NotificationTargetItem = {
 
-export type Tags =  Tag[];
+
+SnsTopicArn?: string;
+
+
+};
+
 
 }
+
+export type ReplicationSet = {
+
+
+Regions: AWS.SSMIncidents.ReplicationSet.ReplicationRegion[];
+
+DeletionProtected?: boolean;
+
+
+};
 
 export namespace ReplicationSet {
 
-export type RegionConfiguration = { SseKmsKeyId: string; };
 
-export type ReplicationRegion = { RegionName?: string;
+export type RegionConfiguration = {
 
-RegionConfiguration?: AWS.SSMIncidents.ReplicationSet.RegionConfiguration; };
 
-export type Regions =  AWS.SSMIncidents.ReplicationSet.ReplicationRegion[];
+SseKmsKeyId: string;
 
-export type DeletionProtected =  boolean;
+
+};
+
+export type ReplicationRegion = {
+
+
+RegionName?: string;
+
+RegionConfiguration?: AWS.SSMIncidents.ReplicationSet.RegionConfiguration;
+
+
+};
+
 
 }
+
 
 }
 
 export namespace Route53Resolver {
 
+
+export type FirewallRuleGroup = {
+
+
+Name?: string;
+
+FirewallRules?: AWS.Route53Resolver.FirewallRuleGroup.FirewallRule[];
+
+Tags?: Tag[];
+
+
+};
+
 export namespace FirewallRuleGroup {
 
-export type FirewallRule = { FirewallDomainListId: string;
+
+export type FirewallRule = {
+
+
+FirewallDomainListId: string;
 
 Priority: number;
 
@@ -20838,205 +34522,305 @@ BlockOverrideDomain?: string;
 
 BlockOverrideDnsType?: string;
 
-BlockOverrideTtl?: number; };
+BlockOverrideTtl?: number;
 
-export type Name =  string;
 
-export type FirewallRules =  AWS.Route53Resolver.FirewallRuleGroup.FirewallRule[];
+};
 
-export type Tags =  Tag[];
 
 }
+
+export type ResolverRule = {
+
+
+ResolverEndpointId?: string;
+
+DomainName: string;
+
+RuleType: string;
+
+TargetIps?: AWS.Route53Resolver.ResolverRule.TargetAddress[];
+
+Tags?: Tag[];
+
+Name?: string;
+
+
+};
 
 export namespace ResolverRule {
 
-export type TargetAddress = { Ip: string;
 
-Port?: string; };
+export type TargetAddress = {
 
-export type ResolverEndpointId =  string;
 
-export type DomainName =  string;
+Ip: string;
 
-export type RuleType =  string;
+Port?: string;
 
-export type TargetIps =  AWS.Route53Resolver.ResolverRule.TargetAddress[];
 
-export type Tags =  Tag[];
+};
 
-export type Name =  string;
 
 }
+
+export type ResolverEndpoint = {
+
+
+IpAddresses: AWS.Route53Resolver.ResolverEndpoint.IpAddressRequest[];
+
+Direction: string;
+
+SecurityGroupIds: string[];
+
+Tags?: Tag[];
+
+Name?: string;
+
+
+};
 
 export namespace ResolverEndpoint {
 
-export type IpAddressRequest = { Ip?: string;
 
-SubnetId: string; };
+export type IpAddressRequest = {
 
-export type IpAddresses =  AWS.Route53Resolver.ResolverEndpoint.IpAddressRequest[];
 
-export type Direction =  string;
+Ip?: string;
 
-export type SecurityGroupIds =  string[];
+SubnetId: string;
 
-export type Tags =  Tag[];
 
-export type Name =  string;
+};
+
 
 }
 
-export namespace ResolverQueryLoggingConfig {
+export type ResolverQueryLoggingConfig = {
 
-export type Name =  string;
 
-export type DestinationArn =  string;
+Name?: string;
 
-}
+DestinationArn?: string;
 
-export namespace FirewallRuleGroupAssociation {
 
-export type FirewallRuleGroupId =  string;
+};
 
-export type VpcId =  string;
+export type FirewallRuleGroupAssociation = {
 
-export type Name =  string;
 
-export type Priority =  number;
+FirewallRuleGroupId: string;
 
-export type MutationProtection =  string;
+VpcId: string;
 
-export type Tags =  Tag[];
+Name?: string;
 
-}
+Priority: number;
 
-export namespace ResolverQueryLoggingConfigAssociation {
+MutationProtection?: string;
 
-export type ResolverQueryLogConfigId =  string;
+Tags?: Tag[];
 
-export type ResourceId =  string;
 
-}
+};
 
-export namespace ResolverDNSSECConfig {
+export type ResolverQueryLoggingConfigAssociation = {
 
-export type ResourceId =  string;
 
-}
+ResolverQueryLogConfigId?: string;
 
-export namespace FirewallDomainList {
+ResourceId?: string;
 
-export type Name =  string;
 
-export type Domains =  string[];
+};
 
-export type DomainFileUrl =  string;
+export type ResolverDNSSECConfig = {
 
-export type Tags =  Tag[];
 
-}
+ResourceId?: string;
 
-export namespace ResolverRuleAssociation {
 
-export type VPCId =  string;
+};
 
-export type ResolverRuleId =  string;
+export type FirewallDomainList = {
 
-export type Name =  string;
 
-}
+Name?: string;
+
+Domains?: string[];
+
+DomainFileUrl?: string;
+
+Tags?: Tag[];
+
+
+};
+
+export type ResolverRuleAssociation = {
+
+
+VPCId: string;
+
+ResolverRuleId: string;
+
+Name?: string;
+
+
+};
+
 
 }
 
 export namespace SNS {
 
-export namespace Topic {
 
-export type Subscription =  AWS.SNS.Topic.Subscription[];
+export type Topic = {
 
-export type ContentBasedDeduplication =  boolean;
 
-export type DisplayName =  string;
+Subscription?: AWS.SNS.Topic.Subscription[];
 
-export type FifoTopic =  boolean;
+ContentBasedDeduplication?: boolean;
 
-export type KmsMasterKeyId =  string;
+DisplayName?: string;
 
-export type Tags =  Tag[];
+FifoTopic?: boolean;
 
-export type TopicName =  string;
+KmsMasterKeyId?: string;
 
-}
+Tags?: Tag[];
 
-export namespace Subscription {
+TopicName?: string;
 
-export type DeliveryPolicy =  JSONString;
 
-export type Endpoint =  string;
+};
 
-export type FilterPolicy =  JSONString;
+export type Subscription = {
 
-export type Protocol =  string;
 
-export type RawMessageDelivery =  boolean;
+DeliveryPolicy?: JSONString;
 
-export type RedrivePolicy =  JSONString;
+Endpoint?: string;
 
-export type Region =  string;
+FilterPolicy?: JSONString;
 
-export type SubscriptionRoleArn =  string;
+Protocol: string;
 
-export type TopicArn =  string;
+RawMessageDelivery?: boolean;
 
-}
+RedrivePolicy?: JSONString;
 
-export namespace TopicPolicy {
+Region?: string;
 
-export type PolicyDocument =  JSONString;
+SubscriptionRoleArn?: string;
 
-export type Topics =  string[];
+TopicArn: string;
 
-}
+
+};
+
+export type TopicPolicy = {
+
+
+PolicyDocument: JSONString;
+
+Topics: string[];
+
+
+};
+
 
 }
 
 export namespace Connect {
 
+
+export type QuickConnect = {
+
+
+QuickConnectConfig: AWS.Connect.QuickConnect.QuickConnectConfig;
+
+InstanceArn: string;
+
+Name: string;
+
+Description?: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace QuickConnect {
 
-export type QueueQuickConnectConfig = { ContactFlowArn: string;
 
-QueueArn: string; };
+export type QueueQuickConnectConfig = {
 
-export type QuickConnectConfig =  AWS.Connect.QuickConnect.QuickConnectConfig;
 
-export type UserQuickConnectConfig = { ContactFlowArn: string;
+ContactFlowArn: string;
 
-UserArn: string; };
+QueueArn: string;
 
-export type PhoneNumberQuickConnectConfig = { PhoneNumber: string; };
 
-export type InstanceArn =  string;
+};
 
-export type Name =  string;
+export type UserQuickConnectConfig = {
 
-export type Description =  string;
 
-export type Tags =  Tag[];
+ContactFlowArn: string;
+
+UserArn: string;
+
+
+};
+
+export type PhoneNumberQuickConnectConfig = {
+
+
+PhoneNumber: string;
+
+
+};
+
 
 }
+
 
 }
 
 export namespace ApiGatewayV2 {
 
+
+export type ApiGatewayManagedOverrides = {
+
+
+Integration?: AWS.ApiGatewayV2.ApiGatewayManagedOverrides.IntegrationOverrides;
+
+Stage?: AWS.ApiGatewayV2.ApiGatewayManagedOverrides.StageOverrides;
+
+ApiId: string;
+
+Route?: AWS.ApiGatewayV2.ApiGatewayManagedOverrides.RouteOverrides;
+
+
+};
+
 export namespace ApiGatewayManagedOverrides {
 
-export type AccessLogSettings = { Format?: string;
 
-DestinationArn?: string; };
+export type AccessLogSettings = {
 
-export type RouteOverrides = { Target?: string;
+
+Format?: string;
+
+DestinationArn?: string;
+
+
+};
+
+export type RouteOverrides = {
+
+
+Target?: string;
 
 AuthorizerId?: string;
 
@@ -21044,9 +34828,15 @@ OperationName?: string;
 
 AuthorizationScopes?: string[];
 
-AuthorizationType?: string; };
+AuthorizationType?: string;
 
-export type StageOverrides = { Description?: string;
+
+};
+
+export type StageOverrides = {
+
+
+Description?: string;
 
 AccessLogSettings?: AWS.ApiGatewayV2.ApiGatewayManagedOverrides.AccessLogSettings;
 
@@ -21056,9 +34846,15 @@ RouteSettings?: JSONString;
 
 StageVariables?: JSONString;
 
-DefaultRouteSettings?: AWS.ApiGatewayV2.ApiGatewayManagedOverrides.RouteSettings; };
+DefaultRouteSettings?: AWS.ApiGatewayV2.ApiGatewayManagedOverrides.RouteSettings;
 
-export type RouteSettings = { LoggingLevel?: string;
+
+};
+
+export type RouteSettings = {
+
+
+LoggingLevel?: string;
 
 DataTraceEnabled?: boolean;
 
@@ -21066,201 +34862,325 @@ ThrottlingBurstLimit?: number;
 
 DetailedMetricsEnabled?: boolean;
 
-ThrottlingRateLimit?: number; };
+ThrottlingRateLimit?: number;
 
-export type IntegrationOverrides = { Description?: string;
+
+};
+
+export type IntegrationOverrides = {
+
+
+Description?: string;
 
 PayloadFormatVersion?: string;
 
 TimeoutInMillis?: number;
 
-IntegrationMethod?: string; };
+IntegrationMethod?: string;
 
-export type Integration =  AWS.ApiGatewayV2.ApiGatewayManagedOverrides.IntegrationOverrides;
 
-export type Stage =  AWS.ApiGatewayV2.ApiGatewayManagedOverrides.StageOverrides;
+};
 
-export type ApiId =  string;
-
-export type Route =  AWS.ApiGatewayV2.ApiGatewayManagedOverrides.RouteOverrides;
 
 }
+
+export type Integration = {
+
+
+TlsConfig?: AWS.ApiGatewayV2.Integration.TlsConfig;
+
+Description?: string;
+
+TemplateSelectionExpression?: string;
+
+ConnectionType?: string;
+
+ResponseParameters?: JSONString;
+
+IntegrationMethod?: string;
+
+PassthroughBehavior?: string;
+
+RequestParameters?: JSONString;
+
+ConnectionId?: string;
+
+IntegrationUri?: string;
+
+PayloadFormatVersion?: string;
+
+CredentialsArn?: string;
+
+RequestTemplates?: JSONString;
+
+TimeoutInMillis?: number;
+
+ContentHandlingStrategy?: string;
+
+IntegrationSubtype?: string;
+
+ApiId: string;
+
+IntegrationType: string;
+
+
+};
 
 export namespace Integration {
 
-export type ResponseParameterList = { ResponseParameters?: AWS.ApiGatewayV2.Integration.ResponseParameter[]; };
 
-export type TlsConfig =  AWS.ApiGatewayV2.Integration.TlsConfig;
+export type ResponseParameterList = {
 
-export type ResponseParameter = { Destination: string;
 
-Source: string; };
+ResponseParameters?: AWS.ApiGatewayV2.Integration.ResponseParameter[];
 
-export type Description =  string;
 
-export type TemplateSelectionExpression =  string;
+};
 
-export type ConnectionType =  string;
+export type ResponseParameter = {
 
-export type ResponseParameters =  JSONString;
 
-export type IntegrationMethod =  string;
+Destination: string;
 
-export type PassthroughBehavior =  string;
+Source: string;
 
-export type RequestParameters =  JSONString;
 
-export type ConnectionId =  string;
+};
 
-export type IntegrationUri =  string;
-
-export type PayloadFormatVersion =  string;
-
-export type CredentialsArn =  string;
-
-export type RequestTemplates =  JSONString;
-
-export type TimeoutInMillis =  number;
-
-export type ContentHandlingStrategy =  string;
-
-export type IntegrationSubtype =  string;
-
-export type ApiId =  string;
-
-export type IntegrationType =  string;
 
 }
+
+export type Route = {
+
+
+Target?: string;
+
+RouteResponseSelectionExpression?: string;
+
+AuthorizerId?: string;
+
+RequestModels?: JSONString;
+
+OperationName?: string;
+
+AuthorizationScopes?: string[];
+
+ApiKeyRequired?: boolean;
+
+RouteKey: string;
+
+AuthorizationType?: string;
+
+ModelSelectionExpression?: string;
+
+ApiId: string;
+
+RequestParameters?: JSONString;
+
+
+};
 
 export namespace Route {
 
-export type ParameterConstraints = { Required: boolean; };
 
-export type Target =  string;
+export type ParameterConstraints = {
 
-export type RouteResponseSelectionExpression =  string;
 
-export type AuthorizerId =  string;
+Required: boolean;
 
-export type RequestModels =  JSONString;
 
-export type OperationName =  string;
+};
 
-export type AuthorizationScopes =  string[];
-
-export type ApiKeyRequired =  boolean;
-
-export type RouteKey =  string;
-
-export type AuthorizationType =  string;
-
-export type ModelSelectionExpression =  string;
-
-export type ApiId =  string;
-
-export type RequestParameters =  JSONString;
 
 }
 
-export namespace Stage {
+export type Stage = {
 
-export type AccessLogSettings =  AWS.ApiGatewayV2.Stage.AccessLogSettings;
 
-export type RouteSettings =  JSONString;
+AccessLogSettings?: AWS.ApiGatewayV2.Stage.AccessLogSettings;
 
-export type ClientCertificateId =  string;
+RouteSettings?: JSONString;
 
-export type DeploymentId =  string;
+ClientCertificateId?: string;
 
-export type Description =  string;
+DeploymentId?: string;
 
-export type AutoDeploy =  boolean;
+Description?: string;
 
-export type StageName =  string;
+AutoDeploy?: boolean;
 
-export type StageVariables =  JSONString;
+StageName: string;
 
-export type AccessPolicyId =  string;
+StageVariables?: JSONString;
 
-export type ApiId =  string;
+AccessPolicyId?: string;
 
-export type DefaultRouteSettings =  AWS.ApiGatewayV2.Stage.RouteSettings;
+ApiId: string;
 
-export type Tags =  JSONString;
+DefaultRouteSettings?: AWS.ApiGatewayV2.Stage.RouteSettings;
 
-}
+Tags?: JSONString;
+
+
+};
+
+export type DomainName = {
+
+
+MutualTlsAuthentication?: AWS.ApiGatewayV2.DomainName.MutualTlsAuthentication;
+
+DomainName: string;
+
+DomainNameConfigurations?: AWS.ApiGatewayV2.DomainName.DomainNameConfiguration[];
+
+Tags?: JSONString;
+
+
+};
 
 export namespace DomainName {
 
-export type MutualTlsAuthentication =  AWS.ApiGatewayV2.DomainName.MutualTlsAuthentication;
 
-export type DomainNameConfiguration = { SecurityPolicy?: string;
+export type DomainNameConfiguration = {
+
+
+SecurityPolicy?: string;
 
 EndpointType?: string;
 
 CertificateName?: string;
 
-CertificateArn?: string; };
+CertificateArn?: string;
 
-export type DomainName =  string;
 
-export type DomainNameConfigurations =  AWS.ApiGatewayV2.DomainName.DomainNameConfiguration[];
+};
 
-export type Tags =  JSONString;
 
 }
+
+export type Authorizer = {
+
+
+IdentityValidationExpression?: string;
+
+AuthorizerUri?: string;
+
+AuthorizerCredentialsArn?: string;
+
+AuthorizerType: string;
+
+JwtConfiguration?: AWS.ApiGatewayV2.Authorizer.JWTConfiguration;
+
+AuthorizerResultTtlInSeconds?: number;
+
+IdentitySource?: string[];
+
+AuthorizerPayloadFormatVersion?: string;
+
+EnableSimpleResponses?: boolean;
+
+ApiId: string;
+
+Name: string;
+
+
+};
 
 export namespace Authorizer {
 
-export type JWTConfiguration = { Issuer?: string;
 
-Audience?: string[]; };
+export type JWTConfiguration = {
 
-export type IdentityValidationExpression =  string;
 
-export type AuthorizerUri =  string;
+Issuer?: string;
 
-export type AuthorizerCredentialsArn =  string;
+Audience?: string[];
 
-export type AuthorizerType =  string;
 
-export type JwtConfiguration =  AWS.ApiGatewayV2.Authorizer.JWTConfiguration;
+};
 
-export type AuthorizerResultTtlInSeconds =  number;
-
-export type IdentitySource =  string[];
-
-export type AuthorizerPayloadFormatVersion =  string;
-
-export type EnableSimpleResponses =  boolean;
-
-export type ApiId =  string;
-
-export type Name =  string;
 
 }
+
+export type RouteResponse = {
+
+
+RouteResponseKey: string;
+
+ResponseParameters?: JSONString;
+
+RouteId: string;
+
+ModelSelectionExpression?: string;
+
+ApiId: string;
+
+ResponseModels?: JSONString;
+
+
+};
 
 export namespace RouteResponse {
 
-export type ParameterConstraints = { Required: boolean; };
 
-export type RouteResponseKey =  string;
+export type ParameterConstraints = {
 
-export type ResponseParameters =  JSONString;
 
-export type RouteId =  string;
+Required: boolean;
 
-export type ModelSelectionExpression =  string;
 
-export type ApiId =  string;
+};
 
-export type ResponseModels =  JSONString;
 
 }
 
+export type Api = {
+
+
+BodyS3Location?: AWS.ApiGatewayV2.Api.BodyS3Location;
+
+RouteSelectionExpression?: string;
+
+Description?: string;
+
+BasePath?: string;
+
+FailOnWarnings?: boolean;
+
+DisableExecuteApiEndpoint?: boolean;
+
+DisableSchemaValidation?: boolean;
+
+Name?: string;
+
+Target?: string;
+
+CredentialsArn?: string;
+
+CorsConfiguration?: AWS.ApiGatewayV2.Api.Cors;
+
+Version?: string;
+
+ProtocolType?: string;
+
+RouteKey?: string;
+
+Body?: JSONString;
+
+Tags?: JSONString;
+
+ApiKeySelectionExpression?: string;
+
+
+};
+
 export namespace Api {
 
-export type Cors = { AllowOrigins?: string[];
+
+export type Cors = {
+
+
+AllowOrigins?: string[];
 
 AllowCredentials?: boolean;
 
@@ -21270,165 +35190,229 @@ AllowHeaders?: string[];
 
 MaxAge?: number;
 
-AllowMethods?: string[]; };
+AllowMethods?: string[];
 
-export type BodyS3Location =  AWS.ApiGatewayV2.Api.BodyS3Location;
 
-export type RouteSelectionExpression =  string;
+};
 
-export type Description =  string;
-
-export type BasePath =  string;
-
-export type FailOnWarnings =  boolean;
-
-export type DisableExecuteApiEndpoint =  boolean;
-
-export type DisableSchemaValidation =  boolean;
-
-export type Name =  string;
-
-export type Target =  string;
-
-export type CredentialsArn =  string;
-
-export type CorsConfiguration =  AWS.ApiGatewayV2.Api.Cors;
-
-export type Version =  string;
-
-export type ProtocolType =  string;
-
-export type RouteKey =  string;
-
-export type Body =  JSONString;
-
-export type Tags =  JSONString;
-
-export type ApiKeySelectionExpression =  string;
 
 }
 
-export namespace Deployment {
+export type Deployment = {
 
-export type Description =  string;
 
-export type StageName =  string;
+Description?: string;
 
-export type ApiId =  string;
+StageName?: string;
 
-}
+ApiId: string;
 
-export namespace Model {
 
-export type Description =  string;
+};
 
-export type ContentType =  string;
+export type Model = {
 
-export type Schema =  JSONString;
 
-export type ApiId =  string;
+Description?: string;
 
-export type Name =  string;
+ContentType?: string;
 
-}
+Schema: JSONString;
 
-export namespace IntegrationResponse {
+ApiId: string;
 
-export type ResponseTemplates =  JSONString;
+Name: string;
 
-export type TemplateSelectionExpression =  string;
 
-export type ResponseParameters =  JSONString;
+};
 
-export type ContentHandlingStrategy =  string;
+export type IntegrationResponse = {
 
-export type IntegrationId =  string;
 
-export type IntegrationResponseKey =  string;
+ResponseTemplates?: JSONString;
 
-export type ApiId =  string;
+TemplateSelectionExpression?: string;
 
-}
+ResponseParameters?: JSONString;
 
-export namespace VpcLink {
+ContentHandlingStrategy?: string;
 
-export type SubnetIds =  string[];
+IntegrationId: string;
 
-export type SecurityGroupIds =  string[];
+IntegrationResponseKey: string;
 
-export type Tags =  JSONString;
+ApiId: string;
 
-export type Name =  string;
 
-}
+};
 
-export namespace ApiMapping {
+export type VpcLink = {
 
-export type DomainName =  string;
 
-export type Stage =  string;
+SubnetIds: string[];
 
-export type ApiMappingKey =  string;
+SecurityGroupIds?: string[];
 
-export type ApiId =  string;
+Tags?: JSONString;
 
-}
+Name: string;
+
+
+};
+
+export type ApiMapping = {
+
+
+DomainName: string;
+
+Stage: string;
+
+ApiMappingKey?: string;
+
+ApiId: string;
+
+
+};
+
 
 }
 
 export namespace CodePipeline {
 
+
+export type Webhook = {
+
+
+AuthenticationConfiguration: AWS.CodePipeline.Webhook.WebhookAuthConfiguration;
+
+Filters: AWS.CodePipeline.Webhook.WebhookFilterRule[];
+
+Authentication: string;
+
+TargetPipeline: string;
+
+TargetAction: string;
+
+Name?: string;
+
+TargetPipelineVersion: number;
+
+RegisterWithThirdParty?: boolean;
+
+
+};
+
 export namespace Webhook {
 
-export type WebhookFilterRule = { JsonPath: string;
 
-MatchEquals?: string; };
+export type WebhookFilterRule = {
 
-export type WebhookAuthConfiguration = { AllowedIPRange?: string;
 
-SecretToken?: string; };
+JsonPath: string;
 
-export type AuthenticationConfiguration =  AWS.CodePipeline.Webhook.WebhookAuthConfiguration;
+MatchEquals?: string;
 
-export type Filters =  AWS.CodePipeline.Webhook.WebhookFilterRule[];
 
-export type Authentication =  string;
+};
 
-export type TargetPipeline =  string;
+export type WebhookAuthConfiguration = {
 
-export type TargetAction =  string;
 
-export type Name =  string;
+AllowedIPRange?: string;
 
-export type TargetPipelineVersion =  number;
+SecretToken?: string;
 
-export type RegisterWithThirdParty =  boolean;
+
+};
+
 
 }
 
+export type Pipeline = {
+
+
+ArtifactStore?: AWS.CodePipeline.Pipeline.ArtifactStore;
+
+ArtifactStores?: AWS.CodePipeline.Pipeline.ArtifactStoreMap[];
+
+DisableInboundStageTransitions?: AWS.CodePipeline.Pipeline.StageTransition[];
+
+Name?: string;
+
+RestartExecutionOnUpdate?: boolean;
+
+RoleArn: string;
+
+Stages: AWS.CodePipeline.Pipeline.StageDeclaration[];
+
+Tags?: Tag[];
+
+
+};
+
 export namespace Pipeline {
 
-export type OutputArtifact = { Name: string; };
 
-export type StageTransition = { Reason: string;
+export type OutputArtifact = {
 
-StageName: string; };
 
-export type InputArtifact = { Name: string; };
+Name: string;
 
-export type BlockerDeclaration = { Name: string;
 
-Type: string; };
+};
 
-export type ArtifactStoreMap = { ArtifactStore: AWS.CodePipeline.Pipeline.ArtifactStore;
+export type StageTransition = {
 
-Region: string; };
 
-export type EncryptionKey = { Id: string;
+Reason: string;
 
-Type: string; };
+StageName: string;
 
-export type ActionDeclaration = { ActionTypeId: AWS.CodePipeline.Pipeline.ActionTypeId;
+
+};
+
+export type InputArtifact = {
+
+
+Name: string;
+
+
+};
+
+export type BlockerDeclaration = {
+
+
+Name: string;
+
+Type: string;
+
+
+};
+
+export type ArtifactStoreMap = {
+
+
+ArtifactStore: AWS.CodePipeline.Pipeline.ArtifactStore;
+
+Region: string;
+
+
+};
+
+export type EncryptionKey = {
+
+
+Id: string;
+
+Type: string;
+
+
+};
+
+export type ActionDeclaration = {
+
+
+ActionTypeId: AWS.CodePipeline.Pipeline.ActionTypeId;
 
 Configuration?: JSONString;
 
@@ -21444,185 +35428,373 @@ Region?: string;
 
 RoleArn?: string;
 
-RunOrder?: number; };
+RunOrder?: number;
 
-export type StageDeclaration = { Actions: AWS.CodePipeline.Pipeline.ActionDeclaration[];
+
+};
+
+export type StageDeclaration = {
+
+
+Actions: AWS.CodePipeline.Pipeline.ActionDeclaration[];
 
 Blockers?: AWS.CodePipeline.Pipeline.BlockerDeclaration[];
 
-Name: string; };
+Name: string;
 
-export type ArtifactStore =  AWS.CodePipeline.Pipeline.ArtifactStore;
 
-export type ActionTypeId = { Category: string;
+};
+
+export type ActionTypeId = {
+
+
+Category: string;
 
 Owner: string;
 
 Provider: string;
 
-Version: string; };
+Version: string;
 
-export type ArtifactStores =  AWS.CodePipeline.Pipeline.ArtifactStoreMap[];
 
-export type DisableInboundStageTransitions =  AWS.CodePipeline.Pipeline.StageTransition[];
+};
 
-export type Name =  string;
-
-export type RestartExecutionOnUpdate =  boolean;
-
-export type RoleArn =  string;
-
-export type Stages =  AWS.CodePipeline.Pipeline.StageDeclaration[];
-
-export type Tags =  Tag[];
 
 }
+
+export type CustomActionType = {
+
+
+ConfigurationProperties?: AWS.CodePipeline.CustomActionType.ConfigurationProperties[];
+
+Settings?: AWS.CodePipeline.CustomActionType.Settings;
+
+Category: string;
+
+InputArtifactDetails: AWS.CodePipeline.CustomActionType.ArtifactDetails;
+
+OutputArtifactDetails: AWS.CodePipeline.CustomActionType.ArtifactDetails;
+
+Provider: string;
+
+Tags?: Tag[];
+
+Version: string;
+
+
+};
 
 export namespace CustomActionType {
 
-export type ArtifactDetails = { MaximumCount: number;
 
-MinimumCount: number; };
+export type ArtifactDetails = {
 
-export type ConfigurationProperties =  AWS.CodePipeline.CustomActionType.ConfigurationProperties[];
 
-export type Settings =  AWS.CodePipeline.CustomActionType.Settings;
+MaximumCount: number;
 
-export type Category =  string;
+MinimumCount: number;
 
-export type InputArtifactDetails =  AWS.CodePipeline.CustomActionType.ArtifactDetails;
 
-export type OutputArtifactDetails =  AWS.CodePipeline.CustomActionType.ArtifactDetails;
+};
 
-export type Provider =  string;
-
-export type Tags =  Tag[];
-
-export type Version =  string;
 
 }
+
 
 }
 
 export namespace MSK {
 
+
+export type Cluster = {
+
+
+LoggingInfo?: AWS.MSK.Cluster.LoggingInfo;
+
+EncryptionInfo?: AWS.MSK.Cluster.EncryptionInfo;
+
+ConfigurationInfo?: AWS.MSK.Cluster.ConfigurationInfo;
+
+BrokerNodeGroupInfo: AWS.MSK.Cluster.BrokerNodeGroupInfo;
+
+ClientAuthentication?: AWS.MSK.Cluster.ClientAuthentication;
+
+OpenMonitoring?: AWS.MSK.Cluster.OpenMonitoring;
+
+EnhancedMonitoring?: string;
+
+KafkaVersion: string;
+
+NumberOfBrokerNodes: number;
+
+ClusterName: string;
+
+Tags?: JSONString;
+
+
+};
+
 export namespace Cluster {
 
-export type S3 = { Bucket?: string;
+
+export type S3 = {
+
+
+Bucket?: string;
 
 Enabled: boolean;
 
-Prefix?: string; };
+Prefix?: string;
 
-export type CloudWatchLogs = { LogGroup?: string;
 
-Enabled: boolean; };
+};
 
-export type EncryptionAtRest = { DataVolumeKMSKeyId: string; };
+export type CloudWatchLogs = {
 
-export type BrokerLogs = { S3?: AWS.MSK.Cluster.S3;
+
+LogGroup?: string;
+
+Enabled: boolean;
+
+
+};
+
+export type EncryptionAtRest = {
+
+
+DataVolumeKMSKeyId: string;
+
+
+};
+
+export type BrokerLogs = {
+
+
+S3?: AWS.MSK.Cluster.S3;
 
 Firehose?: AWS.MSK.Cluster.Firehose;
 
-CloudWatchLogs?: AWS.MSK.Cluster.CloudWatchLogs; };
+CloudWatchLogs?: AWS.MSK.Cluster.CloudWatchLogs;
 
-export type EncryptionInTransit = { ClientBroker?: string;
 
-InCluster?: boolean; };
+};
 
-export type Prometheus = { JmxExporter?: AWS.MSK.Cluster.JmxExporter;
+export type EncryptionInTransit = {
 
-NodeExporter?: AWS.MSK.Cluster.NodeExporter; };
 
-export type LoggingInfo =  AWS.MSK.Cluster.LoggingInfo;
+ClientBroker?: string;
 
-export type EncryptionInfo =  AWS.MSK.Cluster.EncryptionInfo;
+InCluster?: boolean;
 
-export type Iam = { Enabled: boolean; };
 
-export type Sasl = { Iam?: AWS.MSK.Cluster.Iam;
+};
 
-Scram?: AWS.MSK.Cluster.Scram; };
+export type Prometheus = {
 
-export type ConfigurationInfo =  AWS.MSK.Cluster.ConfigurationInfo;
 
-export type BrokerNodeGroupInfo =  AWS.MSK.Cluster.BrokerNodeGroupInfo;
+JmxExporter?: AWS.MSK.Cluster.JmxExporter;
 
-export type Scram = { Enabled: boolean; };
+NodeExporter?: AWS.MSK.Cluster.NodeExporter;
 
-export type JmxExporter = { EnabledInBroker: boolean; };
 
-export type StorageInfo = { EBSStorageInfo?: AWS.MSK.Cluster.EBSStorageInfo; };
+};
 
-export type NodeExporter = { EnabledInBroker: boolean; };
+export type Iam = {
 
-export type EBSStorageInfo = { VolumeSize?: number; };
 
-export type Firehose = { DeliveryStream?: string;
+Enabled: boolean;
 
-Enabled: boolean; };
 
-export type ClientAuthentication =  AWS.MSK.Cluster.ClientAuthentication;
+};
 
-export type Tls = { CertificateAuthorityArnList?: string[]; };
+export type Sasl = {
 
-export type OpenMonitoring =  AWS.MSK.Cluster.OpenMonitoring;
 
-export type EnhancedMonitoring =  string;
+Iam?: AWS.MSK.Cluster.Iam;
 
-export type KafkaVersion =  string;
+Scram?: AWS.MSK.Cluster.Scram;
 
-export type NumberOfBrokerNodes =  number;
 
-export type ClusterName =  string;
+};
 
-export type Tags =  JSONString;
+export type Scram = {
+
+
+Enabled: boolean;
+
+
+};
+
+export type JmxExporter = {
+
+
+EnabledInBroker: boolean;
+
+
+};
+
+export type StorageInfo = {
+
+
+EBSStorageInfo?: AWS.MSK.Cluster.EBSStorageInfo;
+
+
+};
+
+export type NodeExporter = {
+
+
+EnabledInBroker: boolean;
+
+
+};
+
+export type EBSStorageInfo = {
+
+
+VolumeSize?: number;
+
+
+};
+
+export type Firehose = {
+
+
+DeliveryStream?: string;
+
+Enabled: boolean;
+
+
+};
+
+export type Tls = {
+
+
+CertificateAuthorityArnList?: string[];
+
+
+};
+
 
 }
+
 
 }
 
 export namespace NimbleStudio {
 
+
+export type StudioComponent = {
+
+
+Configuration?: AWS.NimbleStudio.StudioComponent.StudioComponentConfiguration;
+
+Description?: string;
+
+InitializationScripts?: AWS.NimbleStudio.StudioComponent.StudioComponentInitializationScript[];
+
+Name: string;
+
+ScriptParameters?: AWS.NimbleStudio.StudioComponent.ScriptParameterKeyValue[];
+
+Ec2SecurityGroupIds?: string[];
+
+StudioId: string;
+
+Subtype?: string;
+
+Type: string;
+
+Tags?: Record<string, string>;
+
+
+};
+
 export namespace StudioComponent {
 
-export type LicenseServiceConfiguration = { Endpoint?: string; };
 
-export type ScriptParameterKeyValue = { Key?: string;
+export type LicenseServiceConfiguration = {
 
-Value?: string; };
 
-export type ActiveDirectoryConfiguration = { ComputerAttributes?: AWS.NimbleStudio.StudioComponent.ActiveDirectoryComputerAttribute[];
+Endpoint?: string;
+
+
+};
+
+export type ScriptParameterKeyValue = {
+
+
+Key?: string;
+
+Value?: string;
+
+
+};
+
+export type ActiveDirectoryConfiguration = {
+
+
+ComputerAttributes?: AWS.NimbleStudio.StudioComponent.ActiveDirectoryComputerAttribute[];
 
 DirectoryId?: string;
 
-OrganizationalUnitDistinguishedName?: string; };
+OrganizationalUnitDistinguishedName?: string;
 
-export type ActiveDirectoryComputerAttribute = { Name?: string;
 
-Value?: string; };
+};
 
-export type StudioComponentConfiguration = { ActiveDirectoryConfiguration?: AWS.NimbleStudio.StudioComponent.ActiveDirectoryConfiguration;
+export type ActiveDirectoryComputerAttribute = {
+
+
+Name?: string;
+
+Value?: string;
+
+
+};
+
+export type StudioComponentConfiguration = {
+
+
+ActiveDirectoryConfiguration?: AWS.NimbleStudio.StudioComponent.ActiveDirectoryConfiguration;
 
 ComputeFarmConfiguration?: AWS.NimbleStudio.StudioComponent.ComputeFarmConfiguration;
 
 LicenseServiceConfiguration?: AWS.NimbleStudio.StudioComponent.LicenseServiceConfiguration;
 
-SharedFileSystemConfiguration?: AWS.NimbleStudio.StudioComponent.SharedFileSystemConfiguration; };
+SharedFileSystemConfiguration?: AWS.NimbleStudio.StudioComponent.SharedFileSystemConfiguration;
 
-export type StudioComponentInitializationScript = { LaunchProfileProtocolVersion?: string;
+
+};
+
+export type StudioComponentInitializationScript = {
+
+
+LaunchProfileProtocolVersion?: string;
 
 Platform?: string;
 
 RunContext?: string;
 
-Script?: string; };
+Script?: string;
 
-export type ComputeFarmConfiguration = { ActiveDirectoryUser?: string;
 
-Endpoint?: string; };
+};
 
-export type SharedFileSystemConfiguration = { Endpoint?: string;
+export type ComputeFarmConfiguration = {
+
+
+ActiveDirectoryUser?: string;
+
+Endpoint?: string;
+
+
+};
+
+export type SharedFileSystemConfiguration = {
+
+
+Endpoint?: string;
 
 FileSystemId?: string;
 
@@ -21630,363 +35802,557 @@ LinuxMountPoint?: string;
 
 ShareName?: string;
 
-WindowsMountDrive?: string; };
+WindowsMountDrive?: string;
 
-export type Configuration =  AWS.NimbleStudio.StudioComponent.StudioComponentConfiguration;
 
-export type Description =  string;
+};
 
-export type InitializationScripts =  AWS.NimbleStudio.StudioComponent.StudioComponentInitializationScript[];
-
-export type Name =  string;
-
-export type ScriptParameters =  AWS.NimbleStudio.StudioComponent.ScriptParameterKeyValue[];
-
-export type Ec2SecurityGroupIds =  string[];
-
-export type StudioId =  string;
-
-export type Subtype =  string;
-
-export type Type =  string;
-
-export type Tags =  Record<string, string>;
 
 }
 
-export namespace LaunchProfile {
+export type LaunchProfile = {
 
-export type StreamConfiguration =  AWS.NimbleStudio.LaunchProfile.StreamConfiguration;
 
-export type Description =  string;
+StreamConfiguration: AWS.NimbleStudio.LaunchProfile.StreamConfiguration;
 
-export type Name =  string;
+Description?: string;
 
-export type Ec2SubnetIds =  string[];
+Name: string;
 
-export type StudioComponentIds =  string[];
+Ec2SubnetIds: string[];
 
-export type LaunchProfileProtocolVersions =  string[];
+StudioComponentIds: string[];
 
-export type StudioId =  string;
+LaunchProfileProtocolVersions: string[];
 
-export type Tags =  Record<string, string>;
+StudioId: string;
 
-}
+Tags?: Record<string, string>;
 
-export namespace Studio {
 
-export type StudioEncryptionConfiguration =  AWS.NimbleStudio.Studio.StudioEncryptionConfiguration;
+};
 
-export type AdminRoleArn =  string;
+export type Studio = {
 
-export type DisplayName =  string;
 
-export type StudioName =  string;
+StudioEncryptionConfiguration?: AWS.NimbleStudio.Studio.StudioEncryptionConfiguration;
 
-export type UserRoleArn =  string;
+AdminRoleArn: string;
 
-export type Tags =  Record<string, string>;
+DisplayName: string;
 
-}
+StudioName: string;
 
-export namespace StreamingImage {
+UserRoleArn: string;
 
-export type StudioId =  string;
+Tags?: Record<string, string>;
 
-export type Ec2ImageId =  string;
 
-export type Name =  string;
+};
 
-export type Description =  string;
+export type StreamingImage = {
 
-export type Tags =  Record<string, string>;
 
-}
+StudioId: string;
+
+Ec2ImageId: string;
+
+Name: string;
+
+Description?: string;
+
+Tags?: Record<string, string>;
+
+
+};
+
 
 }
 
 export namespace GlobalAccelerator {
 
+
+export type EndpointGroup = {
+
+
+ListenerArn: string;
+
+EndpointGroupRegion: string;
+
+EndpointConfigurations?: AWS.GlobalAccelerator.EndpointGroup.EndpointConfiguration[];
+
+TrafficDialPercentage?: number;
+
+HealthCheckPort?: number;
+
+HealthCheckProtocol?: string;
+
+HealthCheckPath?: string;
+
+HealthCheckIntervalSeconds?: number;
+
+ThresholdCount?: number;
+
+PortOverrides?: AWS.GlobalAccelerator.EndpointGroup.PortOverride[];
+
+
+};
+
 export namespace EndpointGroup {
 
-export type PortOverride = { ListenerPort: number;
 
-EndpointPort: number; };
+export type PortOverride = {
 
-export type EndpointConfiguration = { EndpointId: string;
+
+ListenerPort: number;
+
+EndpointPort: number;
+
+
+};
+
+export type EndpointConfiguration = {
+
+
+EndpointId: string;
 
 Weight?: number;
 
-ClientIPPreservationEnabled?: boolean; };
+ClientIPPreservationEnabled?: boolean;
 
-export type ListenerArn =  string;
 
-export type EndpointGroupRegion =  string;
+};
 
-export type EndpointConfigurations =  AWS.GlobalAccelerator.EndpointGroup.EndpointConfiguration[];
-
-export type TrafficDialPercentage =  number;
-
-export type HealthCheckPort =  number;
-
-export type HealthCheckProtocol =  string;
-
-export type HealthCheckPath =  string;
-
-export type HealthCheckIntervalSeconds =  number;
-
-export type ThresholdCount =  number;
-
-export type PortOverrides =  AWS.GlobalAccelerator.EndpointGroup.PortOverride[];
 
 }
+
+export type Listener = {
+
+
+AcceleratorArn: string;
+
+PortRanges: AWS.GlobalAccelerator.Listener.PortRange[];
+
+Protocol: string;
+
+ClientAffinity?: string;
+
+
+};
 
 export namespace Listener {
 
-export type PortRange = { FromPort: number;
 
-ToPort: number; };
+export type PortRange = {
 
-export type AcceleratorArn =  string;
 
-export type PortRanges =  AWS.GlobalAccelerator.Listener.PortRange[];
+FromPort: number;
 
-export type Protocol =  string;
+ToPort: number;
 
-export type ClientAffinity =  string;
 
-}
+};
 
-export namespace Accelerator {
-
-export type Name =  string;
-
-export type IpAddressType =  string;
-
-export type IpAddresses =  string[];
-
-export type Enabled =  boolean;
-
-export type Tags =  Tag[];
 
 }
+
+export type Accelerator = {
+
+
+Name: string;
+
+IpAddressType?: string;
+
+IpAddresses?: string[];
+
+Enabled?: boolean;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace IVS {
 
+
+export type RecordingConfiguration = {
+
+
+DestinationConfiguration: AWS.IVS.RecordingConfiguration.DestinationConfiguration;
+
+Name?: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace RecordingConfiguration {
 
-export type DestinationConfiguration =  AWS.IVS.RecordingConfiguration.DestinationConfiguration;
 
-export type S3DestinationConfiguration = { BucketName: string; };
+export type S3DestinationConfiguration = {
 
-export type Name =  string;
 
-export type Tags =  Tag[];
+BucketName: string;
 
-}
 
-export namespace Channel {
+};
 
-export type Name =  string;
-
-export type Authorized =  boolean;
-
-export type LatencyMode =  string;
-
-export type Type =  string;
-
-export type Tags =  Tag[];
-
-export type RecordingConfigurationArn =  string;
 
 }
 
-export namespace PlaybackKeyPair {
+export type Channel = {
 
-export type Name =  string;
 
-export type PublicKeyMaterial =  string;
+Name?: string;
 
-export type Tags =  Tag[];
+Authorized?: boolean;
 
-}
+LatencyMode?: string;
 
-export namespace StreamKey {
+Type?: string;
 
-export type ChannelArn =  string;
+Tags?: Tag[];
 
-export type Tags =  Tag[];
+RecordingConfigurationArn?: string;
 
-}
+
+};
+
+export type PlaybackKeyPair = {
+
+
+Name?: string;
+
+PublicKeyMaterial: string;
+
+Tags?: Tag[];
+
+
+};
+
+export type StreamKey = {
+
+
+ChannelArn: string;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace AmazonMQ {
 
+
+export type Broker = {
+
+
+LdapServerMetadata?: AWS.AmazonMQ.Broker.LdapServerMetadata;
+
+EncryptionOptions?: AWS.AmazonMQ.Broker.EncryptionOptions;
+
+SecurityGroups?: string[];
+
+StorageType?: string;
+
+EngineVersion: string;
+
+Configuration?: AWS.AmazonMQ.Broker.ConfigurationId;
+
+AuthenticationStrategy?: string;
+
+MaintenanceWindowStartTime?: AWS.AmazonMQ.Broker.MaintenanceWindow;
+
+HostInstanceType: string;
+
+AutoMinorVersionUpgrade: boolean;
+
+Users: AWS.AmazonMQ.Broker.User[];
+
+Logs?: AWS.AmazonMQ.Broker.LogList;
+
+SubnetIds?: string[];
+
+BrokerName: string;
+
+DeploymentMode: string;
+
+EngineType: string;
+
+PubliclyAccessible: boolean;
+
+Tags?: AWS.AmazonMQ.Broker.TagsEntry[];
+
+
+};
+
 export namespace Broker {
 
-export type LogList = { Audit?: boolean;
 
-General?: boolean; };
+export type LogList = {
 
-export type User = { Username: string;
+
+Audit?: boolean;
+
+General?: boolean;
+
+
+};
+
+export type User = {
+
+
+Username: string;
 
 Groups?: string[];
 
 ConsoleAccess?: boolean;
 
-Password: string; };
+Password: string;
 
-export type LdapServerMetadata =  AWS.AmazonMQ.Broker.LdapServerMetadata;
 
-export type EncryptionOptions =  AWS.AmazonMQ.Broker.EncryptionOptions;
+};
 
-export type MaintenanceWindow = { DayOfWeek: string;
+export type MaintenanceWindow = {
+
+
+DayOfWeek: string;
 
 TimeOfDay: string;
 
-TimeZone: string; };
+TimeZone: string;
 
-export type TagsEntry = { Value: string;
 
-Key: string; };
+};
 
-export type ConfigurationId = { Revision: number;
+export type TagsEntry = {
 
-Id: string; };
 
-export type SecurityGroups =  string[];
+Value: string;
 
-export type StorageType =  string;
+Key: string;
 
-export type EngineVersion =  string;
 
-export type Configuration =  AWS.AmazonMQ.Broker.ConfigurationId;
+};
 
-export type AuthenticationStrategy =  string;
+export type ConfigurationId = {
 
-export type MaintenanceWindowStartTime =  AWS.AmazonMQ.Broker.MaintenanceWindow;
 
-export type HostInstanceType =  string;
+Revision: number;
 
-export type AutoMinorVersionUpgrade =  boolean;
+Id: string;
 
-export type Users =  AWS.AmazonMQ.Broker.User[];
 
-export type Logs =  AWS.AmazonMQ.Broker.LogList;
+};
 
-export type SubnetIds =  string[];
-
-export type BrokerName =  string;
-
-export type DeploymentMode =  string;
-
-export type EngineType =  string;
-
-export type PubliclyAccessible =  boolean;
-
-export type Tags =  AWS.AmazonMQ.Broker.TagsEntry[];
 
 }
+
+export type Configuration = {
+
+
+EngineVersion: string;
+
+Description?: string;
+
+AuthenticationStrategy?: string;
+
+EngineType: string;
+
+Data: string;
+
+Tags?: AWS.AmazonMQ.Configuration.TagsEntry[];
+
+Name: string;
+
+
+};
 
 export namespace Configuration {
 
-export type TagsEntry = { Value: string;
 
-Key: string; };
+export type TagsEntry = {
 
-export type EngineVersion =  string;
 
-export type Description =  string;
+Value: string;
 
-export type AuthenticationStrategy =  string;
+Key: string;
 
-export type EngineType =  string;
 
-export type Data =  string;
+};
 
-export type Tags =  AWS.AmazonMQ.Configuration.TagsEntry[];
-
-export type Name =  string;
 
 }
+
+export type ConfigurationAssociation = {
+
+
+Broker: string;
+
+Configuration: AWS.AmazonMQ.ConfigurationAssociation.ConfigurationId;
+
+
+};
 
 export namespace ConfigurationAssociation {
 
-export type ConfigurationId = { Revision: number;
 
-Id: string; };
+export type ConfigurationId = {
 
-export type Broker =  string;
 
-export type Configuration =  AWS.AmazonMQ.ConfigurationAssociation.ConfigurationId;
+Revision: number;
+
+Id: string;
+
+
+};
+
 
 }
+
 
 }
 
 export namespace DataPipeline {
 
+
+export type Pipeline = {
+
+
+Activate?: boolean;
+
+Description?: string;
+
+Name: string;
+
+ParameterObjects: AWS.DataPipeline.Pipeline.ParameterObject[];
+
+ParameterValues?: AWS.DataPipeline.Pipeline.ParameterValue[];
+
+PipelineObjects?: AWS.DataPipeline.Pipeline.PipelineObject[];
+
+PipelineTags?: AWS.DataPipeline.Pipeline.PipelineTag[];
+
+
+};
+
 export namespace Pipeline {
 
-export type PipelineObject = { Fields: AWS.DataPipeline.Pipeline.Field[];
+
+export type PipelineObject = {
+
+
+Fields: AWS.DataPipeline.Pipeline.Field[];
 
 Id: string;
 
-Name: string; };
+Name: string;
 
-export type ParameterAttribute = { Key: string;
 
-StringValue: string; };
+};
 
-export type PipelineTag = { Key: string;
+export type ParameterAttribute = {
 
-Value: string; };
 
-export type ParameterObject = { Attributes: AWS.DataPipeline.Pipeline.ParameterAttribute[];
+Key: string;
 
-Id: string; };
+StringValue: string;
 
-export type ParameterValue = { Id: string;
 
-StringValue: string; };
+};
 
-export type Field = { Key: string;
+export type PipelineTag = {
+
+
+Key: string;
+
+Value: string;
+
+
+};
+
+export type ParameterObject = {
+
+
+Attributes: AWS.DataPipeline.Pipeline.ParameterAttribute[];
+
+Id: string;
+
+
+};
+
+export type ParameterValue = {
+
+
+Id: string;
+
+StringValue: string;
+
+
+};
+
+export type Field = {
+
+
+Key: string;
 
 RefValue?: string;
 
-StringValue?: string; };
+StringValue?: string;
 
-export type Activate =  boolean;
 
-export type Description =  string;
+};
 
-export type Name =  string;
-
-export type ParameterObjects =  AWS.DataPipeline.Pipeline.ParameterObject[];
-
-export type ParameterValues =  AWS.DataPipeline.Pipeline.ParameterValue[];
-
-export type PipelineObjects =  AWS.DataPipeline.Pipeline.PipelineObject[];
-
-export type PipelineTags =  AWS.DataPipeline.Pipeline.PipelineTag[];
 
 }
+
 
 }
 
 export namespace FIS {
 
+
+export type ExperimentTemplate = {
+
+
+Description: string;
+
+Targets: Record<string, AWS.FIS.ExperimentTemplate.ExperimentTemplateTarget>;
+
+Actions?: Record<string, AWS.FIS.ExperimentTemplate.ExperimentTemplateAction>;
+
+StopConditions: AWS.FIS.ExperimentTemplate.ExperimentTemplateStopCondition[];
+
+RoleArn: string;
+
+Tags: Record<string, string>;
+
+
+};
+
 export namespace ExperimentTemplate {
 
-export type ExperimentTemplateStopCondition = { Source: string;
 
-Value?: string; };
+export type ExperimentTemplateStopCondition = {
 
-export type ExperimentTemplateTarget = { ResourceType: string;
+
+Source: string;
+
+Value?: string;
+
+
+};
+
+export type ExperimentTemplateTarget = {
+
+
+ResourceType: string;
 
 ResourceArns?: string[];
 
@@ -21994,9 +36360,15 @@ ResourceTags?: Record<string, string>;
 
 Filters?: AWS.FIS.ExperimentTemplate.ExperimentTemplateTargetFilter[];
 
-SelectionMode: string; };
+SelectionMode: string;
 
-export type ExperimentTemplateAction = { ActionId: string;
+
+};
+
+export type ExperimentTemplateAction = {
+
+
+ActionId: string;
 
 Description?: string;
 
@@ -22004,223 +36376,313 @@ Parameters?: Record<string, string>;
 
 Targets?: Record<string, string>;
 
-StartAfter?: string[]; };
+StartAfter?: string[];
 
-export type ExperimentTemplateTargetFilter = { Path: string;
 
-Values: string[]; };
+};
 
-export type Description =  string;
+export type ExperimentTemplateTargetFilter = {
 
-export type Targets =  Record<string, AWS.FIS.ExperimentTemplate.ExperimentTemplateTarget>;
 
-export type Actions =  Record<string, AWS.FIS.ExperimentTemplate.ExperimentTemplateAction>;
+Path: string;
 
-export type StopConditions =  AWS.FIS.ExperimentTemplate.ExperimentTemplateStopCondition[];
+Values: string[];
 
-export type RoleArn =  string;
 
-export type Tags =  Record<string, string>;
+};
+
 
 }
+
 
 }
 
 export namespace IAM {
 
+
+export type Role = {
+
+
+AssumeRolePolicyDocument: JSONString;
+
+Description?: string;
+
+ManagedPolicyArns?: string[];
+
+MaxSessionDuration?: number;
+
+Path?: string;
+
+PermissionsBoundary?: string;
+
+Policies?: AWS.IAM.Role.Policy[];
+
+RoleName?: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace Role {
 
-export type Policy = { PolicyDocument: JSONString;
 
-PolicyName: string; };
+export type Policy = {
 
-export type AssumeRolePolicyDocument =  JSONString;
 
-export type Description =  string;
+PolicyDocument: JSONString;
 
-export type ManagedPolicyArns =  string[];
+PolicyName: string;
 
-export type MaxSessionDuration =  number;
 
-export type Path =  string;
+};
 
-export type PermissionsBoundary =  string;
-
-export type Policies =  AWS.IAM.Role.Policy[];
-
-export type RoleName =  string;
-
-export type Tags =  Tag[];
 
 }
+
+export type User = {
+
+
+LoginProfile?: AWS.IAM.User.LoginProfile;
+
+Groups?: string[];
+
+ManagedPolicyArns?: string[];
+
+Path?: string;
+
+PermissionsBoundary?: string;
+
+Policies?: AWS.IAM.User.Policy[];
+
+Tags?: Tag[];
+
+UserName?: string;
+
+
+};
 
 export namespace User {
 
-export type LoginProfile =  AWS.IAM.User.LoginProfile;
 
-export type Policy = { PolicyDocument: JSONString;
+export type Policy = {
 
-PolicyName: string; };
 
-export type Groups =  string[];
+PolicyDocument: JSONString;
 
-export type ManagedPolicyArns =  string[];
+PolicyName: string;
 
-export type Path =  string;
 
-export type PermissionsBoundary =  string;
+};
 
-export type Policies =  AWS.IAM.User.Policy[];
-
-export type Tags =  Tag[];
-
-export type UserName =  string;
 
 }
+
+export type Group = {
+
+
+GroupName?: string;
+
+ManagedPolicyArns?: string[];
+
+Path?: string;
+
+Policies?: AWS.IAM.Group.Policy[];
+
+
+};
 
 export namespace Group {
 
-export type Policy = { PolicyDocument: JSONString;
 
-PolicyName: string; };
+export type Policy = {
 
-export type GroupName =  string;
 
-export type ManagedPolicyArns =  string[];
+PolicyDocument: JSONString;
 
-export type Path =  string;
+PolicyName: string;
 
-export type Policies =  AWS.IAM.Group.Policy[];
 
-}
+};
 
-export namespace VirtualMFADevice {
-
-export type VirtualMfaDeviceName =  string;
-
-export type Path =  string;
-
-export type Users =  string[];
-
-export type Tags =  Tag[];
 
 }
 
-export namespace SAMLProvider {
+export type VirtualMFADevice = {
 
-export type Name =  string;
 
-export type SamlMetadataDocument =  string;
+VirtualMfaDeviceName?: string;
 
-export type Tags =  Tag[];
+Path?: string;
 
-}
+Users: string[];
 
-export namespace ServerCertificate {
+Tags?: Tag[];
 
-export type CertificateBody =  string;
 
-export type CertificateChain =  string;
+};
 
-export type ServerCertificateName =  string;
+export type SAMLProvider = {
 
-export type Path =  string;
 
-export type PrivateKey =  string;
+Name?: string;
 
-export type Tags =  Tag[];
+SamlMetadataDocument: string;
 
-}
+Tags?: Tag[];
 
-export namespace Policy {
 
-export type Groups =  string[];
+};
 
-export type PolicyDocument =  JSONString;
+export type ServerCertificate = {
 
-export type PolicyName =  string;
 
-export type Roles =  string[];
+CertificateBody?: string;
 
-export type Users =  string[];
+CertificateChain?: string;
 
-}
+ServerCertificateName?: string;
 
-export namespace ServiceLinkedRole {
+Path?: string;
 
-export type CustomSuffix =  string;
+PrivateKey?: string;
 
-export type Description =  string;
+Tags?: Tag[];
 
-export type AWSServiceName =  string;
 
-}
+};
 
-export namespace AccessKey {
+export type Policy = {
 
-export type Serial =  number;
 
-export type Status =  string;
+Groups?: string[];
 
-export type UserName =  string;
+PolicyDocument: JSONString;
 
-}
+PolicyName: string;
 
-export namespace OIDCProvider {
+Roles?: string[];
 
-export type ClientIdList =  string[];
+Users?: string[];
 
-export type Url =  string;
 
-export type ThumbprintList =  string[];
+};
 
-export type Tags =  Tag[];
+export type ServiceLinkedRole = {
 
-}
 
-export namespace UserToGroupAddition {
+CustomSuffix?: string;
 
-export type GroupName =  string;
+Description?: string;
 
-export type Users =  string[];
+AWSServiceName: string;
 
-}
 
-export namespace InstanceProfile {
+};
 
-export type InstanceProfileName =  string;
+export type AccessKey = {
 
-export type Path =  string;
 
-export type Roles =  string[];
+Serial?: number;
 
-}
+Status?: string;
 
-export namespace ManagedPolicy {
+UserName: string;
 
-export type Description =  string;
 
-export type Groups =  string[];
+};
 
-export type ManagedPolicyName =  string;
+export type OIDCProvider = {
 
-export type Path =  string;
 
-export type PolicyDocument =  JSONString;
+ClientIdList?: string[];
 
-export type Roles =  string[];
+Url?: string;
 
-export type Users =  string[];
+ThumbprintList: string[];
 
-}
+Tags?: Tag[];
+
+
+};
+
+export type UserToGroupAddition = {
+
+
+GroupName: string;
+
+Users: string[];
+
+
+};
+
+export type InstanceProfile = {
+
+
+InstanceProfileName?: string;
+
+Path?: string;
+
+Roles: string[];
+
+
+};
+
+export type ManagedPolicy = {
+
+
+Description?: string;
+
+Groups?: string[];
+
+ManagedPolicyName?: string;
+
+Path?: string;
+
+PolicyDocument: JSONString;
+
+Roles?: string[];
+
+Users?: string[];
+
+
+};
+
 
 }
 
 export namespace FraudDetector {
 
+
+export type Detector = {
+
+
+EventType: AWS.FraudDetector.Detector.EventType;
+
+DetectorId: string;
+
+DetectorVersionStatus?: string;
+
+RuleExecutionMode?: string;
+
+Tags?: Tag[];
+
+Description?: string;
+
+Rules: AWS.FraudDetector.Detector.Rule[];
+
+AssociatedModels?: AWS.FraudDetector.Detector.Model[];
+
+
+};
+
 export namespace Detector {
 
-export type Label = { Arn?: string;
+
+export type Label = {
+
+
+Arn?: string;
 
 Inline?: boolean;
 
@@ -22232,25 +36694,15 @@ Tags?: Tag[];
 
 CreatedTime?: string;
 
-LastUpdatedTime?: string; };
+LastUpdatedTime?: string;
 
-export type EntityType = { Arn?: string;
 
-Inline?: boolean;
+};
 
-Name?: string;
+export type EntityType = {
 
-Description?: string;
 
-Tags?: Tag[];
-
-CreatedTime?: string;
-
-LastUpdatedTime?: string; };
-
-export type Model = { Arn?: string; };
-
-export type Outcome = { Arn?: string;
+Arn?: string;
 
 Inline?: boolean;
 
@@ -22262,9 +36714,43 @@ Tags?: Tag[];
 
 CreatedTime?: string;
 
-LastUpdatedTime?: string; };
+LastUpdatedTime?: string;
 
-export type EventVariable = { Arn?: string;
+
+};
+
+export type Model = {
+
+
+Arn?: string;
+
+
+};
+
+export type Outcome = {
+
+
+Arn?: string;
+
+Inline?: boolean;
+
+Name?: string;
+
+Description?: string;
+
+Tags?: Tag[];
+
+CreatedTime?: string;
+
+LastUpdatedTime?: string;
+
+
+};
+
+export type EventVariable = {
+
+
+Arn?: string;
 
 Inline?: boolean;
 
@@ -22284,9 +36770,15 @@ Tags?: Tag[];
 
 CreatedTime?: string;
 
-LastUpdatedTime?: string; };
+LastUpdatedTime?: string;
 
-export type Rule = { RuleId?: string;
+
+};
+
+export type Rule = {
+
+
+RuleId?: string;
 
 RuleVersion?: string;
 
@@ -22306,29 +36798,39 @@ Tags?: Tag[];
 
 CreatedTime?: string;
 
-LastUpdatedTime?: string; };
+LastUpdatedTime?: string;
 
-export type EventType =  AWS.FraudDetector.Detector.EventType;
 
-export type DetectorId =  string;
+};
 
-export type DetectorVersionStatus =  string;
-
-export type RuleExecutionMode =  string;
-
-export type Tags =  Tag[];
-
-export type Description =  string;
-
-export type Rules =  AWS.FraudDetector.Detector.Rule[];
-
-export type AssociatedModels =  AWS.FraudDetector.Detector.Model[];
 
 }
 
+export type EventType = {
+
+
+Name: string;
+
+Tags?: Tag[];
+
+Description?: string;
+
+EventVariables: AWS.FraudDetector.EventType.EventVariable[];
+
+Labels: AWS.FraudDetector.EventType.Label[];
+
+EntityTypes: AWS.FraudDetector.EventType.EntityType[];
+
+
+};
+
 export namespace EventType {
 
-export type EntityType = { Arn?: string;
+
+export type EntityType = {
+
+
+Arn?: string;
 
 Inline?: boolean;
 
@@ -22340,9 +36842,15 @@ Tags?: Tag[];
 
 CreatedTime?: string;
 
-LastUpdatedTime?: string; };
+LastUpdatedTime?: string;
 
-export type EventVariable = { Arn?: string;
+
+};
+
+export type EventVariable = {
+
+
+Arn?: string;
 
 Inline?: boolean;
 
@@ -22362,9 +36870,15 @@ Tags?: Tag[];
 
 CreatedTime?: string;
 
-LastUpdatedTime?: string; };
+LastUpdatedTime?: string;
 
-export type Label = { Arn?: string;
+
+};
+
+export type Label = {
+
+
+Arn?: string;
 
 Inline?: boolean;
 
@@ -22376,427 +36890,579 @@ Tags?: Tag[];
 
 CreatedTime?: string;
 
-LastUpdatedTime?: string; };
+LastUpdatedTime?: string;
 
-export type Name =  string;
 
-export type Tags =  Tag[];
+};
 
-export type Description =  string;
-
-export type EventVariables =  AWS.FraudDetector.EventType.EventVariable[];
-
-export type Labels =  AWS.FraudDetector.EventType.Label[];
-
-export type EntityTypes =  AWS.FraudDetector.EventType.EntityType[];
 
 }
 
-export namespace EntityType {
+export type EntityType = {
 
-export type Name =  string;
 
-export type Tags =  Tag[];
+Name: string;
 
-export type Description =  string;
+Tags?: Tag[];
 
-}
+Description?: string;
 
-export namespace Outcome {
 
-export type Name =  string;
+};
 
-export type Tags =  Tag[];
+export type Outcome = {
 
-export type Description =  string;
 
-}
+Name: string;
 
-export namespace Label {
+Tags?: Tag[];
 
-export type Name =  string;
+Description?: string;
 
-export type Tags =  Tag[];
 
-export type Description =  string;
+};
 
-}
+export type Label = {
 
-export namespace Variable {
 
-export type Name =  string;
+Name: string;
 
-export type DataSource =  string;
+Tags?: Tag[];
 
-export type DataType =  string;
+Description?: string;
 
-export type DefaultValue =  string;
 
-export type Description =  string;
+};
 
-export type Tags =  Tag[];
+export type Variable = {
 
-export type VariableType =  string;
 
-}
+Name: string;
+
+DataSource: string;
+
+DataType: string;
+
+DefaultValue: string;
+
+Description?: string;
+
+Tags?: Tag[];
+
+VariableType?: string;
+
+
+};
+
 
 }
 
 export namespace ServiceCatalog {
 
+
+export type CloudFormationProvisionedProduct = {
+
+
+ProvisioningPreferences?: AWS.ServiceCatalog.CloudFormationProvisionedProduct.ProvisioningPreferences;
+
+AcceptLanguage?: string;
+
+NotificationArns?: string[];
+
+PathId?: string;
+
+PathName?: string;
+
+ProductId?: string;
+
+ProductName?: string;
+
+ProvisionedProductName?: string;
+
+ProvisioningArtifactId?: string;
+
+ProvisioningArtifactName?: string;
+
+ProvisioningParameters?: AWS.ServiceCatalog.CloudFormationProvisionedProduct.ProvisioningParameter[];
+
+Tags?: Tag[];
+
+
+};
+
 export namespace CloudFormationProvisionedProduct {
 
-export type ProvisioningParameter = { Key: string;
 
-Value: string; };
+export type ProvisioningParameter = {
 
-export type ProvisioningPreferences =  AWS.ServiceCatalog.CloudFormationProvisionedProduct.ProvisioningPreferences;
 
-export type AcceptLanguage =  string;
+Key: string;
 
-export type NotificationArns =  string[];
+Value: string;
 
-export type PathId =  string;
 
-export type PathName =  string;
+};
 
-export type ProductId =  string;
-
-export type ProductName =  string;
-
-export type ProvisionedProductName =  string;
-
-export type ProvisioningArtifactId =  string;
-
-export type ProvisioningArtifactName =  string;
-
-export type ProvisioningParameters =  AWS.ServiceCatalog.CloudFormationProvisionedProduct.ProvisioningParameter[];
-
-export type Tags =  Tag[];
 
 }
+
+export type ServiceAction = {
+
+
+AcceptLanguage?: string;
+
+Name: string;
+
+DefinitionType: string;
+
+Definition: AWS.ServiceCatalog.ServiceAction.DefinitionParameter[];
+
+Description?: string;
+
+
+};
 
 export namespace ServiceAction {
 
-export type DefinitionParameter = { Key: string;
 
-Value: string; };
+export type DefinitionParameter = {
 
-export type AcceptLanguage =  string;
 
-export type Name =  string;
+Key: string;
 
-export type DefinitionType =  string;
+Value: string;
 
-export type Definition =  AWS.ServiceCatalog.ServiceAction.DefinitionParameter[];
 
-export type Description =  string;
+};
+
 
 }
 
+export type CloudFormationProduct = {
+
+
+ReplaceProvisioningArtifacts?: boolean;
+
+Owner: string;
+
+SupportDescription?: string;
+
+Description?: string;
+
+Distributor?: string;
+
+SupportEmail?: string;
+
+AcceptLanguage?: string;
+
+SupportUrl?: string;
+
+Tags?: Tag[];
+
+Name: string;
+
+ProvisioningArtifactParameters: AWS.ServiceCatalog.CloudFormationProduct.ProvisioningArtifactProperties[];
+
+
+};
+
 export namespace CloudFormationProduct {
 
-export type ProvisioningArtifactProperties = { Description?: string;
+
+export type ProvisioningArtifactProperties = {
+
+
+Description?: string;
 
 DisableTemplateValidation?: boolean;
 
 Info: JSONString;
 
-Name?: string; };
+Name?: string;
 
-export type ReplaceProvisioningArtifacts =  boolean;
 
-export type Owner =  string;
+};
 
-export type SupportDescription =  string;
-
-export type Description =  string;
-
-export type Distributor =  string;
-
-export type SupportEmail =  string;
-
-export type AcceptLanguage =  string;
-
-export type SupportUrl =  string;
-
-export type Tags =  Tag[];
-
-export type Name =  string;
-
-export type ProvisioningArtifactParameters =  AWS.ServiceCatalog.CloudFormationProduct.ProvisioningArtifactProperties[];
 
 }
 
-export namespace PortfolioShare {
+export type PortfolioShare = {
 
-export type AccountId =  string;
 
-export type AcceptLanguage =  string;
+AccountId: string;
 
-export type PortfolioId =  string;
+AcceptLanguage?: string;
 
-export type ShareTagOptions =  boolean;
+PortfolioId: string;
 
-}
+ShareTagOptions?: boolean;
 
-export namespace ResourceUpdateConstraint {
 
-export type Description =  string;
+};
 
-export type AcceptLanguage =  string;
+export type ResourceUpdateConstraint = {
 
-export type TagUpdateOnProvisionedProduct =  string;
 
-export type PortfolioId =  string;
+Description?: string;
 
-export type ProductId =  string;
+AcceptLanguage?: string;
 
-}
+TagUpdateOnProvisionedProduct: string;
 
-export namespace TagOption {
+PortfolioId: string;
 
-export type Active =  boolean;
+ProductId: string;
 
-export type Value =  string;
 
-export type Key =  string;
+};
 
-}
+export type TagOption = {
 
-export namespace PortfolioProductAssociation {
 
-export type SourcePortfolioId =  string;
+Active?: boolean;
 
-export type AcceptLanguage =  string;
+Value: string;
 
-export type PortfolioId =  string;
+Key: string;
 
-export type ProductId =  string;
 
-}
+};
 
-export namespace AcceptedPortfolioShare {
+export type PortfolioProductAssociation = {
 
-export type AcceptLanguage =  string;
 
-export type PortfolioId =  string;
+SourcePortfolioId?: string;
 
-}
+AcceptLanguage?: string;
 
-export namespace LaunchTemplateConstraint {
+PortfolioId: string;
 
-export type Description =  string;
+ProductId: string;
 
-export type AcceptLanguage =  string;
 
-export type PortfolioId =  string;
+};
 
-export type ProductId =  string;
+export type AcceptedPortfolioShare = {
 
-export type Rules =  string;
 
-}
+AcceptLanguage?: string;
 
-export namespace Portfolio {
+PortfolioId: string;
 
-export type ProviderName =  string;
 
-export type Description =  string;
+};
 
-export type DisplayName =  string;
+export type LaunchTemplateConstraint = {
 
-export type AcceptLanguage =  string;
 
-export type Tags =  Tag[];
+Description?: string;
 
-}
+AcceptLanguage?: string;
 
-export namespace LaunchNotificationConstraint {
+PortfolioId: string;
 
-export type Description =  string;
+ProductId: string;
 
-export type NotificationArns =  string[];
+Rules: string;
 
-export type AcceptLanguage =  string;
 
-export type PortfolioId =  string;
+};
 
-export type ProductId =  string;
+export type Portfolio = {
 
-}
 
-export namespace ServiceActionAssociation {
+ProviderName: string;
 
-export type ProductId =  string;
+Description?: string;
 
-export type ProvisioningArtifactId =  string;
+DisplayName: string;
 
-export type ServiceActionId =  string;
+AcceptLanguage?: string;
 
-}
+Tags?: Tag[];
 
-export namespace StackSetConstraint {
 
-export type Description =  string;
+};
 
-export type StackInstanceControl =  string;
+export type LaunchNotificationConstraint = {
 
-export type AcceptLanguage =  string;
 
-export type PortfolioId =  string;
+Description?: string;
 
-export type ProductId =  string;
+NotificationArns: string[];
 
-export type RegionList =  string[];
+AcceptLanguage?: string;
 
-export type AdminRole =  string;
+PortfolioId: string;
 
-export type AccountList =  string[];
+ProductId: string;
 
-export type ExecutionRole =  string;
 
-}
+};
 
-export namespace TagOptionAssociation {
+export type ServiceActionAssociation = {
 
-export type TagOptionId =  string;
 
-export type ResourceId =  string;
+ProductId: string;
 
-}
+ProvisioningArtifactId: string;
 
-export namespace PortfolioPrincipalAssociation {
+ServiceActionId: string;
 
-export type PrincipalARN =  string;
 
-export type AcceptLanguage =  string;
+};
 
-export type PortfolioId =  string;
+export type StackSetConstraint = {
 
-export type PrincipalType =  string;
 
-}
+Description: string;
 
-export namespace LaunchRoleConstraint {
+StackInstanceControl: string;
 
-export type Description =  string;
+AcceptLanguage?: string;
 
-export type LocalRoleName =  string;
+PortfolioId: string;
 
-export type AcceptLanguage =  string;
+ProductId: string;
 
-export type PortfolioId =  string;
+RegionList: string[];
 
-export type ProductId =  string;
+AdminRole: string;
 
-export type RoleArn =  string;
+AccountList: string[];
 
-}
+ExecutionRole: string;
+
+
+};
+
+export type TagOptionAssociation = {
+
+
+TagOptionId: string;
+
+ResourceId: string;
+
+
+};
+
+export type PortfolioPrincipalAssociation = {
+
+
+PrincipalARN: string;
+
+AcceptLanguage?: string;
+
+PortfolioId: string;
+
+PrincipalType: string;
+
+
+};
+
+export type LaunchRoleConstraint = {
+
+
+Description?: string;
+
+LocalRoleName?: string;
+
+AcceptLanguage?: string;
+
+PortfolioId: string;
+
+ProductId: string;
+
+RoleArn?: string;
+
+
+};
+
 
 }
 
 export namespace Location {
 
-export namespace PlaceIndex {
 
-export type DataSourceConfiguration =  AWS.Location.PlaceIndex.DataSourceConfiguration;
+export type PlaceIndex = {
 
-export type DataSource =  string;
 
-export type Description =  string;
+DataSourceConfiguration?: AWS.Location.PlaceIndex.DataSourceConfiguration;
 
-export type IndexName =  string;
+DataSource: string;
 
-export type PricingPlan =  string;
+Description?: string;
 
-}
+IndexName: string;
+
+PricingPlan: string;
+
+
+};
+
+export type Map = {
+
+
+Configuration: AWS.Location.Map.MapConfiguration;
+
+Description?: string;
+
+MapName: string;
+
+PricingPlan: string;
+
+
+};
 
 export namespace Map {
 
-export type MapConfiguration = { Style: string; };
 
-export type Configuration =  AWS.Location.Map.MapConfiguration;
+export type MapConfiguration = {
 
-export type Description =  string;
 
-export type MapName =  string;
+Style: string;
 
-export type PricingPlan =  string;
 
-}
+};
 
-export namespace Tracker {
-
-export type Description =  string;
-
-export type KmsKeyId =  string;
-
-export type PricingPlan =  string;
-
-export type PricingPlanDataSource =  string;
-
-export type TrackerName =  string;
 
 }
 
-export namespace GeofenceCollection {
+export type Tracker = {
 
-export type CollectionName =  string;
 
-export type Description =  string;
+Description?: string;
 
-export type KmsKeyId =  string;
+KmsKeyId?: string;
 
-export type PricingPlan =  string;
+PricingPlan: string;
 
-export type PricingPlanDataSource =  string;
+PricingPlanDataSource?: string;
 
-}
+TrackerName: string;
 
-export namespace TrackerConsumer {
 
-export type ConsumerArn =  string;
+};
 
-export type TrackerName =  string;
+export type GeofenceCollection = {
 
-}
 
-export namespace RouteCalculator {
+CollectionName: string;
 
-export type CalculatorName =  string;
+Description?: string;
 
-export type DataSource =  string;
+KmsKeyId?: string;
 
-export type Description =  string;
+PricingPlan: string;
 
-export type PricingPlan =  string;
+PricingPlanDataSource?: string;
 
-}
+
+};
+
+export type TrackerConsumer = {
+
+
+ConsumerArn: string;
+
+TrackerName: string;
+
+
+};
+
+export type RouteCalculator = {
+
+
+CalculatorName: string;
+
+DataSource: string;
+
+Description?: string;
+
+PricingPlan: string;
+
+
+};
+
 
 }
 
 export namespace LicenseManager {
 
+
+export type License = {
+
+
+ConsumptionConfiguration: AWS.LicenseManager.License.ConsumptionConfiguration;
+
+ProductSKU?: string;
+
+Issuer: AWS.LicenseManager.License.IssuerData;
+
+LicenseName: string;
+
+ProductName: string;
+
+HomeRegion: string;
+
+Validity: AWS.LicenseManager.License.ValidityDateFormat;
+
+Entitlements: AWS.LicenseManager.License.Entitlement[];
+
+Beneficiary?: string;
+
+LicenseMetadata?: AWS.LicenseManager.License.Metadata[];
+
+Status?: string;
+
+
+};
+
 export namespace License {
 
-export type ProvisionalConfiguration = { MaxTimeToLiveInMinutes: number; };
 
-export type ConsumptionConfiguration =  AWS.LicenseManager.License.ConsumptionConfiguration;
+export type ProvisionalConfiguration = {
 
-export type IssuerData = { Name: string;
 
-SignKey?: string; };
+MaxTimeToLiveInMinutes: number;
 
-export type BorrowConfiguration = { MaxTimeToLiveInMinutes: number;
 
-AllowEarlyCheckIn: boolean; };
+};
 
-export type Metadata = { Name: string;
+export type IssuerData = {
 
-Value: string; };
 
-export type Entitlement = { Name: string;
+Name: string;
+
+SignKey?: string;
+
+
+};
+
+export type BorrowConfiguration = {
+
+
+MaxTimeToLiveInMinutes: number;
+
+AllowEarlyCheckIn: boolean;
+
+
+};
+
+export type Metadata = {
+
+
+Name: string;
+
+Value: string;
+
+
+};
+
+export type Entitlement = {
+
+
+Name: string;
 
 Value?: string;
 
@@ -22806,63 +37472,85 @@ Overage?: boolean;
 
 Unit: string;
 
-AllowCheckIn?: boolean; };
+AllowCheckIn?: boolean;
 
-export type ValidityDateFormat = { Begin: string;
 
-End: string; };
+};
 
-export type ProductSKU =  string;
+export type ValidityDateFormat = {
 
-export type Issuer =  AWS.LicenseManager.License.IssuerData;
 
-export type LicenseName =  string;
+Begin: string;
 
-export type ProductName =  string;
+End: string;
 
-export type HomeRegion =  string;
 
-export type Validity =  AWS.LicenseManager.License.ValidityDateFormat;
+};
 
-export type Entitlements =  AWS.LicenseManager.License.Entitlement[];
-
-export type Beneficiary =  string;
-
-export type LicenseMetadata =  AWS.LicenseManager.License.Metadata[];
-
-export type Status =  string;
 
 }
 
-export namespace Grant {
+export type Grant = {
 
-export type GrantName =  string;
 
-export type LicenseArn =  string;
+GrantName?: string;
 
-export type HomeRegion =  string;
+LicenseArn?: string;
 
-export type AllowedOperations =  string[];
+HomeRegion?: string;
 
-export type Principals =  string[];
+AllowedOperations?: string[];
 
-export type Status =  string;
+Principals?: string[];
 
-}
+Status?: string;
+
+
+};
+
 
 }
 
 export namespace MediaStore {
 
+
+export type Container = {
+
+
+MetricPolicy?: AWS.MediaStore.Container.MetricPolicy;
+
+Policy?: string;
+
+ContainerName: string;
+
+CorsPolicy?: AWS.MediaStore.Container.CorsRule[];
+
+LifecyclePolicy?: string;
+
+AccessLoggingEnabled?: boolean;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace Container {
 
-export type MetricPolicy =  AWS.MediaStore.Container.MetricPolicy;
 
-export type MetricPolicyRule = { ObjectGroup: string;
+export type MetricPolicyRule = {
 
-ObjectGroupName: string; };
 
-export type CorsRule = { AllowedMethods?: string[];
+ObjectGroup: string;
+
+ObjectGroupName: string;
+
+
+};
+
+export type CorsRule = {
+
+
+AllowedMethods?: string[];
 
 AllowedOrigins?: string[];
 
@@ -22870,67 +37558,153 @@ ExposeHeaders?: string[];
 
 MaxAgeSeconds?: number;
 
-AllowedHeaders?: string[]; };
+AllowedHeaders?: string[];
 
-export type Policy =  string;
 
-export type ContainerName =  string;
+};
 
-export type CorsPolicy =  AWS.MediaStore.Container.CorsRule[];
-
-export type LifecyclePolicy =  string;
-
-export type AccessLoggingEnabled =  boolean;
-
-export type Tags =  Tag[];
 
 }
+
 
 }
 
 export namespace Events {
 
+
+export type Rule = {
+
+
+Description?: string;
+
+EventBusName?: string;
+
+EventPattern?: JSONString;
+
+Name?: string;
+
+RoleArn?: string;
+
+ScheduleExpression?: string;
+
+State?: string;
+
+Targets?: AWS.Events.Rule.Target[];
+
+
+};
+
 export namespace Rule {
 
-export type BatchRetryStrategy = { Attempts?: number; };
 
-export type HttpParameters = { HeaderParameters?: Record<string, string>;
+export type BatchRetryStrategy = {
+
+
+Attempts?: number;
+
+
+};
+
+export type HttpParameters = {
+
+
+HeaderParameters?: Record<string, string>;
 
 PathParameterValues?: string[];
 
-QueryStringParameters?: Record<string, string>; };
+QueryStringParameters?: Record<string, string>;
 
-export type BatchArrayProperties = { Size?: number; };
 
-export type BatchParameters = { ArrayProperties?: AWS.Events.Rule.BatchArrayProperties;
+};
+
+export type BatchArrayProperties = {
+
+
+Size?: number;
+
+
+};
+
+export type BatchParameters = {
+
+
+ArrayProperties?: AWS.Events.Rule.BatchArrayProperties;
 
 JobDefinition: string;
 
 JobName: string;
 
-RetryStrategy?: AWS.Events.Rule.BatchRetryStrategy; };
+RetryStrategy?: AWS.Events.Rule.BatchRetryStrategy;
 
-export type RunCommandParameters = { RunCommandTargets: AWS.Events.Rule.RunCommandTarget[]; };
 
-export type DeadLetterConfig = { Arn?: string; };
+};
 
-export type NetworkConfiguration = { AwsVpcConfiguration?: AWS.Events.Rule.AwsVpcConfiguration; };
+export type RunCommandParameters = {
 
-export type RunCommandTarget = { Key: string;
 
-Values: string[]; };
+RunCommandTargets: AWS.Events.Rule.RunCommandTarget[];
 
-export type InputTransformer = { InputPathsMap?: Record<string, string>;
 
-InputTemplate: string; };
+};
 
-export type SqsParameters = { MessageGroupId: string; };
+export type DeadLetterConfig = {
 
-export type RetryPolicy = { MaximumEventAgeInSeconds?: number;
 
-MaximumRetryAttempts?: number; };
+Arn?: string;
 
-export type Target = { Arn: string;
+
+};
+
+export type NetworkConfiguration = {
+
+
+AwsVpcConfiguration?: AWS.Events.Rule.AwsVpcConfiguration;
+
+
+};
+
+export type RunCommandTarget = {
+
+
+Key: string;
+
+Values: string[];
+
+
+};
+
+export type InputTransformer = {
+
+
+InputPathsMap?: Record<string, string>;
+
+InputTemplate: string;
+
+
+};
+
+export type SqsParameters = {
+
+
+MessageGroupId: string;
+
+
+};
+
+export type RetryPolicy = {
+
+
+MaximumEventAgeInSeconds?: number;
+
+MaximumRetryAttempts?: number;
+
+
+};
+
+export type Target = {
+
+
+Arn: string;
 
 BatchParameters?: AWS.Events.Rule.BatchParameters;
 
@@ -22958,11 +37732,23 @@ RoleArn?: string;
 
 RunCommandParameters?: AWS.Events.Rule.RunCommandParameters;
 
-SqsParameters?: AWS.Events.Rule.SqsParameters; };
+SqsParameters?: AWS.Events.Rule.SqsParameters;
 
-export type KinesisParameters = { PartitionKeyPath: string; };
 
-export type RedshiftDataParameters = { Database: string;
+};
+
+export type KinesisParameters = {
+
+
+PartitionKeyPath: string;
+
+
+};
+
+export type RedshiftDataParameters = {
+
+
+Database: string;
 
 DbUser?: string;
 
@@ -22972,9 +37758,15 @@ Sql: string;
 
 StatementName?: string;
 
-WithEvent?: boolean; };
+WithEvent?: boolean;
 
-export type EcsParameters = { Group?: string;
+
+};
+
+export type EcsParameters = {
+
+
+Group?: string;
 
 LaunchType?: string;
 
@@ -22984,155 +37776,211 @@ PlatformVersion?: string;
 
 TaskCount?: number;
 
-TaskDefinitionArn: string; };
+TaskDefinitionArn: string;
 
-export type AwsVpcConfiguration = { AssignPublicIp?: string;
+
+};
+
+export type AwsVpcConfiguration = {
+
+
+AssignPublicIp?: string;
 
 SecurityGroups?: string[];
 
-Subnets: string[]; };
+Subnets: string[];
 
-export type Description =  string;
 
-export type EventBusName =  string;
+};
 
-export type EventPattern =  JSONString;
-
-export type Name =  string;
-
-export type RoleArn =  string;
-
-export type ScheduleExpression =  string;
-
-export type State =  string;
-
-export type Targets =  AWS.Events.Rule.Target[];
 
 }
 
-export namespace EventBusPolicy {
+export type EventBusPolicy = {
 
-export type Condition =  AWS.Events.EventBusPolicy.Condition;
 
-export type EventBusName =  string;
+Condition?: AWS.Events.EventBusPolicy.Condition;
 
-export type Action =  string;
+EventBusName?: string;
 
-export type StatementId =  string;
+Action?: string;
 
-export type Statement =  JSONString;
+StatementId: string;
 
-export type Principal =  string;
+Statement?: JSONString;
 
-}
+Principal?: string;
 
-export namespace ApiDestination {
 
-export type Name =  string;
+};
 
-export type Description =  string;
+export type ApiDestination = {
 
-export type ConnectionArn =  string;
 
-export type InvocationRateLimitPerSecond =  number;
+Name?: string;
 
-export type InvocationEndpoint =  string;
+Description?: string;
 
-export type HttpMethod =  string;
+ConnectionArn: string;
 
-}
+InvocationRateLimitPerSecond?: number;
 
-export namespace Archive {
+InvocationEndpoint: string;
 
-export type ArchiveName =  string;
+HttpMethod: string;
 
-export type SourceArn =  string;
 
-export type Description =  string;
+};
 
-export type EventPattern =  JSONString;
+export type Archive = {
 
-export type RetentionDays =  number;
 
-}
+ArchiveName?: string;
 
-export namespace Connection {
+SourceArn: string;
 
-export type Name =  string;
+Description?: string;
 
-export type Description =  string;
+EventPattern?: JSONString;
 
-export type AuthorizationType =  string;
+RetentionDays?: number;
 
-export type AuthParameters =  JSONString;
 
-}
+};
 
-export namespace EventBus {
+export type Connection = {
 
-export type EventSourceName =  string;
 
-export type Name =  string;
+Name?: string;
 
-}
+Description?: string;
+
+AuthorizationType: string;
+
+AuthParameters: JSONString;
+
+
+};
+
+export type EventBus = {
+
+
+EventSourceName?: string;
+
+Name: string;
+
+
+};
+
 
 }
 
 export namespace Signer {
 
-export namespace SigningProfile {
 
-export type SignatureValidityPeriod =  AWS.Signer.SigningProfile.SignatureValidityPeriod;
+export type SigningProfile = {
 
-export type PlatformId =  string;
 
-export type Tags =  Tag[];
+SignatureValidityPeriod?: AWS.Signer.SigningProfile.SignatureValidityPeriod;
 
-}
+PlatformId: string;
 
-export namespace ProfilePermission {
+Tags?: Tag[];
 
-export type ProfileName =  string;
 
-export type ProfileVersion =  string;
+};
 
-export type Action =  string;
+export type ProfilePermission = {
 
-export type Principal =  string;
 
-export type StatementId =  string;
+ProfileName: string;
 
-}
+ProfileVersion?: string;
+
+Action: string;
+
+Principal: string;
+
+StatementId: string;
+
+
+};
+
 
 }
 
 export namespace Kendra {
 
+
+export type DataSource = {
+
+
+DataSourceConfiguration?: AWS.Kendra.DataSource.DataSourceConfiguration;
+
+Name: string;
+
+IndexId: string;
+
+Type: string;
+
+Description?: string;
+
+Schedule?: string;
+
+RoleArn?: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace DataSource {
 
-export type ConfluenceAttachmentToIndexFieldMapping = { DataSourceFieldName: string;
+
+export type ConfluenceAttachmentToIndexFieldMapping = {
+
+
+DataSourceFieldName: string;
 
 DateFieldFormat?: string;
 
-IndexFieldName: string; };
+IndexFieldName: string;
 
-export type SalesforceStandardObjectConfiguration = { Name: string;
+
+};
+
+export type SalesforceStandardObjectConfiguration = {
+
+
+Name: string;
 
 DocumentDataFieldName: string;
 
 DocumentTitleFieldName?: string;
 
-FieldMappings?: AWS.Kendra.DataSource.DataSourceToIndexFieldMapping[]; };
+FieldMappings?: AWS.Kendra.DataSource.DataSourceToIndexFieldMapping[];
 
-export type SalesforceChatterFeedConfiguration = { DocumentDataFieldName: string;
+
+};
+
+export type SalesforceChatterFeedConfiguration = {
+
+
+DocumentDataFieldName: string;
 
 DocumentTitleFieldName?: string;
 
 FieldMappings?: AWS.Kendra.DataSource.DataSourceToIndexFieldMapping[];
 
-IncludeFilterTypes?: string[]; };
+IncludeFilterTypes?: string[];
 
-export type SalesforceConfiguration = { ServerUrl: string;
+
+};
+
+export type SalesforceConfiguration = {
+
+
+ServerUrl: string;
 
 SecretArn: string;
 
@@ -23148,9 +37996,15 @@ StandardObjectAttachmentConfiguration?: AWS.Kendra.DataSource.SalesforceStandard
 
 IncludeAttachmentFilePatterns?: string[];
 
-ExcludeAttachmentFilePatterns?: string[]; };
+ExcludeAttachmentFilePatterns?: string[];
 
-export type ColumnConfiguration = { DocumentIdColumnName: string;
+
+};
+
+export type ColumnConfiguration = {
+
+
+DocumentIdColumnName: string;
 
 DocumentDataColumnName: string;
 
@@ -23158,9 +38012,15 @@ DocumentTitleColumnName?: string;
 
 FieldMappings?: AWS.Kendra.DataSource.DataSourceToIndexFieldMapping[];
 
-ChangeDetectingColumns: string[]; };
+ChangeDetectingColumns: string[];
 
-export type ServiceNowKnowledgeArticleConfiguration = { CrawlAttachments?: boolean;
+
+};
+
+export type ServiceNowKnowledgeArticleConfiguration = {
+
+
+CrawlAttachments?: boolean;
 
 IncludeAttachmentFilePatterns?: string[];
 
@@ -23170,9 +38030,15 @@ DocumentDataFieldName: string;
 
 DocumentTitleFieldName?: string;
 
-FieldMappings?: AWS.Kendra.DataSource.DataSourceToIndexFieldMapping[]; };
+FieldMappings?: AWS.Kendra.DataSource.DataSourceToIndexFieldMapping[];
 
-export type ConfluenceSpaceConfiguration = { CrawlPersonalSpaces?: boolean;
+
+};
+
+export type ConfluenceSpaceConfiguration = {
+
+
+CrawlPersonalSpaces?: boolean;
 
 CrawlArchivedSpaces?: boolean;
 
@@ -23180,9 +38046,15 @@ IncludeSpaces?: string[];
 
 ExcludeSpaces?: string[];
 
-SpaceFieldMappings?: AWS.Kendra.DataSource.ConfluenceSpaceToIndexFieldMapping[]; };
+SpaceFieldMappings?: AWS.Kendra.DataSource.ConfluenceSpaceToIndexFieldMapping[];
 
-export type GoogleDriveConfiguration = { SecretArn: string;
+
+};
+
+export type GoogleDriveConfiguration = {
+
+
+SecretArn: string;
 
 InclusionPatterns?: string[];
 
@@ -23194,13 +38066,25 @@ ExcludeMimeTypes?: string[];
 
 ExcludeUserAccounts?: string[];
 
-ExcludeSharedDrives?: string[]; };
+ExcludeSharedDrives?: string[];
 
-export type S3Path = { Bucket: string;
 
-Key: string; };
+};
 
-export type ServiceNowConfiguration = { HostUrl: string;
+export type S3Path = {
+
+
+Bucket: string;
+
+Key: string;
+
+
+};
+
+export type ServiceNowConfiguration = {
+
+
+HostUrl: string;
 
 SecretArn: string;
 
@@ -23208,9 +38092,15 @@ ServiceNowBuildVersion: string;
 
 KnowledgeArticleConfiguration?: AWS.Kendra.DataSource.ServiceNowKnowledgeArticleConfiguration;
 
-ServiceCatalogConfiguration?: AWS.Kendra.DataSource.ServiceNowServiceCatalogConfiguration; };
+ServiceCatalogConfiguration?: AWS.Kendra.DataSource.ServiceNowServiceCatalogConfiguration;
 
-export type ConfluenceConfiguration = { ServerUrl: string;
+
+};
+
+export type ConfluenceConfiguration = {
+
+
+ServerUrl: string;
 
 SecretArn: string;
 
@@ -23228,15 +38118,27 @@ VpcConfiguration?: AWS.Kendra.DataSource.DataSourceVpcConfiguration;
 
 InclusionPatterns?: string[];
 
-ExclusionPatterns?: string[]; };
+ExclusionPatterns?: string[];
 
-export type ConfluencePageToIndexFieldMapping = { DataSourceFieldName: string;
+
+};
+
+export type ConfluencePageToIndexFieldMapping = {
+
+
+DataSourceFieldName: string;
 
 DateFieldFormat?: string;
 
-IndexFieldName: string; };
+IndexFieldName: string;
 
-export type DatabaseConfiguration = { DatabaseEngineType: string;
+
+};
+
+export type DatabaseConfiguration = {
+
+
+DatabaseEngineType: string;
 
 ConnectionConfiguration: AWS.Kendra.DataSource.ConnectionConfiguration;
 
@@ -23246,11 +38148,23 @@ ColumnConfiguration: AWS.Kendra.DataSource.ColumnConfiguration;
 
 AclConfiguration?: AWS.Kendra.DataSource.AclConfiguration;
 
-SqlConfiguration?: AWS.Kendra.DataSource.SqlConfiguration; };
+SqlConfiguration?: AWS.Kendra.DataSource.SqlConfiguration;
 
-export type SqlConfiguration = { QueryIdentifiersEnclosingOption?: string; };
 
-export type S3DataSourceConfiguration = { BucketName: string;
+};
+
+export type SqlConfiguration = {
+
+
+QueryIdentifiersEnclosingOption?: string;
+
+
+};
+
+export type S3DataSourceConfiguration = {
+
+
+BucketName: string;
 
 InclusionPrefixes?: string[];
 
@@ -23260,13 +38174,31 @@ ExclusionPatterns?: string[];
 
 DocumentsMetadataConfiguration?: AWS.Kendra.DataSource.DocumentsMetadataConfiguration;
 
-AccessControlListConfiguration?: AWS.Kendra.DataSource.AccessControlListConfiguration; };
+AccessControlListConfiguration?: AWS.Kendra.DataSource.AccessControlListConfiguration;
 
-export type ConfluenceBlogConfiguration = { BlogFieldMappings?: AWS.Kendra.DataSource.ConfluenceBlogToIndexFieldMapping[]; };
 
-export type ConfluencePageConfiguration = { PageFieldMappings?: AWS.Kendra.DataSource.ConfluencePageToIndexFieldMapping[]; };
+};
 
-export type ConnectionConfiguration = { DatabaseHost: string;
+export type ConfluenceBlogConfiguration = {
+
+
+BlogFieldMappings?: AWS.Kendra.DataSource.ConfluenceBlogToIndexFieldMapping[];
+
+
+};
+
+export type ConfluencePageConfiguration = {
+
+
+PageFieldMappings?: AWS.Kendra.DataSource.ConfluencePageToIndexFieldMapping[];
+
+
+};
+
+export type ConnectionConfiguration = {
+
+
+DatabaseHost: string;
 
 DatabasePort: number;
 
@@ -23274,9 +38206,15 @@ DatabaseName: string;
 
 TableName: string;
 
-SecretArn: string; };
+SecretArn: string;
 
-export type ServiceNowServiceCatalogConfiguration = { CrawlAttachments?: boolean;
+
+};
+
+export type ServiceNowServiceCatalogConfiguration = {
+
+
+CrawlAttachments?: boolean;
 
 IncludeAttachmentFilePatterns?: string[];
 
@@ -23286,67 +38224,145 @@ DocumentDataFieldName: string;
 
 DocumentTitleFieldName?: string;
 
-FieldMappings?: AWS.Kendra.DataSource.DataSourceToIndexFieldMapping[]; };
+FieldMappings?: AWS.Kendra.DataSource.DataSourceToIndexFieldMapping[];
 
-export type SalesforceStandardObjectAttachmentConfiguration = { DocumentTitleFieldName?: string;
 
-FieldMappings?: AWS.Kendra.DataSource.DataSourceToIndexFieldMapping[]; };
+};
 
-export type SalesforceCustomKnowledgeArticleTypeConfiguration = { Name: string;
+export type SalesforceStandardObjectAttachmentConfiguration = {
+
+
+DocumentTitleFieldName?: string;
+
+FieldMappings?: AWS.Kendra.DataSource.DataSourceToIndexFieldMapping[];
+
+
+};
+
+export type SalesforceCustomKnowledgeArticleTypeConfiguration = {
+
+
+Name: string;
 
 DocumentDataFieldName: string;
 
 DocumentTitleFieldName?: string;
 
-FieldMappings?: AWS.Kendra.DataSource.DataSourceToIndexFieldMapping[]; };
+FieldMappings?: AWS.Kendra.DataSource.DataSourceToIndexFieldMapping[];
 
-export type ConfluenceBlogToIndexFieldMapping = { DataSourceFieldName: string;
+
+};
+
+export type ConfluenceBlogToIndexFieldMapping = {
+
+
+DataSourceFieldName: string;
 
 DateFieldFormat?: string;
 
-IndexFieldName: string; };
+IndexFieldName: string;
 
-export type OneDriveUsers = { OneDriveUserList?: string[];
 
-OneDriveUserS3Path?: AWS.Kendra.DataSource.S3Path; };
+};
 
-export type AclConfiguration = { AllowedGroupsColumnName: string; };
+export type OneDriveUsers = {
 
-export type SalesforceStandardKnowledgeArticleTypeConfiguration = { DocumentDataFieldName: string;
+
+OneDriveUserList?: string[];
+
+OneDriveUserS3Path?: AWS.Kendra.DataSource.S3Path;
+
+
+};
+
+export type AclConfiguration = {
+
+
+AllowedGroupsColumnName: string;
+
+
+};
+
+export type SalesforceStandardKnowledgeArticleTypeConfiguration = {
+
+
+DocumentDataFieldName: string;
 
 DocumentTitleFieldName?: string;
 
-FieldMappings?: AWS.Kendra.DataSource.DataSourceToIndexFieldMapping[]; };
+FieldMappings?: AWS.Kendra.DataSource.DataSourceToIndexFieldMapping[];
 
-export type ConfluenceAttachmentConfiguration = { CrawlAttachments?: boolean;
 
-AttachmentFieldMappings?: AWS.Kendra.DataSource.ConfluenceAttachmentToIndexFieldMapping[]; };
+};
 
-export type DataSourceVpcConfiguration = { SubnetIds: string[];
+export type ConfluenceAttachmentConfiguration = {
 
-SecurityGroupIds: string[]; };
 
-export type SalesforceKnowledgeArticleConfiguration = { IncludedStates: string[];
+CrawlAttachments?: boolean;
+
+AttachmentFieldMappings?: AWS.Kendra.DataSource.ConfluenceAttachmentToIndexFieldMapping[];
+
+
+};
+
+export type DataSourceVpcConfiguration = {
+
+
+SubnetIds: string[];
+
+SecurityGroupIds: string[];
+
+
+};
+
+export type SalesforceKnowledgeArticleConfiguration = {
+
+
+IncludedStates: string[];
 
 StandardKnowledgeArticleTypeConfiguration?: AWS.Kendra.DataSource.SalesforceStandardKnowledgeArticleTypeConfiguration;
 
-CustomKnowledgeArticleTypeConfigurations?: AWS.Kendra.DataSource.SalesforceCustomKnowledgeArticleTypeConfiguration[]; };
+CustomKnowledgeArticleTypeConfigurations?: AWS.Kendra.DataSource.SalesforceCustomKnowledgeArticleTypeConfiguration[];
 
-export type AccessControlListConfiguration = { KeyPath?: string; };
 
-export type DataSourceToIndexFieldMapping = { DataSourceFieldName: string;
+};
+
+export type AccessControlListConfiguration = {
+
+
+KeyPath?: string;
+
+
+};
+
+export type DataSourceToIndexFieldMapping = {
+
+
+DataSourceFieldName: string;
 
 DateFieldFormat?: string;
 
-IndexFieldName: string; };
+IndexFieldName: string;
 
-export type ConfluenceSpaceToIndexFieldMapping = { DataSourceFieldName: string;
+
+};
+
+export type ConfluenceSpaceToIndexFieldMapping = {
+
+
+DataSourceFieldName: string;
 
 DateFieldFormat?: string;
 
-IndexFieldName: string; };
+IndexFieldName: string;
 
-export type OneDriveConfiguration = { TenantDomain: string;
+
+};
+
+export type OneDriveConfiguration = {
+
+
+TenantDomain: string;
 
 SecretArn: string;
 
@@ -23358,11 +38374,15 @@ ExclusionPatterns?: string[];
 
 FieldMappings?: AWS.Kendra.DataSource.DataSourceToIndexFieldMapping[];
 
-DisableLocalGroups?: boolean; };
+DisableLocalGroups?: boolean;
 
-export type DataSourceConfiguration =  AWS.Kendra.DataSource.DataSourceConfiguration;
 
-export type SharePointConfiguration = { SharePointVersion: string;
+};
+
+export type SharePointConfiguration = {
+
+
+SharePointVersion: string;
 
 Urls: string[];
 
@@ -23382,59 +38402,113 @@ FieldMappings?: AWS.Kendra.DataSource.DataSourceToIndexFieldMapping[];
 
 DocumentTitleFieldName?: string;
 
-DisableLocalGroups?: boolean; };
+DisableLocalGroups?: boolean;
 
-export type DocumentsMetadataConfiguration = { S3Prefix?: string; };
 
-export type Name =  string;
+};
 
-export type IndexId =  string;
+export type DocumentsMetadataConfiguration = {
 
-export type Type =  string;
 
-export type Description =  string;
+S3Prefix?: string;
 
-export type Schedule =  string;
 
-export type RoleArn =  string;
+};
 
-export type Tags =  Tag[];
 
 }
 
+export type Index = {
+
+
+ServerSideEncryptionConfiguration?: AWS.Kendra.Index.ServerSideEncryptionConfiguration;
+
+Description?: string;
+
+Tags?: Tag[];
+
+Name: string;
+
+RoleArn: string;
+
+Edition: string;
+
+DocumentMetadataConfigurations?: AWS.Kendra.Index.DocumentMetadataConfiguration[];
+
+CapacityUnits?: AWS.Kendra.Index.CapacityUnitsConfiguration;
+
+UserContextPolicy?: string;
+
+UserTokenConfigurations?: AWS.Kendra.Index.UserTokenConfiguration[];
+
+
+};
+
 export namespace Index {
 
-export type ServerSideEncryptionConfiguration =  AWS.Kendra.Index.ServerSideEncryptionConfiguration;
 
-export type JsonTokenTypeConfiguration = { UserNameAttributeField: string;
+export type JsonTokenTypeConfiguration = {
 
-GroupAttributeField: string; };
 
-export type ValueImportanceItem = { Key?: string;
+UserNameAttributeField: string;
 
-Value?: number; };
+GroupAttributeField: string;
 
-export type DocumentMetadataConfiguration = { Name: string;
+
+};
+
+export type ValueImportanceItem = {
+
+
+Key?: string;
+
+Value?: number;
+
+
+};
+
+export type DocumentMetadataConfiguration = {
+
+
+Name: string;
 
 Type: string;
 
 Relevance?: AWS.Kendra.Index.Relevance;
 
-Search?: AWS.Kendra.Index.Search; };
+Search?: AWS.Kendra.Index.Search;
 
-export type UserTokenConfiguration = { JwtTokenTypeConfiguration?: AWS.Kendra.Index.JwtTokenTypeConfiguration;
 
-JsonTokenTypeConfiguration?: AWS.Kendra.Index.JsonTokenTypeConfiguration; };
+};
 
-export type Search = { Facetable?: boolean;
+export type UserTokenConfiguration = {
+
+
+JwtTokenTypeConfiguration?: AWS.Kendra.Index.JwtTokenTypeConfiguration;
+
+JsonTokenTypeConfiguration?: AWS.Kendra.Index.JsonTokenTypeConfiguration;
+
+
+};
+
+export type Search = {
+
+
+Facetable?: boolean;
 
 Searchable?: boolean;
 
 Displayable?: boolean;
 
-Sortable?: boolean; };
+Sortable?: boolean;
 
-export type Relevance = { Freshness?: boolean;
+
+};
+
+export type Relevance = {
+
+
+Freshness?: boolean;
 
 Importance?: number;
 
@@ -23442,9 +38516,15 @@ Duration?: string;
 
 RankOrder?: string;
 
-ValueImportanceItems?: AWS.Kendra.Index.ValueImportanceItem[]; };
+ValueImportanceItems?: AWS.Kendra.Index.ValueImportanceItem[];
 
-export type JwtTokenTypeConfiguration = { KeyLocation: string;
+
+};
+
+export type JwtTokenTypeConfiguration = {
+
+
+KeyLocation: string;
 
 URL?: string;
 
@@ -23456,323 +38536,445 @@ GroupAttributeField?: string;
 
 Issuer?: string;
 
-ClaimRegex?: string; };
+ClaimRegex?: string;
 
-export type CapacityUnitsConfiguration = { StorageCapacityUnits: number;
 
-QueryCapacityUnits: number; };
+};
 
-export type Description =  string;
+export type CapacityUnitsConfiguration = {
 
-export type Tags =  Tag[];
 
-export type Name =  string;
+StorageCapacityUnits: number;
 
-export type RoleArn =  string;
+QueryCapacityUnits: number;
 
-export type Edition =  string;
 
-export type DocumentMetadataConfigurations =  AWS.Kendra.Index.DocumentMetadataConfiguration[];
+};
 
-export type CapacityUnits =  AWS.Kendra.Index.CapacityUnitsConfiguration;
-
-export type UserContextPolicy =  string;
-
-export type UserTokenConfigurations =  AWS.Kendra.Index.UserTokenConfiguration[];
 
 }
 
-export namespace Faq {
+export type Faq = {
 
-export type S3Path =  AWS.Kendra.Faq.S3Path;
 
-export type IndexId =  string;
+S3Path: AWS.Kendra.Faq.S3Path;
 
-export type Name =  string;
+IndexId: string;
 
-export type Description =  string;
+Name: string;
 
-export type FileFormat =  string;
+Description?: string;
 
-export type RoleArn =  string;
+FileFormat?: string;
 
-export type Tags =  Tag[];
+RoleArn: string;
 
-}
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace Amplify {
 
+
+export type App = {
+
+
+AutoBranchCreationConfig?: AWS.Amplify.App.AutoBranchCreationConfig;
+
+BasicAuthConfig?: AWS.Amplify.App.BasicAuthConfig;
+
+AccessToken?: string;
+
+BuildSpec?: string;
+
+CustomHeaders?: string;
+
+CustomRules?: AWS.Amplify.App.CustomRule[];
+
+Description?: string;
+
+EnableBranchAutoDeletion?: boolean;
+
+EnvironmentVariables?: AWS.Amplify.App.EnvironmentVariable[];
+
+IAMServiceRole?: string;
+
+Name: string;
+
+OauthToken?: string;
+
+Repository?: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace App {
 
-export type EnvironmentVariable = { Name: string;
 
-Value: string; };
+export type EnvironmentVariable = {
 
-export type AutoBranchCreationConfig =  AWS.Amplify.App.AutoBranchCreationConfig;
 
-export type BasicAuthConfig =  AWS.Amplify.App.BasicAuthConfig;
+Name: string;
 
-export type CustomRule = { Condition?: string;
+Value: string;
+
+
+};
+
+export type CustomRule = {
+
+
+Condition?: string;
 
 Status?: string;
 
 Target: string;
 
-Source: string; };
+Source: string;
 
-export type AccessToken =  string;
 
-export type BuildSpec =  string;
+};
 
-export type CustomHeaders =  string;
-
-export type CustomRules =  AWS.Amplify.App.CustomRule[];
-
-export type Description =  string;
-
-export type EnableBranchAutoDeletion =  boolean;
-
-export type EnvironmentVariables =  AWS.Amplify.App.EnvironmentVariable[];
-
-export type IAMServiceRole =  string;
-
-export type Name =  string;
-
-export type OauthToken =  string;
-
-export type Repository =  string;
-
-export type Tags =  Tag[];
 
 }
+
+export type Domain = {
+
+
+SubDomainSettings: AWS.Amplify.Domain.SubDomainSetting[];
+
+AppId: string;
+
+AutoSubDomainIAMRole?: string;
+
+DomainName: string;
+
+EnableAutoSubDomain?: boolean;
+
+AutoSubDomainCreationPatterns?: string[];
+
+
+};
 
 export namespace Domain {
 
-export type SubDomainSetting = { Prefix: string;
 
-BranchName: string; };
+export type SubDomainSetting = {
 
-export type SubDomainSettings =  AWS.Amplify.Domain.SubDomainSetting[];
 
-export type AppId =  string;
+Prefix: string;
 
-export type AutoSubDomainIAMRole =  string;
+BranchName: string;
 
-export type DomainName =  string;
 
-export type EnableAutoSubDomain =  boolean;
+};
 
-export type AutoSubDomainCreationPatterns =  string[];
 
 }
+
+export type Branch = {
+
+
+BasicAuthConfig?: AWS.Amplify.Branch.BasicAuthConfig;
+
+AppId: string;
+
+BranchName: string;
+
+BuildSpec?: string;
+
+Description?: string;
+
+EnableAutoBuild?: boolean;
+
+EnablePerformanceMode?: boolean;
+
+EnablePullRequestPreview?: boolean;
+
+EnvironmentVariables?: AWS.Amplify.Branch.EnvironmentVariable[];
+
+PullRequestEnvironmentName?: string;
+
+Stage?: string;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace Branch {
 
-export type BasicAuthConfig =  AWS.Amplify.Branch.BasicAuthConfig;
 
-export type EnvironmentVariable = { Name: string;
+export type EnvironmentVariable = {
 
-Value: string; };
 
-export type AppId =  string;
+Name: string;
 
-export type BranchName =  string;
+Value: string;
 
-export type BuildSpec =  string;
 
-export type Description =  string;
+};
 
-export type EnableAutoBuild =  boolean;
-
-export type EnablePerformanceMode =  boolean;
-
-export type EnablePullRequestPreview =  boolean;
-
-export type EnvironmentVariables =  AWS.Amplify.Branch.EnvironmentVariable[];
-
-export type PullRequestEnvironmentName =  string;
-
-export type Stage =  string;
-
-export type Tags =  Tag[];
 
 }
+
 
 }
 
 export namespace RoboMaker {
 
+
+export type SimulationApplication = {
+
+
+SimulationSoftwareSuite: AWS.RoboMaker.SimulationApplication.SimulationSoftwareSuite;
+
+RobotSoftwareSuite: AWS.RoboMaker.SimulationApplication.RobotSoftwareSuite;
+
+RenderingEngine: AWS.RoboMaker.SimulationApplication.RenderingEngine;
+
+CurrentRevisionId?: string;
+
+Sources: AWS.RoboMaker.SimulationApplication.SourceConfig[];
+
+Tags?: JSONString;
+
+Name?: string;
+
+
+};
+
 export namespace SimulationApplication {
 
-export type SimulationSoftwareSuite =  AWS.RoboMaker.SimulationApplication.SimulationSoftwareSuite;
 
-export type RobotSoftwareSuite =  AWS.RoboMaker.SimulationApplication.RobotSoftwareSuite;
+export type SourceConfig = {
 
-export type SourceConfig = { S3Bucket: string;
+
+S3Bucket: string;
 
 Architecture: string;
 
-S3Key: string; };
+S3Key: string;
 
-export type RenderingEngine =  AWS.RoboMaker.SimulationApplication.RenderingEngine;
 
-export type CurrentRevisionId =  string;
+};
 
-export type Sources =  AWS.RoboMaker.SimulationApplication.SourceConfig[];
-
-export type Tags =  JSONString;
-
-export type Name =  string;
 
 }
+
+export type RobotApplication = {
+
+
+RobotSoftwareSuite: AWS.RoboMaker.RobotApplication.RobotSoftwareSuite;
+
+CurrentRevisionId?: string;
+
+Sources: AWS.RoboMaker.RobotApplication.SourceConfig[];
+
+Tags?: JSONString;
+
+Name?: string;
+
+
+};
 
 export namespace RobotApplication {
 
-export type RobotSoftwareSuite =  AWS.RoboMaker.RobotApplication.RobotSoftwareSuite;
 
-export type SourceConfig = { S3Bucket: string;
+export type SourceConfig = {
+
+
+S3Bucket: string;
 
 Architecture: string;
 
-S3Key: string; };
+S3Key: string;
 
-export type CurrentRevisionId =  string;
 
-export type Sources =  AWS.RoboMaker.RobotApplication.SourceConfig[];
+};
 
-export type Tags =  JSONString;
-
-export type Name =  string;
 
 }
 
-export namespace SimulationApplicationVersion {
+export type SimulationApplicationVersion = {
 
-export type CurrentRevisionId =  string;
 
-export type Application =  string;
+CurrentRevisionId?: string;
 
-}
+Application: string;
 
-export namespace Fleet {
 
-export type Tags =  JSONString;
+};
 
-export type Name =  string;
+export type Fleet = {
 
-}
 
-export namespace RobotApplicationVersion {
+Tags?: JSONString;
 
-export type CurrentRevisionId =  string;
+Name?: string;
 
-export type Application =  string;
 
-}
+};
 
-export namespace Robot {
+export type RobotApplicationVersion = {
 
-export type Fleet =  string;
 
-export type Architecture =  string;
+CurrentRevisionId?: string;
 
-export type GreengrassGroupId =  string;
+Application: string;
 
-export type Tags =  JSONString;
 
-export type Name =  string;
+};
 
-}
+export type Robot = {
+
+
+Fleet?: string;
+
+Architecture: string;
+
+GreengrassGroupId: string;
+
+Tags?: JSONString;
+
+Name?: string;
+
+
+};
+
 
 }
 
 export namespace Macie {
 
+
+export type FindingsFilter = {
+
+
+FindingCriteria: AWS.Macie.FindingsFilter.FindingCriteria;
+
+Criterion?: any;
+
+Name: string;
+
+Description?: string;
+
+Action?: string;
+
+Position?: number;
+
+
+};
+
 export namespace FindingsFilter {
 
-export type FindingsFilterListItem = { Id?: string;
 
-Name?: string; };
+export type FindingsFilterListItem = {
 
-export type FindingCriteria =  AWS.Macie.FindingsFilter.FindingCriteria;
 
-export type Criterion =  any;
+Id?: string;
 
-export type Name =  string;
+Name?: string;
 
-export type Description =  string;
 
-export type Action =  string;
+};
 
-export type Position =  number;
 
 }
 
-export namespace Session {
+export type Session = {
 
-export type Status =  string;
 
-export type FindingPublishingFrequency =  string;
+Status?: string;
 
-}
+FindingPublishingFrequency?: string;
 
-export namespace CustomDataIdentifier {
 
-export type Name =  string;
+};
 
-export type Description =  string;
+export type CustomDataIdentifier = {
 
-export type Regex =  string;
 
-export type MaximumMatchDistance =  number;
+Name: string;
 
-export type Keywords =  string[];
+Description?: string;
 
-export type IgnoreWords =  string[];
+Regex: string;
 
-}
+MaximumMatchDistance?: number;
+
+Keywords?: string[];
+
+IgnoreWords?: string[];
+
+
+};
+
 
 }
 
 export namespace Synthetics {
 
-export namespace Canary {
 
-export type VPCConfig =  AWS.Synthetics.Canary.VPCConfig;
+export type Canary = {
 
-export type Schedule =  AWS.Synthetics.Canary.Schedule;
 
-export type Code =  AWS.Synthetics.Canary.Code;
+VPCConfig?: AWS.Synthetics.Canary.VPCConfig;
 
-export type RunConfig =  AWS.Synthetics.Canary.RunConfig;
+Schedule: AWS.Synthetics.Canary.Schedule;
 
-export type Name =  string;
+Code: AWS.Synthetics.Canary.Code;
 
-export type ArtifactS3Location =  string;
+RunConfig?: AWS.Synthetics.Canary.RunConfig;
 
-export type ExecutionRoleArn =  string;
+Name: string;
 
-export type RuntimeVersion =  string;
+ArtifactS3Location: string;
 
-export type SuccessRetentionPeriod =  number;
+ExecutionRoleArn: string;
 
-export type FailureRetentionPeriod =  number;
+RuntimeVersion: string;
 
-export type Tags =  Tag[];
+SuccessRetentionPeriod?: number;
 
-export type StartCanaryAfterCreation =  boolean;
+FailureRetentionPeriod?: number;
 
-}
+Tags?: Tag[];
+
+StartCanaryAfterCreation: boolean;
+
+
+};
+
 
 }
 
 export namespace AutoScalingPlans {
 
+
+export type ScalingPlan = {
+
+
+ApplicationSource: AWS.AutoScalingPlans.ScalingPlan.ApplicationSource;
+
+ScalingInstructions: AWS.AutoScalingPlans.ScalingPlan.ScalingInstruction[];
+
+
+};
+
 export namespace ScalingPlan {
 
-export type ScalingInstruction = { DisableDynamicScaling?: boolean;
+
+export type ScalingInstruction = {
+
+
+DisableDynamicScaling?: boolean;
 
 ServiceNamespace: string;
 
@@ -23798,17 +39000,35 @@ ScheduledActionBufferTime?: number;
 
 MaxCapacity: number;
 
-PredictiveScalingMode?: string; };
+PredictiveScalingMode?: string;
 
-export type MetricDimension = { Value: string;
 
-Name: string; };
+};
 
-export type PredefinedScalingMetricSpecification = { ResourceLabel?: string;
+export type MetricDimension = {
 
-PredefinedScalingMetricType: string; };
 
-export type CustomizedScalingMetricSpecification = { MetricName: string;
+Value: string;
+
+Name: string;
+
+
+};
+
+export type PredefinedScalingMetricSpecification = {
+
+
+ResourceLabel?: string;
+
+PredefinedScalingMetricType: string;
+
+
+};
+
+export type CustomizedScalingMetricSpecification = {
+
+
+MetricName: string;
 
 Statistic: string;
 
@@ -23816,13 +39036,25 @@ Dimensions?: AWS.AutoScalingPlans.ScalingPlan.MetricDimension[];
 
 Unit?: string;
 
-Namespace: string; };
+Namespace: string;
 
-export type TagFilter = { Values?: string[];
 
-Key: string; };
+};
 
-export type CustomizedLoadMetricSpecification = { MetricName: string;
+export type TagFilter = {
+
+
+Values?: string[];
+
+Key: string;
+
+
+};
+
+export type CustomizedLoadMetricSpecification = {
+
+
+MetricName: string;
 
 Statistic: string;
 
@@ -23830,11 +39062,15 @@ Dimensions?: AWS.AutoScalingPlans.ScalingPlan.MetricDimension[];
 
 Unit?: string;
 
-Namespace: string; };
+Namespace: string;
 
-export type ApplicationSource =  AWS.AutoScalingPlans.ScalingPlan.ApplicationSource;
 
-export type TargetTrackingConfiguration = { ScaleOutCooldown?: number;
+};
+
+export type TargetTrackingConfiguration = {
+
+
+ScaleOutCooldown?: number;
 
 TargetValue: number;
 
@@ -23846,143 +39082,255 @@ ScaleInCooldown?: number;
 
 EstimatedInstanceWarmup?: number;
 
-CustomizedScalingMetricSpecification?: AWS.AutoScalingPlans.ScalingPlan.CustomizedScalingMetricSpecification; };
+CustomizedScalingMetricSpecification?: AWS.AutoScalingPlans.ScalingPlan.CustomizedScalingMetricSpecification;
 
-export type PredefinedLoadMetricSpecification = { PredefinedLoadMetricType: string;
 
-ResourceLabel?: string; };
+};
 
-export type ScalingInstructions =  AWS.AutoScalingPlans.ScalingPlan.ScalingInstruction[];
+export type PredefinedLoadMetricSpecification = {
+
+
+PredefinedLoadMetricType: string;
+
+ResourceLabel?: string;
+
+
+};
+
 
 }
+
 
 }
 
 export namespace CertificateManager {
 
-export namespace Account {
 
-export type ExpiryEventsConfiguration =  AWS.CertificateManager.Account.ExpiryEventsConfiguration;
+export type Account = {
 
-}
+
+ExpiryEventsConfiguration: AWS.CertificateManager.Account.ExpiryEventsConfiguration;
+
+
+};
+
+export type Certificate = {
+
+
+CertificateAuthorityArn?: string;
+
+CertificateTransparencyLoggingPreference?: string;
+
+DomainName: string;
+
+DomainValidationOptions?: AWS.CertificateManager.Certificate.DomainValidationOption[];
+
+SubjectAlternativeNames?: string[];
+
+Tags?: Tag[];
+
+ValidationMethod?: string;
+
+
+};
 
 export namespace Certificate {
 
-export type DomainValidationOption = { DomainName: string;
+
+export type DomainValidationOption = {
+
+
+DomainName: string;
 
 HostedZoneId?: string;
 
-ValidationDomain?: string; };
+ValidationDomain?: string;
 
-export type CertificateAuthorityArn =  string;
 
-export type CertificateTransparencyLoggingPreference =  string;
+};
 
-export type DomainName =  string;
-
-export type DomainValidationOptions =  AWS.CertificateManager.Certificate.DomainValidationOption[];
-
-export type SubjectAlternativeNames =  string[];
-
-export type Tags =  Tag[];
-
-export type ValidationMethod =  string;
 
 }
+
 
 }
 
 export namespace ServiceDiscovery {
 
+
+export type Service = {
+
+
+DnsConfig?: AWS.ServiceDiscovery.Service.DnsConfig;
+
+HealthCheckConfig?: AWS.ServiceDiscovery.Service.HealthCheckConfig;
+
+HealthCheckCustomConfig?: AWS.ServiceDiscovery.Service.HealthCheckCustomConfig;
+
+Type?: string;
+
+Description?: string;
+
+NamespaceId?: string;
+
+Tags?: Tag[];
+
+Name?: string;
+
+
+};
+
 export namespace Service {
 
-export type DnsConfig =  AWS.ServiceDiscovery.Service.DnsConfig;
 
-export type HealthCheckConfig =  AWS.ServiceDiscovery.Service.HealthCheckConfig;
+export type DnsRecord = {
 
-export type HealthCheckCustomConfig =  AWS.ServiceDiscovery.Service.HealthCheckCustomConfig;
 
-export type DnsRecord = { Type: string;
+Type: string;
 
-TTL: number; };
+TTL: number;
 
-export type Type =  string;
 
-export type Description =  string;
+};
 
-export type NamespaceId =  string;
-
-export type Tags =  Tag[];
-
-export type Name =  string;
 
 }
+
+export type PublicDnsNamespace = {
+
+
+Properties?: AWS.ServiceDiscovery.PublicDnsNamespace.Properties;
+
+Description?: string;
+
+Tags?: Tag[];
+
+Name: string;
+
+
+};
 
 export namespace PublicDnsNamespace {
 
-export type Properties =  AWS.ServiceDiscovery.PublicDnsNamespace.Properties;
 
-export type PublicDnsPropertiesMutable = { SOA?: AWS.ServiceDiscovery.PublicDnsNamespace.SOA; };
+export type PublicDnsPropertiesMutable = {
 
-export type SOA = { TTL?: number; };
 
-export type Description =  string;
+SOA?: AWS.ServiceDiscovery.PublicDnsNamespace.SOA;
 
-export type Tags =  Tag[];
 
-export type Name =  string;
+};
+
+export type SOA = {
+
+
+TTL?: number;
+
+
+};
+
 
 }
+
+export type PrivateDnsNamespace = {
+
+
+Properties?: AWS.ServiceDiscovery.PrivateDnsNamespace.Properties;
+
+Description?: string;
+
+Vpc: string;
+
+Tags?: Tag[];
+
+Name: string;
+
+
+};
 
 export namespace PrivateDnsNamespace {
 
-export type Properties =  AWS.ServiceDiscovery.PrivateDnsNamespace.Properties;
 
-export type SOA = { TTL?: number; };
+export type SOA = {
 
-export type PrivateDnsPropertiesMutable = { SOA?: AWS.ServiceDiscovery.PrivateDnsNamespace.SOA; };
 
-export type Description =  string;
+TTL?: number;
 
-export type Vpc =  string;
 
-export type Tags =  Tag[];
+};
 
-export type Name =  string;
+export type PrivateDnsPropertiesMutable = {
 
-}
 
-export namespace Instance {
+SOA?: AWS.ServiceDiscovery.PrivateDnsNamespace.SOA;
 
-export type InstanceAttributes =  JSONString;
 
-export type InstanceId =  string;
+};
 
-export type ServiceId =  string;
 
 }
 
-export namespace HttpNamespace {
+export type Instance = {
 
-export type Description =  string;
 
-export type Tags =  Tag[];
+InstanceAttributes: JSONString;
 
-export type Name =  string;
+InstanceId?: string;
 
-}
+ServiceId: string;
+
+
+};
+
+export type HttpNamespace = {
+
+
+Description?: string;
+
+Tags?: Tag[];
+
+Name: string;
+
+
+};
+
 
 }
 
 export namespace AccessAnalyzer {
 
+
+export type Analyzer = {
+
+
+AnalyzerName?: string;
+
+ArchiveRules?: AWS.AccessAnalyzer.Analyzer.ArchiveRule[];
+
+Tags?: Tag[];
+
+Type: string;
+
+
+};
+
 export namespace Analyzer {
 
-export type ArchiveRule = { Filter: AWS.AccessAnalyzer.Analyzer.Filter[];
 
-RuleName: string; };
+export type ArchiveRule = {
 
-export type Filter = { Contains?: string[];
+
+Filter: AWS.AccessAnalyzer.Analyzer.Filter[];
+
+RuleName: string;
+
+
+};
+
+export type Filter = {
+
+
+Contains?: string[];
 
 Eq?: string[];
 
@@ -23990,217 +39338,319 @@ Exists?: boolean;
 
 Property: string;
 
-Neq?: string[]; };
+Neq?: string[];
 
-export type AnalyzerName =  string;
 
-export type ArchiveRules =  AWS.AccessAnalyzer.Analyzer.ArchiveRule[];
+};
 
-export type Tags =  Tag[];
-
-export type Type =  string;
 
 }
+
 
 }
 
 export namespace S3ObjectLambda {
 
+
+export type AccessPoint = {
+
+
+ObjectLambdaConfiguration?: AWS.S3ObjectLambda.AccessPoint.ObjectLambdaConfiguration;
+
+Name: string;
+
+
+};
+
 export namespace AccessPoint {
 
-export type ObjectLambdaConfiguration =  AWS.S3ObjectLambda.AccessPoint.ObjectLambdaConfiguration;
 
-export type TransformationConfiguration = { Actions?: string[];
+export type TransformationConfiguration = {
 
-ContentTransformation?: JSONString; };
 
-export type Name =  string;
+Actions?: string[];
 
-}
+ContentTransformation?: JSONString;
 
-export namespace AccessPointPolicy {
 
-export type ObjectLambdaAccessPoint =  string;
+};
 
-export type PolicyDocument =  JSONString;
 
 }
+
+export type AccessPointPolicy = {
+
+
+ObjectLambdaAccessPoint: string;
+
+PolicyDocument: JSONString;
+
+
+};
+
 
 }
 
 export namespace IoTThingsGraph {
 
+
+export type FlowTemplate = {
+
+
+CompatibleNamespaceVersion?: number;
+
+Definition: AWS.IoTThingsGraph.FlowTemplate.DefinitionDocument;
+
+
+};
+
 export namespace FlowTemplate {
 
-export type DefinitionDocument = { Language: string;
 
-Text: string; };
+export type DefinitionDocument = {
 
-export type CompatibleNamespaceVersion =  number;
 
-export type Definition =  AWS.IoTThingsGraph.FlowTemplate.DefinitionDocument;
+Language: string;
+
+Text: string;
+
+
+};
+
 
 }
+
 
 }
 
 export namespace QLDB {
 
-export namespace Stream {
 
-export type KinesisConfiguration =  AWS.QLDB.Stream.KinesisConfiguration;
+export type Stream = {
 
-export type LedgerName =  string;
 
-export type StreamName =  string;
+KinesisConfiguration: AWS.QLDB.Stream.KinesisConfiguration;
 
-export type RoleArn =  string;
+LedgerName: string;
 
-export type InclusiveStartTime =  string;
+StreamName: string;
 
-export type ExclusiveEndTime =  string;
+RoleArn: string;
 
-export type Tags =  Tag[];
+InclusiveStartTime: string;
 
-}
+ExclusiveEndTime?: string;
 
-export namespace Ledger {
+Tags?: Tag[];
 
-export type PermissionsMode =  string;
 
-export type DeletionProtection =  boolean;
+};
 
-export type KmsKey =  string;
+export type Ledger = {
 
-export type Tags =  Tag[];
 
-export type Name =  string;
+PermissionsMode: string;
 
-}
+DeletionProtection?: boolean;
+
+KmsKey?: string;
+
+Tags?: Tag[];
+
+Name?: string;
+
+
+};
+
 
 }
 
 export namespace MediaConvert {
 
-export namespace JobTemplate {
 
-export type HopDestination = { WaitMinutes?: number;
+export type JobTemplate = {
+
+
+AccelerationSettings?: AWS.MediaConvert.JobTemplate.AccelerationSettings;
+
+Category?: string;
+
+Description?: string;
 
 Priority?: number;
 
-Queue?: string; };
+StatusUpdateInterval?: string;
 
-export type AccelerationSettings =  AWS.MediaConvert.JobTemplate.AccelerationSettings;
+SettingsJson: JSONString;
 
-export type Category =  string;
+Queue?: string;
 
-export type Description =  string;
+HopDestinations?: AWS.MediaConvert.JobTemplate.HopDestination[];
 
-export type Priority =  number;
+Tags?: JSONString;
 
-export type StatusUpdateInterval =  string;
+Name?: string;
 
-export type SettingsJson =  JSONString;
 
-export type Queue =  string;
+};
 
-export type HopDestinations =  AWS.MediaConvert.JobTemplate.HopDestination[];
+export namespace JobTemplate {
 
-export type Tags =  JSONString;
 
-export type Name =  string;
+export type HopDestination = {
 
-}
 
-export namespace Queue {
+WaitMinutes?: number;
 
-export type Status =  string;
+Priority?: number;
 
-export type Description =  string;
+Queue?: string;
 
-export type PricingPlan =  string;
 
-export type Tags =  JSONString;
+};
 
-export type Name =  string;
 
 }
 
-export namespace Preset {
+export type Queue = {
 
-export type Category =  string;
 
-export type Description =  string;
+Status?: string;
 
-export type SettingsJson =  JSONString;
+Description?: string;
 
-export type Tags =  JSONString;
+PricingPlan?: string;
 
-export type Name =  string;
+Tags?: JSONString;
 
-}
+Name?: string;
+
+
+};
+
+export type Preset = {
+
+
+Category?: string;
+
+Description?: string;
+
+SettingsJson: JSONString;
+
+Tags?: JSONString;
+
+Name?: string;
+
+
+};
+
 
 }
 
 export namespace CE {
 
+
+export type AnomalySubscription = {
+
+
+SubscriptionName: string;
+
+MonitorArnList: string[];
+
+Subscribers: AWS.CE.AnomalySubscription.Subscriber[];
+
+Threshold: number;
+
+Frequency: string;
+
+
+};
+
 export namespace AnomalySubscription {
 
-export type Subscriber = { Address: string;
+
+export type Subscriber = {
+
+
+Address: string;
 
 Status?: string;
 
-Type: string; };
+Type: string;
 
-export type SubscriptionName =  string;
 
-export type MonitorArnList =  string[];
+};
 
-export type Subscribers =  AWS.CE.AnomalySubscription.Subscriber[];
-
-export type Threshold =  number;
-
-export type Frequency =  string;
 
 }
 
-export namespace CostCategory {
+export type CostCategory = {
 
-export type Name =  string;
 
-export type RuleVersion =  string;
+Name: string;
 
-export type Rules =  string;
+RuleVersion: string;
 
-export type DefaultValue =  string;
+Rules: string;
 
-}
+DefaultValue?: string;
 
-export namespace AnomalyMonitor {
 
-export type MonitorType =  string;
+};
 
-export type MonitorName =  string;
+export type AnomalyMonitor = {
 
-export type MonitorDimension =  string;
 
-export type MonitorSpecification =  string;
+MonitorType: string;
 
-}
+MonitorName: string;
+
+MonitorDimension?: string;
+
+MonitorSpecification?: string;
+
+
+};
+
 
 }
 
 export namespace AppIntegrations {
 
+
+export type EventIntegration = {
+
+
+EventFilter: AWS.AppIntegrations.EventIntegration.EventFilter;
+
+Description?: string;
+
+Name: string;
+
+EventBridgeBus: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace EventIntegration {
 
-export type Metadata = { Key: string;
 
-Value: string; };
+export type Metadata = {
 
-export type EventFilter =  AWS.AppIntegrations.EventIntegration.EventFilter;
 
-export type EventIntegrationAssociation = { ClientAssociationMetadata?: AWS.AppIntegrations.EventIntegration.Metadata[];
+Key: string;
+
+Value: string;
+
+
+};
+
+export type EventIntegrationAssociation = {
+
+
+ClientAssociationMetadata?: AWS.AppIntegrations.EventIntegration.Metadata[];
 
 ClientId?: string;
 
@@ -24208,109 +39658,167 @@ EventBridgeRuleName?: string;
 
 EventIntegrationAssociationArn?: string;
 
-EventIntegrationAssociationId?: string; };
+EventIntegrationAssociationId?: string;
 
-export type Description =  string;
 
-export type Name =  string;
+};
 
-export type EventBridgeBus =  string;
-
-export type Tags =  Tag[];
 
 }
+
 
 }
 
 export namespace FMS {
 
+
+export type Policy = {
+
+
+ExcludeMap?: AWS.FMS.Policy.IEMap;
+
+ExcludeResourceTags: boolean;
+
+IncludeMap?: AWS.FMS.Policy.IEMap;
+
+PolicyName: string;
+
+RemediationEnabled: boolean;
+
+ResourceTags?: AWS.FMS.Policy.ResourceTag[];
+
+ResourceType: string;
+
+ResourceTypeList?: string[];
+
+SecurityServicePolicyData: JSONString;
+
+DeleteAllPolicyResources?: boolean;
+
+Tags?: AWS.FMS.Policy.PolicyTag[];
+
+
+};
+
 export namespace Policy {
 
-export type PolicyTag = { Key: string;
 
-Value: string; };
+export type PolicyTag = {
 
-export type ResourceTag = { Key: string;
 
-Value?: string; };
+Key: string;
 
-export type IEMap = { ACCOUNT?: string[];
+Value: string;
 
-ORGUNIT?: string[]; };
 
-export type ExcludeMap =  AWS.FMS.Policy.IEMap;
+};
 
-export type ExcludeResourceTags =  boolean;
+export type ResourceTag = {
 
-export type IncludeMap =  AWS.FMS.Policy.IEMap;
 
-export type PolicyName =  string;
+Key: string;
 
-export type RemediationEnabled =  boolean;
+Value?: string;
 
-export type ResourceTags =  AWS.FMS.Policy.ResourceTag[];
 
-export type ResourceType =  string;
+};
 
-export type ResourceTypeList =  string[];
+export type IEMap = {
 
-export type SecurityServicePolicyData =  JSONString;
 
-export type DeleteAllPolicyResources =  boolean;
+ACCOUNT?: string[];
 
-export type Tags =  AWS.FMS.Policy.PolicyTag[];
+ORGUNIT?: string[];
+
+
+};
+
 
 }
 
-export namespace NotificationChannel {
+export type NotificationChannel = {
 
-export type SnsRoleName =  string;
 
-export type SnsTopicArn =  string;
+SnsRoleName: string;
 
-}
+SnsTopicArn: string;
+
+
+};
+
 
 }
 
 export namespace Kinesis {
 
-export namespace Stream {
 
-export type StreamEncryption =  AWS.Kinesis.Stream.StreamEncryption;
+export type Stream = {
 
-export type Name =  string;
 
-export type RetentionPeriodHours =  number;
+StreamEncryption?: AWS.Kinesis.Stream.StreamEncryption;
 
-export type ShardCount =  number;
+Name?: string;
 
-export type Tags =  Tag[];
+RetentionPeriodHours?: number;
 
-}
+ShardCount: number;
 
-export namespace StreamConsumer {
+Tags?: Tag[];
 
-export type ConsumerName =  string;
 
-export type StreamARN =  string;
+};
 
-}
+export type StreamConsumer = {
+
+
+ConsumerName: string;
+
+StreamARN: string;
+
+
+};
+
 
 }
 
 export namespace CodeCommit {
 
+
+export type Repository = {
+
+
+Code?: AWS.CodeCommit.Repository.Code;
+
+RepositoryName: string;
+
+Triggers?: AWS.CodeCommit.Repository.RepositoryTrigger[];
+
+RepositoryDescription?: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace Repository {
 
-export type Code =  AWS.CodeCommit.Repository.Code;
 
-export type S3 = { ObjectVersion?: string;
+export type S3 = {
+
+
+ObjectVersion?: string;
 
 Bucket: string;
 
-Key: string; };
+Key: string;
 
-export type RepositoryTrigger = { Events: string[];
+
+};
+
+export type RepositoryTrigger = {
+
+
+Events: string[];
 
 Branches?: string[];
 
@@ -24318,221 +39826,319 @@ CustomData?: string;
 
 DestinationArn: string;
 
-Name: string; };
+Name: string;
 
-export type RepositoryName =  string;
 
-export type Triggers =  AWS.CodeCommit.Repository.RepositoryTrigger[];
+};
 
-export type RepositoryDescription =  string;
-
-export type Tags =  Tag[];
 
 }
+
 
 }
 
 export namespace EMRContainers {
 
+
+export type VirtualCluster = {
+
+
+ContainerProvider: AWS.EMRContainers.VirtualCluster.ContainerProvider;
+
+Name: string;
+
+Tags?: Tag[];
+
+
+};
+
 export namespace VirtualCluster {
 
-export type ContainerInfo = { EksInfo: AWS.EMRContainers.VirtualCluster.EksInfo; };
 
-export type EksInfo = { Namespace: string; };
+export type ContainerInfo = {
 
-export type ContainerProvider =  AWS.EMRContainers.VirtualCluster.ContainerProvider;
 
-export type Name =  string;
+EksInfo: AWS.EMRContainers.VirtualCluster.EksInfo;
 
-export type Tags =  Tag[];
+
+};
+
+export type EksInfo = {
+
+
+Namespace: string;
+
+
+};
+
 
 }
+
 
 }
 
 export namespace Neptune {
 
+
+export type DBCluster = {
+
+
+StorageEncrypted?: boolean;
+
+RestoreToTime?: string;
+
+EngineVersion?: string;
+
+KmsKeyId?: string;
+
+AssociatedRoles?: AWS.Neptune.DBCluster.DBClusterRole[];
+
+AvailabilityZones?: string[];
+
+SnapshotIdentifier?: string;
+
+Port?: number;
+
+DBClusterIdentifier?: string;
+
+PreferredMaintenanceWindow?: string;
+
+IamAuthEnabled?: boolean;
+
+DBSubnetGroupName?: string;
+
+DeletionProtection?: boolean;
+
+PreferredBackupWindow?: string;
+
+UseLatestRestorableTime?: boolean;
+
+VpcSecurityGroupIds?: string[];
+
+SourceDBClusterIdentifier?: string;
+
+DBClusterParameterGroupName?: string;
+
+BackupRetentionPeriod?: number;
+
+RestoreType?: string;
+
+Tags?: Tag[];
+
+EnableCloudwatchLogsExports?: string[];
+
+
+};
+
 export namespace DBCluster {
 
-export type DBClusterRole = { RoleArn: string;
 
-FeatureName?: string; };
+export type DBClusterRole = {
 
-export type StorageEncrypted =  boolean;
 
-export type RestoreToTime =  string;
+RoleArn: string;
 
-export type EngineVersion =  string;
+FeatureName?: string;
 
-export type KmsKeyId =  string;
 
-export type AssociatedRoles =  AWS.Neptune.DBCluster.DBClusterRole[];
+};
 
-export type AvailabilityZones =  string[];
-
-export type SnapshotIdentifier =  string;
-
-export type Port =  number;
-
-export type DBClusterIdentifier =  string;
-
-export type PreferredMaintenanceWindow =  string;
-
-export type IamAuthEnabled =  boolean;
-
-export type DBSubnetGroupName =  string;
-
-export type DeletionProtection =  boolean;
-
-export type PreferredBackupWindow =  string;
-
-export type UseLatestRestorableTime =  boolean;
-
-export type VpcSecurityGroupIds =  string[];
-
-export type SourceDBClusterIdentifier =  string;
-
-export type DBClusterParameterGroupName =  string;
-
-export type BackupRetentionPeriod =  number;
-
-export type RestoreType =  string;
-
-export type Tags =  Tag[];
-
-export type EnableCloudwatchLogsExports =  string[];
 
 }
 
-export namespace DBSubnetGroup {
+export type DBSubnetGroup = {
 
-export type DBSubnetGroupName =  string;
 
-export type DBSubnetGroupDescription =  string;
+DBSubnetGroupName?: string;
 
-export type SubnetIds =  string[];
+DBSubnetGroupDescription: string;
 
-export type Tags =  Tag[];
+SubnetIds: string[];
 
-}
+Tags?: Tag[];
 
-export namespace DBInstance {
 
-export type DBParameterGroupName =  string;
+};
 
-export type DBInstanceClass =  string;
+export type DBInstance = {
 
-export type AllowMajorVersionUpgrade =  boolean;
 
-export type DBClusterIdentifier =  string;
+DBParameterGroupName?: string;
 
-export type AvailabilityZone =  string;
+DBInstanceClass: string;
 
-export type PreferredMaintenanceWindow =  string;
+AllowMajorVersionUpgrade?: boolean;
 
-export type AutoMinorVersionUpgrade =  boolean;
+DBClusterIdentifier?: string;
 
-export type DBSubnetGroupName =  string;
+AvailabilityZone?: string;
 
-export type DBInstanceIdentifier =  string;
+PreferredMaintenanceWindow?: string;
 
-export type DBSnapshotIdentifier =  string;
+AutoMinorVersionUpgrade?: boolean;
 
-export type Tags =  Tag[];
+DBSubnetGroupName?: string;
 
-}
+DBInstanceIdentifier?: string;
 
-export namespace DBClusterParameterGroup {
+DBSnapshotIdentifier?: string;
 
-export type Description =  string;
+Tags?: Tag[];
 
-export type Parameters =  JSONString;
 
-export type Family =  string;
+};
 
-export type Tags =  Tag[];
+export type DBClusterParameterGroup = {
 
-export type Name =  string;
 
-}
+Description: string;
 
-export namespace DBParameterGroup {
+Parameters: JSONString;
 
-export type Description =  string;
+Family: string;
 
-export type Parameters =  JSONString;
+Tags?: Tag[];
 
-export type Family =  string;
+Name?: string;
 
-export type Tags =  Tag[];
 
-export type Name =  string;
+};
 
-}
+export type DBParameterGroup = {
+
+
+Description: string;
+
+Parameters: JSONString;
+
+Family: string;
+
+Tags?: Tag[];
+
+Name?: string;
+
+
+};
+
 
 }
 
 export namespace SSO {
 
+
+export type InstanceAccessControlAttributeConfiguration = {
+
+
+InstanceArn: string;
+
+AccessControlAttributes?: AWS.SSO.InstanceAccessControlAttributeConfiguration.AccessControlAttribute[];
+
+
+};
+
 export namespace InstanceAccessControlAttributeConfiguration {
 
-export type AccessControlAttribute = { Key: string;
 
-Value: AWS.SSO.InstanceAccessControlAttributeConfiguration.AccessControlAttributeValue; };
+export type AccessControlAttribute = {
 
-export type AccessControlAttributeValue = { Source: string[]; };
 
-export type InstanceArn =  string;
+Key: string;
 
-export type AccessControlAttributes =  AWS.SSO.InstanceAccessControlAttributeConfiguration.AccessControlAttribute[];
+Value: AWS.SSO.InstanceAccessControlAttributeConfiguration.AccessControlAttributeValue;
 
-}
 
-export namespace Assignment {
+};
 
-export type InstanceArn =  string;
+export type AccessControlAttributeValue = {
 
-export type TargetId =  string;
 
-export type TargetType =  string;
+Source: string[];
 
-export type PermissionSetArn =  string;
 
-export type PrincipalType =  string;
+};
 
-export type PrincipalId =  string;
 
 }
 
-export namespace PermissionSet {
+export type Assignment = {
 
-export type Name =  string;
 
-export type Description =  string;
+InstanceArn: string;
 
-export type InstanceArn =  string;
+TargetId: string;
 
-export type SessionDuration =  string;
+TargetType: string;
 
-export type RelayStateType =  string;
+PermissionSetArn: string;
 
-export type ManagedPolicies =  string[];
+PrincipalType: string;
 
-export type InlinePolicy =  JSONString;
+PrincipalId: string;
 
-export type Tags =  Tag[];
 
-}
+};
+
+export type PermissionSet = {
+
+
+Name: string;
+
+Description?: string;
+
+InstanceArn: string;
+
+SessionDuration?: string;
+
+RelayStateType?: string;
+
+ManagedPolicies?: string[];
+
+InlinePolicy?: JSONString;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace FSx {
 
+
+export type FileSystem = {
+
+
+LustreConfiguration?: AWS.FSx.FileSystem.LustreConfiguration;
+
+WindowsConfiguration?: AWS.FSx.FileSystem.WindowsConfiguration;
+
+StorageType?: string;
+
+KmsKeyId?: string;
+
+StorageCapacity?: number;
+
+FileSystemType: string;
+
+BackupId?: string;
+
+SubnetIds: string[];
+
+SecurityGroupIds?: string[];
+
+Tags?: Tag[];
+
+
+};
+
 export namespace FileSystem {
 
-export type LustreConfiguration =  AWS.FSx.FileSystem.LustreConfiguration;
 
-export type SelfManagedActiveDirectoryConfiguration = { FileSystemAdministratorsGroup?: string;
+export type SelfManagedActiveDirectoryConfiguration = {
+
+
+FileSystemAdministratorsGroup?: string;
 
 UserName?: string;
 
@@ -24542,970 +40148,1226 @@ OrganizationalUnitDistinguishedName?: string;
 
 DnsIps?: string[];
 
-Password?: string; };
+Password?: string;
 
-export type WindowsConfiguration =  AWS.FSx.FileSystem.WindowsConfiguration;
 
-export type StorageType =  string;
+};
 
-export type KmsKeyId =  string;
-
-export type StorageCapacity =  number;
-
-export type FileSystemType =  string;
-
-export type BackupId =  string;
-
-export type SubnetIds =  string[];
-
-export type SecurityGroupIds =  string[];
-
-export type Tags =  Tag[];
 
 }
+
 
 }
 
 export namespace FinSpace {
 
-export namespace Environment {
 
-export type FederationParameters =  AWS.FinSpace.Environment.FederationParameters;
+export type Environment = {
 
-export type Name =  string;
 
-export type Description =  string;
+FederationParameters?: AWS.FinSpace.Environment.FederationParameters;
 
-export type KmsKeyId =  string;
+Name: string;
 
-export type FederationMode =  string;
+Description?: string;
 
-}
+KmsKeyId?: string;
+
+FederationMode?: string;
+
+
+};
+
 
 }
 
 export namespace WorkSpaces {
 
-export namespace Workspace {
 
-export type WorkspaceProperties =  AWS.WorkSpaces.Workspace.WorkspaceProperties;
+export type Workspace = {
 
-export type BundleId =  string;
 
-export type DirectoryId =  string;
+WorkspaceProperties?: AWS.WorkSpaces.Workspace.WorkspaceProperties;
 
-export type RootVolumeEncryptionEnabled =  boolean;
+BundleId: string;
 
-export type Tags =  Tag[];
+DirectoryId: string;
 
-export type UserName =  string;
+RootVolumeEncryptionEnabled?: boolean;
 
-export type UserVolumeEncryptionEnabled =  boolean;
+Tags?: Tag[];
 
-export type VolumeEncryptionKey =  string;
+UserName: string;
 
-}
+UserVolumeEncryptionEnabled?: boolean;
+
+VolumeEncryptionKey?: string;
+
+
+};
+
+export type ConnectionAlias = {
+
+
+ConnectionString: string;
+
+Tags?: Tag[];
+
+
+};
 
 export namespace ConnectionAlias {
 
-export type ConnectionAliasAssociation = { AssociationStatus?: string;
+
+export type ConnectionAliasAssociation = {
+
+
+AssociationStatus?: string;
 
 AssociatedAccountId?: string;
 
 ResourceId?: string;
 
-ConnectionIdentifier?: string; };
+ConnectionIdentifier?: string;
 
-export type ConnectionString =  string;
 
-export type Tags =  Tag[];
+};
+
 
 }
+
 
 }
 
 export namespace Transfer {
 
+
+export type User = {
+
+
+SshPublicKey?: string;
+
+PosixProfile?: AWS.Transfer.User.PosixProfile;
+
+Policy?: string;
+
+Role: string;
+
+HomeDirectory?: string;
+
+HomeDirectoryType?: string;
+
+ServerId: string;
+
+UserName: string;
+
+HomeDirectoryMappings?: AWS.Transfer.User.HomeDirectoryMapEntry[];
+
+SshPublicKeys?: AWS.Transfer.User.SshPublicKey[];
+
+Tags?: Tag[];
+
+
+};
+
 export namespace User {
 
-export type HomeDirectoryMapEntry = { Entry: string;
 
-Target: string; };
+export type HomeDirectoryMapEntry = {
 
-export type SshPublicKey =  string;
 
-export type PosixProfile =  AWS.Transfer.User.PosixProfile;
+Entry: string;
 
-export type Policy =  string;
+Target: string;
 
-export type Role =  string;
 
-export type HomeDirectory =  string;
+};
 
-export type HomeDirectoryType =  string;
-
-export type ServerId =  string;
-
-export type UserName =  string;
-
-export type HomeDirectoryMappings =  AWS.Transfer.User.HomeDirectoryMapEntry[];
-
-export type SshPublicKeys =  AWS.Transfer.User.SshPublicKey[];
-
-export type Tags =  Tag[];
 
 }
 
-export namespace Server {
+export type Server = {
 
-export type ProtocolDetails =  AWS.Transfer.Server.ProtocolDetails;
 
-export type IdentityProviderDetails =  AWS.Transfer.Server.IdentityProviderDetails;
+ProtocolDetails?: AWS.Transfer.Server.ProtocolDetails;
 
-export type EndpointDetails =  AWS.Transfer.Server.EndpointDetails;
+IdentityProviderDetails?: AWS.Transfer.Server.IdentityProviderDetails;
 
-export type Protocol =  string;
+EndpointDetails?: AWS.Transfer.Server.EndpointDetails;
 
-export type LoggingRole =  string;
+Protocol?: string;
 
-export type Protocols =  AWS.Transfer.Server.Protocol[];
+LoggingRole?: string;
 
-export type EndpointType =  string;
+Protocols?: AWS.Transfer.Server.Protocol[];
 
-export type SecurityPolicyName =  string;
+EndpointType?: string;
 
-export type Domain =  string;
+SecurityPolicyName?: string;
 
-export type IdentityProviderType =  string;
+Domain?: string;
 
-export type Tags =  Tag[];
+IdentityProviderType?: string;
 
-export type Certificate =  string;
+Tags?: Tag[];
 
-}
+Certificate?: string;
+
+
+};
+
 
 }
 
 export namespace MWAA {
 
+
+export type Environment = {
+
+
+NetworkConfiguration?: AWS.MWAA.Environment.NetworkConfiguration;
+
+TagMap?: any;
+
+LoggingConfiguration?: AWS.MWAA.Environment.LoggingConfiguration;
+
+Name: string;
+
+ExecutionRoleArn?: string;
+
+KmsKey?: string;
+
+AirflowVersion?: string;
+
+SourceBucketArn?: string;
+
+DagS3Path?: string;
+
+PluginsS3Path?: string;
+
+PluginsS3ObjectVersion?: string;
+
+RequirementsS3Path?: string;
+
+RequirementsS3ObjectVersion?: string;
+
+AirflowConfigurationOptions?: JSONString;
+
+EnvironmentClass?: string;
+
+MaxWorkers?: number;
+
+MinWorkers?: number;
+
+Schedulers?: number;
+
+WeeklyMaintenanceWindowStart?: string;
+
+Tags?: AWS.MWAA.Environment.TagMap;
+
+WebserverAccessMode?: string;
+
+
+};
+
 export namespace Environment {
 
-export type NetworkConfiguration =  AWS.MWAA.Environment.NetworkConfiguration;
 
-export type ModuleLoggingConfiguration = { Enabled?: boolean;
+export type ModuleLoggingConfiguration = {
+
+
+Enabled?: boolean;
 
 LogLevel?: string;
 
-CloudWatchLogGroupArn?: string; };
+CloudWatchLogGroupArn?: string;
 
-export type TagMap =  any;
 
-export type LoggingConfiguration =  AWS.MWAA.Environment.LoggingConfiguration;
+};
 
-export type Name =  string;
-
-export type ExecutionRoleArn =  string;
-
-export type KmsKey =  string;
-
-export type AirflowVersion =  string;
-
-export type SourceBucketArn =  string;
-
-export type DagS3Path =  string;
-
-export type PluginsS3Path =  string;
-
-export type PluginsS3ObjectVersion =  string;
-
-export type RequirementsS3Path =  string;
-
-export type RequirementsS3ObjectVersion =  string;
-
-export type AirflowConfigurationOptions =  JSONString;
-
-export type EnvironmentClass =  string;
-
-export type MaxWorkers =  number;
-
-export type MinWorkers =  number;
-
-export type Schedulers =  number;
-
-export type WeeklyMaintenanceWindowStart =  string;
-
-export type Tags =  AWS.MWAA.Environment.TagMap;
-
-export type WebserverAccessMode =  string;
 
 }
+
 
 }
 
 export namespace IoT1Click {
 
+
+export type Project = {
+
+
+PlacementTemplate: AWS.IoT1Click.Project.PlacementTemplate;
+
+Description?: string;
+
+ProjectName?: string;
+
+
+};
+
 export namespace Project {
 
-export type DeviceTemplate = { DeviceType?: string;
 
-CallbackOverrides?: JSONString; };
+export type DeviceTemplate = {
 
-export type PlacementTemplate =  AWS.IoT1Click.Project.PlacementTemplate;
 
-export type Description =  string;
+DeviceType?: string;
 
-export type ProjectName =  string;
+CallbackOverrides?: JSONString;
 
-}
 
-export namespace Placement {
+};
 
-export type PlacementName =  string;
-
-export type ProjectName =  string;
-
-export type AssociatedDevices =  JSONString;
-
-export type Attributes =  JSONString;
 
 }
 
-export namespace Device {
+export type Placement = {
 
-export type DeviceId =  string;
 
-export type Enabled =  boolean;
+PlacementName?: string;
 
-}
+ProjectName: string;
+
+AssociatedDevices?: JSONString;
+
+Attributes?: JSONString;
+
+
+};
+
+export type Device = {
+
+
+DeviceId: string;
+
+Enabled: boolean;
+
+
+};
+
 
 }
 
 export namespace DAX {
 
-export namespace Cluster {
 
-export type SSESpecification =  AWS.DAX.Cluster.SSESpecification;
+export type Cluster = {
 
-export type Description =  string;
 
-export type ReplicationFactor =  number;
+SSESpecification?: AWS.DAX.Cluster.SSESpecification;
 
-export type ParameterGroupName =  string;
+Description?: string;
 
-export type AvailabilityZones =  string[];
+ReplicationFactor: number;
 
-export type IAMRoleARN =  string;
+ParameterGroupName?: string;
 
-export type SubnetGroupName =  string;
+AvailabilityZones?: string[];
 
-export type PreferredMaintenanceWindow =  string;
+IAMRoleARN: string;
 
-export type ClusterEndpointEncryptionType =  string;
+SubnetGroupName?: string;
 
-export type NotificationTopicARN =  string;
+PreferredMaintenanceWindow?: string;
 
-export type SecurityGroupIds =  string[];
+ClusterEndpointEncryptionType?: string;
 
-export type NodeType =  string;
+NotificationTopicARN?: string;
 
-export type ClusterName =  string;
+SecurityGroupIds?: string[];
 
-export type Tags =  JSONString;
+NodeType: string;
 
-}
+ClusterName?: string;
 
-export namespace ParameterGroup {
+Tags?: JSONString;
 
-export type ParameterNameValues =  JSONString;
 
-export type Description =  string;
+};
 
-export type ParameterGroupName =  string;
+export type ParameterGroup = {
 
-}
 
-export namespace SubnetGroup {
+ParameterNameValues?: JSONString;
 
-export type Description =  string;
+Description?: string;
 
-export type SubnetGroupName =  string;
+ParameterGroupName?: string;
 
-export type SubnetIds =  string[];
 
-}
+};
+
+export type SubnetGroup = {
+
+
+Description?: string;
+
+SubnetGroupName?: string;
+
+SubnetIds: string[];
+
+
+};
+
 
 }
 
 export namespace CodeGuruProfiler {
 
+
+export type ProfilingGroup = {
+
+
+ProfilingGroupName: string;
+
+ComputePlatform?: string;
+
+AgentPermissions?: JSONString;
+
+AnomalyDetectionNotificationConfiguration?: AWS.CodeGuruProfiler.ProfilingGroup.Channel[];
+
+Tags?: Tag[];
+
+
+};
+
 export namespace ProfilingGroup {
 
-export type Channel = { channelId?: string;
 
-channelUri: string; };
+export type Channel = {
 
-export type ProfilingGroupName =  string;
 
-export type ComputePlatform =  string;
+channelId?: string;
 
-export type AgentPermissions =  JSONString;
+channelUri: string;
 
-export type AnomalyDetectionNotificationConfiguration =  AWS.CodeGuruProfiler.ProfilingGroup.Channel[];
 
-export type Tags =  Tag[];
+};
+
 
 }
+
 
 }
 
 export namespace OpsWorksCM {
 
+
+export type Server = {
+
+
+KeyPair?: string;
+
+EngineVersion?: string;
+
+ServiceRoleArn: string;
+
+DisableAutomatedBackup?: boolean;
+
+BackupId?: string;
+
+EngineModel?: string;
+
+PreferredMaintenanceWindow?: string;
+
+AssociatePublicIpAddress?: boolean;
+
+InstanceProfileArn: string;
+
+CustomCertificate?: string;
+
+PreferredBackupWindow?: string;
+
+SecurityGroupIds?: string[];
+
+SubnetIds?: string[];
+
+CustomDomain?: string;
+
+CustomPrivateKey?: string;
+
+ServerName?: string;
+
+EngineAttributes?: AWS.OpsWorksCM.Server.EngineAttribute[];
+
+BackupRetentionCount?: number;
+
+InstanceType: string;
+
+Tags?: Tag[];
+
+Engine?: string;
+
+
+};
+
 export namespace Server {
 
-export type EngineAttribute = { Value?: string;
 
-Name?: string; };
+export type EngineAttribute = {
 
-export type KeyPair =  string;
 
-export type EngineVersion =  string;
+Value?: string;
 
-export type ServiceRoleArn =  string;
+Name?: string;
 
-export type DisableAutomatedBackup =  boolean;
 
-export type BackupId =  string;
+};
 
-export type EngineModel =  string;
-
-export type PreferredMaintenanceWindow =  string;
-
-export type AssociatePublicIpAddress =  boolean;
-
-export type InstanceProfileArn =  string;
-
-export type CustomCertificate =  string;
-
-export type PreferredBackupWindow =  string;
-
-export type SecurityGroupIds =  string[];
-
-export type SubnetIds =  string[];
-
-export type CustomDomain =  string;
-
-export type CustomPrivateKey =  string;
-
-export type ServerName =  string;
-
-export type EngineAttributes =  AWS.OpsWorksCM.Server.EngineAttribute[];
-
-export type BackupRetentionCount =  number;
-
-export type InstanceType =  string;
-
-export type Tags =  Tag[];
-
-export type Engine =  string;
 
 }
+
 
 }
 
 export namespace CodeStarNotifications {
 
+
+export type NotificationRule = {
+
+
+EventTypeIds: string[];
+
+Status?: string;
+
+DetailType: string;
+
+Resource: string;
+
+Targets: AWS.CodeStarNotifications.NotificationRule.Target[];
+
+Tags?: JSONString;
+
+Name: string;
+
+
+};
+
 export namespace NotificationRule {
 
-export type Target = { TargetType?: string;
 
-TargetAddress?: string; };
+export type Target = {
 
-export type EventTypeIds =  string[];
 
-export type Status =  string;
+TargetType?: string;
 
-export type DetailType =  string;
+TargetAddress?: string;
 
-export type Resource =  string;
 
-export type Targets =  AWS.CodeStarNotifications.NotificationRule.Target[];
+};
 
-export type Tags =  JSONString;
-
-export type Name =  string;
 
 }
+
 
 }
 
 export namespace Cloud9 {
 
+
+export type EnvironmentEC2 = {
+
+
+Repositories?: AWS.Cloud9.EnvironmentEC2.Repository[];
+
+OwnerArn?: string;
+
+Description?: string;
+
+ConnectionType?: string;
+
+AutomaticStopTimeMinutes?: number;
+
+ImageId?: string;
+
+SubnetId?: string;
+
+InstanceType: string;
+
+Tags?: Tag[];
+
+Name?: string;
+
+
+};
+
 export namespace EnvironmentEC2 {
 
-export type Repository = { PathComponent: string;
 
-RepositoryUrl: string; };
+export type Repository = {
 
-export type Repositories =  AWS.Cloud9.EnvironmentEC2.Repository[];
 
-export type OwnerArn =  string;
+PathComponent: string;
 
-export type Description =  string;
+RepositoryUrl: string;
 
-export type ConnectionType =  string;
 
-export type AutomaticStopTimeMinutes =  number;
+};
 
-export type ImageId =  string;
-
-export type SubnetId =  string;
-
-export type InstanceType =  string;
-
-export type Tags =  Tag[];
-
-export type Name =  string;
 
 }
+
 
 }
 
 export namespace RAM {
 
-export namespace ResourceShare {
 
-export type PermissionArns =  string[];
+export type ResourceShare = {
 
-export type Principals =  string[];
 
-export type AllowExternalPrincipals =  boolean;
+PermissionArns?: string[];
 
-export type ResourceArns =  string[];
+Principals?: string[];
 
-export type Tags =  Tag[];
+AllowExternalPrincipals?: boolean;
 
-export type Name =  string;
+ResourceArns?: string[];
 
-}
+Tags?: Tag[];
+
+Name: string;
+
+
+};
+
 
 }
 
 export namespace IoTFleetHub {
 
-export namespace Application {
 
-export type ApplicationName =  string;
+export type Application = {
 
-export type ApplicationDescription =  string;
 
-export type RoleArn =  string;
+ApplicationName: string;
 
-export type Tags =  Tag[];
+ApplicationDescription?: string;
 
-}
+RoleArn: string;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace DocDB {
 
-export namespace DBCluster {
 
-export type StorageEncrypted =  boolean;
+export type DBCluster = {
 
-export type EngineVersion =  string;
 
-export type KmsKeyId =  string;
+StorageEncrypted?: boolean;
 
-export type AvailabilityZones =  string[];
+EngineVersion?: string;
 
-export type SnapshotIdentifier =  string;
+KmsKeyId?: string;
 
-export type Port =  number;
+AvailabilityZones?: string[];
 
-export type DBClusterIdentifier =  string;
+SnapshotIdentifier?: string;
 
-export type PreferredMaintenanceWindow =  string;
+Port?: number;
 
-export type DBSubnetGroupName =  string;
+DBClusterIdentifier?: string;
 
-export type DeletionProtection =  boolean;
+PreferredMaintenanceWindow?: string;
 
-export type PreferredBackupWindow =  string;
+DBSubnetGroupName?: string;
 
-export type MasterUserPassword =  string;
+DeletionProtection?: boolean;
 
-export type VpcSecurityGroupIds =  string[];
+PreferredBackupWindow?: string;
 
-export type MasterUsername =  string;
+MasterUserPassword: string;
 
-export type DBClusterParameterGroupName =  string;
+VpcSecurityGroupIds?: string[];
 
-export type BackupRetentionPeriod =  number;
+MasterUsername: string;
 
-export type Tags =  Tag[];
+DBClusterParameterGroupName?: string;
 
-export type EnableCloudwatchLogsExports =  string[];
+BackupRetentionPeriod?: number;
 
-}
+Tags?: Tag[];
 
-export namespace DBSubnetGroup {
+EnableCloudwatchLogsExports?: string[];
 
-export type DBSubnetGroupName =  string;
 
-export type DBSubnetGroupDescription =  string;
+};
 
-export type SubnetIds =  string[];
+export type DBSubnetGroup = {
 
-export type Tags =  Tag[];
 
-}
+DBSubnetGroupName?: string;
 
-export namespace DBInstance {
+DBSubnetGroupDescription: string;
 
-export type DBInstanceClass =  string;
+SubnetIds: string[];
 
-export type DBClusterIdentifier =  string;
+Tags?: Tag[];
 
-export type AvailabilityZone =  string;
 
-export type PreferredMaintenanceWindow =  string;
+};
 
-export type AutoMinorVersionUpgrade =  boolean;
+export type DBInstance = {
 
-export type DBInstanceIdentifier =  string;
 
-export type Tags =  Tag[];
+DBInstanceClass: string;
 
-}
+DBClusterIdentifier: string;
 
-export namespace DBClusterParameterGroup {
+AvailabilityZone?: string;
 
-export type Description =  string;
+PreferredMaintenanceWindow?: string;
 
-export type Parameters =  JSONString;
+AutoMinorVersionUpgrade?: boolean;
 
-export type Family =  string;
+DBInstanceIdentifier?: string;
 
-export type Tags =  Tag[];
+Tags?: Tag[];
 
-export type Name =  string;
 
-}
+};
+
+export type DBClusterParameterGroup = {
+
+
+Description: string;
+
+Parameters: JSONString;
+
+Family: string;
+
+Tags?: Tag[];
+
+Name?: string;
+
+
+};
+
 
 }
 
 export namespace KMS {
 
-export namespace ReplicaKey {
 
-export type PrimaryKeyArn =  string;
+export type ReplicaKey = {
 
-export type Description =  string;
 
-export type Enabled =  boolean;
+PrimaryKeyArn: string;
 
-export type KeyPolicy =  JSONString;
+Description?: string;
 
-export type PendingWindowInDays =  number;
+Enabled?: boolean;
 
-export type Tags =  Tag[];
+KeyPolicy: JSONString;
 
-}
+PendingWindowInDays?: number;
 
-export namespace Alias {
+Tags?: Tag[];
 
-export type AliasName =  string;
 
-export type TargetKeyId =  string;
+};
 
-}
+export type Alias = {
 
-export namespace Key {
 
-export type Description =  string;
+AliasName: string;
 
-export type Enabled =  boolean;
+TargetKeyId: string;
 
-export type EnableKeyRotation =  boolean;
 
-export type KeyPolicy =  JSONString;
+};
 
-export type KeyUsage =  string;
+export type Key = {
 
-export type KeySpec =  string;
 
-export type MultiRegion =  boolean;
+Description?: string;
 
-export type PendingWindowInDays =  number;
+Enabled?: boolean;
 
-export type Tags =  Tag[];
+EnableKeyRotation?: boolean;
 
-}
+KeyPolicy: JSONString;
+
+KeyUsage?: string;
+
+KeySpec?: string;
+
+MultiRegion?: boolean;
+
+PendingWindowInDays?: number;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace Detective {
 
-export namespace MemberInvitation {
 
-export type GraphArn =  string;
+export type MemberInvitation = {
 
-export type MemberId =  string;
 
-export type MemberEmailAddress =  string;
+GraphArn: string;
 
-export type DisableEmailNotification =  boolean;
+MemberId: string;
 
-export type Message =  string;
+MemberEmailAddress: string;
 
-}
+DisableEmailNotification?: boolean;
 
-export namespace Graph {
+Message?: string;
 
-export type Tags =  Tag[];
 
-}
+};
+
+export type Graph = {
+
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace CodeGuruReviewer {
 
-export namespace RepositoryAssociation {
 
-export type Name =  string;
+export type RepositoryAssociation = {
 
-export type Type =  string;
 
-export type Owner =  string;
+Name: string;
 
-export type BucketName =  string;
+Type: string;
 
-export type ConnectionArn =  string;
+Owner?: string;
 
-export type Tags =  Tag[];
+BucketName?: string;
 
-}
+ConnectionArn?: string;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace IoTCoreDeviceAdvisor {
 
-export namespace SuiteDefinition {
 
-export type SuiteDefinitionConfiguration =  JSONString;
+export type SuiteDefinition = {
 
-export type Tags =  Tag[];
 
-}
+SuiteDefinitionConfiguration: JSONString;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace Timestream {
 
-export namespace Database {
 
-export type DatabaseName =  string;
+export type Database = {
 
-export type KmsKeyId =  string;
 
-export type Tags =  Tag[];
+DatabaseName?: string;
 
-}
+KmsKeyId?: string;
 
-export namespace Table {
+Tags?: Tag[];
 
-export type DatabaseName =  string;
 
-export type TableName =  string;
+};
 
-export type RetentionProperties =  JSONString;
+export type Table = {
 
-export type Tags =  Tag[];
 
-}
+DatabaseName: string;
+
+TableName?: string;
+
+RetentionProperties?: JSONString;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace Inspector {
 
-export namespace ResourceGroup {
 
-export type ResourceGroupTags =  Tag[];
+export type ResourceGroup = {
 
-}
 
-export namespace AssessmentTemplate {
+ResourceGroupTags: Tag[];
 
-export type AssessmentTargetArn =  string;
 
-export type DurationInSeconds =  number;
+};
 
-export type AssessmentTemplateName =  string;
+export type AssessmentTemplate = {
 
-export type RulesPackageArns =  string[];
 
-export type UserAttributesForFindings =  Tag[];
+AssessmentTargetArn: string;
 
-}
+DurationInSeconds: number;
 
-export namespace AssessmentTarget {
+AssessmentTemplateName?: string;
 
-export type AssessmentTargetName =  string;
+RulesPackageArns: string[];
 
-export type ResourceGroupArn =  string;
+UserAttributesForFindings?: Tag[];
 
-}
+
+};
+
+export type AssessmentTarget = {
+
+
+AssessmentTargetName?: string;
+
+ResourceGroupArn?: string;
+
+
+};
+
 
 }
 
 export namespace CodeArtifact {
 
-export namespace Domain {
 
-export type DomainName =  string;
+export type Domain = {
 
-export type EncryptionKey =  string;
 
-export type PermissionsPolicyDocument =  JSONString;
+DomainName: string;
 
-export type Tags =  Tag[];
+EncryptionKey?: string;
 
-}
+PermissionsPolicyDocument?: JSONString;
 
-export namespace Repository {
+Tags?: Tag[];
 
-export type RepositoryName =  string;
 
-export type DomainName =  string;
+};
 
-export type DomainOwner =  string;
+export type Repository = {
 
-export type Description =  string;
 
-export type ExternalConnections =  string[];
+RepositoryName: string;
 
-export type Upstreams =  string[];
+DomainName: string;
 
-export type PermissionsPolicyDocument =  JSONString;
+DomainOwner?: string;
 
-export type Tags =  Tag[];
+Description?: string;
 
-}
+ExternalConnections?: string[];
+
+Upstreams?: string[];
+
+PermissionsPolicyDocument?: JSONString;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace SQS {
 
-export namespace QueuePolicy {
 
-export type PolicyDocument =  JSONString;
+export type QueuePolicy = {
 
-export type Queues =  string[];
 
-}
+PolicyDocument: JSONString;
 
-export namespace Queue {
+Queues: string[];
 
-export type ContentBasedDeduplication =  boolean;
 
-export type DeduplicationScope =  string;
+};
 
-export type DelaySeconds =  number;
+export type Queue = {
 
-export type FifoQueue =  boolean;
 
-export type FifoThroughputLimit =  string;
+ContentBasedDeduplication?: boolean;
 
-export type KmsDataKeyReusePeriodSeconds =  number;
+DeduplicationScope?: string;
 
-export type KmsMasterKeyId =  string;
+DelaySeconds?: number;
 
-export type MaximumMessageSize =  number;
+FifoQueue?: boolean;
 
-export type MessageRetentionPeriod =  number;
+FifoThroughputLimit?: string;
 
-export type QueueName =  string;
+KmsDataKeyReusePeriodSeconds?: number;
 
-export type ReceiveMessageWaitTimeSeconds =  number;
+KmsMasterKeyId?: string;
 
-export type RedrivePolicy =  JSONString;
+MaximumMessageSize?: number;
 
-export type Tags =  Tag[];
+MessageRetentionPeriod?: number;
 
-export type VisibilityTimeout =  number;
+QueueName?: string;
 
-}
+ReceiveMessageWaitTimeSeconds?: number;
+
+RedrivePolicy?: JSONString;
+
+Tags?: Tag[];
+
+VisibilityTimeout?: number;
+
+
+};
+
 
 }
 
 export namespace LookoutVision {
 
-export namespace Project {
 
-export type ProjectName =  string;
+export type Project = {
 
-}
+
+ProjectName: string;
+
+
+};
+
 
 }
 
 export namespace Chatbot {
 
-export namespace SlackChannelConfiguration {
 
-export type SlackWorkspaceId =  string;
+export type SlackChannelConfiguration = {
 
-export type SlackChannelId =  string;
 
-export type ConfigurationName =  string;
+SlackWorkspaceId: string;
 
-export type IamRoleArn =  string;
+SlackChannelId: string;
 
-export type SnsTopicArns =  string[];
+ConfigurationName: string;
 
-export type LoggingLevel =  string;
+IamRoleArn: string;
 
-}
+SnsTopicArns?: string[];
+
+LoggingLevel?: string;
+
+
+};
+
 
 }
 
 export namespace CodeStarConnections {
 
-export namespace Connection {
 
-export type ConnectionName =  string;
+export type Connection = {
 
-export type ProviderType =  string;
 
-export type HostArn =  string;
+ConnectionName: string;
 
-export type Tags =  Tag[];
+ProviderType?: string;
 
-}
+HostArn?: string;
+
+Tags?: Tag[];
+
+
+};
+
 
 }
 
 export namespace ServiceCatalogAppRegistry {
 
-export namespace Application {
 
-export type Name =  string;
+export type Application = {
 
-export type Description =  string;
 
-export type Tags =  Record<string, string>;
+Name: string;
 
-}
+Description?: string;
 
-export namespace ResourceAssociation {
+Tags?: Record<string, string>;
 
-export type Application =  string;
 
-export type Resource =  string;
+};
 
-export type ResourceType =  string;
+export type ResourceAssociation = {
 
-}
 
-export namespace AttributeGroup {
+Application: string;
 
-export type Name =  string;
+Resource: string;
 
-export type Description =  string;
+ResourceType: string;
 
-export type Attributes =  JSONString;
 
-export type Tags =  Record<string, string>;
+};
 
-}
+export type AttributeGroup = {
 
-export namespace AttributeGroupAssociation {
 
-export type Application =  string;
+Name: string;
 
-export type AttributeGroup =  string;
+Description?: string;
 
-}
+Attributes: JSONString;
+
+Tags?: Record<string, string>;
+
+
+};
+
+export type AttributeGroupAssociation = {
+
+
+Application: string;
+
+AttributeGroup: string;
+
+
+};
+
 
 }
 
 export namespace SDB {
 
-export namespace Domain {
 
-export type Description =  string;
+export type Domain = {
 
-}
+
+Description?: string;
+
+
+};
+
 
 }
 
 export namespace SecurityHub {
 
-export namespace Hub {
 
-export type Tags =  JSONString;
+export type Hub = {
 
-}
+
+Tags?: JSONString;
+
+
+};
+
 
 }
 
 export namespace CUR {
 
-export namespace ReportDefinition {
 
-export type ReportName =  string;
+export type ReportDefinition = {
 
-export type TimeUnit =  string;
 
-export type Format =  string;
+ReportName: string;
 
-export type Compression =  string;
+TimeUnit: string;
 
-export type AdditionalSchemaElements =  string[];
+Format: string;
 
-export type S3Bucket =  string;
+Compression: string;
 
-export type S3Prefix =  string;
+AdditionalSchemaElements?: string[];
 
-export type S3Region =  string;
+S3Bucket: string;
 
-export type AdditionalArtifacts =  string[];
+S3Prefix: string;
 
-export type RefreshClosedReports =  boolean;
+S3Region: string;
 
-export type ReportVersioning =  string;
+AdditionalArtifacts?: string[];
 
-export type BillingViewArn =  string;
+RefreshClosedReports: boolean;
+
+ReportVersioning: string;
+
+BillingViewArn?: string;
+
+
+};
+
 
 }
 
-}
 
 }
 
 export namespace Alexa {
 
+
 export namespace ASK {
+
+
+export type Skill = {
+
+
+SkillPackage: Alexa.ASK.Skill.SkillPackage;
+
+AuthenticationConfiguration: Alexa.ASK.Skill.AuthenticationConfiguration;
+
+VendorId: string;
+
+
+};
 
 export namespace Skill {
 
-export type Overrides = { Manifest?: JSONString; };
 
-export type SkillPackage =  Alexa.ASK.Skill.SkillPackage;
+export type Overrides = {
 
-export type AuthenticationConfiguration =  Alexa.ASK.Skill.AuthenticationConfiguration;
 
-export type VendorId =  string;
+Manifest?: JSONString;
 
-}
 
-}
+};
+
 
 }
 
-export namespace Tag {
-
-export type Key =  string;
-
-export type Value =  string;
 
 }
+
+
+}
+
+export type Tag = {
+
+
+Key: string;
+
+Value: string;
+
+
+};
