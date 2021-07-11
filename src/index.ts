@@ -1,5 +1,6 @@
 import { CloudFormationResourceSpecificationData } from './CloudFormationResourceSpecification';
 import { CFResourceTypeMap, CFResourceTypePropertyMap } from './Types';
+import FS from 'fs';
 
 type PropertyTypeMap = {
   [PropertyName: string]: string;
@@ -103,4 +104,32 @@ const PackageStructure: Record<any, any> = Object.keys(
   return acc;
 }, {} as Record<any, any>);
 
-console.log(JSON.stringify(PackageStructure, null, 2));
+const renderPackage = (pack: Record<any, any> = {}, depth = 0): string => {
+  const values = [];
+
+  for (const k in pack) {
+    const v = pack[k];
+
+    if (v instanceof Object) {
+      if (depth > 2) {
+        values.push(`export type ${k} = { ${renderPackage(v, depth + 1)} };`);
+      } else {
+        values.push(`export namespace ${k} {`);
+        values.push(renderPackage(v, depth + 1));
+        values.push('}');
+      }
+    } else {
+      if (depth > 3) {
+        values.push(`${k}: ${v.replace(/::/gim, () => '.')};`);
+      } else {
+        values.push(`export type ${k} = ${v.replace(/::/gim, () => '.')};`);
+      }
+    }
+  }
+
+  return values.join('\n\n');
+};
+
+FS.writeFileSync('./AWSResourceTypes.d.ts', renderPackage(PackageStructure), {
+  encoding: 'utf8',
+});
