@@ -8,7 +8,6 @@ type ResourceTypeMap = {
   [ResourceType: string]: PropertyTypeMap | string;
 };
 
-const TypeKindsMap: { [TypeKind: string]: boolean } = {};
 const { PropertyTypes, ResourceTypes } =
   CloudFormationResourceSpecificationData;
 const Combo: CFResourceTypeMap = {
@@ -16,7 +15,7 @@ const Combo: CFResourceTypeMap = {
   ...ResourceTypes,
 };
 const GET_PROP_REDUCER =
-  (t: string, propsObj: CFResourceTypePropertyMap, combo: CFResourceTypeMap) =>
+  (t: string, propsObj: CFResourceTypePropertyMap) =>
   (acc: PropertyTypeMap, p: string) => {
     const { Type, PrimitiveType, ItemType, PrimitiveItemType } = propsObj[p];
     const typeDomain = t.split('.')[0] || '';
@@ -32,15 +31,8 @@ const GET_PROP_REDUCER =
     const mainType = Type ? `${mainTypePrefix}${Type}` : PrimitiveType;
     const fullType =
       itemType && mainType ? `${mainType}<${itemType}>` : itemType || mainType;
-    const typeIsReferenced = itemType
-      ? itemType in combo
-      : !!mainType && mainType in combo;
 
-    if (Type && !(mainType && mainType in combo)) {
-      TypeKindsMap[Type] = true;
-    }
-
-    acc[p] = fullType ? `${fullType}: ${typeIsReferenced}` : 'any';
+    acc[p] = fullType ? fullType : 'any';
 
     return acc;
   };
@@ -50,12 +42,12 @@ const GET_RESOURCE_REDUCER =
 
     if (propsObj) {
       acc[t] = Object.keys(propsObj).reduce(
-        GET_PROP_REDUCER(t, propsObj, combo),
+        GET_PROP_REDUCER(t, propsObj),
         {} as PropertyTypeMap
       );
     } else {
       // Parse Resources w/o Properties, but w/ direct properties.
-      acc[t] = GET_PROP_REDUCER(t, combo, combo)({}, t)[t];
+      acc[t] = GET_PROP_REDUCER(t, combo)({}, t)[t];
     }
 
     return acc;
@@ -64,5 +56,51 @@ const ResourceTypeMapData: ResourceTypeMap = Object.keys(Combo).reduce(
   GET_RESOURCE_REDUCER(Combo),
   {} as ResourceTypeMap
 );
+const PackageStructure: Record<any, any> = Object.keys(
+  ResourceTypeMapData
+).reduce((acc, k) => {
+  const [packageName, serviceName, resourceName = ''] = k.split('::');
+  const [baseResourceName, propTypeName] = resourceName.split('.');
 
-console.log(ResourceTypeMapData, TypeKindsMap);
+  let pO: any, sO: any, rO: any;
+
+  acc[packageName] = acc[packageName] || {};
+
+  pO = acc[packageName];
+
+  if (serviceName) {
+    acc[packageName][serviceName] = acc[packageName][serviceName] || {};
+
+    sO = acc[packageName][serviceName];
+
+    if (baseResourceName) {
+      acc[packageName][serviceName][baseResourceName] =
+        acc[packageName][serviceName][baseResourceName] || {};
+
+      rO = acc[packageName][serviceName][baseResourceName];
+    }
+  }
+
+  const targetList: Record<any, any>[] = [acc, pO, sO, rO].filter((t) => !!t);
+  const targetObj: Record<any, any> = targetList.pop() as any;
+
+  if (propTypeName) {
+    targetObj[propTypeName] = ResourceTypeMapData[k];
+  } else {
+    const parentTargetObj: Record<any, any> = targetList.pop() as any;
+    const targetKeyName: string = [packageName, serviceName, baseResourceName]
+      .filter((k) => !!k)
+      .pop() as any;
+
+    if (typeof ResourceTypeMapData[k] === 'object') {
+      parentTargetObj[targetKeyName] = {
+        ...parentTargetObj[targetKeyName],
+        ...(ResourceTypeMapData[k] as any),
+      };
+    }
+  }
+
+  return acc;
+}, {} as Record<any, any>);
+
+console.log(JSON.stringify(PackageStructure, null, 2));
