@@ -49,7 +49,13 @@ const Combo: CFResourceTypeMap = {
 const GET_PROP_REDUCER =
   (t: string, propsObj: CFResourceTypePropertyMap) =>
   (acc: PropertyTypeMap, p: string) => {
-    const { Type, PrimitiveType, ItemType, PrimitiveItemType } = propsObj[p];
+    const {
+      Type,
+      PrimitiveType,
+      ItemType,
+      PrimitiveItemType,
+      Required = false,
+    } = propsObj[p];
     const typeDomain = t.split('.')[0] || '';
     const itemTypePrefix =
       ItemType && ItemType.indexOf('.') === -1 ? `${typeDomain}.` : '';
@@ -68,7 +74,7 @@ const GET_PROP_REDUCER =
         ? getTypeWithItemType(mainType, itemType)
         : itemType || mainType;
 
-    acc[p] = fullType ? fullType : 'any';
+    acc[p] = `${Required ? '' : '?'}: ${fullType ? fullType : 'any'}`;
 
     return acc;
   };
@@ -149,6 +155,8 @@ const renderPackage = (
 ): string => {
   const values = [];
 
+  // TODO: Output types AND namespaces, when there is contents for either.
+
   for (const k in pack) {
     const v = pack[k];
 
@@ -168,9 +176,13 @@ const renderPackage = (
       }
     } else {
       if (depth > 3 || inType) {
-        values.push(`${k}: ${v.replace(/::/gim, () => '.')};`);
+        values.push(`${k}${v.replace(/::/gim, () => '.')};`);
       } else {
-        values.push(`export type ${k} = ${v.replace(/::/gim, () => '.')};`);
+        values.push(
+          `export type ${k} = ${v
+            .replace(/::/gim, () => '.')
+            .replace(/(:)|(\?:)/gim, () => '')};`
+        );
       }
     }
   }
