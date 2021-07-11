@@ -9,6 +9,37 @@ type ResourceTypeMap = {
   [ResourceType: string]: PropertyTypeMap | string;
 };
 
+const PRIMITIVE_TYPE_MAP: Record<string, string> = {
+  String: 'string',
+  Integer: 'number',
+  Boolean: 'boolean',
+  Double: 'number',
+  Json: 'JSONString',
+  Timestamp: 'Timestamp',
+  Long: 'number',
+};
+const getPrimitiveType = (
+  inputPrimType: string | undefined
+): string | undefined => {
+  if (typeof inputPrimType === 'undefined') {
+    return undefined;
+  }
+
+  const primType = PRIMITIVE_TYPE_MAP[inputPrimType];
+
+  if (!primType) {
+    throw new Error(`Unsupported primitive type "${inputPrimType}".`);
+  }
+
+  return primType;
+};
+const getTypeWithItemType = (type: string, itemType: string): string =>
+  type === 'Map'
+    ? `Record<string, ${itemType}>`
+    : type === 'List'
+    ? `${itemType}[]`
+    : `${type}<${itemType}>`;
+
 const { PropertyTypes, ResourceTypes } =
   CloudFormationResourceSpecificationData;
 const Combo: CFResourceTypeMap = {
@@ -28,10 +59,14 @@ const GET_PROP_REDUCER =
         : '';
     const itemType = ItemType
       ? `${itemTypePrefix}${ItemType}`
-      : PrimitiveItemType;
-    const mainType = Type ? `${mainTypePrefix}${Type}` : PrimitiveType;
+      : getPrimitiveType(PrimitiveItemType);
+    const mainType = Type
+      ? `${mainTypePrefix}${Type}`
+      : getPrimitiveType(PrimitiveType);
     const fullType =
-      itemType && mainType ? `${mainType}<${itemType}>` : itemType || mainType;
+      itemType && mainType
+        ? getTypeWithItemType(mainType, itemType)
+        : itemType || mainType;
 
     acc[p] = fullType ? fullType : 'any';
 
@@ -59,50 +94,53 @@ const ResourceTypeMapData: ResourceTypeMap = Object.keys(Combo).reduce(
 );
 const PackageStructure: Record<any, any> = Object.keys(
   ResourceTypeMapData
-).reduce((acc, k) => {
-  const [packageName, serviceName, resourceName = ''] = k.split('::');
-  const [baseResourceName, propTypeName] = resourceName.split('.');
+).reduce(
+  (acc, k) => {
+    const [packageName, serviceName, resourceName = ''] = k.split('::');
+    const [baseResourceName, propTypeName] = resourceName.split('.');
 
-  let pO: any, sO: any, rO: any;
+    let pO: any, sO: any, rO: any;
 
-  acc[packageName] = acc[packageName] || {};
+    acc[packageName] = acc[packageName] || {};
 
-  pO = acc[packageName];
+    pO = acc[packageName];
 
-  if (serviceName) {
-    acc[packageName][serviceName] = acc[packageName][serviceName] || {};
+    if (serviceName) {
+      acc[packageName][serviceName] = acc[packageName][serviceName] || {};
 
-    sO = acc[packageName][serviceName];
+      sO = acc[packageName][serviceName];
 
-    if (baseResourceName) {
-      acc[packageName][serviceName][baseResourceName] =
-        acc[packageName][serviceName][baseResourceName] || {};
+      if (baseResourceName) {
+        acc[packageName][serviceName][baseResourceName] =
+          acc[packageName][serviceName][baseResourceName] || {};
 
-      rO = acc[packageName][serviceName][baseResourceName];
+        rO = acc[packageName][serviceName][baseResourceName];
+      }
     }
-  }
 
-  const targetList: Record<any, any>[] = [acc, pO, sO, rO].filter((t) => !!t);
-  const targetObj: Record<any, any> = targetList.pop() as any;
+    const targetList: Record<any, any>[] = [acc, pO, sO, rO].filter((t) => !!t);
+    const targetObj: Record<any, any> = targetList.pop() as any;
 
-  if (propTypeName) {
-    targetObj[propTypeName] = ResourceTypeMapData[k];
-  } else {
-    const parentTargetObj: Record<any, any> = targetList.pop() as any;
-    const targetKeyName: string = [packageName, serviceName, baseResourceName]
-      .filter((k) => !!k)
-      .pop() as any;
+    if (propTypeName) {
+      targetObj[propTypeName] = ResourceTypeMapData[k];
+    } else {
+      const parentTargetObj: Record<any, any> = targetList.pop() as any;
+      const targetKeyName: string = [packageName, serviceName, baseResourceName]
+        .filter((k) => !!k)
+        .pop() as any;
 
-    if (typeof ResourceTypeMapData[k] === 'object') {
-      parentTargetObj[targetKeyName] = {
-        ...parentTargetObj[targetKeyName],
-        ...(ResourceTypeMapData[k] as any),
-      };
+      if (typeof ResourceTypeMapData[k] === 'object') {
+        parentTargetObj[targetKeyName] = {
+          ...parentTargetObj[targetKeyName],
+          ...(ResourceTypeMapData[k] as any),
+        };
+      }
     }
-  }
 
-  return acc;
-}, {} as Record<any, any>);
+    return acc;
+  },
+  { JSONString: 'string', Timestamp: 'string' } as Record<any, any>
+);
 
 const renderPackage = (
   pack: Record<any, any> = {},
