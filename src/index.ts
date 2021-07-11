@@ -5,7 +5,7 @@ type PropertyTypeMap = {
   [PropertyName: string]: string;
 };
 type ResourceTypeMap = {
-  [ResourceType: string]: PropertyTypeMap;
+  [ResourceType: string]: PropertyTypeMap | string;
 };
 
 const TypeKindsMap: { [TypeKind: string]: boolean } = {};
@@ -34,13 +34,13 @@ const GET_PROP_REDUCER =
       itemType && mainType ? `${mainType}<${itemType}>` : itemType || mainType;
     const typeIsReferenced = itemType
       ? itemType in combo
-      : mainType && mainType in combo;
+      : !!mainType && mainType in combo;
 
     if (Type && !(mainType && mainType in combo)) {
       TypeKindsMap[Type] = true;
     }
 
-    acc[p] = `${fullType || ''}: ${typeIsReferenced}`;
+    acc[p] = fullType ? `${fullType}: ${typeIsReferenced}` : 'any';
 
     return acc;
   };
@@ -55,7 +55,7 @@ const GET_RESOURCE_REDUCER =
       );
     } else {
       // Parse Resources w/o Properties, but w/ direct properties.
-      acc[t] = GET_PROP_REDUCER(t, combo, combo)({}, t);
+      acc[t] = GET_PROP_REDUCER(t, combo, combo)({}, t)[t];
     }
 
     return acc;
