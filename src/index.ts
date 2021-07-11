@@ -9,6 +9,7 @@ type ResourceTypeMap = {
   [ResourceType: string]: PropertyTypeMap | string;
 };
 
+const TOP_LEVEL_TYPES = ['List', 'Map', 'Tag'];
 const PRIMITIVE_TYPE_MAP: Record<string, string> = {
   String: 'string',
   Integer: 'number',
@@ -58,9 +59,13 @@ const GET_PROP_REDUCER =
     } = propsObj[p];
     const typeDomain = t.split('.')[0] || '';
     const itemTypePrefix =
-      ItemType && ItemType.indexOf('.') === -1 ? `${typeDomain}.` : '';
+      ItemType &&
+      ItemType.indexOf('.') === -1 &&
+      TOP_LEVEL_TYPES.indexOf(ItemType) === -1
+        ? `${typeDomain}.`
+        : '';
     const mainTypePrefix =
-      Type && Type.indexOf('.') === -1 && Type !== 'List' && Type !== 'Map'
+      Type && Type.indexOf('.') === -1 && TOP_LEVEL_TYPES.indexOf(Type) === -1
         ? `${typeDomain}.`
         : '';
     const itemType = ItemType

@@ -226,7 +226,7 @@ export namespace AWS {
 
             export type Spec = AWS.AppMesh.VirtualRouter.VirtualRouterSpec;
 
-            export type Tags = AWS.AppMesh.VirtualRouter.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -472,7 +472,7 @@ export namespace AWS {
 
             export type VirtualNodeName = string;
 
-            export type Tags = AWS.AppMesh.VirtualNode.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -632,7 +632,7 @@ export namespace AWS {
 
             export type Spec = AWS.AppMesh.GatewayRoute.GatewayRouteSpec;
 
-            export type Tags = AWS.AppMesh.GatewayRoute.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -822,7 +822,7 @@ export namespace AWS {
 
             export type Spec = AWS.AppMesh.Route.RouteSpec;
 
-            export type Tags = AWS.AppMesh.Route.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -982,7 +982,7 @@ export namespace AWS {
 
             export type Spec = AWS.AppMesh.VirtualGateway.VirtualGatewaySpec;
 
-            export type Tags = AWS.AppMesh.VirtualGateway.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -1008,7 +1008,7 @@ export namespace AWS {
 
             export type Spec = AWS.AppMesh.VirtualService.VirtualServiceSpec;
 
-            export type Tags = AWS.AppMesh.VirtualService.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -1022,7 +1022,7 @@ export namespace AWS {
 
             export type Spec = AWS.AppMesh.Mesh.MeshSpec;
 
-            export type Tags = AWS.AppMesh.Mesh.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -1234,7 +1234,7 @@ export namespace AWS {
 
             export type PhysicalTableMap = Record<string, AWS.QuickSight.DataSet.PhysicalTable>;
 
-            export type Tags = AWS.QuickSight.DataSet.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -1400,7 +1400,7 @@ export namespace AWS {
 
             export type Permissions = AWS.QuickSight.DataSource.ResourcePermission[];
 
-            export type Tags = AWS.QuickSight.DataSource.Tag[];
+            export type Tags = Tag[];
 
             export type Type = string;
 
@@ -1472,7 +1472,7 @@ export namespace AWS {
 
             export type SourceEntity = AWS.QuickSight.Dashboard.DashboardSourceEntity;
 
-            export type Tags = AWS.QuickSight.Dashboard.Tag[];
+            export type Tags = Tag[];
 
             export type ThemeArn = string;
 
@@ -1552,7 +1552,7 @@ export namespace AWS {
 
             export type SourceEntity = AWS.QuickSight.Analysis.AnalysisSourceEntity;
 
-            export type Tags = AWS.QuickSight.Analysis.Tag[];
+            export type Tags = Tag[];
 
             export type ThemeArn = string;
 
@@ -1652,7 +1652,7 @@ export namespace AWS {
 
             export type Permissions = AWS.QuickSight.Theme.ResourcePermission[];
 
-            export type Tags = AWS.QuickSight.Theme.Tag[];
+            export type Tags = Tag[];
 
             export type ThemeId = string;
 
@@ -1696,7 +1696,7 @@ export namespace AWS {
 
             export type SourceEntity = AWS.QuickSight.Template.TemplateSourceEntity;
 
-            export type Tags = AWS.QuickSight.Template.Tag[];
+            export type Tags = Tag[];
 
             export type TemplateId = string;
 
@@ -1792,7 +1792,7 @@ export namespace AWS {
 
             export type SnapshottingClusterId = string;
 
-            export type Tags = AWS.ElastiCache.ReplicationGroup.Tag[];
+            export type Tags = Tag[];
 
             export type TransitEncryptionEnabled = boolean;
 
@@ -1862,7 +1862,7 @@ export namespace AWS {
 
             export type SnapshotWindow = string;
 
-            export type Tags = AWS.ElastiCache.CacheCluster.Tag[];
+            export type Tags = Tag[];
 
             export type VpcSecurityGroupIds = string[];
 
@@ -1930,7 +1930,7 @@ export namespace AWS {
 
             export type SubnetIds = string[];
 
-            export type Tags = AWS.ElastiCache.SubnetGroup.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -1942,7 +1942,7 @@ export namespace AWS {
 
             export type Properties = Record<string, string>;
 
-            export type Tags = AWS.ElastiCache.ParameterGroup.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -1966,7 +1966,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.ElastiCache.SecurityGroup.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -2252,7 +2252,7 @@ export namespace AWS {
 
             export type Tasks = AWS.AppFlow.Flow.Task[];
 
-            export type Tags = AWS.AppFlow.Flow.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -3410,7 +3410,7 @@ export namespace AWS {
 
             export type CheckpointVersion = AWS.Glue.Schema.SchemaVersion;
 
-            export type Tags = AWS.Glue.Schema.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -3764,7 +3764,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.Glue.Registry.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -3810,7 +3810,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.Athena.WorkGroup.Tag[];
+            export type Tags = Tag[];
 
             export type State = string;
 
@@ -3826,7 +3826,7 @@ export namespace AWS {
 
             export type Parameters = Record<string, string>;
 
-            export type Tags = AWS.Athena.DataCatalog.Tag[];
+            export type Tags = Tag[];
 
             export type Type = string;
 
@@ -3976,7 +3976,7 @@ export namespace AWS {
 
             export type MonitoringScheduleName = string;
 
-            export type Tags = AWS.SageMaker.MonitoringSchedule.Tag[];
+            export type Tags = Tag[];
 
             export type EndpointName = string;
 
@@ -4070,7 +4070,7 @@ export namespace AWS {
 
             export type RoleArn = string;
 
-            export type Tags = AWS.SageMaker.ModelBiasJobDefinition.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -4144,7 +4144,7 @@ export namespace AWS {
 
             export type RoleArn = string;
 
-            export type Tags = AWS.SageMaker.DataQualityJobDefinition.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -4168,7 +4168,7 @@ export namespace AWS {
 
             export type AppImageConfigName = string;
 
-            export type Tags = AWS.SageMaker.AppImageConfig.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -4212,7 +4212,7 @@ export namespace AWS {
 
             export type EndpointConfigName = string;
 
-            export type Tags = AWS.SageMaker.Endpoint.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -4254,7 +4254,7 @@ export namespace AWS {
 
             export type Containers = AWS.SageMaker.Model.ContainerDefinition[];
 
-            export type Tags = AWS.SageMaker.Model.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -4316,7 +4316,7 @@ export namespace AWS {
 
             export type SubnetIds = string[];
 
-            export type Tags = AWS.SageMaker.Domain.Tag[];
+            export type Tags = Tag[];
 
             export type VpcId = string;
 
@@ -4338,7 +4338,7 @@ export namespace AWS {
 
             export type RoleArn = string;
 
-            export type Tags = AWS.SageMaker.DeviceFleet.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -4416,7 +4416,7 @@ export namespace AWS {
 
             export type RoleArn = string;
 
-            export type Tags = AWS.SageMaker.ModelExplainabilityJobDefinition.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -4464,7 +4464,7 @@ export namespace AWS {
 
             export type UserProfileName = string;
 
-            export type Tags = AWS.SageMaker.UserProfile.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -4500,7 +4500,7 @@ export namespace AWS {
 
             export type EndpointConfigName = string;
 
-            export type Tags = AWS.SageMaker.EndpointConfig.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -4584,7 +4584,7 @@ export namespace AWS {
 
             export type RoleArn = string;
 
-            export type Tags = AWS.SageMaker.ModelQualityJobDefinition.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -4594,7 +4594,7 @@ export namespace AWS {
 
             export type DeviceFleetName = string;
 
-            export type Tags = AWS.SageMaker.Device.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -4618,7 +4618,7 @@ export namespace AWS {
 
             export type MemberDefinitions = AWS.SageMaker.Workteam.MemberDefinition[];
 
-            export type Tags = AWS.SageMaker.Workteam.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -4640,7 +4640,7 @@ export namespace AWS {
 
             export type CodeRepositoryName = string;
 
-            export type Tags = AWS.SageMaker.CodeRepository.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -4654,7 +4654,7 @@ export namespace AWS {
 
             export type DomainId = string;
 
-            export type Tags = AWS.SageMaker.App.Tag[];
+            export type Tags = Tag[];
 
             export type UserProfileName = string;
 
@@ -4684,7 +4684,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.SageMaker.FeatureGroup.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -4698,7 +4698,7 @@ export namespace AWS {
 
         export namespace ModelPackageGroup {
 
-            export type Tags = AWS.SageMaker.ModelPackageGroup.Tag[];
+            export type Tags = Tag[];
 
             export type ModelPackageGroupName = string;
 
@@ -4736,7 +4736,7 @@ export namespace AWS {
 
             export type LifecycleConfigName = string;
 
-            export type Tags = AWS.SageMaker.NotebookInstance.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -4752,13 +4752,13 @@ export namespace AWS {
 
             export type RoleArn = string;
 
-            export type Tags = AWS.SageMaker.Pipeline.Tag[];
+            export type Tags = Tag[];
 
         }
 
         export namespace Project {
 
-            export type Tags = AWS.SageMaker.Project.Tag[];
+            export type Tags = Tag[];
 
             export type ProjectName = string;
 
@@ -4778,7 +4778,7 @@ export namespace AWS {
 
             export type ImageDescription = string;
 
-            export type Tags = AWS.SageMaker.Image.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -4860,7 +4860,7 @@ export namespace AWS {
                 BucketLevel: AWS.S3.StorageLens.BucketLevel;
             };
 
-            export type Tags = AWS.S3.StorageLens.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -5204,7 +5204,7 @@ export namespace AWS {
 
             export type ObjectLockEnabled = boolean;
 
-            export type Tags = AWS.S3.Bucket.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -5250,7 +5250,7 @@ export namespace AWS {
 
             export type SolutionStackName = string;
 
-            export type Tags = AWS.ElasticBeanstalk.Environment.Tag[];
+            export type Tags = Tag[];
 
             export type TemplateName = string;
 
@@ -6036,7 +6036,7 @@ export namespace AWS {
 
             export type ObjectTypeName = string;
 
-            export type Tags = AWS.CustomerProfiles.Integration.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -6084,7 +6084,7 @@ export namespace AWS {
 
             export type Keys = AWS.CustomerProfiles.ObjectType.KeyMap[];
 
-            export type Tags = AWS.CustomerProfiles.ObjectType.Tag[];
+            export type Tags = Tag[];
 
             export type TemplateId = string;
 
@@ -6100,7 +6100,7 @@ export namespace AWS {
 
             export type DefaultExpirationDays = number;
 
-            export type Tags = AWS.CustomerProfiles.Domain.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -6180,7 +6180,7 @@ export namespace AWS {
 
             export type ServiceName = string;
 
-            export type Tags = AWS.AppRunner.Service.Tag[];
+            export type Tags = Tag[];
 
             export type AutoScalingConfigurationArn = string;
 
@@ -6230,7 +6230,7 @@ export namespace AWS {
 
             export type EndpointType = string;
 
-            export type Tags = AWS.DMS.Endpoint.Tag[];
+            export type Tags = Tag[];
 
             export type Password = string;
 
@@ -6260,7 +6260,7 @@ export namespace AWS {
 
             export type SubnetIds = string[];
 
-            export type Tags = AWS.DMS.ReplicationSubnetGroup.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -6278,7 +6278,7 @@ export namespace AWS {
 
             export type SourceIds = string[];
 
-            export type Tags = AWS.DMS.EventSubscription.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -6318,7 +6318,7 @@ export namespace AWS {
 
             export type SourceEndpointArn = string;
 
-            export type Tags = AWS.DMS.ReplicationTask.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -6352,7 +6352,7 @@ export namespace AWS {
 
             export type MultiAZ = boolean;
 
-            export type Tags = AWS.DMS.ReplicationInstance.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -6484,7 +6484,7 @@ export namespace AWS {
 
             export type Triggers = AWS.IoTAnalytics.Dataset.Trigger[];
 
-            export type Tags = AWS.IoTAnalytics.Dataset.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -6604,7 +6604,7 @@ export namespace AWS {
 
             export type PipelineName = string;
 
-            export type Tags = AWS.IoTAnalytics.Pipeline.Tag[];
+            export type Tags = Tag[];
 
             export type PipelineActivities = AWS.IoTAnalytics.Pipeline.Activity[];
 
@@ -6658,7 +6658,7 @@ export namespace AWS {
 
             export type DatastoreName = string;
 
-            export type Tags = AWS.IoTAnalytics.Datastore.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -6680,7 +6680,7 @@ export namespace AWS {
 
             export type ChannelName = string;
 
-            export type Tags = AWS.IoTAnalytics.Channel.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -6726,7 +6726,7 @@ export namespace AWS {
 
             export type SnsTopicName = string;
 
-            export type Tags = AWS.CloudTrail.Trail.Tag[];
+            export type Tags = Tag[];
 
             export type TrailName = string;
 
@@ -6876,7 +6876,7 @@ export namespace AWS {
 
             export type Topics = AWS.SES.ContactList.Topic[];
 
-            export type Tags = AWS.SES.ContactList.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -7302,7 +7302,7 @@ export namespace AWS {
 
             export type RuleName = string;
 
-            export type Tags = AWS.IoT.TopicRule.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -7334,7 +7334,7 @@ export namespace AWS {
 
             export type RoleArn = string;
 
-            export type Tags = AWS.IoT.MitigationAction.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -7436,7 +7436,7 @@ export namespace AWS {
 
             export type AdditionalMetricsToRetainV2 = AWS.IoT.SecurityProfile.MetricToRetain[];
 
-            export type Tags = AWS.IoT.SecurityProfile.Tag[];
+            export type Tags = Tag[];
 
             export type TargetArns = string[];
 
@@ -7484,7 +7484,7 @@ export namespace AWS {
 
             export type PreProvisioningHook = AWS.IoT.ProvisioningTemplate.ProvisioningHook;
 
-            export type Tags = AWS.IoT.ProvisioningTemplate.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -7520,7 +7520,7 @@ export namespace AWS {
 
             export type DomainConfigurationStatus = string;
 
-            export type Tags = AWS.IoT.DomainConfiguration.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -7532,7 +7532,7 @@ export namespace AWS {
 
             export type MetricType = string;
 
-            export type Tags = AWS.IoT.CustomMetric.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -7550,7 +7550,7 @@ export namespace AWS {
 
             export type TokenSigningPublicKeys = Record<string, string>;
 
-            export type Tags = AWS.IoT.Authorizer.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -7562,7 +7562,7 @@ export namespace AWS {
 
             export type StringValues = string[];
 
-            export type Tags = AWS.IoT.Dimension.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -7594,7 +7594,7 @@ export namespace AWS {
 
             export type TargetCheckNames = string[];
 
-            export type Tags = AWS.IoT.ScheduledAudit.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -8166,7 +8166,7 @@ export namespace AWS {
                 FunctionARN?: string;
             };
 
-            export type Tags = AWS.CloudFront.Distribution.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -8260,7 +8260,7 @@ export namespace AWS {
                 AwsAccountNumbers?: string[];
             };
 
-            export type Tags = AWS.CloudFront.StreamingDistribution.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -8636,7 +8636,7 @@ export namespace AWS {
 
             export type Steps = AWS.EMR.Cluster.StepConfig[];
 
-            export type Tags = AWS.EMR.Cluster.Tag[];
+            export type Tags = Tag[];
 
             export type VisibleToAllUsers = boolean;
 
@@ -8860,7 +8860,7 @@ export namespace AWS {
 
             export type SubnetIds = string[];
 
-            export type Tags = AWS.EMR.Studio.Tag[];
+            export type Tags = Tag[];
 
             export type UserRole = string;
 
@@ -8908,7 +8908,7 @@ export namespace AWS {
 
             export type PointInTimeRecoveryEnabled = boolean;
 
-            export type Tags = AWS.Cassandra.Table.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -8916,7 +8916,7 @@ export namespace AWS {
 
             export type KeyspaceName = string;
 
-            export type Tags = AWS.Cassandra.Keyspace.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -9124,7 +9124,7 @@ export namespace AWS {
 
             export type Rules = AWS.WAFv2.RuleGroup.Rule[];
 
-            export type Tags = AWS.WAFv2.RuleGroup.Tag[];
+            export type Tags = Tag[];
 
             export type CustomResponseBodies = Record<string, AWS.WAFv2.RuleGroup.CustomResponseBody>;
 
@@ -9380,7 +9380,7 @@ export namespace AWS {
 
             export type Rules = AWS.WAFv2.WebACL.Rule[];
 
-            export type Tags = AWS.WAFv2.WebACL.Tag[];
+            export type Tags = Tag[];
 
             export type CustomResponseBodies = Record<string, AWS.WAFv2.WebACL.CustomResponseBody>;
 
@@ -9396,7 +9396,7 @@ export namespace AWS {
 
             export type Scope = string;
 
-            export type Tags = AWS.WAFv2.RegexPatternSet.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -9412,7 +9412,7 @@ export namespace AWS {
 
             export type Addresses = string[];
 
-            export type Tags = AWS.WAFv2.IPSet.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -9526,7 +9526,7 @@ export namespace AWS {
 
             export type Origination = string;
 
-            export type Tags = AWS.MediaPackage.OriginEndpoint.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -9606,7 +9606,7 @@ export namespace AWS {
 
             export type PackagingGroupId = string;
 
-            export type Tags = AWS.MediaPackage.PackagingConfiguration.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -9618,7 +9618,7 @@ export namespace AWS {
 
             export type Id = string;
 
-            export type Tags = AWS.MediaPackage.PackagingGroup.Tag[];
+            export type Tags = Tag[];
 
             export type EgressAccessLogs = AWS.MediaPackage.PackagingGroup.LogConfiguration;
 
@@ -9632,7 +9632,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.MediaPackage.Channel.Tag[];
+            export type Tags = Tag[];
 
             export type EgressAccessLogs = AWS.MediaPackage.Channel.LogConfiguration;
 
@@ -9658,7 +9658,7 @@ export namespace AWS {
 
             export type SourceRoleArn = string;
 
-            export type Tags = AWS.MediaPackage.Asset.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -9882,7 +9882,7 @@ export namespace AWS {
 
             export type SigningAlgorithm = string;
 
-            export type Tags = AWS.ACMPCA.CertificateAuthority.Tag[];
+            export type Tags = Tag[];
 
             export type KeyStorageSecurityStandard = string;
 
@@ -9974,7 +9974,7 @@ export namespace AWS {
 
             export type LoRaWAN = AWS.IoTWireless.WirelessDevice.LoRaWANDevice;
 
-            export type Tags = AWS.IoTWireless.WirelessDevice.Tag[];
+            export type Tags = Tag[];
 
             export type ThingArn = string;
 
@@ -10020,7 +10020,7 @@ export namespace AWS {
 
             export type TaskDefinitionType = string;
 
-            export type Tags = AWS.IoTWireless.TaskDefinition.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -10060,7 +10060,7 @@ export namespace AWS {
 
             export type LoRaWAN = AWS.IoTWireless.DeviceProfile.LoRaWANDeviceProfile;
 
-            export type Tags = AWS.IoTWireless.DeviceProfile.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -10082,7 +10082,7 @@ export namespace AWS {
 
             export type Fingerprint = string;
 
-            export type Tags = AWS.IoTWireless.PartnerAccount.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -10098,7 +10098,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.IoTWireless.WirelessGateway.Tag[];
+            export type Tags = Tag[];
 
             export type LoRaWAN = AWS.IoTWireless.WirelessGateway.LoRaWANGateway;
 
@@ -10154,7 +10154,7 @@ export namespace AWS {
 
             export type LoRaWAN = AWS.IoTWireless.ServiceProfile.LoRaWANServiceProfile;
 
-            export type Tags = AWS.IoTWireless.ServiceProfile.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -10168,7 +10168,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.IoTWireless.Destination.Tag[];
+            export type Tags = Tag[];
 
             export type RoleArn = string;
 
@@ -10412,7 +10412,7 @@ export namespace AWS {
 
             export type ApplicationDescription = string;
 
-            export type Tags = AWS.KinesisAnalyticsV2.Application.Tag[];
+            export type Tags = Tag[];
 
             export type ServiceExecutionRole = string;
 
@@ -11174,7 +11174,7 @@ export namespace AWS {
 
             export type IpcMode = string;
 
-            export type Tags = AWS.ECS.TaskDefinition.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -11272,7 +11272,7 @@ export namespace AWS {
 
             export type ServiceRegistries = AWS.ECS.Service.ServiceRegistry[];
 
-            export type Tags = AWS.ECS.Service.Tag[];
+            export type Tags = Tag[];
 
             export type TaskDefinition = string;
 
@@ -11364,7 +11364,7 @@ export namespace AWS {
                 Base?: number;
             };
 
-            export type Tags = AWS.ECS.Cluster.Tag[];
+            export type Tags = Tag[];
 
             export type ClusterName = string;
 
@@ -11394,7 +11394,7 @@ export namespace AWS {
 
             export type Name = string;
 
-            export type Tags = AWS.ECS.CapacityProvider.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -11596,7 +11596,7 @@ export namespace AWS {
 
             export type ConfigurationAggregatorName = string;
 
-            export type Tags = AWS.Config.ConfigurationAggregator.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -11756,7 +11756,7 @@ export namespace AWS {
 
             export type QueryExpression = string;
 
-            export type Tags = AWS.Config.StoredQuery.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -11766,7 +11766,7 @@ export namespace AWS {
 
             export type AuthorizedAwsRegion = string;
 
-            export type Tags = AWS.Config.AggregationAuthorization.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -11854,7 +11854,7 @@ export namespace AWS {
 
             export type StackId = string;
 
-            export type Tags = AWS.OpsWorks.Layer.Tag[];
+            export type Tags = Tag[];
 
             export type Type = string;
 
@@ -12068,7 +12068,7 @@ export namespace AWS {
 
             export type SourceStackId = string;
 
-            export type Tags = AWS.OpsWorks.Stack.Tag[];
+            export type Tags = Tag[];
 
             export type UseCustomCookbooks = boolean;
 
@@ -12264,7 +12264,7 @@ export namespace AWS {
 
             export type ComputePlatform = string;
 
-            export type Tags = AWS.CodeDeploy.Application.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -12562,7 +12562,7 @@ export namespace AWS {
 
             export type Format = string;
 
-            export type Tags = AWS.DataBrew.Dataset.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -12822,7 +12822,7 @@ export namespace AWS {
 
             export type Steps = AWS.DataBrew.Recipe.RecipeStep[];
 
-            export type Tags = AWS.DataBrew.Recipe.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -12904,7 +12904,7 @@ export namespace AWS {
 
             export type RoleArn = string;
 
-            export type Tags = AWS.DataBrew.Job.Tag[];
+            export type Tags = Tag[];
 
             export type Timeout = number;
 
@@ -12922,7 +12922,7 @@ export namespace AWS {
 
             export type RoleArn = string;
 
-            export type Tags = AWS.DataBrew.Project.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -12934,7 +12934,7 @@ export namespace AWS {
 
             export type Name = string;
 
-            export type Tags = AWS.DataBrew.Schedule.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -13044,7 +13044,7 @@ export namespace AWS {
 
             export type TransportTransitGatewayAttachmentId = string;
 
-            export type Tags = AWS.EC2.TransitGatewayConnect.Tag[];
+            export type Tags = Tag[];
 
             export type Options = AWS.EC2.TransitGatewayConnect.TransitGatewayConnectOptions;
 
@@ -13081,7 +13081,7 @@ export namespace AWS {
             export type TagSpecification = {
                 ResourceType?: string;
 
-                Tags?: AWS.EC2.EC2Fleet.Tag[];
+                Tags?: Tag[];
             };
 
             export type SpotOptionsRequest = {
@@ -13186,7 +13186,7 @@ export namespace AWS {
 
             export type StaticRoutesOnly = boolean;
 
-            export type Tags = AWS.EC2.VPNConnection.Tag[];
+            export type Tags = Tag[];
 
             export type TransitGatewayId = string;
 
@@ -13257,7 +13257,7 @@ export namespace AWS {
             export type TagSpecification = {
                 ResourceType?: string;
 
-                Tags?: AWS.EC2.LaunchTemplate.Tag[];
+                Tags?: Tag[];
             };
 
             export type Ebs = {
@@ -13395,7 +13395,7 @@ export namespace AWS {
             export type LaunchTemplateTagSpecification = {
                 ResourceType?: string;
 
-                Tags?: AWS.EC2.LaunchTemplate.Tag[];
+                Tags?: Tag[];
             };
 
             export type LaunchTemplateName = string;
@@ -13572,7 +13572,7 @@ export namespace AWS {
 
             export type SubnetId = string;
 
-            export type Tags = AWS.EC2.Instance.Tag[];
+            export type Tags = Tag[];
 
             export type Tenancy = string;
 
@@ -13673,7 +13673,7 @@ export namespace AWS {
             export type SpotFleetTagSpecification = {
                 ResourceType?: string;
 
-                Tags?: AWS.EC2.SpotFleet.Tag[];
+                Tags?: Tag[];
             };
 
             export type PrivateIpAddressSpecification = {
@@ -13774,7 +13774,7 @@ export namespace AWS {
 
             export type SubnetId = string;
 
-            export type Tags = AWS.EC2.NetworkInterface.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -13996,7 +13996,7 @@ export namespace AWS {
 
             export type FilterInArns = string[];
 
-            export type Tags = AWS.EC2.NetworkInsightsAnalysis.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -14009,7 +14009,7 @@ export namespace AWS {
             export type TagSpecification = {
                 ResourceType: string;
 
-                Tags: AWS.EC2.ClientVpnEndpoint.Tag[];
+                Tags: Tag[];
             };
 
             export type ClientAuthenticationRequest = {
@@ -14063,7 +14063,7 @@ export namespace AWS {
             export type TagSpecification = {
                 ResourceType?: string;
 
-                Tags?: AWS.EC2.CapacityReservation.Tag[];
+                Tags?: Tag[];
             };
 
             export type Tenancy = string;
@@ -14162,7 +14162,7 @@ export namespace AWS {
 
             export type SecurityGroupIngress = AWS.EC2.SecurityGroup.Ingress[];
 
-            export type Tags = AWS.EC2.SecurityGroup.Tag[];
+            export type Tags = Tag[];
 
             export type VpcId = string;
 
@@ -14182,7 +14182,7 @@ export namespace AWS {
 
             export type MaxEntries = number;
 
-            export type Tags = AWS.EC2.PrefixList.Tag[];
+            export type Tags = Tag[];
 
             export type Entries = AWS.EC2.PrefixList.Entry[];
 
@@ -14198,7 +14198,7 @@ export namespace AWS {
 
             export type PeerVpcId = string;
 
-            export type Tags = AWS.EC2.VPCPeeringConnection.Tag[];
+            export type Tags = Tag[];
 
             export type VpcId = string;
 
@@ -14228,7 +14228,7 @@ export namespace AWS {
 
             export type PublicIpv4Pool = string;
 
-            export type Tags = AWS.EC2.EIP.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -14262,7 +14262,7 @@ export namespace AWS {
 
             export type SubnetIds = string[];
 
-            export type Tags = AWS.EC2.TransitGatewayAttachment.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -14288,7 +14288,7 @@ export namespace AWS {
 
             export type NtpServers = string[];
 
-            export type Tags = AWS.EC2.DHCPOptions.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -14316,7 +14316,7 @@ export namespace AWS {
 
             export type IpAddress = string;
 
-            export type Tags = AWS.EC2.CustomerGateway.Tag[];
+            export type Tags = Tag[];
 
             export type Type = string;
 
@@ -14342,7 +14342,7 @@ export namespace AWS {
 
         export namespace InternetGateway {
 
-            export type Tags = AWS.EC2.InternetGateway.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -14380,7 +14380,7 @@ export namespace AWS {
 
             export type VpcId = string;
 
-            export type Tags = AWS.EC2.LocalGatewayRouteTableVPCAssociation.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -14416,7 +14416,7 @@ export namespace AWS {
 
             export type SubnetId = string;
 
-            export type Tags = AWS.EC2.NatGateway.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -14424,7 +14424,7 @@ export namespace AWS {
 
             export type TransitGatewayId = string;
 
-            export type Tags = AWS.EC2.TransitGatewayMulticastDomain.Tag[];
+            export type Tags = Tag[];
 
             export type Options = JSONString;
 
@@ -14454,13 +14454,13 @@ export namespace AWS {
 
             export type NetworkInterfaceId = string;
 
-            export type Tags = AWS.EC2.TrafficMirrorTarget.Tag[];
+            export type Tags = Tag[];
 
         }
 
         export namespace RouteTable {
 
-            export type Tags = AWS.EC2.RouteTable.Tag[];
+            export type Tags = Tag[];
 
             export type VpcId = string;
 
@@ -14484,7 +14484,7 @@ export namespace AWS {
 
             export type AmazonSideAsn = number;
 
-            export type Tags = AWS.EC2.TransitGateway.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -14508,7 +14508,7 @@ export namespace AWS {
 
             export type SnapshotId = string;
 
-            export type Tags = AWS.EC2.Volume.Tag[];
+            export type Tags = Tag[];
 
             export type Throughput = number;
 
@@ -14556,7 +14556,7 @@ export namespace AWS {
 
             export type ResourceType = string;
 
-            export type Tags = AWS.EC2.FlowLog.Tag[];
+            export type Tags = Tag[];
 
             export type TrafficType = string;
 
@@ -14576,7 +14576,7 @@ export namespace AWS {
 
             export type OutpostArn = string;
 
-            export type Tags = AWS.EC2.Subnet.Tag[];
+            export type Tags = Tag[];
 
             export type VpcId = string;
 
@@ -14586,7 +14586,7 @@ export namespace AWS {
 
             export type VpcId = string;
 
-            export type Tags = AWS.EC2.CarrierGateway.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -14604,7 +14604,7 @@ export namespace AWS {
 
             export type DestinationPort = number;
 
-            export type Tags = AWS.EC2.NetworkInsightsPath.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -14626,7 +14626,7 @@ export namespace AWS {
 
             export type AmazonSideAsn = number;
 
-            export type Tags = AWS.EC2.VPNGateway.Tag[];
+            export type Tags = Tag[];
 
             export type Type = string;
 
@@ -14636,7 +14636,7 @@ export namespace AWS {
 
             export type TransitGatewayId = string;
 
-            export type Tags = AWS.EC2.TransitGatewayRouteTable.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -14664,7 +14664,7 @@ export namespace AWS {
 
             export type NetworkServices = string[];
 
-            export type Tags = AWS.EC2.TrafficMirrorFilter.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -14766,7 +14766,7 @@ export namespace AWS {
 
             export type TrafficMirrorFilterId = string;
 
-            export type Tags = AWS.EC2.TrafficMirrorSession.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -14788,7 +14788,7 @@ export namespace AWS {
 
             export type InstanceTenancy = string;
 
-            export type Tags = AWS.EC2.VPC.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -14806,7 +14806,7 @@ export namespace AWS {
 
         export namespace NetworkAcl {
 
-            export type Tags = AWS.EC2.NetworkAcl.Tag[];
+            export type Tags = Tag[];
 
             export type VpcId = string;
 
@@ -14838,7 +14838,7 @@ export namespace AWS {
 
             export type PeerRegion = string;
 
-            export type Tags = AWS.EC2.TransitGatewayPeeringAttachment.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -16974,7 +16974,7 @@ export namespace AWS {
 
             export type Runtime = string;
 
-            export type Tags = AWS.Lambda.Function.Tag[];
+            export type Tags = Tag[];
 
             export type Timeout = number;
 
@@ -17202,7 +17202,7 @@ export namespace AWS {
 
             export type LogPublishingOptions = Record<string, AWS.Elasticsearch.Domain.LogPublishingOption>;
 
-            export type Tags = AWS.Elasticsearch.Domain.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -17292,7 +17292,7 @@ export namespace AWS {
 
             export type Name = string;
 
-            export type Tags = AWS.GroundStation.Config.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -17316,7 +17316,7 @@ export namespace AWS {
 
             export type TrackingConfigArn = string;
 
-            export type Tags = AWS.GroundStation.MissionProfile.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -17346,7 +17346,7 @@ export namespace AWS {
 
             export type EndpointDetails = AWS.GroundStation.DataflowEndpointGroup.EndpointDetails[];
 
-            export type Tags = AWS.GroundStation.DataflowEndpointGroup.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -17562,7 +17562,7 @@ export namespace AWS {
 
             export type RoleArn = string;
 
-            export type Tags = AWS.IoTEvents.DetectorModel.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -17576,7 +17576,7 @@ export namespace AWS {
 
             export type InputName = string;
 
-            export type Tags = AWS.IoTEvents.Input.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -18010,7 +18010,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.NetworkFirewall.RuleGroup.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -18042,7 +18042,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.NetworkFirewall.FirewallPolicy.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -18084,7 +18084,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.NetworkFirewall.Firewall.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -18106,7 +18106,7 @@ export namespace AWS {
 
             export type Excludes = AWS.DataSync.Task.FilterRule[];
 
-            export type Tags = AWS.DataSync.Task.Tag[];
+            export type Tags = Tag[];
 
             export type CloudWatchLogGroupArn = string;
 
@@ -18130,7 +18130,7 @@ export namespace AWS {
 
             export type S3StorageClass = string;
 
-            export type Tags = AWS.DataSync.LocationS3.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -18144,7 +18144,7 @@ export namespace AWS {
 
             export type Subdirectory = string;
 
-            export type Tags = AWS.DataSync.LocationNFS.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -18156,7 +18156,7 @@ export namespace AWS {
 
             export type Subdirectory = string;
 
-            export type Tags = AWS.DataSync.LocationEFS.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -18176,7 +18176,7 @@ export namespace AWS {
 
             export type User = string;
 
-            export type Tags = AWS.DataSync.LocationSMB.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -18192,7 +18192,7 @@ export namespace AWS {
 
             export type VpcEndpointId = string;
 
-            export type Tags = AWS.DataSync.Agent.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -18210,7 +18210,7 @@ export namespace AWS {
 
             export type User = string;
 
-            export type Tags = AWS.DataSync.LocationFSxWindows.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -18232,7 +18232,7 @@ export namespace AWS {
 
             export type Subdirectory = string;
 
-            export type Tags = AWS.DataSync.LocationObjectStorage.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -18320,7 +18320,7 @@ export namespace AWS {
 
             export type Quota = AWS.ApiGateway.UsagePlan.QuotaSettings;
 
-            export type Tags = AWS.ApiGateway.UsagePlan.Tag[];
+            export type Tags = Tag[];
 
             export type Throttle = AWS.ApiGateway.UsagePlan.ThrottleSettings;
 
@@ -18348,7 +18348,7 @@ export namespace AWS {
 
             export type StageKeys = AWS.ApiGateway.ApiKey.StageKey[];
 
-            export type Tags = AWS.ApiGateway.ApiKey.Tag[];
+            export type Tags = Tag[];
 
             export type Value = string;
 
@@ -18428,7 +18428,7 @@ export namespace AWS {
 
             export type SecurityPolicy = string;
 
-            export type Tags = AWS.ApiGateway.DomainName.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -18472,7 +18472,7 @@ export namespace AWS {
 
             export type Policy = JSONString;
 
-            export type Tags = AWS.ApiGateway.RestApi.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -18522,7 +18522,7 @@ export namespace AWS {
 
             export type StageName = string;
 
-            export type Tags = AWS.ApiGateway.Stage.Tag[];
+            export type Tags = Tag[];
 
             export type TracingEnabled = boolean;
 
@@ -18636,7 +18636,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.ApiGateway.ClientCertificate.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -18820,7 +18820,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.ResourceGroups.Group.Tag[];
+            export type Tags = Tag[];
 
             export type Configuration = AWS.ResourceGroups.Group.ConfigurationItem[];
 
@@ -18858,7 +18858,7 @@ export namespace AWS {
 
             export type RepositoryPolicyText = JSONString;
 
-            export type Tags = AWS.ECR.Repository.Tag[];
+            export type Tags = Tag[];
 
             export type ImageTagMutability = string;
 
@@ -18878,7 +18878,7 @@ export namespace AWS {
 
             export type RepositoryCatalogData = JSONString;
 
-            export type Tags = AWS.ECR.PublicRepository.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -19222,7 +19222,7 @@ export namespace AWS {
 
             export type DeliveryStreamType = string;
 
-            export type Tags = AWS.KinesisFirehose.DeliveryStream.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -19258,7 +19258,7 @@ export namespace AWS {
 
             export type InstanceType = string;
 
-            export type Tags = AWS.AppStream.ImageBuilder.Tag[];
+            export type Tags = Tag[];
 
             export type ImageArn = string;
 
@@ -19298,7 +19298,7 @@ export namespace AWS {
 
             export type InstanceType = string;
 
-            export type Tags = AWS.AppStream.Fleet.Tag[];
+            export type Tags = Tag[];
 
             export type ImageArn = string;
 
@@ -19348,7 +19348,7 @@ export namespace AWS {
 
             export type DisplayName = string;
 
-            export type Tags = AWS.AppStream.Stack.Tag[];
+            export type Tags = Tag[];
 
             export type AccessEndpoints = AWS.AppStream.Stack.AccessEndpoint[];
 
@@ -19434,7 +19434,7 @@ export namespace AWS {
 
             export type Subnets = string[];
 
-            export type Tags = AWS.ElasticLoadBalancing.LoadBalancer.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -19576,7 +19576,7 @@ export namespace AWS {
 
             export type RoleArn = string;
 
-            export type Tags = AWS.GameLift.GameServerGroup.Tag[];
+            export type Tags = Tag[];
 
             export type VpcSubnets = string[];
 
@@ -19922,7 +19922,7 @@ export namespace AWS {
 
             export type StorageType = string;
 
-            export type Tags = AWS.RDS.DBInstance.Tag[];
+            export type Tags = Tag[];
 
             export type Timezone = string;
 
@@ -20000,7 +20000,7 @@ export namespace AWS {
 
             export type StorageEncrypted = boolean;
 
-            export type Tags = AWS.RDS.DBCluster.Tag[];
+            export type Tags = Tag[];
 
             export type UseLatestRestorableTime = boolean;
 
@@ -20026,7 +20026,7 @@ export namespace AWS {
 
             export type GroupDescription = string;
 
-            export type Tags = AWS.RDS.DBSecurityGroup.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -20124,7 +20124,7 @@ export namespace AWS {
 
             export type OptionGroupDescription = string;
 
-            export type Tags = AWS.RDS.OptionGroup.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -20136,7 +20136,7 @@ export namespace AWS {
 
             export type SubnetIds = string[];
 
-            export type Tags = AWS.RDS.DBSubnetGroup.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -20192,7 +20192,7 @@ export namespace AWS {
 
             export type Parameters = JSONString;
 
-            export type Tags = AWS.RDS.DBClusterParameterGroup.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -20204,7 +20204,7 @@ export namespace AWS {
 
             export type Parameters = Record<string, string>;
 
-            export type Tags = AWS.RDS.DBParameterGroup.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -20272,7 +20272,7 @@ export namespace AWS {
 
             export type TableName = string;
 
-            export type Tags = AWS.DynamoDB.Table.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -20327,7 +20327,7 @@ export namespace AWS {
 
                 SSESpecification?: AWS.DynamoDB.GlobalTable.ReplicaSSESpecification;
 
-                Tags?: AWS.DynamoDB.GlobalTable.Tag[];
+                Tags?: Tag[];
 
                 ReadProvisionedThroughputSettings?: AWS.DynamoDB.GlobalTable.ReadProvisionedThroughputSettings;
             };
@@ -20434,7 +20434,7 @@ export namespace AWS {
 
             export type Selectors = AWS.EKS.FargateProfile.Selector[];
 
-            export type Tags = AWS.EKS.FargateProfile.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -20506,7 +20506,7 @@ export namespace AWS {
 
             export type ServiceAccountRoleArn = string;
 
-            export type Tags = AWS.EKS.Addon.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -20583,11 +20583,11 @@ export namespace AWS {
             export type Schedule = {
                 ShareRules?: AWS.DLM.LifecyclePolicy.ShareRule[];
 
-                TagsToAdd?: AWS.DLM.LifecyclePolicy.Tag[];
+                TagsToAdd?: Tag[];
 
                 CreateRule?: AWS.DLM.LifecyclePolicy.CreateRule;
 
-                VariableTags?: AWS.DLM.LifecyclePolicy.Tag[];
+                VariableTags?: Tag[];
 
                 FastRestoreRule?: AWS.DLM.LifecyclePolicy.FastRestoreRule;
 
@@ -20642,7 +20642,7 @@ export namespace AWS {
 
             export type State = string;
 
-            export type Tags = AWS.DLM.LifecyclePolicy.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -20850,7 +20850,7 @@ export namespace AWS {
 
             export type OutputFormat = string;
 
-            export type Tags = AWS.CloudWatch.MetricStream.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -20952,7 +20952,7 @@ export namespace AWS {
 
             export type TargetType = string;
 
-            export type Tags = AWS.SSM.Document.Tag[];
+            export type Tags = Tag[];
 
             export type Requires = AWS.SSM.Document.DocumentRequires[];
 
@@ -21016,7 +21016,7 @@ export namespace AWS {
 
             export type GlobalFilters = AWS.SSM.PatchBaseline.PatchFilterGroup;
 
-            export type Tags = AWS.SSM.PatchBaseline.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -21218,7 +21218,7 @@ export namespace AWS {
 
             export type EndDate = string;
 
-            export type Tags = AWS.SSM.MaintenanceWindow.Tag[];
+            export type Tags = Tag[];
 
             export type Name = string;
 
@@ -21304,7 +21304,7 @@ export namespace AWS {
 
             export type IamRoles = string[];
 
-            export type Tags = AWS.Redshift.Cluster.Tag[];
+            export type Tags = Tag[];
 
             export type VpcSecurityGroupIds = string[];
 
@@ -21330,7 +21330,7 @@ export namespace AWS {
 
             export type Parameters = AWS.Redshift.ClusterParameterGroup.Parameter[];
 
-            export type Tags = AWS.Redshift.ClusterParameterGroup.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -21340,7 +21340,7 @@ export namespace AWS {
 
             export type SubnetIds = string[];
 
-            export type Tags = AWS.Redshift.ClusterSubnetGroup.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -21348,7 +21348,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.Redshift.ClusterSecurityGroup.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -21554,7 +21554,7 @@ export namespace AWS {
 
             export type Subnets = string[];
 
-            export type Tags = AWS.ElasticLoadBalancingV2.LoadBalancer.Tag[];
+            export type Tags = Tag[];
 
             export type Type = string;
 
@@ -21720,7 +21720,7 @@ export namespace AWS {
 
             export type ProtocolVersion = string;
 
-            export type Tags = AWS.ElasticLoadBalancingV2.TargetGroup.Tag[];
+            export type Tags = Tag[];
 
             export type TargetGroupAttributes = AWS.ElasticLoadBalancingV2.TargetGroup.TargetGroupAttribute[];
 
@@ -22174,7 +22174,7 @@ export namespace AWS {
 
             export type AwsAccount = AWS.AuditManager.Assessment.AWSAccount;
 
-            export type Tags = AWS.AuditManager.Assessment.Tag[];
+            export type Tags = Tag[];
 
             export type Roles = AWS.AuditManager.Assessment.Role[];
 
@@ -22270,7 +22270,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.NetworkManager.Device.Tag[];
+            export type Tags = Tag[];
 
             export type GlobalNetworkId = string;
 
@@ -22298,7 +22298,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.NetworkManager.Link.Tag[];
+            export type Tags = Tag[];
 
             export type Type = string;
 
@@ -22310,7 +22310,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.NetworkManager.Site.Tag[];
+            export type Tags = Tag[];
 
             export type GlobalNetworkId = string;
 
@@ -22342,7 +22342,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.NetworkManager.GlobalNetwork.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -22614,7 +22614,7 @@ export namespace AWS {
 
             export type OutpostId = string;
 
-            export type Tags = AWS.S3Outposts.Bucket.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -22684,7 +22684,7 @@ export namespace AWS {
 
             export type ReplicaRegions = AWS.SecretsManager.Secret.ReplicaRegion[];
 
-            export type Tags = AWS.SecretsManager.Secret.Tag[];
+            export type Tags = Tag[];
 
             export type Name = string;
 
@@ -22828,7 +22828,7 @@ export namespace AWS {
 
             export type OpsItemSNSTopicArn = string;
 
-            export type Tags = AWS.ApplicationInsights.Application.Tag[];
+            export type Tags = Tag[];
 
             export type CustomComponents = AWS.ApplicationInsights.Application.CustomComponent[];
 
@@ -22988,7 +22988,7 @@ export namespace AWS {
 
             export type BuildBatchConfig = AWS.CodeBuild.Project.ProjectBuildBatchConfig;
 
-            export type Tags = AWS.CodeBuild.Project.Tag[];
+            export type Tags = Tag[];
 
             export type TimeoutInMinutes = number;
 
@@ -23024,7 +23024,7 @@ export namespace AWS {
 
             export type DeleteReports = boolean;
 
-            export type Tags = AWS.CodeBuild.ReportGroup.Tag[];
+            export type Tags = Tag[];
 
             export type Name = string;
 
@@ -23080,7 +23080,7 @@ export namespace AWS {
 
             export type GatewayName = string;
 
-            export type Tags = AWS.IoTSiteWise.Gateway.Tag[];
+            export type Tags = Tag[];
 
             export type GatewayCapabilitySummaries = AWS.IoTSiteWise.Gateway.GatewayCapabilitySummary[];
 
@@ -23172,7 +23172,7 @@ export namespace AWS {
 
             export type AssetModelHierarchies = AWS.IoTSiteWise.AssetModel.AssetModelHierarchy[];
 
-            export type Tags = AWS.IoTSiteWise.AssetModel.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -23200,7 +23200,7 @@ export namespace AWS {
 
             export type AssetHierarchies = AWS.IoTSiteWise.Asset.AssetHierarchy[];
 
-            export type Tags = AWS.IoTSiteWise.Asset.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -23214,7 +23214,7 @@ export namespace AWS {
 
             export type DashboardDefinition = string;
 
-            export type Tags = AWS.IoTSiteWise.Dashboard.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -23234,7 +23234,7 @@ export namespace AWS {
 
             export type Alarms = JSONString;
 
-            export type Tags = AWS.IoTSiteWise.Portal.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -23246,7 +23246,7 @@ export namespace AWS {
 
             export type ProjectDescription = string;
 
-            export type Tags = AWS.IoTSiteWise.Project.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -23296,7 +23296,7 @@ export namespace AWS {
 
             export type PermissionModel = string;
 
-            export type Tags = AWS.CloudFormation.StackSet.Tag[];
+            export type Tags = Tag[];
 
             export type TemplateBody = string;
 
@@ -23402,7 +23402,7 @@ export namespace AWS {
 
             export type Parameters = Record<string, string>;
 
-            export type Tags = AWS.CloudFormation.Stack.Tag[];
+            export type Tags = Tag[];
 
             export type TemplateURL = string;
 
@@ -23481,7 +23481,7 @@ export namespace AWS {
 
             export type Actions = AWS.SSMIncidents.ResponsePlan.Action[];
 
-            export type Tags = AWS.SSMIncidents.ResponsePlan.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -23527,7 +23527,7 @@ export namespace AWS {
 
             export type FirewallRules = AWS.Route53Resolver.FirewallRuleGroup.FirewallRule[];
 
-            export type Tags = AWS.Route53Resolver.FirewallRuleGroup.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -23547,7 +23547,7 @@ export namespace AWS {
 
             export type TargetIps = AWS.Route53Resolver.ResolverRule.TargetAddress[];
 
-            export type Tags = AWS.Route53Resolver.ResolverRule.Tag[];
+            export type Tags = Tag[];
 
             export type Name = string;
 
@@ -23567,7 +23567,7 @@ export namespace AWS {
 
             export type SecurityGroupIds = string[];
 
-            export type Tags = AWS.Route53Resolver.ResolverEndpoint.Tag[];
+            export type Tags = Tag[];
 
             export type Name = string;
 
@@ -23593,7 +23593,7 @@ export namespace AWS {
 
             export type MutationProtection = string;
 
-            export type Tags = AWS.Route53Resolver.FirewallRuleGroupAssociation.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -23619,7 +23619,7 @@ export namespace AWS {
 
             export type DomainFileUrl = string;
 
-            export type Tags = AWS.Route53Resolver.FirewallDomainList.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -23649,7 +23649,7 @@ export namespace AWS {
 
             export type KmsMasterKeyId = string;
 
-            export type Tags = AWS.SNS.Topic.Tag[];
+            export type Tags = Tag[];
 
             export type TopicName = string;
 
@@ -23713,7 +23713,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.Connect.QuickConnect.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -24201,7 +24201,7 @@ export namespace AWS {
 
             export type Stages = AWS.CodePipeline.Pipeline.StageDeclaration[];
 
-            export type Tags = AWS.CodePipeline.Pipeline.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -24225,7 +24225,7 @@ export namespace AWS {
 
             export type Provider = string;
 
-            export type Tags = AWS.CodePipeline.CustomActionType.Tag[];
+            export type Tags = Tag[];
 
             export type Version = string;
 
@@ -24531,7 +24531,7 @@ export namespace AWS {
 
             export type Enabled = boolean;
 
-            export type Tags = AWS.GlobalAccelerator.Accelerator.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -24547,7 +24547,7 @@ export namespace AWS {
 
             export type Name = string;
 
-            export type Tags = AWS.IVS.RecordingConfiguration.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -24561,7 +24561,7 @@ export namespace AWS {
 
             export type Type = string;
 
-            export type Tags = AWS.IVS.Channel.Tag[];
+            export type Tags = Tag[];
 
             export type RecordingConfigurationArn = string;
 
@@ -24573,7 +24573,7 @@ export namespace AWS {
 
             export type PublicKeyMaterial = string;
 
-            export type Tags = AWS.IVS.PlaybackKeyPair.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -24581,7 +24581,7 @@ export namespace AWS {
 
             export type ChannelArn = string;
 
-            export type Tags = AWS.IVS.StreamKey.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -24849,7 +24849,7 @@ export namespace AWS {
 
             export type RoleName = string;
 
-            export type Tags = AWS.IAM.Role.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -24873,7 +24873,7 @@ export namespace AWS {
 
             export type Policies = AWS.IAM.User.Policy[];
 
-            export type Tags = AWS.IAM.User.Tag[];
+            export type Tags = Tag[];
 
             export type UserName = string;
 
@@ -24905,7 +24905,7 @@ export namespace AWS {
 
             export type Users = string[];
 
-            export type Tags = AWS.IAM.VirtualMFADevice.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -24915,7 +24915,7 @@ export namespace AWS {
 
             export type SamlMetadataDocument = string;
 
-            export type Tags = AWS.IAM.SAMLProvider.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -24931,7 +24931,7 @@ export namespace AWS {
 
             export type PrivateKey = string;
 
-            export type Tags = AWS.IAM.ServerCertificate.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -24977,7 +24977,7 @@ export namespace AWS {
 
             export type ThumbprintList = string[];
 
-            export type Tags = AWS.IAM.OIDCProvider.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -25032,7 +25032,7 @@ export namespace AWS {
 
                 Description?: string;
 
-                Tags?: AWS.FraudDetector.Detector.Tag[];
+                Tags?: Tag[];
 
                 CreatedTime?: string;
 
@@ -25048,7 +25048,7 @@ export namespace AWS {
 
                 Description?: string;
 
-                Tags?: AWS.FraudDetector.Detector.Tag[];
+                Tags?: Tag[];
 
                 CreatedTime?: string;
 
@@ -25066,7 +25066,7 @@ export namespace AWS {
 
                 Description?: string;
 
-                Tags?: AWS.FraudDetector.Detector.Tag[];
+                Tags?: Tag[];
 
                 CreatedTime?: string;
 
@@ -25090,7 +25090,7 @@ export namespace AWS {
 
                 Description?: string;
 
-                Tags?: AWS.FraudDetector.Detector.Tag[];
+                Tags?: Tag[];
 
                 CreatedTime?: string;
 
@@ -25114,7 +25114,7 @@ export namespace AWS {
 
                 Description?: string;
 
-                Tags?: AWS.FraudDetector.Detector.Tag[];
+                Tags?: Tag[];
 
                 CreatedTime?: string;
 
@@ -25129,7 +25129,7 @@ export namespace AWS {
 
             export type RuleExecutionMode = string;
 
-            export type Tags = AWS.FraudDetector.Detector.Tag[];
+            export type Tags = Tag[];
 
             export type Description = string;
 
@@ -25150,7 +25150,7 @@ export namespace AWS {
 
                 Description?: string;
 
-                Tags?: AWS.FraudDetector.EventType.Tag[];
+                Tags?: Tag[];
 
                 CreatedTime?: string;
 
@@ -25174,7 +25174,7 @@ export namespace AWS {
 
                 Description?: string;
 
-                Tags?: AWS.FraudDetector.EventType.Tag[];
+                Tags?: Tag[];
 
                 CreatedTime?: string;
 
@@ -25190,7 +25190,7 @@ export namespace AWS {
 
                 Description?: string;
 
-                Tags?: AWS.FraudDetector.EventType.Tag[];
+                Tags?: Tag[];
 
                 CreatedTime?: string;
 
@@ -25199,7 +25199,7 @@ export namespace AWS {
 
             export type Name = string;
 
-            export type Tags = AWS.FraudDetector.EventType.Tag[];
+            export type Tags = Tag[];
 
             export type Description = string;
 
@@ -25215,7 +25215,7 @@ export namespace AWS {
 
             export type Name = string;
 
-            export type Tags = AWS.FraudDetector.EntityType.Tag[];
+            export type Tags = Tag[];
 
             export type Description = string;
 
@@ -25225,7 +25225,7 @@ export namespace AWS {
 
             export type Name = string;
 
-            export type Tags = AWS.FraudDetector.Outcome.Tag[];
+            export type Tags = Tag[];
 
             export type Description = string;
 
@@ -25235,7 +25235,7 @@ export namespace AWS {
 
             export type Name = string;
 
-            export type Tags = AWS.FraudDetector.Label.Tag[];
+            export type Tags = Tag[];
 
             export type Description = string;
 
@@ -25253,7 +25253,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.FraudDetector.Variable.Tag[];
+            export type Tags = Tag[];
 
             export type VariableType = string;
 
@@ -25293,7 +25293,7 @@ export namespace AWS {
 
             export type ProvisioningParameters = AWS.ServiceCatalog.CloudFormationProvisionedProduct.ProvisioningParameter[];
 
-            export type Tags = AWS.ServiceCatalog.CloudFormationProvisionedProduct.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -25345,7 +25345,7 @@ export namespace AWS {
 
             export type SupportUrl = string;
 
-            export type Tags = AWS.ServiceCatalog.CloudFormationProduct.Tag[];
+            export type Tags = Tag[];
 
             export type Name = string;
 
@@ -25433,7 +25433,7 @@ export namespace AWS {
 
             export type AcceptLanguage = string;
 
-            export type Tags = AWS.ServiceCatalog.Portfolio.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -25721,7 +25721,7 @@ export namespace AWS {
 
             export type AccessLoggingEnabled = boolean;
 
-            export type Tags = AWS.MediaStore.Container.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -25943,7 +25943,7 @@ export namespace AWS {
 
             export type PlatformId = string;
 
-            export type Tags = AWS.Signer.SigningProfile.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -26311,7 +26311,7 @@ export namespace AWS {
 
             export type RoleArn = string;
 
-            export type Tags = AWS.Kendra.DataSource.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -26393,7 +26393,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.Kendra.Index.Tag[];
+            export type Tags = Tag[];
 
             export type Name = string;
 
@@ -26425,7 +26425,7 @@ export namespace AWS {
 
             export type RoleArn = string;
 
-            export type Tags = AWS.Kendra.Faq.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -26477,7 +26477,7 @@ export namespace AWS {
 
             export type Repository = string;
 
-            export type Tags = AWS.Amplify.App.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -26533,7 +26533,7 @@ export namespace AWS {
 
             export type Stage = string;
 
-            export type Tags = AWS.Amplify.Branch.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -26703,7 +26703,7 @@ export namespace AWS {
 
             export type FailureRetentionPeriod = number;
 
-            export type Tags = AWS.Synthetics.Canary.Tag[];
+            export type Tags = Tag[];
 
             export type StartCanaryAfterCreation = boolean;
 
@@ -26845,7 +26845,7 @@ export namespace AWS {
 
             export type SubjectAlternativeNames = string[];
 
-            export type Tags = AWS.CertificateManager.Certificate.Tag[];
+            export type Tags = Tag[];
 
             export type ValidationMethod = string;
 
@@ -26875,7 +26875,7 @@ export namespace AWS {
 
             export type NamespaceId = string;
 
-            export type Tags = AWS.ServiceDiscovery.Service.Tag[];
+            export type Tags = Tag[];
 
             export type Name = string;
 
@@ -26891,7 +26891,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.ServiceDiscovery.PublicDnsNamespace.Tag[];
+            export type Tags = Tag[];
 
             export type Name = string;
 
@@ -26909,7 +26909,7 @@ export namespace AWS {
 
             export type Vpc = string;
 
-            export type Tags = AWS.ServiceDiscovery.PrivateDnsNamespace.Tag[];
+            export type Tags = Tag[];
 
             export type Name = string;
 
@@ -26929,7 +26929,7 @@ export namespace AWS {
 
             export type Description = string;
 
-            export type Tags = AWS.ServiceDiscovery.HttpNamespace.Tag[];
+            export type Tags = Tag[];
 
             export type Name = string;
 
@@ -26963,7 +26963,7 @@ export namespace AWS {
 
             export type ArchiveRules = AWS.AccessAnalyzer.Analyzer.ArchiveRule[];
 
-            export type Tags = AWS.AccessAnalyzer.Analyzer.Tag[];
+            export type Tags = Tag[];
 
             export type Type = string;
 
@@ -27031,7 +27031,7 @@ export namespace AWS {
 
             export type ExclusiveEndTime = string;
 
-            export type Tags = AWS.QLDB.Stream.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -27043,7 +27043,7 @@ export namespace AWS {
 
             export type KmsKey = string;
 
-            export type Tags = AWS.QLDB.Ledger.Tag[];
+            export type Tags = Tag[];
 
             export type Name = string;
 
@@ -27195,7 +27195,7 @@ export namespace AWS {
 
             export type EventBridgeBus = string;
 
-            export type Tags = AWS.AppIntegrations.EventIntegration.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -27269,7 +27269,7 @@ export namespace AWS {
 
             export type ShardCount = number;
 
-            export type Tags = AWS.Kinesis.Stream.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -27315,7 +27315,7 @@ export namespace AWS {
 
             export type RepositoryDescription = string;
 
-            export type Tags = AWS.CodeCommit.Repository.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -27333,7 +27333,7 @@ export namespace AWS {
 
             export type Name = string;
 
-            export type Tags = AWS.EMRContainers.VirtualCluster.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -27389,7 +27389,7 @@ export namespace AWS {
 
             export type RestoreType = string;
 
-            export type Tags = AWS.Neptune.DBCluster.Tag[];
+            export type Tags = Tag[];
 
             export type EnableCloudwatchLogsExports = string[];
 
@@ -27403,7 +27403,7 @@ export namespace AWS {
 
             export type SubnetIds = string[];
 
-            export type Tags = AWS.Neptune.DBSubnetGroup.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -27429,7 +27429,7 @@ export namespace AWS {
 
             export type DBSnapshotIdentifier = string;
 
-            export type Tags = AWS.Neptune.DBInstance.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -27441,7 +27441,7 @@ export namespace AWS {
 
             export type Family = string;
 
-            export type Tags = AWS.Neptune.DBClusterParameterGroup.Tag[];
+            export type Tags = Tag[];
 
             export type Name = string;
 
@@ -27455,7 +27455,7 @@ export namespace AWS {
 
             export type Family = string;
 
-            export type Tags = AWS.Neptune.DBParameterGroup.Tag[];
+            export type Tags = Tag[];
 
             export type Name = string;
 
@@ -27513,7 +27513,7 @@ export namespace AWS {
 
             export type InlinePolicy = JSONString;
 
-            export type Tags = AWS.SSO.PermissionSet.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -27555,7 +27555,7 @@ export namespace AWS {
 
             export type SecurityGroupIds = string[];
 
-            export type Tags = AWS.FSx.FileSystem.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -27591,7 +27591,7 @@ export namespace AWS {
 
             export type RootVolumeEncryptionEnabled = boolean;
 
-            export type Tags = AWS.WorkSpaces.Workspace.Tag[];
+            export type Tags = Tag[];
 
             export type UserName = string;
 
@@ -27615,7 +27615,7 @@ export namespace AWS {
 
             export type ConnectionString = string;
 
-            export type Tags = AWS.WorkSpaces.ConnectionAlias.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -27651,7 +27651,7 @@ export namespace AWS {
 
             export type SshPublicKeys = AWS.Transfer.User.SshPublicKey[];
 
-            export type Tags = AWS.Transfer.User.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -27677,7 +27677,7 @@ export namespace AWS {
 
             export type IdentityProviderType = string;
 
-            export type Tags = AWS.Transfer.Server.Tag[];
+            export type Tags = Tag[];
 
             export type Certificate = string;
 
@@ -27857,7 +27857,7 @@ export namespace AWS {
 
             export type AnomalyDetectionNotificationConfiguration = AWS.CodeGuruProfiler.ProfilingGroup.Channel[];
 
-            export type Tags = AWS.CodeGuruProfiler.ProfilingGroup.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -27911,7 +27911,7 @@ export namespace AWS {
 
             export type InstanceType = string;
 
-            export type Tags = AWS.OpsWorksCM.Server.Tag[];
+            export type Tags = Tag[];
 
             export type Engine = string;
 
@@ -27973,7 +27973,7 @@ export namespace AWS {
 
             export type InstanceType = string;
 
-            export type Tags = AWS.Cloud9.EnvironmentEC2.Tag[];
+            export type Tags = Tag[];
 
             export type Name = string;
 
@@ -27993,7 +27993,7 @@ export namespace AWS {
 
             export type ResourceArns = string[];
 
-            export type Tags = AWS.RAM.ResourceShare.Tag[];
+            export type Tags = Tag[];
 
             export type Name = string;
 
@@ -28011,7 +28011,7 @@ export namespace AWS {
 
             export type RoleArn = string;
 
-            export type Tags = AWS.IoTFleetHub.Application.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -28053,7 +28053,7 @@ export namespace AWS {
 
             export type BackupRetentionPeriod = number;
 
-            export type Tags = AWS.DocDB.DBCluster.Tag[];
+            export type Tags = Tag[];
 
             export type EnableCloudwatchLogsExports = string[];
 
@@ -28067,7 +28067,7 @@ export namespace AWS {
 
             export type SubnetIds = string[];
 
-            export type Tags = AWS.DocDB.DBSubnetGroup.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -28085,7 +28085,7 @@ export namespace AWS {
 
             export type DBInstanceIdentifier = string;
 
-            export type Tags = AWS.DocDB.DBInstance.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -28097,7 +28097,7 @@ export namespace AWS {
 
             export type Family = string;
 
-            export type Tags = AWS.DocDB.DBClusterParameterGroup.Tag[];
+            export type Tags = Tag[];
 
             export type Name = string;
 
@@ -28119,7 +28119,7 @@ export namespace AWS {
 
             export type PendingWindowInDays = number;
 
-            export type Tags = AWS.KMS.ReplicaKey.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -28149,7 +28149,7 @@ export namespace AWS {
 
             export type PendingWindowInDays = number;
 
-            export type Tags = AWS.KMS.Key.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -28173,7 +28173,7 @@ export namespace AWS {
 
         export namespace Graph {
 
-            export type Tags = AWS.Detective.Graph.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -28193,7 +28193,7 @@ export namespace AWS {
 
             export type ConnectionArn = string;
 
-            export type Tags = AWS.CodeGuruReviewer.RepositoryAssociation.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -28205,7 +28205,7 @@ export namespace AWS {
 
             export type SuiteDefinitionConfiguration = JSONString;
 
-            export type Tags = AWS.IoTCoreDeviceAdvisor.SuiteDefinition.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -28219,7 +28219,7 @@ export namespace AWS {
 
             export type KmsKeyId = string;
 
-            export type Tags = AWS.Timestream.Database.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -28231,7 +28231,7 @@ export namespace AWS {
 
             export type RetentionProperties = JSONString;
 
-            export type Tags = AWS.Timestream.Table.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -28241,7 +28241,7 @@ export namespace AWS {
 
         export namespace ResourceGroup {
 
-            export type ResourceGroupTags = AWS.Inspector.ResourceGroup.Tag[];
+            export type ResourceGroupTags = Tag[];
 
         }
 
@@ -28255,7 +28255,7 @@ export namespace AWS {
 
             export type RulesPackageArns = string[];
 
-            export type UserAttributesForFindings = AWS.Inspector.AssessmentTemplate.Tag[];
+            export type UserAttributesForFindings = Tag[];
 
         }
 
@@ -28279,7 +28279,7 @@ export namespace AWS {
 
             export type PermissionsPolicyDocument = JSONString;
 
-            export type Tags = AWS.CodeArtifact.Domain.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -28299,7 +28299,7 @@ export namespace AWS {
 
             export type PermissionsPolicyDocument = JSONString;
 
-            export type Tags = AWS.CodeArtifact.Repository.Tag[];
+            export type Tags = Tag[];
 
         }
 
@@ -28341,7 +28341,7 @@ export namespace AWS {
 
             export type RedrivePolicy = JSONString;
 
-            export type Tags = AWS.SQS.Queue.Tag[];
+            export type Tags = Tag[];
 
             export type VisibilityTimeout = number;
 
@@ -28389,7 +28389,7 @@ export namespace AWS {
 
             export type HostArn = string;
 
-            export type Tags = AWS.CodeStarConnections.Connection.Tag[];
+            export type Tags = Tag[];
 
         }
 
