@@ -170,7 +170,11 @@ const renderPackage = (
     if (v instanceof Object) {
       namespaceValues.push(renderPackage(v, k));
     } else {
-      typeValues.push(`${k}${v.replace(/::/gim, () => '.')};`);
+      if (!scopeName) {
+        typeValues.push(`export type ${k} = ${v.replace(/::/gim, () => '.')};`);
+      } else {
+        typeValues.push(`${k}${v.replace(/::/gim, () => '.')};`);
+      }
     }
   }
 
