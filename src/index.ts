@@ -156,41 +156,40 @@ const PackageStructure: Record<any, any> = Object.keys(
 
 const renderPackage = (
   pack: Record<any, any> = {},
-  depth = 0,
-  inType = false
+  scopeName?: string
 ): string => {
-  const values = [];
+  const typeValues: string[] = [];
+  const namespaceValues: string[] = [];
 
-  // TODO: Output types AND namespaces, when there is contents for either.
+  let values: string[] = [];
 
+  // Output types AND namespaces, when there is contents for either.
   for (const k in pack) {
     const v = pack[k];
 
     if (v instanceof Object) {
-      if (depth > 2) {
-        if (inType) {
-          values.push(`${k}: { ${renderPackage(v, depth + 1, true)} };`);
-        } else {
-          values.push(
-            `export type ${k} = { ${renderPackage(v, depth + 1, true)} };`
-          );
-        }
-      } else {
-        values.push(`export namespace ${k} {`);
-        values.push(renderPackage(v, depth + 1));
-        values.push('}');
-      }
+      namespaceValues.push(renderPackage(v));
     } else {
-      if (depth > 3 || inType) {
-        values.push(`${k}${v.replace(/::/gim, () => '.')};`);
-      } else {
-        values.push(
-          `export type ${k} = ${v
-            .replace(/::/gim, () => '.')
-            .replace(/(:)|(\?:)/gim, () => '')};`
-        );
-      }
+      typeValues.push(`${k}${v.replace(/::/gim, () => '.')};`);
     }
+  }
+
+  if (typeValues.length > 0) {
+    // Push type syntax into values.
+    const insertValues: string[] = scopeName
+      ? [`export type ${scopeName} = {\n`, ...typeValues, `\n};`]
+      : typeValues;
+
+    values = [...values, ...insertValues];
+  }
+
+  if (namespaceValues.length > 0) {
+    // Push namespace syntax into values.
+    const insertValues: string[] = scopeName
+      ? [`export namespace ${scopeName} {\n`, ...namespaceValues, `\n}`]
+      : namespaceValues;
+
+    values = [...values, ...insertValues];
   }
 
   return values.join('\n\n');
