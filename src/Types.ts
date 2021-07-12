@@ -1,31 +1,41 @@
-export type CFResourceTypeProperty = {
-  Documentation?: string;
-  UpdateType?: string;
-  Required?: boolean;
-  PrimitiveType?: string;
+export type PropertyDescriptor = {
+  Documentation: string;
   Type?: string;
+  UpdateType: string;
+  Required: boolean;
+  PrimitiveType?: string;
   PrimitiveItemType?: string;
   ItemType?: string;
   DuplicatesAllowed?: boolean;
 };
 
-export type CFResourceTypePropertyMap = {
-  [Property: string]: CFResourceTypeProperty;
-};
-
-export type CFResourceType = CFResourceTypeProperty & {
+export type PropertyType = {
   Documentation?: string;
-  Properties?: CFResourceTypePropertyMap;
-  Attributes?: CFResourceTypePropertyMap;
-  AdditionalProperties?: boolean;
+  Properties?: Record<string, PropertyDescriptor>;
+  Type?: string;
+  Required?: boolean;
+  ItemType?: string;
+  UpdateType?: string;
+  PrimitiveType?: string;
 };
 
-export type CFResourceTypeMap = {
-  [ResourceType: string]: CFResourceType;
+export type AttributeType = {
+  PrimitiveType?: string;
+  Type?: string;
+  ItemType?: string;
+  PrimitiveItemType?: string;
+  DuplicatesAllowed?: boolean;
+};
+
+export type ResourceType = {
+  Documentation: string;
+  AdditionalProperties?: boolean;
+  Properties: Record<string, PropertyDescriptor>;
+  Attributes?: Record<string, AttributeType>;
 };
 
 export type CloudFormationResourceSpecification = {
-  PropertyTypes: CFResourceTypeMap;
-  ResourceTypes: CFResourceTypeMap;
+  PropertyTypes: Record<string, PropertyType>;
+  ResourceTypes: Record<string, ResourceType>;
   ResourceSpecificationVersion: `${number}.${number}.${number}`;
 };
