@@ -1,6 +1,7 @@
 import FS from 'fs';
 import * as TS from 'typescript';
 import { format } from 'prettier';
+import { CloudFormationResourceSpecification, PropertyType, ResourceType } from './Types';
 import { CloudFormationResourceSpecificationData } from './CloudFormationResourceSpecification';
 
 type PropertyTypeMap = {
@@ -16,7 +17,7 @@ const PRIMITIVE_TYPE_MAP: Record<string, string> = {
   Integer: 'number',
   Boolean: 'boolean',
   Double: 'number',
-  Json: 'JSONString',
+  Json: 'Json',
   Timestamp: 'Timestamp',
   Long: 'number',
 };
@@ -36,7 +37,51 @@ const getPrimitiveType = (inputPrimType: string | undefined): string | undefined
 const getTypeWithItemType = (type: string, itemType: string): string =>
   type === 'Map' ? `Record<string, ${itemType}>` : type === 'List' ? `${itemType}[]` : `${type}<${itemType}>`;
 
-const { PropertyTypes, ResourceTypes } = CloudFormationResourceSpecificationData;
+type NamespaceStructure = {
+  aliases?: string[];
+  propertyTypes?: Record<string, PropertyType>;
+  resourceTypes?: Record<string, ResourceType>;
+  namespaces?: Record<string, NamespaceStructure>;
+};
+const BASE_NAMESPACE_STRUCTURE: NamespaceStructure = {
+  aliases: ['export type Json = string;', 'export type Timestamp = string;'],
+  propertyTypes: {},
+  resourceTypes: {},
+  namespaces: {},
+};
+
+const getNamespaceStructure = (specification: CloudFormationResourceSpecification, baseStructure: NamespaceStructure): NamespaceStructure => {
+  const newStructure: NamespaceStructure = {
+    ...baseStructure,
+  };
+  const { PropertyTypes, ResourceTypes } = specification;
+  const propertyTypesKeys = Object.keys(PropertyTypes);
+  const resourceTypesKeys = Object.keys(ResourceTypes);
+
+  for (const pTK of propertyTypesKeys) {
+    const fullPropertyTypeNameParts = pTK.replace(/::/gim, () => '.').split('.');
+    const propType: PropertyType = PropertyTypes[pTK];
+
+    let targetNamespace: NamespaceStructure = newStructure;
+
+    for (let i = 0; i < fullPropertyTypeNameParts.length; i++) {
+      const part = fullPropertyTypeNameParts[i];
+
+      if (i === fullPropertyTypeNameParts.length - 1) {
+        targetNamespace.propertyTypes = targetNamespace.propertyTypes || {};
+        targetNamespace.propertyTypes[part] = propType;
+      } else {
+        targetNamespace.namespaces = targetNamespace.namespaces || {};
+        targetNamespace.namespaces[part] = targetNamespace.namespaces[part] || {};
+        targetNamespace = targetNamespace.namespaces[part];
+      }
+    }
+  }
+
+  return newStructure;
+};
+
+const NamespaceStructure: NamespaceStructure = getNamespaceStructure(CloudFormationResourceSpecificationData, BASE_NAMESPACE_STRUCTURE);
 
 const getDiagnosticsForText = (text: string) => {
   const dummyFilePath = '/file.ts';
