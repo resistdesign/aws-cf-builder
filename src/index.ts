@@ -78,6 +78,26 @@ const getNamespaceStructure = (specification: CloudFormationResourceSpecificatio
     }
   }
 
+  for (const rTK of resourceTypesKeys) {
+    const fullResourceTypeNameParts = rTK.split('::');
+    const resType: ResourceType = ResourceTypes[rTK];
+
+    let targetNamespace: NamespaceStructure = newStructure;
+
+    for (let i = 0; i < fullResourceTypeNameParts.length; i++) {
+      const part = fullResourceTypeNameParts[i];
+
+      if (i === fullResourceTypeNameParts.length - 1) {
+        targetNamespace.resourceTypes = targetNamespace.resourceTypes || {};
+        targetNamespace.resourceTypes[part] = resType;
+      } else {
+        targetNamespace.namespaces = targetNamespace.namespaces || {};
+        targetNamespace.namespaces[part] = targetNamespace.namespaces[part] || {};
+        targetNamespace = targetNamespace.namespaces[part];
+      }
+    }
+  }
+
   return newStructure;
 };
 
