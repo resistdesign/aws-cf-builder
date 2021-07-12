@@ -1121,10 +1121,6 @@ export namespace AWS {
 
   export namespace QuickSight {
     export type DataSet = {
-      RowLevelPermissionDataSet?: AWS.QuickSight.DataSet.RowLevelPermissionDataSet;
-
-      IngestionWaitPolicy?: AWS.QuickSight.DataSet.IngestionWaitPolicy;
-
       AwsAccountId?: string;
 
       ColumnGroups?: AWS.QuickSight.DataSet.ColumnGroup[];
@@ -1145,7 +1141,11 @@ export namespace AWS {
 
       PhysicalTableMap?: Record<string, AWS.QuickSight.DataSet.PhysicalTable>;
 
+      RowLevelPermissionDataSet?: AWS.QuickSight.DataSet.RowLevelPermissionDataSet;
+
       Tags?: Tag[];
+
+      IngestionWaitPolicy?: AWS.QuickSight.DataSet.IngestionWaitPolicy;
     };
 
     export namespace DataSet {
@@ -1225,6 +1225,14 @@ export namespace AWS {
         Type: string;
 
         Name: string;
+      };
+
+      export type RowLevelPermissionDataSet = {
+        Arn: string;
+
+        Namespace?: string;
+
+        PermissionPolicy: string;
       };
 
       export type FilterOperation = {
@@ -1317,6 +1325,12 @@ export namespace AWS {
         Tags: AWS.QuickSight.DataSet.ColumnTag[];
       };
 
+      export type IngestionWaitPolicy = {
+        WaitForSpiceIngestion?: boolean;
+
+        IngestionWaitTimeInHours?: number;
+      };
+
       export type CalculatedColumn = {
         ColumnId: string;
 
@@ -1341,12 +1355,6 @@ export namespace AWS {
     }
 
     export type DataSource = {
-      DataSourceParameters?: AWS.QuickSight.DataSource.DataSourceParameters;
-
-      SslProperties?: AWS.QuickSight.DataSource.SslProperties;
-
-      VpcConnectionProperties?: AWS.QuickSight.DataSource.VpcConnectionProperties;
-
       AlternateDataSourceParameters?: AWS.QuickSight.DataSource.DataSourceParameters[];
 
       AwsAccountId?: string;
@@ -1355,18 +1363,58 @@ export namespace AWS {
 
       DataSourceId?: string;
 
+      DataSourceParameters?: AWS.QuickSight.DataSource.DataSourceParameters;
+
       ErrorInfo?: AWS.QuickSight.DataSource.DataSourceErrorInfo;
 
       Name?: string;
 
       Permissions?: AWS.QuickSight.DataSource.ResourcePermission[];
 
+      SslProperties?: AWS.QuickSight.DataSource.SslProperties;
+
       Tags?: Tag[];
 
       Type?: string;
+
+      VpcConnectionProperties?: AWS.QuickSight.DataSource.VpcConnectionProperties;
     };
 
     export namespace DataSource {
+      export type DataSourceParameters = {
+        AuroraPostgreSqlParameters?: AWS.QuickSight.DataSource.AuroraPostgreSqlParameters;
+
+        TeradataParameters?: AWS.QuickSight.DataSource.TeradataParameters;
+
+        RdsParameters?: AWS.QuickSight.DataSource.RdsParameters;
+
+        AthenaParameters?: AWS.QuickSight.DataSource.AthenaParameters;
+
+        SparkParameters?: AWS.QuickSight.DataSource.SparkParameters;
+
+        MariaDbParameters?: AWS.QuickSight.DataSource.MariaDbParameters;
+
+        OracleParameters?: AWS.QuickSight.DataSource.OracleParameters;
+
+        PrestoParameters?: AWS.QuickSight.DataSource.PrestoParameters;
+
+        RedshiftParameters?: AWS.QuickSight.DataSource.RedshiftParameters;
+
+        MySqlParameters?: AWS.QuickSight.DataSource.MySqlParameters;
+
+        SqlServerParameters?: AWS.QuickSight.DataSource.SqlServerParameters;
+
+        SnowflakeParameters?: AWS.QuickSight.DataSource.SnowflakeParameters;
+
+        AmazonElasticsearchParameters?: AWS.QuickSight.DataSource.AmazonElasticsearchParameters;
+
+        PostgreSqlParameters?: AWS.QuickSight.DataSource.PostgreSqlParameters;
+
+        AuroraParameters?: AWS.QuickSight.DataSource.AuroraParameters;
+
+        S3Parameters?: AWS.QuickSight.DataSource.S3Parameters;
+      };
+
       export type AuroraPostgreSqlParameters = {
         Port: number;
 
@@ -1395,6 +1443,10 @@ export namespace AWS {
         Database: string;
 
         Host: string;
+      };
+
+      export type SslProperties = {
+        DisableSsl?: boolean;
       };
 
       export type S3Parameters = {
@@ -1481,6 +1533,10 @@ export namespace AWS {
         Message?: string;
       };
 
+      export type VpcConnectionProperties = {
+        VpcConnectionArn: string;
+      };
+
       export type RedshiftParameters = {
         ClusterId?: string;
 
@@ -1515,15 +1571,15 @@ export namespace AWS {
     }
 
     export type Dashboard = {
-      Parameters?: AWS.QuickSight.Dashboard.Parameters;
-
-      DashboardPublishOptions?: AWS.QuickSight.Dashboard.DashboardPublishOptions;
-
       AwsAccountId: string;
 
       DashboardId: string;
 
+      DashboardPublishOptions?: AWS.QuickSight.Dashboard.DashboardPublishOptions;
+
       Name?: string;
+
+      Parameters?: AWS.QuickSight.Dashboard.Parameters;
 
       Permissions?: AWS.QuickSight.Dashboard.ResourcePermission[];
 
@@ -1549,6 +1605,16 @@ export namespace AWS {
 
       export type DashboardSourceEntity = {
         SourceTemplate?: AWS.QuickSight.Dashboard.DashboardSourceTemplate;
+      };
+
+      export type Parameters = {
+        StringParameters?: AWS.QuickSight.Dashboard.StringParameter[];
+
+        DecimalParameters?: AWS.QuickSight.Dashboard.DecimalParameter[];
+
+        IntegerParameters?: AWS.QuickSight.Dashboard.IntegerParameter[];
+
+        DateTimeParameters?: AWS.QuickSight.Dashboard.DateTimeParameter[];
       };
 
       export type DashboardSourceTemplate = {
@@ -1579,6 +1645,14 @@ export namespace AWS {
         AvailabilityStatus?: string;
       };
 
+      export type DashboardPublishOptions = {
+        SheetControlsOption?: AWS.QuickSight.Dashboard.SheetControlsOption;
+
+        ExportToCSVOption?: AWS.QuickSight.Dashboard.ExportToCSVOption;
+
+        AdHocFilteringOption?: AWS.QuickSight.Dashboard.AdHocFilteringOption;
+      };
+
       export type DecimalParameter = {
         Values: number[];
 
@@ -1597,8 +1671,6 @@ export namespace AWS {
     }
 
     export type Analysis = {
-      Parameters?: AWS.QuickSight.Analysis.Parameters;
-
       AnalysisId: string;
 
       AwsAccountId: string;
@@ -1606,6 +1678,8 @@ export namespace AWS {
       Errors?: AWS.QuickSight.Analysis.AnalysisError[];
 
       Name?: string;
+
+      Parameters?: AWS.QuickSight.Analysis.Parameters;
 
       Permissions?: AWS.QuickSight.Analysis.ResourcePermission[];
 
@@ -1661,6 +1735,16 @@ export namespace AWS {
         Values: number[];
 
         Name: string;
+      };
+
+      export type Parameters = {
+        StringParameters?: AWS.QuickSight.Analysis.StringParameter[];
+
+        DecimalParameters?: AWS.QuickSight.Analysis.DecimalParameter[];
+
+        IntegerParameters?: AWS.QuickSight.Analysis.IntegerParameter[];
+
+        DateTimeParameters?: AWS.QuickSight.Analysis.DateTimeParameter[];
       };
 
       export type StringParameter = {
@@ -1839,8 +1923,6 @@ export namespace AWS {
 
   export namespace ElastiCache {
     export type ReplicationGroup = {
-      NodeGroupConfiguration?: AWS.ElastiCache.ReplicationGroup.NodeGroupConfiguration[];
-
       AtRestEncryptionEnabled?: boolean;
 
       AuthToken?: string;
@@ -1868,6 +1950,8 @@ export namespace AWS {
       LogDeliveryConfigurations?: AWS.ElastiCache.ReplicationGroup.LogDeliveryConfigurationRequest[];
 
       MultiAZEnabled?: boolean;
+
+      NodeGroupConfiguration?: AWS.ElastiCache.ReplicationGroup.NodeGroupConfiguration[];
 
       NotificationTopicArn?: string;
 
@@ -1921,6 +2005,18 @@ export namespace AWS {
 
       export type CloudWatchLogsDestinationDetails = {
         LogGroup?: string;
+      };
+
+      export type NodeGroupConfiguration = {
+        NodeGroupId?: string;
+
+        PrimaryAvailabilityZone?: string;
+
+        ReplicaAvailabilityZones?: string[];
+
+        ReplicaCount?: number;
+
+        Slots?: string;
       };
 
       export type DestinationDetails = {
@@ -2109,15 +2205,15 @@ export namespace AWS {
 
   export namespace AppFlow {
     export type Flow = {
-      SourceFlowConfig: AWS.AppFlow.Flow.SourceFlowConfig;
-
-      TriggerConfig: AWS.AppFlow.Flow.TriggerConfig;
-
       FlowName: string;
 
       Description?: string;
 
       KMSArn?: string;
+
+      TriggerConfig: AWS.AppFlow.Flow.TriggerConfig;
+
+      SourceFlowConfig: AWS.AppFlow.Flow.SourceFlowConfig;
 
       DestinationFlowConfigList: AWS.AppFlow.Flow.DestinationFlowConfig[];
 
@@ -2289,6 +2385,16 @@ export namespace AWS {
         Object?: string;
       };
 
+      export type SourceFlowConfig = {
+        ConnectorType: string;
+
+        ConnectorProfileName?: string;
+
+        SourceConnectorProperties: AWS.AppFlow.Flow.SourceConnectorProperties;
+
+        IncrementalPullConfig?: AWS.AppFlow.Flow.IncrementalPullConfig;
+      };
+
       export type UpsolverS3OutputFormatConfig = {
         FileType?: string;
 
@@ -2405,14 +2511,18 @@ export namespace AWS {
         Value: string;
       };
 
+      export type TriggerConfig = {
+        TriggerType: string;
+
+        TriggerProperties?: AWS.AppFlow.Flow.ScheduledTriggerProperties;
+      };
+
       export type AmplitudeSourceProperties = {
         Object: string;
       };
     }
 
     export type ConnectorProfile = {
-      ConnectorProfileConfig?: AWS.AppFlow.ConnectorProfile.ConnectorProfileConfig;
-
       ConnectorProfileName: string;
 
       KMSArn?: string;
@@ -2420,6 +2530,8 @@ export namespace AWS {
       ConnectorType: string;
 
       ConnectionMode: string;
+
+      ConnectorProfileConfig?: AWS.AppFlow.ConnectorProfile.ConnectorProfileConfig;
     };
 
     export namespace ConnectorProfile {
@@ -2565,6 +2677,12 @@ export namespace AWS {
         InstanceUrl?: string;
 
         isSandboxEnvironment?: boolean;
+      };
+
+      export type ConnectorProfileConfig = {
+        ConnectorProfileProperties?: AWS.AppFlow.ConnectorProfile.ConnectorProfileProperties;
+
+        ConnectorProfileCredentials: AWS.AppFlow.ConnectorProfile.ConnectorProfileCredentials;
       };
 
       export type AmplitudeConnectorProfileCredentials = {
@@ -2877,6 +2995,10 @@ export namespace AWS {
         IsolationMode?: string;
 
         RunAs?: AWS.Greengrass.FunctionDefinitionVersion.RunAs;
+      };
+
+      export type DefaultConfig = {
+        Execution: AWS.Greengrass.FunctionDefinitionVersion.Execution;
       };
 
       export type Function = {
@@ -3375,15 +3497,11 @@ export namespace AWS {
 
   export namespace Glue {
     export type MLTransform = {
-      InputRecordTables: AWS.Glue.MLTransform.InputRecordTables;
-
-      TransformEncryption?: AWS.Glue.MLTransform.TransformEncryption;
-
-      TransformParameters: AWS.Glue.MLTransform.TransformParameters;
-
       MaxRetries?: number;
 
       Description?: string;
+
+      TransformEncryption?: AWS.Glue.MLTransform.TransformEncryption;
 
       Timeout?: number;
 
@@ -3394,6 +3512,10 @@ export namespace AWS {
       WorkerType?: string;
 
       GlueVersion?: string;
+
+      TransformParameters: AWS.Glue.MLTransform.TransformParameters;
+
+      InputRecordTables: AWS.Glue.MLTransform.InputRecordTables;
 
       NumberOfWorkers?: number;
 
@@ -3419,6 +3541,10 @@ export namespace AWS {
         KmsKeyId?: string;
       };
 
+      export type InputRecordTables = {
+        GlueTables?: AWS.Glue.MLTransform.GlueTables[];
+      };
+
       export type GlueTables = {
         ConnectionName?: string;
 
@@ -3427,6 +3553,18 @@ export namespace AWS {
         DatabaseName: string;
 
         CatalogId?: string;
+      };
+
+      export type TransformEncryption = {
+        MLUserDataEncryption?: AWS.Glue.MLTransform.MLUserDataEncryption;
+
+        TaskRunSecurityConfigurationName?: string;
+      };
+
+      export type TransformParameters = {
+        TransformType: string;
+
+        FindMatchesParameters?: AWS.Glue.MLTransform.FindMatchesParameters;
       };
     }
 
@@ -3437,6 +3575,18 @@ export namespace AWS {
     };
 
     export namespace Database {
+      export type DatabaseInput = {
+        LocationUri?: string;
+
+        Description?: string;
+
+        Parameters?: JSONString;
+
+        TargetDatabase?: AWS.Glue.Database.DatabaseIdentifier;
+
+        Name?: string;
+      };
+
       export type DatabaseIdentifier = {
         DatabaseName?: string;
 
@@ -3445,10 +3595,6 @@ export namespace AWS {
     }
 
     export type Job = {
-      NotificationProperty?: AWS.Glue.Job.NotificationProperty;
-
-      ExecutionProperty?: AWS.Glue.Job.ExecutionProperty;
-
       Connections?: AWS.Glue.Job.ConnectionsList;
 
       MaxRetries?: number;
@@ -3465,6 +3611,8 @@ export namespace AWS {
 
       DefaultArguments?: JSONString;
 
+      NotificationProperty?: AWS.Glue.Job.NotificationProperty;
+
       WorkerType?: string;
 
       LogUri?: string;
@@ -3472,6 +3620,8 @@ export namespace AWS {
       Command: AWS.Glue.Job.JobCommand;
 
       GlueVersion?: string;
+
+      ExecutionProperty?: AWS.Glue.Job.ExecutionProperty;
 
       SecurityConfiguration?: string;
 
@@ -3494,24 +3644,32 @@ export namespace AWS {
       export type ConnectionsList = {
         Connections?: string[];
       };
+
+      export type NotificationProperty = {
+        NotifyDelayAfter?: number;
+      };
+
+      export type ExecutionProperty = {
+        MaxConcurrentRuns?: number;
+      };
     }
 
     export type Crawler = {
-      Schedule?: AWS.Glue.Crawler.Schedule;
-
-      SchemaChangePolicy?: AWS.Glue.Crawler.SchemaChangePolicy;
-
-      Targets: AWS.Glue.Crawler.Targets;
-
       Role: string;
 
       Classifiers?: string[];
 
       Description?: string;
 
+      SchemaChangePolicy?: AWS.Glue.Crawler.SchemaChangePolicy;
+
       Configuration?: string;
 
+      Schedule?: AWS.Glue.Crawler.Schedule;
+
       DatabaseName?: string;
+
+      Targets: AWS.Glue.Crawler.Targets;
 
       CrawlerSecurityConfiguration?: string;
 
@@ -3527,6 +3685,26 @@ export namespace AWS {
         DatabaseName?: string;
 
         Tables?: string[];
+      };
+
+      export type Schedule = {
+        ScheduleExpression?: string;
+      };
+
+      export type SchemaChangePolicy = {
+        UpdateBehavior?: string;
+
+        DeleteBehavior?: string;
+      };
+
+      export type Targets = {
+        S3Targets?: AWS.Glue.Crawler.S3Target[];
+
+        CatalogTargets?: AWS.Glue.Crawler.CatalogTarget[];
+
+        JdbcTargets?: AWS.Glue.Crawler.JdbcTarget[];
+
+        DynamoDBTargets?: AWS.Glue.Crawler.DynamoDBTarget[];
       };
 
       export type JdbcTarget = {
@@ -3557,6 +3735,20 @@ export namespace AWS {
     };
 
     export namespace Connection {
+      export type ConnectionInput = {
+        Description?: string;
+
+        ConnectionType: string;
+
+        MatchCriteria?: string[];
+
+        PhysicalConnectionRequirements?: AWS.Glue.Connection.PhysicalConnectionRequirements;
+
+        ConnectionProperties?: JSONString;
+
+        Name?: string;
+      };
+
       export type PhysicalConnectionRequirements = {
         AvailabilityZone?: string;
 
@@ -3571,6 +3763,16 @@ export namespace AWS {
 
       SchemaDefinition: string;
     };
+
+    export namespace SchemaVersion {
+      export type Schema = {
+        SchemaArn?: string;
+
+        SchemaName?: string;
+
+        RegistryName?: string;
+      };
+    }
 
     export type Schema = {
       Registry?: AWS.Glue.Schema.Registry;
@@ -3596,6 +3798,12 @@ export namespace AWS {
 
         VersionNumber?: number;
       };
+
+      export type Registry = {
+        Name?: string;
+
+        Arn?: string;
+      };
     }
 
     export type DataCatalogEncryptionSettings = {
@@ -3605,6 +3813,12 @@ export namespace AWS {
     };
 
     export namespace DataCatalogEncryptionSettings {
+      export type DataCatalogEncryptionSettings = {
+        ConnectionPasswordEncryption?: AWS.Glue.DataCatalogEncryptionSettings.ConnectionPasswordEncryption;
+
+        EncryptionAtRest?: AWS.Glue.DataCatalogEncryptionSettings.EncryptionAtRest;
+      };
+
       export type EncryptionAtRest = {
         CatalogEncryptionMode?: string;
 
@@ -3619,8 +3833,6 @@ export namespace AWS {
     }
 
     export type Trigger = {
-      Predicate?: AWS.Glue.Trigger.Predicate;
-
       Type: string;
 
       StartOnCreation?: boolean;
@@ -3636,6 +3848,8 @@ export namespace AWS {
       Tags?: JSONString;
 
       Name?: string;
+
+      Predicate?: AWS.Glue.Trigger.Predicate;
     };
 
     export namespace Trigger {
@@ -3649,6 +3863,12 @@ export namespace AWS {
         LogicalOperator?: string;
 
         JobName?: string;
+      };
+
+      export type Predicate = {
+        Logical?: string;
+
+        Conditions?: AWS.Glue.Trigger.Condition[];
       };
 
       export type Action = {
@@ -3671,16 +3891,24 @@ export namespace AWS {
     }
 
     export type Partition = {
-      PartitionInput: AWS.Glue.Partition.PartitionInput;
-
       TableName: string;
 
       DatabaseName: string;
 
       CatalogId: string;
+
+      PartitionInput: AWS.Glue.Partition.PartitionInput;
     };
 
     export namespace Partition {
+      export type PartitionInput = {
+        Parameters?: JSONString;
+
+        StorageDescriptor?: AWS.Glue.Partition.StorageDescriptor;
+
+        Values: string[];
+      };
+
       export type Order = {
         Column: string;
 
@@ -3773,6 +4001,30 @@ export namespace AWS {
         Name: string;
       };
 
+      export type TableInput = {
+        Owner?: string;
+
+        ViewOriginalText?: string;
+
+        Description?: string;
+
+        TableType?: string;
+
+        Parameters?: JSONString;
+
+        ViewExpandedText?: string;
+
+        StorageDescriptor?: AWS.Glue.Table.StorageDescriptor;
+
+        TargetTable?: AWS.Glue.Table.TableIdentifier;
+
+        PartitionKeys?: AWS.Glue.Table.Column[];
+
+        Retention?: number;
+
+        Name?: string;
+      };
+
       export type SerdeInfo = {
         Parameters?: JSONString;
 
@@ -3849,24 +4101,76 @@ export namespace AWS {
     }
 
     export type Classifier = {
-      CsvClassifier?: AWS.Glue.Classifier.CsvClassifier;
-
-      GrokClassifier?: AWS.Glue.Classifier.GrokClassifier;
+      XMLClassifier?: AWS.Glue.Classifier.XMLClassifier;
 
       JsonClassifier?: AWS.Glue.Classifier.JsonClassifier;
 
-      XMLClassifier?: AWS.Glue.Classifier.XMLClassifier;
+      CsvClassifier?: AWS.Glue.Classifier.CsvClassifier;
+
+      GrokClassifier?: AWS.Glue.Classifier.GrokClassifier;
     };
+
+    export namespace Classifier {
+      export type CsvClassifier = {
+        QuoteSymbol?: string;
+
+        ContainsHeader?: string;
+
+        Delimiter?: string;
+
+        Header?: string[];
+
+        AllowSingleColumn?: boolean;
+
+        DisableValueTrimming?: boolean;
+
+        Name?: string;
+      };
+
+      export type GrokClassifier = {
+        CustomPatterns?: string;
+
+        GrokPattern: string;
+
+        Classification: string;
+
+        Name?: string;
+      };
+
+      export type JsonClassifier = {
+        JsonPath: string;
+
+        Name?: string;
+      };
+
+      export type XMLClassifier = {
+        RowTag: string;
+
+        Classification: string;
+
+        Name?: string;
+      };
+    }
 
     export type SecurityConfiguration = {
       EncryptionConfiguration: AWS.Glue.SecurityConfiguration.EncryptionConfiguration;
 
-      S3Encryptions?: AWS.Glue.SecurityConfiguration.S3Encryption[];
-
       Name: string;
     };
 
+    export type SecurityConfiguration = {
+      S3Encryptions?: AWS.Glue.SecurityConfiguration.S3Encryption[];
+    };
+
     export namespace SecurityConfiguration {
+      export type EncryptionConfiguration = {
+        S3Encryptions?: AWS.Glue.SecurityConfiguration.S3Encryptions;
+
+        CloudWatchEncryption?: AWS.Glue.SecurityConfiguration.CloudWatchEncryption;
+
+        JobBookmarksEncryption?: AWS.Glue.SecurityConfiguration.JobBookmarksEncryption;
+      };
+
       export type JobBookmarksEncryption = {
         KmsKeyArn?: string;
 
@@ -3947,15 +4251,15 @@ export namespace AWS {
 
   export namespace Athena {
     export type WorkGroup = {
-      WorkGroupConfigurationUpdates?: AWS.Athena.WorkGroup.WorkGroupConfigurationUpdates;
-
-      WorkGroupConfiguration?: AWS.Athena.WorkGroup.WorkGroupConfiguration;
-
       Name: string;
 
       Description?: string;
 
       Tags?: Tag[];
+
+      WorkGroupConfiguration?: AWS.Athena.WorkGroup.WorkGroupConfiguration;
+
+      WorkGroupConfigurationUpdates?: AWS.Athena.WorkGroup.WorkGroupConfigurationUpdates;
 
       State?: string;
 
@@ -3963,6 +4267,22 @@ export namespace AWS {
     };
 
     export namespace WorkGroup {
+      export type WorkGroupConfigurationUpdates = {
+        BytesScannedCutoffPerQuery?: number;
+
+        EnforceWorkGroupConfiguration?: boolean;
+
+        PublishCloudWatchMetricsEnabled?: boolean;
+
+        RequesterPaysEnabled?: boolean;
+
+        ResultConfigurationUpdates?: AWS.Athena.WorkGroup.ResultConfigurationUpdates;
+
+        RemoveBytesScannedCutoffPerQuery?: boolean;
+
+        EngineVersion?: AWS.Athena.WorkGroup.EngineVersion;
+      };
+
       export type ResultConfiguration = {
         EncryptionConfiguration?: AWS.Athena.WorkGroup.EncryptionConfiguration;
 
@@ -3977,6 +4297,20 @@ export namespace AWS {
         RemoveEncryptionConfiguration?: boolean;
 
         RemoveOutputLocation?: boolean;
+      };
+
+      export type WorkGroupConfiguration = {
+        BytesScannedCutoffPerQuery?: number;
+
+        EnforceWorkGroupConfiguration?: boolean;
+
+        PublishCloudWatchMetricsEnabled?: boolean;
+
+        RequesterPaysEnabled?: boolean;
+
+        ResultConfiguration?: AWS.Athena.WorkGroup.ResultConfiguration;
+
+        EngineVersion?: AWS.Athena.WorkGroup.EngineVersion;
       };
 
       export type EncryptionConfiguration = {
@@ -4019,11 +4353,9 @@ export namespace AWS {
 
   export namespace SageMaker {
     export type MonitoringSchedule = {
-      Environment?: any;
+      MonitoringScheduleName: string;
 
       MonitoringScheduleConfig: AWS.SageMaker.MonitoringSchedule.MonitoringScheduleConfig;
-
-      MonitoringScheduleName: string;
 
       Tags?: Tag[];
 
@@ -4034,6 +4366,10 @@ export namespace AWS {
       LastMonitoringExecutionSummary?: AWS.SageMaker.MonitoringSchedule.MonitoringExecutionSummary;
 
       MonitoringScheduleStatus?: string;
+    };
+
+    export type MonitoringSchedule = {
+      Environment?: any;
     };
 
     export namespace MonitoringSchedule {
@@ -4131,6 +4467,16 @@ export namespace AWS {
         ScheduleExpression: string;
       };
 
+      export type MonitoringScheduleConfig = {
+        MonitoringJobDefinition?: AWS.SageMaker.MonitoringSchedule.MonitoringJobDefinition;
+
+        MonitoringJobDefinitionName?: string;
+
+        MonitoringType?: string;
+
+        ScheduleConfig?: AWS.SageMaker.MonitoringSchedule.ScheduleConfig;
+      };
+
       export type EndpointInput = {
         EndpointName: string;
 
@@ -4171,27 +4517,29 @@ export namespace AWS {
     }
 
     export type ModelBiasJobDefinition = {
-      ModelBiasBaselineConfig?: AWS.SageMaker.ModelBiasJobDefinition.ModelBiasBaselineConfig;
+      JobDefinitionName?: string;
 
-      ModelBiasJobInput: AWS.SageMaker.ModelBiasJobDefinition.ModelBiasJobInput;
+      ModelBiasBaselineConfig?: AWS.SageMaker.ModelBiasJobDefinition.ModelBiasBaselineConfig;
 
       ModelBiasAppSpecification: AWS.SageMaker.ModelBiasJobDefinition.ModelBiasAppSpecification;
 
-      StoppingCondition?: AWS.SageMaker.ModelBiasJobDefinition.StoppingCondition;
-
-      Environment?: any;
-
-      NetworkConfig?: AWS.SageMaker.ModelBiasJobDefinition.NetworkConfig;
-
-      JobDefinitionName?: string;
+      ModelBiasJobInput: AWS.SageMaker.ModelBiasJobDefinition.ModelBiasJobInput;
 
       ModelBiasJobOutputConfig: AWS.SageMaker.ModelBiasJobDefinition.MonitoringOutputConfig;
 
       JobResources: AWS.SageMaker.ModelBiasJobDefinition.MonitoringResources;
 
+      NetworkConfig?: AWS.SageMaker.ModelBiasJobDefinition.NetworkConfig;
+
       RoleArn: string;
 
+      StoppingCondition?: AWS.SageMaker.ModelBiasJobDefinition.StoppingCondition;
+
       Tags?: Tag[];
+    };
+
+    export type ModelBiasJobDefinition = {
+      Environment?: any;
     };
 
     export namespace ModelBiasJobDefinition {
@@ -4213,8 +4561,28 @@ export namespace AWS {
         S3Uri: string;
       };
 
+      export type ModelBiasBaselineConfig = {
+        BaseliningJobName?: string;
+
+        ConstraintsResource?: AWS.SageMaker.ModelBiasJobDefinition.ConstraintsResource;
+      };
+
+      export type ModelBiasJobInput = {
+        EndpointInput: AWS.SageMaker.ModelBiasJobDefinition.EndpointInput;
+
+        GroundTruthS3Input: AWS.SageMaker.ModelBiasJobDefinition.MonitoringGroundTruthS3Input;
+      };
+
       export type MonitoringResources = {
         ClusterConfig: AWS.SageMaker.ModelBiasJobDefinition.ClusterConfig;
+      };
+
+      export type ModelBiasAppSpecification = {
+        ImageUri: string;
+
+        ConfigUri: string;
+
+        Environment?: AWS.SageMaker.ModelBiasJobDefinition.Environment;
       };
 
       export type MonitoringGroundTruthS3Input = {
@@ -4223,6 +4591,10 @@ export namespace AWS {
 
       export type ConstraintsResource = {
         S3Uri?: string;
+      };
+
+      export type StoppingCondition = {
+        MaxRuntimeInSeconds: number;
       };
 
       export type MonitoringOutputConfig = {
@@ -4235,6 +4607,14 @@ export namespace AWS {
         SecurityGroupIds: string[];
 
         Subnets: string[];
+      };
+
+      export type NetworkConfig = {
+        EnableInterContainerTrafficEncryption?: boolean;
+
+        EnableNetworkIsolation?: boolean;
+
+        VpcConfig?: AWS.SageMaker.ModelBiasJobDefinition.VpcConfig;
       };
 
       export type EndpointInput = {
@@ -4265,36 +4645,50 @@ export namespace AWS {
     }
 
     export type DataQualityJobDefinition = {
+      JobDefinitionName?: string;
+
       DataQualityBaselineConfig?: AWS.SageMaker.DataQualityJobDefinition.DataQualityBaselineConfig;
-
-      Environment?: any;
-
-      DataQualityJobInput: AWS.SageMaker.DataQualityJobDefinition.DataQualityJobInput;
 
       DataQualityAppSpecification: AWS.SageMaker.DataQualityJobDefinition.DataQualityAppSpecification;
 
-      StoppingCondition?: AWS.SageMaker.DataQualityJobDefinition.StoppingCondition;
-
-      NetworkConfig?: AWS.SageMaker.DataQualityJobDefinition.NetworkConfig;
-
-      JobDefinitionName?: string;
+      DataQualityJobInput: AWS.SageMaker.DataQualityJobDefinition.DataQualityJobInput;
 
       DataQualityJobOutputConfig: AWS.SageMaker.DataQualityJobDefinition.MonitoringOutputConfig;
 
       JobResources: AWS.SageMaker.DataQualityJobDefinition.MonitoringResources;
 
+      NetworkConfig?: AWS.SageMaker.DataQualityJobDefinition.NetworkConfig;
+
       RoleArn: string;
+
+      StoppingCondition?: AWS.SageMaker.DataQualityJobDefinition.StoppingCondition;
 
       Tags?: Tag[];
     };
 
+    export type DataQualityJobDefinition = {
+      Environment?: any;
+    };
+
     export namespace DataQualityJobDefinition {
+      export type DataQualityBaselineConfig = {
+        BaseliningJobName?: string;
+
+        ConstraintsResource?: AWS.SageMaker.DataQualityJobDefinition.ConstraintsResource;
+
+        StatisticsResource?: AWS.SageMaker.DataQualityJobDefinition.StatisticsResource;
+      };
+
       export type StatisticsResource = {
         S3Uri?: string;
       };
 
       export type ConstraintsResource = {
         S3Uri?: string;
+      };
+
+      export type DataQualityJobInput = {
+        EndpointInput: AWS.SageMaker.DataQualityJobDefinition.EndpointInput;
       };
 
       export type MonitoringResources = {
@@ -4309,6 +4703,20 @@ export namespace AWS {
         KmsKeyId?: string;
 
         MonitoringOutputs: AWS.SageMaker.DataQualityJobDefinition.MonitoringOutput[];
+      };
+
+      export type DataQualityAppSpecification = {
+        ContainerArguments?: string[];
+
+        ContainerEntrypoint?: string[];
+
+        ImageUri: string;
+
+        PostAnalyticsProcessorSourceUri?: string;
+
+        RecordPreprocessorSourceUri?: string;
+
+        Environment?: AWS.SageMaker.DataQualityJobDefinition.Environment;
       };
 
       export type ClusterConfig = {
@@ -4335,6 +4743,18 @@ export namespace AWS {
         S3Uri: string;
       };
 
+      export type StoppingCondition = {
+        MaxRuntimeInSeconds: number;
+      };
+
+      export type NetworkConfig = {
+        EnableInterContainerTrafficEncryption?: boolean;
+
+        EnableNetworkIsolation?: boolean;
+
+        VpcConfig?: AWS.SageMaker.DataQualityJobDefinition.VpcConfig;
+      };
+
       export type EndpointInput = {
         EndpointName: string;
 
@@ -4347,14 +4767,20 @@ export namespace AWS {
     }
 
     export type AppImageConfig = {
-      KernelGatewayImageConfig?: AWS.SageMaker.AppImageConfig.KernelGatewayImageConfig;
-
       AppImageConfigName: string;
+
+      KernelGatewayImageConfig?: AWS.SageMaker.AppImageConfig.KernelGatewayImageConfig;
 
       Tags?: Tag[];
     };
 
     export namespace AppImageConfig {
+      export type KernelGatewayImageConfig = {
+        FileSystemConfig?: AWS.SageMaker.AppImageConfig.FileSystemConfig;
+
+        KernelSpecs: AWS.SageMaker.AppImageConfig.KernelSpec[];
+      };
+
       export type FileSystemConfig = {
         DefaultGid?: number;
 
@@ -4371,8 +4797,6 @@ export namespace AWS {
     }
 
     export type Endpoint = {
-      DeploymentConfig?: AWS.SageMaker.Endpoint.DeploymentConfig;
-
       RetainAllVariantProperties?: boolean;
 
       EndpointName?: string;
@@ -4380,6 +4804,8 @@ export namespace AWS {
       ExcludeRetainedVariantProperties?: AWS.SageMaker.Endpoint.VariantProperty[];
 
       EndpointConfigName: string;
+
+      DeploymentConfig?: AWS.SageMaker.Endpoint.DeploymentConfig;
 
       Tags?: Tag[];
     };
@@ -4399,6 +4825,12 @@ export namespace AWS {
         CanarySize?: AWS.SageMaker.Endpoint.CapacitySize;
 
         WaitIntervalInSeconds?: number;
+      };
+
+      export type DeploymentConfig = {
+        AutoRollbackConfiguration?: AWS.SageMaker.Endpoint.AutoRollbackConfig;
+
+        BlueGreenUpdatePolicy: AWS.SageMaker.Endpoint.BlueGreenUpdatePolicy;
       };
 
       export type CapacitySize = {
@@ -4421,10 +4853,6 @@ export namespace AWS {
     }
 
     export type Model = {
-      VpcConfig?: AWS.SageMaker.Model.VpcConfig;
-
-      InferenceExecutionConfig?: AWS.SageMaker.Model.InferenceExecutionConfig;
-
       ExecutionRoleArn: string;
 
       EnableNetworkIsolation?: boolean;
@@ -4433,7 +4861,11 @@ export namespace AWS {
 
       ModelName?: string;
 
+      VpcConfig?: AWS.SageMaker.Model.VpcConfig;
+
       Containers?: AWS.SageMaker.Model.ContainerDefinition[];
+
+      InferenceExecutionConfig?: AWS.SageMaker.Model.InferenceExecutionConfig;
 
       Tags?: Tag[];
     };
@@ -4441,6 +4873,12 @@ export namespace AWS {
     export namespace Model {
       export type MultiModelConfig = {
         ModelCacheSetting?: string;
+      };
+
+      export type VpcConfig = {
+        Subnets: string[];
+
+        SecurityGroupIds: string[];
       };
 
       export type ContainerDefinition = {
@@ -4463,6 +4901,10 @@ export namespace AWS {
 
       export type ImageConfig = {
         RepositoryAccessMode: string;
+      };
+
+      export type InferenceExecutionConfig = {
+        Mode: string;
       };
     }
 
@@ -4553,30 +4995,44 @@ export namespace AWS {
     }
 
     export type ModelExplainabilityJobDefinition = {
-      ModelExplainabilityAppSpecification: AWS.SageMaker.ModelExplainabilityJobDefinition.ModelExplainabilityAppSpecification;
-
-      ModelExplainabilityJobInput: AWS.SageMaker.ModelExplainabilityJobDefinition.ModelExplainabilityJobInput;
-
-      StoppingCondition?: AWS.SageMaker.ModelExplainabilityJobDefinition.StoppingCondition;
-
-      Environment?: any;
-
-      NetworkConfig?: AWS.SageMaker.ModelExplainabilityJobDefinition.NetworkConfig;
+      JobDefinitionName?: string;
 
       ModelExplainabilityBaselineConfig?: AWS.SageMaker.ModelExplainabilityJobDefinition.ModelExplainabilityBaselineConfig;
 
-      JobDefinitionName?: string;
+      ModelExplainabilityAppSpecification: AWS.SageMaker.ModelExplainabilityJobDefinition.ModelExplainabilityAppSpecification;
+
+      ModelExplainabilityJobInput: AWS.SageMaker.ModelExplainabilityJobDefinition.ModelExplainabilityJobInput;
 
       ModelExplainabilityJobOutputConfig: AWS.SageMaker.ModelExplainabilityJobDefinition.MonitoringOutputConfig;
 
       JobResources: AWS.SageMaker.ModelExplainabilityJobDefinition.MonitoringResources;
 
+      NetworkConfig?: AWS.SageMaker.ModelExplainabilityJobDefinition.NetworkConfig;
+
       RoleArn: string;
+
+      StoppingCondition?: AWS.SageMaker.ModelExplainabilityJobDefinition.StoppingCondition;
 
       Tags?: Tag[];
     };
 
+    export type ModelExplainabilityJobDefinition = {
+      Environment?: any;
+    };
+
     export namespace ModelExplainabilityJobDefinition {
+      export type ModelExplainabilityAppSpecification = {
+        ImageUri: string;
+
+        ConfigUri: string;
+
+        Environment?: AWS.SageMaker.ModelExplainabilityJobDefinition.Environment;
+      };
+
+      export type ModelExplainabilityJobInput = {
+        EndpointInput: AWS.SageMaker.ModelExplainabilityJobDefinition.EndpointInput;
+      };
+
       export type ClusterConfig = {
         InstanceCount: number;
 
@@ -4591,12 +5047,30 @@ export namespace AWS {
         S3Uri?: string;
       };
 
+      export type StoppingCondition = {
+        MaxRuntimeInSeconds: number;
+      };
+
       export type S3Output = {
         LocalPath: string;
 
         S3UploadMode?: string;
 
         S3Uri: string;
+      };
+
+      export type NetworkConfig = {
+        EnableInterContainerTrafficEncryption?: boolean;
+
+        EnableNetworkIsolation?: boolean;
+
+        VpcConfig?: AWS.SageMaker.ModelExplainabilityJobDefinition.VpcConfig;
+      };
+
+      export type ModelExplainabilityBaselineConfig = {
+        BaseliningJobName?: string;
+
+        ConstraintsResource?: AWS.SageMaker.ModelExplainabilityJobDefinition.ConstraintsResource;
       };
 
       export type MonitoringOutput = {
@@ -4637,8 +5111,6 @@ export namespace AWS {
     }
 
     export type UserProfile = {
-      UserSettings?: AWS.SageMaker.UserProfile.UserSettings;
-
       DomainId: string;
 
       SingleSignOnUserIdentifier?: string;
@@ -4646,6 +5118,8 @@ export namespace AWS {
       SingleSignOnUserValue?: string;
 
       UserProfileName: string;
+
+      UserSettings?: AWS.SageMaker.UserProfile.UserSettings;
 
       Tags?: Tag[];
     };
@@ -4683,6 +5157,18 @@ export namespace AWS {
         S3KmsKeyId?: string;
 
         S3OutputPath?: string;
+      };
+
+      export type UserSettings = {
+        ExecutionRole?: string;
+
+        JupyterServerAppSettings?: AWS.SageMaker.UserProfile.JupyterServerAppSettings;
+
+        KernelGatewayAppSettings?: AWS.SageMaker.UserProfile.KernelGatewayAppSettings;
+
+        SecurityGroups?: string[];
+
+        SharingSettings?: AWS.SageMaker.UserProfile.SharingSettings;
       };
     }
 
@@ -4722,33 +5208,55 @@ export namespace AWS {
 
         CsvContentTypes?: string[];
       };
+
+      export type DataCaptureConfig = {
+        CaptureOptions: AWS.SageMaker.EndpointConfig.CaptureOption[];
+
+        KmsKeyId?: string;
+
+        DestinationS3Uri: string;
+
+        InitialSamplingPercentage: number;
+
+        CaptureContentTypeHeader?: AWS.SageMaker.EndpointConfig.CaptureContentTypeHeader;
+
+        EnableCapture?: boolean;
+      };
     }
 
     export type ModelQualityJobDefinition = {
-      ModelQualityJobInput: AWS.SageMaker.ModelQualityJobDefinition.ModelQualityJobInput;
-
-      NetworkConfig?: AWS.SageMaker.ModelQualityJobDefinition.NetworkConfig;
-
-      Environment?: any;
-
-      ModelQualityAppSpecification: AWS.SageMaker.ModelQualityJobDefinition.ModelQualityAppSpecification;
+      JobDefinitionName?: string;
 
       ModelQualityBaselineConfig?: AWS.SageMaker.ModelQualityJobDefinition.ModelQualityBaselineConfig;
 
-      StoppingCondition?: AWS.SageMaker.ModelQualityJobDefinition.StoppingCondition;
+      ModelQualityAppSpecification: AWS.SageMaker.ModelQualityJobDefinition.ModelQualityAppSpecification;
 
-      JobDefinitionName?: string;
+      ModelQualityJobInput: AWS.SageMaker.ModelQualityJobDefinition.ModelQualityJobInput;
 
       ModelQualityJobOutputConfig: AWS.SageMaker.ModelQualityJobDefinition.MonitoringOutputConfig;
 
       JobResources: AWS.SageMaker.ModelQualityJobDefinition.MonitoringResources;
 
+      NetworkConfig?: AWS.SageMaker.ModelQualityJobDefinition.NetworkConfig;
+
       RoleArn: string;
+
+      StoppingCondition?: AWS.SageMaker.ModelQualityJobDefinition.StoppingCondition;
 
       Tags?: Tag[];
     };
 
+    export type ModelQualityJobDefinition = {
+      Environment?: any;
+    };
+
     export namespace ModelQualityJobDefinition {
+      export type ModelQualityJobInput = {
+        EndpointInput: AWS.SageMaker.ModelQualityJobDefinition.EndpointInput;
+
+        GroundTruthS3Input: AWS.SageMaker.ModelQualityJobDefinition.MonitoringGroundTruthS3Input;
+      };
+
       export type MonitoringResources = {
         ClusterConfig: AWS.SageMaker.ModelQualityJobDefinition.ClusterConfig;
       };
@@ -4773,10 +5281,34 @@ export namespace AWS {
         ProbabilityThresholdAttribute?: number;
       };
 
+      export type NetworkConfig = {
+        EnableInterContainerTrafficEncryption?: boolean;
+
+        EnableNetworkIsolation?: boolean;
+
+        VpcConfig?: AWS.SageMaker.ModelQualityJobDefinition.VpcConfig;
+      };
+
       export type VpcConfig = {
         SecurityGroupIds: string[];
 
         Subnets: string[];
+      };
+
+      export type ModelQualityAppSpecification = {
+        ContainerArguments?: string[];
+
+        ContainerEntrypoint?: string[];
+
+        ImageUri: string;
+
+        PostAnalyticsProcessorSourceUri?: string;
+
+        RecordPreprocessorSourceUri?: string;
+
+        Environment?: AWS.SageMaker.ModelQualityJobDefinition.Environment;
+
+        ProblemType: string;
       };
 
       export type MonitoringOutput = {
@@ -4809,6 +5341,16 @@ export namespace AWS {
         S3Uri: string;
       };
 
+      export type ModelQualityBaselineConfig = {
+        BaseliningJobName?: string;
+
+        ConstraintsResource?: AWS.SageMaker.ModelQualityJobDefinition.ConstraintsResource;
+      };
+
+      export type StoppingCondition = {
+        MaxRuntimeInSeconds: number;
+      };
+
       export type MonitoringOutputConfig = {
         KmsKeyId?: string;
 
@@ -4817,17 +5359,27 @@ export namespace AWS {
     }
 
     export type Device = {
-      Device?: AWS.SageMaker.Device.Device;
-
       DeviceFleetName: string;
+
+      Device?: AWS.SageMaker.Device.Device;
 
       Tags?: Tag[];
     };
 
-    export type Workteam = {
-      NotificationConfiguration?: AWS.SageMaker.Workteam.NotificationConfiguration;
+    export namespace Device {
+      export type Device = {
+        Description?: string;
 
+        DeviceName: string;
+
+        IotThingName?: string;
+      };
+    }
+
+    export type Workteam = {
       Description?: string;
+
+      NotificationConfiguration?: AWS.SageMaker.Workteam.NotificationConfiguration;
 
       WorkteamName?: string;
 
@@ -4837,6 +5389,10 @@ export namespace AWS {
     };
 
     export namespace Workteam {
+      export type NotificationConfiguration = {
+        NotificationTopicArn: string;
+      };
+
       export type CognitoMemberDefinition = {
         CognitoUserPool: string;
 
@@ -4865,26 +5421,46 @@ export namespace AWS {
     }
 
     export type CodeRepository = {
-      GitConfig: AWS.SageMaker.CodeRepository.GitConfig;
-
       CodeRepositoryName?: string;
+
+      GitConfig: AWS.SageMaker.CodeRepository.GitConfig;
 
       Tags?: Tag[];
     };
 
-    export type App = {
-      ResourceSpec?: AWS.SageMaker.App.ResourceSpec;
+    export namespace CodeRepository {
+      export type GitConfig = {
+        SecretArn?: string;
 
+        Branch?: string;
+
+        RepositoryUrl: string;
+      };
+    }
+
+    export type App = {
       AppName: string;
 
       AppType: string;
 
       DomainId: string;
 
+      ResourceSpec?: AWS.SageMaker.App.ResourceSpec;
+
       Tags?: Tag[];
 
       UserProfileName: string;
     };
+
+    export namespace App {
+      export type ResourceSpec = {
+        InstanceType?: string;
+
+        SageMakerImageArn?: string;
+
+        SageMakerImageVersionArn?: string;
+      };
+    }
 
     export type FeatureGroup = {
       FeatureGroupName: string;
@@ -4999,23 +5575,41 @@ export namespace AWS {
 
   export namespace S3 {
     export type AccessPoint = {
-      PublicAccessBlockConfiguration?: AWS.S3.AccessPoint.PublicAccessBlockConfiguration;
-
-      VpcConfiguration?: AWS.S3.AccessPoint.VpcConfiguration;
-
       Name?: string;
 
       Bucket: string;
 
+      VpcConfiguration?: AWS.S3.AccessPoint.VpcConfiguration;
+
+      PublicAccessBlockConfiguration?: AWS.S3.AccessPoint.PublicAccessBlockConfiguration;
+
       Policy?: JSONString;
+    };
+
+    export namespace AccessPoint {
+      export type PublicAccessBlockConfiguration = {
+        BlockPublicAcls?: boolean;
+
+        IgnorePublicAcls?: boolean;
+
+        BlockPublicPolicy?: boolean;
+
+        RestrictPublicBuckets?: boolean;
+      };
+
+      export type VpcConfiguration = {
+        VpcId?: string;
+      };
+    }
+
+    export type StorageLens = {
+      StorageLensConfiguration: AWS.S3.StorageLens.StorageLensConfiguration;
+
+      Tags?: Tag[];
     };
 
     export type StorageLens = {
       Encryption?: any;
-
-      StorageLensConfiguration: AWS.S3.StorageLens.StorageLensConfiguration;
-
-      Tags?: Tag[];
     };
 
     export namespace StorageLens {
@@ -5075,6 +5669,24 @@ export namespace AWS {
         Encryption?: AWS.S3.StorageLens.Encryption;
       };
 
+      export type StorageLensConfiguration = {
+        Id: string;
+
+        Include?: AWS.S3.StorageLens.BucketsAndRegions;
+
+        Exclude?: AWS.S3.StorageLens.BucketsAndRegions;
+
+        AwsOrg?: AWS.S3.StorageLens.AwsOrg;
+
+        AccountLevel: AWS.S3.StorageLens.AccountLevel;
+
+        DataExport?: AWS.S3.StorageLens.DataExport;
+
+        IsEnabled: boolean;
+
+        StorageLensArn?: string;
+      };
+
       export type AccountLevel = {
         ActivityMetrics?: AWS.S3.StorageLens.ActivityMetrics;
 
@@ -5083,48 +5695,52 @@ export namespace AWS {
     }
 
     export type Bucket = {
-      OwnershipControls?: AWS.S3.Bucket.OwnershipControls;
-
-      VersioningConfiguration?: AWS.S3.Bucket.VersioningConfiguration;
-
-      ObjectLockConfiguration?: AWS.S3.Bucket.ObjectLockConfiguration;
-
       AccelerateConfiguration?: AWS.S3.Bucket.AccelerateConfiguration;
-
-      PublicAccessBlockConfiguration?: AWS.S3.Bucket.PublicAccessBlockConfiguration;
-
-      BucketEncryption?: AWS.S3.Bucket.BucketEncryption;
-
-      LifecycleConfiguration?: AWS.S3.Bucket.LifecycleConfiguration;
-
-      NotificationConfiguration?: AWS.S3.Bucket.NotificationConfiguration;
-
-      ReplicationConfiguration?: AWS.S3.Bucket.ReplicationConfiguration;
-
-      CorsConfiguration?: AWS.S3.Bucket.CorsConfiguration;
-
-      LoggingConfiguration?: AWS.S3.Bucket.LoggingConfiguration;
-
-      WebsiteConfiguration?: AWS.S3.Bucket.WebsiteConfiguration;
 
       AccessControl?: string;
 
       AnalyticsConfigurations?: AWS.S3.Bucket.AnalyticsConfiguration[];
 
+      BucketEncryption?: AWS.S3.Bucket.BucketEncryption;
+
       BucketName?: string;
+
+      CorsConfiguration?: AWS.S3.Bucket.CorsConfiguration;
 
       IntelligentTieringConfigurations?: AWS.S3.Bucket.IntelligentTieringConfiguration[];
 
       InventoryConfigurations?: AWS.S3.Bucket.InventoryConfiguration[];
 
+      LifecycleConfiguration?: AWS.S3.Bucket.LifecycleConfiguration;
+
+      LoggingConfiguration?: AWS.S3.Bucket.LoggingConfiguration;
+
       MetricsConfigurations?: AWS.S3.Bucket.MetricsConfiguration[];
+
+      NotificationConfiguration?: AWS.S3.Bucket.NotificationConfiguration;
+
+      ObjectLockConfiguration?: AWS.S3.Bucket.ObjectLockConfiguration;
 
       ObjectLockEnabled?: boolean;
 
+      OwnershipControls?: AWS.S3.Bucket.OwnershipControls;
+
+      PublicAccessBlockConfiguration?: AWS.S3.Bucket.PublicAccessBlockConfiguration;
+
+      ReplicationConfiguration?: AWS.S3.Bucket.ReplicationConfiguration;
+
       Tags?: Tag[];
+
+      VersioningConfiguration?: AWS.S3.Bucket.VersioningConfiguration;
+
+      WebsiteConfiguration?: AWS.S3.Bucket.WebsiteConfiguration;
     };
 
     export namespace Bucket {
+      export type OwnershipControls = {
+        Rules: AWS.S3.Bucket.OwnershipControlsRule[];
+      };
+
       export type ReplicaModifications = {
         Status: string;
       };
@@ -5161,6 +5777,10 @@ export namespace AWS {
         Owner: string;
       };
 
+      export type VersioningConfiguration = {
+        Status: string;
+      };
+
       export type ReplicationTime = {
         Status: string;
 
@@ -5191,6 +5811,16 @@ export namespace AWS {
         Queue: string;
       };
 
+      export type ObjectLockConfiguration = {
+        ObjectLockEnabled?: string;
+
+        Rule?: AWS.S3.Bucket.ObjectLockRule;
+      };
+
+      export type AccelerateConfiguration = {
+        AccelerationStatus: string;
+      };
+
       export type IntelligentTieringConfiguration = {
         Id: string;
 
@@ -5209,6 +5839,16 @@ export namespace AWS {
 
       export type DeleteMarkerReplication = {
         Status?: string;
+      };
+
+      export type PublicAccessBlockConfiguration = {
+        BlockPublicAcls?: boolean;
+
+        BlockPublicPolicy?: boolean;
+
+        IgnorePublicAcls?: boolean;
+
+        RestrictPublicBuckets?: boolean;
       };
 
       export type ReplicationRule = {
@@ -5313,6 +5953,10 @@ export namespace AWS {
         TagFilters?: AWS.S3.Bucket.TagFilter[];
       };
 
+      export type BucketEncryption = {
+        ServerSideEncryptionConfiguration: AWS.S3.Bucket.ServerSideEncryptionRule[];
+      };
+
       export type Metrics = {
         EventThreshold?: AWS.S3.Bucket.ReplicationTimeValue;
 
@@ -5323,6 +5967,18 @@ export namespace AWS {
         HttpErrorCodeReturnedEquals?: string;
 
         KeyPrefixEquals?: string;
+      };
+
+      export type LifecycleConfiguration = {
+        Rules: AWS.S3.Bucket.Rule[];
+      };
+
+      export type NotificationConfiguration = {
+        LambdaConfigurations?: AWS.S3.Bucket.LambdaConfiguration[];
+
+        QueueConfigurations?: AWS.S3.Bucket.QueueConfiguration[];
+
+        TopicConfigurations?: AWS.S3.Bucket.TopicConfiguration[];
       };
 
       export type RedirectAllRequestsTo = {
@@ -5349,6 +6005,16 @@ export namespace AWS {
         Prefix?: string;
 
         ScheduleFrequency: string;
+      };
+
+      export type ReplicationConfiguration = {
+        Role: string;
+
+        Rules: AWS.S3.Bucket.ReplicationRule[];
+      };
+
+      export type CorsConfiguration = {
+        CorsRules: AWS.S3.Bucket.CorsRule[];
       };
 
       export type ReplicationDestination = {
@@ -5409,6 +6075,12 @@ export namespace AWS {
         TagFilters?: AWS.S3.Bucket.TagFilter[];
       };
 
+      export type LoggingConfiguration = {
+        DestinationBucketName?: string;
+
+        LogFilePrefix?: string;
+      };
+
       export type RoutingRule = {
         RedirectRule: AWS.S3.Bucket.RedirectRule;
 
@@ -5417,6 +6089,16 @@ export namespace AWS {
 
       export type EncryptionConfiguration = {
         ReplicaKmsKeyID: string;
+      };
+
+      export type WebsiteConfiguration = {
+        ErrorDocument?: string;
+
+        IndexDocument?: string;
+
+        RedirectAllRequestsTo?: AWS.S3.Bucket.RedirectAllRequestsTo;
+
+        RoutingRules?: AWS.S3.Bucket.RoutingRule[];
       };
 
       export type TopicConfiguration = {
@@ -5459,8 +6141,6 @@ export namespace AWS {
 
   export namespace ElasticBeanstalk {
     export type Environment = {
-      Tier?: AWS.ElasticBeanstalk.Environment.Tier;
-
       ApplicationName: string;
 
       CNAMEPrefix?: string;
@@ -5481,6 +6161,8 @@ export namespace AWS {
 
       TemplateName?: string;
 
+      Tier?: AWS.ElasticBeanstalk.Environment.Tier;
+
       VersionLabel?: string;
     };
 
@@ -5494,15 +6176,31 @@ export namespace AWS {
 
         Value?: string;
       };
+
+      export type Tier = {
+        Name?: string;
+
+        Type?: string;
+
+        Version?: string;
+      };
     }
 
     export type ApplicationVersion = {
-      SourceBundle: AWS.ElasticBeanstalk.ApplicationVersion.SourceBundle;
-
       ApplicationName: string;
 
       Description?: string;
+
+      SourceBundle: AWS.ElasticBeanstalk.ApplicationVersion.SourceBundle;
     };
+
+    export namespace ApplicationVersion {
+      export type SourceBundle = {
+        S3Bucket: string;
+
+        S3Key: string;
+      };
+    }
 
     export type Application = {
       ApplicationName?: string;
@@ -5543,8 +6241,6 @@ export namespace AWS {
     }
 
     export type ConfigurationTemplate = {
-      SourceConfiguration?: AWS.ElasticBeanstalk.ConfigurationTemplate.SourceConfiguration;
-
       ApplicationName: string;
 
       Description?: string;
@@ -5556,9 +6252,17 @@ export namespace AWS {
       PlatformArn?: string;
 
       SolutionStackName?: string;
+
+      SourceConfiguration?: AWS.ElasticBeanstalk.ConfigurationTemplate.SourceConfiguration;
     };
 
     export namespace ConfigurationTemplate {
+      export type SourceConfiguration = {
+        ApplicationName: string;
+
+        TemplateName: string;
+      };
+
       export type ConfigurationOptionSetting = {
         Namespace: string;
 
@@ -5573,14 +6277,6 @@ export namespace AWS {
 
   export namespace Pinpoint {
     export type Campaign = {
-      Schedule: AWS.Pinpoint.Campaign.Schedule;
-
-      Limits?: AWS.Pinpoint.Campaign.Limits;
-
-      MessageConfiguration: AWS.Pinpoint.Campaign.MessageConfiguration;
-
-      CampaignHook?: AWS.Pinpoint.Campaign.CampaignHook;
-
       Description?: string;
 
       SegmentId: string;
@@ -5595,9 +6291,17 @@ export namespace AWS {
 
       TreatmentDescription?: string;
 
+      MessageConfiguration: AWS.Pinpoint.Campaign.MessageConfiguration;
+
+      Limits?: AWS.Pinpoint.Campaign.Limits;
+
       HoldoutPercent?: number;
 
+      Schedule: AWS.Pinpoint.Campaign.Schedule;
+
       ApplicationId: string;
+
+      CampaignHook?: AWS.Pinpoint.Campaign.CampaignHook;
 
       Tags?: JSONString;
 
@@ -5609,6 +6313,22 @@ export namespace AWS {
         ComparisonOperator?: string;
 
         Value?: number;
+      };
+
+      export type Schedule = {
+        TimeZone?: string;
+
+        QuietTime?: AWS.Pinpoint.Campaign.QuietTime;
+
+        EndTime?: string;
+
+        StartTime?: string;
+
+        Frequency?: string;
+
+        EventFilter?: AWS.Pinpoint.Campaign.CampaignEventFilter;
+
+        IsLocalTime?: boolean;
       };
 
       export type QuietTime = {
@@ -5689,10 +6409,44 @@ export namespace AWS {
         Attributes?: JSONString;
       };
 
+      export type Limits = {
+        Daily?: number;
+
+        MaximumDuration?: number;
+
+        Total?: number;
+
+        MessagesPerSecond?: number;
+      };
+
       export type AttributeDimension = {
         AttributeType?: string;
 
         Values?: string[];
+      };
+
+      export type MessageConfiguration = {
+        APNSMessage?: AWS.Pinpoint.Campaign.Message;
+
+        BaiduMessage?: AWS.Pinpoint.Campaign.Message;
+
+        DefaultMessage?: AWS.Pinpoint.Campaign.Message;
+
+        EmailMessage?: AWS.Pinpoint.Campaign.CampaignEmailMessage;
+
+        GCMMessage?: AWS.Pinpoint.Campaign.Message;
+
+        SMSMessage?: AWS.Pinpoint.Campaign.CampaignSmsMessage;
+
+        ADMMessage?: AWS.Pinpoint.Campaign.Message;
+      };
+
+      export type CampaignHook = {
+        Mode?: string;
+
+        WebUrl?: string;
+
+        LambdaFunctionName?: string;
       };
 
       export type CampaignEmailMessage = {
@@ -5745,6 +6499,12 @@ export namespace AWS {
         GPSPoint?: AWS.Pinpoint.Segment.GPSPoint;
 
         Country?: AWS.Pinpoint.Segment.SetDimension;
+      };
+
+      export type SegmentGroups = {
+        Groups?: AWS.Pinpoint.Segment.Groups[];
+
+        Include?: string;
       };
 
       export type Coordinates = {
@@ -5805,16 +6565,42 @@ export namespace AWS {
     }
 
     export type ApplicationSettings = {
-      CampaignHook?: AWS.Pinpoint.ApplicationSettings.CampaignHook;
+      QuietTime?: AWS.Pinpoint.ApplicationSettings.QuietTime;
 
       Limits?: AWS.Pinpoint.ApplicationSettings.Limits;
 
-      QuietTime?: AWS.Pinpoint.ApplicationSettings.QuietTime;
-
       ApplicationId: string;
+
+      CampaignHook?: AWS.Pinpoint.ApplicationSettings.CampaignHook;
 
       CloudWatchMetricsEnabled?: boolean;
     };
+
+    export namespace ApplicationSettings {
+      export type CampaignHook = {
+        Mode?: string;
+
+        WebUrl?: string;
+
+        LambdaFunctionName?: string;
+      };
+
+      export type Limits = {
+        Daily?: number;
+
+        MaximumDuration?: number;
+
+        Total?: number;
+
+        MessagesPerSecond?: number;
+      };
+
+      export type QuietTime = {
+        Start: string;
+
+        End: string;
+      };
+    }
 
     export type PushTemplate = {
       GCM?: AWS.Pinpoint.PushTemplate.AndroidPushNotificationTemplate;
@@ -6129,11 +6915,11 @@ export namespace AWS {
 
   export namespace CustomerProfiles {
     export type Integration = {
-      FlowDefinition?: AWS.CustomerProfiles.Integration.FlowDefinition;
-
       DomainName: string;
 
       Uri?: string;
+
+      FlowDefinition?: AWS.CustomerProfiles.Integration.FlowDefinition;
 
       ObjectTypeName: string;
 
@@ -6177,6 +6963,20 @@ export namespace AWS {
         BucketName: string;
 
         BucketPrefix?: string;
+      };
+
+      export type FlowDefinition = {
+        FlowName: string;
+
+        Description?: string;
+
+        KmsArn: string;
+
+        Tasks: AWS.CustomerProfiles.Integration.Task[];
+
+        TriggerConfig: AWS.CustomerProfiles.Integration.TriggerConfig;
+
+        SourceFlowConfig: AWS.CustomerProfiles.Integration.SourceFlowConfig;
       };
 
       export type IncrementalPullConfig = {
@@ -6315,17 +7115,17 @@ export namespace AWS {
 
   export namespace AppRunner {
     export type Service = {
+      ServiceName?: string;
+
+      SourceConfiguration: AWS.AppRunner.Service.SourceConfiguration;
+
       InstanceConfiguration?: AWS.AppRunner.Service.InstanceConfiguration;
+
+      Tags?: Tag[];
 
       EncryptionConfiguration?: AWS.AppRunner.Service.EncryptionConfiguration;
 
       HealthCheckConfiguration?: AWS.AppRunner.Service.HealthCheckConfiguration;
-
-      SourceConfiguration: AWS.AppRunner.Service.SourceConfiguration;
-
-      ServiceName?: string;
-
-      Tags?: Tag[];
 
       AutoScalingConfigurationArn?: string;
     };
@@ -6339,6 +7139,14 @@ export namespace AWS {
         RuntimeEnvironmentVariables?: AWS.AppRunner.Service.KeyValuePair[];
       };
 
+      export type InstanceConfiguration = {
+        Cpu?: string;
+
+        Memory?: string;
+
+        InstanceRoleArn?: string;
+      };
+
       export type AuthenticationConfiguration = {
         ConnectionArn?: string;
 
@@ -6349,6 +7157,24 @@ export namespace AWS {
         Name?: string;
 
         Value?: string;
+      };
+
+      export type EncryptionConfiguration = {
+        KmsKey: string;
+      };
+
+      export type HealthCheckConfiguration = {
+        Protocol?: string;
+
+        Path?: string;
+
+        Interval?: number;
+
+        Timeout?: number;
+
+        HealthyThreshold?: number;
+
+        UnhealthyThreshold?: number;
       };
 
       export type CodeConfigurationValues = {
@@ -6377,6 +7203,16 @@ export namespace AWS {
         ImageRepositoryType: string;
       };
 
+      export type SourceConfiguration = {
+        CodeRepository?: AWS.AppRunner.Service.CodeRepository;
+
+        ImageRepository?: AWS.AppRunner.Service.ImageRepository;
+
+        AutoDeploymentsEnabled?: boolean;
+
+        AuthenticationConfiguration?: AWS.AppRunner.Service.AuthenticationConfiguration;
+      };
+
       export type CodeRepository = {
         RepositoryUrl: string;
 
@@ -6395,41 +7231,25 @@ export namespace AWS {
 
   export namespace DMS {
     export type Endpoint = {
-      KinesisSettings?: AWS.DMS.Endpoint.KinesisSettings;
-
-      S3Settings?: AWS.DMS.Endpoint.S3Settings;
-
-      PostgreSqlSettings?: AWS.DMS.Endpoint.PostgreSqlSettings;
-
-      MicrosoftSqlServerSettings?: AWS.DMS.Endpoint.MicrosoftSqlServerSettings;
-
-      MongoDbSettings?: AWS.DMS.Endpoint.MongoDbSettings;
-
-      KafkaSettings?: AWS.DMS.Endpoint.KafkaSettings;
-
-      MySqlSettings?: AWS.DMS.Endpoint.MySqlSettings;
-
-      NeptuneSettings?: AWS.DMS.Endpoint.NeptuneSettings;
-
-      IbmDb2Settings?: AWS.DMS.Endpoint.IbmDb2Settings;
-
-      ElasticsearchSettings?: AWS.DMS.Endpoint.ElasticsearchSettings;
+      SybaseSettings?: AWS.DMS.Endpoint.SybaseSettings;
 
       OracleSettings?: AWS.DMS.Endpoint.OracleSettings;
 
-      DynamoDbSettings?: AWS.DMS.Endpoint.DynamoDbSettings;
-
-      DocDbSettings?: AWS.DMS.Endpoint.DocDbSettings;
-
-      SybaseSettings?: AWS.DMS.Endpoint.SybaseSettings;
-
-      RedshiftSettings?: AWS.DMS.Endpoint.RedshiftSettings;
+      KafkaSettings?: AWS.DMS.Endpoint.KafkaSettings;
 
       Port?: number;
 
+      MySqlSettings?: AWS.DMS.Endpoint.MySqlSettings;
+
+      S3Settings?: AWS.DMS.Endpoint.S3Settings;
+
       ResourceIdentifier?: string;
 
+      KinesisSettings?: AWS.DMS.Endpoint.KinesisSettings;
+
       SslMode?: string;
+
+      RedshiftSettings?: AWS.DMS.Endpoint.RedshiftSettings;
 
       EndpointType: string;
 
@@ -6437,13 +7257,27 @@ export namespace AWS {
 
       Password?: string;
 
+      MongoDbSettings?: AWS.DMS.Endpoint.MongoDbSettings;
+
+      IbmDb2Settings?: AWS.DMS.Endpoint.IbmDb2Settings;
+
       KmsKeyId?: string;
 
       DatabaseName?: string;
 
+      NeptuneSettings?: AWS.DMS.Endpoint.NeptuneSettings;
+
+      ElasticsearchSettings?: AWS.DMS.Endpoint.ElasticsearchSettings;
+
       EngineName: string;
 
+      DocDbSettings?: AWS.DMS.Endpoint.DocDbSettings;
+
+      DynamoDbSettings?: AWS.DMS.Endpoint.DynamoDbSettings;
+
       Username?: string;
+
+      MicrosoftSqlServerSettings?: AWS.DMS.Endpoint.MicrosoftSqlServerSettings;
 
       ServerName?: string;
 
@@ -6452,7 +7286,151 @@ export namespace AWS {
       EndpointIdentifier?: string;
 
       CertificateArn?: string;
+
+      PostgreSqlSettings?: AWS.DMS.Endpoint.PostgreSqlSettings;
     };
+
+    export namespace Endpoint {
+      export type KinesisSettings = {
+        MessageFormat?: string;
+
+        StreamArn?: string;
+
+        ServiceAccessRoleArn?: string;
+      };
+
+      export type S3Settings = {
+        ExternalTableDefinition?: string;
+
+        BucketName?: string;
+
+        BucketFolder?: string;
+
+        CsvRowDelimiter?: string;
+
+        CsvDelimiter?: string;
+
+        ServiceAccessRoleArn?: string;
+
+        CompressionType?: string;
+      };
+
+      export type PostgreSqlSettings = {
+        SecretsManagerSecretId?: string;
+
+        SecretsManagerAccessRoleArn?: string;
+      };
+
+      export type MicrosoftSqlServerSettings = {
+        SecretsManagerSecretId?: string;
+
+        SecretsManagerAccessRoleArn?: string;
+      };
+
+      export type MongoDbSettings = {
+        Port?: number;
+
+        ExtractDocId?: string;
+
+        DatabaseName?: string;
+
+        AuthSource?: string;
+
+        AuthMechanism?: string;
+
+        Username?: string;
+
+        DocsToInvestigate?: string;
+
+        ServerName?: string;
+
+        SecretsManagerSecretId?: string;
+
+        AuthType?: string;
+
+        SecretsManagerAccessRoleArn?: string;
+
+        Password?: string;
+
+        NestingLevel?: string;
+      };
+
+      export type KafkaSettings = {
+        Broker?: string;
+
+        Topic?: string;
+      };
+
+      export type MySqlSettings = {
+        SecretsManagerSecretId?: string;
+
+        SecretsManagerAccessRoleArn?: string;
+      };
+
+      export type NeptuneSettings = {
+        MaxRetryCount?: number;
+
+        MaxFileSize?: number;
+
+        S3BucketFolder?: string;
+
+        ErrorRetryDuration?: number;
+
+        IamAuthEnabled?: boolean;
+
+        S3BucketName?: string;
+
+        ServiceAccessRoleArn?: string;
+      };
+
+      export type IbmDb2Settings = {
+        SecretsManagerSecretId?: string;
+
+        SecretsManagerAccessRoleArn?: string;
+      };
+
+      export type ElasticsearchSettings = {
+        EndpointUri?: string;
+
+        FullLoadErrorPercentage?: number;
+
+        ErrorRetryDuration?: number;
+
+        ServiceAccessRoleArn?: string;
+      };
+
+      export type OracleSettings = {
+        SecretsManagerOracleAsmAccessRoleArn?: string;
+
+        SecretsManagerOracleAsmSecretId?: string;
+
+        SecretsManagerSecretId?: string;
+
+        SecretsManagerAccessRoleArn?: string;
+      };
+
+      export type DynamoDbSettings = {
+        ServiceAccessRoleArn?: string;
+      };
+
+      export type DocDbSettings = {
+        SecretsManagerSecretId?: string;
+
+        SecretsManagerAccessRoleArn?: string;
+      };
+
+      export type SybaseSettings = {
+        SecretsManagerSecretId?: string;
+
+        SecretsManagerAccessRoleArn?: string;
+      };
+
+      export type RedshiftSettings = {
+        SecretsManagerSecretId?: string;
+
+        SecretsManagerAccessRoleArn?: string;
+      };
+    }
 
     export type ReplicationSubnetGroup = {
       ReplicationSubnetGroupDescription: string;
@@ -6551,10 +7529,6 @@ export namespace AWS {
 
   export namespace IoTAnalytics {
     export type Dataset = {
-      VersioningConfiguration?: AWS.IoTAnalytics.Dataset.VersioningConfiguration;
-
-      RetentionPeriod?: AWS.IoTAnalytics.Dataset.RetentionPeriod;
-
       Actions: AWS.IoTAnalytics.Dataset.Action[];
 
       LateDataRules?: AWS.IoTAnalytics.Dataset.LateDataRule[];
@@ -6564,6 +7538,10 @@ export namespace AWS {
       ContentDeliveryRules?: AWS.IoTAnalytics.Dataset.DatasetContentDeliveryRule[];
 
       Triggers?: AWS.IoTAnalytics.Dataset.Trigger[];
+
+      VersioningConfiguration?: AWS.IoTAnalytics.Dataset.VersioningConfiguration;
+
+      RetentionPeriod?: AWS.IoTAnalytics.Dataset.RetentionPeriod;
 
       Tags?: Tag[];
     };
@@ -6637,8 +7615,20 @@ export namespace AWS {
         S3DestinationConfiguration?: AWS.IoTAnalytics.Dataset.S3DestinationConfiguration;
       };
 
+      export type VersioningConfiguration = {
+        MaxVersions?: number;
+
+        Unlimited?: boolean;
+      };
+
       export type Schedule = {
         ScheduleExpression: string;
+      };
+
+      export type RetentionPeriod = {
+        NumberOfDays: number;
+
+        Unlimited: boolean;
       };
 
       export type S3DestinationConfiguration = {
@@ -6815,26 +7805,42 @@ export namespace AWS {
     }
 
     export type Datastore = {
-      FileFormatConfiguration?: AWS.IoTAnalytics.Datastore.FileFormatConfiguration;
+      DatastoreStorage?: AWS.IoTAnalytics.Datastore.DatastoreStorage;
 
-      RetentionPeriod?: AWS.IoTAnalytics.Datastore.RetentionPeriod;
+      FileFormatConfiguration?: AWS.IoTAnalytics.Datastore.FileFormatConfiguration;
 
       DatastorePartitions?: AWS.IoTAnalytics.Datastore.DatastorePartitions;
 
-      DatastoreStorage?: AWS.IoTAnalytics.Datastore.DatastoreStorage;
-
       DatastoreName?: string;
+
+      RetentionPeriod?: AWS.IoTAnalytics.Datastore.RetentionPeriod;
 
       Tags?: Tag[];
     };
 
     export namespace Datastore {
+      export type FileFormatConfiguration = {
+        ParquetConfiguration?: AWS.IoTAnalytics.Datastore.ParquetConfiguration;
+
+        JsonConfiguration?: AWS.IoTAnalytics.Datastore.JsonConfiguration;
+      };
+
+      export type RetentionPeriod = {
+        NumberOfDays?: number;
+
+        Unlimited?: boolean;
+      };
+
       export type CustomerManagedS3 = {
         Bucket: string;
 
         RoleArn: string;
 
         KeyPrefix?: string;
+      };
+
+      export type DatastorePartitions = {
+        Partitions?: AWS.IoTAnalytics.Datastore.DatastorePartition[];
       };
 
       export type SchemaDefinition = {
@@ -6849,6 +7855,12 @@ export namespace AWS {
 
       export type ParquetConfiguration = {
         SchemaDefinition?: AWS.IoTAnalytics.Datastore.SchemaDefinition;
+      };
+
+      export type DatastoreStorage = {
+        CustomerManagedS3?: AWS.IoTAnalytics.Datastore.CustomerManagedS3;
+
+        ServiceManagedS3?: AWS.IoTAnalytics.Datastore.ServiceManagedS3;
       };
 
       export type Partition = {
@@ -6869,11 +7881,11 @@ export namespace AWS {
     }
 
     export type Channel = {
-      RetentionPeriod?: AWS.IoTAnalytics.Channel.RetentionPeriod;
+      ChannelName?: string;
 
       ChannelStorage?: AWS.IoTAnalytics.Channel.ChannelStorage;
 
-      ChannelName?: string;
+      RetentionPeriod?: AWS.IoTAnalytics.Channel.RetentionPeriod;
 
       Tags?: Tag[];
     };
@@ -6885,6 +7897,18 @@ export namespace AWS {
         RoleArn: string;
 
         KeyPrefix?: string;
+      };
+
+      export type RetentionPeriod = {
+        NumberOfDays?: number;
+
+        Unlimited?: boolean;
+      };
+
+      export type ChannelStorage = {
+        CustomerManagedS3?: AWS.IoTAnalytics.Channel.CustomerManagedS3;
+
+        ServiceManagedS3?: AWS.IoTAnalytics.Channel.ServiceManagedS3;
       };
     }
   }
@@ -6937,9 +7961,9 @@ export namespace AWS {
 
   export namespace SES {
     export type ReceiptRule = {
-      Rule: AWS.SES.ReceiptRule.Rule;
-
       After?: string;
+
+      Rule: AWS.SES.ReceiptRule.Rule;
 
       RuleSetName: string;
     };
@@ -7001,6 +8025,20 @@ export namespace AWS {
         OrganizationArn: string;
       };
 
+      export type Rule = {
+        ScanEnabled?: boolean;
+
+        Recipients?: string[];
+
+        Actions?: AWS.SES.ReceiptRule.Action[];
+
+        Enabled?: boolean;
+
+        Name?: string;
+
+        TlsPolicy?: string;
+      };
+
       export type LambdaAction = {
         FunctionArn: string;
 
@@ -7021,6 +8059,12 @@ export namespace AWS {
     };
 
     export namespace ReceiptFilter {
+      export type Filter = {
+        IpFilter: AWS.SES.ReceiptFilter.IpFilter;
+
+        Name?: string;
+      };
+
       export type IpFilter = {
         Policy: string;
 
@@ -7029,12 +8073,24 @@ export namespace AWS {
     }
 
     export type ConfigurationSetEventDestination = {
-      EventDestination: AWS.SES.ConfigurationSetEventDestination.EventDestination;
-
       ConfigurationSetName: string;
+
+      EventDestination: AWS.SES.ConfigurationSetEventDestination.EventDestination;
     };
 
     export namespace ConfigurationSetEventDestination {
+      export type EventDestination = {
+        CloudWatchDestination?: AWS.SES.ConfigurationSetEventDestination.CloudWatchDestination;
+
+        Enabled?: boolean;
+
+        MatchingEventTypes: string[];
+
+        Name?: string;
+
+        KinesisFirehoseDestination?: AWS.SES.ConfigurationSetEventDestination.KinesisFirehoseDestination;
+      };
+
       export type DimensionConfiguration = {
         DimensionValueSource: string;
 
@@ -7057,6 +8113,18 @@ export namespace AWS {
     export type Template = {
       Template?: AWS.SES.Template.Template;
     };
+
+    export namespace Template {
+      export type Template = {
+        HtmlPart?: string;
+
+        TextPart?: string;
+
+        TemplateName?: string;
+
+        SubjectPart?: string;
+      };
+    }
 
     export type ContactList = {
       ContactListName?: string;
@@ -7091,35 +8159,107 @@ export namespace AWS {
 
   export namespace XRay {
     export type Group = {
-      InsightsConfiguration?: AWS.XRay.Group.InsightsConfiguration;
-
       FilterExpression?: string;
 
       GroupName?: string;
 
+      InsightsConfiguration?: AWS.XRay.Group.InsightsConfiguration;
+
       Tags?: JSONString[];
     };
 
+    export namespace Group {
+      export type InsightsConfiguration = {
+        InsightsEnabled?: boolean;
+
+        NotificationsEnabled?: boolean;
+      };
+    }
+
     export type SamplingRule = {
-      SamplingRuleUpdate?: AWS.XRay.SamplingRule.SamplingRuleUpdate;
+      SamplingRule?: AWS.XRay.SamplingRule.SamplingRule;
 
       SamplingRuleRecord?: AWS.XRay.SamplingRule.SamplingRuleRecord;
 
-      SamplingRule?: AWS.XRay.SamplingRule.SamplingRule;
+      SamplingRuleUpdate?: AWS.XRay.SamplingRule.SamplingRuleUpdate;
 
       RuleName?: string;
 
       Tags?: JSONString[];
     };
+
+    export namespace SamplingRule {
+      export type SamplingRuleUpdate = {
+        Attributes?: Record<string, string>;
+
+        FixedRate?: number;
+
+        Host?: string;
+
+        HTTPMethod?: string;
+
+        Priority?: number;
+
+        ReservoirSize?: number;
+
+        ResourceARN?: string;
+
+        RuleARN?: string;
+
+        RuleName?: string;
+
+        ServiceName?: string;
+
+        ServiceType?: string;
+
+        URLPath?: string;
+      };
+
+      export type SamplingRuleRecord = {
+        CreatedAt?: string;
+
+        ModifiedAt?: string;
+
+        SamplingRule?: AWS.XRay.SamplingRule.SamplingRule;
+      };
+
+      export type SamplingRule = {
+        Attributes?: Record<string, string>;
+
+        FixedRate?: number;
+
+        Host?: string;
+
+        HTTPMethod?: string;
+
+        Priority?: number;
+
+        ReservoirSize?: number;
+
+        ResourceARN?: string;
+
+        RuleARN?: string;
+
+        RuleName?: string;
+
+        ServiceName?: string;
+
+        ServiceType?: string;
+
+        URLPath?: string;
+
+        Version?: number;
+      };
+    }
   }
 
   export namespace PinpointEmail {
     export type ConfigurationSetEventDestination = {
-      EventDestination?: AWS.PinpointEmail.ConfigurationSetEventDestination.EventDestination;
-
       EventDestinationName: string;
 
       ConfigurationSetName: string;
+
+      EventDestination?: AWS.PinpointEmail.ConfigurationSetEventDestination.EventDestination;
     };
 
     export namespace ConfigurationSetEventDestination {
@@ -7148,46 +8288,106 @@ export namespace AWS {
 
         IamRoleArn: string;
       };
+
+      export type EventDestination = {
+        SnsDestination?: AWS.PinpointEmail.ConfigurationSetEventDestination.SnsDestination;
+
+        CloudWatchDestination?: AWS.PinpointEmail.ConfigurationSetEventDestination.CloudWatchDestination;
+
+        Enabled?: boolean;
+
+        MatchingEventTypes: string[];
+
+        PinpointDestination?: AWS.PinpointEmail.ConfigurationSetEventDestination.PinpointDestination;
+
+        KinesisFirehoseDestination?: AWS.PinpointEmail.ConfigurationSetEventDestination.KinesisFirehoseDestination;
+      };
     }
 
     export type ConfigurationSet = {
       SendingOptions?: AWS.PinpointEmail.ConfigurationSet.SendingOptions;
 
-      ReputationOptions?: AWS.PinpointEmail.ConfigurationSet.ReputationOptions;
-
       TrackingOptions?: AWS.PinpointEmail.ConfigurationSet.TrackingOptions;
 
-      Tags?: AWS.PinpointEmail.ConfigurationSet.Tags[];
+      ReputationOptions?: AWS.PinpointEmail.ConfigurationSet.ReputationOptions;
 
       DeliveryOptions?: AWS.PinpointEmail.ConfigurationSet.DeliveryOptions;
+
+      Tags?: AWS.PinpointEmail.ConfigurationSet.Tags[];
 
       Name: string;
     };
 
-    export type DedicatedIpPool = {
-      Tags?: AWS.PinpointEmail.DedicatedIpPool.Tags[];
+    export namespace ConfigurationSet {
+      export type SendingOptions = {
+        SendingEnabled?: boolean;
+      };
 
+      export type ReputationOptions = {
+        ReputationMetricsEnabled?: boolean;
+      };
+
+      export type TrackingOptions = {
+        CustomRedirectDomain?: string;
+      };
+
+      export type Tags = {
+        Value?: string;
+
+        Key?: string;
+      };
+
+      export type DeliveryOptions = {
+        SendingPoolName?: string;
+      };
+    }
+
+    export type DedicatedIpPool = {
       PoolName?: string;
+
+      Tags?: AWS.PinpointEmail.DedicatedIpPool.Tags[];
     };
 
+    export namespace DedicatedIpPool {
+      export type Tags = {
+        Value?: string;
+
+        Key?: string;
+      };
+    }
+
     export type Identity = {
-      Tags?: AWS.PinpointEmail.Identity.Tags[];
-
-      MailFromAttributes?: AWS.PinpointEmail.Identity.MailFromAttributes;
-
       FeedbackForwardingEnabled?: boolean;
 
       DkimSigningEnabled?: boolean;
 
+      Tags?: AWS.PinpointEmail.Identity.Tags[];
+
       Name: string;
+
+      MailFromAttributes?: AWS.PinpointEmail.Identity.MailFromAttributes;
     };
+
+    export namespace Identity {
+      export type Tags = {
+        Value?: string;
+
+        Key?: string;
+      };
+
+      export type MailFromAttributes = {
+        MailFromDomain?: string;
+
+        BehaviorOnMxFailure?: string;
+      };
+    }
   }
 
   export namespace IoT {
     export type TopicRule = {
-      TopicRulePayload: AWS.IoT.TopicRule.TopicRulePayload;
-
       RuleName?: string;
+
+      TopicRulePayload: AWS.IoT.TopicRule.TopicRulePayload;
 
       Tags?: Tag[];
     };
@@ -7469,6 +8669,20 @@ export namespace AWS {
         RoleArn: string;
       };
 
+      export type TopicRulePayload = {
+        RuleDisabled?: boolean;
+
+        ErrorAction?: AWS.IoT.TopicRule.Action;
+
+        Description?: string;
+
+        AwsIotSqlVersion?: string;
+
+        Actions: AWS.IoT.TopicRule.Action[];
+
+        Sql: string;
+      };
+
       export type CloudwatchAlarmAction = {
         StateValue: string;
 
@@ -7499,13 +8713,13 @@ export namespace AWS {
     }
 
     export type MitigationAction = {
-      ActionParams: AWS.IoT.MitigationAction.ActionParams;
-
       ActionName?: string;
 
       RoleArn: string;
 
       Tags?: Tag[];
+
+      ActionParams: AWS.IoT.MitigationAction.ActionParams;
     };
 
     export namespace MitigationAction {
@@ -7531,6 +8745,20 @@ export namespace AWS {
         LogLevel: string;
 
         RoleArnForLogging: string;
+      };
+
+      export type ActionParams = {
+        AddThingsToThingGroupParams?: AWS.IoT.MitigationAction.AddThingsToThingGroupParams;
+
+        EnableIoTLoggingParams?: AWS.IoT.MitigationAction.EnableIoTLoggingParams;
+
+        PublishFindingToSnsParams?: AWS.IoT.MitigationAction.PublishFindingToSnsParams;
+
+        ReplaceDefaultPolicyVersionParams?: AWS.IoT.MitigationAction.ReplaceDefaultPolicyVersionParams;
+
+        UpdateCACertificateParams?: AWS.IoT.MitigationAction.UpdateCACertificateParams;
+
+        UpdateDeviceCertificateParams?: AWS.IoT.MitigationAction.UpdateDeviceCertificateParams;
       };
 
       export type PublishFindingToSnsParams = {
@@ -7649,11 +8877,11 @@ export namespace AWS {
     }
 
     export type AccountAuditConfiguration = {
-      AuditNotificationTargetConfigurations?: AWS.IoT.AccountAuditConfiguration.AuditNotificationTargetConfigurations;
+      AccountId: string;
 
       AuditCheckConfigurations: AWS.IoT.AccountAuditConfiguration.AuditCheckConfigurations;
 
-      AccountId: string;
+      AuditNotificationTargetConfigurations?: AWS.IoT.AccountAuditConfiguration.AuditNotificationTargetConfigurations;
 
       RoleArn: string;
     };
@@ -7663,12 +8891,46 @@ export namespace AWS {
         Enabled?: boolean;
       };
 
+      export type AuditNotificationTargetConfigurations = {
+        Sns?: AWS.IoT.AccountAuditConfiguration.AuditNotificationTarget;
+      };
+
       export type AuditNotificationTarget = {
         TargetArn?: string;
 
         RoleArn?: string;
 
         Enabled?: boolean;
+      };
+
+      export type AuditCheckConfigurations = {
+        AuthenticatedCognitoRoleOverlyPermissiveCheck?: AWS.IoT.AccountAuditConfiguration.AuditCheckConfiguration;
+
+        CaCertificateExpiringCheck?: AWS.IoT.AccountAuditConfiguration.AuditCheckConfiguration;
+
+        CaCertificateKeyQualityCheck?: AWS.IoT.AccountAuditConfiguration.AuditCheckConfiguration;
+
+        ConflictingClientIdsCheck?: AWS.IoT.AccountAuditConfiguration.AuditCheckConfiguration;
+
+        DeviceCertificateExpiringCheck?: AWS.IoT.AccountAuditConfiguration.AuditCheckConfiguration;
+
+        DeviceCertificateKeyQualityCheck?: AWS.IoT.AccountAuditConfiguration.AuditCheckConfiguration;
+
+        DeviceCertificateSharedCheck?: AWS.IoT.AccountAuditConfiguration.AuditCheckConfiguration;
+
+        IotPolicyOverlyPermissiveCheck?: AWS.IoT.AccountAuditConfiguration.AuditCheckConfiguration;
+
+        IotRoleAliasAllowsAccessToUnusedServicesCheck?: AWS.IoT.AccountAuditConfiguration.AuditCheckConfiguration;
+
+        IotRoleAliasOverlyPermissiveCheck?: AWS.IoT.AccountAuditConfiguration.AuditCheckConfiguration;
+
+        LoggingDisabledCheck?: AWS.IoT.AccountAuditConfiguration.AuditCheckConfiguration;
+
+        RevokedCaCertificateStillActiveCheck?: AWS.IoT.AccountAuditConfiguration.AuditCheckConfiguration;
+
+        RevokedDeviceCertificateStillActiveCheck?: AWS.IoT.AccountAuditConfiguration.AuditCheckConfiguration;
+
+        UnauthenticatedCognitoRoleOverlyPermissiveCheck?: AWS.IoT.AccountAuditConfiguration.AuditCheckConfiguration;
       };
     }
 
@@ -7702,10 +8964,16 @@ export namespace AWS {
       ThingName?: string;
     };
 
-    export type DomainConfiguration = {
-      AuthorizerConfig?: AWS.IoT.DomainConfiguration.AuthorizerConfig;
+    export namespace Thing {
+      export type AttributePayload = {
+        Attributes?: Record<string, string>;
+      };
+    }
 
+    export type DomainConfiguration = {
       DomainConfigurationName?: string;
+
+      AuthorizerConfig?: AWS.IoT.DomainConfiguration.AuthorizerConfig;
 
       DomainName?: string;
 
@@ -7721,6 +8989,12 @@ export namespace AWS {
     };
 
     export namespace DomainConfiguration {
+      export type AuthorizerConfig = {
+        AllowAuthorizerOverride?: boolean;
+
+        DefaultAuthorizerName?: string;
+      };
+
       export type ServerCertificateSummary = {
         ServerCertificateArn?: string;
 
@@ -7813,8 +9087,6 @@ export namespace AWS {
 
   export namespace AutoScaling {
     export type LaunchConfiguration = {
-      MetadataOptions?: AWS.AutoScaling.LaunchConfiguration.MetadataOptions;
-
       AssociatePublicIpAddress?: boolean;
 
       BlockDeviceMappings?: AWS.AutoScaling.LaunchConfiguration.BlockDeviceMapping[];
@@ -7841,6 +9113,8 @@ export namespace AWS {
 
       LaunchConfigurationName?: string;
 
+      MetadataOptions?: AWS.AutoScaling.LaunchConfiguration.MetadataOptions;
+
       PlacementTenancy?: string;
 
       RamDiskId?: string;
@@ -7863,6 +9137,14 @@ export namespace AWS {
         VirtualName?: string;
       };
 
+      export type MetadataOptions = {
+        HttpEndpoint?: string;
+
+        HttpPutResponseHopLimit?: number;
+
+        HttpTokens?: string;
+      };
+
       export type BlockDevice = {
         DeleteOnTermination?: boolean;
 
@@ -7881,12 +9163,6 @@ export namespace AWS {
     }
 
     export type AutoScalingGroup = {
-      MetricsCollection?: AWS.AutoScaling.AutoScalingGroup.MetricsCollection[];
-
-      MixedInstancesPolicy?: AWS.AutoScaling.AutoScalingGroup.MixedInstancesPolicy;
-
-      LaunchTemplate?: AWS.AutoScaling.AutoScalingGroup.LaunchTemplateSpecification;
-
       AutoScalingGroupName?: string;
 
       AvailabilityZones?: string[];
@@ -7907,6 +9183,8 @@ export namespace AWS {
 
       LaunchConfigurationName?: string;
 
+      LaunchTemplate?: AWS.AutoScaling.AutoScalingGroup.LaunchTemplateSpecification;
+
       LifecycleHookSpecificationList?: AWS.AutoScaling.AutoScalingGroup.LifecycleHookSpecification[];
 
       LoadBalancerNames?: string[];
@@ -7915,7 +9193,11 @@ export namespace AWS {
 
       MaxSize: string;
 
+      MetricsCollection?: AWS.AutoScaling.AutoScalingGroup.MetricsCollection[];
+
       MinSize: string;
+
+      MixedInstancesPolicy?: AWS.AutoScaling.AutoScalingGroup.MixedInstancesPolicy;
 
       NewInstancesProtectedFromScaleIn?: boolean;
 
@@ -7941,6 +9223,12 @@ export namespace AWS {
         LaunchTemplateSpecification?: AWS.AutoScaling.AutoScalingGroup.LaunchTemplateSpecification;
 
         WeightedCapacity?: string;
+      };
+
+      export type MetricsCollection = {
+        Granularity: string;
+
+        Metrics?: string[];
       };
 
       export type InstancesDistribution = {
@@ -7981,10 +9269,22 @@ export namespace AWS {
         Version: string;
       };
 
+      export type MixedInstancesPolicy = {
+        InstancesDistribution?: AWS.AutoScaling.AutoScalingGroup.InstancesDistribution;
+
+        LaunchTemplate: AWS.AutoScaling.AutoScalingGroup.LaunchTemplate;
+      };
+
       export type NotificationConfiguration = {
         NotificationTypes?: string[];
 
         TopicARN: string;
+      };
+
+      export type LaunchTemplate = {
+        LaunchTemplateSpecification: AWS.AutoScaling.AutoScalingGroup.LaunchTemplateSpecification;
+
+        Overrides?: AWS.AutoScaling.AutoScalingGroup.LaunchTemplateOverrides[];
       };
 
       export type TagProperty = {
@@ -7997,8 +9297,6 @@ export namespace AWS {
     }
 
     export type ScalingPolicy = {
-      TargetTrackingConfiguration?: AWS.AutoScaling.ScalingPolicy.TargetTrackingConfiguration;
-
       AdjustmentType?: string;
 
       AutoScalingGroupName: string;
@@ -8016,6 +9314,8 @@ export namespace AWS {
       ScalingAdjustment?: number;
 
       StepAdjustments?: AWS.AutoScaling.ScalingPolicy.StepAdjustment[];
+
+      TargetTrackingConfiguration?: AWS.AutoScaling.ScalingPolicy.TargetTrackingConfiguration;
     };
 
     export namespace ScalingPolicy {
@@ -8035,6 +9335,16 @@ export namespace AWS {
         Name: string;
 
         Value: string;
+      };
+
+      export type TargetTrackingConfiguration = {
+        CustomizedMetricSpecification?: AWS.AutoScaling.ScalingPolicy.CustomizedMetricSpecification;
+
+        DisableScaleIn?: boolean;
+
+        PredefinedMetricSpecification?: AWS.AutoScaling.ScalingPolicy.PredefinedMetricSpecification;
+
+        TargetValue: number;
       };
 
       export type StepAdjustment = {
@@ -8111,6 +9421,46 @@ export namespace AWS {
         Forward: string;
 
         WhitelistedNames?: string[];
+      };
+
+      export type DistributionConfig = {
+        Aliases?: string[];
+
+        CNAMEs?: string[];
+
+        CacheBehaviors?: AWS.CloudFront.Distribution.CacheBehavior[];
+
+        Comment?: string;
+
+        CustomErrorResponses?: AWS.CloudFront.Distribution.CustomErrorResponse[];
+
+        CustomOrigin?: AWS.CloudFront.Distribution.LegacyCustomOrigin;
+
+        DefaultCacheBehavior?: AWS.CloudFront.Distribution.DefaultCacheBehavior;
+
+        DefaultRootObject?: string;
+
+        Enabled: boolean;
+
+        HttpVersion?: string;
+
+        IPV6Enabled?: boolean;
+
+        Logging?: AWS.CloudFront.Distribution.Logging;
+
+        OriginGroups?: AWS.CloudFront.Distribution.OriginGroups;
+
+        Origins?: AWS.CloudFront.Distribution.Origin[];
+
+        PriceClass?: string;
+
+        Restrictions?: AWS.CloudFront.Distribution.Restrictions;
+
+        S3Origin?: AWS.CloudFront.Distribution.LegacyS3Origin;
+
+        ViewerCertificate?: AWS.CloudFront.Distribution.ViewerCertificate;
+
+        WebACLId?: string;
       };
 
       export type LegacyS3Origin = {
@@ -8369,6 +9719,20 @@ export namespace AWS {
         Headers?: string[];
       };
 
+      export type CachePolicyConfig = {
+        Comment?: string;
+
+        DefaultTTL: number;
+
+        MaxTTL: number;
+
+        MinTTL: number;
+
+        Name: string;
+
+        ParametersInCacheKeyAndForwardedToOrigin: AWS.CloudFront.CachePolicy.ParametersInCacheKeyAndForwardedToOrigin;
+      };
+
       export type ParametersInCacheKeyAndForwardedToOrigin = {
         CookiesConfig: AWS.CloudFront.CachePolicy.CookiesConfig;
 
@@ -8398,11 +9762,33 @@ export namespace AWS {
       KeyGroupConfig: AWS.CloudFront.KeyGroup.KeyGroupConfig;
     };
 
+    export namespace KeyGroup {
+      export type KeyGroupConfig = {
+        Comment?: string;
+
+        Items: string[];
+
+        Name: string;
+      };
+    }
+
     export type OriginRequestPolicy = {
       OriginRequestPolicyConfig: AWS.CloudFront.OriginRequestPolicy.OriginRequestPolicyConfig;
     };
 
     export namespace OriginRequestPolicy {
+      export type OriginRequestPolicyConfig = {
+        Comment?: string;
+
+        CookiesConfig: AWS.CloudFront.OriginRequestPolicy.CookiesConfig;
+
+        HeadersConfig: AWS.CloudFront.OriginRequestPolicy.HeadersConfig;
+
+        Name: string;
+
+        QueryStringsConfig: AWS.CloudFront.OriginRequestPolicy.QueryStringsConfig;
+      };
+
       export type CookiesConfig = {
         CookieBehavior: string;
 
@@ -8443,6 +9829,22 @@ export namespace AWS {
         Prefix: string;
       };
 
+      export type StreamingDistributionConfig = {
+        Logging?: AWS.CloudFront.StreamingDistribution.Logging;
+
+        Comment: string;
+
+        PriceClass?: string;
+
+        S3Origin: AWS.CloudFront.StreamingDistribution.S3Origin;
+
+        Enabled: boolean;
+
+        Aliases?: string[];
+
+        TrustedSigners: AWS.CloudFront.StreamingDistribution.TrustedSigners;
+      };
+
       export type TrustedSigners = {
         Enabled: boolean;
 
@@ -8453,6 +9855,12 @@ export namespace AWS {
     export type CloudFrontOriginAccessIdentity = {
       CloudFrontOriginAccessIdentityConfig: AWS.CloudFront.CloudFrontOriginAccessIdentity.CloudFrontOriginAccessIdentityConfig;
     };
+
+    export namespace CloudFrontOriginAccessIdentity {
+      export type CloudFrontOriginAccessIdentityConfig = {
+        Comment: string;
+      };
+    }
 
     export type RealtimeLogConfig = {
       EndPoints: AWS.CloudFront.RealtimeLogConfig.EndPoint[];
@@ -8482,17 +9890,41 @@ export namespace AWS {
       PublicKeyConfig: AWS.CloudFront.PublicKey.PublicKeyConfig;
     };
 
+    export namespace PublicKey {
+      export type PublicKeyConfig = {
+        CallerReference: string;
+
+        Comment?: string;
+
+        EncodedKey: string;
+
+        Name: string;
+      };
+    }
+
     export type Function = {
-      FunctionConfig?: AWS.CloudFront.Function.FunctionConfig;
-
-      FunctionMetadata?: AWS.CloudFront.Function.FunctionMetadata;
-
       AutoPublish?: boolean;
 
       FunctionCode?: string;
 
+      FunctionConfig?: AWS.CloudFront.Function.FunctionConfig;
+
+      FunctionMetadata?: AWS.CloudFront.Function.FunctionMetadata;
+
       Name: string;
     };
+
+    export namespace Function {
+      export type FunctionConfig = {
+        Comment: string;
+
+        Runtime: string;
+      };
+
+      export type FunctionMetadata = {
+        FunctionARN?: string;
+      };
+    }
   }
 
   export namespace EMR {
@@ -8525,10 +9957,6 @@ export namespace AWS {
     }
 
     export type Cluster = {
-      ManagedScalingPolicy?: AWS.EMR.Cluster.ManagedScalingPolicy;
-
-      KerberosAttributes?: AWS.EMR.Cluster.KerberosAttributes;
-
       AdditionalInfo?: JSONString;
 
       Applications?: AWS.EMR.Cluster.Application[];
@@ -8547,9 +9975,13 @@ export namespace AWS {
 
       JobFlowRole: string;
 
+      KerberosAttributes?: AWS.EMR.Cluster.KerberosAttributes;
+
       LogEncryptionKmsKeyId?: string;
 
       LogUri?: string;
+
+      ManagedScalingPolicy?: AWS.EMR.Cluster.ManagedScalingPolicy;
 
       Name: string;
 
@@ -8613,6 +10045,10 @@ export namespace AWS {
         VolumesPerInstance?: number;
       };
 
+      export type ManagedScalingPolicy = {
+        ComputeLimits?: AWS.EMR.Cluster.ComputeLimits;
+      };
+
       export type CloudWatchAlarmDefinition = {
         ComparisonOperator: string;
 
@@ -8669,6 +10105,18 @@ export namespace AWS {
         Market?: string;
 
         Name?: string;
+      };
+
+      export type KerberosAttributes = {
+        ADDomainJoinPassword?: string;
+
+        ADDomainJoinUser?: string;
+
+        CrossRealmTrustPrincipalPassword?: string;
+
+        KdcAdminPassword: string;
+
+        Realm: string;
       };
 
       export type Application = {
@@ -8829,11 +10277,11 @@ export namespace AWS {
     export type InstanceGroupConfig = {
       AutoScalingPolicy?: AWS.EMR.InstanceGroupConfig.AutoScalingPolicy;
 
-      EbsConfiguration?: AWS.EMR.InstanceGroupConfig.EbsConfiguration;
-
       BidPrice?: string;
 
       Configurations?: AWS.EMR.InstanceGroupConfig.Configuration[];
+
+      EbsConfiguration?: AWS.EMR.InstanceGroupConfig.EbsConfiguration;
 
       InstanceCount: number;
 
@@ -8849,6 +10297,12 @@ export namespace AWS {
     };
 
     export namespace InstanceGroupConfig {
+      export type AutoScalingPolicy = {
+        Constraints: AWS.EMR.InstanceGroupConfig.ScalingConstraints;
+
+        Rules: AWS.EMR.InstanceGroupConfig.ScalingRule[];
+      };
+
       export type Configuration = {
         Classification?: string;
 
@@ -8923,6 +10377,12 @@ export namespace AWS {
         SizeInGB: number;
 
         VolumeType: string;
+      };
+
+      export type EbsConfiguration = {
+        EbsBlockDeviceConfigs?: AWS.EMR.InstanceGroupConfig.EbsBlockDeviceConfig[];
+
+        EbsOptimized?: boolean;
       };
 
       export type ScalingConstraints = {
@@ -9055,8 +10515,6 @@ export namespace AWS {
 
   export namespace Cassandra {
     export type Table = {
-      BillingMode?: AWS.Cassandra.Table.BillingMode;
-
       KeyspaceName: string;
 
       TableName?: string;
@@ -9067,12 +10525,20 @@ export namespace AWS {
 
       ClusteringKeyColumns?: AWS.Cassandra.Table.ClusteringKeyColumn[];
 
+      BillingMode?: AWS.Cassandra.Table.BillingMode;
+
       PointInTimeRecoveryEnabled?: boolean;
 
       Tags?: Tag[];
     };
 
     export namespace Table {
+      export type BillingMode = {
+        Mode: string;
+
+        ProvisionedThroughput?: AWS.Cassandra.Table.ProvisionedThroughput;
+      };
+
       export type Column = {
         ColumnName: string;
 
@@ -9101,8 +10567,6 @@ export namespace AWS {
 
   export namespace WAFv2 {
     export type RuleGroup = {
-      VisibilityConfig: AWS.WAFv2.RuleGroup.VisibilityConfig;
-
       Capacity: number;
 
       Description?: string;
@@ -9112,6 +10576,8 @@ export namespace AWS {
       Scope: string;
 
       Rules?: AWS.WAFv2.RuleGroup.Rule[];
+
+      VisibilityConfig: AWS.WAFv2.RuleGroup.VisibilityConfig;
 
       Tags?: Tag[];
 
@@ -9210,6 +10676,14 @@ export namespace AWS {
         ScopeDownStatement?: AWS.WAFv2.RuleGroup.Statement;
 
         ForwardedIPConfig?: AWS.WAFv2.RuleGroup.ForwardedIPConfiguration;
+      };
+
+      export type VisibilityConfig = {
+        SampledRequestsEnabled: boolean;
+
+        CloudWatchMetricsEnabled: boolean;
+
+        MetricName: string;
       };
 
       export type GeoMatchStatement = {
@@ -9322,8 +10796,6 @@ export namespace AWS {
     export type WebACL = {
       DefaultAction: AWS.WAFv2.WebACL.DefaultAction;
 
-      VisibilityConfig: AWS.WAFv2.WebACL.VisibilityConfig;
-
       Description?: string;
 
       Name?: string;
@@ -9331,6 +10803,8 @@ export namespace AWS {
       Scope: string;
 
       Rules?: AWS.WAFv2.WebACL.Rule[];
+
+      VisibilityConfig: AWS.WAFv2.WebACL.VisibilityConfig;
 
       Tags?: Tag[];
 
@@ -9363,6 +10837,12 @@ export namespace AWS {
 
       export type AllowAction = {
         CustomRequestHandling?: AWS.WAFv2.WebACL.CustomRequestHandling;
+      };
+
+      export type DefaultAction = {
+        Allow?: AWS.WAFv2.WebACL.AllowAction;
+
+        Block?: AWS.WAFv2.WebACL.BlockAction;
       };
 
       export type XssMatchStatement = {
@@ -9589,6 +11069,14 @@ export namespace AWS {
         Name: string;
       };
 
+      export type VisibilityConfig = {
+        SampledRequestsEnabled: boolean;
+
+        CloudWatchMetricsEnabled: boolean;
+
+        MetricName: string;
+      };
+
       export type IPSetReferenceStatement = {
         Arn: string;
 
@@ -9631,16 +11119,6 @@ export namespace AWS {
 
   export namespace MediaPackage {
     export type OriginEndpoint = {
-      CmafPackage?: AWS.MediaPackage.OriginEndpoint.CmafPackage;
-
-      Authorization?: AWS.MediaPackage.OriginEndpoint.Authorization;
-
-      DashPackage?: AWS.MediaPackage.OriginEndpoint.DashPackage;
-
-      MssPackage?: AWS.MediaPackage.OriginEndpoint.MssPackage;
-
-      HlsPackage?: AWS.MediaPackage.OriginEndpoint.HlsPackage;
-
       Id: string;
 
       ChannelId: string;
@@ -9657,6 +11135,16 @@ export namespace AWS {
 
       Origination?: string;
 
+      Authorization?: AWS.MediaPackage.OriginEndpoint.Authorization;
+
+      HlsPackage?: AWS.MediaPackage.OriginEndpoint.HlsPackage;
+
+      DashPackage?: AWS.MediaPackage.OriginEndpoint.DashPackage;
+
+      MssPackage?: AWS.MediaPackage.OriginEndpoint.MssPackage;
+
+      CmafPackage?: AWS.MediaPackage.OriginEndpoint.CmafPackage;
+
       Tags?: Tag[];
     };
 
@@ -9669,8 +11157,58 @@ export namespace AWS {
         StreamOrder?: string;
       };
 
+      export type CmafPackage = {
+        SegmentDurationSeconds?: number;
+
+        SegmentPrefix?: string;
+
+        Encryption?: AWS.MediaPackage.OriginEndpoint.CmafEncryption;
+
+        StreamSelection?: AWS.MediaPackage.OriginEndpoint.StreamSelection;
+
+        HlsManifests?: AWS.MediaPackage.OriginEndpoint.HlsManifest[];
+      };
+
       export type MssEncryption = {
         SpekeKeyProvider: AWS.MediaPackage.OriginEndpoint.SpekeKeyProvider;
+      };
+
+      export type Authorization = {
+        SecretsRoleArn: string;
+
+        CdnIdentifierSecret: string;
+      };
+
+      export type DashPackage = {
+        SegmentDurationSeconds?: number;
+
+        ManifestWindowSeconds?: number;
+
+        Profile?: string;
+
+        MinUpdatePeriodSeconds?: number;
+
+        MinBufferTimeSeconds?: number;
+
+        SuggestedPresentationDelaySeconds?: number;
+
+        PeriodTriggers?: string[];
+
+        ManifestLayout?: string;
+
+        SegmentTemplateFormat?: string;
+
+        AdTriggers?: string[];
+
+        AdsOnDeliveryRestrictions?: string;
+
+        Encryption?: AWS.MediaPackage.OriginEndpoint.DashEncryption;
+
+        StreamSelection?: AWS.MediaPackage.OriginEndpoint.StreamSelection;
+
+        UtcTiming?: string;
+
+        UtcTimingUri?: string;
       };
 
       export type DashEncryption = {
@@ -9732,20 +11270,54 @@ export namespace AWS {
 
         SpekeKeyProvider: AWS.MediaPackage.OriginEndpoint.SpekeKeyProvider;
       };
+
+      export type MssPackage = {
+        ManifestWindowSeconds?: number;
+
+        SegmentDurationSeconds?: number;
+
+        Encryption?: AWS.MediaPackage.OriginEndpoint.MssEncryption;
+
+        StreamSelection?: AWS.MediaPackage.OriginEndpoint.StreamSelection;
+      };
+
+      export type HlsPackage = {
+        SegmentDurationSeconds?: number;
+
+        PlaylistWindowSeconds?: number;
+
+        PlaylistType?: string;
+
+        AdMarkers?: string;
+
+        AdTriggers?: string[];
+
+        AdsOnDeliveryRestrictions?: string;
+
+        ProgramDateTimeIntervalSeconds?: number;
+
+        IncludeIframeOnlyStream?: boolean;
+
+        UseAudioRenditionGroup?: boolean;
+
+        Encryption?: AWS.MediaPackage.OriginEndpoint.HlsEncryption;
+
+        StreamSelection?: AWS.MediaPackage.OriginEndpoint.StreamSelection;
+      };
     }
 
     export type PackagingConfiguration = {
+      Id: string;
+
+      PackagingGroupId: string;
+
       CmafPackage?: AWS.MediaPackage.PackagingConfiguration.CmafPackage;
 
       DashPackage?: AWS.MediaPackage.PackagingConfiguration.DashPackage;
 
-      MssPackage?: AWS.MediaPackage.PackagingConfiguration.MssPackage;
-
       HlsPackage?: AWS.MediaPackage.PackagingConfiguration.HlsPackage;
 
-      Id: string;
-
-      PackagingGroupId: string;
+      MssPackage?: AWS.MediaPackage.PackagingConfiguration.MssPackage;
 
       Tags?: Tag[];
     };
@@ -9761,6 +11333,30 @@ export namespace AWS {
         SystemIds: string[];
 
         Url: string;
+      };
+
+      export type CmafPackage = {
+        Encryption?: AWS.MediaPackage.PackagingConfiguration.CmafEncryption;
+
+        HlsManifests: AWS.MediaPackage.PackagingConfiguration.HlsManifest[];
+
+        SegmentDurationSeconds?: number;
+
+        IncludeEncoderConfigurationInSegments?: boolean;
+      };
+
+      export type DashPackage = {
+        DashManifests: AWS.MediaPackage.PackagingConfiguration.DashManifest[];
+
+        Encryption?: AWS.MediaPackage.PackagingConfiguration.DashEncryption;
+
+        PeriodTriggers?: string[];
+
+        SegmentDurationSeconds?: number;
+
+        SegmentTemplateFormat?: string;
+
+        IncludeEncoderConfigurationInSegments?: boolean;
       };
 
       export type DashManifest = {
@@ -9805,6 +11401,24 @@ export namespace AWS {
         StreamOrder?: string;
       };
 
+      export type MssPackage = {
+        Encryption?: AWS.MediaPackage.PackagingConfiguration.MssEncryption;
+
+        MssManifests: AWS.MediaPackage.PackagingConfiguration.MssManifest[];
+
+        SegmentDurationSeconds?: number;
+      };
+
+      export type HlsPackage = {
+        Encryption?: AWS.MediaPackage.PackagingConfiguration.HlsEncryption;
+
+        HlsManifests: AWS.MediaPackage.PackagingConfiguration.HlsManifest[];
+
+        SegmentDurationSeconds?: number;
+
+        UseAudioRenditionGroup?: boolean;
+      };
+
       export type HlsManifest = {
         AdMarkers?: string;
 
@@ -9821,9 +11435,9 @@ export namespace AWS {
     }
 
     export type PackagingGroup = {
-      Authorization?: AWS.MediaPackage.PackagingGroup.Authorization;
-
       Id: string;
+
+      Authorization?: AWS.MediaPackage.PackagingGroup.Authorization;
 
       Tags?: Tag[];
 
@@ -9833,6 +11447,12 @@ export namespace AWS {
     export namespace PackagingGroup {
       export type LogConfiguration = {
         LogGroupName?: string;
+      };
+
+      export type Authorization = {
+        CdnIdentifierSecret: string;
+
+        SecretsRoleArn: string;
       };
     }
 
@@ -9881,8 +11501,6 @@ export namespace AWS {
     export type Certificate = {
       ApiPassthrough?: AWS.ACMPCA.Certificate.ApiPassthrough;
 
-      Validity: AWS.ACMPCA.Certificate.Validity;
-
       CertificateAuthorityArn: string;
 
       CertificateSigningRequest: string;
@@ -9890,6 +11508,8 @@ export namespace AWS {
       SigningAlgorithm: string;
 
       TemplateArn?: string;
+
+      Validity: AWS.ACMPCA.Certificate.Validity;
 
       ValidityNotBefore?: AWS.ACMPCA.Certificate.Validity;
     };
@@ -9969,6 +11589,12 @@ export namespace AWS {
         RegisteredId?: string;
       };
 
+      export type ApiPassthrough = {
+        Extensions?: AWS.ACMPCA.Certificate.Extensions;
+
+        Subject?: AWS.ACMPCA.Certificate.Subject;
+      };
+
       export type EdiPartyName = {
         PartyName: string;
 
@@ -9979,6 +11605,12 @@ export namespace AWS {
         TypeId: string;
 
         Value: string;
+      };
+
+      export type Validity = {
+        Value: number;
+
+        Type: string;
       };
 
       export type ExtendedKeyUsage = {
@@ -10009,24 +11641,28 @@ export namespace AWS {
     }
 
     export type CertificateAuthority = {
-      RevocationConfiguration?: AWS.ACMPCA.CertificateAuthority.RevocationConfiguration;
-
-      CsrExtensions?: AWS.ACMPCA.CertificateAuthority.CsrExtensions;
-
-      Subject: AWS.ACMPCA.CertificateAuthority.Subject;
-
       Type: string;
 
       KeyAlgorithm: string;
 
       SigningAlgorithm: string;
 
+      Subject: AWS.ACMPCA.CertificateAuthority.Subject;
+
+      RevocationConfiguration?: AWS.ACMPCA.CertificateAuthority.RevocationConfiguration;
+
       Tags?: Tag[];
+
+      CsrExtensions?: AWS.ACMPCA.CertificateAuthority.CsrExtensions;
 
       KeyStorageSecurityStandard?: string;
     };
 
     export namespace CertificateAuthority {
+      export type RevocationConfiguration = {
+        CrlConfiguration?: AWS.ACMPCA.CertificateAuthority.CrlConfiguration;
+      };
+
       export type KeyUsage = {
         DigitalSignature?: boolean;
 
@@ -10047,6 +11683,12 @@ export namespace AWS {
         DecipherOnly?: boolean;
       };
 
+      export type CsrExtensions = {
+        KeyUsage?: AWS.ACMPCA.CertificateAuthority.KeyUsage;
+
+        SubjectInformationAccess?: AWS.ACMPCA.CertificateAuthority.AccessDescription[];
+      };
+
       export type AccessDescription = {
         AccessMethod: AWS.ACMPCA.CertificateAuthority.AccessMethod;
 
@@ -10057,6 +11699,36 @@ export namespace AWS {
         PartyName: string;
 
         NameAssigner: string;
+      };
+
+      export type Subject = {
+        Country?: string;
+
+        Organization?: string;
+
+        OrganizationalUnit?: string;
+
+        DistinguishedNameQualifier?: string;
+
+        State?: string;
+
+        CommonName?: string;
+
+        SerialNumber?: string;
+
+        Locality?: string;
+
+        Title?: string;
+
+        Surname?: string;
+
+        GivenName?: string;
+
+        Initials?: string;
+
+        Pseudonym?: string;
+
+        GenerationQualifier?: string;
       };
 
       export type AccessMethod = {
@@ -10193,13 +11865,13 @@ export namespace AWS {
     }
 
     export type TaskDefinition = {
-      LoRaWANUpdateGatewayTaskEntry?: AWS.IoTWireless.TaskDefinition.LoRaWANUpdateGatewayTaskEntry;
-
       Name?: string;
 
       AutoCreateTasks: boolean;
 
       Update?: AWS.IoTWireless.TaskDefinition.UpdateWirelessGatewayTaskCreate;
+
+      LoRaWANUpdateGatewayTaskEntry?: AWS.IoTWireless.TaskDefinition.LoRaWANUpdateGatewayTaskEntry;
 
       TaskDefinitionType?: string;
 
@@ -10213,6 +11885,12 @@ export namespace AWS {
         UpdateDataRole?: string;
 
         LoRaWAN?: AWS.IoTWireless.TaskDefinition.LoRaWANUpdateGatewayTaskCreate;
+      };
+
+      export type LoRaWANUpdateGatewayTaskEntry = {
+        CurrentVersion?: AWS.IoTWireless.TaskDefinition.LoRaWANGatewayVersion;
+
+        UpdateVersion?: AWS.IoTWireless.TaskDefinition.LoRaWANGatewayVersion;
       };
 
       export type LoRaWANGatewayVersion = {
@@ -10389,9 +12067,9 @@ export namespace AWS {
 
   export namespace KinesisAnalyticsV2 {
     export type ApplicationReferenceDataSource = {
-      ReferenceDataSource: AWS.KinesisAnalyticsV2.ApplicationReferenceDataSource.ReferenceDataSource;
-
       ApplicationName: string;
+
+      ReferenceDataSource: AWS.KinesisAnalyticsV2.ApplicationReferenceDataSource.ReferenceDataSource;
     };
 
     export namespace ApplicationReferenceDataSource {
@@ -10411,6 +12089,14 @@ export namespace AWS {
 
       export type JSONMappingParameters = {
         RecordRowPath: string;
+      };
+
+      export type ReferenceDataSource = {
+        ReferenceSchema: AWS.KinesisAnalyticsV2.ApplicationReferenceDataSource.ReferenceSchema;
+
+        TableName?: string;
+
+        S3ReferenceDataSource?: AWS.KinesisAnalyticsV2.ApplicationReferenceDataSource.S3ReferenceDataSource;
       };
 
       export type MappingParameters = {
@@ -10441,21 +12127,23 @@ export namespace AWS {
     }
 
     export type Application = {
-      CustomArtifactsConfiguration?: AWS.KinesisAnalyticsV2.Application.CustomArtifactConfiguration[];
-
-      ApplicationConfiguration?: AWS.KinesisAnalyticsV2.Application.ApplicationConfiguration;
-
       ApplicationName?: string;
 
       RuntimeEnvironment: string;
 
       ApplicationMode?: string;
 
+      ApplicationConfiguration?: AWS.KinesisAnalyticsV2.Application.ApplicationConfiguration;
+
       ApplicationDescription?: string;
 
       Tags?: Tag[];
 
       ServiceExecutionRole: string;
+    };
+
+    export type Application = {
+      CustomArtifactsConfiguration?: AWS.KinesisAnalyticsV2.Application.CustomArtifactConfiguration[];
     };
 
     export namespace Application {
@@ -10647,6 +12335,20 @@ export namespace AWS {
         TextContent?: string;
       };
 
+      export type ApplicationConfiguration = {
+        ApplicationCodeConfiguration?: AWS.KinesisAnalyticsV2.Application.ApplicationCodeConfiguration;
+
+        EnvironmentProperties?: AWS.KinesisAnalyticsV2.Application.EnvironmentProperties;
+
+        FlinkApplicationConfiguration?: AWS.KinesisAnalyticsV2.Application.FlinkApplicationConfiguration;
+
+        SqlApplicationConfiguration?: AWS.KinesisAnalyticsV2.Application.SqlApplicationConfiguration;
+
+        ZeppelinApplicationConfiguration?: AWS.KinesisAnalyticsV2.Application.ZeppelinApplicationConfiguration;
+
+        ApplicationSnapshotConfiguration?: AWS.KinesisAnalyticsV2.Application.ApplicationSnapshotConfiguration;
+      };
+
       export type EnvironmentProperties = {
         PropertyGroups?: AWS.KinesisAnalyticsV2.Application.PropertyGroup[];
       };
@@ -10657,9 +12359,9 @@ export namespace AWS {
     }
 
     export type ApplicationOutput = {
-      Output: AWS.KinesisAnalyticsV2.ApplicationOutput.Output;
-
       ApplicationName: string;
+
+      Output: AWS.KinesisAnalyticsV2.ApplicationOutput.Output;
     };
 
     export namespace ApplicationOutput {
@@ -10675,51 +12377,63 @@ export namespace AWS {
         RecordFormatType?: string;
       };
 
+      export type Output = {
+        DestinationSchema: AWS.KinesisAnalyticsV2.ApplicationOutput.DestinationSchema;
+
+        LambdaOutput?: AWS.KinesisAnalyticsV2.ApplicationOutput.LambdaOutput;
+
+        KinesisFirehoseOutput?: AWS.KinesisAnalyticsV2.ApplicationOutput.KinesisFirehoseOutput;
+
+        KinesisStreamsOutput?: AWS.KinesisAnalyticsV2.ApplicationOutput.KinesisStreamsOutput;
+
+        Name?: string;
+      };
+
       export type LambdaOutput = {
         ResourceARN: string;
       };
     }
 
     export type ApplicationCloudWatchLoggingOption = {
-      CloudWatchLoggingOption: AWS.KinesisAnalyticsV2.ApplicationCloudWatchLoggingOption.CloudWatchLoggingOption;
-
       ApplicationName: string;
+
+      CloudWatchLoggingOption: AWS.KinesisAnalyticsV2.ApplicationCloudWatchLoggingOption.CloudWatchLoggingOption;
     };
+
+    export namespace ApplicationCloudWatchLoggingOption {
+      export type CloudWatchLoggingOption = {
+        LogStreamARN: string;
+      };
+    }
   }
 
   export namespace Cognito {
     export type UserPool = {
-      AdminCreateUserConfig?: AWS.Cognito.UserPool.AdminCreateUserConfig;
-
-      SmsConfiguration?: AWS.Cognito.UserPool.SmsConfiguration;
-
-      VerificationMessageTemplate?: AWS.Cognito.UserPool.VerificationMessageTemplate;
-
-      LambdaConfig?: AWS.Cognito.UserPool.LambdaConfig;
-
-      EmailConfiguration?: AWS.Cognito.UserPool.EmailConfiguration;
-
-      AccountRecoverySetting?: AWS.Cognito.UserPool.AccountRecoverySetting;
-
-      UserPoolAddOns?: AWS.Cognito.UserPool.UserPoolAddOns;
+      UserPoolTags?: JSONString;
 
       Policies?: AWS.Cognito.UserPool.Policies;
 
-      DeviceConfiguration?: AWS.Cognito.UserPool.DeviceConfiguration;
-
-      UsernameConfiguration?: AWS.Cognito.UserPool.UsernameConfiguration;
-
-      UserPoolTags?: JSONString;
+      VerificationMessageTemplate?: AWS.Cognito.UserPool.VerificationMessageTemplate;
 
       MfaConfiguration?: string;
 
       Schema?: AWS.Cognito.UserPool.SchemaAttribute[];
 
+      AdminCreateUserConfig?: AWS.Cognito.UserPool.AdminCreateUserConfig;
+
       SmsAuthenticationMessage?: string;
+
+      UsernameConfiguration?: AWS.Cognito.UserPool.UsernameConfiguration;
 
       UserPoolName?: string;
 
       SmsVerificationMessage?: string;
+
+      UserPoolAddOns?: AWS.Cognito.UserPool.UserPoolAddOns;
+
+      EmailConfiguration?: AWS.Cognito.UserPool.EmailConfiguration;
+
+      SmsConfiguration?: AWS.Cognito.UserPool.SmsConfiguration;
 
       AliasAttributes?: string[];
 
@@ -10727,11 +12441,17 @@ export namespace AWS {
 
       EmailVerificationSubject?: string;
 
+      LambdaConfig?: AWS.Cognito.UserPool.LambdaConfig;
+
       UsernameAttributes?: string[];
 
       AutoVerifiedAttributes?: string[];
 
+      DeviceConfiguration?: AWS.Cognito.UserPool.DeviceConfiguration;
+
       EmailVerificationMessage?: string;
+
+      AccountRecoverySetting?: AWS.Cognito.UserPool.AccountRecoverySetting;
     };
 
     export namespace UserPool {
@@ -10755,10 +12475,66 @@ export namespace AWS {
         Name?: string;
       };
 
+      export type AdminCreateUserConfig = {
+        InviteMessageTemplate?: AWS.Cognito.UserPool.InviteMessageTemplate;
+
+        UnusedAccountValidityDays?: number;
+
+        AllowAdminCreateUserOnly?: boolean;
+      };
+
+      export type SmsConfiguration = {
+        ExternalId?: string;
+
+        SnsCallerArn?: string;
+      };
+
       export type StringAttributeConstraints = {
         MinLength?: string;
 
         MaxLength?: string;
+      };
+
+      export type VerificationMessageTemplate = {
+        EmailMessageByLink?: string;
+
+        EmailMessage?: string;
+
+        SmsMessage?: string;
+
+        EmailSubject?: string;
+
+        DefaultEmailOption?: string;
+
+        EmailSubjectByLink?: string;
+      };
+
+      export type LambdaConfig = {
+        CreateAuthChallenge?: string;
+
+        PreSignUp?: string;
+
+        KMSKeyID?: string;
+
+        UserMigration?: string;
+
+        PostAuthentication?: string;
+
+        VerifyAuthChallengeResponse?: string;
+
+        PreAuthentication?: string;
+
+        DefineAuthChallenge?: string;
+
+        PreTokenGeneration?: string;
+
+        CustomSMSSender?: AWS.Cognito.UserPool.CustomSMSSender;
+
+        PostConfirmation?: string;
+
+        CustomMessage?: string;
+
+        CustomEmailSender?: AWS.Cognito.UserPool.CustomEmailSender;
       };
 
       export type InviteMessageTemplate = {
@@ -10767,6 +12543,18 @@ export namespace AWS {
         SMSMessage?: string;
 
         EmailSubject?: string;
+      };
+
+      export type EmailConfiguration = {
+        ReplyToEmailAddress?: string;
+
+        ConfigurationSet?: string;
+
+        EmailSendingAccount?: string;
+
+        SourceArn?: string;
+
+        From?: string;
       };
 
       export type SchemaAttribute = {
@@ -10797,10 +12585,32 @@ export namespace AWS {
         LambdaVersion?: string;
       };
 
+      export type AccountRecoverySetting = {
+        RecoveryMechanisms?: AWS.Cognito.UserPool.RecoveryOption[];
+      };
+
+      export type UserPoolAddOns = {
+        AdvancedSecurityMode?: string;
+      };
+
+      export type Policies = {
+        PasswordPolicy?: AWS.Cognito.UserPool.PasswordPolicy;
+      };
+
       export type CustomEmailSender = {
         LambdaArn?: string;
 
         LambdaVersion?: string;
+      };
+
+      export type DeviceConfiguration = {
+        DeviceOnlyRememberedOnUserPrompt?: boolean;
+
+        ChallengeRequiredOnNewDevice?: boolean;
+      };
+
+      export type UsernameConfiguration = {
+        CaseSensitive?: boolean;
       };
     }
 
@@ -10929,8 +12739,6 @@ export namespace AWS {
     }
 
     export type IdentityPool = {
-      CognitoStreams?: AWS.Cognito.IdentityPool.CognitoStreams;
-
       PushSync?: AWS.Cognito.IdentityPool.PushSync;
 
       CognitoIdentityProviders?: AWS.Cognito.IdentityPool.CognitoIdentityProvider[];
@@ -10938,6 +12746,8 @@ export namespace AWS {
       CognitoEvents?: JSONString;
 
       DeveloperProviderName?: string;
+
+      CognitoStreams?: AWS.Cognito.IdentityPool.CognitoStreams;
 
       IdentityPoolName?: string;
 
@@ -10953,6 +12763,20 @@ export namespace AWS {
     };
 
     export namespace IdentityPool {
+      export type CognitoStreams = {
+        StreamingStatus?: string;
+
+        StreamName?: string;
+
+        RoleArn?: string;
+      };
+
+      export type PushSync = {
+        ApplicationArns?: string[];
+
+        RoleArn?: string;
+      };
+
       export type CognitoIdentityProvider = {
         ServerSideTokenCheck?: boolean;
 
@@ -10989,8 +12813,6 @@ export namespace AWS {
     }
 
     export type UserPoolClient = {
-      TokenValidityUnits?: AWS.Cognito.UserPoolClient.TokenValidityUnits;
-
       AnalyticsConfiguration?: AWS.Cognito.UserPoolClient.AnalyticsConfiguration;
 
       GenerateSecret?: boolean;
@@ -11000,6 +12822,8 @@ export namespace AWS {
       IdTokenValidity?: number;
 
       AllowedOAuthScopes?: string[];
+
+      TokenValidityUnits?: AWS.Cognito.UserPoolClient.TokenValidityUnits;
 
       ReadAttributes?: string[];
 
@@ -11029,6 +12853,28 @@ export namespace AWS {
 
       EnableTokenRevocation?: boolean;
     };
+
+    export namespace UserPoolClient {
+      export type TokenValidityUnits = {
+        IdToken?: string;
+
+        RefreshToken?: string;
+
+        AccessToken?: string;
+      };
+
+      export type AnalyticsConfiguration = {
+        ApplicationArn?: string;
+
+        UserDataShared?: boolean;
+
+        ExternalId?: string;
+
+        ApplicationId?: string;
+
+        RoleArn?: string;
+      };
+    }
 
     export type UserPoolDomain = {
       UserPoolId: string;
@@ -11107,10 +12953,6 @@ export namespace AWS {
     }
 
     export type TaskDefinition = {
-      EphemeralStorage?: AWS.ECS.TaskDefinition.EphemeralStorage;
-
-      ProxyConfiguration?: AWS.ECS.TaskDefinition.ProxyConfiguration;
-
       Family?: string;
 
       ContainerDefinitions?: AWS.ECS.TaskDefinition.ContainerDefinition[];
@@ -11119,6 +12961,8 @@ export namespace AWS {
 
       ExecutionRoleArn?: string;
 
+      EphemeralStorage?: AWS.ECS.TaskDefinition.EphemeralStorage;
+
       InferenceAccelerators?: AWS.ECS.TaskDefinition.InferenceAccelerator[];
 
       Memory?: string;
@@ -11126,6 +12970,8 @@ export namespace AWS {
       NetworkMode?: string;
 
       PlacementConstraints?: AWS.ECS.TaskDefinition.TaskDefinitionPlacementConstraint[];
+
+      ProxyConfiguration?: AWS.ECS.TaskDefinition.ProxyConfiguration;
 
       RequiresCompatibilities?: string[];
 
@@ -11179,6 +13025,10 @@ export namespace AWS {
         Namespace?: string;
 
         Value?: string;
+      };
+
+      export type EphemeralStorage = {
+        SizeInGiB?: number;
       };
 
       export type ResourceRequirement = {
@@ -11416,18 +13266,24 @@ export namespace AWS {
 
         Tmpfs?: AWS.ECS.TaskDefinition.Tmpfs[];
       };
+
+      export type ProxyConfiguration = {
+        ContainerName: string;
+
+        ProxyConfigurationProperties?: AWS.ECS.TaskDefinition.KeyValuePair[];
+
+        Type?: string;
+      };
     }
 
     export type Service = {
-      DeploymentController?: AWS.ECS.Service.DeploymentController;
-
-      DeploymentConfiguration?: AWS.ECS.Service.DeploymentConfiguration;
-
-      NetworkConfiguration?: AWS.ECS.Service.NetworkConfiguration;
-
       CapacityProviderStrategy?: AWS.ECS.Service.CapacityProviderStrategyItem[];
 
       Cluster?: string;
+
+      DeploymentConfiguration?: AWS.ECS.Service.DeploymentConfiguration;
+
+      DeploymentController?: AWS.ECS.Service.DeploymentController;
 
       DesiredCount?: number;
 
@@ -11440,6 +13296,8 @@ export namespace AWS {
       LaunchType?: string;
 
       LoadBalancers?: AWS.ECS.Service.LoadBalancer[];
+
+      NetworkConfiguration?: AWS.ECS.Service.NetworkConfiguration;
 
       PlacementConstraints?: AWS.ECS.Service.PlacementConstraint[];
 
@@ -11469,6 +13327,10 @@ export namespace AWS {
         Type: string;
       };
 
+      export type DeploymentController = {
+        Type?: string;
+      };
+
       export type PlacementConstraint = {
         Expression?: string;
 
@@ -11485,12 +13347,24 @@ export namespace AWS {
         TargetGroupArn?: string;
       };
 
+      export type DeploymentConfiguration = {
+        DeploymentCircuitBreaker?: AWS.ECS.Service.DeploymentCircuitBreaker;
+
+        MaximumPercent?: number;
+
+        MinimumHealthyPercent?: number;
+      };
+
       export type AwsVpcConfiguration = {
         AssignPublicIp?: string;
 
         SecurityGroups?: string[];
 
         Subnets?: string[];
+      };
+
+      export type NetworkConfiguration = {
+        AwsvpcConfiguration?: AWS.ECS.Service.AwsVpcConfiguration;
       };
 
       export type CapacityProviderStrategyItem = {
@@ -11519,10 +13393,6 @@ export namespace AWS {
     }
 
     export type TaskSet = {
-      NetworkConfiguration?: AWS.ECS.TaskSet.NetworkConfiguration;
-
-      Scale?: AWS.ECS.TaskSet.Scale;
-
       Cluster: string;
 
       ExternalId?: string;
@@ -11531,7 +13401,11 @@ export namespace AWS {
 
       LoadBalancers?: AWS.ECS.TaskSet.LoadBalancer[];
 
+      NetworkConfiguration?: AWS.ECS.TaskSet.NetworkConfiguration;
+
       PlatformVersion?: string;
+
+      Scale?: AWS.ECS.TaskSet.Scale;
 
       Service: string;
 
@@ -11541,6 +13415,10 @@ export namespace AWS {
     };
 
     export namespace TaskSet {
+      export type NetworkConfiguration = {
+        AwsVpcConfiguration?: AWS.ECS.TaskSet.AwsVpcConfiguration;
+      };
+
       export type ServiceRegistry = {
         ContainerName?: string;
 
@@ -11568,14 +13446,20 @@ export namespace AWS {
 
         Subnets: string[];
       };
+
+      export type Scale = {
+        Unit?: string;
+
+        Value?: number;
+      };
     }
 
     export type Cluster = {
-      ClusterSettings?: AWS.ECS.Cluster.ClusterSettings[];
-
       Tags?: Tag[];
 
       ClusterName?: string;
+
+      ClusterSettings?: AWS.ECS.Cluster.ClusterSettings[];
 
       Configuration?: AWS.ECS.Cluster.ClusterConfiguration;
 
@@ -11585,6 +13469,12 @@ export namespace AWS {
     };
 
     export namespace Cluster {
+      export type ClusterSettings = {
+        Name?: string;
+
+        Value?: string;
+      };
+
       export type ExecuteCommandLogConfiguration = {
         CloudWatchLogGroupName?: string;
 
@@ -11627,6 +13517,14 @@ export namespace AWS {
     };
 
     export namespace CapacityProvider {
+      export type AutoScalingGroupProvider = {
+        AutoScalingGroupArn: string;
+
+        ManagedScaling?: AWS.ECS.CapacityProvider.ManagedScaling;
+
+        ManagedTerminationProtection?: string;
+      };
+
       export type ManagedScaling = {
         MinimumScalingStepSize?: number;
 
@@ -11651,9 +13549,9 @@ export namespace AWS {
 
   export namespace KinesisAnalytics {
     export type ApplicationOutput = {
-      Output: AWS.KinesisAnalytics.ApplicationOutput.Output;
-
       ApplicationName: string;
+
+      Output: AWS.KinesisAnalytics.ApplicationOutput.Output;
     };
 
     export namespace ApplicationOutput {
@@ -11673,6 +13571,18 @@ export namespace AWS {
         ResourceARN: string;
 
         RoleARN: string;
+      };
+
+      export type Output = {
+        DestinationSchema: AWS.KinesisAnalytics.ApplicationOutput.DestinationSchema;
+
+        LambdaOutput?: AWS.KinesisAnalytics.ApplicationOutput.LambdaOutput;
+
+        KinesisFirehoseOutput?: AWS.KinesisAnalytics.ApplicationOutput.KinesisFirehoseOutput;
+
+        KinesisStreamsOutput?: AWS.KinesisAnalytics.ApplicationOutput.KinesisStreamsOutput;
+
+        Name?: string;
       };
 
       export type DestinationSchema = {
@@ -11771,9 +13681,9 @@ export namespace AWS {
     }
 
     export type ApplicationReferenceDataSource = {
-      ReferenceDataSource: AWS.KinesisAnalytics.ApplicationReferenceDataSource.ReferenceDataSource;
-
       ApplicationName: string;
+
+      ReferenceDataSource: AWS.KinesisAnalytics.ApplicationReferenceDataSource.ReferenceDataSource;
     };
 
     export namespace ApplicationReferenceDataSource {
@@ -11822,21 +13732,37 @@ export namespace AWS {
       export type JSONMappingParameters = {
         RecordRowPath: string;
       };
+
+      export type ReferenceDataSource = {
+        ReferenceSchema: AWS.KinesisAnalytics.ApplicationReferenceDataSource.ReferenceSchema;
+
+        TableName?: string;
+
+        S3ReferenceDataSource?: AWS.KinesisAnalytics.ApplicationReferenceDataSource.S3ReferenceDataSource;
+      };
     }
   }
 
   export namespace Config {
     export type ConfigurationAggregator = {
-      OrganizationAggregationSource?: AWS.Config.ConfigurationAggregator.OrganizationAggregationSource;
-
       AccountAggregationSources?: AWS.Config.ConfigurationAggregator.AccountAggregationSource[];
 
       ConfigurationAggregatorName?: string;
+
+      OrganizationAggregationSource?: AWS.Config.ConfigurationAggregator.OrganizationAggregationSource;
 
       Tags?: Tag[];
     };
 
     export namespace ConfigurationAggregator {
+      export type OrganizationAggregationSource = {
+        AllAwsRegions?: boolean;
+
+        AwsRegions?: string[];
+
+        RoleArn: string;
+      };
+
       export type AccountAggregationSource = {
         AllAwsRegions?: boolean;
 
@@ -11860,18 +13786,34 @@ export namespace AWS {
       SnsTopicARN?: string;
     };
 
-    export type ConfigurationRecorder = {
-      RecordingGroup?: AWS.Config.ConfigurationRecorder.RecordingGroup;
+    export namespace DeliveryChannel {
+      export type ConfigSnapshotDeliveryProperties = {
+        DeliveryFrequency?: string;
+      };
+    }
 
+    export type ConfigurationRecorder = {
       Name?: string;
+
+      RecordingGroup?: AWS.Config.ConfigurationRecorder.RecordingGroup;
 
       RoleARN: string;
     };
 
-    export type RemediationConfiguration = {
-      ExecutionControls?: AWS.Config.RemediationConfiguration.ExecutionControls;
+    export namespace ConfigurationRecorder {
+      export type RecordingGroup = {
+        AllSupported?: boolean;
 
+        IncludeGlobalResourceTypes?: boolean;
+
+        ResourceTypes?: string[];
+      };
+    }
+
+    export type RemediationConfiguration = {
       TargetVersion?: string;
+
+      ExecutionControls?: AWS.Config.RemediationConfiguration.ExecutionControls;
 
       Parameters?: JSONString;
 
@@ -11910,6 +13852,10 @@ export namespace AWS {
       export type StaticValue = {
         Values?: string[];
       };
+
+      export type ExecutionControls = {
+        SsmControls?: AWS.Config.RemediationConfiguration.SsmControls;
+      };
     }
 
     export type ConformancePack = {
@@ -11935,10 +13881,6 @@ export namespace AWS {
     }
 
     export type ConfigRule = {
-      Source: AWS.Config.ConfigRule.Source;
-
-      Scope?: AWS.Config.ConfigRule.Scope;
-
       ConfigRuleName?: string;
 
       Description?: string;
@@ -11946,9 +13888,31 @@ export namespace AWS {
       InputParameters?: JSONString;
 
       MaximumExecutionFrequency?: string;
+
+      Scope?: AWS.Config.ConfigRule.Scope;
+
+      Source: AWS.Config.ConfigRule.Source;
     };
 
     export namespace ConfigRule {
+      export type Source = {
+        Owner: string;
+
+        SourceDetails?: AWS.Config.ConfigRule.SourceDetail[];
+
+        SourceIdentifier: string;
+      };
+
+      export type Scope = {
+        ComplianceResourceId?: string;
+
+        ComplianceResourceTypes?: string[];
+
+        TagKey?: string;
+
+        TagValue?: string;
+      };
+
       export type SourceDetail = {
         EventSource: string;
 
@@ -11985,12 +13949,52 @@ export namespace AWS {
     export type OrganizationConfigRule = {
       OrganizationManagedRuleMetadata?: AWS.Config.OrganizationConfigRule.OrganizationManagedRuleMetadata;
 
-      OrganizationCustomRuleMetadata?: AWS.Config.OrganizationConfigRule.OrganizationCustomRuleMetadata;
-
       OrganizationConfigRuleName: string;
+
+      OrganizationCustomRuleMetadata?: AWS.Config.OrganizationConfigRule.OrganizationCustomRuleMetadata;
 
       ExcludedAccounts?: string[];
     };
+
+    export namespace OrganizationConfigRule {
+      export type OrganizationManagedRuleMetadata = {
+        TagKeyScope?: string;
+
+        TagValueScope?: string;
+
+        Description?: string;
+
+        ResourceIdScope?: string;
+
+        RuleIdentifier: string;
+
+        ResourceTypesScope?: string[];
+
+        MaximumExecutionFrequency?: string;
+
+        InputParameters?: string;
+      };
+
+      export type OrganizationCustomRuleMetadata = {
+        TagKeyScope?: string;
+
+        TagValueScope?: string;
+
+        Description?: string;
+
+        ResourceIdScope?: string;
+
+        LambdaFunctionArn: string;
+
+        OrganizationConfigRuleTriggerTypes: string[];
+
+        ResourceTypesScope?: string[];
+
+        MaximumExecutionFrequency?: string;
+
+        InputParameters?: string;
+      };
+    }
 
     export type StoredQuery = {
       QueryName: string;
@@ -12013,10 +14017,6 @@ export namespace AWS {
 
   export namespace OpsWorks {
     export type Layer = {
-      LifecycleEventConfiguration?: AWS.OpsWorks.Layer.LifecycleEventConfiguration;
-
-      LoadBasedAutoScaling?: AWS.OpsWorks.Layer.LoadBasedAutoScaling;
-
       Attributes?: Record<string, string>;
 
       AutoAssignElasticIps: boolean;
@@ -12034,6 +14034,10 @@ export namespace AWS {
       EnableAutoHealing: boolean;
 
       InstallUpdatesOnBoot?: boolean;
+
+      LifecycleEventConfiguration?: AWS.OpsWorks.Layer.LifecycleEventConfiguration;
+
+      LoadBasedAutoScaling?: AWS.OpsWorks.Layer.LoadBasedAutoScaling;
 
       Name: string;
 
@@ -12087,6 +14091,18 @@ export namespace AWS {
         Undeploy?: string[];
       };
 
+      export type LifecycleEventConfiguration = {
+        ShutdownEventConfiguration?: AWS.OpsWorks.Layer.ShutdownEventConfiguration;
+      };
+
+      export type LoadBasedAutoScaling = {
+        DownScaling?: AWS.OpsWorks.Layer.AutoScalingThresholds;
+
+        Enable?: boolean;
+
+        UpScaling?: AWS.OpsWorks.Layer.AutoScalingThresholds;
+      };
+
       export type AutoScalingThresholds = {
         CpuThreshold?: number;
 
@@ -12103,8 +14119,6 @@ export namespace AWS {
     }
 
     export type App = {
-      SslConfiguration?: AWS.OpsWorks.App.SslConfiguration;
-
       AppSource?: AWS.OpsWorks.App.Source;
 
       Attributes?: Record<string, string>;
@@ -12123,6 +14137,8 @@ export namespace AWS {
 
       Shortname?: string;
 
+      SslConfiguration?: AWS.OpsWorks.App.SslConfiguration;
+
       StackId: string;
 
       Type: string;
@@ -12135,6 +14151,14 @@ export namespace AWS {
         DatabaseName?: string;
 
         Type?: string;
+      };
+
+      export type SslConfiguration = {
+        Certificate?: string;
+
+        Chain?: string;
+
+        PrivateKey?: string;
       };
 
       export type EnvironmentVariable = {
@@ -12161,8 +14185,6 @@ export namespace AWS {
     }
 
     export type Instance = {
-      TimeBasedAutoScaling?: AWS.OpsWorks.Instance.TimeBasedAutoScaling;
-
       AgentVersion?: string;
 
       AmiId?: string;
@@ -12199,6 +14221,8 @@ export namespace AWS {
 
       Tenancy?: string;
 
+      TimeBasedAutoScaling?: AWS.OpsWorks.Instance.TimeBasedAutoScaling;
+
       VirtualizationType?: string;
 
       Volumes?: string[];
@@ -12215,6 +14239,22 @@ export namespace AWS {
         VirtualName?: string;
       };
 
+      export type TimeBasedAutoScaling = {
+        Friday?: Record<string, string>;
+
+        Monday?: Record<string, string>;
+
+        Saturday?: Record<string, string>;
+
+        Sunday?: Record<string, string>;
+
+        Thursday?: Record<string, string>;
+
+        Tuesday?: Record<string, string>;
+
+        Wednesday?: Record<string, string>;
+      };
+
       export type EbsBlockDevice = {
         DeleteOnTermination?: boolean;
 
@@ -12229,11 +14269,11 @@ export namespace AWS {
     }
 
     export type Stack = {
-      ChefConfiguration?: AWS.OpsWorks.Stack.ChefConfiguration;
-
       AgentVersion?: string;
 
       Attributes?: Record<string, string>;
+
+      ChefConfiguration?: AWS.OpsWorks.Stack.ChefConfiguration;
 
       CloneAppIds?: string[];
 
@@ -12309,6 +14349,12 @@ export namespace AWS {
         Username?: string;
       };
 
+      export type ChefConfiguration = {
+        BerkshelfVersion?: string;
+
+        ManageBerkshelf?: boolean;
+      };
+
       export type ElasticIp = {
         Ip: string;
 
@@ -12345,13 +14391,13 @@ export namespace AWS {
 
   export namespace CodeDeploy {
     export type DeploymentConfig = {
-      MinimumHealthyHosts?: AWS.CodeDeploy.DeploymentConfig.MinimumHealthyHosts;
-
-      TrafficRoutingConfig?: AWS.CodeDeploy.DeploymentConfig.TrafficRoutingConfig;
-
       ComputePlatform?: string;
 
       DeploymentConfigName?: string;
+
+      MinimumHealthyHosts?: AWS.CodeDeploy.DeploymentConfig.MinimumHealthyHosts;
+
+      TrafficRoutingConfig?: AWS.CodeDeploy.DeploymentConfig.TrafficRoutingConfig;
     };
 
     export namespace DeploymentConfig {
@@ -12359,6 +14405,20 @@ export namespace AWS {
         CanaryInterval: number;
 
         CanaryPercentage: number;
+      };
+
+      export type MinimumHealthyHosts = {
+        Type: string;
+
+        Value: number;
+      };
+
+      export type TrafficRoutingConfig = {
+        TimeBasedCanary?: AWS.CodeDeploy.DeploymentConfig.TimeBasedCanary;
+
+        TimeBasedLinear?: AWS.CodeDeploy.DeploymentConfig.TimeBasedLinear;
+
+        Type: string;
       };
 
       export type TimeBasedLinear = {
@@ -12369,27 +14429,23 @@ export namespace AWS {
     }
 
     export type DeploymentGroup = {
-      DeploymentStyle?: AWS.CodeDeploy.DeploymentGroup.DeploymentStyle;
-
-      OnPremisesTagSet?: AWS.CodeDeploy.DeploymentGroup.OnPremisesTagSet;
-
-      LoadBalancerInfo?: AWS.CodeDeploy.DeploymentGroup.LoadBalancerInfo;
-
       AlarmConfiguration?: AWS.CodeDeploy.DeploymentGroup.AlarmConfiguration;
-
-      BlueGreenDeploymentConfiguration?: AWS.CodeDeploy.DeploymentGroup.BlueGreenDeploymentConfiguration;
-
-      AutoRollbackConfiguration?: AWS.CodeDeploy.DeploymentGroup.AutoRollbackConfiguration;
-
-      Deployment?: AWS.CodeDeploy.DeploymentGroup.Deployment;
 
       ApplicationName: string;
 
+      AutoRollbackConfiguration?: AWS.CodeDeploy.DeploymentGroup.AutoRollbackConfiguration;
+
       AutoScalingGroups?: string[];
+
+      BlueGreenDeploymentConfiguration?: AWS.CodeDeploy.DeploymentGroup.BlueGreenDeploymentConfiguration;
+
+      Deployment?: AWS.CodeDeploy.DeploymentGroup.Deployment;
 
       DeploymentConfigName?: string;
 
       DeploymentGroupName?: string;
+
+      DeploymentStyle?: AWS.CodeDeploy.DeploymentGroup.DeploymentStyle;
 
       ECSServices?: AWS.CodeDeploy.DeploymentGroup.ECSService[];
 
@@ -12397,7 +14453,11 @@ export namespace AWS {
 
       Ec2TagSet?: AWS.CodeDeploy.DeploymentGroup.EC2TagSet;
 
+      LoadBalancerInfo?: AWS.CodeDeploy.DeploymentGroup.LoadBalancerInfo;
+
       OnPremisesInstanceTagFilters?: AWS.CodeDeploy.DeploymentGroup.TagFilter[];
+
+      OnPremisesTagSet?: AWS.CodeDeploy.DeploymentGroup.OnPremisesTagSet;
 
       ServiceRoleArn: string;
 
@@ -12413,12 +14473,28 @@ export namespace AWS {
         OnPremisesTagGroup?: AWS.CodeDeploy.DeploymentGroup.TagFilter[];
       };
 
+      export type DeploymentStyle = {
+        DeploymentOption?: string;
+
+        DeploymentType?: string;
+      };
+
       export type EC2TagFilter = {
         Key?: string;
 
         Type?: string;
 
         Value?: string;
+      };
+
+      export type OnPremisesTagSet = {
+        OnPremisesTagSetList?: AWS.CodeDeploy.DeploymentGroup.OnPremisesTagSetListObject[];
+      };
+
+      export type LoadBalancerInfo = {
+        ElbInfoList?: AWS.CodeDeploy.DeploymentGroup.ELBInfo[];
+
+        TargetGroupInfoList?: AWS.CodeDeploy.DeploymentGroup.TargetGroupInfo[];
       };
 
       export type RevisionLocation = {
@@ -12441,10 +14517,32 @@ export namespace AWS {
         Ec2TagSetList?: AWS.CodeDeploy.DeploymentGroup.EC2TagSetListObject[];
       };
 
+      export type AlarmConfiguration = {
+        Alarms?: AWS.CodeDeploy.DeploymentGroup.Alarm[];
+
+        Enabled?: boolean;
+
+        IgnorePollAlarmFailure?: boolean;
+      };
+
+      export type BlueGreenDeploymentConfiguration = {
+        DeploymentReadyOption?: AWS.CodeDeploy.DeploymentGroup.DeploymentReadyOption;
+
+        GreenFleetProvisioningOption?: AWS.CodeDeploy.DeploymentGroup.GreenFleetProvisioningOption;
+
+        TerminateBlueInstancesOnDeploymentSuccess?: AWS.CodeDeploy.DeploymentGroup.BlueInstanceTerminationOption;
+      };
+
       export type DeploymentReadyOption = {
         ActionOnTimeout?: string;
 
         WaitTimeInMinutes?: number;
+      };
+
+      export type AutoRollbackConfiguration = {
+        Enabled?: boolean;
+
+        Events?: string[];
       };
 
       export type S3Location = {
@@ -12491,6 +14589,14 @@ export namespace AWS {
         Action?: string;
       };
 
+      export type Deployment = {
+        Description?: string;
+
+        IgnoreApplicationStopFailures?: boolean;
+
+        Revision: AWS.CodeDeploy.DeploymentGroup.RevisionLocation;
+      };
+
       export type ECSService = {
         ClusterName: string;
 
@@ -12513,23 +14619,23 @@ export namespace AWS {
 
   export namespace Batch {
     export type JobDefinition = {
-      NodeProperties?: AWS.Batch.JobDefinition.NodeProperties;
-
-      RetryStrategy?: AWS.Batch.JobDefinition.RetryStrategy;
-
-      ContainerProperties?: AWS.Batch.JobDefinition.ContainerProperties;
-
-      Timeout?: AWS.Batch.JobDefinition.Timeout;
-
       Type: string;
 
       Parameters?: JSONString;
+
+      NodeProperties?: AWS.Batch.JobDefinition.NodeProperties;
+
+      Timeout?: AWS.Batch.JobDefinition.Timeout;
+
+      ContainerProperties?: AWS.Batch.JobDefinition.ContainerProperties;
 
       JobDefinitionName?: string;
 
       PropagateTags?: boolean;
 
       PlatformCapabilities?: string[];
+
+      RetryStrategy?: AWS.Batch.JobDefinition.RetryStrategy;
 
       Tags?: JSONString;
     };
@@ -12565,6 +14671,20 @@ export namespace AWS {
         SourcePath?: string;
       };
 
+      export type NodeProperties = {
+        MainNode: number;
+
+        NodeRangeProperties: AWS.Batch.JobDefinition.NodeRangeProperty[];
+
+        NumNodes: number;
+      };
+
+      export type RetryStrategy = {
+        EvaluateOnExit?: AWS.Batch.JobDefinition.EvaluateOnExit[];
+
+        Attempts?: number;
+      };
+
       export type Secret = {
         ValueFrom: string;
 
@@ -12581,6 +14701,48 @@ export namespace AWS {
         Options?: JSONString;
 
         LogDriver: string;
+      };
+
+      export type ContainerProperties = {
+        User?: string;
+
+        Secrets?: AWS.Batch.JobDefinition.Secret[];
+
+        Memory?: number;
+
+        Privileged?: boolean;
+
+        LinuxParameters?: AWS.Batch.JobDefinition.LinuxParameters;
+
+        FargatePlatformConfiguration?: AWS.Batch.JobDefinition.FargatePlatformConfiguration;
+
+        JobRoleArn?: string;
+
+        ReadonlyRootFilesystem?: boolean;
+
+        Vcpus?: number;
+
+        Image: string;
+
+        ResourceRequirements?: AWS.Batch.JobDefinition.ResourceRequirement[];
+
+        LogConfiguration?: AWS.Batch.JobDefinition.LogConfiguration;
+
+        MountPoints?: AWS.Batch.JobDefinition.MountPoints[];
+
+        ExecutionRoleArn?: string;
+
+        Volumes?: AWS.Batch.JobDefinition.Volumes[];
+
+        Command?: string[];
+
+        Environment?: AWS.Batch.JobDefinition.Environment[];
+
+        Ulimits?: AWS.Batch.JobDefinition.Ulimit[];
+
+        NetworkConfiguration?: AWS.Batch.JobDefinition.NetworkConfiguration;
+
+        InstanceType?: string;
       };
 
       export type MountPoints = {
@@ -12627,6 +14789,10 @@ export namespace AWS {
         PlatformVersion?: string;
       };
 
+      export type Timeout = {
+        AttemptDurationSeconds?: number;
+      };
+
       export type Tmpfs = {
         Size: number;
 
@@ -12663,13 +14829,13 @@ export namespace AWS {
     }
 
     export type ComputeEnvironment = {
-      ComputeResources?: AWS.Batch.ComputeEnvironment.ComputeResources;
-
       Type: string;
 
       ServiceRole?: string;
 
       ComputeEnvironmentName?: string;
+
+      ComputeResources?: AWS.Batch.ComputeEnvironment.ComputeResources;
 
       State?: string;
 
@@ -12677,6 +14843,42 @@ export namespace AWS {
     };
 
     export namespace ComputeEnvironment {
+      export type ComputeResources = {
+        SpotIamFleetRole?: string;
+
+        MaxvCpus: number;
+
+        Ec2Configuration?: AWS.Batch.ComputeEnvironment.Ec2ConfigurationObject[];
+
+        BidPercentage?: number;
+
+        SecurityGroupIds?: string[];
+
+        Subnets: string[];
+
+        Type: string;
+
+        AllocationStrategy?: string;
+
+        MinvCpus?: number;
+
+        LaunchTemplate?: AWS.Batch.ComputeEnvironment.LaunchTemplateSpecification;
+
+        ImageId?: string;
+
+        InstanceRole?: string;
+
+        InstanceTypes?: string[];
+
+        Ec2KeyPair?: string;
+
+        PlacementGroup?: string;
+
+        Tags?: JSONString;
+
+        DesiredvCpus?: number;
+      };
+
       export type LaunchTemplateSpecification = {
         LaunchTemplateName?: string;
 
@@ -12703,19 +14905,27 @@ export namespace AWS {
 
       Tags?: JSONString;
     };
+
+    export namespace JobQueue {
+      export type ComputeEnvironmentOrder = {
+        ComputeEnvironment: string;
+
+        Order: number;
+      };
+    }
   }
 
   export namespace DataBrew {
     export type Dataset = {
-      PathOptions?: AWS.DataBrew.Dataset.PathOptions;
+      Name: string;
+
+      Format?: string;
 
       FormatOptions?: AWS.DataBrew.Dataset.FormatOptions;
 
       Input: AWS.DataBrew.Dataset.Input;
 
-      Name: string;
-
-      Format?: string;
+      PathOptions?: AWS.DataBrew.Dataset.PathOptions;
 
       Tags?: Tag[];
     };
@@ -12739,6 +14949,14 @@ export namespace AWS {
         DatabaseTableName?: string;
 
         TempDirectory?: AWS.DataBrew.Dataset.S3Location;
+      };
+
+      export type PathOptions = {
+        FilesLimit?: AWS.DataBrew.Dataset.FilesLimit;
+
+        LastModifiedDateCondition?: AWS.DataBrew.Dataset.FilterExpression;
+
+        Parameters?: AWS.DataBrew.Dataset.PathParameter[];
       };
 
       export type DatasetParameter = {
@@ -12767,6 +14985,14 @@ export namespace AWS {
         HeaderRow?: boolean;
       };
 
+      export type FormatOptions = {
+        Json?: AWS.DataBrew.Dataset.JsonOptions;
+
+        Excel?: AWS.DataBrew.Dataset.ExcelOptions;
+
+        Csv?: AWS.DataBrew.Dataset.CsvOptions;
+      };
+
       export type ExcelOptions = {
         SheetNames?: string[];
 
@@ -12777,6 +15003,14 @@ export namespace AWS {
 
       export type JsonOptions = {
         MultiLine?: boolean;
+      };
+
+      export type Input = {
+        S3InputDefinition?: AWS.DataBrew.Dataset.S3Location;
+
+        DataCatalogInputDefinition?: AWS.DataBrew.Dataset.DataCatalogInputDefinition;
+
+        DatabaseInputDefinition?: AWS.DataBrew.Dataset.DatabaseInputDefinition;
       };
 
       export type FilterValue = {
@@ -12811,8 +15045,6 @@ export namespace AWS {
     }
 
     export type Recipe = {
-      ParameterMap?: any;
-
       Description?: string;
 
       Name: string;
@@ -12820,6 +15052,10 @@ export namespace AWS {
       Steps: AWS.DataBrew.Recipe.RecipeStep[];
 
       Tags?: Tag[];
+    };
+
+    export type Recipe = {
+      ParameterMap?: any;
     };
 
     export namespace Recipe {
@@ -13071,12 +15307,6 @@ export namespace AWS {
     }
 
     export type Job = {
-      Recipe?: AWS.DataBrew.Job.Recipe;
-
-      OutputLocation?: AWS.DataBrew.Job.OutputLocation;
-
-      JobSample?: AWS.DataBrew.Job.JobSample;
-
       DatasetName?: string;
 
       EncryptionKeyArn?: string;
@@ -13097,13 +15327,19 @@ export namespace AWS {
 
       DataCatalogOutputs?: AWS.DataBrew.Job.DataCatalogOutput[];
 
+      OutputLocation?: AWS.DataBrew.Job.OutputLocation;
+
       ProjectName?: string;
+
+      Recipe?: AWS.DataBrew.Job.Recipe;
 
       RoleArn: string;
 
       Tags?: Tag[];
 
       Timeout?: number;
+
+      JobSample?: AWS.DataBrew.Job.JobSample;
     };
 
     export namespace Job {
@@ -13135,6 +15371,12 @@ export namespace AWS {
         Delimiter?: string;
       };
 
+      export type Recipe = {
+        Name: string;
+
+        Version?: string;
+      };
+
       export type S3TableOutputOptions = {
         Location: AWS.DataBrew.Job.S3Location;
       };
@@ -13153,16 +15395,26 @@ export namespace AWS {
         Overwrite?: boolean;
       };
 
+      export type OutputLocation = {
+        Bucket: string;
+
+        Key?: string;
+      };
+
       export type DatabaseTableOutputOptions = {
         TempDirectory?: AWS.DataBrew.Job.S3Location;
 
         TableName: string;
       };
+
+      export type JobSample = {
+        Mode?: string;
+
+        Size?: number;
+      };
     }
 
     export type Project = {
-      Sample?: AWS.DataBrew.Project.Sample;
-
       DatasetName: string;
 
       Name: string;
@@ -13171,8 +15423,18 @@ export namespace AWS {
 
       RoleArn: string;
 
+      Sample?: AWS.DataBrew.Project.Sample;
+
       Tags?: Tag[];
     };
+
+    export namespace Project {
+      export type Sample = {
+        Size?: number;
+
+        Type: string;
+      };
+    }
 
     export type Schedule = {
       JobNames?: string[];
@@ -13187,10 +15449,6 @@ export namespace AWS {
 
   export namespace ApplicationAutoScaling {
     export type ScalingPolicy = {
-      StepScalingPolicyConfiguration?: AWS.ApplicationAutoScaling.ScalingPolicy.StepScalingPolicyConfiguration;
-
-      TargetTrackingScalingPolicyConfiguration?: AWS.ApplicationAutoScaling.ScalingPolicy.TargetTrackingScalingPolicyConfiguration;
-
       PolicyName: string;
 
       PolicyType: string;
@@ -13202,9 +15460,25 @@ export namespace AWS {
       ScalingTargetId?: string;
 
       ServiceNamespace?: string;
+
+      StepScalingPolicyConfiguration?: AWS.ApplicationAutoScaling.ScalingPolicy.StepScalingPolicyConfiguration;
+
+      TargetTrackingScalingPolicyConfiguration?: AWS.ApplicationAutoScaling.ScalingPolicy.TargetTrackingScalingPolicyConfiguration;
     };
 
     export namespace ScalingPolicy {
+      export type StepScalingPolicyConfiguration = {
+        AdjustmentType?: string;
+
+        Cooldown?: number;
+
+        MetricAggregationType?: string;
+
+        MinAdjustmentMagnitude?: number;
+
+        StepAdjustments?: AWS.ApplicationAutoScaling.ScalingPolicy.StepAdjustment[];
+      };
+
       export type PredefinedMetricSpecification = {
         PredefinedMetricType: string;
 
@@ -13236,11 +15510,23 @@ export namespace AWS {
 
         ScalingAdjustment: number;
       };
+
+      export type TargetTrackingScalingPolicyConfiguration = {
+        CustomizedMetricSpecification?: AWS.ApplicationAutoScaling.ScalingPolicy.CustomizedMetricSpecification;
+
+        DisableScaleIn?: boolean;
+
+        PredefinedMetricSpecification?: AWS.ApplicationAutoScaling.ScalingPolicy.PredefinedMetricSpecification;
+
+        ScaleInCooldown?: number;
+
+        ScaleOutCooldown?: number;
+
+        TargetValue: number;
+      };
     }
 
     export type ScalableTarget = {
-      SuspendedState?: AWS.ApplicationAutoScaling.ScalableTarget.SuspendedState;
-
       MaxCapacity: number;
 
       MinCapacity: number;
@@ -13254,9 +15540,19 @@ export namespace AWS {
       ScheduledActions?: AWS.ApplicationAutoScaling.ScalableTarget.ScheduledAction[];
 
       ServiceNamespace: string;
+
+      SuspendedState?: AWS.ApplicationAutoScaling.ScalableTarget.SuspendedState;
     };
 
     export namespace ScalableTarget {
+      export type SuspendedState = {
+        DynamicScalingInSuspended?: boolean;
+
+        DynamicScalingOutSuspended?: boolean;
+
+        ScheduledScalingSuspended?: boolean;
+      };
+
       export type ScheduledAction = {
         EndTime?: Timestamp;
 
@@ -13475,9 +15771,9 @@ export namespace AWS {
     }
 
     export type LaunchTemplate = {
-      LaunchTemplateData?: AWS.EC2.LaunchTemplate.LaunchTemplateData;
-
       LaunchTemplateName?: string;
+
+      LaunchTemplateData?: AWS.EC2.LaunchTemplate.LaunchTemplateData;
 
       TagSpecifications?: AWS.EC2.LaunchTemplate.LaunchTemplateTagSpecification[];
     };
@@ -13535,6 +15831,62 @@ export namespace AWS {
 
       export type EnclaveOptions = {
         Enabled?: boolean;
+      };
+
+      export type LaunchTemplateData = {
+        SecurityGroups?: string[];
+
+        TagSpecifications?: AWS.EC2.LaunchTemplate.TagSpecification[];
+
+        UserData?: string;
+
+        BlockDeviceMappings?: AWS.EC2.LaunchTemplate.BlockDeviceMapping[];
+
+        IamInstanceProfile?: AWS.EC2.LaunchTemplate.IamInstanceProfile;
+
+        KernelId?: string;
+
+        EbsOptimized?: boolean;
+
+        ElasticGpuSpecifications?: AWS.EC2.LaunchTemplate.ElasticGpuSpecification[];
+
+        ElasticInferenceAccelerators?: AWS.EC2.LaunchTemplate.LaunchTemplateElasticInferenceAccelerator[];
+
+        Placement?: AWS.EC2.LaunchTemplate.Placement;
+
+        NetworkInterfaces?: AWS.EC2.LaunchTemplate.NetworkInterface[];
+
+        EnclaveOptions?: AWS.EC2.LaunchTemplate.EnclaveOptions;
+
+        ImageId?: string;
+
+        InstanceType?: string;
+
+        Monitoring?: AWS.EC2.LaunchTemplate.Monitoring;
+
+        HibernationOptions?: AWS.EC2.LaunchTemplate.HibernationOptions;
+
+        MetadataOptions?: AWS.EC2.LaunchTemplate.MetadataOptions;
+
+        LicenseSpecifications?: AWS.EC2.LaunchTemplate.LicenseSpecification[];
+
+        InstanceInitiatedShutdownBehavior?: string;
+
+        CpuOptions?: AWS.EC2.LaunchTemplate.CpuOptions;
+
+        SecurityGroupIds?: string[];
+
+        KeyName?: string;
+
+        DisableApiTermination?: boolean;
+
+        InstanceMarketOptions?: AWS.EC2.LaunchTemplate.InstanceMarketOptions;
+
+        RamDiskId?: string;
+
+        CapacityReservationSpecification?: AWS.EC2.LaunchTemplate.CapacityReservationSpecification;
+
+        CreditSpecification?: AWS.EC2.LaunchTemplate.CreditSpecification;
       };
 
       export type MetadataOptions = {
@@ -13665,14 +16017,6 @@ export namespace AWS {
     }
 
     export type Instance = {
-      HibernationOptions?: AWS.EC2.Instance.HibernationOptions;
-
-      CreditSpecification?: AWS.EC2.Instance.CreditSpecification;
-
-      CpuOptions?: AWS.EC2.Instance.CpuOptions;
-
-      EnclaveOptions?: AWS.EC2.Instance.EnclaveOptions;
-
       AdditionalInfo?: string;
 
       Affinity?: string;
@@ -13681,6 +16025,10 @@ export namespace AWS {
 
       BlockDeviceMappings?: AWS.EC2.Instance.BlockDeviceMapping[];
 
+      CpuOptions?: AWS.EC2.Instance.CpuOptions;
+
+      CreditSpecification?: AWS.EC2.Instance.CreditSpecification;
+
       DisableApiTermination?: boolean;
 
       EbsOptimized?: boolean;
@@ -13688,6 +16036,10 @@ export namespace AWS {
       ElasticGpuSpecifications?: AWS.EC2.Instance.ElasticGpuSpecification[];
 
       ElasticInferenceAccelerators?: AWS.EC2.Instance.ElasticInferenceAccelerator[];
+
+      EnclaveOptions?: AWS.EC2.Instance.EnclaveOptions;
+
+      HibernationOptions?: AWS.EC2.Instance.HibernationOptions;
 
       HostId?: string;
 
@@ -13743,6 +16095,10 @@ export namespace AWS {
     };
 
     export namespace Instance {
+      export type HibernationOptions = {
+        Configured?: boolean;
+      };
+
       export type Ebs = {
         DeleteOnTermination?: boolean;
 
@@ -13759,8 +16115,18 @@ export namespace AWS {
         VolumeType?: string;
       };
 
+      export type CreditSpecification = {
+        CPUCredits?: string;
+      };
+
       export type ElasticGpuSpecification = {
         Type: string;
+      };
+
+      export type CpuOptions = {
+        CoreCount?: number;
+
+        ThreadsPerCore?: number;
       };
 
       export type LaunchTemplateSpecification = {
@@ -13827,6 +16193,10 @@ export namespace AWS {
         Key: string;
 
         Value: string[];
+      };
+
+      export type EnclaveOptions = {
+        Enabled?: boolean;
       };
 
       export type LicenseSpecification = {
@@ -14003,6 +16373,50 @@ export namespace AWS {
         LaunchTemplateSpecification?: AWS.EC2.SpotFleet.FleetLaunchTemplateSpecification;
 
         Overrides?: AWS.EC2.SpotFleet.LaunchTemplateOverrides[];
+      };
+
+      export type SpotFleetRequestConfigData = {
+        AllocationStrategy?: string;
+
+        ExcessCapacityTerminationPolicy?: string;
+
+        IamFleetRole: string;
+
+        InstanceInterruptionBehavior?: string;
+
+        InstancePoolsToUseCount?: number;
+
+        LaunchSpecifications?: AWS.EC2.SpotFleet.SpotFleetLaunchSpecification[];
+
+        LaunchTemplateConfigs?: AWS.EC2.SpotFleet.LaunchTemplateConfig[];
+
+        LoadBalancersConfig?: AWS.EC2.SpotFleet.LoadBalancersConfig;
+
+        OnDemandAllocationStrategy?: string;
+
+        OnDemandMaxTotalPrice?: string;
+
+        OnDemandTargetCapacity?: number;
+
+        ReplaceUnhealthyInstances?: boolean;
+
+        SpotMaintenanceStrategies?: AWS.EC2.SpotFleet.SpotMaintenanceStrategies;
+
+        SpotMaxTotalPrice?: string;
+
+        SpotPrice?: string;
+
+        TargetCapacity: number;
+
+        TerminateInstancesWithExpiration?: boolean;
+
+        Type?: string;
+
+        ValidFrom?: string;
+
+        ValidUntil?: string;
+
+        Context?: string;
       };
 
       export type InstanceIpv6Address = {
@@ -14287,11 +16701,9 @@ export namespace AWS {
     }
 
     export type ClientVpnEndpoint = {
-      ClientConnectOptions?: AWS.EC2.ClientVpnEndpoint.ClientConnectOptions;
-
-      ConnectionLogOptions: AWS.EC2.ClientVpnEndpoint.ConnectionLogOptions;
-
       ClientCidrBlock: string;
+
+      ClientConnectOptions?: AWS.EC2.ClientVpnEndpoint.ClientConnectOptions;
 
       Description?: string;
 
@@ -14305,6 +16717,8 @@ export namespace AWS {
 
       SecurityGroupIds?: string[];
 
+      ConnectionLogOptions: AWS.EC2.ClientVpnEndpoint.ConnectionLogOptions;
+
       SplitTunnel?: boolean;
 
       VpcId?: string;
@@ -14317,6 +16731,12 @@ export namespace AWS {
     };
 
     export namespace ClientVpnEndpoint {
+      export type ClientConnectOptions = {
+        LambdaFunctionArn?: string;
+
+        Enabled: boolean;
+      };
+
       export type DirectoryServiceAuthenticationRequest = {
         DirectoryId: string;
       };
@@ -14341,6 +16761,14 @@ export namespace AWS {
         SelfServiceSAMLProviderArn?: string;
 
         SAMLProviderArn: string;
+      };
+
+      export type ConnectionLogOptions = {
+        CloudwatchLogStream?: string;
+
+        Enabled: boolean;
+
+        CloudwatchLogGroup?: string;
       };
 
       export type CertificateAuthenticationRequest = {
@@ -14381,17 +16809,17 @@ export namespace AWS {
     }
 
     export type NetworkAclEntry = {
-      PortRange?: AWS.EC2.NetworkAclEntry.PortRange;
-
-      Icmp?: AWS.EC2.NetworkAclEntry.Icmp;
-
       CidrBlock?: string;
 
       Egress?: boolean;
 
+      Icmp?: AWS.EC2.NetworkAclEntry.Icmp;
+
       Ipv6CidrBlock?: string;
 
       NetworkAclId: string;
+
+      PortRange?: AWS.EC2.NetworkAclEntry.PortRange;
 
       Protocol: number;
 
@@ -14399,6 +16827,20 @@ export namespace AWS {
 
       RuleNumber: number;
     };
+
+    export namespace NetworkAclEntry {
+      export type PortRange = {
+        From?: number;
+
+        To?: number;
+      };
+
+      export type Icmp = {
+        Code?: number;
+
+        Type?: number;
+      };
+    }
 
     export type SecurityGroup = {
       GroupDescription: string;
@@ -15079,15 +17521,15 @@ export namespace AWS {
 
   export namespace ImageBuilder {
     export type ImagePipeline = {
-      ImageTestsConfiguration?: AWS.ImageBuilder.ImagePipeline.ImageTestsConfiguration;
-
-      Schedule?: AWS.ImageBuilder.ImagePipeline.Schedule;
-
       Name: string;
 
       Description?: string;
 
+      ImageTestsConfiguration?: AWS.ImageBuilder.ImagePipeline.ImageTestsConfiguration;
+
       Status?: string;
+
+      Schedule?: AWS.ImageBuilder.ImagePipeline.Schedule;
 
       ImageRecipeArn?: string;
 
@@ -15101,6 +17543,20 @@ export namespace AWS {
 
       Tags?: Record<string, string>;
     };
+
+    export namespace ImagePipeline {
+      export type ImageTestsConfiguration = {
+        ImageTestsEnabled?: boolean;
+
+        TimeoutMinutes?: number;
+      };
+
+      export type Schedule = {
+        ScheduleExpression?: string;
+
+        PipelineExecutionStartCondition?: string;
+      };
+    }
 
     export type ImageRecipe = {
       Name: string;
@@ -15153,8 +17609,6 @@ export namespace AWS {
     }
 
     export type ContainerRecipe = {
-      InstanceConfiguration?: AWS.ImageBuilder.ContainerRecipe.InstanceConfiguration;
-
       Name: string;
 
       Description?: string;
@@ -15162,6 +17616,8 @@ export namespace AWS {
       Version: string;
 
       Components: AWS.ImageBuilder.ContainerRecipe.ComponentConfiguration[];
+
+      InstanceConfiguration?: AWS.ImageBuilder.ContainerRecipe.InstanceConfiguration;
 
       DockerfileTemplateData?: string;
 
@@ -15215,6 +17671,12 @@ export namespace AWS {
         Ebs?: AWS.ImageBuilder.ContainerRecipe.EbsInstanceBlockDeviceSpecification;
       };
 
+      export type InstanceConfiguration = {
+        Image?: string;
+
+        BlockDeviceMappings?: AWS.ImageBuilder.ContainerRecipe.InstanceBlockDeviceMapping[];
+      };
+
       export type TargetContainerRepository = {
         Service?: string;
 
@@ -15223,8 +17685,6 @@ export namespace AWS {
     }
 
     export type InfrastructureConfiguration = {
-      Logging?: AWS.ImageBuilder.InfrastructureConfiguration.Logging;
-
       Name: string;
 
       Description?: string;
@@ -15232,6 +17692,8 @@ export namespace AWS {
       InstanceTypes?: string[];
 
       SecurityGroupIds?: string[];
+
+      Logging?: AWS.ImageBuilder.InfrastructureConfiguration.Logging;
 
       SubnetId?: string;
 
@@ -15249,6 +17711,10 @@ export namespace AWS {
     };
 
     export namespace InfrastructureConfiguration {
+      export type Logging = {
+        S3Logs?: AWS.ImageBuilder.InfrastructureConfiguration.S3Logs;
+      };
+
       export type S3Logs = {
         S3BucketName?: string;
 
@@ -15304,6 +17770,14 @@ export namespace AWS {
       Tags?: Record<string, string>;
     };
 
+    export namespace Image {
+      export type ImageTestsConfiguration = {
+        ImageTestsEnabled?: boolean;
+
+        TimeoutMinutes?: number;
+      };
+    }
+
     export type Component = {
       Name: string;
 
@@ -15329,19 +17803,19 @@ export namespace AWS {
 
   export namespace MediaLive {
     export type Channel = {
-      InputSpecification?: AWS.MediaLive.Channel.InputSpecification;
-
-      EncoderSettings?: AWS.MediaLive.Channel.EncoderSettings;
-
-      CdiInputSpecification?: AWS.MediaLive.Channel.CdiInputSpecification;
-
       InputAttachments?: AWS.MediaLive.Channel.InputAttachment[];
 
+      InputSpecification?: AWS.MediaLive.Channel.InputSpecification;
+
       ChannelClass?: string;
+
+      EncoderSettings?: AWS.MediaLive.Channel.EncoderSettings;
 
       Destinations?: AWS.MediaLive.Channel.OutputDestination[];
 
       Vpc?: AWS.MediaLive.Channel.VpcOutputSettings;
+
+      CdiInputSpecification?: AWS.MediaLive.Channel.CdiInputSpecification;
 
       LogLevel?: string;
 
@@ -16319,8 +18793,42 @@ export namespace AWS {
         Convert608To708?: string;
       };
 
+      export type InputSpecification = {
+        Codec?: string;
+
+        MaximumBitrate?: string;
+
+        Resolution?: string;
+      };
+
       export type FrameCaptureOutputSettings = {
         NameModifier?: string;
+      };
+
+      export type EncoderSettings = {
+        AudioDescriptions?: AWS.MediaLive.Channel.AudioDescription[];
+
+        VideoDescriptions?: AWS.MediaLive.Channel.VideoDescription[];
+
+        FeatureActivations?: AWS.MediaLive.Channel.FeatureActivations;
+
+        GlobalConfiguration?: AWS.MediaLive.Channel.GlobalConfiguration;
+
+        CaptionDescriptions?: AWS.MediaLive.Channel.CaptionDescription[];
+
+        AvailConfiguration?: AWS.MediaLive.Channel.AvailConfiguration;
+
+        MotionGraphicsConfiguration?: AWS.MediaLive.Channel.MotionGraphicsConfiguration;
+
+        OutputGroups?: AWS.MediaLive.Channel.OutputGroup[];
+
+        AvailBlanking?: AWS.MediaLive.Channel.AvailBlanking;
+
+        NielsenConfiguration?: AWS.MediaLive.Channel.NielsenConfiguration;
+
+        BlackoutSlate?: AWS.MediaLive.Channel.BlackoutSlate;
+
+        TimecodeConfig?: AWS.MediaLive.Channel.TimecodeConfig;
       };
 
       export type AvailSettings = {
@@ -16677,6 +19185,10 @@ export namespace AWS {
         StaticKeySettings?: AWS.MediaLive.Channel.StaticKeySettings;
       };
 
+      export type CdiInputSpecification = {
+        Resolution?: string;
+      };
+
       export type OutputGroupSettings = {
         HlsGroupSettings?: AWS.MediaLive.Channel.HlsGroupSettings;
 
@@ -16901,8 +19413,6 @@ export namespace AWS {
 
   export namespace DirectoryService {
     export type MicrosoftAD = {
-      VpcSettings: AWS.DirectoryService.MicrosoftAD.VpcSettings;
-
       CreateAlias?: boolean;
 
       Edition?: string;
@@ -16914,11 +19424,19 @@ export namespace AWS {
       Password: string;
 
       ShortName?: string;
+
+      VpcSettings: AWS.DirectoryService.MicrosoftAD.VpcSettings;
     };
 
-    export type SimpleAD = {
-      VpcSettings: AWS.DirectoryService.SimpleAD.VpcSettings;
+    export namespace MicrosoftAD {
+      export type VpcSettings = {
+        SubnetIds: string[];
 
+        VpcId: string;
+      };
+    }
+
+    export type SimpleAD = {
       CreateAlias?: boolean;
 
       Description?: string;
@@ -16932,37 +19450,75 @@ export namespace AWS {
       ShortName?: string;
 
       Size: string;
+
+      VpcSettings: AWS.DirectoryService.SimpleAD.VpcSettings;
     };
+
+    export namespace SimpleAD {
+      export type VpcSettings = {
+        SubnetIds: string[];
+
+        VpcId: string;
+      };
+    }
   }
 
   export namespace AppSync {
     export type DataSource = {
-      RelationalDatabaseConfig?: AWS.AppSync.DataSource.RelationalDatabaseConfig;
-
-      LambdaConfig?: AWS.AppSync.DataSource.LambdaConfig;
-
-      HttpConfig?: AWS.AppSync.DataSource.HttpConfig;
-
-      DynamoDBConfig?: AWS.AppSync.DataSource.DynamoDBConfig;
-
-      ElasticsearchConfig?: AWS.AppSync.DataSource.ElasticsearchConfig;
-
       Type: string;
 
       Description?: string;
 
       ServiceRoleArn?: string;
 
+      HttpConfig?: AWS.AppSync.DataSource.HttpConfig;
+
+      RelationalDatabaseConfig?: AWS.AppSync.DataSource.RelationalDatabaseConfig;
+
+      LambdaConfig?: AWS.AppSync.DataSource.LambdaConfig;
+
       ApiId: string;
 
       Name: string;
+
+      DynamoDBConfig?: AWS.AppSync.DataSource.DynamoDBConfig;
+
+      ElasticsearchConfig?: AWS.AppSync.DataSource.ElasticsearchConfig;
     };
 
     export namespace DataSource {
+      export type RelationalDatabaseConfig = {
+        RdsHttpEndpointConfig?: AWS.AppSync.DataSource.RdsHttpEndpointConfig;
+
+        RelationalDatabaseSourceType: string;
+      };
+
+      export type LambdaConfig = {
+        LambdaFunctionArn: string;
+      };
+
+      export type HttpConfig = {
+        Endpoint: string;
+
+        AuthorizationConfig?: AWS.AppSync.DataSource.AuthorizationConfig;
+      };
+
       export type AwsIamConfig = {
         SigningRegion?: string;
 
         SigningServiceName?: string;
+      };
+
+      export type DynamoDBConfig = {
+        TableName: string;
+
+        AwsRegion: string;
+
+        Versioned?: boolean;
+
+        DeltaSyncConfig?: AWS.AppSync.DataSource.DeltaSyncConfig;
+
+        UseCallerCredentials?: boolean;
       };
 
       export type AuthorizationConfig = {
@@ -16983,6 +19539,12 @@ export namespace AWS {
         AwsSecretStoreArn: string;
       };
 
+      export type ElasticsearchConfig = {
+        AwsRegion: string;
+
+        Endpoint: string;
+      };
+
       export type DeltaSyncConfig = {
         BaseTableTTL: string;
 
@@ -16993,30 +19555,64 @@ export namespace AWS {
     }
 
     export type GraphQLApi = {
-      Tags?: AWS.AppSync.GraphQLApi.Tags;
-
       OpenIDConnectConfig?: AWS.AppSync.GraphQLApi.OpenIDConnectConfig;
 
-      AdditionalAuthenticationProviders?: AWS.AppSync.GraphQLApi.AdditionalAuthenticationProviders;
+      XrayEnabled?: boolean;
 
       UserPoolConfig?: AWS.AppSync.GraphQLApi.UserPoolConfig;
 
-      LogConfig?: AWS.AppSync.GraphQLApi.LogConfig;
-
-      XrayEnabled?: boolean;
+      Tags?: AWS.AppSync.GraphQLApi.Tags;
 
       Name: string;
 
       AuthenticationType: string;
+
+      LogConfig?: AWS.AppSync.GraphQLApi.LogConfig;
+
+      AdditionalAuthenticationProviders?: AWS.AppSync.GraphQLApi.AdditionalAuthenticationProviders;
+    };
+
+    export type GraphQLApi = {
+      Tags?: Tag[];
+
+      AdditionalAuthenticationProviders?: AWS.AppSync.GraphQLApi.AdditionalAuthenticationProvider[];
     };
 
     export namespace GraphQLApi {
+      export type OpenIDConnectConfig = {
+        Issuer?: string;
+
+        ClientId?: string;
+
+        AuthTTL?: number;
+
+        IatTTL?: number;
+      };
+
       export type CognitoUserPoolConfig = {
         AppIdClientRegex?: string;
 
         UserPoolId?: string;
 
         AwsRegion?: string;
+      };
+
+      export type UserPoolConfig = {
+        AppIdClientRegex?: string;
+
+        UserPoolId?: string;
+
+        AwsRegion?: string;
+
+        DefaultAction?: string;
+      };
+
+      export type LogConfig = {
+        CloudWatchLogsRoleArn?: string;
+
+        ExcludeVerboseContent?: boolean;
+
+        FieldLogLevel?: string;
       };
 
       export type AdditionalAuthenticationProvider = {
@@ -17029,8 +19625,6 @@ export namespace AWS {
     }
 
     export type FunctionConfiguration = {
-      SyncConfig?: AWS.AppSync.FunctionConfiguration.SyncConfig;
-
       ResponseMappingTemplateS3Location?: string;
 
       Description?: string;
@@ -17043,6 +19637,8 @@ export namespace AWS {
 
       FunctionVersion: string;
 
+      SyncConfig?: AWS.AppSync.FunctionConfiguration.SyncConfig;
+
       RequestMappingTemplateS3Location?: string;
 
       ApiId: string;
@@ -17051,21 +19647,25 @@ export namespace AWS {
     };
 
     export namespace FunctionConfiguration {
+      export type SyncConfig = {
+        ConflictHandler?: string;
+
+        ConflictDetection: string;
+
+        LambdaConflictHandlerConfig?: AWS.AppSync.FunctionConfiguration.LambdaConflictHandlerConfig;
+      };
+
       export type LambdaConflictHandlerConfig = {
         LambdaConflictHandlerArn?: string;
       };
     }
 
     export type Resolver = {
-      PipelineConfig?: AWS.AppSync.Resolver.PipelineConfig;
-
-      SyncConfig?: AWS.AppSync.Resolver.SyncConfig;
-
-      CachingConfig?: AWS.AppSync.Resolver.CachingConfig;
-
       ResponseMappingTemplateS3Location?: string;
 
       TypeName: string;
+
+      PipelineConfig?: AWS.AppSync.Resolver.PipelineConfig;
 
       DataSourceName?: string;
 
@@ -17074,6 +19674,10 @@ export namespace AWS {
       ResponseMappingTemplate?: string;
 
       Kind?: string;
+
+      CachingConfig?: AWS.AppSync.Resolver.CachingConfig;
+
+      SyncConfig?: AWS.AppSync.Resolver.SyncConfig;
 
       RequestMappingTemplateS3Location?: string;
 
@@ -17085,6 +19689,24 @@ export namespace AWS {
     export namespace Resolver {
       export type LambdaConflictHandlerConfig = {
         LambdaConflictHandlerArn?: string;
+      };
+
+      export type PipelineConfig = {
+        Functions?: string[];
+      };
+
+      export type SyncConfig = {
+        ConflictHandler?: string;
+
+        ConflictDetection: string;
+
+        LambdaConflictHandlerConfig?: AWS.AppSync.Resolver.LambdaConflictHandlerConfig;
+      };
+
+      export type CachingConfig = {
+        CachingKeys?: string[];
+
+        Ttl?: number;
       };
     }
 
@@ -17123,19 +19745,13 @@ export namespace AWS {
 
   export namespace Lambda {
     export type Function = {
-      VpcConfig?: AWS.Lambda.Function.VpcConfig;
+      Code: AWS.Lambda.Function.Code;
 
       DeadLetterConfig?: AWS.Lambda.Function.DeadLetterConfig;
 
-      Code: AWS.Lambda.Function.Code;
-
-      TracingConfig?: AWS.Lambda.Function.TracingConfig;
+      Description?: string;
 
       Environment?: AWS.Lambda.Function.Environment;
-
-      ImageConfig?: AWS.Lambda.Function.ImageConfig;
-
-      Description?: string;
 
       FileSystemConfigs?: AWS.Lambda.Function.FileSystemConfig[];
 
@@ -17159,16 +19775,60 @@ export namespace AWS {
 
       Timeout?: number;
 
+      TracingConfig?: AWS.Lambda.Function.TracingConfig;
+
+      VpcConfig?: AWS.Lambda.Function.VpcConfig;
+
       CodeSigningConfigArn?: string;
+
+      ImageConfig?: AWS.Lambda.Function.ImageConfig;
 
       PackageType?: string;
     };
 
     export namespace Function {
+      export type VpcConfig = {
+        SecurityGroupIds?: string[];
+
+        SubnetIds?: string[];
+      };
+
+      export type DeadLetterConfig = {
+        TargetArn?: string;
+      };
+
       export type FileSystemConfig = {
         Arn: string;
 
         LocalMountPath: string;
+      };
+
+      export type Code = {
+        S3Bucket?: string;
+
+        S3Key?: string;
+
+        S3ObjectVersion?: string;
+
+        ZipFile?: string;
+
+        ImageUri?: string;
+      };
+
+      export type TracingConfig = {
+        Mode?: string;
+      };
+
+      export type Environment = {
+        Variables?: Record<string, string>;
+      };
+
+      export type ImageConfig = {
+        EntryPoint?: string[];
+
+        Command?: string[];
+
+        WorkingDirectory?: string;
       };
     }
 
@@ -17203,11 +19863,11 @@ export namespace AWS {
     }
 
     export type EventInvokeConfig = {
-      DestinationConfig?: AWS.Lambda.EventInvokeConfig.DestinationConfig;
-
       FunctionName: string;
 
       MaximumRetryAttempts?: number;
+
+      DestinationConfig?: AWS.Lambda.EventInvokeConfig.DestinationConfig;
 
       Qualifier: string;
 
@@ -17222,16 +19882,20 @@ export namespace AWS {
       export type OnSuccess = {
         Destination: string;
       };
+
+      export type DestinationConfig = {
+        OnSuccess?: AWS.Lambda.EventInvokeConfig.OnSuccess;
+
+        OnFailure?: AWS.Lambda.EventInvokeConfig.OnFailure;
+      };
     }
 
     export type EventSourceMapping = {
-      SelfManagedEventSource?: AWS.Lambda.EventSourceMapping.SelfManagedEventSource;
-
-      DestinationConfig?: AWS.Lambda.EventSourceMapping.DestinationConfig;
-
       BatchSize?: number;
 
       BisectBatchOnFunctionError?: boolean;
+
+      DestinationConfig?: AWS.Lambda.EventSourceMapping.DestinationConfig;
 
       Enabled?: boolean;
 
@@ -17260,9 +19924,15 @@ export namespace AWS {
       TumblingWindowInSeconds?: number;
 
       FunctionResponseTypes?: string[];
+
+      SelfManagedEventSource?: AWS.Lambda.EventSourceMapping.SelfManagedEventSource;
     };
 
     export namespace EventSourceMapping {
+      export type SelfManagedEventSource = {
+        Endpoints?: AWS.Lambda.EventSourceMapping.Endpoints;
+      };
+
       export type OnFailure = {
         Destination?: string;
       };
@@ -17276,11 +19946,13 @@ export namespace AWS {
       export type Endpoints = {
         KafkaBootstrapServers?: string[];
       };
+
+      export type DestinationConfig = {
+        OnFailure?: AWS.Lambda.EventSourceMapping.OnFailure;
+      };
     }
 
     export type LayerVersion = {
-      Content: AWS.Lambda.LayerVersion.Content;
-
       CompatibleRuntimes?: string[];
 
       LicenseInfo?: string;
@@ -17288,15 +19960,37 @@ export namespace AWS {
       Description?: string;
 
       LayerName?: string;
+
+      Content: AWS.Lambda.LayerVersion.Content;
     };
 
+    export namespace LayerVersion {
+      export type Content = {
+        S3ObjectVersion?: string;
+
+        S3Bucket: string;
+
+        S3Key: string;
+      };
+    }
+
     export type CodeSigningConfig = {
-      CodeSigningPolicies?: AWS.Lambda.CodeSigningConfig.CodeSigningPolicies;
+      Description?: string;
 
       AllowedPublishers: AWS.Lambda.CodeSigningConfig.AllowedPublishers;
 
-      Description?: string;
+      CodeSigningPolicies?: AWS.Lambda.CodeSigningConfig.CodeSigningPolicies;
     };
+
+    export namespace CodeSigningConfig {
+      export type CodeSigningPolicies = {
+        UntrustedArtifactOnDeployment: string;
+      };
+
+      export type AllowedPublishers = {
+        SigningProfileVersionArns: string[];
+      };
+    }
 
     export type Version = {
       CodeSha256?: string;
@@ -17341,41 +20035,79 @@ export namespace AWS {
 
   export namespace Elasticsearch {
     export type Domain = {
-      DomainEndpointOptions?: AWS.Elasticsearch.Domain.DomainEndpointOptions;
-
-      NodeToNodeEncryptionOptions?: AWS.Elasticsearch.Domain.NodeToNodeEncryptionOptions;
-
-      ElasticsearchClusterConfig?: AWS.Elasticsearch.Domain.ElasticsearchClusterConfig;
-
-      SnapshotOptions?: AWS.Elasticsearch.Domain.SnapshotOptions;
-
-      CognitoOptions?: AWS.Elasticsearch.Domain.CognitoOptions;
-
-      VPCOptions?: AWS.Elasticsearch.Domain.VPCOptions;
-
-      EBSOptions?: AWS.Elasticsearch.Domain.EBSOptions;
-
-      EncryptionAtRestOptions?: AWS.Elasticsearch.Domain.EncryptionAtRestOptions;
-
       AccessPolicies?: JSONString;
 
       AdvancedOptions?: Record<string, string>;
 
       AdvancedSecurityOptions?: AWS.Elasticsearch.Domain.AdvancedSecurityOptionsInput;
 
+      CognitoOptions?: AWS.Elasticsearch.Domain.CognitoOptions;
+
+      DomainEndpointOptions?: AWS.Elasticsearch.Domain.DomainEndpointOptions;
+
       DomainName?: string;
 
+      EBSOptions?: AWS.Elasticsearch.Domain.EBSOptions;
+
+      ElasticsearchClusterConfig?: AWS.Elasticsearch.Domain.ElasticsearchClusterConfig;
+
       ElasticsearchVersion?: string;
+
+      EncryptionAtRestOptions?: AWS.Elasticsearch.Domain.EncryptionAtRestOptions;
 
       LogPublishingOptions?: Record<
         string,
         AWS.Elasticsearch.Domain.LogPublishingOption
       >;
 
+      NodeToNodeEncryptionOptions?: AWS.Elasticsearch.Domain.NodeToNodeEncryptionOptions;
+
+      SnapshotOptions?: AWS.Elasticsearch.Domain.SnapshotOptions;
+
       Tags?: Tag[];
+
+      VPCOptions?: AWS.Elasticsearch.Domain.VPCOptions;
     };
 
     export namespace Domain {
+      export type DomainEndpointOptions = {
+        CustomEndpoint?: string;
+
+        CustomEndpointCertificateArn?: string;
+
+        CustomEndpointEnabled?: boolean;
+
+        EnforceHTTPS?: boolean;
+
+        TLSSecurityPolicy?: string;
+      };
+
+      export type NodeToNodeEncryptionOptions = {
+        Enabled?: boolean;
+      };
+
+      export type ElasticsearchClusterConfig = {
+        DedicatedMasterCount?: number;
+
+        DedicatedMasterEnabled?: boolean;
+
+        DedicatedMasterType?: string;
+
+        InstanceCount?: number;
+
+        InstanceType?: string;
+
+        WarmCount?: number;
+
+        WarmEnabled?: boolean;
+
+        WarmType?: string;
+
+        ZoneAwarenessConfig?: AWS.Elasticsearch.Domain.ZoneAwarenessConfig;
+
+        ZoneAwarenessEnabled?: boolean;
+      };
+
       export type AdvancedSecurityOptionsInput = {
         Enabled?: boolean;
 
@@ -17386,6 +20118,26 @@ export namespace AWS {
 
       export type ZoneAwarenessConfig = {
         AvailabilityZoneCount?: number;
+      };
+
+      export type SnapshotOptions = {
+        AutomatedSnapshotStartHour?: number;
+      };
+
+      export type CognitoOptions = {
+        Enabled?: boolean;
+
+        IdentityPoolId?: string;
+
+        RoleArn?: string;
+
+        UserPoolId?: string;
+      };
+
+      export type VPCOptions = {
+        SecurityGroupIds?: string[];
+
+        SubnetIds?: string[];
       };
 
       export type MasterUserOptions = {
@@ -17401,16 +20153,32 @@ export namespace AWS {
 
         Enabled?: boolean;
       };
+
+      export type EBSOptions = {
+        EBSEnabled?: boolean;
+
+        Iops?: number;
+
+        VolumeSize?: number;
+
+        VolumeType?: string;
+      };
+
+      export type EncryptionAtRestOptions = {
+        Enabled?: boolean;
+
+        KmsKeyId?: string;
+      };
     }
   }
 
   export namespace GroundStation {
     export type Config = {
-      ConfigData: AWS.GroundStation.Config.ConfigData;
-
       Name: string;
 
       Tags?: Tag[];
+
+      ConfigData: AWS.GroundStation.Config.ConfigData;
     };
 
     export namespace Config {
@@ -17478,6 +20246,22 @@ export namespace AWS {
 
       export type TrackingConfig = {
         Autotrack?: string;
+      };
+
+      export type ConfigData = {
+        AntennaDownlinkConfig?: AWS.GroundStation.Config.AntennaDownlinkConfig;
+
+        TrackingConfig?: AWS.GroundStation.Config.TrackingConfig;
+
+        DataflowEndpointConfig?: AWS.GroundStation.Config.DataflowEndpointConfig;
+
+        AntennaDownlinkDemodDecodeConfig?: AWS.GroundStation.Config.AntennaDownlinkDemodDecodeConfig;
+
+        AntennaUplinkConfig?: AWS.GroundStation.Config.AntennaUplinkConfig;
+
+        UplinkEchoConfig?: AWS.GroundStation.Config.UplinkEchoConfig;
+
+        S3RecordingConfig?: AWS.GroundStation.Config.S3RecordingConfig;
       };
 
       export type AntennaUplinkConfig = {
@@ -17550,6 +20334,12 @@ export namespace AWS {
         Name?: string;
 
         Port?: number;
+      };
+
+      export type EndpointDetails = {
+        SecurityDetails?: AWS.GroundStation.DataflowEndpointGroup.SecurityDetails;
+
+        Endpoint?: AWS.GroundStation.DataflowEndpointGroup.DataflowEndpoint;
       };
     }
   }
@@ -17682,6 +20472,12 @@ export namespace AWS {
         UseBase64?: boolean;
       };
 
+      export type DetectorModelDefinition = {
+        InitialStateName: string;
+
+        States: AWS.IoTEvents.DetectorModel.State[];
+      };
+
       export type IotTopicPublish = {
         MqttTopic: string;
 
@@ -17788,6 +20584,10 @@ export namespace AWS {
     export namespace Input {
       export type Attribute = {
         JsonPath: string;
+      };
+
+      export type InputDefinition = {
+        Attributes: AWS.IoTEvents.Input.Attribute[];
       };
     }
   }
@@ -17899,17 +20699,25 @@ export namespace AWS {
 
   export namespace ManagedBlockchain {
     export type Node = {
-      NodeConfiguration: AWS.ManagedBlockchain.Node.NodeConfiguration;
-
       MemberId?: string;
 
       NetworkId: string;
+
+      NodeConfiguration: AWS.ManagedBlockchain.Node.NodeConfiguration;
     };
 
-    export type Member = {
-      NetworkConfiguration?: AWS.ManagedBlockchain.Member.NetworkConfiguration;
+    export namespace Node {
+      export type NodeConfiguration = {
+        AvailabilityZone: string;
 
+        InstanceType: string;
+      };
+    }
+
+    export type Member = {
       MemberConfiguration: AWS.ManagedBlockchain.Member.MemberConfiguration;
+
+      NetworkConfiguration?: AWS.ManagedBlockchain.Member.NetworkConfiguration;
 
       NetworkId?: string;
 
@@ -17921,8 +20729,30 @@ export namespace AWS {
         NetworkFabricConfiguration?: AWS.ManagedBlockchain.Member.NetworkFabricConfiguration;
       };
 
+      export type NetworkConfiguration = {
+        Description?: string;
+
+        FrameworkVersion: string;
+
+        VotingPolicy: AWS.ManagedBlockchain.Member.VotingPolicy;
+
+        Framework: string;
+
+        Name: string;
+
+        NetworkFrameworkConfiguration?: AWS.ManagedBlockchain.Member.NetworkFrameworkConfiguration;
+      };
+
       export type NetworkFabricConfiguration = {
         Edition: string;
+      };
+
+      export type MemberConfiguration = {
+        Description?: string;
+
+        MemberFrameworkConfiguration?: AWS.ManagedBlockchain.Member.MemberFrameworkConfiguration;
+
+        Name: string;
       };
 
       export type ApprovalThresholdPolicy = {
@@ -18099,9 +20929,9 @@ export namespace AWS {
 
   export namespace NetworkFirewall {
     export type RuleGroup = {
-      RuleGroup?: AWS.NetworkFirewall.RuleGroup.RuleGroup;
-
       RuleGroupName: string;
+
+      RuleGroup?: AWS.NetworkFirewall.RuleGroup.RuleGroup;
 
       Type: string;
 
@@ -18157,6 +20987,12 @@ export namespace AWS {
         MatchAttributes: AWS.NetworkFirewall.RuleGroup.MatchAttributes;
 
         Actions: string[];
+      };
+
+      export type RuleGroup = {
+        RuleVariables?: AWS.NetworkFirewall.RuleGroup.RuleVariables;
+
+        RulesSource: AWS.NetworkFirewall.RuleGroup.RulesSource;
       };
 
       export type RulesSourceList = {
@@ -18241,9 +21077,9 @@ export namespace AWS {
     }
 
     export type FirewallPolicy = {
-      FirewallPolicy: AWS.NetworkFirewall.FirewallPolicy.FirewallPolicy;
-
       FirewallPolicyName: string;
+
+      FirewallPolicy: AWS.NetworkFirewall.FirewallPolicy.FirewallPolicy;
 
       Description?: string;
 
@@ -18278,14 +21114,26 @@ export namespace AWS {
       export type Dimension = {
         Value: string;
       };
+
+      export type FirewallPolicy = {
+        StatelessDefaultActions: string[];
+
+        StatelessFragmentDefaultActions: string[];
+
+        StatelessCustomActions?: AWS.NetworkFirewall.FirewallPolicy.CustomAction[];
+
+        StatelessRuleGroupReferences?: AWS.NetworkFirewall.FirewallPolicy.StatelessRuleGroupReference[];
+
+        StatefulRuleGroupReferences?: AWS.NetworkFirewall.FirewallPolicy.StatefulRuleGroupReference[];
+      };
     }
 
     export type LoggingConfiguration = {
-      LoggingConfiguration: AWS.NetworkFirewall.LoggingConfiguration.LoggingConfiguration;
-
       FirewallName?: string;
 
       FirewallArn: string;
+
+      LoggingConfiguration: AWS.NetworkFirewall.LoggingConfiguration.LoggingConfiguration;
     };
 
     export namespace LoggingConfiguration {
@@ -18295,6 +21143,10 @@ export namespace AWS {
         LogDestinationType: string;
 
         LogDestination: Record<string, string>;
+      };
+
+      export type LoggingConfiguration = {
+        LogDestinationConfigs: AWS.NetworkFirewall.LoggingConfiguration.LogDestinationConfig[];
       };
     }
 
@@ -18327,8 +21179,6 @@ export namespace AWS {
 
   export namespace DataSync {
     export type Task = {
-      Options?: AWS.DataSync.Task.Options;
-
       Excludes?: AWS.DataSync.Task.FilterRule[];
 
       Tags?: Tag[];
@@ -18338,6 +21188,8 @@ export namespace AWS {
       DestinationLocationArn: string;
 
       Name?: string;
+
+      Options?: AWS.DataSync.Task.Options;
 
       Schedule?: AWS.DataSync.Task.TaskSchedule;
 
@@ -18349,6 +21201,34 @@ export namespace AWS {
         FilterType?: string;
 
         Value?: string;
+      };
+
+      export type Options = {
+        Atime?: string;
+
+        BytesPerSecond?: number;
+
+        Gid?: string;
+
+        LogLevel?: string;
+
+        Mtime?: string;
+
+        OverwriteMode?: string;
+
+        PosixPermissions?: string;
+
+        PreserveDeletedFiles?: string;
+
+        PreserveDevices?: string;
+
+        TaskQueueing?: string;
+
+        TransferMode?: string;
+
+        Uid?: string;
+
+        VerifyMode?: string;
       };
 
       export type TaskSchedule = {
@@ -18368,10 +21248,16 @@ export namespace AWS {
       Tags?: Tag[];
     };
 
-    export type LocationNFS = {
-      OnPremConfig: AWS.DataSync.LocationNFS.OnPremConfig;
+    export namespace LocationS3 {
+      export type S3Config = {
+        BucketAccessRoleArn: string;
+      };
+    }
 
+    export type LocationNFS = {
       MountOptions?: AWS.DataSync.LocationNFS.MountOptions;
+
+      OnPremConfig: AWS.DataSync.LocationNFS.OnPremConfig;
 
       ServerHostname: string;
 
@@ -18379,6 +21265,16 @@ export namespace AWS {
 
       Tags?: Tag[];
     };
+
+    export namespace LocationNFS {
+      export type OnPremConfig = {
+        AgentArns: string[];
+      };
+
+      export type MountOptions = {
+        Version?: string;
+      };
+    }
 
     export type LocationEFS = {
       Ec2Config: AWS.DataSync.LocationEFS.Ec2Config;
@@ -18390,12 +21286,20 @@ export namespace AWS {
       Tags?: Tag[];
     };
 
-    export type LocationSMB = {
-      MountOptions?: AWS.DataSync.LocationSMB.MountOptions;
+    export namespace LocationEFS {
+      export type Ec2Config = {
+        SecurityGroupArns: string[];
 
+        SubnetArn: string;
+      };
+    }
+
+    export type LocationSMB = {
       AgentArns: string[];
 
       Domain?: string;
+
+      MountOptions?: AWS.DataSync.LocationSMB.MountOptions;
 
       Password: string;
 
@@ -18407,6 +21311,12 @@ export namespace AWS {
 
       Tags?: Tag[];
     };
+
+    export namespace LocationSMB {
+      export type MountOptions = {
+        Version?: string;
+      };
+    }
 
     export type Agent = {
       AgentName?: string;
@@ -18463,11 +21373,11 @@ export namespace AWS {
     export type Deployment = {
       DeploymentCanarySettings?: AWS.ApiGateway.Deployment.DeploymentCanarySettings;
 
-      StageDescription?: AWS.ApiGateway.Deployment.StageDescription;
-
       Description?: string;
 
       RestApiId: string;
+
+      StageDescription?: AWS.ApiGateway.Deployment.StageDescription;
 
       StageName?: string;
     };
@@ -18499,6 +21409,54 @@ export namespace AWS {
         DestinationArn?: string;
 
         Format?: string;
+      };
+
+      export type DeploymentCanarySettings = {
+        PercentTraffic?: number;
+
+        StageVariableOverrides?: Record<string, string>;
+
+        UseStageCache?: boolean;
+      };
+
+      export type StageDescription = {
+        AccessLogSetting?: AWS.ApiGateway.Deployment.AccessLogSetting;
+
+        CacheClusterEnabled?: boolean;
+
+        CacheClusterSize?: string;
+
+        CacheDataEncrypted?: boolean;
+
+        CacheTtlInSeconds?: number;
+
+        CachingEnabled?: boolean;
+
+        CanarySetting?: AWS.ApiGateway.Deployment.CanarySetting;
+
+        ClientCertificateId?: string;
+
+        DataTraceEnabled?: boolean;
+
+        Description?: string;
+
+        DocumentationVersion?: string;
+
+        LoggingLevel?: string;
+
+        MethodSettings?: AWS.ApiGateway.Deployment.MethodSetting[];
+
+        MetricsEnabled?: boolean;
+
+        Tags?: Tag[];
+
+        ThrottlingBurstLimit?: number;
+
+        ThrottlingRateLimit?: number;
+
+        TracingEnabled?: boolean;
+
+        Variables?: Record<string, string>;
       };
 
       export type CanarySetting = {
@@ -18582,9 +21540,21 @@ export namespace AWS {
       RestApiId: string;
     };
 
-    export type Method = {
-      Integration?: AWS.ApiGateway.Method.Integration;
+    export namespace DocumentationPart {
+      export type Location = {
+        Method?: string;
 
+        Name?: string;
+
+        Path?: string;
+
+        StatusCode?: string;
+
+        Type?: string;
+      };
+    }
+
+    export type Method = {
       ApiKeyRequired?: boolean;
 
       AuthorizationScopes?: string[];
@@ -18594,6 +21564,8 @@ export namespace AWS {
       AuthorizerId?: string;
 
       HttpMethod: string;
+
+      Integration?: AWS.ApiGateway.Method.Integration;
 
       MethodResponses?: AWS.ApiGateway.Method.MethodResponse[];
 
@@ -18619,6 +21591,36 @@ export namespace AWS {
         StatusCode: string;
       };
 
+      export type Integration = {
+        CacheKeyParameters?: string[];
+
+        CacheNamespace?: string;
+
+        ConnectionId?: string;
+
+        ConnectionType?: string;
+
+        ContentHandling?: string;
+
+        Credentials?: string;
+
+        IntegrationHttpMethod?: string;
+
+        IntegrationResponses?: AWS.ApiGateway.Method.IntegrationResponse[];
+
+        PassthroughBehavior?: string;
+
+        RequestParameters?: Record<string, string>;
+
+        RequestTemplates?: Record<string, string>;
+
+        TimeoutInMillis?: number;
+
+        Type?: string;
+
+        Uri?: string;
+      };
+
       export type IntegrationResponse = {
         ContentHandling?: string;
 
@@ -18633,11 +21635,11 @@ export namespace AWS {
     }
 
     export type DomainName = {
-      MutualTlsAuthentication?: AWS.ApiGateway.DomainName.MutualTlsAuthentication;
+      DomainName?: string;
 
       EndpointConfiguration?: AWS.ApiGateway.DomainName.EndpointConfiguration;
 
-      DomainName?: string;
+      MutualTlsAuthentication?: AWS.ApiGateway.DomainName.MutualTlsAuthentication;
 
       CertificateArn?: string;
 
@@ -18648,9 +21650,19 @@ export namespace AWS {
       Tags?: Tag[];
     };
 
-    export type RestApi = {
-      EndpointConfiguration?: AWS.ApiGateway.RestApi.EndpointConfiguration;
+    export namespace DomainName {
+      export type MutualTlsAuthentication = {
+        TruststoreUri?: string;
 
+        TruststoreVersion?: string;
+      };
+
+      export type EndpointConfiguration = {
+        Types?: string[];
+      };
+    }
+
+    export type RestApi = {
       ApiKeySourceType?: string;
 
       BinaryMediaTypes?: string[];
@@ -18664,6 +21676,8 @@ export namespace AWS {
       Description?: string;
 
       DisableExecuteApiEndpoint?: boolean;
+
+      EndpointConfiguration?: AWS.ApiGateway.RestApi.EndpointConfiguration;
 
       FailOnWarnings?: boolean;
 
@@ -18690,16 +21704,22 @@ export namespace AWS {
 
         Version?: string;
       };
+
+      export type EndpointConfiguration = {
+        Types?: string[];
+
+        VpcEndpointIds?: string[];
+      };
     }
 
     export type Stage = {
-      CanarySetting?: AWS.ApiGateway.Stage.CanarySetting;
-
       AccessLogSetting?: AWS.ApiGateway.Stage.AccessLogSetting;
 
       CacheClusterEnabled?: boolean;
 
       CacheClusterSize?: string;
+
+      CanarySetting?: AWS.ApiGateway.Stage.CanarySetting;
 
       ClientCertificateId?: string;
 
@@ -18723,6 +21743,22 @@ export namespace AWS {
     };
 
     export namespace Stage {
+      export type CanarySetting = {
+        DeploymentId?: string;
+
+        PercentTraffic?: number;
+
+        StageVariableOverrides?: Record<string, string>;
+
+        UseStageCache?: boolean;
+      };
+
+      export type AccessLogSetting = {
+        DestinationArn?: string;
+
+        Format?: string;
+      };
+
       export type MethodSetting = {
         CacheDataEncrypted?: boolean;
 
@@ -18857,8 +21893,6 @@ export namespace AWS {
 
   export namespace AppConfig {
     export type Deployment = {
-      Tags?: AWS.AppConfig.Deployment.Tags[];
-
       DeploymentStrategyId: string;
 
       ConfigurationProfileId: string;
@@ -18870,11 +21904,19 @@ export namespace AWS {
       ConfigurationVersion: string;
 
       ApplicationId: string;
+
+      Tags?: AWS.AppConfig.Deployment.Tags[];
     };
 
-    export type DeploymentStrategy = {
-      Tags?: AWS.AppConfig.DeploymentStrategy.Tags[];
+    export namespace Deployment {
+      export type Tags = {
+        Value?: string;
 
+        Key?: string;
+      };
+    }
+
+    export type DeploymentStrategy = {
       ReplicateTo: string;
 
       GrowthType?: string;
@@ -18887,44 +21929,90 @@ export namespace AWS {
 
       FinalBakeTimeInMinutes?: number;
 
+      Tags?: AWS.AppConfig.DeploymentStrategy.Tags[];
+
       Name: string;
     };
 
+    export namespace DeploymentStrategy {
+      export type Tags = {
+        Value?: string;
+
+        Key?: string;
+      };
+    }
+
     export type Environment = {
-      Monitors?: AWS.AppConfig.Environment.Monitors[];
-
-      Tags?: AWS.AppConfig.Environment.Tags[];
-
       Description?: string;
+
+      Monitors?: AWS.AppConfig.Environment.Monitors[];
 
       ApplicationId: string;
 
+      Tags?: AWS.AppConfig.Environment.Tags[];
+
       Name: string;
     };
 
+    export namespace Environment {
+      export type Monitors = {
+        AlarmArn?: string;
+
+        AlarmRoleArn?: string;
+      };
+
+      export type Tags = {
+        Value?: string;
+
+        Key?: string;
+      };
+    }
+
     export type ConfigurationProfile = {
-      Validators?: AWS.AppConfig.ConfigurationProfile.Validators[];
-
-      Tags?: AWS.AppConfig.ConfigurationProfile.Tags[];
-
       LocationUri: string;
 
       Description?: string;
+
+      Validators?: AWS.AppConfig.ConfigurationProfile.Validators[];
 
       RetrievalRoleArn?: string;
 
       ApplicationId: string;
 
+      Tags?: AWS.AppConfig.ConfigurationProfile.Tags[];
+
       Name: string;
     };
+
+    export namespace ConfigurationProfile {
+      export type Validators = {
+        Type?: string;
+
+        Content?: string;
+      };
+
+      export type Tags = {
+        Value?: string;
+
+        Key?: string;
+      };
+    }
 
     export type Application = {
-      Tags?: AWS.AppConfig.Application.Tags[];
-
       Description?: string;
+
+      Tags?: AWS.AppConfig.Application.Tags[];
 
       Name: string;
     };
+
+    export namespace Application {
+      export type Tags = {
+        Value?: string;
+
+        Key?: string;
+      };
+    }
 
     export type HostedConfigurationVersion = {
       ConfigurationProfileId: string;
@@ -18961,6 +22049,10 @@ export namespace AWS {
     };
 
     export namespace ResourceCollection {
+      export type ResourceCollectionFilter = {
+        CloudFormation?: AWS.DevOpsGuru.ResourceCollection.CloudFormationCollectionFilter;
+      };
+
       export type CloudFormationCollectionFilter = {
         StackNames?: string[];
       };
@@ -18969,11 +22061,11 @@ export namespace AWS {
 
   export namespace ResourceGroups {
     export type Group = {
-      ResourceQuery?: AWS.ResourceGroups.Group.ResourceQuery;
-
       Name: string;
 
       Description?: string;
+
+      ResourceQuery?: AWS.ResourceGroups.Group.ResourceQuery;
 
       Tags?: Tag[];
 
@@ -19008,6 +22100,12 @@ export namespace AWS {
 
         Parameters?: AWS.ResourceGroups.Group.ConfigurationParameter[];
       };
+
+      export type ResourceQuery = {
+        Type?: string;
+
+        Query?: AWS.ResourceGroups.Group.Query;
+      };
     }
   }
 
@@ -19017,6 +22115,10 @@ export namespace AWS {
     };
 
     export namespace ReplicationConfiguration {
+      export type ReplicationConfiguration = {
+        Rules: AWS.ECR.ReplicationConfiguration.ReplicationRule[];
+      };
+
       export type ReplicationDestination = {
         Region: string;
 
@@ -19031,10 +22133,6 @@ export namespace AWS {
     export type Repository = {
       LifecyclePolicy?: AWS.ECR.Repository.LifecyclePolicy;
 
-      ImageScanningConfiguration?: AWS.ECR.Repository.ImageScanningConfiguration;
-
-      EncryptionConfiguration?: AWS.ECR.Repository.EncryptionConfiguration;
-
       RepositoryName?: string;
 
       RepositoryPolicyText?: JSONString;
@@ -19042,7 +22140,29 @@ export namespace AWS {
       Tags?: Tag[];
 
       ImageTagMutability?: string;
+
+      ImageScanningConfiguration?: AWS.ECR.Repository.ImageScanningConfiguration;
+
+      EncryptionConfiguration?: AWS.ECR.Repository.EncryptionConfiguration;
     };
+
+    export namespace Repository {
+      export type LifecyclePolicy = {
+        LifecyclePolicyText?: string;
+
+        RegistryId?: string;
+      };
+
+      export type ImageScanningConfiguration = {
+        ScanOnPush?: boolean;
+      };
+
+      export type EncryptionConfiguration = {
+        EncryptionType: string;
+
+        KmsKey?: string;
+      };
+    }
 
     export type RegistryPolicy = {
       PolicyText: JSONString;
@@ -19061,15 +22181,15 @@ export namespace AWS {
 
   export namespace EFS {
     export type AccessPoint = {
-      RootDirectory?: AWS.EFS.AccessPoint.RootDirectory;
-
-      PosixUser?: AWS.EFS.AccessPoint.PosixUser;
-
       ClientToken?: string;
 
       AccessPointTags?: AWS.EFS.AccessPoint.AccessPointTag[];
 
       FileSystemId: string;
+
+      PosixUser?: AWS.EFS.AccessPoint.PosixUser;
+
+      RootDirectory?: AWS.EFS.AccessPoint.RootDirectory;
     };
 
     export namespace AccessPoint {
@@ -19079,6 +22199,12 @@ export namespace AWS {
         Value?: string;
       };
 
+      export type RootDirectory = {
+        Path?: string;
+
+        CreationInfo?: AWS.EFS.AccessPoint.CreationInfo;
+      };
+
       export type CreationInfo = {
         OwnerUid: string;
 
@@ -19086,11 +22212,17 @@ export namespace AWS {
 
         Permissions: string;
       };
+
+      export type PosixUser = {
+        Uid: string;
+
+        Gid: string;
+
+        SecondaryGids?: string[];
+      };
     }
 
     export type FileSystem = {
-      BackupPolicy?: AWS.EFS.FileSystem.BackupPolicy;
-
       Encrypted?: boolean;
 
       FileSystemTags?: AWS.EFS.FileSystem.ElasticFileSystemTag[];
@@ -19109,6 +22241,8 @@ export namespace AWS {
 
       BypassPolicyLockoutSafetyCheck?: boolean;
 
+      BackupPolicy?: AWS.EFS.FileSystem.BackupPolicy;
+
       AvailabilityZoneName?: string;
     };
 
@@ -19121,6 +22255,10 @@ export namespace AWS {
 
       export type LifecyclePolicy = {
         TransitionToIA: string;
+      };
+
+      export type BackupPolicy = {
+        Status: string;
       };
     }
 
@@ -19151,12 +22289,6 @@ export namespace AWS {
     }
 
     export type StateMachine = {
-      Definition?: AWS.StepFunctions.StateMachine.Definition;
-
-      LoggingConfiguration?: AWS.StepFunctions.StateMachine.LoggingConfiguration;
-
-      TracingConfiguration?: AWS.StepFunctions.StateMachine.TracingConfiguration;
-
       DefinitionString?: string;
 
       RoleArn: string;
@@ -19165,11 +22297,21 @@ export namespace AWS {
 
       StateMachineType?: string;
 
+      LoggingConfiguration?: AWS.StepFunctions.StateMachine.LoggingConfiguration;
+
+      TracingConfiguration?: AWS.StepFunctions.StateMachine.TracingConfiguration;
+
       DefinitionS3Location?: AWS.StepFunctions.StateMachine.S3Location;
 
       DefinitionSubstitutions?: Record<string, string>;
 
+      Definition?: AWS.StepFunctions.StateMachine.Definition;
+
       Tags?: AWS.StepFunctions.StateMachine.TagsEntry[];
+    };
+
+    export type StateMachine = {
+      Definition?: any;
     };
 
     export namespace StateMachine {
@@ -19183,6 +22325,14 @@ export namespace AWS {
         Value: string;
       };
 
+      export type LoggingConfiguration = {
+        Level?: string;
+
+        IncludeExecutionData?: boolean;
+
+        Destinations?: AWS.StepFunctions.StateMachine.LogDestination[];
+      };
+
       export type S3Location = {
         Bucket: string;
 
@@ -19194,30 +22344,34 @@ export namespace AWS {
       export type CloudWatchLogsLogGroup = {
         LogGroupArn?: string;
       };
+
+      export type TracingConfiguration = {
+        Enabled?: boolean;
+      };
     }
   }
 
   export namespace KinesisFirehose {
     export type DeliveryStream = {
-      SplunkDestinationConfiguration?: AWS.KinesisFirehose.DeliveryStream.SplunkDestinationConfiguration;
-
       DeliveryStreamEncryptionConfigurationInput?: AWS.KinesisFirehose.DeliveryStream.DeliveryStreamEncryptionConfigurationInput;
-
-      ElasticsearchDestinationConfiguration?: AWS.KinesisFirehose.DeliveryStream.ElasticsearchDestinationConfiguration;
-
-      KinesisStreamSourceConfiguration?: AWS.KinesisFirehose.DeliveryStream.KinesisStreamSourceConfiguration;
-
-      S3DestinationConfiguration?: AWS.KinesisFirehose.DeliveryStream.S3DestinationConfiguration;
-
-      ExtendedS3DestinationConfiguration?: AWS.KinesisFirehose.DeliveryStream.ExtendedS3DestinationConfiguration;
-
-      RedshiftDestinationConfiguration?: AWS.KinesisFirehose.DeliveryStream.RedshiftDestinationConfiguration;
-
-      HttpEndpointDestinationConfiguration?: AWS.KinesisFirehose.DeliveryStream.HttpEndpointDestinationConfiguration;
 
       DeliveryStreamName?: string;
 
       DeliveryStreamType?: string;
+
+      ElasticsearchDestinationConfiguration?: AWS.KinesisFirehose.DeliveryStream.ElasticsearchDestinationConfiguration;
+
+      ExtendedS3DestinationConfiguration?: AWS.KinesisFirehose.DeliveryStream.ExtendedS3DestinationConfiguration;
+
+      KinesisStreamSourceConfiguration?: AWS.KinesisFirehose.DeliveryStream.KinesisStreamSourceConfiguration;
+
+      RedshiftDestinationConfiguration?: AWS.KinesisFirehose.DeliveryStream.RedshiftDestinationConfiguration;
+
+      S3DestinationConfiguration?: AWS.KinesisFirehose.DeliveryStream.S3DestinationConfiguration;
+
+      SplunkDestinationConfiguration?: AWS.KinesisFirehose.DeliveryStream.SplunkDestinationConfiguration;
+
+      HttpEndpointDestinationConfiguration?: AWS.KinesisFirehose.DeliveryStream.HttpEndpointDestinationConfiguration;
 
       Tags?: Tag[];
     };
@@ -19335,6 +22489,26 @@ export namespace AWS {
         SizeInMBs?: number;
       };
 
+      export type SplunkDestinationConfiguration = {
+        CloudWatchLoggingOptions?: AWS.KinesisFirehose.DeliveryStream.CloudWatchLoggingOptions;
+
+        HECAcknowledgmentTimeoutInSeconds?: number;
+
+        HECEndpoint: string;
+
+        HECEndpointType: string;
+
+        HECToken: string;
+
+        ProcessingConfiguration?: AWS.KinesisFirehose.DeliveryStream.ProcessingConfiguration;
+
+        RetryOptions?: AWS.KinesisFirehose.DeliveryStream.SplunkRetryOptions;
+
+        S3BackupMode?: string;
+
+        S3Configuration: AWS.KinesisFirehose.DeliveryStream.S3DestinationConfiguration;
+      };
+
       export type CloudWatchLoggingOptions = {
         Enabled?: boolean;
 
@@ -19361,6 +22535,12 @@ export namespace AWS {
         ParameterValue: string;
       };
 
+      export type DeliveryStreamEncryptionConfigurationInput = {
+        KeyARN?: string;
+
+        KeyType: string;
+      };
+
       export type ElasticsearchRetryOptions = {
         DurationInSeconds?: number;
       };
@@ -19373,10 +22553,44 @@ export namespace AWS {
         Serializer?: AWS.KinesisFirehose.DeliveryStream.Serializer;
       };
 
+      export type ElasticsearchDestinationConfiguration = {
+        BufferingHints?: AWS.KinesisFirehose.DeliveryStream.ElasticsearchBufferingHints;
+
+        CloudWatchLoggingOptions?: AWS.KinesisFirehose.DeliveryStream.CloudWatchLoggingOptions;
+
+        DomainARN?: string;
+
+        IndexName: string;
+
+        IndexRotationPeriod?: string;
+
+        ProcessingConfiguration?: AWS.KinesisFirehose.DeliveryStream.ProcessingConfiguration;
+
+        RetryOptions?: AWS.KinesisFirehose.DeliveryStream.ElasticsearchRetryOptions;
+
+        RoleARN: string;
+
+        S3BackupMode?: string;
+
+        S3Configuration: AWS.KinesisFirehose.DeliveryStream.S3DestinationConfiguration;
+
+        ClusterEndpoint?: string;
+
+        TypeName?: string;
+
+        VpcConfiguration?: AWS.KinesisFirehose.DeliveryStream.VpcConfiguration;
+      };
+
       export type Deserializer = {
         HiveJsonSerDe?: AWS.KinesisFirehose.DeliveryStream.HiveJsonSerDe;
 
         OpenXJsonSerDe?: AWS.KinesisFirehose.DeliveryStream.OpenXJsonSerDe;
+      };
+
+      export type KinesisStreamSourceConfiguration = {
+        KinesisStreamARN: string;
+
+        RoleARN: string;
       };
 
       export type RedshiftRetryOptions = {
@@ -19401,6 +22615,24 @@ export namespace AWS {
         WriterVersion?: string;
       };
 
+      export type S3DestinationConfiguration = {
+        BucketARN: string;
+
+        BufferingHints?: AWS.KinesisFirehose.DeliveryStream.BufferingHints;
+
+        CloudWatchLoggingOptions?: AWS.KinesisFirehose.DeliveryStream.CloudWatchLoggingOptions;
+
+        CompressionFormat?: string;
+
+        EncryptionConfiguration?: AWS.KinesisFirehose.DeliveryStream.EncryptionConfiguration;
+
+        ErrorOutputPrefix?: string;
+
+        Prefix?: string;
+
+        RoleARN: string;
+      };
+
       export type VpcConfiguration = {
         RoleARN: string;
 
@@ -19409,23 +22641,93 @@ export namespace AWS {
         SecurityGroupIds: string[];
       };
 
+      export type ExtendedS3DestinationConfiguration = {
+        BucketARN: string;
+
+        BufferingHints?: AWS.KinesisFirehose.DeliveryStream.BufferingHints;
+
+        CloudWatchLoggingOptions?: AWS.KinesisFirehose.DeliveryStream.CloudWatchLoggingOptions;
+
+        CompressionFormat?: string;
+
+        DataFormatConversionConfiguration?: AWS.KinesisFirehose.DeliveryStream.DataFormatConversionConfiguration;
+
+        EncryptionConfiguration?: AWS.KinesisFirehose.DeliveryStream.EncryptionConfiguration;
+
+        ErrorOutputPrefix?: string;
+
+        Prefix?: string;
+
+        ProcessingConfiguration?: AWS.KinesisFirehose.DeliveryStream.ProcessingConfiguration;
+
+        RoleARN: string;
+
+        S3BackupConfiguration?: AWS.KinesisFirehose.DeliveryStream.S3DestinationConfiguration;
+
+        S3BackupMode?: string;
+      };
+
+      export type RedshiftDestinationConfiguration = {
+        CloudWatchLoggingOptions?: AWS.KinesisFirehose.DeliveryStream.CloudWatchLoggingOptions;
+
+        ClusterJDBCURL: string;
+
+        CopyCommand: AWS.KinesisFirehose.DeliveryStream.CopyCommand;
+
+        Password: string;
+
+        ProcessingConfiguration?: AWS.KinesisFirehose.DeliveryStream.ProcessingConfiguration;
+
+        RetryOptions?: AWS.KinesisFirehose.DeliveryStream.RedshiftRetryOptions;
+
+        RoleARN: string;
+
+        S3BackupConfiguration?: AWS.KinesisFirehose.DeliveryStream.S3DestinationConfiguration;
+
+        S3BackupMode?: string;
+
+        S3Configuration: AWS.KinesisFirehose.DeliveryStream.S3DestinationConfiguration;
+
+        Username: string;
+      };
+
       export type HttpEndpointCommonAttribute = {
         AttributeName: string;
 
         AttributeValue: string;
+      };
+
+      export type HttpEndpointDestinationConfiguration = {
+        RoleARN?: string;
+
+        EndpointConfiguration: AWS.KinesisFirehose.DeliveryStream.HttpEndpointConfiguration;
+
+        RequestConfiguration?: AWS.KinesisFirehose.DeliveryStream.HttpEndpointRequestConfiguration;
+
+        BufferingHints?: AWS.KinesisFirehose.DeliveryStream.BufferingHints;
+
+        CloudWatchLoggingOptions?: AWS.KinesisFirehose.DeliveryStream.CloudWatchLoggingOptions;
+
+        ProcessingConfiguration?: AWS.KinesisFirehose.DeliveryStream.ProcessingConfiguration;
+
+        RetryOptions?: AWS.KinesisFirehose.DeliveryStream.RetryOptions;
+
+        S3BackupMode?: string;
+
+        S3Configuration: AWS.KinesisFirehose.DeliveryStream.S3DestinationConfiguration;
       };
     }
   }
 
   export namespace AppStream {
     export type ImageBuilder = {
-      VpcConfig?: AWS.AppStream.ImageBuilder.VpcConfig;
-
-      DomainJoinInfo?: AWS.AppStream.ImageBuilder.DomainJoinInfo;
-
       Description?: string;
 
+      VpcConfig?: AWS.AppStream.ImageBuilder.VpcConfig;
+
       EnableDefaultInternetAccess?: boolean;
+
+      DomainJoinInfo?: AWS.AppStream.ImageBuilder.DomainJoinInfo;
 
       AppstreamAgentVersion?: string;
 
@@ -19447,25 +22749,37 @@ export namespace AWS {
     };
 
     export namespace ImageBuilder {
+      export type VpcConfig = {
+        SecurityGroupIds?: string[];
+
+        SubnetIds?: string[];
+      };
+
       export type AccessEndpoint = {
         EndpointType: string;
 
         VpceId: string;
       };
+
+      export type DomainJoinInfo = {
+        OrganizationalUnitDistinguishedName?: string;
+
+        DirectoryName?: string;
+      };
     }
 
     export type Fleet = {
-      DomainJoinInfo?: AWS.AppStream.Fleet.DomainJoinInfo;
-
-      VpcConfig?: AWS.AppStream.Fleet.VpcConfig;
+      Description?: string;
 
       ComputeCapacity: AWS.AppStream.Fleet.ComputeCapacity;
 
-      Description?: string;
+      VpcConfig?: AWS.AppStream.Fleet.VpcConfig;
 
       FleetType?: string;
 
       EnableDefaultInternetAccess?: boolean;
+
+      DomainJoinInfo?: AWS.AppStream.Fleet.DomainJoinInfo;
 
       Name: string;
 
@@ -19490,9 +22804,25 @@ export namespace AWS {
       ImageArn?: string;
     };
 
-    export type Stack = {
-      ApplicationSettings?: AWS.AppStream.Stack.ApplicationSettings;
+    export namespace Fleet {
+      export type DomainJoinInfo = {
+        OrganizationalUnitDistinguishedName?: string;
 
+        DirectoryName?: string;
+      };
+
+      export type VpcConfig = {
+        SubnetIds?: string[];
+
+        SecurityGroupIds?: string[];
+      };
+
+      export type ComputeCapacity = {
+        DesiredInstances: number;
+      };
+    }
+
+    export type Stack = {
       Description?: string;
 
       StorageConnectors?: AWS.AppStream.Stack.StorageConnector[];
@@ -19510,6 +22840,8 @@ export namespace AWS {
       Name?: string;
 
       FeedbackURL?: string;
+
+      ApplicationSettings?: AWS.AppStream.Stack.ApplicationSettings;
 
       DisplayName?: string;
 
@@ -19531,6 +22863,12 @@ export namespace AWS {
         Permission: string;
       };
 
+      export type ApplicationSettings = {
+        SettingsGroup?: string;
+
+        Enabled: boolean;
+      };
+
       export type StorageConnector = {
         Domains?: string[];
 
@@ -19541,12 +22879,20 @@ export namespace AWS {
     }
 
     export type DirectoryConfig = {
-      ServiceAccountCredentials: AWS.AppStream.DirectoryConfig.ServiceAccountCredentials;
-
       OrganizationalUnitDistinguishedNames: string[];
+
+      ServiceAccountCredentials: AWS.AppStream.DirectoryConfig.ServiceAccountCredentials;
 
       DirectoryName: string;
     };
+
+    export namespace DirectoryConfig {
+      export type ServiceAccountCredentials = {
+        AccountName: string;
+
+        AccountPassword: string;
+      };
+    }
 
     export type User = {
       UserName: string;
@@ -19581,27 +22927,27 @@ export namespace AWS {
     export type LoadBalancer = {
       AccessLoggingPolicy?: AWS.ElasticLoadBalancing.LoadBalancer.AccessLoggingPolicy;
 
-      HealthCheck?: AWS.ElasticLoadBalancing.LoadBalancer.HealthCheck;
+      AppCookieStickinessPolicy?: AWS.ElasticLoadBalancing.LoadBalancer.AppCookieStickinessPolicy[];
 
-      ConnectionSettings?: AWS.ElasticLoadBalancing.LoadBalancer.ConnectionSettings;
+      AvailabilityZones?: string[];
 
       ConnectionDrainingPolicy?: AWS.ElasticLoadBalancing.LoadBalancer.ConnectionDrainingPolicy;
 
-      AppCookieStickinessPolicy?: AWS.ElasticLoadBalancing.LoadBalancer.AppCookieStickinessPolicy[];
+      ConnectionSettings?: AWS.ElasticLoadBalancing.LoadBalancer.ConnectionSettings;
+
+      CrossZone?: boolean;
+
+      HealthCheck?: AWS.ElasticLoadBalancing.LoadBalancer.HealthCheck;
+
+      Instances?: string[];
 
       LBCookieStickinessPolicy?: AWS.ElasticLoadBalancing.LoadBalancer.LBCookieStickinessPolicy[];
 
       Listeners: AWS.ElasticLoadBalancing.LoadBalancer.Listeners[];
 
-      Policies?: AWS.ElasticLoadBalancing.LoadBalancer.Policies[];
-
-      AvailabilityZones?: string[];
-
-      CrossZone?: boolean;
-
-      Instances?: string[];
-
       LoadBalancerName?: string;
+
+      Policies?: AWS.ElasticLoadBalancing.LoadBalancer.Policies[];
 
       Scheme?: string;
 
@@ -19611,6 +22957,78 @@ export namespace AWS {
 
       Tags?: Tag[];
     };
+
+    export namespace LoadBalancer {
+      export type AccessLoggingPolicy = {
+        EmitInterval?: number;
+
+        Enabled: boolean;
+
+        S3BucketName: string;
+
+        S3BucketPrefix?: string;
+      };
+
+      export type HealthCheck = {
+        HealthyThreshold: string;
+
+        Interval: string;
+
+        Target: string;
+
+        Timeout: string;
+
+        UnhealthyThreshold: string;
+      };
+
+      export type ConnectionSettings = {
+        IdleTimeout: number;
+      };
+
+      export type ConnectionDrainingPolicy = {
+        Enabled: boolean;
+
+        Timeout?: number;
+      };
+
+      export type AppCookieStickinessPolicy = {
+        CookieName: string;
+
+        PolicyName: string;
+      };
+
+      export type LBCookieStickinessPolicy = {
+        CookieExpirationPeriod?: string;
+
+        PolicyName?: string;
+      };
+
+      export type Listeners = {
+        InstancePort: string;
+
+        InstanceProtocol?: string;
+
+        LoadBalancerPort: string;
+
+        PolicyNames?: string[];
+
+        Protocol: string;
+
+        SSLCertificateId?: string;
+      };
+
+      export type Policies = {
+        Attributes: JSONString[];
+
+        InstancePorts?: string[];
+
+        LoadBalancerPorts?: string[];
+
+        PolicyName: string;
+
+        PolicyType: string;
+      };
+    }
   }
 
   export namespace Backup {
@@ -19717,8 +23135,6 @@ export namespace AWS {
 
   export namespace GameLift {
     export type GameServerGroup = {
-      LaunchTemplate: AWS.GameLift.GameServerGroup.LaunchTemplate;
-
       AutoScalingPolicy?: AWS.GameLift.GameServerGroup.AutoScalingPolicy;
 
       BalancingStrategy?: string;
@@ -19730,6 +23146,8 @@ export namespace AWS {
       GameServerProtectionPolicy?: string;
 
       InstanceDefinitions: AWS.GameLift.GameServerGroup.InstanceDefinition[];
+
+      LaunchTemplate: AWS.GameLift.GameServerGroup.LaunchTemplate;
 
       MaxSize?: number;
 
@@ -19747,6 +23165,20 @@ export namespace AWS {
         TargetValue: number;
       };
 
+      export type LaunchTemplate = {
+        LaunchTemplateId?: string;
+
+        LaunchTemplateName?: string;
+
+        Version?: string;
+      };
+
+      export type AutoScalingPolicy = {
+        EstimatedInstanceWarmup?: number;
+
+        TargetTrackingConfiguration: AWS.GameLift.GameServerGroup.TargetTrackingConfiguration;
+      };
+
       export type InstanceDefinition = {
         InstanceType: string;
 
@@ -19756,10 +23188,6 @@ export namespace AWS {
 
     export type Fleet = {
       CertificateConfiguration?: AWS.GameLift.Fleet.CertificateConfiguration;
-
-      ResourceCreationLimitPolicy?: AWS.GameLift.Fleet.ResourceCreationLimitPolicy;
-
-      RuntimeConfiguration?: AWS.GameLift.Fleet.RuntimeConfiguration;
 
       Description?: string;
 
@@ -19789,9 +23217,13 @@ export namespace AWS {
 
       PeerVpcId?: string;
 
+      ResourceCreationLimitPolicy?: AWS.GameLift.Fleet.ResourceCreationLimitPolicy;
+
       BuildId?: string;
 
       ScriptId?: string;
+
+      RuntimeConfiguration?: AWS.GameLift.Fleet.RuntimeConfiguration;
     };
 
     export namespace Fleet {
@@ -19801,6 +23233,10 @@ export namespace AWS {
         MinSize: number;
 
         MaxSize: number;
+      };
+
+      export type CertificateConfiguration = {
+        CertificateType: string;
       };
 
       export type LocationConfiguration = {
@@ -19825,6 +23261,20 @@ export namespace AWS {
         LaunchPath: string;
 
         Parameters?: string;
+      };
+
+      export type ResourceCreationLimitPolicy = {
+        NewGameSessionsPerCreator?: number;
+
+        PolicyPeriodInMinutes?: number;
+      };
+
+      export type RuntimeConfiguration = {
+        GameSessionActivationTimeoutSeconds?: number;
+
+        MaxConcurrentGameSessionActivations?: number;
+
+        ServerProcesses?: AWS.GameLift.Fleet.ServerProcess[];
       };
     }
 
@@ -19851,12 +23301,22 @@ export namespace AWS {
     }
 
     export type Alias = {
-      RoutingStrategy: AWS.GameLift.Alias.RoutingStrategy;
-
       Description?: string;
 
       Name: string;
+
+      RoutingStrategy: AWS.GameLift.Alias.RoutingStrategy;
     };
+
+    export namespace Alias {
+      export type RoutingStrategy = {
+        Message?: string;
+
+        FleetId?: string;
+
+        Type: string;
+      };
+    }
 
     export type Script = {
       Version?: string;
@@ -19879,10 +23339,6 @@ export namespace AWS {
     }
 
     export type GameSessionQueue = {
-      FilterConfiguration?: AWS.GameLift.GameSessionQueue.FilterConfiguration;
-
-      PriorityConfiguration?: AWS.GameLift.GameSessionQueue.PriorityConfiguration;
-
       TimeoutInSeconds?: number;
 
       PlayerLatencyPolicies?: AWS.GameLift.GameSessionQueue.PlayerLatencyPolicy[];
@@ -19891,9 +23347,13 @@ export namespace AWS {
 
       NotificationTarget?: string;
 
+      FilterConfiguration?: AWS.GameLift.GameSessionQueue.FilterConfiguration;
+
       CustomEventData?: string;
 
       Name: string;
+
+      PriorityConfiguration?: AWS.GameLift.GameSessionQueue.PriorityConfiguration;
     };
 
     export namespace GameSessionQueue {
@@ -19905,6 +23365,16 @@ export namespace AWS {
 
       export type Destination = {
         DestinationArn?: string;
+      };
+
+      export type FilterConfiguration = {
+        AllowedLocations?: string[];
+      };
+
+      export type PriorityConfiguration = {
+        PriorityOrder?: string[];
+
+        LocationOrder?: string[];
       };
     }
 
@@ -20101,8 +23571,6 @@ export namespace AWS {
     }
 
     export type DBCluster = {
-      ScalingConfiguration?: AWS.RDS.DBCluster.ScalingConfiguration;
-
       AssociatedRoles?: AWS.RDS.DBCluster.DBClusterRole[];
 
       AvailabilityZones?: string[];
@@ -20153,6 +23621,8 @@ export namespace AWS {
 
       RestoreType?: string;
 
+      ScalingConfiguration?: AWS.RDS.DBCluster.ScalingConfiguration;
+
       SnapshotIdentifier?: string;
 
       SourceDBClusterIdentifier?: string;
@@ -20169,6 +23639,16 @@ export namespace AWS {
     };
 
     export namespace DBCluster {
+      export type ScalingConfiguration = {
+        AutoPause?: boolean;
+
+        MaxCapacity?: number;
+
+        MinCapacity?: number;
+
+        SecondsUntilAutoPause?: number;
+      };
+
       export type DBClusterRole = {
         FeatureName?: string;
 
@@ -20367,33 +23847,33 @@ export namespace AWS {
 
   export namespace DynamoDB {
     export type Table = {
-      PointInTimeRecoverySpecification?: AWS.DynamoDB.Table.PointInTimeRecoverySpecification;
-
-      KinesisStreamSpecification?: AWS.DynamoDB.Table.KinesisStreamSpecification;
-
-      ContributorInsightsSpecification?: AWS.DynamoDB.Table.ContributorInsightsSpecification;
-
-      KeySchema: AWS.DynamoDB.Table.KeySchema[];
-
-      SSESpecification?: AWS.DynamoDB.Table.SSESpecification;
-
-      TimeToLiveSpecification?: AWS.DynamoDB.Table.TimeToLiveSpecification;
-
-      ProvisionedThroughput?: AWS.DynamoDB.Table.ProvisionedThroughput;
-
-      StreamSpecification?: AWS.DynamoDB.Table.StreamSpecification;
-
       AttributeDefinitions?: AWS.DynamoDB.Table.AttributeDefinition[];
 
       BillingMode?: string;
 
+      ContributorInsightsSpecification?: AWS.DynamoDB.Table.ContributorInsightsSpecification;
+
       GlobalSecondaryIndexes?: AWS.DynamoDB.Table.GlobalSecondaryIndex[];
 
+      KeySchema: AWS.DynamoDB.Table.KeySchema[];
+
+      KinesisStreamSpecification?: AWS.DynamoDB.Table.KinesisStreamSpecification;
+
       LocalSecondaryIndexes?: AWS.DynamoDB.Table.LocalSecondaryIndex[];
+
+      PointInTimeRecoverySpecification?: AWS.DynamoDB.Table.PointInTimeRecoverySpecification;
+
+      ProvisionedThroughput?: AWS.DynamoDB.Table.ProvisionedThroughput;
+
+      SSESpecification?: AWS.DynamoDB.Table.SSESpecification;
+
+      StreamSpecification?: AWS.DynamoDB.Table.StreamSpecification;
 
       TableName?: string;
 
       Tags?: Tag[];
+
+      TimeToLiveSpecification?: AWS.DynamoDB.Table.TimeToLiveSpecification;
     };
 
     export namespace Table {
@@ -20403,6 +23883,14 @@ export namespace AWS {
         KeySchema: AWS.DynamoDB.Table.KeySchema[];
 
         Projection: AWS.DynamoDB.Table.Projection;
+      };
+
+      export type PointInTimeRecoverySpecification = {
+        PointInTimeRecoveryEnabled?: boolean;
+      };
+
+      export type KinesisStreamSpecification = {
+        StreamArn: string;
       };
 
       export type AttributeDefinition = {
@@ -20423,35 +23911,69 @@ export namespace AWS {
         ProvisionedThroughput?: AWS.DynamoDB.Table.ProvisionedThroughput;
       };
 
+      export type ContributorInsightsSpecification = {
+        Enabled: boolean;
+      };
+
+      export type KeySchema = {
+        AttributeName: string;
+
+        KeyType: string;
+      };
+
+      export type SSESpecification = {
+        KMSMasterKeyId?: string;
+
+        SSEEnabled: boolean;
+
+        SSEType?: string;
+      };
+
+      export type TimeToLiveSpecification = {
+        AttributeName: string;
+
+        Enabled: boolean;
+      };
+
+      export type ProvisionedThroughput = {
+        ReadCapacityUnits: number;
+
+        WriteCapacityUnits: number;
+      };
+
       export type Projection = {
         NonKeyAttributes?: string[];
 
         ProjectionType?: string;
       };
+
+      export type StreamSpecification = {
+        StreamViewType: string;
+      };
     }
 
     export type GlobalTable = {
-      KeySchema: AWS.DynamoDB.GlobalTable.KeySchema[];
-
-      StreamSpecification?: AWS.DynamoDB.GlobalTable.StreamSpecification;
-
-      SSESpecification?: AWS.DynamoDB.GlobalTable.SSESpecification;
-
-      WriteProvisionedThroughputSettings?: AWS.DynamoDB.GlobalTable.WriteProvisionedThroughputSettings;
-
-      TimeToLiveSpecification?: AWS.DynamoDB.GlobalTable.TimeToLiveSpecification;
-
       AttributeDefinitions: AWS.DynamoDB.GlobalTable.AttributeDefinition[];
 
       BillingMode?: string;
 
       GlobalSecondaryIndexes?: AWS.DynamoDB.GlobalTable.GlobalSecondaryIndex[];
 
+      KeySchema: AWS.DynamoDB.GlobalTable.KeySchema[];
+
       LocalSecondaryIndexes?: AWS.DynamoDB.GlobalTable.LocalSecondaryIndex[];
+
+      WriteProvisionedThroughputSettings?: AWS.DynamoDB.GlobalTable.WriteProvisionedThroughputSettings;
 
       Replicas: AWS.DynamoDB.GlobalTable.ReplicaSpecification[];
 
+      SSESpecification?: AWS.DynamoDB.GlobalTable.SSESpecification;
+
+      StreamSpecification?: AWS.DynamoDB.GlobalTable.StreamSpecification;
+
       TableName?: string;
+
+      TimeToLiveSpecification?: AWS.DynamoDB.GlobalTable.TimeToLiveSpecification;
     };
 
     export namespace GlobalTable {
@@ -20523,6 +24045,16 @@ export namespace AWS {
         WriteProvisionedThroughputSettings?: AWS.DynamoDB.GlobalTable.WriteProvisionedThroughputSettings;
       };
 
+      export type KeySchema = {
+        AttributeName: string;
+
+        KeyType: string;
+      };
+
+      export type StreamSpecification = {
+        StreamViewType: string;
+      };
+
       export type Projection = {
         NonKeyAttributes?: string[];
 
@@ -20543,6 +24075,22 @@ export namespace AWS {
         AttributeType: string;
       };
 
+      export type SSESpecification = {
+        SSEEnabled: boolean;
+
+        SSEType?: string;
+      };
+
+      export type WriteProvisionedThroughputSettings = {
+        WriteCapacityAutoScalingSettings?: AWS.DynamoDB.GlobalTable.CapacityAutoScalingSettings;
+      };
+
+      export type TimeToLiveSpecification = {
+        AttributeName?: string;
+
+        Enabled: boolean;
+      };
+
       export type ReplicaSSESpecification = {
         KMSMasterKeyId: string;
       };
@@ -20551,15 +24099,15 @@ export namespace AWS {
 
   export namespace EKS {
     export type Cluster = {
+      Version?: string;
+
       EncryptionConfig?: AWS.EKS.Cluster.EncryptionConfig[];
 
-      KubernetesNetworkConfig?: AWS.EKS.Cluster.KubernetesNetworkConfig;
+      RoleArn: string;
 
       ResourcesVpcConfig: AWS.EKS.Cluster.ResourcesVpcConfig;
 
-      Version?: string;
-
-      RoleArn: string;
+      KubernetesNetworkConfig?: AWS.EKS.Cluster.KubernetesNetworkConfig;
 
       Name?: string;
     };
@@ -20567,6 +24115,22 @@ export namespace AWS {
     export namespace Cluster {
       export type Provider = {
         KeyArn?: string;
+      };
+
+      export type EncryptionConfig = {
+        Resources?: string[];
+
+        Provider?: AWS.EKS.Cluster.Provider;
+      };
+
+      export type KubernetesNetworkConfig = {
+        ServiceIpv4Cidr?: string;
+      };
+
+      export type ResourcesVpcConfig = {
+        SecurityGroupIds?: string[];
+
+        SubnetIds: string[];
       };
     }
 
@@ -20603,8 +24167,6 @@ export namespace AWS {
 
       ScalingConfig?: AWS.EKS.Nodegroup.ScalingConfig;
 
-      RemoteAccess?: AWS.EKS.Nodegroup.RemoteAccess;
-
       Labels?: JSONString;
 
       Taints?: AWS.EKS.Nodegroup.Taint[];
@@ -20626,6 +24188,8 @@ export namespace AWS {
       Version?: string;
 
       LaunchTemplate?: AWS.EKS.Nodegroup.LaunchTemplateSpecification;
+
+      RemoteAccess?: AWS.EKS.Nodegroup.RemoteAccess;
 
       DiskSize?: number;
 
@@ -20652,6 +24216,26 @@ export namespace AWS {
 
         Name?: string;
       };
+
+      export type UpdateConfig = {
+        MaxUnavailablePercentage?: number;
+
+        MaxUnavailable?: number;
+      };
+
+      export type ScalingConfig = {
+        MinSize?: number;
+
+        DesiredSize?: number;
+
+        MaxSize?: number;
+      };
+
+      export type RemoteAccess = {
+        SourceSecurityGroups?: string[];
+
+        Ec2SshKey: string;
+      };
     }
 
     export type Addon = {
@@ -20671,13 +24255,13 @@ export namespace AWS {
 
   export namespace DLM {
     export type LifecyclePolicy = {
-      PolicyDetails?: AWS.DLM.LifecyclePolicy.PolicyDetails;
-
       ExecutionRoleArn?: string;
 
       Description?: string;
 
       State?: string;
+
+      PolicyDetails?: AWS.DLM.LifecyclePolicy.PolicyDetails;
 
       Tags?: Tag[];
     };
@@ -20731,6 +24315,24 @@ export namespace AWS {
         Count?: number;
 
         Interval?: number;
+      };
+
+      export type PolicyDetails = {
+        ResourceTypes?: string[];
+
+        Schedules?: AWS.DLM.LifecyclePolicy.Schedule[];
+
+        PolicyType?: string;
+
+        EventSource?: AWS.DLM.LifecyclePolicy.EventSource;
+
+        Parameters?: AWS.DLM.LifecyclePolicy.Parameters;
+
+        Actions?: AWS.DLM.LifecyclePolicy.Action[];
+
+        TargetTags?: Tag[];
+
+        ResourceLocations?: string[];
       };
 
       export type Parameters = {
@@ -20805,13 +24407,13 @@ export namespace AWS {
 
   export namespace GuardDuty {
     export type Filter = {
-      FindingCriteria: AWS.GuardDuty.Filter.FindingCriteria;
-
       Action: string;
 
       Description: string;
 
       DetectorId: string;
+
+      FindingCriteria: AWS.GuardDuty.Filter.FindingCriteria;
 
       Rank: number;
 
@@ -20819,6 +24421,12 @@ export namespace AWS {
     };
 
     export namespace Filter {
+      export type FindingCriteria = {
+        Criterion?: JSONString;
+
+        ItemType?: AWS.GuardDuty.Filter.Condition;
+      };
+
       export type Condition = {
         Lt?: number;
 
@@ -21005,11 +24613,11 @@ export namespace AWS {
     }
 
     export type AnomalyDetector = {
-      Configuration?: AWS.CloudWatch.AnomalyDetector.Configuration;
-
       MetricName: string;
 
       Stat: string;
+
+      Configuration?: AWS.CloudWatch.AnomalyDetector.Configuration;
 
       Dimensions?: AWS.CloudWatch.AnomalyDetector.Dimension[];
 
@@ -21028,16 +24636,26 @@ export namespace AWS {
 
         Name: string;
       };
+
+      export type Configuration = {
+        MetricTimeZone?: string;
+
+        ExcludedTimeRanges?: AWS.CloudWatch.AnomalyDetector.Range[];
+      };
     }
 
     export type InsightRule = {
-      Tags?: AWS.CloudWatch.InsightRule.Tags;
-
       RuleState: string;
 
       RuleBody: string;
 
       RuleName: string;
+
+      Tags?: AWS.CloudWatch.InsightRule.Tags;
+    };
+
+    export type InsightRule = {
+      Tags?: Tag[];
     };
 
     export type CompositeAlarm = {
@@ -21101,8 +24719,6 @@ export namespace AWS {
     }
 
     export type PatchBaseline = {
-      PatchStringDate?: string;
-
       OperatingSystem?: string;
 
       Description?: string;
@@ -21128,6 +24744,10 @@ export namespace AWS {
       GlobalFilters?: AWS.SSM.PatchBaseline.PatchFilterGroup;
 
       Tags?: Tag[];
+    };
+
+    export type PatchBaseline = {
+      PatchStringDate?: string;
     };
 
     export namespace PatchBaseline {
@@ -21167,10 +24787,6 @@ export namespace AWS {
     }
 
     export type MaintenanceWindowTask = {
-      LoggingInfo?: AWS.SSM.MaintenanceWindowTask.LoggingInfo;
-
-      TaskInvocationParameters?: AWS.SSM.MaintenanceWindowTask.TaskInvocationParameters;
-
       MaxErrors?: string;
 
       Description?: string;
@@ -21187,14 +24803,26 @@ export namespace AWS {
 
       TaskArn: string;
 
+      TaskInvocationParameters?: AWS.SSM.MaintenanceWindowTask.TaskInvocationParameters;
+
       WindowId: string;
 
       TaskParameters?: JSONString;
 
       TaskType: string;
+
+      LoggingInfo?: AWS.SSM.MaintenanceWindowTask.LoggingInfo;
     };
 
     export namespace MaintenanceWindowTask {
+      export type LoggingInfo = {
+        S3Bucket: string;
+
+        Region: string;
+
+        S3Prefix?: string;
+      };
+
       export type Target = {
         Values: string[];
 
@@ -21213,6 +24841,16 @@ export namespace AWS {
         Parameters?: JSONString;
 
         DocumentVersion?: string;
+      };
+
+      export type TaskInvocationParameters = {
+        MaintenanceWindowRunCommandParameters?: AWS.SSM.MaintenanceWindowTask.MaintenanceWindowRunCommandParameters;
+
+        MaintenanceWindowAutomationParameters?: AWS.SSM.MaintenanceWindowTask.MaintenanceWindowAutomationParameters;
+
+        MaintenanceWindowStepFunctionsParameters?: AWS.SSM.MaintenanceWindowTask.MaintenanceWindowStepFunctionsParameters;
+
+        MaintenanceWindowLambdaParameters?: AWS.SSM.MaintenanceWindowTask.MaintenanceWindowLambdaParameters;
       };
 
       export type MaintenanceWindowStepFunctionsParameters = {
@@ -21305,11 +24943,11 @@ export namespace AWS {
     }
 
     export type ResourceDataSync = {
-      SyncSource?: AWS.SSM.ResourceDataSync.SyncSource;
-
       S3Destination?: AWS.SSM.ResourceDataSync.S3Destination;
 
       KMSKeyArn?: string;
+
+      SyncSource?: AWS.SSM.ResourceDataSync.SyncSource;
 
       BucketName?: string;
 
@@ -21330,11 +24968,31 @@ export namespace AWS {
 
         OrganizationSourceType: string;
       };
+
+      export type SyncSource = {
+        IncludeFutureRegions?: boolean;
+
+        SourceRegions: string[];
+
+        SourceType: string;
+
+        AwsOrganizationsSource?: AWS.SSM.ResourceDataSync.AwsOrganizationsSource;
+      };
+
+      export type S3Destination = {
+        KMSKeyArn?: string;
+
+        BucketPrefix?: string;
+
+        BucketName: string;
+
+        BucketRegion: string;
+
+        SyncFormat: string;
+      };
     }
 
     export type MaintenanceWindowTarget = {
-      Targets: AWS.SSM.MaintenanceWindowTarget.Targets[];
-
       OwnerInformation?: string;
 
       Description?: string;
@@ -21343,8 +25001,18 @@ export namespace AWS {
 
       ResourceType: string;
 
+      Targets: AWS.SSM.MaintenanceWindowTarget.Targets[];
+
       Name?: string;
     };
+
+    export namespace MaintenanceWindowTarget {
+      export type Targets = {
+        Values: string[];
+
+        Key: string;
+      };
+    }
 
     export type MaintenanceWindow = {
       StartDate?: string;
@@ -21393,10 +25061,6 @@ export namespace AWS {
 
   export namespace Redshift {
     export type Cluster = {
-      Endpoint?: AWS.Redshift.Cluster.Endpoint;
-
-      LoggingProperties?: AWS.Redshift.Cluster.LoggingProperties;
-
       ClusterIdentifier?: string;
 
       MasterUsername: string;
@@ -21452,7 +25116,25 @@ export namespace AWS {
       SnapshotIdentifier?: string;
 
       OwnerAccount?: string;
+
+      LoggingProperties?: AWS.Redshift.Cluster.LoggingProperties;
+
+      Endpoint?: AWS.Redshift.Cluster.Endpoint;
     };
+
+    export namespace Cluster {
+      export type Endpoint = {
+        Port?: string;
+
+        Address?: string;
+      };
+
+      export type LoggingProperties = {
+        BucketName: string;
+
+        S3KeyPrefix?: string;
+      };
+    }
 
     export type ClusterParameterGroup = {
       Description: string;
@@ -21823,8 +25505,6 @@ export namespace AWS {
     }
 
     export type TargetGroup = {
-      Matcher?: AWS.ElasticLoadBalancingV2.TargetGroup.Matcher;
-
       HealthCheckEnabled?: boolean;
 
       HealthCheckIntervalSeconds?: number;
@@ -21838,6 +25518,8 @@ export namespace AWS {
       HealthCheckTimeoutSeconds?: number;
 
       HealthyThresholdCount?: number;
+
+      Matcher?: AWS.ElasticLoadBalancingV2.TargetGroup.Matcher;
 
       Name?: string;
 
@@ -21873,6 +25555,12 @@ export namespace AWS {
         Key?: string;
 
         Value?: string;
+      };
+
+      export type Matcher = {
+        GrpcCode?: string;
+
+        HttpCode?: string;
       };
     }
 
@@ -21975,21 +25663,21 @@ export namespace AWS {
     }
 
     export type BudgetsAction = {
-      Definition: AWS.Budgets.BudgetsAction.Definition;
-
-      ActionThreshold: AWS.Budgets.BudgetsAction.ActionThreshold;
-
       BudgetName: string;
 
       NotificationType: string;
 
       ActionType: string;
 
+      ActionThreshold: AWS.Budgets.BudgetsAction.ActionThreshold;
+
       ExecutionRoleArn: string;
 
       ApprovalModel?: string;
 
       Subscribers?: AWS.Budgets.BudgetsAction.Subscriber[];
+
+      Definition: AWS.Budgets.BudgetsAction.Definition;
     };
 
     export namespace BudgetsAction {
@@ -22001,6 +25689,14 @@ export namespace AWS {
         Groups?: string[];
 
         Users?: string[];
+      };
+
+      export type Definition = {
+        IamActionDefinition?: AWS.Budgets.BudgetsAction.IamActionDefinition;
+
+        ScpActionDefinition?: AWS.Budgets.BudgetsAction.ScpActionDefinition;
+
+        SsmActionDefinition?: AWS.Budgets.BudgetsAction.SsmActionDefinition;
       };
 
       export type ScpActionDefinition = {
@@ -22017,6 +25713,12 @@ export namespace AWS {
         InstanceIds: string[];
       };
 
+      export type ActionThreshold = {
+        Value: number;
+
+        Type: string;
+      };
+
       export type Subscriber = {
         Type: string;
 
@@ -22027,11 +25729,11 @@ export namespace AWS {
 
   export namespace MediaConnect {
     export type Flow = {
-      Source: AWS.MediaConnect.Flow.Source;
-
       Name: string;
 
       AvailabilityZone?: string;
+
+      Source: AWS.MediaConnect.Flow.Source;
 
       SourceFailoverConfig?: AWS.MediaConnect.Flow.FailoverConfig;
     };
@@ -22057,6 +25759,34 @@ export namespace AWS {
         Url?: string;
       };
 
+      export type Source = {
+        SourceArn?: string;
+
+        Decryption?: AWS.MediaConnect.Flow.Encryption;
+
+        Description?: string;
+
+        EntitlementArn?: string;
+
+        IngestIp?: string;
+
+        IngestPort?: number;
+
+        MaxBitrate?: number;
+
+        MaxLatency?: number;
+
+        Name?: string;
+
+        Protocol?: string;
+
+        StreamId?: string;
+
+        VpcInterfaceName?: string;
+
+        WhitelistCidr?: string;
+      };
+
       export type FailoverConfig = {
         State?: string;
 
@@ -22065,10 +25795,6 @@ export namespace AWS {
     }
 
     export type FlowOutput = {
-      Encryption?: AWS.MediaConnect.FlowOutput.Encryption;
-
-      VpcInterfaceAttachment?: AWS.MediaConnect.FlowOutput.VpcInterfaceAttachment;
-
       FlowArn: string;
 
       CidrAllowList?: string[];
@@ -22076,6 +25802,8 @@ export namespace AWS {
       Description?: string;
 
       Destination?: string;
+
+      Encryption?: AWS.MediaConnect.FlowOutput.Encryption;
 
       MaxLatency?: number;
 
@@ -22090,7 +25818,25 @@ export namespace AWS {
       SmoothingLatency?: number;
 
       StreamId?: string;
+
+      VpcInterfaceAttachment?: AWS.MediaConnect.FlowOutput.VpcInterfaceAttachment;
     };
+
+    export namespace FlowOutput {
+      export type Encryption = {
+        Algorithm: string;
+
+        KeyType?: string;
+
+        RoleArn: string;
+
+        SecretArn: string;
+      };
+
+      export type VpcInterfaceAttachment = {
+        VpcInterfaceName?: string;
+      };
+    }
 
     export type FlowSource = {
       FlowArn?: string;
@@ -22141,13 +25887,13 @@ export namespace AWS {
     }
 
     export type FlowEntitlement = {
-      Encryption?: AWS.MediaConnect.FlowEntitlement.Encryption;
-
       FlowArn: string;
 
       DataTransferSubscriberFeePercent?: number;
 
       Description: string;
+
+      Encryption?: AWS.MediaConnect.FlowEntitlement.Encryption;
 
       EntitlementStatus?: string;
 
@@ -22155,6 +25901,28 @@ export namespace AWS {
 
       Subscribers: string[];
     };
+
+    export namespace FlowEntitlement {
+      export type Encryption = {
+        Algorithm: string;
+
+        ConstantInitializationVector?: string;
+
+        DeviceId?: string;
+
+        KeyType?: string;
+
+        Region?: string;
+
+        ResourceId?: string;
+
+        RoleArn: string;
+
+        SecretArn?: string;
+
+        Url?: string;
+      };
+    }
 
     export type FlowVpcInterface = {
       FlowArn: string;
@@ -22171,8 +25939,6 @@ export namespace AWS {
 
   export namespace CodeStar {
     export type GitHubRepository = {
-      Code?: AWS.CodeStar.GitHubRepository.Code;
-
       EnableIssues?: boolean;
 
       ConnectionArn?: string;
@@ -22185,10 +25951,16 @@ export namespace AWS {
 
       IsPrivate?: boolean;
 
+      Code?: AWS.CodeStar.GitHubRepository.Code;
+
       RepositoryDescription?: string;
     };
 
     export namespace GitHubRepository {
+      export type Code = {
+        S3: AWS.CodeStar.GitHubRepository.S3;
+      };
+
       export type S3 = {
         ObjectVersion?: string;
 
@@ -22251,10 +26023,6 @@ export namespace AWS {
 
   export namespace AuditManager {
     export type Assessment = {
-      AssessmentReportsDestination?: AWS.AuditManager.Assessment.AssessmentReportsDestination;
-
-      Scope?: AWS.AuditManager.Assessment.Scope;
-
       FrameworkId?: string;
 
       AwsAccount?: AWS.AuditManager.Assessment.AWSAccount;
@@ -22262,6 +26030,10 @@ export namespace AWS {
       Tags?: Tag[];
 
       Roles?: AWS.AuditManager.Assessment.Role[];
+
+      Scope?: AWS.AuditManager.Assessment.Scope;
+
+      AssessmentReportsDestination?: AWS.AuditManager.Assessment.AssessmentReportsDestination;
 
       Status?: string;
 
@@ -22309,17 +26081,29 @@ export namespace AWS {
         RoleType?: string;
       };
 
+      export type AssessmentReportsDestination = {
+        Destination?: string;
+
+        DestinationType?: string;
+      };
+
       export type AWSService = {
         ServiceName?: string;
+      };
+
+      export type Scope = {
+        AwsAccounts?: AWS.AuditManager.Assessment.AWSAccount[];
+
+        AwsServices?: AWS.AuditManager.Assessment.AWSService[];
       };
     }
   }
 
   export namespace LakeFormation {
     export type Permissions = {
-      Resource: AWS.LakeFormation.Permissions.Resource;
-
       DataLakePrincipal: AWS.LakeFormation.Permissions.DataLakePrincipal;
+
+      Resource: AWS.LakeFormation.Permissions.Resource;
 
       Permissions?: string[];
 
@@ -22341,6 +26125,20 @@ export namespace AWS {
         CatalogId?: string;
 
         Name?: string;
+      };
+
+      export type Resource = {
+        TableResource?: AWS.LakeFormation.Permissions.TableResource;
+
+        DatabaseResource?: AWS.LakeFormation.Permissions.DatabaseResource;
+
+        DataLocationResource?: AWS.LakeFormation.Permissions.DataLocationResource;
+
+        TableWithColumnsResource?: AWS.LakeFormation.Permissions.TableWithColumnsResource;
+      };
+
+      export type DataLakePrincipal = {
+        DataLakePrincipalIdentifier?: string;
       };
 
       export type TableResource = {
@@ -22372,6 +26170,10 @@ export namespace AWS {
       TrustedResourceOwners?: string[];
     };
 
+    export type DataLakeSettings = {
+      Admins?: AWS.LakeFormation.DataLakeSettings.DataLakePrincipal[];
+    };
+
     export namespace DataLakeSettings {
       export type DataLakePrincipal = {
         DataLakePrincipalIdentifier?: string;
@@ -22389,13 +26191,13 @@ export namespace AWS {
 
   export namespace NetworkManager {
     export type Device = {
-      Location?: AWS.NetworkManager.Device.Location;
-
       Description?: string;
 
       Tags?: Tag[];
 
       GlobalNetworkId: string;
+
+      Location?: AWS.NetworkManager.Device.Location;
 
       Model?: string;
 
@@ -22408,12 +26210,22 @@ export namespace AWS {
       Vendor?: string;
     };
 
-    export type Link = {
-      Bandwidth: AWS.NetworkManager.Link.Bandwidth;
+    export namespace Device {
+      export type Location = {
+        Address?: string;
 
+        Latitude?: string;
+
+        Longitude?: string;
+      };
+    }
+
+    export type Link = {
       GlobalNetworkId: string;
 
       SiteId: string;
+
+      Bandwidth: AWS.NetworkManager.Link.Bandwidth;
 
       Provider?: string;
 
@@ -22424,15 +26236,33 @@ export namespace AWS {
       Type?: string;
     };
 
-    export type Site = {
-      Location?: AWS.NetworkManager.Site.Location;
+    export namespace Link {
+      export type Bandwidth = {
+        DownloadSpeed?: number;
 
+        UploadSpeed?: number;
+      };
+    }
+
+    export type Site = {
       Description?: string;
 
       Tags?: Tag[];
 
       GlobalNetworkId: string;
+
+      Location?: AWS.NetworkManager.Site.Location;
     };
+
+    export namespace Site {
+      export type Location = {
+        Address?: string;
+
+        Latitude?: string;
+
+        Longitude?: string;
+      };
+    }
 
     export type CustomerGatewayAssociation = {
       GlobalNetworkId: string;
@@ -22469,11 +26299,11 @@ export namespace AWS {
     export type HostedZone = {
       HostedZoneConfig?: AWS.Route53.HostedZone.HostedZoneConfig;
 
-      QueryLoggingConfig?: AWS.Route53.HostedZone.QueryLoggingConfig;
-
       HostedZoneTags?: AWS.Route53.HostedZone.HostedZoneTag[];
 
       Name: string;
+
+      QueryLoggingConfig?: AWS.Route53.HostedZone.QueryLoggingConfig;
 
       VPCs?: AWS.Route53.HostedZone.VPC[];
     };
@@ -22483,6 +26313,14 @@ export namespace AWS {
         Key: string;
 
         Value: string;
+      };
+
+      export type HostedZoneConfig = {
+        Comment?: string;
+      };
+
+      export type QueryLoggingConfig = {
+        CloudWatchLogsLogGroupArn: string;
       };
 
       export type VPC = {
@@ -22553,13 +26391,13 @@ export namespace AWS {
     }
 
     export type RecordSet = {
-      GeoLocation?: AWS.Route53.RecordSet.GeoLocation;
-
       AliasTarget?: AWS.Route53.RecordSet.AliasTarget;
 
       Comment?: string;
 
       Failover?: string;
+
+      GeoLocation?: AWS.Route53.RecordSet.GeoLocation;
 
       HealthCheckId?: string;
 
@@ -22583,6 +26421,24 @@ export namespace AWS {
 
       Weight?: number;
     };
+
+    export namespace RecordSet {
+      export type GeoLocation = {
+        ContinentCode?: string;
+
+        CountryCode?: string;
+
+        SubdivisionCode?: string;
+      };
+
+      export type AliasTarget = {
+        DNSName: string;
+
+        EvaluateTargetHealth?: boolean;
+
+        HostedZoneId: string;
+      };
+    }
 
     export type HealthCheck = {
       HealthCheckConfig: JSONString;
@@ -22679,13 +26535,13 @@ export namespace AWS {
 
   export namespace S3Outposts {
     export type Bucket = {
-      LifecycleConfiguration?: AWS.S3Outposts.Bucket.LifecycleConfiguration;
-
       BucketName: string;
 
       OutpostId: string;
 
       Tags?: Tag[];
+
+      LifecycleConfiguration?: AWS.S3Outposts.Bucket.LifecycleConfiguration;
     };
 
     export namespace Bucket {
@@ -22706,17 +26562,27 @@ export namespace AWS {
 
         Filter?: JSONString;
       };
+
+      export type LifecycleConfiguration = {
+        Rules: AWS.S3Outposts.Bucket.Rule[];
+      };
     }
 
     export type AccessPoint = {
-      VpcConfiguration: AWS.S3Outposts.AccessPoint.VpcConfiguration;
-
       Bucket: string;
 
       Name: string;
 
+      VpcConfiguration: AWS.S3Outposts.AccessPoint.VpcConfiguration;
+
       Policy?: JSONString;
     };
+
+    export namespace AccessPoint {
+      export type VpcConfiguration = {
+        VpcId?: string;
+      };
+    }
 
     export type Endpoint = {
       OutpostId: string;
@@ -22741,23 +26607,45 @@ export namespace AWS {
 
   export namespace SecretsManager {
     export type RotationSchedule = {
-      RotationRules?: AWS.SecretsManager.RotationSchedule.RotationRules;
+      SecretId: string;
 
       HostedRotationLambda?: AWS.SecretsManager.RotationSchedule.HostedRotationLambda;
 
-      SecretId: string;
-
       RotationLambdaARN?: string;
+
+      RotationRules?: AWS.SecretsManager.RotationSchedule.RotationRules;
     };
 
-    export type Secret = {
-      GenerateSecretString?: AWS.SecretsManager.Secret.GenerateSecretString;
+    export namespace RotationSchedule {
+      export type RotationRules = {
+        AutomaticallyAfterDays?: number;
+      };
 
+      export type HostedRotationLambda = {
+        RotationType: string;
+
+        RotationLambdaName?: string;
+
+        KmsKeyArn?: string;
+
+        MasterSecretArn?: string;
+
+        VpcSecurityGroupIds?: string;
+
+        MasterSecretKmsKeyArn?: string;
+
+        VpcSubnetIds?: string;
+      };
+    }
+
+    export type Secret = {
       Description?: string;
 
       KmsKeyId?: string;
 
       SecretString?: string;
+
+      GenerateSecretString?: AWS.SecretsManager.Secret.GenerateSecretString;
 
       ReplicaRegions?: AWS.SecretsManager.Secret.ReplicaRegion[];
 
@@ -22771,6 +26659,28 @@ export namespace AWS {
         KmsKeyId?: string;
 
         Region: string;
+      };
+
+      export type GenerateSecretString = {
+        ExcludeUppercase?: boolean;
+
+        RequireEachIncludedType?: boolean;
+
+        IncludeSpace?: boolean;
+
+        ExcludeCharacters?: string;
+
+        GenerateStringKey?: string;
+
+        PasswordLength?: number;
+
+        ExcludePunctuation?: boolean;
+
+        ExcludeLowercase?: boolean;
+
+        SecretStringTemplate?: string;
+
+        ExcludeNumbers?: boolean;
       };
     }
 
@@ -22923,19 +26833,9 @@ export namespace AWS {
 
   export namespace CodeBuild {
     export type Project = {
-      Environment: AWS.CodeBuild.Project.Environment;
+      Description?: string;
 
       VpcConfig?: AWS.CodeBuild.Project.VpcConfig;
-
-      Artifacts: AWS.CodeBuild.Project.Artifacts;
-
-      FilterGroup?: AWS.CodeBuild.Project.WebhookFilter[];
-
-      Source: AWS.CodeBuild.Project.Source;
-
-      LogsConfig?: AWS.CodeBuild.Project.LogsConfig;
-
-      Description?: string;
 
       SecondarySources?: AWS.CodeBuild.Project.Source[];
 
@@ -22947,15 +26847,23 @@ export namespace AWS {
 
       SecondaryArtifacts?: AWS.CodeBuild.Project.Artifacts[];
 
+      Source: AWS.CodeBuild.Project.Source;
+
       Name?: string;
 
+      Artifacts: AWS.CodeBuild.Project.Artifacts;
+
       BadgeEnabled?: boolean;
+
+      LogsConfig?: AWS.CodeBuild.Project.LogsConfig;
 
       ServiceRole: string;
 
       QueuedTimeoutInMinutes?: number;
 
       FileSystemLocations?: AWS.CodeBuild.Project.ProjectFileSystemLocation[];
+
+      Environment: AWS.CodeBuild.Project.Environment;
 
       SecondarySourceVersions?: AWS.CodeBuild.Project.ProjectSourceVersion[];
 
@@ -22970,9 +26878,59 @@ export namespace AWS {
       Cache?: AWS.CodeBuild.Project.ProjectCache;
     };
 
+    export type Project = {
+      FilterGroup?: AWS.CodeBuild.Project.WebhookFilter[];
+    };
+
     export namespace Project {
+      export type Environment = {
+        Type: string;
+
+        EnvironmentVariables?: AWS.CodeBuild.Project.EnvironmentVariable[];
+
+        PrivilegedMode?: boolean;
+
+        ImagePullCredentialsType?: string;
+
+        Image: string;
+
+        RegistryCredential?: AWS.CodeBuild.Project.RegistryCredential;
+
+        ComputeType: string;
+
+        Certificate?: string;
+      };
+
       export type GitSubmodulesConfig = {
         FetchSubmodules: boolean;
+      };
+
+      export type VpcConfig = {
+        Subnets?: string[];
+
+        VpcId?: string;
+
+        SecurityGroupIds?: string[];
+      };
+
+      export type Artifacts = {
+        Path?: string;
+
+        Type: string;
+
+        ArtifactIdentifier?: string;
+
+        OverrideArtifactName?: boolean;
+
+        Packaging?: string;
+
+        EncryptionDisabled?: boolean;
+
+        Location?: string;
+
+        Name?: string;
+
+        NamespaceType?: string;
       };
 
       export type RegistryCredential = {
@@ -23021,10 +26979,38 @@ export namespace AWS {
         Webhook?: boolean;
       };
 
+      export type Source = {
+        Type: string;
+
+        ReportBuildStatus?: boolean;
+
+        Auth?: AWS.CodeBuild.Project.SourceAuth;
+
+        SourceIdentifier?: string;
+
+        BuildSpec?: string;
+
+        GitCloneDepth?: number;
+
+        BuildStatusConfig?: AWS.CodeBuild.Project.BuildStatusConfig;
+
+        GitSubmodulesConfig?: AWS.CodeBuild.Project.GitSubmodulesConfig;
+
+        InsecureSsl?: boolean;
+
+        Location?: string;
+      };
+
       export type ProjectSourceVersion = {
         SourceIdentifier: string;
 
         SourceVersion?: string;
+      };
+
+      export type LogsConfig = {
+        CloudWatchLogs?: AWS.CodeBuild.Project.CloudWatchLogsConfig;
+
+        S3Logs?: AWS.CodeBuild.Project.S3LogsConfig;
       };
 
       export type SourceAuth = {
@@ -23123,11 +27109,11 @@ export namespace AWS {
 
   export namespace IoTSiteWise {
     export type AccessPolicy = {
-      AccessPolicyResource: AWS.IoTSiteWise.AccessPolicy.AccessPolicyResource;
-
       AccessPolicyIdentity: AWS.IoTSiteWise.AccessPolicy.AccessPolicyIdentity;
 
       AccessPolicyPermission: string;
+
+      AccessPolicyResource: AWS.IoTSiteWise.AccessPolicy.AccessPolicyResource;
     };
 
     export namespace AccessPolicy {
@@ -23137,6 +27123,12 @@ export namespace AWS {
 
       export type IamRole = {
         arn?: string;
+      };
+
+      export type AccessPolicyResource = {
+        Portal?: AWS.IoTSiteWise.AccessPolicy.Portal;
+
+        Project?: AWS.IoTSiteWise.AccessPolicy.Project;
       };
 
       export type User = {
@@ -23150,12 +27142,20 @@ export namespace AWS {
       export type Portal = {
         id?: string;
       };
+
+      export type AccessPolicyIdentity = {
+        User?: AWS.IoTSiteWise.AccessPolicy.User;
+
+        IamUser?: AWS.IoTSiteWise.AccessPolicy.IamUser;
+
+        IamRole?: AWS.IoTSiteWise.AccessPolicy.IamRole;
+      };
     }
 
     export type Gateway = {
-      GatewayPlatform: AWS.IoTSiteWise.Gateway.GatewayPlatform;
-
       GatewayName: string;
+
+      GatewayPlatform: AWS.IoTSiteWise.Gateway.GatewayPlatform;
 
       Tags?: Tag[];
 
@@ -23171,6 +27171,10 @@ export namespace AWS {
         CapabilityNamespace: string;
 
         CapabilityConfiguration?: string;
+      };
+
+      export type GatewayPlatform = {
+        Greengrass: AWS.IoTSiteWise.Gateway.Greengrass;
       };
     }
 
@@ -23341,19 +27345,19 @@ export namespace AWS {
 
   export namespace CloudFormation {
     export type StackSet = {
-      AutoDeployment?: AWS.CloudFormation.StackSet.AutoDeployment;
-
-      OperationPreferences?: AWS.CloudFormation.StackSet.OperationPreferences;
-
       StackSetName: string;
 
       AdministrationRoleARN?: string;
+
+      AutoDeployment?: AWS.CloudFormation.StackSet.AutoDeployment;
 
       Capabilities?: string[];
 
       Description?: string;
 
       ExecutionRoleName?: string;
+
+      OperationPreferences?: AWS.CloudFormation.StackSet.OperationPreferences;
 
       StackInstancesGroup?: AWS.CloudFormation.StackSet.StackInstances[];
 
@@ -23379,10 +27383,30 @@ export namespace AWS {
         ParameterOverrides?: AWS.CloudFormation.StackSet.Parameter[];
       };
 
+      export type AutoDeployment = {
+        Enabled?: boolean;
+
+        RetainStacksOnAccountRemoval?: boolean;
+      };
+
       export type DeploymentTargets = {
         Accounts?: string[];
 
         OrganizationalUnitIds?: string[];
+      };
+
+      export type OperationPreferences = {
+        FailureToleranceCount?: number;
+
+        FailureTolerancePercentage?: number;
+
+        MaxConcurrentCount?: number;
+
+        MaxConcurrentPercentage?: number;
+
+        RegionOrder?: string[];
+
+        RegionConcurrencyType?: string;
       };
 
       export type Parameter = {
@@ -23393,21 +27417,29 @@ export namespace AWS {
     }
 
     export type ResourceVersion = {
-      LoggingConfig?: AWS.CloudFormation.ResourceVersion.LoggingConfig;
-
       ExecutionRoleArn?: string;
+
+      LoggingConfig?: AWS.CloudFormation.ResourceVersion.LoggingConfig;
 
       SchemaHandlerPackage: string;
 
       TypeName: string;
     };
 
-    export type TypeActivation = {
-      LoggingConfig?: AWS.CloudFormation.TypeActivation.LoggingConfig;
+    export namespace ResourceVersion {
+      export type LoggingConfig = {
+        LogGroupName?: string;
 
+        LogRoleArn?: string;
+      };
+    }
+
+    export type TypeActivation = {
       ExecutionRoleArn?: string;
 
       PublisherId?: string;
+
+      LoggingConfig?: AWS.CloudFormation.TypeActivation.LoggingConfig;
 
       PublicTypeArn?: string;
 
@@ -23423,6 +27455,14 @@ export namespace AWS {
 
       Type?: string;
     };
+
+    export namespace TypeActivation {
+      export type LoggingConfig = {
+        LogGroupName?: string;
+
+        LogRoleArn?: string;
+      };
+    }
 
     export type ResourceDefaultVersion = {
       TypeVersionArn?: string;
@@ -23503,19 +27543,19 @@ export namespace AWS {
 
   export namespace SSMIncidents {
     export type ResponsePlan = {
-      ChatChannel?: AWS.SSMIncidents.ResponsePlan.ChatChannel;
-
-      IncidentTemplate: AWS.SSMIncidents.ResponsePlan.IncidentTemplate;
-
       Name: string;
 
       DisplayName?: string;
+
+      ChatChannel?: AWS.SSMIncidents.ResponsePlan.ChatChannel;
 
       Engagements?: string[];
 
       Actions?: AWS.SSMIncidents.ResponsePlan.Action[];
 
       Tags?: Tag[];
+
+      IncidentTemplate: AWS.SSMIncidents.ResponsePlan.IncidentTemplate;
     };
 
     export namespace ResponsePlan {
@@ -23543,6 +27583,22 @@ export namespace AWS {
 
       export type NotificationTargetItem = {
         SnsTopicArn?: string;
+      };
+
+      export type ChatChannel = {
+        ChatbotSns?: string[];
+      };
+
+      export type IncidentTemplate = {
+        DedupeString?: string;
+
+        Impact: number;
+
+        NotificationTargets?: AWS.SSMIncidents.ResponsePlan.NotificationTargetItem[];
+
+        Summary?: string;
+
+        Title: string;
       };
     }
 
@@ -23685,8 +27741,6 @@ export namespace AWS {
 
   export namespace SNS {
     export type Topic = {
-      Subscription?: AWS.SNS.Topic.Subscription[];
-
       ContentBasedDeduplication?: boolean;
 
       DisplayName?: string;
@@ -23695,10 +27749,20 @@ export namespace AWS {
 
       KmsMasterKeyId?: string;
 
+      Subscription?: AWS.SNS.Topic.Subscription[];
+
       Tags?: Tag[];
 
       TopicName?: string;
     };
+
+    export namespace Topic {
+      export type Subscription = {
+        Endpoint: string;
+
+        Protocol: string;
+      };
+    }
 
     export type Subscription = {
       DeliveryPolicy?: JSONString;
@@ -23729,13 +27793,13 @@ export namespace AWS {
 
   export namespace Connect {
     export type QuickConnect = {
-      QuickConnectConfig: AWS.Connect.QuickConnect.QuickConnectConfig;
-
       InstanceArn: string;
 
       Name: string;
 
       Description?: string;
+
+      QuickConnectConfig: AWS.Connect.QuickConnect.QuickConnectConfig;
 
       Tags?: Tag[];
     };
@@ -23745,6 +27809,16 @@ export namespace AWS {
         ContactFlowArn: string;
 
         QueueArn: string;
+      };
+
+      export type QuickConnectConfig = {
+        QuickConnectType: string;
+
+        PhoneConfig?: AWS.Connect.QuickConnect.PhoneNumberQuickConnectConfig;
+
+        QueueConfig?: AWS.Connect.QuickConnect.QueueQuickConnectConfig;
+
+        UserConfig?: AWS.Connect.QuickConnect.UserQuickConnectConfig;
       };
 
       export type UserQuickConnectConfig = {
@@ -23827,8 +27901,6 @@ export namespace AWS {
     }
 
     export type Integration = {
-      TlsConfig?: AWS.ApiGatewayV2.Integration.TlsConfig;
-
       Description?: string;
 
       TemplateSelectionExpression?: string;
@@ -23855,6 +27927,8 @@ export namespace AWS {
 
       TimeoutInMillis?: number;
 
+      TlsConfig?: AWS.ApiGatewayV2.Integration.TlsConfig;
+
       ContentHandlingStrategy?: string;
 
       IntegrationSubtype?: string;
@@ -23867,6 +27941,10 @@ export namespace AWS {
     export namespace Integration {
       export type ResponseParameterList = {
         ResponseParameters?: AWS.ApiGatewayV2.Integration.ResponseParameter[];
+      };
+
+      export type TlsConfig = {
+        ServerNameToVerify?: string;
       };
 
       export type ResponseParameter = {
@@ -23909,17 +27987,17 @@ export namespace AWS {
     }
 
     export type Stage = {
-      AccessLogSettings?: AWS.ApiGatewayV2.Stage.AccessLogSettings;
-
-      RouteSettings?: JSONString;
-
       ClientCertificateId?: string;
 
       DeploymentId?: string;
 
       Description?: string;
 
+      AccessLogSettings?: AWS.ApiGatewayV2.Stage.AccessLogSettings;
+
       AutoDeploy?: boolean;
+
+      RouteSettings?: JSONString;
 
       StageName: string;
 
@@ -23934,6 +28012,26 @@ export namespace AWS {
       Tags?: JSONString;
     };
 
+    export namespace Stage {
+      export type AccessLogSettings = {
+        Format?: string;
+
+        DestinationArn?: string;
+      };
+
+      export type RouteSettings = {
+        LoggingLevel?: string;
+
+        DataTraceEnabled?: boolean;
+
+        ThrottlingBurstLimit?: number;
+
+        DetailedMetricsEnabled?: boolean;
+
+        ThrottlingRateLimit?: number;
+      };
+    }
+
     export type DomainName = {
       MutualTlsAuthentication?: AWS.ApiGatewayV2.DomainName.MutualTlsAuthentication;
 
@@ -23945,6 +28043,12 @@ export namespace AWS {
     };
 
     export namespace DomainName {
+      export type MutualTlsAuthentication = {
+        TruststoreVersion?: string;
+
+        TruststoreUri?: string;
+      };
+
       export type DomainNameConfiguration = {
         SecurityPolicy?: string;
 
@@ -24009,9 +28113,9 @@ export namespace AWS {
     }
 
     export type Api = {
-      BodyS3Location?: AWS.ApiGatewayV2.Api.BodyS3Location;
-
       RouteSelectionExpression?: string;
+
+      BodyS3Location?: AWS.ApiGatewayV2.Api.BodyS3Location;
 
       Description?: string;
 
@@ -24057,6 +28161,16 @@ export namespace AWS {
         MaxAge?: number;
 
         AllowMethods?: string[];
+      };
+
+      export type BodyS3Location = {
+        Etag?: string;
+
+        Bucket?: string;
+
+        Version?: string;
+
+        Key?: string;
       };
     }
 
@@ -24229,6 +28343,14 @@ export namespace AWS {
         Name: string;
       };
 
+      export type ArtifactStore = {
+        EncryptionKey?: AWS.CodePipeline.Pipeline.EncryptionKey;
+
+        Location: string;
+
+        Type: string;
+      };
+
       export type ActionTypeId = {
         Category: string;
 
@@ -24241,17 +28363,17 @@ export namespace AWS {
     }
 
     export type CustomActionType = {
-      ConfigurationProperties?: AWS.CodePipeline.CustomActionType.ConfigurationProperties[];
-
-      Settings?: AWS.CodePipeline.CustomActionType.Settings;
-
       Category: string;
+
+      ConfigurationProperties?: AWS.CodePipeline.CustomActionType.ConfigurationProperties[];
 
       InputArtifactDetails: AWS.CodePipeline.CustomActionType.ArtifactDetails;
 
       OutputArtifactDetails: AWS.CodePipeline.CustomActionType.ArtifactDetails;
 
       Provider: string;
+
+      Settings?: AWS.CodePipeline.CustomActionType.Settings;
 
       Tags?: Tag[];
 
@@ -24264,22 +28386,38 @@ export namespace AWS {
 
         MinimumCount: number;
       };
+
+      export type ConfigurationProperties = {
+        Description?: string;
+
+        Key: boolean;
+
+        Name: string;
+
+        Queryable?: boolean;
+
+        Required: boolean;
+
+        Secret: boolean;
+
+        Type?: string;
+      };
+
+      export type Settings = {
+        EntityUrlTemplate?: string;
+
+        ExecutionUrlTemplate?: string;
+
+        RevisionUrlTemplate?: string;
+
+        ThirdPartyConfigurationUrl?: string;
+      };
     }
   }
 
   export namespace MSK {
     export type Cluster = {
-      LoggingInfo?: AWS.MSK.Cluster.LoggingInfo;
-
-      EncryptionInfo?: AWS.MSK.Cluster.EncryptionInfo;
-
-      ConfigurationInfo?: AWS.MSK.Cluster.ConfigurationInfo;
-
       BrokerNodeGroupInfo: AWS.MSK.Cluster.BrokerNodeGroupInfo;
-
-      ClientAuthentication?: AWS.MSK.Cluster.ClientAuthentication;
-
-      OpenMonitoring?: AWS.MSK.Cluster.OpenMonitoring;
 
       EnhancedMonitoring?: string;
 
@@ -24287,9 +28425,19 @@ export namespace AWS {
 
       NumberOfBrokerNodes: number;
 
+      EncryptionInfo?: AWS.MSK.Cluster.EncryptionInfo;
+
+      OpenMonitoring?: AWS.MSK.Cluster.OpenMonitoring;
+
       ClusterName: string;
 
+      ClientAuthentication?: AWS.MSK.Cluster.ClientAuthentication;
+
+      LoggingInfo?: AWS.MSK.Cluster.LoggingInfo;
+
       Tags?: JSONString;
+
+      ConfigurationInfo?: AWS.MSK.Cluster.ConfigurationInfo;
     };
 
     export namespace Cluster {
@@ -24331,6 +28479,16 @@ export namespace AWS {
         NodeExporter?: AWS.MSK.Cluster.NodeExporter;
       };
 
+      export type LoggingInfo = {
+        BrokerLogs: AWS.MSK.Cluster.BrokerLogs;
+      };
+
+      export type EncryptionInfo = {
+        EncryptionAtRest?: AWS.MSK.Cluster.EncryptionAtRest;
+
+        EncryptionInTransit?: AWS.MSK.Cluster.EncryptionInTransit;
+      };
+
       export type Iam = {
         Enabled: boolean;
       };
@@ -24339,6 +28497,24 @@ export namespace AWS {
         Iam?: AWS.MSK.Cluster.Iam;
 
         Scram?: AWS.MSK.Cluster.Scram;
+      };
+
+      export type ConfigurationInfo = {
+        Revision: number;
+
+        Arn: string;
+      };
+
+      export type BrokerNodeGroupInfo = {
+        SecurityGroups?: string[];
+
+        ClientSubnets: string[];
+
+        StorageInfo?: AWS.MSK.Cluster.StorageInfo;
+
+        BrokerAZDistribution?: string;
+
+        InstanceType: string;
       };
 
       export type Scram = {
@@ -24367,8 +28543,18 @@ export namespace AWS {
         Enabled: boolean;
       };
 
+      export type ClientAuthentication = {
+        Sasl?: AWS.MSK.Cluster.Sasl;
+
+        Tls?: AWS.MSK.Cluster.Tls;
+      };
+
       export type Tls = {
         CertificateAuthorityArnList?: string[];
+      };
+
+      export type OpenMonitoring = {
+        Prometheus: AWS.MSK.Cluster.Prometheus;
       };
     }
   }
@@ -24461,13 +28647,13 @@ export namespace AWS {
     }
 
     export type LaunchProfile = {
-      StreamConfiguration: AWS.NimbleStudio.LaunchProfile.StreamConfiguration;
-
       Description?: string;
 
       Name: string;
 
       Ec2SubnetIds: string[];
+
+      StreamConfiguration: AWS.NimbleStudio.LaunchProfile.StreamConfiguration;
 
       StudioComponentIds: string[];
 
@@ -24478,9 +28664,19 @@ export namespace AWS {
       Tags?: Record<string, string>;
     };
 
-    export type Studio = {
-      StudioEncryptionConfiguration?: AWS.NimbleStudio.Studio.StudioEncryptionConfiguration;
+    export namespace LaunchProfile {
+      export type StreamConfiguration = {
+        ClipboardMode: string;
 
+        StreamingImageIds: string[];
+
+        Ec2InstanceTypes: string[];
+
+        MaxSessionLengthInMinutes?: number;
+      };
+    }
+
+    export type Studio = {
       AdminRoleArn: string;
 
       DisplayName: string;
@@ -24489,8 +28685,18 @@ export namespace AWS {
 
       UserRoleArn: string;
 
+      StudioEncryptionConfiguration?: AWS.NimbleStudio.Studio.StudioEncryptionConfiguration;
+
       Tags?: Record<string, string>;
     };
+
+    export namespace Studio {
+      export type StudioEncryptionConfiguration = {
+        KeyArn?: string;
+
+        KeyType: string;
+      };
+    }
 
     export type StreamingImage = {
       StudioId: string;
@@ -24577,14 +28783,18 @@ export namespace AWS {
 
   export namespace IVS {
     export type RecordingConfiguration = {
-      DestinationConfiguration: AWS.IVS.RecordingConfiguration.DestinationConfiguration;
-
       Name?: string;
+
+      DestinationConfiguration: AWS.IVS.RecordingConfiguration.DestinationConfiguration;
 
       Tags?: Tag[];
     };
 
     export namespace RecordingConfiguration {
+      export type DestinationConfiguration = {
+        S3: AWS.IVS.RecordingConfiguration.S3DestinationConfiguration;
+      };
+
       export type S3DestinationConfiguration = {
         BucketName: string;
       };
@@ -24621,10 +28831,6 @@ export namespace AWS {
 
   export namespace AmazonMQ {
     export type Broker = {
-      LdapServerMetadata?: AWS.AmazonMQ.Broker.LdapServerMetadata;
-
-      EncryptionOptions?: AWS.AmazonMQ.Broker.EncryptionOptions;
-
       SecurityGroups?: string[];
 
       StorageType?: string;
@@ -24649,11 +28855,15 @@ export namespace AWS {
 
       BrokerName: string;
 
+      LdapServerMetadata?: AWS.AmazonMQ.Broker.LdapServerMetadata;
+
       DeploymentMode: string;
 
       EngineType: string;
 
       PubliclyAccessible: boolean;
+
+      EncryptionOptions?: AWS.AmazonMQ.Broker.EncryptionOptions;
 
       Tags?: AWS.AmazonMQ.Broker.TagsEntry[];
     };
@@ -24673,6 +28883,36 @@ export namespace AWS {
         ConsoleAccess?: boolean;
 
         Password: string;
+      };
+
+      export type LdapServerMetadata = {
+        Hosts: string[];
+
+        UserRoleName?: string;
+
+        UserSearchMatching: string;
+
+        RoleName?: string;
+
+        UserBase: string;
+
+        UserSearchSubtree?: boolean;
+
+        RoleSearchMatching: string;
+
+        ServiceAccountUsername: string;
+
+        RoleBase: string;
+
+        ServiceAccountPassword: string;
+
+        RoleSearchSubtree?: boolean;
+      };
+
+      export type EncryptionOptions = {
+        KmsKeyId?: string;
+
+        UseAwsOwnedKey: boolean;
       };
 
       export type MaintenanceWindow = {
@@ -24885,9 +29125,9 @@ export namespace AWS {
     }
 
     export type User = {
-      LoginProfile?: AWS.IAM.User.LoginProfile;
-
       Groups?: string[];
+
+      LoginProfile?: AWS.IAM.User.LoginProfile;
 
       ManagedPolicyArns?: string[];
 
@@ -24903,6 +29143,12 @@ export namespace AWS {
     };
 
     export namespace User {
+      export type LoginProfile = {
+        Password: string;
+
+        PasswordResetRequired?: boolean;
+      };
+
       export type Policy = {
         PolicyDocument: JSONString;
 
@@ -25031,8 +29277,6 @@ export namespace AWS {
 
   export namespace FraudDetector {
     export type Detector = {
-      EventType: AWS.FraudDetector.Detector.EventType;
-
       DetectorId: string;
 
       DetectorVersionStatus?: string;
@@ -25044,6 +29288,8 @@ export namespace AWS {
       Description?: string;
 
       Rules: AWS.FraudDetector.Detector.Rule[];
+
+      EventType: AWS.FraudDetector.Detector.EventType;
 
       AssociatedModels?: AWS.FraudDetector.Detector.Model[];
     };
@@ -25143,6 +29389,28 @@ export namespace AWS {
         Description?: string;
 
         Tags?: Tag[];
+
+        CreatedTime?: string;
+
+        LastUpdatedTime?: string;
+      };
+
+      export type EventType = {
+        Name?: string;
+
+        Inline?: boolean;
+
+        Tags?: Tag[];
+
+        Description?: string;
+
+        EventVariables?: AWS.FraudDetector.Detector.EventVariable[];
+
+        Labels?: AWS.FraudDetector.Detector.Label[];
+
+        EntityTypes?: AWS.FraudDetector.Detector.EntityType[];
+
+        Arn?: string;
 
         CreatedTime?: string;
 
@@ -25265,8 +29533,6 @@ export namespace AWS {
 
   export namespace ServiceCatalog {
     export type CloudFormationProvisionedProduct = {
-      ProvisioningPreferences?: AWS.ServiceCatalog.CloudFormationProvisionedProduct.ProvisioningPreferences;
-
       AcceptLanguage?: string;
 
       NotificationArns?: string[];
@@ -25287,6 +29553,8 @@ export namespace AWS {
 
       ProvisioningParameters?: AWS.ServiceCatalog.CloudFormationProvisionedProduct.ProvisioningParameter[];
 
+      ProvisioningPreferences?: AWS.ServiceCatalog.CloudFormationProvisionedProduct.ProvisioningPreferences;
+
       Tags?: Tag[];
     };
 
@@ -25295,6 +29563,22 @@ export namespace AWS {
         Key: string;
 
         Value: string;
+      };
+
+      export type ProvisioningPreferences = {
+        StackSetAccounts?: string[];
+
+        StackSetFailureToleranceCount?: number;
+
+        StackSetFailureTolerancePercentage?: number;
+
+        StackSetMaxConcurrencyCount?: number;
+
+        StackSetMaxConcurrencyPercentage?: number;
+
+        StackSetOperationType?: string;
+
+        StackSetRegions?: string[];
       };
     }
 
@@ -25497,9 +29781,9 @@ export namespace AWS {
 
   export namespace Location {
     export type PlaceIndex = {
-      DataSourceConfiguration?: AWS.Location.PlaceIndex.DataSourceConfiguration;
-
       DataSource: string;
+
+      DataSourceConfiguration?: AWS.Location.PlaceIndex.DataSourceConfiguration;
 
       Description?: string;
 
@@ -25507,6 +29791,12 @@ export namespace AWS {
 
       PricingPlan: string;
     };
+
+    export namespace PlaceIndex {
+      export type DataSourceConfiguration = {
+        IntendedUse?: string;
+      };
+    }
 
     export type Map = {
       Configuration: AWS.Location.Map.MapConfiguration;
@@ -25567,8 +29857,6 @@ export namespace AWS {
 
   export namespace LicenseManager {
     export type License = {
-      ConsumptionConfiguration: AWS.LicenseManager.License.ConsumptionConfiguration;
-
       ProductSKU?: string;
 
       Issuer: AWS.LicenseManager.License.IssuerData;
@@ -25585,6 +29873,8 @@ export namespace AWS {
 
       Beneficiary?: string;
 
+      ConsumptionConfiguration: AWS.LicenseManager.License.ConsumptionConfiguration;
+
       LicenseMetadata?: AWS.LicenseManager.License.Metadata[];
 
       Status?: string;
@@ -25593,6 +29883,14 @@ export namespace AWS {
     export namespace License {
       export type ProvisionalConfiguration = {
         MaxTimeToLiveInMinutes: number;
+      };
+
+      export type ConsumptionConfiguration = {
+        RenewType?: string;
+
+        ProvisionalConfiguration?: AWS.LicenseManager.License.ProvisionalConfiguration;
+
+        BorrowConfiguration?: AWS.LicenseManager.License.BorrowConfiguration;
       };
 
       export type IssuerData = {
@@ -25651,9 +29949,9 @@ export namespace AWS {
 
   export namespace MediaStore {
     export type Container = {
-      MetricPolicy?: AWS.MediaStore.Container.MetricPolicy;
-
       Policy?: string;
+
+      MetricPolicy?: AWS.MediaStore.Container.MetricPolicy;
 
       ContainerName: string;
 
@@ -25667,6 +29965,12 @@ export namespace AWS {
     };
 
     export namespace Container {
+      export type MetricPolicy = {
+        ContainerLevelMetrics: string;
+
+        MetricPolicyRules?: AWS.MediaStore.Container.MetricPolicyRule[];
+      };
+
       export type MetricPolicyRule = {
         ObjectGroup: string;
 
@@ -25841,9 +30145,9 @@ export namespace AWS {
     }
 
     export type EventBusPolicy = {
-      Condition?: AWS.Events.EventBusPolicy.Condition;
-
       EventBusName?: string;
+
+      Condition?: AWS.Events.EventBusPolicy.Condition;
 
       Action?: string;
 
@@ -25853,6 +30157,16 @@ export namespace AWS {
 
       Principal?: string;
     };
+
+    export namespace EventBusPolicy {
+      export type Condition = {
+        Type?: string;
+
+        Value?: string;
+
+        Key?: string;
+      };
+    }
 
     export type ApiDestination = {
       Name?: string;
@@ -25906,6 +30220,14 @@ export namespace AWS {
       Tags?: Tag[];
     };
 
+    export namespace SigningProfile {
+      export type SignatureValidityPeriod = {
+        Value?: number;
+
+        Type?: string;
+      };
+    }
+
     export type ProfilePermission = {
       ProfileName: string;
 
@@ -25921,13 +30243,13 @@ export namespace AWS {
 
   export namespace Kendra {
     export type DataSource = {
-      DataSourceConfiguration?: AWS.Kendra.DataSource.DataSourceConfiguration;
-
       Name: string;
 
       IndexId: string;
 
       Type: string;
+
+      DataSourceConfiguration?: AWS.Kendra.DataSource.DataSourceConfiguration;
 
       Description?: string;
 
@@ -26253,6 +30575,24 @@ export namespace AWS {
         DisableLocalGroups?: boolean;
       };
 
+      export type DataSourceConfiguration = {
+        S3Configuration?: AWS.Kendra.DataSource.S3DataSourceConfiguration;
+
+        SharePointConfiguration?: AWS.Kendra.DataSource.SharePointConfiguration;
+
+        SalesforceConfiguration?: AWS.Kendra.DataSource.SalesforceConfiguration;
+
+        OneDriveConfiguration?: AWS.Kendra.DataSource.OneDriveConfiguration;
+
+        ServiceNowConfiguration?: AWS.Kendra.DataSource.ServiceNowConfiguration;
+
+        DatabaseConfiguration?: AWS.Kendra.DataSource.DatabaseConfiguration;
+
+        ConfluenceConfiguration?: AWS.Kendra.DataSource.ConfluenceConfiguration;
+
+        GoogleDriveConfiguration?: AWS.Kendra.DataSource.GoogleDriveConfiguration;
+      };
+
       export type SharePointConfiguration = {
         SharePointVersion: string;
 
@@ -26283,9 +30623,9 @@ export namespace AWS {
     }
 
     export type Index = {
-      ServerSideEncryptionConfiguration?: AWS.Kendra.Index.ServerSideEncryptionConfiguration;
-
       Description?: string;
+
+      ServerSideEncryptionConfiguration?: AWS.Kendra.Index.ServerSideEncryptionConfiguration;
 
       Tags?: Tag[];
 
@@ -26305,6 +30645,10 @@ export namespace AWS {
     };
 
     export namespace Index {
+      export type ServerSideEncryptionConfiguration = {
+        KmsKeyId?: string;
+      };
+
       export type JsonTokenTypeConfiguration = {
         UserNameAttributeField: string;
 
@@ -26379,8 +30723,6 @@ export namespace AWS {
     }
 
     export type Faq = {
-      S3Path: AWS.Kendra.Faq.S3Path;
-
       IndexId: string;
 
       Name: string;
@@ -26389,19 +30731,29 @@ export namespace AWS {
 
       FileFormat?: string;
 
+      S3Path: AWS.Kendra.Faq.S3Path;
+
       RoleArn: string;
 
       Tags?: Tag[];
     };
+
+    export namespace Faq {
+      export type S3Path = {
+        Bucket: string;
+
+        Key: string;
+      };
+    }
   }
 
   export namespace Amplify {
     export type App = {
+      AccessToken?: string;
+
       AutoBranchCreationConfig?: AWS.Amplify.App.AutoBranchCreationConfig;
 
       BasicAuthConfig?: AWS.Amplify.App.BasicAuthConfig;
-
-      AccessToken?: string;
 
       BuildSpec?: string;
 
@@ -26431,6 +30783,36 @@ export namespace AWS {
         Name: string;
 
         Value: string;
+      };
+
+      export type AutoBranchCreationConfig = {
+        AutoBranchCreationPatterns?: string[];
+
+        BasicAuthConfig?: AWS.Amplify.App.BasicAuthConfig;
+
+        BuildSpec?: string;
+
+        EnableAutoBranchCreation?: boolean;
+
+        EnableAutoBuild?: boolean;
+
+        EnablePerformanceMode?: boolean;
+
+        EnablePullRequestPreview?: boolean;
+
+        EnvironmentVariables?: AWS.Amplify.App.EnvironmentVariable[];
+
+        PullRequestEnvironmentName?: string;
+
+        Stage?: string;
+      };
+
+      export type BasicAuthConfig = {
+        EnableBasicAuth?: boolean;
+
+        Username?: string;
+
+        Password?: string;
       };
 
       export type CustomRule = {
@@ -26467,9 +30849,9 @@ export namespace AWS {
     }
 
     export type Branch = {
-      BasicAuthConfig?: AWS.Amplify.Branch.BasicAuthConfig;
-
       AppId: string;
+
+      BasicAuthConfig?: AWS.Amplify.Branch.BasicAuthConfig;
 
       BranchName: string;
 
@@ -26493,6 +30875,14 @@ export namespace AWS {
     };
 
     export namespace Branch {
+      export type BasicAuthConfig = {
+        EnableBasicAuth?: boolean;
+
+        Username: string;
+
+        Password: string;
+      };
+
       export type EnvironmentVariable = {
         Name: string;
 
@@ -26503,13 +30893,13 @@ export namespace AWS {
 
   export namespace RoboMaker {
     export type SimulationApplication = {
-      SimulationSoftwareSuite: AWS.RoboMaker.SimulationApplication.SimulationSoftwareSuite;
-
-      RobotSoftwareSuite: AWS.RoboMaker.SimulationApplication.RobotSoftwareSuite;
-
       RenderingEngine: AWS.RoboMaker.SimulationApplication.RenderingEngine;
 
+      SimulationSoftwareSuite: AWS.RoboMaker.SimulationApplication.SimulationSoftwareSuite;
+
       CurrentRevisionId?: string;
+
+      RobotSoftwareSuite: AWS.RoboMaker.SimulationApplication.RobotSoftwareSuite;
 
       Sources: AWS.RoboMaker.SimulationApplication.SourceConfig[];
 
@@ -26519,6 +30909,18 @@ export namespace AWS {
     };
 
     export namespace SimulationApplication {
+      export type SimulationSoftwareSuite = {
+        Version: string;
+
+        Name: string;
+      };
+
+      export type RobotSoftwareSuite = {
+        Version: string;
+
+        Name: string;
+      };
+
       export type SourceConfig = {
         S3Bucket: string;
 
@@ -26526,12 +30928,18 @@ export namespace AWS {
 
         S3Key: string;
       };
+
+      export type RenderingEngine = {
+        Version: string;
+
+        Name: string;
+      };
     }
 
     export type RobotApplication = {
-      RobotSoftwareSuite: AWS.RoboMaker.RobotApplication.RobotSoftwareSuite;
-
       CurrentRevisionId?: string;
+
+      RobotSoftwareSuite: AWS.RoboMaker.RobotApplication.RobotSoftwareSuite;
 
       Sources: AWS.RoboMaker.RobotApplication.SourceConfig[];
 
@@ -26541,6 +30949,12 @@ export namespace AWS {
     };
 
     export namespace RobotApplication {
+      export type RobotSoftwareSuite = {
+        Version: string;
+
+        Name: string;
+      };
+
       export type SourceConfig = {
         S3Bucket: string;
 
@@ -26583,17 +30997,19 @@ export namespace AWS {
 
   export namespace Macie {
     export type FindingsFilter = {
-      FindingCriteria: AWS.Macie.FindingsFilter.FindingCriteria;
-
-      Criterion?: any;
-
       Name: string;
 
       Description?: string;
 
+      FindingCriteria: AWS.Macie.FindingsFilter.FindingCriteria;
+
       Action?: string;
 
       Position?: number;
+    };
+
+    export type FindingsFilter = {
+      Criterion?: any;
     };
 
     export namespace FindingsFilter {
@@ -26601,6 +31017,10 @@ export namespace AWS {
         Id?: string;
 
         Name?: string;
+      };
+
+      export type FindingCriteria = {
+        Criterion?: AWS.Macie.FindingsFilter.Criterion;
       };
     }
 
@@ -26627,17 +31047,13 @@ export namespace AWS {
 
   export namespace Synthetics {
     export type Canary = {
-      VPCConfig?: AWS.Synthetics.Canary.VPCConfig;
-
-      Schedule: AWS.Synthetics.Canary.Schedule;
+      Name: string;
 
       Code: AWS.Synthetics.Canary.Code;
 
-      RunConfig?: AWS.Synthetics.Canary.RunConfig;
-
-      Name: string;
-
       ArtifactS3Location: string;
+
+      Schedule: AWS.Synthetics.Canary.Schedule;
 
       ExecutionRoleArn: string;
 
@@ -26649,8 +31065,50 @@ export namespace AWS {
 
       Tags?: Tag[];
 
+      VPCConfig?: AWS.Synthetics.Canary.VPCConfig;
+
+      RunConfig?: AWS.Synthetics.Canary.RunConfig;
+
       StartCanaryAfterCreation: boolean;
     };
+
+    export namespace Canary {
+      export type VPCConfig = {
+        VpcId?: string;
+
+        SubnetIds: string[];
+
+        SecurityGroupIds: string[];
+      };
+
+      export type Schedule = {
+        Expression: string;
+
+        DurationInSeconds?: string;
+      };
+
+      export type Code = {
+        S3Bucket?: string;
+
+        S3Key?: string;
+
+        S3ObjectVersion?: string;
+
+        Script?: string;
+
+        Handler: string;
+      };
+
+      export type RunConfig = {
+        TimeoutInSeconds?: number;
+
+        MemoryInMB?: number;
+
+        ActiveTracing?: boolean;
+
+        EnvironmentVariables?: Record<string, string>;
+      };
+    }
   }
 
   export namespace AutoScalingPlans {
@@ -26733,6 +31191,12 @@ export namespace AWS {
         Namespace: string;
       };
 
+      export type ApplicationSource = {
+        CloudFormationStackARN?: string;
+
+        TagFilters?: AWS.AutoScalingPlans.ScalingPlan.TagFilter[];
+      };
+
       export type TargetTrackingConfiguration = {
         ScaleOutCooldown?: number;
 
@@ -26761,6 +31225,12 @@ export namespace AWS {
     export type Account = {
       ExpiryEventsConfiguration: AWS.CertificateManager.Account.ExpiryEventsConfiguration;
     };
+
+    export namespace Account {
+      export type ExpiryEventsConfiguration = {
+        DaysBeforeExpiry?: number;
+      };
+    }
 
     export type Certificate = {
       CertificateAuthorityArn?: string;
@@ -26791,17 +31261,17 @@ export namespace AWS {
 
   export namespace ServiceDiscovery {
     export type Service = {
-      DnsConfig?: AWS.ServiceDiscovery.Service.DnsConfig;
-
-      HealthCheckConfig?: AWS.ServiceDiscovery.Service.HealthCheckConfig;
-
-      HealthCheckCustomConfig?: AWS.ServiceDiscovery.Service.HealthCheckCustomConfig;
-
       Type?: string;
 
       Description?: string;
 
+      HealthCheckCustomConfig?: AWS.ServiceDiscovery.Service.HealthCheckCustomConfig;
+
+      DnsConfig?: AWS.ServiceDiscovery.Service.DnsConfig;
+
       NamespaceId?: string;
+
+      HealthCheckConfig?: AWS.ServiceDiscovery.Service.HealthCheckConfig;
 
       Tags?: Tag[];
 
@@ -26809,6 +31279,26 @@ export namespace AWS {
     };
 
     export namespace Service {
+      export type DnsConfig = {
+        DnsRecords: AWS.ServiceDiscovery.Service.DnsRecord[];
+
+        RoutingPolicy?: string;
+
+        NamespaceId?: string;
+      };
+
+      export type HealthCheckConfig = {
+        Type: string;
+
+        ResourcePath?: string;
+
+        FailureThreshold?: number;
+      };
+
+      export type HealthCheckCustomConfig = {
+        FailureThreshold?: number;
+      };
+
       export type DnsRecord = {
         Type: string;
 
@@ -26817,9 +31307,9 @@ export namespace AWS {
     }
 
     export type PublicDnsNamespace = {
-      Properties?: AWS.ServiceDiscovery.PublicDnsNamespace.Properties;
-
       Description?: string;
+
+      Properties?: AWS.ServiceDiscovery.PublicDnsNamespace.Properties;
 
       Tags?: Tag[];
 
@@ -26827,6 +31317,10 @@ export namespace AWS {
     };
 
     export namespace PublicDnsNamespace {
+      export type Properties = {
+        DnsProperties?: AWS.ServiceDiscovery.PublicDnsNamespace.PublicDnsPropertiesMutable;
+      };
+
       export type PublicDnsPropertiesMutable = {
         SOA?: AWS.ServiceDiscovery.PublicDnsNamespace.SOA;
       };
@@ -26837,11 +31331,11 @@ export namespace AWS {
     }
 
     export type PrivateDnsNamespace = {
-      Properties?: AWS.ServiceDiscovery.PrivateDnsNamespace.Properties;
-
       Description?: string;
 
       Vpc: string;
+
+      Properties?: AWS.ServiceDiscovery.PrivateDnsNamespace.Properties;
 
       Tags?: Tag[];
 
@@ -26849,6 +31343,10 @@ export namespace AWS {
     };
 
     export namespace PrivateDnsNamespace {
+      export type Properties = {
+        DnsProperties?: AWS.ServiceDiscovery.PrivateDnsNamespace.PrivateDnsPropertiesMutable;
+      };
+
       export type SOA = {
         TTL?: number;
       };
@@ -26909,12 +31407,22 @@ export namespace AWS {
 
   export namespace S3ObjectLambda {
     export type AccessPoint = {
-      ObjectLambdaConfiguration?: AWS.S3ObjectLambda.AccessPoint.ObjectLambdaConfiguration;
-
       Name: string;
+
+      ObjectLambdaConfiguration?: AWS.S3ObjectLambda.AccessPoint.ObjectLambdaConfiguration;
     };
 
     export namespace AccessPoint {
+      export type ObjectLambdaConfiguration = {
+        SupportingAccessPoint: string;
+
+        AllowedFeatures?: string[];
+
+        CloudWatchMetricsEnabled?: boolean;
+
+        TransformationConfigurations: AWS.S3ObjectLambda.AccessPoint.TransformationConfiguration[];
+      };
+
       export type TransformationConfiguration = {
         Actions?: string[];
 
@@ -26947,8 +31455,6 @@ export namespace AWS {
 
   export namespace QLDB {
     export type Stream = {
-      KinesisConfiguration: AWS.QLDB.Stream.KinesisConfiguration;
-
       LedgerName: string;
 
       StreamName: string;
@@ -26959,8 +31465,18 @@ export namespace AWS {
 
       ExclusiveEndTime?: string;
 
+      KinesisConfiguration: AWS.QLDB.Stream.KinesisConfiguration;
+
       Tags?: Tag[];
     };
+
+    export namespace Stream {
+      export type KinesisConfiguration = {
+        StreamArn?: string;
+
+        AggregationEnabled?: boolean;
+      };
+    }
 
     export type Ledger = {
       PermissionsMode: string;
@@ -26977,11 +31493,11 @@ export namespace AWS {
 
   export namespace MediaConvert {
     export type JobTemplate = {
-      AccelerationSettings?: AWS.MediaConvert.JobTemplate.AccelerationSettings;
-
       Category?: string;
 
       Description?: string;
+
+      AccelerationSettings?: AWS.MediaConvert.JobTemplate.AccelerationSettings;
 
       Priority?: number;
 
@@ -27005,6 +31521,10 @@ export namespace AWS {
         Priority?: number;
 
         Queue?: string;
+      };
+
+      export type AccelerationSettings = {
+        Mode: string;
       };
     }
 
@@ -27079,13 +31599,13 @@ export namespace AWS {
 
   export namespace AppIntegrations {
     export type EventIntegration = {
-      EventFilter: AWS.AppIntegrations.EventIntegration.EventFilter;
-
       Description?: string;
 
       Name: string;
 
       EventBridgeBus: string;
+
+      EventFilter: AWS.AppIntegrations.EventIntegration.EventFilter;
 
       Tags?: Tag[];
     };
@@ -27095,6 +31615,10 @@ export namespace AWS {
         Key: string;
 
         Value: string;
+      };
+
+      export type EventFilter = {
+        Source: string;
       };
 
       export type EventIntegrationAssociation = {
@@ -27165,16 +31689,24 @@ export namespace AWS {
 
   export namespace Kinesis {
     export type Stream = {
-      StreamEncryption?: AWS.Kinesis.Stream.StreamEncryption;
-
       Name?: string;
 
       RetentionPeriodHours?: number;
 
       ShardCount: number;
 
+      StreamEncryption?: AWS.Kinesis.Stream.StreamEncryption;
+
       Tags?: Tag[];
     };
+
+    export namespace Stream {
+      export type StreamEncryption = {
+        EncryptionType: string;
+
+        KeyId: string;
+      };
+    }
 
     export type StreamConsumer = {
       ConsumerName: string;
@@ -27185,11 +31717,11 @@ export namespace AWS {
 
   export namespace CodeCommit {
     export type Repository = {
-      Code?: AWS.CodeCommit.Repository.Code;
-
       RepositoryName: string;
 
       Triggers?: AWS.CodeCommit.Repository.RepositoryTrigger[];
+
+      Code?: AWS.CodeCommit.Repository.Code;
 
       RepositoryDescription?: string;
 
@@ -27197,6 +31729,12 @@ export namespace AWS {
     };
 
     export namespace Repository {
+      export type Code = {
+        S3: AWS.CodeCommit.Repository.S3;
+
+        BranchName?: string;
+      };
+
       export type S3 = {
         ObjectVersion?: string;
 
@@ -27235,6 +31773,14 @@ export namespace AWS {
 
       export type EksInfo = {
         Namespace: string;
+      };
+
+      export type ContainerProvider = {
+        Type: string;
+
+        Id: string;
+
+        Info: AWS.EMRContainers.VirtualCluster.ContainerInfo;
       };
     }
   }
@@ -27407,10 +31953,6 @@ export namespace AWS {
 
   export namespace FSx {
     export type FileSystem = {
-      LustreConfiguration?: AWS.FSx.FileSystem.LustreConfiguration;
-
-      WindowsConfiguration?: AWS.FSx.FileSystem.WindowsConfiguration;
-
       StorageType?: string;
 
       KmsKeyId?: string;
@@ -27419,6 +31961,8 @@ export namespace AWS {
 
       FileSystemType: string;
 
+      LustreConfiguration?: AWS.FSx.FileSystem.LustreConfiguration;
+
       BackupId?: string;
 
       SubnetIds: string[];
@@ -27426,9 +31970,37 @@ export namespace AWS {
       SecurityGroupIds?: string[];
 
       Tags?: Tag[];
+
+      WindowsConfiguration?: AWS.FSx.FileSystem.WindowsConfiguration;
     };
 
     export namespace FileSystem {
+      export type LustreConfiguration = {
+        DataCompressionType?: string;
+
+        DriveCacheType?: string;
+
+        ImportPath?: string;
+
+        WeeklyMaintenanceStartTime?: string;
+
+        AutoImportPolicy?: string;
+
+        ImportedFileChunkSize?: number;
+
+        DeploymentType?: string;
+
+        DailyAutomaticBackupStartTime?: string;
+
+        CopyTagsToBackups?: boolean;
+
+        ExportPath?: string;
+
+        PerUnitStorageThroughput?: number;
+
+        AutomaticBackupRetentionDays?: number;
+      };
+
       export type SelfManagedActiveDirectoryConfiguration = {
         FileSystemAdministratorsGroup?: string;
 
@@ -27442,13 +32014,33 @@ export namespace AWS {
 
         Password?: string;
       };
+
+      export type WindowsConfiguration = {
+        SelfManagedActiveDirectoryConfiguration?: AWS.FSx.FileSystem.SelfManagedActiveDirectoryConfiguration;
+
+        WeeklyMaintenanceStartTime?: string;
+
+        ActiveDirectoryId?: string;
+
+        DeploymentType?: string;
+
+        Aliases?: string[];
+
+        ThroughputCapacity: number;
+
+        CopyTagsToBackups?: boolean;
+
+        DailyAutomaticBackupStartTime?: string;
+
+        AutomaticBackupRetentionDays?: number;
+
+        PreferredSubnetId?: string;
+      };
     }
   }
 
   export namespace FinSpace {
     export type Environment = {
-      FederationParameters?: AWS.FinSpace.Environment.FederationParameters;
-
       Name: string;
 
       Description?: string;
@@ -27456,13 +32048,29 @@ export namespace AWS {
       KmsKeyId?: string;
 
       FederationMode?: string;
+
+      FederationParameters?: AWS.FinSpace.Environment.FederationParameters;
     };
+
+    export namespace Environment {
+      export type FederationParameters = {
+        SamlMetadataURL?: string;
+
+        FederationProviderName?: string;
+
+        SamlMetadataDocument?: string;
+
+        ApplicationCallBackURL?: string;
+
+        FederationURN?: string;
+
+        AttributeMap?: JSONString;
+      };
+    }
   }
 
   export namespace WorkSpaces {
     export type Workspace = {
-      WorkspaceProperties?: AWS.WorkSpaces.Workspace.WorkspaceProperties;
-
       BundleId: string;
 
       DirectoryId: string;
@@ -27476,7 +32084,23 @@ export namespace AWS {
       UserVolumeEncryptionEnabled?: boolean;
 
       VolumeEncryptionKey?: string;
+
+      WorkspaceProperties?: AWS.WorkSpaces.Workspace.WorkspaceProperties;
     };
+
+    export namespace Workspace {
+      export type WorkspaceProperties = {
+        ComputeTypeName?: string;
+
+        RootVolumeSizeGib?: number;
+
+        RunningMode?: string;
+
+        RunningModeAutoStopTimeoutInMinutes?: number;
+
+        UserVolumeSizeGib?: number;
+      };
+    }
 
     export type ConnectionAlias = {
       ConnectionString: string;
@@ -27499,10 +32123,6 @@ export namespace AWS {
 
   export namespace Transfer {
     export type User = {
-      SshPublicKey?: string;
-
-      PosixProfile?: AWS.Transfer.User.PosixProfile;
-
       Policy?: string;
 
       Role: string;
@@ -27517,9 +32137,15 @@ export namespace AWS {
 
       HomeDirectoryMappings?: AWS.Transfer.User.HomeDirectoryMapEntry[];
 
+      PosixProfile?: AWS.Transfer.User.PosixProfile;
+
       SshPublicKeys?: AWS.Transfer.User.SshPublicKey[];
 
       Tags?: Tag[];
+    };
+
+    export type User = {
+      SshPublicKey?: string;
     };
 
     export namespace User {
@@ -27528,26 +32154,32 @@ export namespace AWS {
 
         Target: string;
       };
+
+      export type PosixProfile = {
+        Uid: number;
+
+        SecondaryGids?: number[];
+
+        Gid: number;
+      };
     }
 
     export type Server = {
-      ProtocolDetails?: AWS.Transfer.Server.ProtocolDetails;
-
-      IdentityProviderDetails?: AWS.Transfer.Server.IdentityProviderDetails;
-
-      EndpointDetails?: AWS.Transfer.Server.EndpointDetails;
-
-      Protocol?: string;
-
       LoggingRole?: string;
 
       Protocols?: AWS.Transfer.Server.Protocol[];
+
+      IdentityProviderDetails?: AWS.Transfer.Server.IdentityProviderDetails;
 
       EndpointType?: string;
 
       SecurityPolicyName?: string;
 
+      ProtocolDetails?: AWS.Transfer.Server.ProtocolDetails;
+
       Domain?: string;
+
+      EndpointDetails?: AWS.Transfer.Server.EndpointDetails;
 
       IdentityProviderType?: string;
 
@@ -27555,16 +32187,40 @@ export namespace AWS {
 
       Certificate?: string;
     };
+
+    export type Server = {
+      Protocol?: string;
+    };
+
+    export namespace Server {
+      export type ProtocolDetails = {
+        PassiveIp?: string;
+      };
+
+      export type IdentityProviderDetails = {
+        DirectoryId?: string;
+
+        InvocationRole?: string;
+
+        Url?: string;
+      };
+
+      export type EndpointDetails = {
+        AddressAllocationIds?: string[];
+
+        VpcId?: string;
+
+        VpcEndpointId?: string;
+
+        SecurityGroupIds?: string[];
+
+        SubnetIds?: string[];
+      };
+    }
   }
 
   export namespace MWAA {
     export type Environment = {
-      NetworkConfiguration?: AWS.MWAA.Environment.NetworkConfiguration;
-
-      TagMap?: any;
-
-      LoggingConfiguration?: AWS.MWAA.Environment.LoggingConfiguration;
-
       Name: string;
 
       ExecutionRoleArn?: string;
@@ -27595,6 +32251,10 @@ export namespace AWS {
 
       Schedulers?: number;
 
+      NetworkConfiguration?: AWS.MWAA.Environment.NetworkConfiguration;
+
+      LoggingConfiguration?: AWS.MWAA.Environment.LoggingConfiguration;
+
       WeeklyMaintenanceWindowStart?: string;
 
       Tags?: AWS.MWAA.Environment.TagMap;
@@ -27602,7 +32262,17 @@ export namespace AWS {
       WebserverAccessMode?: string;
     };
 
+    export type Environment = {
+      TagMap?: any;
+    };
+
     export namespace Environment {
+      export type NetworkConfiguration = {
+        SubnetIds?: string[];
+
+        SecurityGroupIds?: string[];
+      };
+
       export type ModuleLoggingConfiguration = {
         Enabled?: boolean;
 
@@ -27610,14 +32280,26 @@ export namespace AWS {
 
         CloudWatchLogGroupArn?: string;
       };
+
+      export type LoggingConfiguration = {
+        DagProcessingLogs?: AWS.MWAA.Environment.ModuleLoggingConfiguration;
+
+        SchedulerLogs?: AWS.MWAA.Environment.ModuleLoggingConfiguration;
+
+        WebserverLogs?: AWS.MWAA.Environment.ModuleLoggingConfiguration;
+
+        WorkerLogs?: AWS.MWAA.Environment.ModuleLoggingConfiguration;
+
+        TaskLogs?: AWS.MWAA.Environment.ModuleLoggingConfiguration;
+      };
     }
   }
 
   export namespace IoT1Click {
     export type Project = {
-      PlacementTemplate: AWS.IoT1Click.Project.PlacementTemplate;
-
       Description?: string;
+
+      PlacementTemplate: AWS.IoT1Click.Project.PlacementTemplate;
 
       ProjectName?: string;
     };
@@ -27627,6 +32309,12 @@ export namespace AWS {
         DeviceType?: string;
 
         CallbackOverrides?: JSONString;
+      };
+
+      export type PlacementTemplate = {
+        DeviceTemplates?: JSONString;
+
+        DefaultAttributes?: JSONString;
       };
     }
 
@@ -27677,6 +32365,12 @@ export namespace AWS {
 
       Tags?: JSONString;
     };
+
+    export namespace Cluster {
+      export type SSESpecification = {
+        SSEEnabled?: boolean;
+      };
+    }
 
     export type ParameterGroup = {
       ParameterNameValues?: JSONString;
@@ -28243,16 +32937,36 @@ export namespace AWS {
 export namespace Alexa {
   export namespace ASK {
     export type Skill = {
-      SkillPackage: Alexa.ASK.Skill.SkillPackage;
-
       AuthenticationConfiguration: Alexa.ASK.Skill.AuthenticationConfiguration;
 
       VendorId: string;
+
+      SkillPackage: Alexa.ASK.Skill.SkillPackage;
     };
 
     export namespace Skill {
       export type Overrides = {
         Manifest?: JSONString;
+      };
+
+      export type SkillPackage = {
+        S3BucketRole?: string;
+
+        S3ObjectVersion?: string;
+
+        S3Bucket: string;
+
+        S3Key: string;
+
+        Overrides?: Alexa.ASK.Skill.Overrides;
+      };
+
+      export type AuthenticationConfiguration = {
+        RefreshToken: string;
+
+        ClientSecret: string;
+
+        ClientId: string;
       };
     }
   }

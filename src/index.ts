@@ -144,8 +144,8 @@ const PackageStructure: Record<any, any> = Object.keys(
 
       if (typeof ResourceTypeMapData[k] === 'object') {
         parentTargetObj[targetKeyName] = {
-          ...parentTargetObj[targetKeyName],
-          ...(ResourceTypeMapData[k] as any),
+          __NS__: parentTargetObj[targetKeyName],
+          ...(ResourceTypeMapData[k] as any), // TODO: ?????
         };
       }
     }
@@ -166,10 +166,18 @@ const renderPackage = (
 
   // Output types AND namespaces, when there is contents for either.
   for (const k in pack) {
+    if (k === '__NS__') {
+      continue;
+    }
+
     const v = pack[k];
 
     if (v instanceof Object) {
       namespaceValues.push(renderPackage(v, k));
+
+      if (v.__NS__ instanceof Object) {
+        namespaceValues.push(renderPackage(v.__NS__, k));
+      }
     } else {
       if (!scopeName) {
         typeValues.push(`export type ${k} = ${v.replace(/::/gim, () => '.')};`);
