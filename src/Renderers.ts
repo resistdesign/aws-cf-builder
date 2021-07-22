@@ -21,5 +21,12 @@ export const renderPropertyType = (path: string[], { PrimitiveType, Type, Primit
 
 export const renderPropertyName = (propertyName: string, { Required = false }: PropertyDescriptor) => `${propertyName}${Required ? '' : '?'}`;
 
-export const renderProperty = (path: string[], propertyName: string, propertyDescriptor: PropertyDescriptor) =>
-  `${renderPropertyName(propertyName, propertyDescriptor)}: ${renderPropertyType(path, propertyDescriptor)};`;
+export const renderProperty = (path: string[], propertyName: string, propertyDescriptor: PropertyDescriptor) => {
+  const { UpdateType, Documentation } = propertyDescriptor;
+
+  return `/**
+ * ${UpdateType ? 'Update Type: ' : ''}${UpdateType}
+ * ${Documentation ? '@see ' : ''}${Documentation}
+ * */
+${renderPropertyName(propertyName, propertyDescriptor)}: ${renderPropertyType(path, propertyDescriptor)};`;
+};
