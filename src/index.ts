@@ -1,8 +1,9 @@
 import FS from 'fs';
 import { format } from 'prettier';
-import { CloudFormationResourceSpecification, NamespaceStructure, PropertyType, ResourceType } from './Types';
+import { NamespaceStructure } from './Types';
 import { CloudFormationResourceSpecificationData } from './CloudFormationResourceSpecification';
 import { STANDARD_ALIASES } from './Constants';
+import { getNamespaceStructure } from './Utils';
 
 const BASE_NAMESPACE_STRUCTURE: NamespaceStructure = {
   path: [],

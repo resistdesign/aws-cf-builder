@@ -1,22 +1,16 @@
 export type PropertyDescriptor = {
-  Documentation: string;
+  Documentation?: string;
   Type?: string;
-  UpdateType: string;
-  Required: boolean;
+  UpdateType?: string;
+  Required?: boolean;
   PrimitiveType?: string;
   PrimitiveItemType?: string;
   ItemType?: string;
   DuplicatesAllowed?: boolean;
 };
 
-export type PropertyType = {
-  Documentation?: string;
+export type PropertyType = PropertyDescriptor & {
   Properties?: Record<string, PropertyDescriptor>;
-  Type?: string;
-  Required?: boolean;
-  ItemType?: string;
-  UpdateType?: string;
-  PrimitiveType?: string;
 };
 
 export type AttributeType = {
@@ -28,9 +22,9 @@ export type AttributeType = {
 };
 
 export type ResourceType = {
-  Documentation: string;
+  Documentation?: string;
   AdditionalProperties?: boolean;
-  Properties: Record<string, PropertyDescriptor>;
+  Properties?: Record<string, PropertyDescriptor>;
   Attributes?: Record<string, AttributeType>;
 };
 
