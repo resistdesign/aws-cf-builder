@@ -1,7 +1,7 @@
-import { PropertyDescriptor, PropertyType } from './Types';
+import { AttributeType, IDocumentable, PropertyDescriptor, PropertyType } from './Types';
 import { CONTAINER_TYPES, NAMESPACE_DELIMITERS, TAG_TYPE } from './Constants';
 
-export const renderPropertyType = (path: string[], { PrimitiveType, Type, PrimitiveItemType, ItemType }: PropertyDescriptor) => {
+export const renderPropertyType = (path: string[], { PrimitiveType, Type, PrimitiveItemType, ItemType }: AttributeType) => {
   if (PrimitiveType) {
     return PrimitiveType;
   } else if (Type && CONTAINER_TYPES.indexOf(Type) !== -1) {
@@ -23,12 +23,15 @@ export const renderPropertyType = (path: string[], { PrimitiveType, Type, Primit
 
 export const renderPropertyName = (propertyName: string, { Required = false }: PropertyDescriptor) => `${propertyName}${Required ? '' : '?'}`;
 
-export const renderCommentBlock = ({ UpdateType, DuplicatesAllowed = false, Documentation }: PropertyDescriptor) => `/**
+export const renderCommentBlock = ({ UpdateType, DuplicatesAllowed = false, Documentation }: IDocumentable) =>
+  UpdateType || DuplicatesAllowed || Documentation
+    ? `/**
  * ${UpdateType ? 'Update Type: ' : ''}${UpdateType}
  * ${DuplicatesAllowed ? 'Duplicates Allowed: Yes' : ''}
  * ${Documentation ? '@see ' : ''}${Documentation}
  * */
-`;
+`
+    : '';
 
 export const renderProperty = (path: string[], propertyName: string, propertyDescriptor: PropertyDescriptor) =>
   `${renderCommentBlock(propertyDescriptor)}${renderPropertyName(propertyName, propertyDescriptor)}: ${renderPropertyType(
@@ -36,15 +39,25 @@ export const renderProperty = (path: string[], propertyName: string, propertyDes
     propertyDescriptor
   )};`;
 
+export const renderTypeWithProperties = (
+  path: string[],
+  typeName: string,
+  properties: Record<string, PropertyDescriptor>,
+  commentBlock: string = ''
+) => {
+  const propertyKeys = Object.keys(properties);
+
+  return `${commentBlock}export type ${typeName} = {
+  ${propertyKeys.map((pK) => renderProperty(path, pK, properties[pK])).join('\n')}
+  };`;
+};
+
 export const renderTypeFromPropertyType = (path: string[], typeName: string, propertyType: PropertyType) => {
   const { Properties } = propertyType;
   const commentBlock = renderCommentBlock(propertyType);
 
   if (Properties) {
-    const propertyKeys = Object.keys(Properties);
-    return `${commentBlock}export type ${typeName} = {
-  ${propertyKeys.map((pK) => renderProperty(path, pK, Properties[pK])).join('\n')}
-  };`;
+    return renderTypeWithProperties(path, typeName, Properties, commentBlock);
   } else {
     return `${commentBlock}export type ${typeName} = ${renderPropertyType(path, propertyType)}`;
   }

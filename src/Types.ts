@@ -1,17 +1,8 @@
-export type PropertyDescriptor = {
-  Documentation?: string;
-  Type?: string;
+export interface IDocumentable {
   UpdateType?: string;
-  Required?: boolean;
-  PrimitiveType?: string;
-  PrimitiveItemType?: string;
-  ItemType?: string;
   DuplicatesAllowed?: boolean;
-};
-
-export type PropertyType = PropertyDescriptor & {
-  Properties?: Record<string, PropertyDescriptor>;
-};
+  Documentation?: string;
+}
 
 export type AttributeType = {
   PrimitiveType?: string;
@@ -19,6 +10,15 @@ export type AttributeType = {
   ItemType?: string;
   PrimitiveItemType?: string;
   DuplicatesAllowed?: boolean;
+};
+
+export type PropertyDescriptor = IDocumentable &
+  AttributeType & {
+    Required?: boolean;
+  };
+
+export type PropertyType = PropertyDescriptor & {
+  Properties?: Record<string, PropertyDescriptor>;
 };
 
 export type ResourceType = {
