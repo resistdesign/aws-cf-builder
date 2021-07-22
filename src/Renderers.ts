@@ -1,4 +1,4 @@
-import { AttributeType, IDocumentable, PropertyDescriptor, PropertyType } from './Types';
+import { AttributeType, IDocumentable, PropertyDescriptor, PropertyType, ResourceType } from './Types';
 import { CONTAINER_TYPES, NAMESPACE_DELIMITERS, TAG_TYPE } from './Constants';
 
 export const renderPropertyType = (path: string[], { PrimitiveType, Type, PrimitiveItemType, ItemType }: AttributeType) => {
@@ -61,4 +61,11 @@ export const renderTypeFromPropertyType = (path: string[], typeName: string, pro
   } else {
     return `${commentBlock}export type ${typeName} = ${renderPropertyType(path, propertyType)}`;
   }
+};
+
+export const renderTypeFromResourceType = (path: string[], typeName: string, resourceType: ResourceType) => {
+  const { Properties } = resourceType;
+  const commentBlock = renderCommentBlock(resourceType);
+
+  return Properties ? renderTypeWithProperties(path, typeName, Properties, commentBlock) : '';
 };
