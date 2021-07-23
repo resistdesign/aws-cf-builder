@@ -67,23 +67,25 @@ export const renderTypeWithProperties = (path: string[], typeName: string, prope
 export const renderTypeFromPropertyType = (path: string[], typeName: string, propertyType: PropertyType) => {
   const { Properties } = propertyType;
   const commentBlock = renderCommentBlock(propertyType);
+  const subPath = [...path, typeName];
 
   if (Properties) {
-    return renderTypeWithProperties(path, typeName, Properties, commentBlock);
+    return renderTypeWithProperties(subPath, typeName, Properties, commentBlock);
   } else {
-    return `${commentBlock}export type ${typeName} = ${renderPropertyType(path, propertyType)}`;
+    return `${commentBlock}export type ${typeName} = ${renderPropertyType(subPath, propertyType)}`;
   }
 };
 
 export const renderTypeFromResourceType = (path: string[], typeName: string, resourceType: ResourceType) => {
   const { Properties, Attributes } = resourceType;
   const commentBlock = renderCommentBlock(resourceType);
+  const subPath = [...path, typeName];
 
   return renderTypeWithFullBody(
     commentBlock,
     typeName,
-    `${RESOURCE_TYPE_NAME}<${Attributes ? renderTypePropertiesBody(path, Attributes) : NEVER_TYPE}, ${
-      Properties ? renderTypePropertiesBody(path, Properties) : NEVER_TYPE
+    `${RESOURCE_TYPE_NAME}<${Attributes ? renderTypePropertiesBody(subPath, Attributes) : NEVER_TYPE}, ${
+      Properties ? renderTypePropertiesBody(subPath, Properties) : NEVER_TYPE
     }>`
   );
 };
