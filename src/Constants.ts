@@ -1,3 +1,5 @@
+export const NEVER_TYPE = 'never';
+
 export const NAMESPACE_DELIMITERS = {
   INPUT: '::',
   OUTPUT: '.',
@@ -17,4 +19,11 @@ export const PRIMITIVE_TYPE_MAP: Record<string, string> = {
   Long: 'number',
 };
 
-export const STANDARD_ALIASES = ['export type Json = string;', 'export type Timestamp = string;'];
+export const RESOURCE_TYPE_NAME = 'CloudFormationResource';
+
+export const RESOURCE_TYPE = `export type ${RESOURCE_TYPE_NAME}<AttributesType, PropertiesType> = {
+  Attributes: AttributesType;
+  Properties: PropertiesType;
+};`;
+
+export const STANDARD_ALIASES = ['export type Json = string;', 'export type Timestamp = string;', RESOURCE_TYPE];
