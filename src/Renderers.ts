@@ -34,9 +34,9 @@ export const renderPropertyName = (propertyName: string, descriptor: PropertyDes
 export const renderCommentBlock = ({ UpdateType, DuplicatesAllowed = false, Documentation }: IDocumentable) =>
   UpdateType || DuplicatesAllowed || Documentation
     ? `/**
- * ${UpdateType ? 'Update Type: ' : ''}${UpdateType}
+ * ${UpdateType ? `Update Type: ${UpdateType}` : ''}
  * ${DuplicatesAllowed ? 'Duplicates Allowed: Yes' : ''}
- * ${Documentation ? '@see ' : ''}${Documentation}
+ * ${Documentation ? `@see ${Documentation}` : ''}
  * */
 `
     : '';
@@ -92,11 +92,17 @@ export const renderNamespaceStructure = (
 ) => {
   const namespaceBody: string = `${aliases?.join('\n')}
 
-${Object.keys(propertyTypes).map((pT) => renderTypeFromPropertyType(path, pT, propertyTypes[pT]))}
+${Object.keys(propertyTypes)
+  .map((pT) => renderTypeFromPropertyType(path, pT, propertyTypes[pT]))
+  .join('\n')}
 
-${Object.keys(resourceTypes).map((rT) => renderTypeFromResourceType(path, rT, resourceTypes[rT]))}
+${Object.keys(resourceTypes)
+  .map((rT) => renderTypeFromResourceType(path, rT, resourceTypes[rT]))
+  .join('\n')}
 
-${Object.keys(namespaces).map((ns) => renderNamespaceStructure(namespaces[ns], ns))}`;
+${Object.keys(namespaces)
+  .map((ns) => renderNamespaceStructure(namespaces[ns], ns))
+  .join('\n')}`;
 
   if (namespaceName) {
     return `export namespace ${namespaceName} {
