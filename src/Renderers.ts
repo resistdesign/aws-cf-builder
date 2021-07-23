@@ -1,4 +1,4 @@
-import { AttributeType, IDocumentable, PropertyDescriptor, PropertyType, ResourceType } from './Types';
+import { AttributeType, IDocumentable, NamespaceStructure, PropertyDescriptor, PropertyType, ResourceType } from './Types';
 import { CONTAINER_TYPES, NAMESPACE_DELIMITERS, NEVER_TYPE, RESOURCE_TYPE_NAME, TAG_TYPE } from './Constants';
 
 export const renderPropertyType = (path: string[], { PrimitiveType, Type, PrimitiveItemType, ItemType }: AttributeType) => {
@@ -85,3 +85,21 @@ export const renderTypeFromResourceType = (path: string[], typeName: string, res
     }>`
   );
 };
+
+export const renderNamespaceStructure = ({
+  path = [],
+  aliases = [],
+  propertyTypes = {},
+  resourceTypes = {},
+  namespaces = {},
+}: NamespaceStructure): string => `export namespace ${path.length > 0 ? path[path.length - 1] : ''} {
+
+${aliases?.join('\n')}
+
+${Object.keys(propertyTypes).map((pT) => renderTypeFromPropertyType(path, pT, propertyTypes[pT]))}
+
+${Object.keys(resourceTypes).map((rT) => renderTypeFromResourceType(path, rT, resourceTypes[rT]))}
+
+${Object.keys(namespaces).map((ns) => renderNamespaceStructure(namespaces[ns]))}
+
+}`;
