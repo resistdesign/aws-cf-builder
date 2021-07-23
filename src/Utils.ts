@@ -10,7 +10,9 @@ export const getNamespaceStructure = (specification: CloudFormationResourceSpeci
   const resourceTypesKeys = Object.keys(ResourceTypes);
 
   for (const pTK of propertyTypesKeys) {
-    const fullPropertyTypeNameParts = pTK.replace(NAMESPACE_DELIMITERS.INPUT, () => NAMESPACE_DELIMITERS.OUTPUT).split(NAMESPACE_DELIMITERS.OUTPUT);
+    const fullPropertyTypeNameParts = pTK
+      .replace(NAMESPACE_DELIMITERS.INPUT_REGEX, () => NAMESPACE_DELIMITERS.OUTPUT)
+      .split(NAMESPACE_DELIMITERS.OUTPUT);
     const propType: PropertyType = PropertyTypes[pTK];
     const currentPath: string[] = [];
 

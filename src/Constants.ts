@@ -1,6 +1,7 @@
 export const NEVER_TYPE = 'never';
 
 export const NAMESPACE_DELIMITERS = {
+  INPUT_REGEX: /::/gim,
   INPUT: '::',
   OUTPUT: '.',
 };
