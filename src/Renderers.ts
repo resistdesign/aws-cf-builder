@@ -1,12 +1,15 @@
 import { AttributeType, IDocumentable, NamespaceStructure, PropertyDescriptor, PropertyType, ResourceType } from './Types';
-import { CONTAINER_TYPES, NAMESPACE_DELIMITERS, NEVER_TYPE, RESOURCE_TYPE_NAME, TAG_TYPE } from './Constants';
+import { CONTAINER_TYPES, NAMESPACE_DELIMITERS, NEVER_TYPE, PRIMITIVE_TYPE_MAP, RESOURCE_TYPE_NAME, TAG_TYPE } from './Constants';
+
+export const renderPrimitiveType = (primitiveType: string) =>
+  primitiveType in PRIMITIVE_TYPE_MAP ? PRIMITIVE_TYPE_MAP[primitiveType] : primitiveType;
 
 export const renderPropertyType = (path: string[], { PrimitiveType, Type, PrimitiveItemType, ItemType }: AttributeType) => {
   if (PrimitiveType) {
-    return PrimitiveType;
+    return renderPrimitiveType(PrimitiveType);
   } else if (Type && CONTAINER_TYPES.indexOf(Type) !== -1) {
     const resolvedItemType = PrimitiveItemType
-      ? PrimitiveItemType
+      ? renderPrimitiveType(PrimitiveItemType)
       : ItemType === TAG_TYPE
       ? TAG_TYPE
       : [...path, ItemType].join(NAMESPACE_DELIMITERS.OUTPUT);
