@@ -4,6 +4,7 @@ import { NamespaceStructure } from './Types';
 import { CloudFormationResourceSpecificationData } from './CloudFormationResourceSpecification';
 import { STANDARD_ALIASES } from './Constants';
 import { getNamespaceStructure } from './Utils';
+import { renderNamespaceStructure } from './Renderers';
 
 const BASE_NAMESPACE_STRUCTURE: NamespaceStructure = {
   path: [],
@@ -15,7 +16,7 @@ const BASE_NAMESPACE_STRUCTURE: NamespaceStructure = {
 
 const NamespaceStructure: NamespaceStructure = getNamespaceStructure(CloudFormationResourceSpecificationData, BASE_NAMESPACE_STRUCTURE);
 
-const TypesContentString = format('', {
+const TypesContentString = format(renderNamespaceStructure(NamespaceStructure), {
   parser: 'typescript',
 });
 
