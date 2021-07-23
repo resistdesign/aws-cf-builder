@@ -70,12 +70,11 @@ export const renderTypeWithProperties = (path: string[], typeName: string, prope
 export const renderTypeFromPropertyType = (path: string[], typeName: string, propertyType: PropertyType) => {
   const { Properties } = propertyType;
   const commentBlock = renderCommentBlock(propertyType);
-  const subPath = [...path, typeName];
 
   if (Properties) {
-    return renderTypeWithProperties(subPath, typeName, Properties, commentBlock);
+    return renderTypeWithProperties(path, typeName, Properties, commentBlock);
   } else {
-    return `${commentBlock}export type ${typeName} = ${renderPropertyType(subPath, propertyType)}`;
+    return `${commentBlock}export type ${typeName} = ${renderPropertyType(path, propertyType)}`;
   }
 };
 
