@@ -86,20 +86,23 @@ export const renderTypeFromResourceType = (path: string[], typeName: string, res
   );
 };
 
-export const renderNamespaceStructure = ({
-  path = [],
-  aliases = [],
-  propertyTypes = {},
-  resourceTypes = {},
-  namespaces = {},
-}: NamespaceStructure): string => `export namespace ${path.length > 0 ? path[path.length - 1] : ''} {
-
-${aliases?.join('\n')}
+export const renderNamespaceStructure = (
+  { path = [], aliases = [], propertyTypes = {}, resourceTypes = {}, namespaces = {} }: NamespaceStructure,
+  namespaceName?: string
+) => {
+  const namespaceBody: string = `${aliases?.join('\n')}
 
 ${Object.keys(propertyTypes).map((pT) => renderTypeFromPropertyType(path, pT, propertyTypes[pT]))}
 
 ${Object.keys(resourceTypes).map((rT) => renderTypeFromResourceType(path, rT, resourceTypes[rT]))}
 
-${Object.keys(namespaces).map((ns) => renderNamespaceStructure(namespaces[ns]))}
+${Object.keys(namespaces).map((ns) => renderNamespaceStructure(namespaces[ns], ns))}`;
 
+  if (namespaceName) {
+    return `export namespace ${namespaceName} {
+${namespaceBody}
 }`;
+  } else {
+    return namespaceBody;
+  }
+};
