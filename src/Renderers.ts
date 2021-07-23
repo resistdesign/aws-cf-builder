@@ -22,12 +22,14 @@ export const renderPropertyType = (path: string[], { PrimitiveType, Type, Primit
 };
 
 export const renderPropertyName = (propertyName: string, descriptor: PropertyDescriptor | AttributeType) => {
+  const cleanPropertyName = propertyName && propertyName.indexOf('.') !== -1 ? `'${propertyName}'` : propertyName;
+
   if ('Required' in descriptor) {
     const { Required } = descriptor;
 
-    return `${propertyName}${Required ? '' : '?'}`;
+    return `${cleanPropertyName}${Required ? '' : '?'}`;
   } else {
-    return propertyName;
+    return cleanPropertyName;
   }
 };
 
