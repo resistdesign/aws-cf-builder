@@ -5,7 +5,7 @@
   "author": "Ryan Graff",
   "license": "MIT",
   "scripts": {
-    "start": "node -r ts-node/register ./src/index.ts"
+    "build": "node -r ts-node/register ./src/index.ts"
   },
   "devDependencies": {
     "@types/node": "^16.3.1",

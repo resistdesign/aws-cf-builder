@@ -56,32 +56,31 @@ export type CloudFormationParameter = {
     | string;
 };
 
-export type CloudFormationMetadata =
-  | {
-      Instances?: {
-        Description?: string;
+export type CloudFormationMetadata = {
+  Instances?: {
+    Description?: string;
+  };
+  Databases?: {
+    Description?: string;
+  };
+  'AWS::CloudFormation::Init'?: Record<any, any>;
+  'AWS::CloudFormation::Interface'?: {
+    ParameterGroups?: {
+      Label: {
+        default?: string;
       };
-      Databases?: {
-        Description?: string;
-      };
-      'AWS::CloudFormation::Init'?: Record<any, any>;
-      'AWS::CloudFormation::Interface'?: {
-        ParameterGroups?: {
-          Label: {
-            default?: string;
-          };
-          Parameters?: string[];
-        }[];
-        ParameterLabels?: Record<
-          string,
-          {
-            default?: string;
-          }
-        >;
-      };
-      'AWS::CloudFormation::Designer'?: Record<any, any>;
-    }
-  | Record<any, any>;
+      Parameters?: string[];
+    }[];
+    ParameterLabels?: Record<
+      string,
+      {
+        default?: string;
+      }
+    >;
+  };
+  'AWS::CloudFormation::Designer'?: Record<any, any>;
+  [additionalKey: string]: any;
+};
 
 export type CloudFormationResource<TypeString extends string, AttributesType extends Record<any, any>, PropertiesType extends Record<any, any>> = {
   Type: TypeString;
@@ -140,22 +139,23 @@ export type CloudFormationResource<TypeString extends string, AttributesType ext
   Properties: PropertiesType;
 };
 
-export type CloudFormationTemplate =
-  | {
-      Parameters?: Record<string, CloudFormationParameter>;
-      Metadata?: CloudFormationMetadata;
-      Conditions?: Record<any, any>;
-      Resources?: Record<string, AllResourceTypes>;
-      Output?: Record<
-        string,
-        {
-          Description?: string;
-          Value?: string | any;
-          Export?: {
-            Name?: string | any;
-          };
-          Condition?: any;
-        }
-      >;
+export type CloudFormationTemplate = {
+  AWSTemplateFormatVersion: '<<<AWS_TEMPLATE_FORMAT_VERSION>>>';
+  Description?: string;
+  Parameters?: Record<string, CloudFormationParameter>;
+  Metadata?: CloudFormationMetadata;
+  Conditions?: Record<any, any>;
+  Resources?: Record<string, AllResourceTypes>;
+  Output?: Record<
+    string,
+    {
+      Description?: string;
+      Value?: string | any;
+      Export?: {
+        Name?: string | any;
+      };
+      Condition?: any;
     }
-  | Record<any, any>;
+  >;
+  [additionalKey: string]: any;
+};

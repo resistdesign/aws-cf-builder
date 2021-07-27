@@ -6,10 +6,13 @@ import { CloudFormationResourceSpecificationData } from './CloudFormationResourc
 import { getNamespaceStructure } from './Utils';
 import { renderNamespaceStructure } from './Renderers';
 
+const { ResourceSpecificationVersion } = CloudFormationResourceSpecificationData;
+
 const STANDARD_INCLUDES = FS.readFileSync(Path.join(__dirname, 'StandardIncludes.d.ts'), { encoding: 'utf8' })
   // IMPORTANT: Remove the first line which is a placeholder for the `AllResourceTypes` type.
   .replace(/.*/, '')
-  .substr(1);
+  .substr(1)
+  .replace(/<<<AWS_TEMPLATE_FORMAT_VERSION>>>/gm, () => ResourceSpecificationVersion);
 
 const BASE_NAMESPACE_STRUCTURE: NamespaceStructure = {
   path: [],
@@ -25,6 +28,5 @@ const TypesContentString = format(renderNamespaceStructure(NamespaceStructure), 
   parser: 'typescript',
 });
 
-FS.writeFileSync('./AWSResourceTypes.d.ts', TypesContentString, {
-  encoding: 'utf8',
-});
+FS.mkdirSync(Path.join(__dirname, '..', 'dist'), { recursive: true });
+FS.writeFileSync(Path.join(__dirname, '..', 'dist', 'index.d.ts'), TypesContentString, { encoding: 'utf8' });
