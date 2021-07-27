@@ -2,25 +2,17 @@
   "name": "aws-cf-builder",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Ryan Graff",
+  "author": "Resist Design",
   "license": "MIT",
-  "scripts": {
-    "build": "node -r ts-node/register ./src/index.ts"
-  },
-  "devDependencies": {
-    "@types/node": "^16.3.1",
-    "@types/prettier": "^2.3.2",
-    "prettier": "^2.3.2",
-    "ts-node": "^10.1.0",
-    "tslib": "^2.3.0",
-    "typescript": "^4.3.5"
-  },
+  "private": true,
+  "workspaces": [
+    "workspaces/*"
+  ],
   "prettier": {
     "printWidth": 150,
     "semi": true,
     "singleQuote": true,
     "trailingComma": "es5",
     "useTabs": false
-  },
-  "dependencies": {}
+  }
 }
