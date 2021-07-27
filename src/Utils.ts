@@ -8,6 +8,7 @@ export const getNamespaceStructure = (specification: CloudFormationResourceSpeci
   const { PropertyTypes, ResourceTypes } = specification;
   const propertyTypesKeys = Object.keys(PropertyTypes);
   const resourceTypesKeys = Object.keys(ResourceTypes);
+  const resourceTypeOptions = [];
 
   for (const pTK of propertyTypesKeys) {
     const fullPropertyTypeNameParts = pTK
@@ -48,7 +49,12 @@ export const getNamespaceStructure = (specification: CloudFormationResourceSpeci
 
       if (i === fullResourceTypeNameParts.length - 1) {
         targetNamespace.resourceTypes = targetNamespace.resourceTypes || {};
-        targetNamespace.resourceTypes[part] = resType;
+        targetNamespace.resourceTypes[part] = {
+          ...resType,
+          Type: rTK,
+        };
+
+        resourceTypeOptions.push(currentPath.join(NAMESPACE_DELIMITERS.OUTPUT));
       } else {
         targetNamespace.namespaces = targetNamespace.namespaces || {};
         targetNamespace.namespaces[part] = targetNamespace.namespaces[part] || { path: [...currentPath] };
@@ -56,6 +62,8 @@ export const getNamespaceStructure = (specification: CloudFormationResourceSpeci
       }
     }
   }
+
+  newStructure.aliases = [...(newStructure.aliases || []), `export type AllResourceTypes = ${resourceTypeOptions.join(' | ')};`];
 
   return newStructure;
 };

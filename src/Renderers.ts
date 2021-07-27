@@ -38,10 +38,22 @@ export const renderPropertyName = (propertyName: string, descriptor: PropertyDes
 
 export const renderCommentBlock = ({ UpdateType, DuplicatesAllowed = false, Documentation }: IDocumentable) =>
   UpdateType || DuplicatesAllowed || Documentation
-    ? `/**
- * ${UpdateType ? `Update Type: ${UpdateType}` : ''}
- * ${DuplicatesAllowed ? 'Duplicates Allowed: Yes' : ''}
- * ${Documentation ? `@see ${Documentation}` : ''}
+    ? `/**${
+        UpdateType
+          ? `
+ * Update Type: ${UpdateType}`
+          : ''
+      }${
+        DuplicatesAllowed
+          ? `
+ * Duplicates Allowed: Yes`
+          : ''
+      }${
+        Documentation
+          ? `
+ * @see ${Documentation}`
+          : ''
+      }
  * */
 `
     : '';
@@ -79,14 +91,14 @@ export const renderTypeFromPropertyType = (path: string[], typeName: string, pro
 };
 
 export const renderTypeFromResourceType = (path: string[], typeName: string, resourceType: ResourceType) => {
-  const { Properties, Attributes } = resourceType;
+  const { Type, Properties, Attributes } = resourceType;
   const commentBlock = renderCommentBlock(resourceType);
   const subPath = [...path, typeName];
 
   return renderTypeWithFullBody(
     commentBlock,
     typeName,
-    `${RESOURCE_TYPE_NAME}<${Attributes ? renderTypePropertiesBody(subPath, Attributes) : NEVER_TYPE}, ${
+    `${RESOURCE_TYPE_NAME}<'${Type}', ${Attributes ? renderTypePropertiesBody(subPath, Attributes) : NEVER_TYPE}, ${
       Properties ? renderTypePropertiesBody(subPath, Properties) : NEVER_TYPE
     }>`
   );

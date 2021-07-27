@@ -22,6 +22,7 @@ export type PropertyType = PropertyDescriptor & {
 };
 
 export type ResourceType = {
+  Type?: string;
   Documentation?: string;
   AdditionalProperties?: boolean;
   Properties?: Record<string, PropertyDescriptor>;

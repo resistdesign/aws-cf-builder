@@ -22,7 +22,8 @@ export const PRIMITIVE_TYPE_MAP: Record<string, string> = {
 
 export const RESOURCE_TYPE_NAME = 'CloudFormationResource';
 
-export const RESOURCE_TYPE = `export type ${RESOURCE_TYPE_NAME}<AttributesType, PropertiesType> = {
+export const RESOURCE_TYPE = `export type ${RESOURCE_TYPE_NAME}<TypeString extends string, AttributesType extends Record<any, any>, PropertiesType extends Record<any, any>> = {
+  Type: TypeString;
   Attributes: AttributesType;
   Properties: PropertiesType;
 };`;
