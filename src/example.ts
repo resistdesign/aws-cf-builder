@@ -9,7 +9,14 @@ export const Template: CloudFormationTemplate = {
       Properties: {
         Role: '',
         Code: {
-          ZipFile: '',
+          ZipFile: {
+            'Fn::Sub': [
+              'Data: ${data}',
+              {
+                data: 'Interpolated data.',
+              },
+            ],
+          },
         },
       },
     },

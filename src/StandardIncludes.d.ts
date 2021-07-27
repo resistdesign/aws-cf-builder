@@ -11,7 +11,29 @@ export enum CloudFormationPseudoParameters {
   'AWS::URLSuffix' = 'AWS::URLSuffix',
 }
 
-export type CloudFormationIntrinsicFunction = any;
+export type CloudFormationIntrinsicFunctionNames =
+  | 'Fn::And'
+  | 'Fn::Equals'
+  | 'Fn::If'
+  | 'Fn::Not'
+  | 'Fn::Or'
+  | 'Fn::Base64'
+  | 'Fn::Cidr'
+  | 'Fn::FindInMap'
+  | 'Fn::GetAtt'
+  | 'Fn::GetAZs'
+  | 'Fn::ImportValue'
+  | 'Fn::Join'
+  | 'Fn::Select'
+  | 'Fn::Split'
+  | 'Fn::Sub'
+  | 'Fn::Transform'
+  | 'Condition'
+  | 'Ref';
+
+export type CloudFormationIntrinsicFunction = {
+  [Fn in CloudFormationIntrinsicFunctionNames]?: any;
+};
 
 export type Json = string;
 
