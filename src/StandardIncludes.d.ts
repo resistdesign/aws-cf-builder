@@ -1,5 +1,16 @@
 export type AllResourceTypes = any; /* IMPORTANT: This line will be removed during generation. */
 
+export enum CloudFormationPseudoParameters {
+  'AWS::AccountId' = 'AWS::AccountId',
+  'AWS::NotificationARNs' = 'AWS::NotificationARNs',
+  'AWS::NoValue' = 'AWS::NoValue',
+  'AWS::Partition' = 'AWS::Partition',
+  'AWS::Region' = 'AWS::Region',
+  'AWS::StackId' = 'AWS::StackId',
+  'AWS::StackName' = 'AWS::StackName',
+  'AWS::URLSuffix' = 'AWS::URLSuffix',
+}
+
 export type CloudFormationIntrinsicFunction = any;
 
 export type Json = string;
@@ -131,5 +142,6 @@ export type CloudFormationResource<TypeString extends string, AttributesType ext
 export type CloudFormationTemplate = {
   Parameters: Record<string, CloudFormationParameter>;
   Metadata: CloudFormationMetadata;
+
   Resources: Record<string, AllResourceTypes>;
 };

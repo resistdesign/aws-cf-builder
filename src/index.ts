@@ -6,7 +6,7 @@ import { CloudFormationResourceSpecificationData } from './CloudFormationResourc
 import { getNamespaceStructure } from './Utils';
 import { renderNamespaceStructure } from './Renderers';
 
-const STANDARD_INCLUDES = FS.readFileSync(Path.join(__dirname, 'StandardIncludes.ts'), { encoding: 'utf8' })
+const STANDARD_INCLUDES = FS.readFileSync(Path.join(__dirname, 'StandardIncludes.d.ts'), { encoding: 'utf8' })
   // IMPORTANT: Remove the first line which is a placeholder for the `AllResourceTypes` type.
   .replace(/.*/, '')
   .substr(1);
