@@ -166,7 +166,7 @@ export type CloudFormationTemplate = {
   Description?: string;
   Parameters?: Record<string, CloudFormationParameter>;
   Metadata?: CloudFormationMetadata;
-  Conditions?: Record<any, any>;
+  Conditions?: Record<string, any>;
   Resources?: Record<string, AllResourceTypes>;
   Output?: Record<
     string,
