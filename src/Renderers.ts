@@ -1,5 +1,5 @@
 import { AttributeType, IDocumentable, NamespaceStructure, PropertyDescriptor, PropertyType, ResourceType } from './Types';
-import { CONTAINER_TYPES, NAMESPACE_DELIMITERS, NEVER_TYPE, PRIMITIVE_TYPE_MAP, RESOURCE_TYPE_NAME, TAG_TYPE } from './Constants';
+import { CONTAINER_TYPES, NAMESPACE_DELIMITERS, NEVER_TYPE, PRIMITIVE_TYPE_MAP, TAG_TYPE } from './Constants';
 
 export const renderPrimitiveType = (primitiveType: string) =>
   primitiveType in PRIMITIVE_TYPE_MAP ? PRIMITIVE_TYPE_MAP[primitiveType] : primitiveType;
@@ -98,17 +98,17 @@ export const renderTypeFromResourceType = (path: string[], typeName: string, res
   return renderTypeWithFullBody(
     commentBlock,
     typeName,
-    `${RESOURCE_TYPE_NAME}<'${Type}', ${Attributes ? renderTypePropertiesBody(subPath, Attributes) : NEVER_TYPE}, ${
+    `CloudFormationResource<'${Type}', ${Attributes ? renderTypePropertiesBody(subPath, Attributes) : NEVER_TYPE}, ${
       Properties ? renderTypePropertiesBody(subPath, Properties) : NEVER_TYPE
     }>`
   );
 };
 
 export const renderNamespaceStructure = (
-  { path = [], aliases = [], propertyTypes = {}, resourceTypes = {}, namespaces = {} }: NamespaceStructure,
+  { path = [], includes = [], propertyTypes = {}, resourceTypes = {}, namespaces = {} }: NamespaceStructure,
   namespaceName?: string
 ) => {
-  const namespaceBody: string = `${aliases?.join('\n')}
+  const namespaceBody: string = `${includes?.join('\n')}
 
 ${Object.keys(propertyTypes)
   .map((pT) => renderTypeFromPropertyType(path, pT, propertyTypes[pT]))

@@ -63,7 +63,7 @@ export const getNamespaceStructure = (specification: CloudFormationResourceSpeci
     }
   }
 
-  newStructure.aliases = [...(newStructure.aliases || []), `export type AllResourceTypes = ${resourceTypeOptions.join(' | ')};`];
+  newStructure.includes = [`export type AllResourceTypes = ${resourceTypeOptions.join(' | ')};`, ...(newStructure.includes || [])];
 
   return newStructure;
 };

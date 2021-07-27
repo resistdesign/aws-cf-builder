@@ -37,7 +37,7 @@ export type CloudFormationResourceSpecification = {
 
 export type NamespaceStructure = {
   path: string[];
-  aliases?: string[];
+  includes?: string[];
   propertyTypes?: Record<string, PropertyType>;
   resourceTypes?: Record<string, ResourceType>;
   namespaces?: Record<string, NamespaceStructure>;

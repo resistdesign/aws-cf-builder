@@ -1,14 +1,16 @@
+import Path from 'path';
 import FS from 'fs';
 import { format } from 'prettier';
 import { NamespaceStructure } from './Types';
 import { CloudFormationResourceSpecificationData } from './CloudFormationResourceSpecification';
-import { STANDARD_ALIASES } from './Constants';
 import { getNamespaceStructure } from './Utils';
 import { renderNamespaceStructure } from './Renderers';
 
+const STANDARD_INCLUDES = FS.readFileSync(Path.join(__dirname, 'StandardIncludes.ts'), { encoding: 'utf8' });
+
 const BASE_NAMESPACE_STRUCTURE: NamespaceStructure = {
   path: [],
-  aliases: STANDARD_ALIASES,
+  includes: [STANDARD_INCLUDES],
   propertyTypes: {},
   resourceTypes: {},
   namespaces: {},

@@ -19,13 +19,3 @@ export const PRIMITIVE_TYPE_MAP: Record<string, string> = {
   Timestamp: 'Timestamp',
   Long: 'number',
 };
-
-export const RESOURCE_TYPE_NAME = 'CloudFormationResource';
-
-export const RESOURCE_TYPE = `export type ${RESOURCE_TYPE_NAME}<TypeString extends string, AttributesType extends Record<any, any>, PropertiesType extends Record<any, any>> = {
-  Type: TypeString;
-  Attributes?: AttributesType & never;
-  Properties: PropertiesType;
-};`;
-
-export const STANDARD_ALIASES = ['export type Json = string;', 'export type Timestamp = string;', RESOURCE_TYPE];
