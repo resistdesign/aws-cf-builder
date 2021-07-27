@@ -2,7 +2,7 @@ import { AttributeType, IDocumentable, NamespaceStructure, PropertyDescriptor, P
 import { CONTAINER_TYPES, NAMESPACE_DELIMITERS, NEVER_TYPE, PRIMITIVE_TYPE_MAP, TAG_TYPE } from './Constants';
 
 export const renderPrimitiveType = (primitiveType: string) =>
-  primitiveType in PRIMITIVE_TYPE_MAP ? PRIMITIVE_TYPE_MAP[primitiveType] : primitiveType;
+  primitiveType in PRIMITIVE_TYPE_MAP ? `${PRIMITIVE_TYPE_MAP[primitiveType]} | CloudFormationIntrinsicFunction` : primitiveType;
 
 export const renderPropertyType = (path: string[], { PrimitiveType, Type, PrimitiveItemType, ItemType }: AttributeType) => {
   if (PrimitiveType) {

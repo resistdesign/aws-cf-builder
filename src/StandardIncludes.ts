@@ -1,4 +1,6 @@
-export type AllResourceTypes = any;
+export type AllResourceTypes = any; /* IMPORTANT: This line will be removed during generation. */
+
+export type CloudFormationIntrinsicFunction = any;
 
 export type Json = string;
 
