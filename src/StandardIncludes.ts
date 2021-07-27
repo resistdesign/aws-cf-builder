@@ -43,6 +43,33 @@ export type CloudFormationParameter = {
     | string;
 };
 
+export type CloudFormationMetadata =
+  | {
+      Instances?: {
+        Description?: string;
+      };
+      Databases?: {
+        Description?: string;
+      };
+      'AWS::CloudFormation::Init'?: Record<any, any>;
+      'AWS::CloudFormation::Interface'?: {
+        ParameterGroups?: {
+          Label: {
+            default?: string;
+          };
+          Parameters?: string[];
+        }[];
+        ParameterLabels?: Record<
+          string,
+          {
+            default?: string;
+          }
+        >;
+      };
+      'AWS::CloudFormation::Designer'?: Record<any, any>;
+    }
+  | Record<any, any>;
+
 export type CloudFormationResource<TypeString extends string, AttributesType extends Record<any, any>, PropertiesType extends Record<any, any>> = {
   Type: TypeString;
   Attributes?: AttributesType & never;
@@ -101,5 +128,6 @@ export type CloudFormationResource<TypeString extends string, AttributesType ext
 
 export type CloudFormationTemplate = {
   Parameters: Record<string, CloudFormationParameter>;
+  Metadata: CloudFormationMetadata;
   Resources: Record<string, AllResourceTypes>;
 };
