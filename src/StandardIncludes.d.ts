@@ -136,12 +136,26 @@ export type CloudFormationResource<TypeString extends string, AttributesType ext
     };
   };
   UpdateReplacePolicy?: 'Delete' | 'Retain' | 'Snapshot';
+  Condition?: any;
   Properties: PropertiesType;
 };
 
-export type CloudFormationTemplate = {
-  Parameters: Record<string, CloudFormationParameter>;
-  Metadata: CloudFormationMetadata;
-
-  Resources: Record<string, AllResourceTypes>;
-};
+export type CloudFormationTemplate =
+  | {
+      Parameters?: Record<string, CloudFormationParameter>;
+      Metadata?: CloudFormationMetadata;
+      Conditions?: Record<any, any>;
+      Resources?: Record<string, AllResourceTypes>;
+      Output?: Record<
+        string,
+        {
+          Description?: string;
+          Value?: string | any;
+          Export?: {
+            Name?: string | any;
+          };
+          Condition?: any;
+        }
+      >;
+    }
+  | Record<any, any>;

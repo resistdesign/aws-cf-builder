@@ -1,11 +1,15 @@
-import { AWS } from '../AWSResourceTypes';
+import { CloudFormationTemplate } from '../AWSResourceTypes';
 
-export const Func: AWS.Lambda.Function = {
-  Type: 'AWS::Lambda::Function',
-  Properties: {
-    Code: {
-      ZipFile: ''
+export const Template: CloudFormationTemplate = {
+  Resources: {
+    APIFunction: {
+      Type: 'AWS::Lambda::Function',
+      Properties: {
+        Role: '',
+        Code: {
+          ZipFile: '',
+        },
+      },
     },
-    Role: '',
   },
 };
