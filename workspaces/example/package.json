@@ -1,10 +1,7 @@
 {
-  "name": "@aws-cf-builder/types",
+  "name": "@aws-cf-builder/example",
   "version": "1.0.0",
-  "main": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "main": "index.js",
   "author": "Resist Design",
   "license": "MIT",
   "scripts": {
@@ -25,5 +22,7 @@
     "trailingComma": "es5",
     "useTabs": false
   },
-  "dependencies": {}
+  "dependencies": {
+    "@aws-cf-builder/types": "^1.0.0"
+  }
 }
