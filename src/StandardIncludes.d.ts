@@ -35,6 +35,8 @@ export type CloudFormationIntrinsicFunction = {
   [Fn in CloudFormationIntrinsicFunctionNames]?: any;
 };
 
+export type CloudFormationPrimitiveValue<BaseType> = BaseType | CloudFormationIntrinsicFunction;
+
 export type Json = string;
 
 export type Timestamp = string;
@@ -171,12 +173,12 @@ export type CloudFormationTemplate = {
   Output?: Record<
     string,
     {
-      Description?: string;
-      Value?: string | any;
+      Description?: CloudFormationPrimitiveValue<string>;
+      Value?: CloudFormationPrimitiveValue<string | any>;
       Export?: {
-        Name?: string | any;
+        Name?: CloudFormationPrimitiveValue<string | any>;
       };
-      Condition?: any;
+      Condition?: CloudFormationPrimitiveValue<any>;
     }
   >;
   [additionalKey: string]: any;
