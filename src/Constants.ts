@@ -24,7 +24,7 @@ export const RESOURCE_TYPE_NAME = 'CloudFormationResource';
 
 export const RESOURCE_TYPE = `export type ${RESOURCE_TYPE_NAME}<TypeString extends string, AttributesType extends Record<any, any>, PropertiesType extends Record<any, any>> = {
   Type: TypeString;
-  Attributes: AttributesType;
+  Attributes?: AttributesType & never;
   Properties: PropertiesType;
 };`;
 
