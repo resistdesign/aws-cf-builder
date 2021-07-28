@@ -1,7 +1,7 @@
 import { CloudFormationTemplate } from '@aws-cf-builder/types';
 
 export const Template: CloudFormationTemplate = {
-  AWSTemplateFormatVersion: '39.5.0',
+  AWSTemplateFormatVersion: '2010-09-09',
   Description: 'An example template.',
   Parameters: {
     MyParam: {
@@ -30,3 +30,5 @@ export const Template: CloudFormationTemplate = {
     },
   },
 };
+
+export default Template;

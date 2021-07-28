@@ -164,7 +164,7 @@ export type CloudFormationResource<TypeString extends string, AttributesType ext
 };
 
 export type CloudFormationTemplate = {
-  AWSTemplateFormatVersion: '<<<AWS_TEMPLATE_FORMAT_VERSION>>>';
+  AWSTemplateFormatVersion: '2010-09-09';
   Description?: string;
   Parameters?: Record<string, CloudFormationParameter>;
   Metadata?: CloudFormationMetadata;

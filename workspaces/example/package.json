@@ -1,11 +1,11 @@
 {
   "name": "@aws-cf-builder/example",
   "version": "1.0.0",
-  "main": "src/index.ts",
+  "main": "src/iac.ts",
   "author": "Resist Design",
   "license": "MIT",
   "scripts": {
-    "build": "cfbuild -v"
+    "build": "cfbuild"
   },
   "prettier": {
     "printWidth": 150,
