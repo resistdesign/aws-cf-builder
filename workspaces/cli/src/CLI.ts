@@ -2,6 +2,7 @@ import Path from 'path';
 import FS from 'fs';
 import { program } from 'commander';
 import YAML from 'yaml';
+import { validateFile } from 'cfn-lint';
 
 export const CLI = (packageInfo: { version: string } = { version: '0.0.0' }) => {
   const { version = '0.0.0' } = packageInfo;
@@ -36,6 +37,8 @@ export const CLI = (packageInfo: { version: string } = { version: '0.0.0' }) => 
 
   FS.mkdirSync(outputDir, { recursive: true });
   FS.writeFileSync(output, templateYAML, { encoding: 'utf8' });
+
+  console.log('VALIDATION:', JSON.stringify(validateFile(output), null, 2));
 
   console.log('COMPLETE');
 };

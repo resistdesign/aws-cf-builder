@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@types/node": "^16.4.4",
+    "cfn-lint": "^1.9.7",
     "commander": "^8.1.0",
     "ts-node": "^10.1.0",
     "tslib": "^2.3.0",
