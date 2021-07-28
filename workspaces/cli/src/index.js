@@ -1,4 +1,7 @@
 #!/usr/bin/env node
 
 require('ts-node/register');
-require('./CLI');
+
+const Package = require('../package.json');
+
+require('./CLI').CLI(Package);

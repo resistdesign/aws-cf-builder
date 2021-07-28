@@ -5,7 +5,7 @@
   "author": "Resist Design",
   "license": "MIT",
   "scripts": {
-    "build": "node -r ts-node/register ./src/index.ts"
+    "build": "cfbuild -v"
   },
   "prettier": {
     "printWidth": 150,
