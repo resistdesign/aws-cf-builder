@@ -1,0 +1,5 @@
+# CLI
+
+## Run
+
+`cfbuild -h`
