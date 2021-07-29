@@ -1,4 +1,5 @@
 import { CloudFormationTemplate } from '@aws-cf-builder/types';
+import { addParameter } from '@aws-cf-builder/utils';
 
 export const Template: CloudFormationTemplate = {
   AWSTemplateFormatVersion: '2010-09-09',
@@ -31,4 +32,15 @@ export const Template: CloudFormationTemplate = {
   },
 };
 
-export default Template;
+export default addParameter(
+  {
+    ParameterId: 'CoolParam',
+    Label: 'Cool Parameter',
+    Group: 'Only The Cool Params',
+    Parameter: {
+      Type: 'String',
+      Description: 'Something Cool...',
+    },
+  },
+  Template
+);
