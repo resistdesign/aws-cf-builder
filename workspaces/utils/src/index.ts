@@ -7,9 +7,9 @@ export type ParameterInfo = {
   Group?: string;
 };
 
-export const addParameter = (parameterInfo: ParameterInfo, template: CloudFormationTemplate) => {
-  const { ParameterId, Parameter = {}, Label, Group } = parameterInfo;
-  const { Parameters = {}, Metadata: { 'AWS::CloudFormation::Interface': { ParameterGroups = [], ParameterLabels = {} } = {} } = {} } = template;
+export const addParameter = (parameterInfo: ParameterInfo, template: CloudFormationTemplate): CloudFormationTemplate => {
+  const { ParameterId, Parameter, Label, Group } = parameterInfo;
+  const { Parameters, Metadata: { 'AWS::CloudFormation::Interface': { ParameterGroups = [], ParameterLabels = {} } = {} } = {} } = template;
 
   let NewParameterGroups = ParameterGroups;
 
