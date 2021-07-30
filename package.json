@@ -8,6 +8,9 @@
   "workspaces": [
     "workspaces/*"
   ],
+  "scripts": {
+    "build": "yarn workspaces run build"
+  },
   "prettier": {
     "printWidth": 150,
     "semi": true,
