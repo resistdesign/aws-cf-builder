@@ -1,5 +1,5 @@
 {
-  "name": "@aws-cf-builder/utils",
+  "name": "@aws-cf-builder/packs",
   "version": "1.0.0",
   "main": "dist/index.js",
   "files": [
@@ -22,8 +22,7 @@
   },
   "dependencies": {
     "@aws-cf-builder/types": "^1.0.0",
-    "@types/flat": "^5.0.2",
-    "flat": "^5.0.2",
+    "@aws-cf-builder/utils": "^1.0.0",
     "tslib": "^2.3.0",
     "typescript": "^4.3.5"
   }
