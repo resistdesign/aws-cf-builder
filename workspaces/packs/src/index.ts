@@ -4,7 +4,7 @@ import { AWS, CloudFormationTemplate } from '@aws-cf-builder/types';
 /**
  * Add a secure S3 Bucket with an optional parameter to set the bucket name.
  * */
-export const secureFileStorage = createResourcePack(
+export const addSecureFileStorage = createResourcePack(
   ({
     id,
     bucketName = false,
