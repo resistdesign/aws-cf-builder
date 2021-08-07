@@ -8,6 +8,7 @@
   "author": "Resist Design",
   "license": "MIT",
   "scripts": {
+    "test": "jest",
     "build": "tsc --outDir dist"
   },
   "prettier": {
@@ -18,7 +19,10 @@
     "useTabs": false
   },
   "devDependencies": {
-    "prettier": "^2.3.2"
+    "@types/jest": "^26.0.24",
+    "jest": "^27.0.6",
+    "prettier": "^2.3.2",
+    "ts-jest": "^27.0.4"
   },
   "dependencies": {
     "@aws-cf-builder/types": "^1.0.0",
