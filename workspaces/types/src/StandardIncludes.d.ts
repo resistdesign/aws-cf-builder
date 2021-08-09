@@ -37,7 +37,7 @@ export type CloudFormationIntrinsicFunction = {
 
 export type CloudFormationPrimitiveValue<BaseType> = BaseType | CloudFormationIntrinsicFunction;
 
-export type Json = string;
+export type Json = any;
 
 export type Timestamp = string;
 
