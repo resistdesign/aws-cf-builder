@@ -14,9 +14,9 @@ export const addBuildPipeline = createResourcePack(
   }: {
     id: string;
     buildSpec: any;
-    dependsOn: string | string[];
-    environmentVariables: AWS.CodeBuild.Project.EnvironmentVariable[];
-    timeoutInMinutes: number;
+    dependsOn?: string | string[];
+    environmentVariables?: AWS.CodeBuild.Project.EnvironmentVariable[];
+    timeoutInMinutes?: number;
   }) => {
     return {
       Resources: {
