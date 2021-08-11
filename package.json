@@ -17,5 +17,8 @@
     "singleQuote": true,
     "trailingComma": "es5",
     "useTabs": false
+  },
+  "devDependencies": {
+    "npm-release": "^1.0.0"
   }
 }
