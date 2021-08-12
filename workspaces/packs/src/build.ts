@@ -1,4 +1,4 @@
-import { createResourcePack } from '@aws-cf-builder/utils';
+import { addParameters, createResourcePack, ParameterInfo } from '@aws-cf-builder/utils';
 import { AWS } from '@aws-cf-builder/types';
 
 /**
@@ -8,17 +8,62 @@ export const addBuildPipeline = createResourcePack(
   ({
     id,
     buildSpec,
+    label,
     dependsOn,
     environmentVariables,
     timeoutInMinutes = 10,
   }: {
     id: string;
     buildSpec: any;
+    label?: string;
     dependsOn?: string | string[];
     environmentVariables?: AWS.CodeBuild.Project.EnvironmentVariable[];
     timeoutInMinutes?: number;
   }) => {
-    return {
+    const cleanLabel = label || id;
+    const group = `${cleanLabel} Parameters`;
+    const paramList: ParameterInfo[] = [
+      {
+        ParameterId: `${id}GitHubUser`,
+        Parameter: {
+          Type: 'String',
+          Description: 'The GitHub User that owns the repository',
+        },
+        Label: `${cleanLabel} GitHub User`,
+        Group: group,
+      },
+      {
+        ParameterId: `${id}GitHubRepo`,
+        Parameter: {
+          Type: 'String',
+          Description: 'The name of the GitHub repository',
+        },
+        Label: `${cleanLabel} GitHub Repo`,
+        Group: group,
+      },
+      {
+        ParameterId: `${id}GitHubBranch`,
+        Parameter: {
+          Type: 'String',
+          Description: 'The name of the branch to be built',
+          Default: 'master',
+        },
+        Label: `${cleanLabel} GitHub Branch`,
+        Group: group,
+      },
+      {
+        ParameterId: `${id}GitHubToken`,
+        Parameter: {
+          NoEcho: true,
+          Type: 'String',
+          Description: 'A GitHub Access Token with `repo` permissions (https://github.com/settings/tokens)',
+        },
+        Label: `${id} GitHub Token`,
+        Group: group,
+      },
+    ];
+
+    return addParameters(paramList, {
       Resources: {
         [`${id}CodeBuildRole`]: {
           Type: 'AWS::IAM::Role',
@@ -174,16 +219,16 @@ export const addBuildPipeline = createResourcePack(
                     ],
                     Configuration: {
                       Owner: {
-                        Ref: 'GitHubUser',
+                        Ref: `${id}GitHubUser`,
                       },
                       Repo: {
-                        Ref: 'GitHubRepo',
+                        Ref: `${id}GitHubRepo`,
                       },
                       Branch: {
-                        Ref: 'GitHubBranch',
+                        Ref: `${id}GitHubBranch`,
                       },
                       OAuthToken: {
-                        Ref: 'GitHubToken',
+                        Ref: `${id}GitHubToken`,
                       },
                     },
                     RunOrder: 1,
@@ -230,6 +275,6 @@ export const addBuildPipeline = createResourcePack(
           },
         },
       },
-    };
+    } as any);
   }
 );
