@@ -9,7 +9,7 @@
     "workspaces/*"
   ],
   "scripts": {
-    "build": "yarn workspaces run build"
+    "build": "yarn workspaces foreach run build"
   },
   "prettier": {
     "printWidth": 150,
