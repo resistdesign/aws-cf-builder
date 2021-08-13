@@ -1,13 +1,14 @@
-import { createResourcePack } from '@aws-cf-builder/utils';
+import { createResourcePack, SimpleCFT } from '@aws-cf-builder/utils';
 
 export const addGateway = createResourcePack(({ id }: { id: string }) => {
-  return {
+  return new SimpleCFT().patch({
     Resources: {
       // REST API
       [`${id}GatewayRESTAPI`]: {
         Type: 'AWS::ApiGateway::RestApi',
         Properties: {
-          Name: null,
+          // TODO: Fix!
+          Name: '',
           EndpointConfiguration: {
             Types: ['EDGE'],
           },
@@ -59,7 +60,8 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
         Properties: {
           AuthorizationScopes: ['phone', 'email', 'openid', 'profile'],
           AuthorizationType: 'COGNITO_USER_POOLS',
-          AuthorizerId: null,
+          // TODO: Fix!
+          AuthorizerId: '',
           HttpMethod: 'ANY',
           ResourceId: {
             'Fn::GetAtt': ['APIGatewayRESTAPI', 'RootResourceId'],
@@ -129,7 +131,8 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
             'gatewayresponse.header.Access-Control-Allow-Headers': "'*'",
           },
           ResponseType: 'DEFAULT_4XX',
-          RestApiId: null,
+          // TODO: Fix!
+          RestApiId: '',
         },
       },
       // SUPPORTING RESOURCES
@@ -145,7 +148,8 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
       [`${id}CloudWatch`]: {
         Type: 'AWS::Logs::LogGroup',
         Properties: {
-          LogGroupName: null,
+          // TODO: Fix!
+          LogGroupName: '',
         },
       },
       [`${id}CloudWatchRole`]: {
@@ -170,7 +174,8 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
       [`${id}CloudWatchAccount`]: {
         Type: 'AWS::ApiGateway::Account',
         Properties: {
-          CloudWatchRoleArn: null,
+          // TODO: Fix!
+          CloudWatchRoleArn: '',
         },
       },
       [`${id}GatewayRESTAPIEnvironment`]: {
@@ -190,19 +195,22 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
           RestApiId: {
             Ref: 'APIGatewayRESTAPI',
           },
-          StageName: null,
+          // TODO: Fix!
+          StageName: '',
         },
       },
       // DNS
       [`${id}DomainName`]: {
         Type: 'AWS::ApiGateway::DomainName',
         Properties: {
-          CertificateArn: null,
+          // TODO: Fix!
+          CertificateArn: '',
           DomainName: {
             'Fn::Sub': [
               '${DomainName}',
               {
-                DomainName: null,
+                // TODO: Fix!
+                DomainName: '',
               },
             ],
           },
@@ -219,27 +227,31 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
             'Fn::Sub': [
               '${DomainName}',
               {
-                DomainName: null,
+                // TODO: Fix!
+                DomainName: '',
               },
             ],
           },
           RestApiId: {
             Ref: 'APIGatewayRESTAPI',
           },
-          Stage: null,
+          // TODO: Fix!
+          Stage: '',
         },
       },
       [`${id}Route53Record`]: {
         Type: 'AWS::Route53::RecordSet',
         DependsOn: 'APIDomainName',
         Properties: {
-          HostedZoneId: null,
+          // TODO: Fix!
+          HostedZoneId: '',
           Type: 'A',
           Name: {
             'Fn::Sub': [
               '${DomainName}.',
               {
-                DomainName: null,
+                // TODO: Fix!
+                DomainName: '',
               },
             ],
           },
@@ -249,7 +261,8 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
               'Fn::Sub': [
                 '${DomainName}.',
                 {
-                  DomainName: null,
+                  // TODO: Fix!
+                  DomainName: '',
                 },
               ],
             },
@@ -269,7 +282,8 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
             'Fn::Sub': [
               'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${__ApiId__}/${__Stage__}/*/*',
               {
-                __Stage__: null,
+                // TODO: Fix!
+                __Stage__: '',
                 __ApiId__: {
                   Ref: 'APIGatewayRESTAPI',
                 },
@@ -285,11 +299,13 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
         Properties: {
           IdentitySource: 'method.request.header.authorization',
           Name: `${id}CustomAuthorizer`,
-          ProviderARNs: [null],
-          RestApiId: null,
+          // TODO: Fix!
+          ProviderARNs: [''],
+          // TODO: Fix!
+          RestApiId: '',
           Type: 'COGNITO_USER_POOLS',
         },
       },
     },
-  };
+  }).template;
 });
