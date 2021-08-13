@@ -101,9 +101,19 @@ export class SimpleCFT {
 
   public applyPack = <ParamsType>(params: ParamsType, pack: ResourcePackApplier<ParamsType>) => {
     this.template = pack(params, this.template);
+
+    return this;
   };
 
   public patch = (patch: Partial<CloudFormationTemplate>) => {
     this.template = patchTemplate(patch, this.template);
+
+    return this;
+  };
+
+  public addParameter = (parameter: ParameterInfo) => {
+    this.template = addParameter(parameter, this.template);
+
+    return this;
   };
 }
