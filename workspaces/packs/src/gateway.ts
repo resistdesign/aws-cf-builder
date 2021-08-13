@@ -3,6 +3,7 @@ import { createResourcePack } from '@aws-cf-builder/utils';
 export const addGateway = createResourcePack(({ id }: { id: string }) => {
   return {
     Resources: {
+      // REST API
       [`${id}GatewayRESTAPI`]: {
         Type: 'AWS::ApiGateway::RestApi',
         Properties: {
@@ -75,6 +76,7 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
           },
         },
       },
+      // CORS
       [`${id}GatewayRESTAPIOPTIONSMethod`]: {
         Type: 'AWS::ApiGateway::Method',
         DependsOn: 'APIGatewayRESTAPIResource',
@@ -117,6 +119,20 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
           },
         },
       },
+      [`${id}GatewayResponseDefault4XX`]: {
+        Type: 'AWS::ApiGateway::GatewayResponse',
+        Properties: {
+          ResponseParameters: {
+            // Not authorized, so just allow the current origin by mapping it into the header.
+            'gatewayresponse.header.Access-Control-Allow-Origin': 'method.request.header.origin',
+            'gatewayresponse.header.Access-Control-Allow-Credentials': "'true'",
+            'gatewayresponse.header.Access-Control-Allow-Headers': "'*'",
+          },
+          ResponseType: 'DEFAULT_4XX',
+          RestApiId: null,
+        },
+      },
+      // SUPPORTING RESOURCES
       [`${id}GatewayRESTAPIDeployment`]: {
         Type: 'AWS::ApiGateway::Deployment',
         DependsOn: ['APIGatewayRESTAPIResource', 'APIGatewayRESTAPIMethod', 'APIGatewayRESTAPIRootMethod', 'APIGatewayRESTAPI', 'APICloudFunction'],
@@ -177,6 +193,7 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
           StageName: null,
         },
       },
+      // DNS
       [`${id}DomainName`]: {
         Type: 'AWS::ApiGateway::DomainName',
         Properties: {
@@ -212,51 +229,6 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
           Stage: null,
         },
       },
-      [`${id}CloudFunctionANYResourcePermission`]: {
-        Type: 'AWS::Lambda::Permission',
-        Properties: {
-          Action: 'lambda:InvokeFunction',
-          Principal: 'apigateway.amazonaws.com',
-          FunctionName: {
-            Ref: 'APICloudFunction',
-          },
-          SourceArn: {
-            'Fn::Sub': [
-              'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${__ApiId__}/${__Stage__}/*/*',
-              {
-                __Stage__: null,
-                __ApiId__: {
-                  Ref: 'APIGatewayRESTAPI',
-                },
-              },
-            ],
-          },
-        },
-      },
-      [`${id}CustomAuthorizer`]: {
-        // TODO: Should this be pulled out on its own?
-        Type: 'AWS::ApiGateway::Authorizer',
-        Properties: {
-          IdentitySource: 'method.request.header.authorization',
-          Name: `${id}CustomAuthorizer`,
-          ProviderARNs: [null],
-          RestApiId: null,
-          Type: 'COGNITO_USER_POOLS',
-        },
-      },
-      [`${id}GatewayResponseDefault4XX`]: {
-        Type: 'AWS::ApiGateway::GatewayResponse',
-        Properties: {
-          ResponseParameters: {
-            // Not authorized, so just allow the current origin by mapping it into the header.
-            'gatewayresponse.header.Access-Control-Allow-Origin': 'method.request.header.origin',
-            'gatewayresponse.header.Access-Control-Allow-Credentials': "'true'",
-            'gatewayresponse.header.Access-Control-Allow-Headers': "'*'",
-          },
-          ResponseType: 'DEFAULT_4XX',
-          RestApiId: null,
-        },
-      },
       [`${id}Route53Record`]: {
         Type: 'AWS::Route53::RecordSet',
         DependsOn: 'APIDomainName',
@@ -282,6 +254,40 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
               ],
             },
           },
+        },
+      },
+      // PERMISSIONS
+      [`${id}CloudFunctionANYResourcePermission`]: {
+        Type: 'AWS::Lambda::Permission',
+        Properties: {
+          Action: 'lambda:InvokeFunction',
+          Principal: 'apigateway.amazonaws.com',
+          FunctionName: {
+            Ref: 'APICloudFunction',
+          },
+          SourceArn: {
+            'Fn::Sub': [
+              'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${__ApiId__}/${__Stage__}/*/*',
+              {
+                __Stage__: null,
+                __ApiId__: {
+                  Ref: 'APIGatewayRESTAPI',
+                },
+              },
+            ],
+          },
+        },
+      },
+      // AUTHORIZER
+      [`${id}CustomAuthorizer`]: {
+        // TODO: Should this be pulled out on its own?
+        Type: 'AWS::ApiGateway::Authorizer',
+        Properties: {
+          IdentitySource: 'method.request.header.authorization',
+          Name: `${id}CustomAuthorizer`,
+          ProviderARNs: [null],
+          RestApiId: null,
+          Type: 'COGNITO_USER_POOLS',
         },
       },
     },
