@@ -3,7 +3,7 @@ import { createResourcePack } from '@aws-cf-builder/utils';
 export const addGateway = createResourcePack(({ id }: { id: string }) => {
   return {
     Resources: {
-      [`${id}APIGatewayRESTAPI`]: {
+      [`${id}GatewayRESTAPI`]: {
         Type: 'AWS::ApiGateway::RestApi',
         Properties: {
           Name: null,
@@ -12,26 +12,29 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
           },
         },
       },
-      [`${id}APIGatewayRESTAPIResource`]: {
+      [`${id}GatewayRESTAPIResource`]: {
         Type: 'AWS::ApiGateway::Resource',
         DependsOn: 'APIGatewayRESTAPI',
         Properties: {
           ParentId: {
-            'Fn::GetAtt': [`${id}APIGatewayRESTAPI`, 'RootResourceId'],
+            'Fn::GetAtt': [`${id}GatewayRESTAPI`, 'RootResourceId'],
           },
           PathPart: '{proxy+}',
           RestApiId: {
-            Ref: `${id}APIGatewayRESTAPI`,
+            Ref: `${id}GatewayRESTAPI`,
           },
         },
       },
-      [`${id}APIGatewayRESTAPIMethod`]: {
+      [`${id}GatewayRESTAPIMethod`]: {
         Type: 'AWS::ApiGateway::Method',
         DependsOn: 'APIGatewayRESTAPIResource',
         Properties: {
           AuthorizationScopes: ['phone', 'email', 'openid', 'profile'],
           AuthorizationType: 'COGNITO_USER_POOLS',
-          AuthorizerId: null,
+          AuthorizerId: {
+            // TODO: What?! :P
+            Ref: 'APICustomAuthorizer',
+          },
           HttpMethod: 'ANY',
           ResourceId: {
             Ref: 'APIGatewayRESTAPIResource',
@@ -43,12 +46,13 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
             Type: 'AWS_PROXY',
             IntegrationHttpMethod: 'POST',
             Uri: {
+              // TODO: Cloud function arn.
               'Fn::Sub': 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${APICloudFunction.Arn}/invocations',
             },
           },
         },
       },
-      [`${id}APIGatewayRESTAPIRootMethod`]: {
+      [`${id}GatewayRESTAPIRootMethod`]: {
         Type: 'AWS::ApiGateway::Method',
         DependsOn: 'APIGatewayRESTAPIResource',
         Properties: {
@@ -71,7 +75,7 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
           },
         },
       },
-      [`${id}APIGatewayRESTAPIOPTIONSMethod`]: {
+      [`${id}GatewayRESTAPIOPTIONSMethod`]: {
         Type: 'AWS::ApiGateway::Method',
         DependsOn: 'APIGatewayRESTAPIResource',
         Properties: {
@@ -92,7 +96,7 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
           },
         },
       },
-      [`${id}APIGatewayRESTAPIRootOPTIONSMethod`]: {
+      [`${id}GatewayRESTAPIRootOPTIONSMethod`]: {
         Type: 'AWS::ApiGateway::Method',
         DependsOn: 'APIGatewayRESTAPIResource',
         Properties: {
@@ -113,7 +117,7 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
           },
         },
       },
-      [`${id}APIGatewayRESTAPIDeployment`]: {
+      [`${id}GatewayRESTAPIDeployment`]: {
         Type: 'AWS::ApiGateway::Deployment',
         DependsOn: ['APIGatewayRESTAPIResource', 'APIGatewayRESTAPIMethod', 'APIGatewayRESTAPIRootMethod', 'APIGatewayRESTAPI', 'APICloudFunction'],
         Properties: {
@@ -122,13 +126,13 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
           },
         },
       },
-      [`${id}APICloudWatch`]: {
+      [`${id}CloudWatch`]: {
         Type: 'AWS::Logs::LogGroup',
         Properties: {
           LogGroupName: null,
         },
       },
-      [`${id}APICloudWatchRole`]: {
+      [`${id}CloudWatchRole`]: {
         Type: 'AWS::IAM::Role',
         Properties: {
           AssumeRolePolicyDocument: {
@@ -147,13 +151,13 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
           ManagedPolicyArns: ['arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs'],
         },
       },
-      [`${id}APICloudWatchAccount`]: {
+      [`${id}CloudWatchAccount`]: {
         Type: 'AWS::ApiGateway::Account',
         Properties: {
           CloudWatchRoleArn: null,
         },
       },
-      [`${id}APIGatewayRESTAPIEnvironment`]: {
+      [`${id}GatewayRESTAPIEnvironment`]: {
         Type: 'AWS::ApiGateway::Stage',
         DependsOn: ['APICloudWatchAccount', 'APIGatewayRESTAPIDeployment'],
         Properties: {
@@ -173,7 +177,7 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
           StageName: null,
         },
       },
-      [`${id}APIDomainName`]: {
+      [`${id}DomainName`]: {
         Type: 'AWS::ApiGateway::DomainName',
         Properties: {
           CertificateArn: null,
@@ -190,7 +194,7 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
           },
         },
       },
-      [`${id}APIDomainNameBasePathMapping`]: {
+      [`${id}DomainNameBasePathMapping`]: {
         Type: 'AWS::ApiGateway::BasePathMapping',
         DependsOn: ['APIGatewayRESTAPI', 'APIGatewayRESTAPIEnvironment', 'APIDomainName'],
         Properties: {
@@ -208,7 +212,7 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
           Stage: null,
         },
       },
-      [`${id}APICloudFunctionANYResourcePermission`]: {
+      [`${id}CloudFunctionANYResourcePermission`]: {
         Type: 'AWS::Lambda::Permission',
         Properties: {
           Action: 'lambda:InvokeFunction',
@@ -229,11 +233,12 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
           },
         },
       },
-      [`${id}APICustomAuthorizer`]: {
+      [`${id}CustomAuthorizer`]: {
+        // TODO: Should this be pulled out on its own?
         Type: 'AWS::ApiGateway::Authorizer',
         Properties: {
           IdentitySource: 'method.request.header.authorization',
-          Name: 'APICustomAuthorizer',
+          Name: `${id}CustomAuthorizer`,
           ProviderARNs: [null],
           RestApiId: null,
           Type: 'COGNITO_USER_POOLS',
@@ -243,14 +248,8 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
         Type: 'AWS::ApiGateway::GatewayResponse',
         Properties: {
           ResponseParameters: {
-            'gatewayresponse.header.Access-Control-Allow-Origin': {
-              'Fn::Sub': [
-                "'https://${FullDomainName}'",
-                {
-                  FullDomainName: null,
-                },
-              ],
-            },
+            // Not authorized, so just allow the current origin by mapping it into the header.
+            'gatewayresponse.header.Access-Control-Allow-Origin': 'method.request.header.origin',
             'gatewayresponse.header.Access-Control-Allow-Credentials': "'true'",
             'gatewayresponse.header.Access-Control-Allow-Headers': "'*'",
           },
@@ -258,7 +257,7 @@ export const addGateway = createResourcePack(({ id }: { id: string }) => {
           RestApiId: null,
         },
       },
-      [`${id}APIRoute53Record`]: {
+      [`${id}Route53Record`]: {
         Type: 'AWS::Route53::RecordSet',
         DependsOn: 'APIDomainName',
         Properties: {
