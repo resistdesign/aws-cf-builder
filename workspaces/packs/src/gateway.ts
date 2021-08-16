@@ -349,7 +349,6 @@ export const addGateway = createResourcePack(
               Resources: {
                 // AUTHORIZER
                 [`${id}CustomAuthorizer`]: {
-                  // TODO: Should this be pulled out on its own?
                   Type: 'AWS::ApiGateway::Authorizer',
                   Properties: {
                     IdentitySource: identitySource,
