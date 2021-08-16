@@ -4,6 +4,7 @@ export const DEFAULT_AUTH_TYPE = 'COGNITO_USER_POOLS';
 
 export type AddGatewayConfig = {
   id: string;
+  cloudFunction: { id: string; region?: string };
   authorizer?: {
     providerARNs?: string[];
     scopes?: string[];
@@ -15,6 +16,7 @@ export type AddGatewayConfig = {
 export const addGateway = createResourcePack(
   ({
     id,
+    cloudFunction: { id: cloudFunctionId, region: cloudFunctionRegion = '${AWS::Region}' },
     authorizer,
     authorizer: {
       scopes: authScopes = ['phone', 'email', 'openid', 'profile'],
@@ -78,8 +80,7 @@ export const addGateway = createResourcePack(
                 Type: 'AWS_PROXY',
                 IntegrationHttpMethod: 'POST',
                 Uri: {
-                  // TODO: Cloud function arn.
-                  'Fn::Sub': 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${APICloudFunction.Arn}/invocations',
+                  'Fn::Sub': `arn:aws:apigateway:${cloudFunctionRegion}:lambda:path/2015-03-31/functions/\${${cloudFunctionId}.Arn}/invocations`,
                 },
               },
             },
