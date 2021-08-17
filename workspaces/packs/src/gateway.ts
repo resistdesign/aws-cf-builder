@@ -4,7 +4,7 @@ export const DEFAULT_AUTH_TYPE = 'COGNITO_USER_POOLS';
 
 export type AddGatewayConfig = {
   id: string;
-  cloudFunction: { id: string; region?: string };
+  cloudFunction: { id: string; region?: string } | { uri: any };
   authorizer?: {
     providerARNs?: string[];
     scopes?: string[];
@@ -16,7 +16,7 @@ export type AddGatewayConfig = {
 export const addGateway = createResourcePack(
   ({
     id,
-    cloudFunction: { id: cloudFunctionId, region: cloudFunctionRegion = '${AWS::Region}' },
+    cloudFunction,
     authorizer,
     authorizer: {
       scopes: authScopes = ['phone', 'email', 'openid', 'profile'],
@@ -25,9 +25,12 @@ export const addGateway = createResourcePack(
       identitySource = 'method.request.header.authorization',
     } = {},
   }: AddGatewayConfig) => {
-    const cloudFunctionUri = {
-      'Fn::Sub': `arn:aws:apigateway:${cloudFunctionRegion}:lambda:path/2015-03-31/functions/\${${cloudFunctionId}.Arn}/invocations`,
-    };
+    const { id: cloudFunctionId, region: cloudFunctionRegion = '${AWS::Region}', uri: cloudFunctionFullUri } = cloudFunction as any;
+    const cloudFunctionUri = cloudFunctionFullUri
+      ? cloudFunctionFullUri
+      : {
+          'Fn::Sub': `arn:aws:apigateway:${cloudFunctionRegion}:lambda:path/2015-03-31/functions/\${${cloudFunctionId}.Arn}/invocations`,
+        };
     const authorizerId = `${id}CustomAuthorizer`;
     const authProps = !!authorizer
       ? {
@@ -45,6 +48,7 @@ export const addGateway = createResourcePack(
           // REST API
           [`${id}GatewayRESTAPI`]: {
             Type: 'AWS::ApiGateway::RestApi',
+
             Properties: {
               Name: {
                 'Fn::Sub': `\${AWS::StackName}-${id}GatewayRESTAPI`,
@@ -56,7 +60,7 @@ export const addGateway = createResourcePack(
           },
           [`${id}GatewayRESTAPIResource`]: {
             Type: 'AWS::ApiGateway::Resource',
-            DependsOn: 'APIGatewayRESTAPI',
+            DependsOn: `${id}GatewayRESTAPI`,
             Properties: {
               ParentId: {
                 'Fn::GetAtt': [`${id}GatewayRESTAPI`, 'RootResourceId'],
@@ -69,7 +73,7 @@ export const addGateway = createResourcePack(
           },
           [`${id}GatewayRESTAPIMethod`]: {
             Type: 'AWS::ApiGateway::Method',
-            DependsOn: 'APIGatewayRESTAPIResource',
+            DependsOn: `${id}GatewayRESTAPIResource`,
             Properties: {
               ...authProps,
               HttpMethod: 'ANY',
@@ -88,7 +92,7 @@ export const addGateway = createResourcePack(
           },
           [`${id}GatewayRESTAPIRootMethod`]: {
             Type: 'AWS::ApiGateway::Method',
-            DependsOn: 'APIGatewayRESTAPIResource',
+            DependsOn: `${id}GatewayRESTAPIResource`,
             Properties: {
               ...authProps,
               HttpMethod: 'ANY',
@@ -112,43 +116,39 @@ export const addGateway = createResourcePack(
           // CORS
           [`${id}GatewayRESTAPIOPTIONSMethod`]: {
             Type: 'AWS::ApiGateway::Method',
-            DependsOn: 'APIGatewayRESTAPIResource',
+            DependsOn: `${id}GatewayRESTAPIResource`,
             Properties: {
               AuthorizationType: 'NONE',
               HttpMethod: 'OPTIONS',
               ResourceId: {
-                Ref: 'APIGatewayRESTAPIResource',
+                Ref: `${id}GatewayRESTAPIResource`,
               },
               RestApiId: {
-                Ref: 'APIGatewayRESTAPI',
+                Ref: `${id}GatewayRESTAPI`,
               },
               Integration: {
                 Type: 'AWS_PROXY',
                 IntegrationHttpMethod: 'POST',
-                Uri: {
-                  'Fn::Sub': 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${APICloudFunction.Arn}/invocations',
-                },
+                Uri: cloudFunctionUri,
               },
             },
           },
           [`${id}GatewayRESTAPIRootOPTIONSMethod`]: {
             Type: 'AWS::ApiGateway::Method',
-            DependsOn: 'APIGatewayRESTAPIResource',
+            DependsOn: `${id}GatewayRESTAPIResource`,
             Properties: {
               AuthorizationType: 'NONE',
               HttpMethod: 'OPTIONS',
               ResourceId: {
-                'Fn::GetAtt': ['APIGatewayRESTAPI', 'RootResourceId'],
+                'Fn::GetAtt': [`${id}GatewayRESTAPI`, 'RootResourceId'],
               },
               RestApiId: {
-                Ref: 'APIGatewayRESTAPI',
+                Ref: `${id}GatewayRESTAPI`,
               },
               Integration: {
                 Type: 'AWS_PROXY',
                 IntegrationHttpMethod: 'POST',
-                Uri: {
-                  'Fn::Sub': 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${APICloudFunction.Arn}/invocations',
-                },
+                Uri: cloudFunctionUri,
               },
             },
           },
@@ -162,8 +162,9 @@ export const addGateway = createResourcePack(
                 'gatewayresponse.header.Access-Control-Allow-Headers': "'*'",
               },
               ResponseType: 'DEFAULT_4XX',
-              // TODO: Fix!
-              RestApiId: '',
+              RestApiId: {
+                Ref: `${id}GatewayRESTAPI`,
+              },
             },
           },
         },
