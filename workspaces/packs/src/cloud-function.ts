@@ -37,7 +37,7 @@ export const addCloudFunction = ({ id, code = PLACEHOLDER_FUNCTION_CODE }) => {
                   {
                     Effect: 'Allow',
                     Action: ['ssm:GetParameter*'],
-                    // Fix this!
+                    // TODO: Fix this!
                     Resource: null,
                   },
                 ],
@@ -54,11 +54,11 @@ export const addCloudFunction = ({ id, code = PLACEHOLDER_FUNCTION_CODE }) => {
           Code: code,
           Environment: {
             Variables: {
-              // Fix this!
+              // TODO: Fix this!
               NODE_ENV: null,
-              // Fix this!
+              // TODO: Fix this!
               CLIENT_ORIGIN: null,
-              // Fix this!
+              // TODO: Fix this!
               API_CONFIG_PARAMETER_PATH: null,
             },
           },
