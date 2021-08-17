@@ -25,6 +25,9 @@ export const addGateway = createResourcePack(
       identitySource = 'method.request.header.authorization',
     } = {},
   }: AddGatewayConfig) => {
+    const cloudFunctionUri = {
+      'Fn::Sub': `arn:aws:apigateway:${cloudFunctionRegion}:lambda:path/2015-03-31/functions/\${${cloudFunctionId}.Arn}/invocations`,
+    };
     const authorizerId = `${id}CustomAuthorizer`;
     const authProps = !!authorizer
       ? {
@@ -71,17 +74,15 @@ export const addGateway = createResourcePack(
               ...authProps,
               HttpMethod: 'ANY',
               ResourceId: {
-                Ref: 'APIGatewayRESTAPIResource',
+                Ref: `${id}GatewayRESTAPIResource`,
               },
               RestApiId: {
-                Ref: 'APIGatewayRESTAPI',
+                Ref: `${id}GatewayRESTAPI`,
               },
               Integration: {
                 Type: 'AWS_PROXY',
                 IntegrationHttpMethod: 'POST',
-                Uri: {
-                  'Fn::Sub': `arn:aws:apigateway:${cloudFunctionRegion}:lambda:path/2015-03-31/functions/\${${cloudFunctionId}.Arn}/invocations`,
-                },
+                Uri: cloudFunctionUri,
               },
             },
           },
@@ -92,17 +93,15 @@ export const addGateway = createResourcePack(
               ...authProps,
               HttpMethod: 'ANY',
               ResourceId: {
-                'Fn::GetAtt': ['APIGatewayRESTAPI', 'RootResourceId'],
+                'Fn::GetAtt': [`${id}GatewayRESTAPI`, 'RootResourceId'],
               },
               RestApiId: {
-                Ref: 'APIGatewayRESTAPI',
+                Ref: `${id}GatewayRESTAPI`,
               },
               Integration: {
                 Type: 'AWS_PROXY',
                 IntegrationHttpMethod: 'POST',
-                Uri: {
-                  'Fn::Sub': 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${APICloudFunction.Arn}/invocations',
-                },
+                Uri: cloudFunctionUri,
               },
             },
           },
