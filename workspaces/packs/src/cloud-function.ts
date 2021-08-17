@@ -8,12 +8,44 @@ export const PLACEHOLDER_FUNCTION_CODE: AWS.Lambda.Function.Code = {
 export type AddCloudFunctionConfig = {
   id: string;
   code?: AWS.Lambda.Function.Code;
+  environment?: AWS.Lambda.Function.Environment;
+  handler?: any;
+  runtime?: any;
+  timeout?: any;
+  policies?: AWS.IAM.Role.Policy[];
 };
 
-export const addCloudFunction = ({ id, code = PLACEHOLDER_FUNCTION_CODE }) => {
+export const addCloudFunction = ({
+  id,
+  code = PLACEHOLDER_FUNCTION_CODE,
+  environment = {
+    Variables: {
+      NODE_ENV: 'production',
+    },
+  },
+  handler = 'index.handler',
+  runtime = 'nodejs12.x',
+  timeout = 30,
+  policies = [
+    {
+      PolicyName: 'lambda-parameter-store',
+      PolicyDocument: {
+        Statement: [
+          // By default, the lambda can do anything.
+          {
+            Effect: 'Allow',
+            Action: ['*'],
+            Resource: '*',
+          },
+        ],
+        Version: '2012-10-17T00:00:00.000Z',
+      },
+    },
+  ],
+}: AddCloudFunctionConfig) => {
   return {
     Resources: {
-      APICloudFunctionRole: {
+      [`${id}CloudFunctionRole`]: {
         Type: 'AWS::IAM::Role',
         Properties: {
           ManagedPolicyArns: ['arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'],
@@ -29,44 +61,20 @@ export const addCloudFunction = ({ id, code = PLACEHOLDER_FUNCTION_CODE }) => {
               },
             ],
           },
-          Policies: [
-            {
-              PolicyName: 'lambda-parameter-store',
-              PolicyDocument: {
-                Statement: [
-                  {
-                    Effect: 'Allow',
-                    Action: ['ssm:GetParameter*'],
-                    // TODO: Fix this!
-                    Resource: null,
-                  },
-                ],
-                Version: '2012-10-17T00:00:00.000Z',
-              },
-            },
-          ],
+          Policies: policies,
         },
       },
-      APICloudFunction: {
+      [`${id}CloudFunction`]: {
         Type: 'AWS::Lambda::Function',
         Properties: {
-          Timeout: 30,
+          Timeout: timeout,
           Code: code,
-          Environment: {
-            Variables: {
-              // TODO: Fix this!
-              NODE_ENV: null,
-              // TODO: Fix this!
-              CLIENT_ORIGIN: null,
-              // TODO: Fix this!
-              API_CONFIG_PARAMETER_PATH: null,
-            },
-          },
-          Handler: 'index.handler',
+          Environment: environment,
+          Handler: handler,
           Role: {
-            'Fn::GetAtt': ['APICloudFunctionRole', 'Arn'],
+            'Fn::GetAtt': [`${id}CloudFunctionRole`, 'Arn'],
           },
-          Runtime: 'nodejs12.x',
+          Runtime: runtime,
         },
       },
     },
