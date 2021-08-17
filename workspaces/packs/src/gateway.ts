@@ -4,6 +4,9 @@ export const DEFAULT_AUTH_TYPE = 'COGNITO_USER_POOLS';
 
 export type AddGatewayConfig = {
   id: string;
+  hostedZoneId: any;
+  domainName: any;
+  certificateArn: any;
   cloudFunction: { id: string; region?: string };
   stageName?: any;
   authorizer?: {
@@ -17,6 +20,9 @@ export type AddGatewayConfig = {
 export const addGateway = createResourcePack(
   ({
     id,
+    hostedZoneId,
+    domainName,
+    certificateArn,
     cloudFunction: { id: cloudFunctionId, region: cloudFunctionRegion = '${AWS::Region}' },
     stageName = 'production',
     authorizer,
@@ -249,17 +255,8 @@ export const addGateway = createResourcePack(
           [`${id}DomainName`]: {
             Type: 'AWS::ApiGateway::DomainName',
             Properties: {
-              // TODO: Fix!
-              CertificateArn: '',
-              DomainName: {
-                'Fn::Sub': [
-                  '${DomainName}',
-                  {
-                    // TODO: Fix!
-                    DomainName: '',
-                  },
-                ],
-              },
+              CertificateArn: certificateArn,
+              DomainName: domainName,
               EndpointConfiguration: {
                 Types: ['EDGE'],
               },
@@ -267,37 +264,26 @@ export const addGateway = createResourcePack(
           },
           [`${id}DomainNameBasePathMapping`]: {
             Type: 'AWS::ApiGateway::BasePathMapping',
-            DependsOn: ['APIGatewayRESTAPI', 'APIGatewayRESTAPIEnvironment', 'APIDomainName'],
+            DependsOn: [`${id}GatewayRESTAPI`, `${id}GatewayRESTAPIEnvironment`, `${id}DomainName`],
             Properties: {
-              DomainName: {
-                'Fn::Sub': [
-                  '${DomainName}',
-                  {
-                    // TODO: Fix!
-                    DomainName: '',
-                  },
-                ],
-              },
+              DomainName: domainName,
               RestApiId: {
-                Ref: 'APIGatewayRESTAPI',
+                Ref: `${id}GatewayRESTAPI`,
               },
-              // TODO: Fix!
-              Stage: '',
+              Stage: stageName,
             },
           },
           [`${id}Route53Record`]: {
             Type: 'AWS::Route53::RecordSet',
-            DependsOn: 'APIDomainName',
+            DependsOn: `${id}DomainName`,
             Properties: {
-              // TODO: Fix!
-              HostedZoneId: '',
+              HostedZoneId: hostedZoneId,
               Type: 'A',
               Name: {
                 'Fn::Sub': [
                   '${DomainName}.',
                   {
-                    // TODO: Fix!
-                    DomainName: '',
+                    DomainName: domainName,
                   },
                 ],
               },
@@ -307,8 +293,9 @@ export const addGateway = createResourcePack(
                   'Fn::Sub': [
                     '${DomainName}.',
                     {
-                      // TODO: Fix!
-                      DomainName: '',
+                      DomainName: {
+                        'Fn::GetAtt': [`${id}DomainName`, 'DistributionDomainName'],
+                      },
                     },
                   ],
                 },
