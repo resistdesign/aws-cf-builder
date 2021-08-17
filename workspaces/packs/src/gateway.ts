@@ -4,7 +4,8 @@ export const DEFAULT_AUTH_TYPE = 'COGNITO_USER_POOLS';
 
 export type AddGatewayConfig = {
   id: string;
-  cloudFunction: { id: string; region?: string } | { uri: any };
+  cloudFunction: { id: string; region?: string };
+  stageName?: any;
   authorizer?: {
     providerARNs?: string[];
     scopes?: string[];
@@ -16,7 +17,8 @@ export type AddGatewayConfig = {
 export const addGateway = createResourcePack(
   ({
     id,
-    cloudFunction,
+    cloudFunction: { id: cloudFunctionId, region: cloudFunctionRegion = '${AWS::Region}' },
+    stageName = 'production',
     authorizer,
     authorizer: {
       scopes: authScopes = ['phone', 'email', 'openid', 'profile'],
@@ -25,12 +27,9 @@ export const addGateway = createResourcePack(
       identitySource = 'method.request.header.authorization',
     } = {},
   }: AddGatewayConfig) => {
-    const { id: cloudFunctionId, region: cloudFunctionRegion = '${AWS::Region}', uri: cloudFunctionFullUri } = cloudFunction as any;
-    const cloudFunctionUri = cloudFunctionFullUri
-      ? cloudFunctionFullUri
-      : {
-          'Fn::Sub': `arn:aws:apigateway:${cloudFunctionRegion}:lambda:path/2015-03-31/functions/\${${cloudFunctionId}.Arn}/invocations`,
-        };
+    const cloudFunctionUri = {
+      'Fn::Sub': `arn:aws:apigateway:${cloudFunctionRegion}:lambda:path/2015-03-31/functions/\${${cloudFunctionId}.Arn}/invocations`,
+    };
     const authorizerId = `${id}CustomAuthorizer`;
     const authProps = !!authorizer
       ? {
@@ -175,23 +174,24 @@ export const addGateway = createResourcePack(
           [`${id}GatewayRESTAPIDeployment`]: {
             Type: 'AWS::ApiGateway::Deployment',
             DependsOn: [
-              'APIGatewayRESTAPIResource',
-              'APIGatewayRESTAPIMethod',
-              'APIGatewayRESTAPIRootMethod',
-              'APIGatewayRESTAPI',
-              'APICloudFunction',
+              `${id}GatewayRESTAPIResource`,
+              `${id}GatewayRESTAPIMethod`,
+              `${id}GatewayRESTAPIRootMethod`,
+              `${id}GatewayRESTAPI`,
+              cloudFunctionId,
             ],
             Properties: {
               RestApiId: {
-                Ref: 'APIGatewayRESTAPI',
+                Ref: `${id}GatewayRESTAPI`,
               },
             },
           },
           [`${id}CloudWatch`]: {
             Type: 'AWS::Logs::LogGroup',
             Properties: {
-              // TODO: Fix!
-              LogGroupName: '',
+              LogGroupName: {
+                'Fn::Sub': `\${AWS::StackName}-${id}GatewayLogs`,
+              },
             },
           },
           [`${id}CloudWatchRole`]: {
@@ -216,8 +216,9 @@ export const addGateway = createResourcePack(
           [`${id}CloudWatchAccount`]: {
             Type: 'AWS::ApiGateway::Account',
             Properties: {
-              // TODO: Fix!
-              CloudWatchRoleArn: '',
+              CloudWatchRoleArn: {
+                'Fn::GetAtt': [`${id}CloudWatchRole`, 'Arn'],
+              },
             },
           },
           [`${id}GatewayRESTAPIEnvironment`]: {
@@ -226,7 +227,7 @@ export const addGateway = createResourcePack(
             Properties: {
               AccessLogSetting: {
                 DestinationArn: {
-                  'Fn::GetAtt': ['APICloudWatch', 'Arn'],
+                  'Fn::GetAtt': [`${id}CloudWatch`, 'Arn'],
                 },
                 Format:
                   '{"requestId":"$context.requestId","ip":"$context.identity.sourceIp","caller":"$context.identity.caller","user":"$context.identity.user","requestTime":"$context.requestTime","httpMethod":"$context.httpMethod","resourcePath":"$context.resourcePath","status":"$context.status","protocol":"$context.protocol","responseLength":"$context.responseLength","apiGatewayErrorMessage":"$context.error.message"}',
@@ -237,8 +238,7 @@ export const addGateway = createResourcePack(
               RestApiId: {
                 Ref: 'APIGatewayRESTAPI',
               },
-              // TODO: Fix!
-              StageName: '',
+              StageName: stageName,
             },
           },
         },
