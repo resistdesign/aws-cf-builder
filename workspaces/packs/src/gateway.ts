@@ -313,16 +313,15 @@ export const addGateway = createResourcePack(
               Action: 'lambda:InvokeFunction',
               Principal: 'apigateway.amazonaws.com',
               FunctionName: {
-                Ref: 'APICloudFunction',
+                Ref: `${id}CloudFunction`,
               },
               SourceArn: {
                 'Fn::Sub': [
                   'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${__ApiId__}/${__Stage__}/*/*',
                   {
-                    // TODO: Fix!
-                    __Stage__: '',
+                    __Stage__: stageName,
                     __ApiId__: {
-                      Ref: 'APIGatewayRESTAPI',
+                      Ref: `${id}GatewayRESTAPI`,
                     },
                   },
                 ],
