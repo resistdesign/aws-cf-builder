@@ -1,25 +1,20 @@
 import { addParameters, createResourcePack, ParameterInfo } from '@aws-cf-builder/utils';
 import { AWS } from '@aws-cf-builder/types';
 
+export type AddBuildPipelineConfig = {
+  id: string;
+  buildSpec: any;
+  label?: string;
+  dependsOn?: string | string[];
+  environmentVariables?: AWS.CodeBuild.Project.EnvironmentVariable[];
+  timeoutInMinutes?: number;
+};
+
 /**
  * Add a build pipeline with full permissions.
  */
 export const addBuildPipeline = createResourcePack(
-  ({
-    id,
-    buildSpec,
-    label,
-    dependsOn,
-    environmentVariables,
-    timeoutInMinutes = 10,
-  }: {
-    id: string;
-    buildSpec: any;
-    label?: string;
-    dependsOn?: string | string[];
-    environmentVariables?: AWS.CodeBuild.Project.EnvironmentVariable[];
-    timeoutInMinutes?: number;
-  }) => {
+  ({ id, buildSpec, label, dependsOn, environmentVariables, timeoutInMinutes = 10 }: AddBuildPipelineConfig) => {
     const cleanLabel = label || id;
     const group = `${cleanLabel} Parameters`;
     const paramList: ParameterInfo[] = [
