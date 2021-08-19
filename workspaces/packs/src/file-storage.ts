@@ -1,27 +1,21 @@
 import { addParameter, createResourcePack } from '@aws-cf-builder/utils';
 import { AWS, CloudFormationTemplate } from '@aws-cf-builder/types';
 
+export type AddSecureFileStorageConfig = {
+  id: string;
+  bucketName?: AWS.S3.Bucket['Properties']['BucketName'] | boolean;
+  label?: string;
+  group?: string;
+  delete?: boolean;
+  blockPublicAccess?: boolean;
+  cors?: AWS.S3.Bucket['Properties']['CorsConfiguration'] | boolean;
+};
+
 /**
  * Add a secure S3 Bucket with an optional parameter to set the bucket name.
  * */
 export const addSecureFileStorage = createResourcePack(
-  ({
-    id,
-    bucketName = false,
-    label,
-    group,
-    delete: shouldDelete = true,
-    blockPublicAccess = true,
-    cors = false,
-  }: {
-    id: string;
-    bucketName?: AWS.S3.Bucket['Properties']['BucketName'] | boolean;
-    label?: string;
-    group?: string;
-    delete?: boolean;
-    blockPublicAccess?: boolean;
-    cors?: AWS.S3.Bucket['Properties']['CorsConfiguration'] | boolean;
-  }) => {
+  ({ id, bucketName = false, label, group, delete: shouldDelete = true, blockPublicAccess = true, cors = false }: AddSecureFileStorageConfig) => {
     const cleanLabel = !!label ? label : id;
     const ParameterId = `${id}Name`;
     const stackPatch = {
