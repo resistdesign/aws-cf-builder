@@ -8,13 +8,26 @@ export type AddBuildPipelineConfig = {
   dependsOn?: string | string[];
   environmentVariables?: AWS.CodeBuild.Project.EnvironmentVariable[];
   timeoutInMinutes?: number;
+  environmentType?: 'ARM_CONTAINER' | 'LINUX_CONTAINER' | 'LINUX_GPU_CONTAINER' | 'WINDOWS_SERVER_2019_CONTAINER' | string;
+  environmentComputeType?: 'BUILD_GENERAL1_LARGE' | 'BUILD_GENERAL1_SMALL' | 'BUILD_GENERAL1_MEDIUM' | 'BUILD_GENERAL1_2XLARGE' | string;
+  environmentImage?: string;
 };
 
 /**
  * Add a build pipeline with full permissions.
  */
 export const addBuildPipeline = createResourcePack(
-  ({ id, buildSpec, label, dependsOn, environmentVariables, timeoutInMinutes = 10 }: AddBuildPipelineConfig) => {
+  ({
+    id,
+    buildSpec,
+    label,
+    dependsOn,
+    environmentVariables,
+    timeoutInMinutes = 10,
+    environmentType = 'LINUX_CONTAINER',
+    environmentComputeType = 'BUILD_GENERAL1_SMALL',
+    environmentImage = 'aws/codebuild/nodejs:10.14.1',
+  }: AddBuildPipelineConfig) => {
     const cleanLabel = label || id;
     const group = `${cleanLabel} Parameters`;
     const paramList: ParameterInfo[] = [
@@ -175,9 +188,9 @@ export const addBuildPipeline = createResourcePack(
               Type: 'CODEPIPELINE',
             },
             Environment: {
-              Type: 'LINUX_CONTAINER',
-              ComputeType: 'BUILD_GENERAL1_SMALL',
-              Image: 'aws/codebuild/nodejs:10.14.1',
+              Type: environmentType,
+              ComputeType: environmentComputeType,
+              Image: environmentImage,
               EnvironmentVariables: environmentVariables,
             },
             Source: {
