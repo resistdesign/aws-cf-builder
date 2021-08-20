@@ -1,5 +1,22 @@
 import YAML from 'yaml';
 
+export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> & U[keyof U];
+
+export const COMMAND_HELPERS = {
+  updateFunction: ({ cloudFunctionArn, codeZipFilePath }: { cloudFunctionArn: string; codeZipFilePath: string }) =>
+    `aws lambda update-function-code --function-name "${cloudFunctionArn}" --zip-file "fileb://${codeZipFilePath}"`,
+  copyDirectoryToS3: ({ s3Domain, directoryPath }: { s3Domain: string; directoryPath: string }) =>
+    `aws s3 cp --recursive --acl public-read ${directoryPath} s3://${s3Domain}/`,
+  cloudFrontInvalidation: ({
+    cloudFrontDistributionId,
+    pathsToInvalidate = ['/*'],
+  }: {
+    cloudFrontDistributionId: string;
+    pathsToInvalidate?: string[];
+  }) => `aws cloudfront create-invalidation --distribution-id "${cloudFrontDistributionId}" --paths "${pathsToInvalidate.join('" "')}"`,
+  addNPMTokenWithNPMRC: ({ npmToken }: { npmToken: string }) => `echo '//registry.npmjs.org/:_authToken=${npmToken}' > .npmrc`,
+};
+
 export type LinuxUserNameString = string;
 
 export type YesOrNo = 'yes' | 'no';
@@ -34,12 +51,12 @@ export interface Phase {
   finally?: string[];
 }
 
-export interface PhaseConfig {
-  install?: Phase;
-  pre_build?: Phase;
-  build?: Phase;
-  post_build?: Phase;
-}
+export type PhaseConfig = AtLeastOne<{
+  install: Phase;
+  pre_build: Phase;
+  build: Phase;
+  post_build: Phase;
+}>;
 
 export interface ReportGroupNameOrArn {
   files?: string[];
