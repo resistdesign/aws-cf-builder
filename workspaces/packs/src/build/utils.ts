@@ -79,7 +79,7 @@ export interface Cache {
 }
 
 export interface BuildSpec {
-  version: number;
+  version?: number;
   'run-as'?: LinuxUserNameString;
   env?: Env;
   proxy?: Proxy;
