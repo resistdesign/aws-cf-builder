@@ -3,31 +3,6 @@
 exports[`File Storage addSecureFileStorage should add secure file storage 1`] = `
 Object {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Metadata": Object {
-    "AWS::CloudFormation::Interface": Object {
-      "ParameterGroups": Array [
-        Object {
-          "Label": Object {
-            "default": "API",
-          },
-          "Parameters": Array [
-            "APIFSName",
-          ],
-        },
-      ],
-      "ParameterLabels": Object {
-        "APIFSName": Object {
-          "default": "API FS Name",
-        },
-      },
-    },
-  },
-  "Parameters": Object {
-    "APIFSName": Object {
-      "Description": "The name of the file storage resource.",
-      "Type": "String",
-    },
-  },
   "Resources": Object {
     "APIFS": Object {
       "DeletionPolicy": "Delete",
@@ -41,9 +16,7 @@ Object {
             },
           ],
         },
-        "BucketName": Object {
-          "Ref": "APIFSName",
-        },
+        "BucketName": true,
         "CorsConfiguration": Object {
           "CorsRules": Array [
             Object {

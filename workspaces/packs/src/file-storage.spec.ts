@@ -7,11 +7,9 @@ describe('File Storage', () => {
         {
           id: 'APIFS',
           bucketName: true,
-          label: 'API FS',
-          group: 'API',
           cors: true,
           blockPublicAccess: true,
-          delete: true,
+          shouldDelete: true,
         },
         { AWSTemplateFormatVersion: '2010-09-09' }
       );

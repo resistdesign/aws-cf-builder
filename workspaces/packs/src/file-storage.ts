@@ -1,12 +1,10 @@
-import { addParameter, createResourcePack } from '@aws-cf-builder/utils';
-import { AWS, CloudFormationTemplate } from '@aws-cf-builder/types';
+import { createResourcePack } from '@aws-cf-builder/utils';
+import { AWS } from '@aws-cf-builder/types';
 
 export type AddSecureFileStorageConfig = {
   id: string;
-  bucketName?: AWS.S3.Bucket['Properties']['BucketName'] | boolean;
-  label?: string;
-  group?: string;
-  delete?: boolean;
+  bucketName?: any;
+  shouldDelete?: boolean;
   blockPublicAccess?: boolean;
   cors?: AWS.S3.Bucket['Properties']['CorsConfiguration'] | boolean;
 };
@@ -15,23 +13,14 @@ export type AddSecureFileStorageConfig = {
  * Add a secure S3 Bucket with an optional parameter to set the bucket name.
  * */
 export const addSecureFileStorage = createResourcePack(
-  ({ id, bucketName = false, label, group, delete: shouldDelete = true, blockPublicAccess = true, cors = false }: AddSecureFileStorageConfig) => {
-    const cleanLabel = !!label ? label : id;
-    const ParameterId = `${id}Name`;
-    const stackPatch = {
+  ({ id, bucketName, shouldDelete = true, blockPublicAccess = true, cors = false }: AddSecureFileStorageConfig) => {
+    return {
       Resources: {
         [id]: {
           Type: 'AWS::S3::Bucket',
           DeletionPolicy: shouldDelete ? 'Delete' : 'Retain',
           Properties: {
-            BucketName:
-              bucketName === true
-                ? {
-                    Ref: ParameterId,
-                  }
-                : bucketName === false
-                ? undefined
-                : bucketName,
+            BucketName: bucketName,
             CorsConfiguration:
               typeof cors === 'object'
                 ? cors
@@ -65,22 +54,7 @@ export const addSecureFileStorage = createResourcePack(
               : undefined,
           },
         },
-      } as CloudFormationTemplate['Resources'],
+      },
     };
-
-    return bucketName === true
-      ? addParameter(
-          {
-            ParameterId,
-            Group: !!group ? group : `${cleanLabel} Parameters`,
-            Label: `${cleanLabel} Name`,
-            Parameter: {
-              Type: 'String',
-              Description: 'The name of the file storage resource.',
-            },
-          },
-          stackPatch as any
-        )
-      : stackPatch;
   }
 );
