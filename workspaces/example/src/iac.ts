@@ -1,60 +1,36 @@
-import { AWS, CloudFormationTemplate } from '@aws-cf-builder/types';
-import { addParameter, createResourcePack } from '@aws-cf-builder/utils';
+import { SimpleCFT } from '@aws-cf-builder/utils';
+import { addCDN, addSecureFileStorage } from '@aws-cf-builder/packs';
 
-export const Template: CloudFormationTemplate = {
-  AWSTemplateFormatVersion: '2010-09-09',
-  Description: 'An example template.',
-  Parameters: {
-    MyParam: {
+export default new SimpleCFT()
+  .patch({
+    Description: 'And example CloudFormation template.',
+  })
+  .addParameter({
+    ParameterId: 'UIDomainName',
+    Label: 'UI Domain Name',
+    Group: 'UI Parameters',
+    Parameter: {
       Type: 'String',
+      Description: 'The domain name for the user interface.',
+      Default: 'app.example.com',
     },
-  },
-  Conditions: {
-    Other: {},
-  },
-  Resources: {
-    APIFunction: {
-      Type: 'AWS::Lambda::Function',
-      Properties: {
-        Role: '',
-        Code: {
-          ZipFile: {
-            'Fn::Sub': [
-              'Data: ${data}',
-              {
-                data: 'Interpolated data.',
-              },
-            ],
-          },
-        },
-      },
-    },
-  },
-};
-
-const s3BucketPack = createResourcePack(({ bucketId, bucketName }: { bucketId: string; bucketName: string }) => ({
-  Resources: {
-    [bucketId]: {
-      Type: 'AWS::S3::Bucket',
-      Properties: {
-        BucketName: bucketName,
-      },
-    } as AWS.S3.Bucket,
-  },
-}));
-
-export default s3BucketPack(
-  { bucketId: 'MainBucket', bucketName: 'files.example.com' },
-  addParameter(
+  })
+  .applyPack(
     {
-      ParameterId: 'CoolParam',
-      Label: 'Cool Parameter',
-      Group: 'Only The Cool Params',
-      Parameter: {
-        Type: 'String',
-        Description: 'Something Cool...',
-      },
+      id: 'UIStaticFiles',
+      cors: true,
     },
-    Template
+    addSecureFileStorage
   )
-);
+  .applyPack(
+    {
+      id: 'UICDN',
+      certificateArn: 'arn:my-demo-cert',
+      domainName: {
+        Ref: 'UIDomainName',
+      },
+      fileStorageId: 'UIStaticFiles',
+      hostedZoneId: '<example.com-hosted-zone-id>',
+    },
+    addCDN
+  ).template;

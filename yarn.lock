@@ -28,6 +28,7 @@ __metadata:
   resolution: "@aws-cf-builder/example@workspace:workspaces/example"
   dependencies:
     "@aws-cf-builder/cli": ^1.0.0
+    "@aws-cf-builder/packs": ^1.0.0
     "@aws-cf-builder/types": ^1.0.0
     "@aws-cf-builder/utils": ^1.0.0
     prettier: ^2.3.2
@@ -36,7 +37,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@aws-cf-builder/packs@workspace:workspaces/packs":
+"@aws-cf-builder/packs@^1.0.0, @aws-cf-builder/packs@workspace:workspaces/packs":
   version: 0.0.0-use.local
   resolution: "@aws-cf-builder/packs@workspace:workspaces/packs"
   dependencies:
