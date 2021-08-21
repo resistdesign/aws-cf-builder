@@ -41,7 +41,31 @@ export const CLI = (packageInfo: { version: string } = { version: '0.0.0' }) => 
   FS.mkdirSync(outputDir, { recursive: true });
   FS.writeFileSync(output, templateYAML, { encoding: 'utf8' });
 
-  console.log('VALIDATION:', JSON.stringify(validateFile(output), null, 2));
+  const { templateValid = true, errors: { info = [], warn = [], crit = [] } = {} } = validateFile(output) || {};
+  const errorMap: Record<string, any[]> = {
+    Info: info,
+    Warnings: warn,
+    Critical: crit,
+  };
+
+  console.log('VALIDATION:', templateValid ? 'The template is valid.' : 'The template is NOT valid.');
+
+  for (const errorLabel in errorMap) {
+    const currentErrorList = errorMap[errorLabel];
+
+    if (currentErrorList?.length) {
+      console.log(
+        `  ${errorLabel}:`,
+        `\n    ${currentErrorList
+          .map((e) => {
+            const { message = 'Unspecified message.', resource = 'Not supplied.', documentation = 'Not supplied.' } = e || {};
+
+            return `Message: ${message}\n    Resource: ${resource}\n    Documentation: ${documentation}`;
+          })
+          .join('\n\n    ')}`
+      );
+    }
+  }
 
   console.log('COMPLETE');
 };
