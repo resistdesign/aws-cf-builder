@@ -1,6 +1,6 @@
 {
   "name": "@aws-cf-builder/types",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.d.ts",
   "files": [
     "dist"
@@ -8,11 +8,13 @@
   "author": "Resist Design",
   "license": "MIT",
   "scripts": {
-    "build": "node -r ts-node/register ./src/index.ts"
+    "build": "node -r ts-node/register ./src/index.ts",
+    "release": "npm-release"
   },
   "devDependencies": {
     "@types/node": "^16.4.4",
     "@types/prettier": "^2.3.2",
+    "npm-release": "^1.0.0",
     "prettier": "^2.3.2",
     "ts-node": "^10.1.0",
     "tslib": "^2.3.0",
@@ -24,6 +26,5 @@
     "singleQuote": true,
     "trailingComma": "es5",
     "useTabs": false
-  },
-  "dependencies": {}
+  }
 }

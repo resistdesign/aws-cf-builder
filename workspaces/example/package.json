@@ -5,7 +5,8 @@
   "author": "Resist Design",
   "license": "MIT",
   "scripts": {
-    "build": "cfbuild"
+    "build": "cfbuild",
+    "release": "echo 'No release for example. :)'"
   },
   "prettier": {
     "printWidth": 150,
@@ -16,6 +17,7 @@
   },
   "dependencies": {
     "@aws-cf-builder/cli": "^1.0.0",
+    "@aws-cf-builder/packs": "^1.0.0",
     "@aws-cf-builder/types": "^1.0.0",
     "@aws-cf-builder/utils": "^1.0.0",
     "prettier": "^2.3.2",

@@ -1,60 +1,51 @@
-import { AWS, CloudFormationTemplate } from '@aws-cf-builder/types';
-import { addParameter, createResourcePack } from '@aws-cf-builder/utils';
+import { createResourcePack, SimpleCFT } from '@aws-cf-builder/utils';
+import { addCDN, addSecureFileStorage } from '@aws-cf-builder/packs';
 
-export const Template: CloudFormationTemplate = {
-  AWSTemplateFormatVersion: '2010-09-09',
-  Description: 'An example template.',
-  Parameters: {
-    MyParam: {
-      Type: 'String',
-    },
-  },
-  Conditions: {
-    Other: {},
-  },
-  Resources: {
-    APIFunction: {
-      Type: 'AWS::Lambda::Function',
-      Properties: {
-        Role: '',
-        Code: {
-          ZipFile: {
-            'Fn::Sub': [
-              'Data: ${data}',
-              {
-                data: 'Interpolated data.',
-              },
-            ],
-          },
-        },
+const addBasicOutput = createResourcePack(({ info = '' }: { info: string }) => ({
+  Output: {
+    Info: {
+      Description: 'Basic information.',
+      Export: {
+        Name: 'Info',
       },
+      Value: info,
     },
-  },
-};
-
-const s3BucketPack = createResourcePack(({ bucketId, bucketName }: { bucketId: string; bucketName: string }) => ({
-  Resources: {
-    [bucketId]: {
-      Type: 'AWS::S3::Bucket',
-      Properties: {
-        BucketName: bucketName,
-      },
-    } as AWS.S3.Bucket,
   },
 }));
 
-export default s3BucketPack(
-  { bucketId: 'MainBucket', bucketName: 'files.example.com' },
-  addParameter(
-    {
-      ParameterId: 'CoolParam',
-      Label: 'Cool Parameter',
-      Group: 'Only The Cool Params',
+export default addBasicOutput(
+  { info: 'This stack was created with AWS CF Builder.' },
+  new SimpleCFT()
+    .patch({
+      Description: 'And example CloudFormation template.',
+    })
+    .addParameter({
+      ParameterId: 'UIDomainName',
+      Label: 'UI Domain Name',
+      Group: 'UI Parameters',
       Parameter: {
         Type: 'String',
-        Description: 'Something Cool...',
+        Description: 'The domain name for the user interface.',
+        Default: 'app.example.com',
       },
-    },
-    Template
-  )
+    })
+    .applyPack(
+      {
+        id: 'UIStaticFiles',
+        cors: true,
+      },
+      addSecureFileStorage
+    )
+    .applyPack(
+      {
+        id: 'UICDN',
+        certificateArn: 'arn:my-demo-cert',
+        domainName: {
+          Ref: 'UIDomainName',
+        },
+        fileStorageId: 'UIStaticFiles',
+        hostedZoneId: '<example.com-hosted-zone-id>',
+      },
+      addCDN
+    ).template
 );
