@@ -108,7 +108,12 @@ export interface BuildSpec {
 }
 
 export const createBuildSpec = ({ version = 0.2, phases }: BuildSpec): string =>
-  YAML.stringify({
-    version,
-    phases,
-  });
+  YAML.stringify(
+    // TRICKY: Removed all keys with a value of `undefined`.
+    JSON.parse(
+      JSON.stringify({
+        version,
+        phases,
+      })
+    )
+  );

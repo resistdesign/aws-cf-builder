@@ -30,7 +30,10 @@ export const CLI = (packageInfo: { version: string } = { version: '0.0.0' }) => 
     throw new Error('Missing input template file.');
   }
 
-  const templateYAML = YAML.stringify(cleanTemplateStructure);
+  const templateYAML = YAML.stringify(
+    // TRICKY: Removed all keys with a value of `undefined`.
+    JSON.parse(JSON.stringify(cleanTemplateStructure))
+  );
   const outputDir = Path.dirname(output);
 
   console.log(`WRITING: ${output}`);
