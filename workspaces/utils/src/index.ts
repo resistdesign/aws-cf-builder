@@ -96,6 +96,13 @@ export const createResourcePack =
     return patchTemplate(patch, template);
   };
 
+export type ParameterGroup = {
+  Label: string;
+  Parameters: {
+    [parameterId: string]: { Label: string } & CloudFormationParameter;
+  };
+};
+
 export class SimpleCFT {
   constructor(public template: CloudFormationTemplate = { AWSTemplateFormatVersion: '2010-09-09' }) {}
 
@@ -113,6 +120,24 @@ export class SimpleCFT {
 
   public addParameter = (parameter: ParameterInfo) => {
     this.template = addParameter(parameter, this.template);
+
+    return this;
+  };
+
+  public addParameterGroup = ({ Label: Group, Parameters }: ParameterGroup) => {
+    const parameterIds = Object.keys(Parameters);
+    const parameterList: ParameterInfo[] = parameterIds.map((ParameterId) => {
+      const { Label, ...Parameter } = Parameters[ParameterId];
+
+      return {
+        Group,
+        ParameterId,
+        Label,
+        Parameter,
+      };
+    });
+
+    this.template = addParameters(parameterList, this.template);
 
     return this;
   };

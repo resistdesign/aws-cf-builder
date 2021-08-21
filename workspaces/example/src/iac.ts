@@ -19,14 +19,15 @@ export default addBasicOutput(
     .patch({
       Description: 'And example CloudFormation template.',
     })
-    .addParameter({
-      ParameterId: 'UIDomainName',
-      Label: 'UI Domain Name',
-      Group: 'UI Parameters',
-      Parameter: {
-        Type: 'String',
-        Description: 'The domain name for the user interface.',
-        Default: 'app.example.com',
+    .addParameterGroup({
+      Label: 'UI Parameters',
+      Parameters: {
+        UIDomainName: {
+          Label: 'UI Domain Name',
+          Type: 'String',
+          Description: 'The domain name for the user interface.',
+          Default: 'app.example.com',
+        },
       },
     })
     .applyPack(
