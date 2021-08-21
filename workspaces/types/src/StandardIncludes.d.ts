@@ -170,7 +170,7 @@ export type CloudFormationTemplate = {
   Metadata?: CloudFormationMetadata;
   Conditions?: Record<string, any>;
   Resources?: Record<string, AllResourceTypes>;
-  Output?: Record<
+  Outputs?: Record<
     string,
     {
       Description?: CloudFormationPrimitiveValue<string>;

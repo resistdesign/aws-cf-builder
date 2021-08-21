@@ -2,7 +2,7 @@ import { createResourcePack, SimpleCFT } from '@aws-cf-builder/utils';
 import { addCDN, addSecureFileStorage } from '@aws-cf-builder/packs';
 
 const addBasicOutput = createResourcePack(({ info = '' }: { info: string }) => ({
-  Output: {
+  Outputs: {
     Info: {
       Description: 'Basic information.',
       Export: {
