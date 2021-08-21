@@ -5,8 +5,9 @@ typical tasks.
 
 ## Packages
 
-- [Types](./workspaces/types/README.md)
 - [CLI](./workspaces/cli/README.md)
+- [Packs](./workspaces/packs/README.md)
+- [Types](./workspaces/types/README.md)
 - [Utils](./workspaces/utils/README.md)
 
 ## Usage
