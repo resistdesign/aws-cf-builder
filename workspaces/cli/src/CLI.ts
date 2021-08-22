@@ -10,7 +10,9 @@ export const CLI = (packageInfo: { version: string } = { version: '0.0.0' }) => 
   const defaultOutput = Path.join(process.cwd(), 'dist', 'iac.yaml');
 
   program.version(version, '-v, --version', 'output the current version');
-  program.option('-i, --input', 'the input .ts file', defaultInput).option('-o, --output', 'the output CloudFormation template file', defaultOutput);
+  program
+    .option('-i, --input <path>', 'the input .ts file', defaultInput)
+    .option('-o, --output <path>', 'the output CloudFormation template file', defaultOutput);
   program.parse(process.argv);
 
   const {

@@ -1,0 +1,117 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: And example CloudFormation template.
+Parameters:
+  UIDomainName:
+    Type: String
+    Description: The domain name for the user interface.
+    Default: app.example.com
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: UI Parameters
+        Parameters:
+          - UIDomainName
+    ParameterLabels:
+      UIDomainName:
+        default: UI Domain Name
+Resources:
+  UIStaticFiles:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Delete
+    Properties:
+      CorsConfiguration:
+        CorsRules:
+          - AllowedHeaders:
+              - "*"
+            AllowedMethods:
+              - GET
+              - PUT
+              - POST
+              - DELETE
+              - HEAD
+            AllowedOrigins:
+              - "*"
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+  UICDNCloudFront:
+    Type: AWS::CloudFront::Distribution
+    DependsOn: UIStaticFiles
+    Properties:
+      DistributionConfig:
+        Aliases:
+          - Ref: UIDomainName
+        ViewerCertificate:
+          AcmCertificateArn: arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012
+          SslSupportMethod: sni-only
+          MinimumProtocolVersion: TLSv1.1_2016
+        DefaultCacheBehavior:
+          ForwardedValues:
+            QueryString: false
+          TargetOriginId:
+            Fn::Sub:
+              - S3-${S3BucketName}
+              - S3BucketName:
+                  Ref: UIDomainName
+          ViewerProtocolPolicy: redirect-to-https
+        DefaultRootObject: index.html
+        Enabled: true
+        IPV6Enabled: false
+        HttpVersion: http2
+        Origins:
+          - DomainName:
+              Fn::Sub:
+                - ${S3BucketName}.s3.amazonaws.com
+                - S3BucketName:
+                    Ref: UIDomainName
+            Id:
+              Fn::Sub:
+                - S3-${S3BucketName}
+                - S3BucketName:
+                    Ref: UIDomainName
+            S3OriginConfig:
+              OriginAccessIdentity: ""
+        CustomErrorResponses:
+          - ErrorCachingMinTTL: 300
+            ErrorCode: 404
+            ResponseCode: 200
+            ResponsePagePath: /index.html
+          - ErrorCachingMinTTL: 300
+            ErrorCode: 403
+            ResponseCode: 200
+            ResponsePagePath: /index.html
+        PriceClass: PriceClass_All
+  UICDNRoute53Record:
+    Type: AWS::Route53::RecordSet
+    DependsOn:
+      - UICDNCloudFront
+    Properties:
+      HostedZoneId: <example.com-hosted-zone-id>
+      Type: A
+      Name:
+        Fn::Sub:
+          - ${DomainName}.
+          - DomainName:
+              Ref: UIDomainName
+      AliasTarget:
+        HostedZoneId: Z2FDTNDATAQYW2
+        DNSName:
+          Fn::Sub:
+            - ${DomainName}.
+            - DomainName:
+                Fn::GetAtt:
+                  - UICDNCloudFront
+                  - DomainName
+Outputs:
+  Info:
+    Description: Basic information.
+    Export:
+      Name: Info
+    Value: This stack was created with AWS CF Builder.

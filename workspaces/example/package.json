@@ -5,7 +5,7 @@
   "author": "Resist Design",
   "license": "MIT",
   "scripts": {
-    "build": "cfbuild",
+    "build": "cfbuild -o ./output/iac.yaml",
     "release": "echo 'No release for example. :)'"
   },
   "prettier": {
