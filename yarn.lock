@@ -21,7 +21,6 @@ __metadata:
     "@types/node": ^16.4.4
     cfn-lint: ^1.9.7
     commander: ^8.1.0
-    npm-release: ^1.0.0
     prettier: ^2.3.2
     ts-node: ^10.1.0
     tslib: ^2.3.0
@@ -54,7 +53,6 @@ __metadata:
     "@aws-cf-builder/utils": ^1.0.0
     "@types/jest": ^26.0.24
     jest: ^27.0.6
-    npm-release: ^1.0.0
     prettier: ^2.3.2
     ts-jest: ^27.0.4
     tslib: ^2.3.0
@@ -69,7 +67,6 @@ __metadata:
   dependencies:
     "@types/node": ^16.4.4
     "@types/prettier": ^2.3.2
-    npm-release: ^1.0.0
     prettier: ^2.3.2
     ts-node: ^10.1.0
     tslib: ^2.3.0
@@ -84,7 +81,6 @@ __metadata:
     "@aws-cf-builder/types": ^1.0.0
     "@types/flat": ^5.0.2
     flat: ^5.0.2
-    npm-release: ^1.0.0
     prettier: ^2.3.2
     tslib: ^2.3.0
     typescript: ^4.3.5
@@ -1478,7 +1474,6 @@ __metadata:
     "@types/node": ^16.7.1
     "@yarnpkg/core": ^3.1.0-rc.2
     "@yarnpkg/fslib": ^2.6.0-rc.1
-    npm-release: ^1.0.0
     ts-node: ^10.2.1
     tslib: ^2.3.1
     typescript: ^4.3.5
@@ -1942,13 +1937,6 @@ __metadata:
   version: 1.4.0
   resolution: "colors@npm:1.4.0"
   checksum: 98aa2c2418ad87dedf25d781be69dc5fc5908e279d9d30c34d8b702e586a0474605b3a189511482b9d5ed0d20c867515d22749537f7bc546256c6014f3ebdcec
-  languageName: node
-  linkType: hard
-
-"colors@npm:~0.6.0-1":
-  version: 0.6.2
-  resolution: "colors@npm:0.6.2"
-  checksum: 3f48cadb26ef1809847f3c0ff1e1dc4b2e2af4ace54dd9cd7491bfcaafef3abaac7cb063cb91f98f305bba8a6fa74720a8856610629f9c889b1eb4cd84a120a3
   languageName: node
   linkType: hard
 
@@ -4101,13 +4089,6 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"minimist@npm:~0.0.1":
-  version: 0.0.10
-  resolution: "minimist@npm:0.0.10"
-  checksum: f7b2cb17af165d042bb3d2803f5e6c38d137f0c36a62230fdb643058c25b56749d2c335b17d4de0b0f08f19cb868cac40df207ff7a4c59fd0771e8762e9b783c
-  languageName: node
-  linkType: hard
-
 "minipass-collect@npm:^1.0.2":
   version: 1.0.2
   resolution: "minipass-collect@npm:1.0.2"
@@ -4304,18 +4285,6 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"npm-release@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "npm-release@npm:1.0.0"
-  dependencies:
-    colors: ~0.6.0-1
-    optimist: ~0.6.0
-  bin:
-    npm-release: ./bin/npm-release
-  checksum: 6d8cc19e9a0b55dad162ad5bc9789ad4a42ba3aad304f3ae3c5f04745f39274e5966b39492dbbf76a5b2002946a4debc35605725326f9aea4d1bede01c608295
-  languageName: node
-  linkType: hard
-
 "npm-run-path@npm:^4.0.1":
   version: 4.0.1
   resolution: "npm-run-path@npm:4.0.1"
@@ -4420,16 +4389,6 @@ fsevents@^2.3.2:
   dependencies:
     is-wsl: ^1.1.0
   checksum: 35b677b5a1fd6c8cb1996b0607671ba79f7ce9fa029217d54eafaf6bee13eb7e700691c6a415009140fd02a435fffdfd143875f3b233b60f3f9d631c6f6b81a0
-  languageName: node
-  linkType: hard
-
-"optimist@npm:~0.6.0":
-  version: 0.6.1
-  resolution: "optimist@npm:0.6.1"
-  dependencies:
-    minimist: ~0.0.1
-    wordwrap: ~0.0.2
-  checksum: 191ab2b119b2908a229065119349d9cbd295217a8777febd2812fc7b95c5f31f5f6ecb4fd0222351466cb33af8410299373229e78dd96713ed5348fcebfb96f4
   languageName: node
   linkType: hard
 
@@ -5729,13 +5688,6 @@ typescript@^4.3.5:
   version: 1.2.3
   resolution: "word-wrap@npm:1.2.3"
   checksum: 30b48f91fcf12106ed3186ae4fa86a6a1842416df425be7b60485de14bec665a54a68e4b5156647dec3a70f25e84d270ca8bc8cd23182ed095f5c7206a938c1f
-  languageName: node
-  linkType: hard
-
-"wordwrap@npm:~0.0.2":
-  version: 0.0.3
-  resolution: "wordwrap@npm:0.0.3"
-  checksum: dfc2d3512e857ae4b3bc2e8d4e5d2c285c28a4b87cd1d81c977ce9a1a99152d355807e046851a3d61148f39d877fbb889352e07b65a9cbdd2256aa928e159026
   languageName: node
   linkType: hard
 

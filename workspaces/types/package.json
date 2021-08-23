@@ -14,7 +14,6 @@
   "devDependencies": {
     "@types/node": "^16.4.4",
     "@types/prettier": "^2.3.2",
-    "npm-release": "^1.0.0",
     "prettier": "^2.3.2",
     "ts-node": "^10.1.0",
     "tslib": "^2.3.0",

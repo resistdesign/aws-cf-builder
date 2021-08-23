@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "yarn workspaces foreach run build",
-    "release": "yarn workspaces foreach run release"
+    "release": "node ./release/index.js"
   },
   "prettier": {
     "printWidth": 150,
@@ -18,9 +18,6 @@
     "singleQuote": true,
     "trailingComma": "es5",
     "useTabs": false
-  },
-  "devDependencies": {
-    "npm-release": "^1.0.0"
   },
   "dependencies": {
     "@types/node": "^16.7.1",

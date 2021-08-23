@@ -1,4 +1,4 @@
 require('ts-node/register');
-require('./Deploy')
-  .Deploy()
+require('./Release')
+  .Release()
   .then(() => console.log('COMPLETE'));
