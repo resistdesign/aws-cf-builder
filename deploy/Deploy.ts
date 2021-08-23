@@ -1,8 +1,9 @@
-import { Configuration, PluginConfiguration, Project } from '@yarnpkg/core';
+import Path from 'path';
+import { Configuration, Project } from '@yarnpkg/core';
 import { PortablePath } from '@yarnpkg/fslib';
 
 export const Deploy = async () => {
-  const cwd: PortablePath = `${process.cwd()}` as PortablePath;
+  const cwd: PortablePath = Path.dirname(__dirname) as PortablePath;
   const config = Configuration.create(cwd, cwd);
   const project = await Project.find(config, cwd);
 
