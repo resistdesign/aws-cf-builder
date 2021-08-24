@@ -4,11 +4,11 @@
 read -p 'Type (major|minor|patch): ' TYPE
 
 # Update workspace package versions, build, install and publish.
-yarn workspaces foreach version $TYPE
+yarn workspaces foreach --no-private version $TYPE
 yarn
 yarn build
 yarn
-yarn workspaces foreach npm publish
+yarn workspaces foreach --no-private npm publish --access public
 
 # Commit and push version updates.
 git add .
