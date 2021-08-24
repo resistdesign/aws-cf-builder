@@ -20,5 +20,14 @@
   },
   "devDependencies": {
     "prettier": "^2.3.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/resistdesign/aws-cf-builder.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/resistdesign/aws-cf-builder/issues"
+  },
+  "homepage": "https://github.com/resistdesign/aws-cf-builder#readme"
 }

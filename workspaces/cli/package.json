@@ -1,6 +1,6 @@
 {
   "name": "@aws-cf-builder/cli",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "main": "src/index.js",
   "bin": {
     "cfbuild": "src/index.js"
@@ -28,5 +28,14 @@
     "tslib": "^2.3.0",
     "typescript": "^4.3.5",
     "yaml": "^1.10.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/resistdesign/aws-cf-builder.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/resistdesign/aws-cf-builder/issues"
+  },
+  "homepage": "https://github.com/resistdesign/aws-cf-builder#readme"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@aws-cf-builder/types",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "main": "dist/index.d.ts",
   "files": [
     "dist"
@@ -24,5 +24,14 @@
     "singleQuote": true,
     "trailingComma": "es5",
     "useTabs": false
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/resistdesign/aws-cf-builder.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/resistdesign/aws-cf-builder/issues"
+  },
+  "homepage": "https://github.com/resistdesign/aws-cf-builder#readme"
 }
