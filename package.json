@@ -1,6 +1,5 @@
 {
   "name": "aws-cf-builder",
-  "version": "1.0.0",
   "main": "index.js",
   "author": "Resist Design",
   "license": "MIT",
@@ -19,13 +18,7 @@
     "trailingComma": "es5",
     "useTabs": false
   },
-  "dependencies": {
-    "@types/node": "^16.7.1",
-    "@yarnpkg/core": "^3.1.0-rc.2",
-    "@yarnpkg/fslib": "^2.6.0-rc.1",
-    "@yarnpkg/shell": "^3.0.1-rc.3",
-    "ts-node": "^10.2.1",
-    "tslib": "^2.3.1",
-    "typescript": "^4.3.5"
+  "devDependencies": {
+    "prettier": "^2.3.2"
   }
 }

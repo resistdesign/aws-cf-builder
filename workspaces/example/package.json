@@ -1,9 +1,9 @@
 {
   "name": "@aws-cf-builder/example",
-  "version": "1.0.0",
   "main": "src/iac.ts",
   "author": "Resist Design",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "build": "cfbuild -o ./output/iac.yaml",
     "release": "echo 'No release for example. :)'"
