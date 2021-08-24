@@ -1,6 +1,0 @@
-undecided:
-  - aws-cf-builder
-  - "@aws-cf-builder/cli"
-  - "@aws-cf-builder/example"
-  - "@aws-cf-builder/packs"
-  - "@aws-cf-builder/types"

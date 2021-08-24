@@ -5,8 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "cfbuild -o ./output/iac.yaml",
-    "release": "echo 'No release for example. :)'"
+    "build": "cfbuild -o ./output/iac.yaml"
   },
   "prettier": {
     "printWidth": 150,

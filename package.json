@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "yarn workspaces foreach run build",
-    "release": "node ./release/index.js"
+    "release": "read -p 'Type (major|minor|patch): ' TYPE; yarn workspaces foreach version $TYPE"
   },
   "prettier": {
     "printWidth": 150,

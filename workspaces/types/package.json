@@ -1,6 +1,6 @@
 {
   "name": "@aws-cf-builder/types",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "main": "dist/index.d.ts",
   "files": [
     "dist"
@@ -8,8 +8,7 @@
   "author": "Resist Design",
   "license": "MIT",
   "scripts": {
-    "build": "node -r ts-node/register ./src/index.ts",
-    "release": "npm-release"
+    "build": "node -r ts-node/register ./src/index.ts"
   },
   "devDependencies": {
     "@types/node": "^16.4.4",

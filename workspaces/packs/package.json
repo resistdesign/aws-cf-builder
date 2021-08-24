@@ -9,8 +9,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "build": "rm -rf ./dist && mkdir dist && tsc -p ./tsconfig.build.json --outDir dist",
-    "release": "npm-release"
+    "build": "rm -rf ./dist && mkdir dist && tsc -p ./tsconfig.build.json --outDir dist"
   },
   "prettier": {
     "printWidth": 150,

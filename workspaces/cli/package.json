@@ -8,8 +8,7 @@
   "author": "Resist Design",
   "license": "MIT",
   "scripts": {
-    "build": "echo 'No build for CLI. :)'",
-    "release": "npm-release"
+    "build": "echo 'No build for CLI. :)'"
   },
   "devDependencies": {
     "prettier": "^2.3.2"
