@@ -5,6 +5,14 @@ Parameters:
     Type: String
     Description: The domain name for the user interface.
     Default: app.example.com
+  APIDomainName:
+    Type: String
+    Description: The domain name for the API.
+    Default: api.example.com
+  APIType:
+    Type: String
+    Description: The type of API to deploy.
+    Default: lambda
 Metadata:
   AWS::CloudFormation::Interface:
     ParameterGroups:
@@ -12,9 +20,18 @@ Metadata:
           default: UI Parameters
         Parameters:
           - UIDomainName
+      - Label:
+          default: API Parameters
+        Parameters:
+          - APIDomainName
+          - APIType
     ParameterLabels:
       UIDomainName:
         default: UI Domain Name
+      APIDomainName:
+        default: API Domain Name
+      APIType:
+        default: API Type
 Resources:
   UIStaticFiles:
     Type: AWS::S3::Bucket

@@ -15,11 +15,11 @@ export const addParameter = (parameterInfo: ParameterInfo, template: CloudFormat
   let NewParameterGroups = ParameterGroups;
 
   if (Group) {
-    const GroupObject = ParameterGroups.filter((g) => g.Label === Group)[0];
+    const GroupObject = ParameterGroups.filter((g) => g.Label?.default === Group)[0];
 
     NewParameterGroups = GroupObject
       ? ParameterGroups.map((g) =>
-          g.Label === Group
+          g.Label?.default === Group
             ? {
                 ...g,
                 Parameters: [...(g.Parameters || []), ParameterId],
@@ -27,6 +27,7 @@ export const addParameter = (parameterInfo: ParameterInfo, template: CloudFormat
             : g
         )
       : [
+          ...ParameterGroups,
           {
             Label: {
               default: Group,

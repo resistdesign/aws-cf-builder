@@ -30,6 +30,28 @@ export default addBasicOutput(
         },
       },
     })
+    .addParameterGroup({
+      Label: 'API Parameters',
+      Parameters: {
+        APIDomainName: {
+          Label: 'API Domain Name',
+          Type: 'String',
+          Description: 'The domain name for the API.',
+          Default: 'api.example.com',
+        },
+      },
+    })
+    .addParameterGroup({
+      Label: 'API Parameters',
+      Parameters: {
+        APIType: {
+          Label: 'API Type',
+          Type: 'String',
+          Description: 'The type of API to deploy.',
+          Default: 'lambda',
+        },
+      },
+    })
     .applyPack(
       {
         id: 'UIStaticFiles',
