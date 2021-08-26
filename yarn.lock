@@ -18,7 +18,7 @@ __metadata:
     typescript: ^4.3.5
     yaml: ^1.10.2
   bin:
-    cfbuild: src/index.js
+    cfbuild: dist/index.js
   languageName: unknown
   linkType: soft
 
