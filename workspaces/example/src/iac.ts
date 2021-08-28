@@ -52,6 +52,21 @@ export default addBasicOutput(
         },
       },
     })
+    .patch(
+      new SimpleCFT().addParameterGroup({
+        Label: 'API Parameters',
+        Parameters: {
+          APIPatchedParam1: {
+            Label: 'API Patched Param 1',
+            Type: 'String',
+          },
+          APIPatchedParam2: {
+            Label: 'API Patched Param 2',
+            Type: 'String',
+          },
+        },
+      }).template
+    )
     .applyPack(
       {
         id: 'UIStaticFiles',
