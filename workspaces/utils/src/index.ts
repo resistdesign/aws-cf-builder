@@ -80,6 +80,8 @@ export const patchTemplate = (patch: Partial<CloudFormationTemplate>, template: 
   const flatTemplate = flatten(template, FLATTEN_OPTIONS) as any;
   const flatPatchTemplate = flatten(patch, FLATTEN_OPTIONS) as any;
 
+  // TODO: Solve The Problem: Parameter groups get overwritten.
+
   return unflatten(
     {
       ...flatTemplate,
