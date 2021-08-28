@@ -17,9 +17,18 @@ export const isConstructedFrom = (value: any, constructorReference: Function): b
 
 export const mergeValues = (valuePathArray: ValuePathArray = [], existingValue: any, newValue: any, mergeStrategyMap: MergeStrategyMap = {}): any => {
   const valuePathString = getValuePathString(valuePathArray);
-  const { [valuePathString]: mergeStrategy = DEFAULT_MERGE_STRATEGY } = mergeStrategyMap;
-
-  // TODO: valuePathString is last valuePathArray part is a number???
+  const arrayIndexWildcardValuePathString = getValuePathString(valuePathArray.map((p, i) => (i === valuePathArray.length - 1 ? '#' : p)));
+  const lastValuePathPart = valuePathArray[valuePathArray.length - 1];
+  const {
+    [valuePathString]: specificKeyMergeStrategy = DEFAULT_MERGE_STRATEGY,
+    [arrayIndexWildcardValuePathString]: arrayIndexWildcardMergeStrategy = DEFAULT_MERGE_STRATEGY,
+  } = mergeStrategyMap;
+  const mergeStrategy =
+    valuePathString in mergeStrategyMap
+      ? specificKeyMergeStrategy
+      : typeof lastValuePathPart === 'number'
+      ? arrayIndexWildcardMergeStrategy
+      : specificKeyMergeStrategy;
 
   if (mergeStrategy !== 'replace') {
     if (isConstructedFrom(existingValue, Array) && isConstructedFrom(newValue, Array)) {
