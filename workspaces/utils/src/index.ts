@@ -71,7 +71,10 @@ export const patchTemplate = (patch: Partial<CloudFormationTemplate>, template: 
       'Metadata',
       'AWS::CloudFormation::Interface',
       'ParameterGroups',
-    ])]: 'accumulate',
+    ])]: {
+      strategy: 'accumulate-unique-by',
+      data: 'Label',
+    },
     [getValuePathString([
       // Parameter Group Parameter Ids
       'Metadata',
@@ -79,7 +82,9 @@ export const patchTemplate = (patch: Partial<CloudFormationTemplate>, template: 
       'ParameterGroups',
       '#',
       'Parameters',
-    ])]: 'accumulate',
+    ])]: {
+      strategy: 'accumulate-unique',
+    },
   });
 
 export const createResourcePack =
