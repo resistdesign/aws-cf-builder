@@ -70,8 +70,6 @@ __metadata:
   resolution: "@aws-cf-builder/utils@workspace:workspaces/utils"
   dependencies:
     "@aws-cf-builder/types": ^1.5.2
-    "@types/flat": ^5.0.2
-    flat: ^5.0.2
     prettier: ^2.3.2
     tslib: ^2.3.0
     typescript: ^4.3.5
@@ -835,13 +833,6 @@ __metadata:
   dependencies:
     "@babel/types": ^7.3.0
   checksum: a797ea09c72307569e3ee08aa3900ca744ce3091114084f2dc59b67a45ee7d01df7865252790dbfa787a7915ce892cdc820c9b920f3683292765fc656b08dc63
-  languageName: node
-  linkType: hard
-
-"@types/flat@npm:^5.0.2":
-  version: 5.0.2
-  resolution: "@types/flat@npm:5.0.2"
-  checksum: e21d51d872e788bdb381887c2880f717ba4377beb4055078136127134858efd15044655610f1fce4832d9a103ded468a25335203fc53f36db08edd5ab5a8b3db
   languageName: node
   linkType: hard
 
@@ -2053,15 +2044,6 @@ __metadata:
     locate-path: ^5.0.0
     path-exists: ^4.0.0
   checksum: 4c172680e8f8c1f78839486e14a43ef82e9decd0e74145f40707cc42e7420506d5ec92d9a11c22bd2c48fb0c384ea05dd30e10dd152fefeec6f2f75282a8b844
-  languageName: node
-  linkType: hard
-
-"flat@npm:^5.0.2":
-  version: 5.0.2
-  resolution: "flat@npm:5.0.2"
-  bin:
-    flat: cli.js
-  checksum: 12a1536ac746db74881316a181499a78ef953632ddd28050b7a3a43c62ef5462e3357c8c29d76072bb635f147f7a9a1f0c02efef6b4be28f8db62ceb3d5c7f5d
   languageName: node
   linkType: hard
 

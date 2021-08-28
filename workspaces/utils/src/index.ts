@@ -1,5 +1,5 @@
 import { CloudFormationParameter, CloudFormationTemplate } from '@aws-cf-builder/types';
-import { flatten, unflatten } from 'flat';
+import { getValuePathString, mergeValues } from './patch-utils';
 
 export type ParameterInfo = {
   ParameterId: string;
@@ -64,32 +64,23 @@ export const addParameters = (parameters: ParameterInfo[], template: CloudFormat
 
 export type ResourcePackApplier<ParamsType> = (params: ParamsType, template: CloudFormationTemplate) => CloudFormationTemplate;
 
-const FLATTEN_OPTIONS = {
-  delimiter: '/',
-  maxDepth: Infinity,
-  safe: false,
-  overwrite: true,
-  transformKey: (key: string) => encodeURIComponent(key),
-};
-const UNFLATTEN_OPTIONS = {
-  ...FLATTEN_OPTIONS,
-  transformKey: (key: string) => decodeURIComponent(key),
-};
-
-export const patchTemplate = (patch: Partial<CloudFormationTemplate>, template: CloudFormationTemplate): CloudFormationTemplate => {
-  const flatTemplate = flatten(template, FLATTEN_OPTIONS) as any;
-  const flatPatchTemplate = flatten(patch, FLATTEN_OPTIONS) as any;
-
-  // TODO: Solve The Problem: Parameter groups get overwritten.
-
-  return unflatten(
-    {
-      ...flatTemplate,
-      ...flatPatchTemplate,
-    },
-    UNFLATTEN_OPTIONS
-  ) as any;
-};
+export const patchTemplate = (patch: Partial<CloudFormationTemplate>, template: CloudFormationTemplate): CloudFormationTemplate =>
+  mergeValues([], template, patch, {
+    [getValuePathString([
+      // Parameter Groups
+      'Metadata',
+      'AWS::CloudFormation::Interface',
+      'ParameterGroups',
+    ])]: 'accumulate',
+    [getValuePathString([
+      // Parameter Group Parameter Ids
+      'Metadata',
+      'AWS::CloudFormation::Interface',
+      'ParameterGroups',
+      '#',
+      'Parameters',
+    ])]: 'accumulate',
+  });
 
 export const createResourcePack =
   <ParamsType>(creator: (params: ParamsType) => Partial<CloudFormationTemplate>): ResourcePackApplier<ParamsType> =>
