@@ -13,6 +13,10 @@ Parameters:
     Type: String
     Description: The type of API to deploy.
     Default: lambda
+  APIPatchedParam1:
+    Type: String
+  APIPatchedParam2:
+    Type: String
 Metadata:
   AWS::CloudFormation::Interface:
     ParameterGroups:
@@ -25,6 +29,8 @@ Metadata:
         Parameters:
           - APIDomainName
           - APIType
+          - APIPatchedParam1
+          - APIPatchedParam2
     ParameterLabels:
       UIDomainName:
         default: UI Domain Name
@@ -32,6 +38,10 @@ Metadata:
         default: API Domain Name
       APIType:
         default: API Type
+      APIPatchedParam1:
+        default: API Patched Param 1
+      APIPatchedParam2:
+        default: API Patched Param 2
 Resources:
   UIStaticFiles:
     Type: AWS::S3::Bucket

@@ -73,7 +73,7 @@ export const patchTemplate = (patch: Partial<CloudFormationTemplate>, template: 
       'ParameterGroups',
     ])]: {
       strategy: 'accumulate-unique-by',
-      data: 'Label',
+      data: (pG) => pG?.Label?.default,
     },
     [getValuePathString([
       // Parameter Group Parameter Ids
