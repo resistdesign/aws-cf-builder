@@ -4,7 +4,7 @@ exports[`Cloud Function addCloudFunction should add a cloud function and role 1`
 Object {
   "AWSTemplateFormatVersion": "2010-09-09",
   "Resources": Object {
-    "BasicCloudFunction": Object {
+    "Basic": Object {
       "Properties": Object {
         "Code": Object {
           "ZipFile": "module.exports = {handler: async () => ({
@@ -22,7 +22,7 @@ Object {
         "Handler": "index.handler",
         "Role": Object {
           "Fn::GetAtt": Array [
-            "BasicCloudFunctionRole",
+            "BasicRole",
             "Arn",
           ],
         },
@@ -31,7 +31,7 @@ Object {
       },
       "Type": "AWS::Lambda::Function",
     },
-    "BasicCloudFunctionRole": Object {
+    "BasicRole": Object {
       "Properties": Object {
         "AssumeRolePolicyDocument": Object {
           "Statement": Array [

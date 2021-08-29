@@ -72,7 +72,7 @@ export const addCloudFunction = createResourcePack(
   }: AddCloudFunctionConfig) => {
     return {
       Resources: {
-        [`${id}CloudFunctionRole`]: {
+        [`${id}Role`]: {
           Type: 'AWS::IAM::Role',
           Properties: {
             ManagedPolicyArns: ['arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'],
@@ -91,7 +91,7 @@ export const addCloudFunction = createResourcePack(
             Policies: policies,
           },
         },
-        [`${id}CloudFunction`]: {
+        [`${id}`]: {
           Type: 'AWS::Lambda::Function',
           Properties: {
             Timeout: timeout,
@@ -99,7 +99,7 @@ export const addCloudFunction = createResourcePack(
             Environment: environment,
             Handler: handler,
             Role: {
-              'Fn::GetAtt': [`${id}CloudFunctionRole`, 'Arn'],
+              'Fn::GetAtt': [`${id}Role`, 'Arn'],
             },
             Runtime: runtime,
           },
