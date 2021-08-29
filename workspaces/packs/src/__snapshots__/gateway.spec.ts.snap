@@ -8,7 +8,10 @@ Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
-          "Ref": "BasicCloudFunction",
+          "Fn::GetAtt": Array [
+            "CFID",
+            "Arn",
+          ],
         },
         "Principal": "apigateway.amazonaws.com",
         "SourceArn": Object {
@@ -138,8 +141,8 @@ Object {
     },
     "BasicGatewayRESTAPIEnvironment": Object {
       "DependsOn": Array [
-        "APICloudWatchAccount",
-        "APIGatewayRESTAPIDeployment",
+        "BasicCloudWatchAccount",
+        "BasicGatewayRESTAPIDeployment",
       ],
       "Properties": Object {
         "AccessLogSetting": Object {
@@ -152,10 +155,10 @@ Object {
           "Format": "{\\"requestId\\":\\"$context.requestId\\",\\"ip\\":\\"$context.identity.sourceIp\\",\\"caller\\":\\"$context.identity.caller\\",\\"user\\":\\"$context.identity.user\\",\\"requestTime\\":\\"$context.requestTime\\",\\"httpMethod\\":\\"$context.httpMethod\\",\\"resourcePath\\":\\"$context.resourcePath\\",\\"status\\":\\"$context.status\\",\\"protocol\\":\\"$context.protocol\\",\\"responseLength\\":\\"$context.responseLength\\",\\"apiGatewayErrorMessage\\":\\"$context.error.message\\"}",
         },
         "DeploymentId": Object {
-          "Ref": "APIGatewayRESTAPIDeployment",
+          "Ref": "BasicGatewayRESTAPIDeployment",
         },
         "RestApiId": Object {
-          "Ref": "APIGatewayRESTAPI",
+          "Ref": "BasicGatewayRESTAPI",
         },
         "StageName": "production",
       },

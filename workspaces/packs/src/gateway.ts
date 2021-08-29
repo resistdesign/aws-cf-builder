@@ -229,7 +229,7 @@ export const addGateway = createResourcePack(
           },
           [`${id}GatewayRESTAPIEnvironment`]: {
             Type: 'AWS::ApiGateway::Stage',
-            DependsOn: ['APICloudWatchAccount', 'APIGatewayRESTAPIDeployment'],
+            DependsOn: [`${id}CloudWatchAccount`, `${id}GatewayRESTAPIDeployment`],
             Properties: {
               AccessLogSetting: {
                 DestinationArn: {
@@ -239,10 +239,10 @@ export const addGateway = createResourcePack(
                   '{"requestId":"$context.requestId","ip":"$context.identity.sourceIp","caller":"$context.identity.caller","user":"$context.identity.user","requestTime":"$context.requestTime","httpMethod":"$context.httpMethod","resourcePath":"$context.resourcePath","status":"$context.status","protocol":"$context.protocol","responseLength":"$context.responseLength","apiGatewayErrorMessage":"$context.error.message"}',
               },
               DeploymentId: {
-                Ref: 'APIGatewayRESTAPIDeployment',
+                Ref: `${id}GatewayRESTAPIDeployment`,
               },
               RestApiId: {
-                Ref: 'APIGatewayRESTAPI',
+                Ref: `${id}GatewayRESTAPI`,
               },
               StageName: stageName,
             },
@@ -313,7 +313,7 @@ export const addGateway = createResourcePack(
               Action: 'lambda:InvokeFunction',
               Principal: 'apigateway.amazonaws.com',
               FunctionName: {
-                Ref: `${id}CloudFunction`,
+                'Fn::GetAtt': [cloudFunctionId, 'Arn'],
               },
               SourceArn: {
                 'Fn::Sub': [
