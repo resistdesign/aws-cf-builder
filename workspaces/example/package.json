@@ -15,10 +15,10 @@
     "useTabs": false
   },
   "dependencies": {
-    "@aws-cf-builder/cli": "^1.5.3",
-    "@aws-cf-builder/packs": "^1.5.3",
-    "@aws-cf-builder/types": "^1.5.3",
-    "@aws-cf-builder/utils": "^1.5.3",
+    "@aws-cf-builder/cli": "^1.5.4",
+    "@aws-cf-builder/packs": "^1.5.4",
+    "@aws-cf-builder/types": "^1.5.4",
+    "@aws-cf-builder/utils": "^1.5.4",
     "prettier": "^2.3.2",
     "tslib": "^2.3.0",
     "typescript": "^4.3.5"

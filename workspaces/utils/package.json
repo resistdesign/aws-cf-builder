@@ -1,6 +1,6 @@
 {
   "name": "@aws-cf-builder/utils",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "main": "dist/index.js",
   "files": [
     "dist"
@@ -21,7 +21,7 @@
     "prettier": "^2.3.2"
   },
   "dependencies": {
-    "@aws-cf-builder/types": "^1.5.3",
+    "@aws-cf-builder/types": "^1.5.4",
     "tslib": "^2.3.0",
     "typescript": "^4.3.5"
   },
