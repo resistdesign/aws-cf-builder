@@ -5,7 +5,7 @@ __metadata:
   version: 4
   cacheKey: 8
 
-"@aws-cf-builder/cli@^1.5.2, @aws-cf-builder/cli@workspace:workspaces/cli":
+"@aws-cf-builder/cli@^1.5.3, @aws-cf-builder/cli@workspace:workspaces/cli":
   version: 0.0.0-use.local
   resolution: "@aws-cf-builder/cli@workspace:workspaces/cli"
   dependencies:
@@ -26,22 +26,22 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@aws-cf-builder/example@workspace:workspaces/example"
   dependencies:
-    "@aws-cf-builder/cli": ^1.5.2
-    "@aws-cf-builder/packs": ^1.5.2
-    "@aws-cf-builder/types": ^1.5.2
-    "@aws-cf-builder/utils": ^1.5.2
+    "@aws-cf-builder/cli": ^1.5.3
+    "@aws-cf-builder/packs": ^1.5.3
+    "@aws-cf-builder/types": ^1.5.3
+    "@aws-cf-builder/utils": ^1.5.3
     prettier: ^2.3.2
     tslib: ^2.3.0
     typescript: ^4.3.5
   languageName: unknown
   linkType: soft
 
-"@aws-cf-builder/packs@^1.5.2, @aws-cf-builder/packs@workspace:workspaces/packs":
+"@aws-cf-builder/packs@^1.5.3, @aws-cf-builder/packs@workspace:workspaces/packs":
   version: 0.0.0-use.local
   resolution: "@aws-cf-builder/packs@workspace:workspaces/packs"
   dependencies:
-    "@aws-cf-builder/types": ^1.5.2
-    "@aws-cf-builder/utils": ^1.5.2
+    "@aws-cf-builder/types": ^1.5.3
+    "@aws-cf-builder/utils": ^1.5.3
     "@types/jest": ^26.0.24
     jest: ^27.0.6
     prettier: ^2.3.2
@@ -52,7 +52,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@aws-cf-builder/types@^1.5.2, @aws-cf-builder/types@workspace:workspaces/types":
+"@aws-cf-builder/types@^1.5.3, @aws-cf-builder/types@workspace:workspaces/types":
   version: 0.0.0-use.local
   resolution: "@aws-cf-builder/types@workspace:workspaces/types"
   dependencies:
@@ -65,11 +65,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@aws-cf-builder/utils@^1.5.2, @aws-cf-builder/utils@workspace:workspaces/utils":
+"@aws-cf-builder/utils@^1.5.3, @aws-cf-builder/utils@workspace:workspaces/utils":
   version: 0.0.0-use.local
   resolution: "@aws-cf-builder/utils@workspace:workspaces/utils"
   dependencies:
-    "@aws-cf-builder/types": ^1.5.2
+    "@aws-cf-builder/types": ^1.5.3
     prettier: ^2.3.2
     tslib: ^2.3.0
     typescript: ^4.3.5
