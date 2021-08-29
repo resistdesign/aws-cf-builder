@@ -11,6 +11,9 @@ Object {
             "default": "APIBuild Parameters",
           },
           "Parameters": Array [
+            "APIBuildGitHubUser",
+            "APIBuildGitHubRepo",
+            "APIBuildGitHubBranch",
             "APIBuildGitHubToken",
           ],
         },
