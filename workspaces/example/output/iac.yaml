@@ -136,6 +136,247 @@ Resources:
                 Fn::GetAtt:
                   - UICDNCloudFront
                   - DomainName
+  APICFRole:
+    Type: AWS::IAM::Role
+    Properties:
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Action:
+              - sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+      Policies:
+        - PolicyName: lambda-parameter-store
+          PolicyDocument:
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "*"
+                Resource: "*"
+            Version: 2012-10-17T00:00:00.000Z
+  APICF:
+    Type: AWS::Lambda::Function
+    Properties:
+      Timeout: 30
+      Code:
+        ZipFile: |
+          module.exports = {handler: async () => ({
+                      statusCode: 200,
+                      headers: {'Content-Type': 'application/json'},
+                      body: '"You did it!"'
+                    })};
+      Environment:
+        Variables:
+          NODE_ENV: production
+      Handler: index.handler
+      Role:
+        Fn::GetAtt:
+          - APICFRole
+          - Arn
+      Runtime: nodejs12.x
+  APIGW:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name:
+        Fn::Sub: ${AWS::StackName}-APIGWGatewayRESTAPI
+      EndpointConfiguration:
+        Types:
+          - EDGE
+  APIGWGatewayRESTAPIResource:
+    Type: AWS::ApiGateway::Resource
+    DependsOn: APIGW
+    Properties:
+      ParentId:
+        Fn::GetAtt:
+          - APIGW
+          - RootResourceId
+      PathPart: "{proxy+}"
+      RestApiId:
+        Ref: APIGW
+  APIGWGatewayRESTAPIMethod:
+    Type: AWS::ApiGateway::Method
+    DependsOn: APIGWGatewayRESTAPIResource
+    Properties:
+      HttpMethod: ANY
+      ResourceId:
+        Ref: APIGWGatewayRESTAPIResource
+      RestApiId:
+        Ref: APIGW
+      Integration:
+        Type: AWS_PROXY
+        IntegrationHttpMethod: POST
+        Uri:
+          Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${APICF.Arn}/invocations
+  APIGWGatewayRESTAPIRootMethod:
+    Type: AWS::ApiGateway::Method
+    DependsOn: APIGWGatewayRESTAPIResource
+    Properties:
+      HttpMethod: ANY
+      ResourceId:
+        Fn::GetAtt:
+          - APIGW
+          - RootResourceId
+      RestApiId:
+        Ref: APIGW
+      Integration:
+        Type: AWS_PROXY
+        IntegrationHttpMethod: POST
+        Uri:
+          Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${APICF.Arn}/invocations
+  APIGWGatewayRESTAPIOPTIONSMethod:
+    Type: AWS::ApiGateway::Method
+    DependsOn: APIGWGatewayRESTAPIResource
+    Properties:
+      AuthorizationType: NONE
+      HttpMethod: OPTIONS
+      ResourceId:
+        Ref: APIGWGatewayRESTAPIResource
+      RestApiId:
+        Ref: APIGW
+      Integration:
+        Type: AWS_PROXY
+        IntegrationHttpMethod: POST
+        Uri:
+          Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${APICF.Arn}/invocations
+  APIGWGatewayRESTAPIRootOPTIONSMethod:
+    Type: AWS::ApiGateway::Method
+    DependsOn: APIGWGatewayRESTAPIResource
+    Properties:
+      AuthorizationType: NONE
+      HttpMethod: OPTIONS
+      ResourceId:
+        Fn::GetAtt:
+          - APIGW
+          - RootResourceId
+      RestApiId:
+        Ref: APIGW
+      Integration:
+        Type: AWS_PROXY
+        IntegrationHttpMethod: POST
+        Uri:
+          Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${APICF.Arn}/invocations
+  APIGWGatewayResponseDefault4XX:
+    Type: AWS::ApiGateway::GatewayResponse
+    Properties:
+      ResponseParameters:
+        gatewayresponse.header.Access-Control-Allow-Origin: method.request.header.origin
+        gatewayresponse.header.Access-Control-Allow-Credentials: "'true'"
+        gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+      ResponseType: DEFAULT_4XX
+      RestApiId:
+        Ref: APIGW
+  APIGWGatewayRESTAPIDeployment:
+    Type: AWS::ApiGateway::Deployment
+    DependsOn:
+      - APIGWGatewayRESTAPIResource
+      - APIGWGatewayRESTAPIMethod
+      - APIGWGatewayRESTAPIRootMethod
+      - APIGW
+      - APICF
+    Properties:
+      RestApiId:
+        Ref: APIGW
+  APIGWCloudWatch:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName:
+        Fn::Sub: ${AWS::StackName}-APIGWGatewayLogs
+  APIGWCloudWatchRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17T00:00:00.000Z
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - apigateway.amazonaws.com
+            Action: sts:AssumeRole
+      Path: /
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs
+  APIGWCloudWatchAccount:
+    Type: AWS::ApiGateway::Account
+    Properties:
+      CloudWatchRoleArn:
+        Fn::GetAtt:
+          - APIGWCloudWatchRole
+          - Arn
+  APIGWGatewayRESTAPIEnvironment:
+    Type: AWS::ApiGateway::Stage
+    DependsOn:
+      - APIGWCloudWatchAccount
+      - APIGWGatewayRESTAPIDeployment
+    Properties:
+      AccessLogSetting:
+        DestinationArn:
+          Fn::GetAtt:
+            - APIGWCloudWatch
+            - Arn
+        Format: '{"requestId":"$context.requestId","ip":"$context.identity.sourceIp","caller":"$context.identity.caller","user":"$context.identity.user","requestTime":"$context.requestTime","httpMethod":"$context.httpMethod","resourcePath":"$context.resourcePath","status":"$context.status","protocol":"$context.protocol","responseLength":"$context.responseLength","apiGatewayErrorMessage":"$context.error.message"}'
+      DeploymentId:
+        Ref: APIGWGatewayRESTAPIDeployment
+      RestApiId:
+        Ref: APIGW
+      StageName: production
+  APIGWDomainName:
+    Type: AWS::ApiGateway::DomainName
+    Properties:
+      CertificateArn: arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012
+      DomainName: api.example.com
+      EndpointConfiguration:
+        Types:
+          - EDGE
+  APIGWDomainNameBasePathMapping:
+    Type: AWS::ApiGateway::BasePathMapping
+    DependsOn:
+      - APIGW
+      - APIGWGatewayRESTAPIEnvironment
+      - APIGWDomainName
+    Properties:
+      DomainName: api.example.com
+      RestApiId:
+        Ref: APIGW
+      Stage: production
+  APIGWRoute53Record:
+    Type: AWS::Route53::RecordSet
+    DependsOn: APIGWDomainName
+    Properties:
+      HostedZoneId: THE_ZONE
+      Type: A
+      Name:
+        Fn::Sub:
+          - ${DomainName}.
+          - DomainName: api.example.com
+      AliasTarget:
+        HostedZoneId: Z2FDTNDATAQYW2
+        DNSName:
+          Fn::Sub:
+            - ${DomainName}.
+            - DomainName:
+                Fn::GetAtt:
+                  - APIGWDomainName
+                  - DistributionDomainName
+  APIGWCloudFunctionANYResourcePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      FunctionName:
+        Fn::GetAtt:
+          - APICF
+          - Arn
+      SourceArn:
+        Fn::Sub:
+          - arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${__ApiId__}/${__Stage__}/*/*
+          - __Stage__: production
+            __ApiId__:
+              Ref: APIGW
 Outputs:
   Info:
     Description: Basic information.

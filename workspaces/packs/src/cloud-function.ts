@@ -91,7 +91,7 @@ export const addCloudFunction = createResourcePack(
             Policies: policies,
           },
         },
-        [`${id}`]: {
+        [id]: {
           Type: 'AWS::Lambda::Function',
           Properties: {
             Timeout: timeout,

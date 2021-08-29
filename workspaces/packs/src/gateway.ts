@@ -51,7 +51,7 @@ export const addGateway = createResourcePack(
       .patch({
         Resources: {
           // REST API
-          [`${id}GatewayRESTAPI`]: {
+          [id]: {
             Type: 'AWS::ApiGateway::RestApi',
 
             Properties: {
@@ -65,14 +65,14 @@ export const addGateway = createResourcePack(
           },
           [`${id}GatewayRESTAPIResource`]: {
             Type: 'AWS::ApiGateway::Resource',
-            DependsOn: `${id}GatewayRESTAPI`,
+            DependsOn: id,
             Properties: {
               ParentId: {
-                'Fn::GetAtt': [`${id}GatewayRESTAPI`, 'RootResourceId'],
+                'Fn::GetAtt': [id, 'RootResourceId'],
               },
               PathPart: '{proxy+}',
               RestApiId: {
-                Ref: `${id}GatewayRESTAPI`,
+                Ref: id,
               },
             },
           },
@@ -86,7 +86,7 @@ export const addGateway = createResourcePack(
                 Ref: `${id}GatewayRESTAPIResource`,
               },
               RestApiId: {
-                Ref: `${id}GatewayRESTAPI`,
+                Ref: id,
               },
               Integration: {
                 Type: 'AWS_PROXY',
@@ -102,10 +102,10 @@ export const addGateway = createResourcePack(
               ...authProps,
               HttpMethod: 'ANY',
               ResourceId: {
-                'Fn::GetAtt': [`${id}GatewayRESTAPI`, 'RootResourceId'],
+                'Fn::GetAtt': [id, 'RootResourceId'],
               },
               RestApiId: {
-                Ref: `${id}GatewayRESTAPI`,
+                Ref: id,
               },
               Integration: {
                 Type: 'AWS_PROXY',
@@ -129,7 +129,7 @@ export const addGateway = createResourcePack(
                 Ref: `${id}GatewayRESTAPIResource`,
               },
               RestApiId: {
-                Ref: `${id}GatewayRESTAPI`,
+                Ref: id,
               },
               Integration: {
                 Type: 'AWS_PROXY',
@@ -145,10 +145,10 @@ export const addGateway = createResourcePack(
               AuthorizationType: 'NONE',
               HttpMethod: 'OPTIONS',
               ResourceId: {
-                'Fn::GetAtt': [`${id}GatewayRESTAPI`, 'RootResourceId'],
+                'Fn::GetAtt': [id, 'RootResourceId'],
               },
               RestApiId: {
-                Ref: `${id}GatewayRESTAPI`,
+                Ref: id,
               },
               Integration: {
                 Type: 'AWS_PROXY',
@@ -168,7 +168,7 @@ export const addGateway = createResourcePack(
               },
               ResponseType: 'DEFAULT_4XX',
               RestApiId: {
-                Ref: `${id}GatewayRESTAPI`,
+                Ref: id,
               },
             },
           },
@@ -179,16 +179,10 @@ export const addGateway = createResourcePack(
           // SUPPORTING RESOURCES
           [`${id}GatewayRESTAPIDeployment`]: {
             Type: 'AWS::ApiGateway::Deployment',
-            DependsOn: [
-              `${id}GatewayRESTAPIResource`,
-              `${id}GatewayRESTAPIMethod`,
-              `${id}GatewayRESTAPIRootMethod`,
-              `${id}GatewayRESTAPI`,
-              cloudFunctionId,
-            ],
+            DependsOn: [`${id}GatewayRESTAPIResource`, `${id}GatewayRESTAPIMethod`, `${id}GatewayRESTAPIRootMethod`, id, cloudFunctionId],
             Properties: {
               RestApiId: {
-                Ref: `${id}GatewayRESTAPI`,
+                Ref: id,
               },
             },
           },
@@ -242,7 +236,7 @@ export const addGateway = createResourcePack(
                 Ref: `${id}GatewayRESTAPIDeployment`,
               },
               RestApiId: {
-                Ref: `${id}GatewayRESTAPI`,
+                Ref: id,
               },
               StageName: stageName,
             },
@@ -264,11 +258,11 @@ export const addGateway = createResourcePack(
           },
           [`${id}DomainNameBasePathMapping`]: {
             Type: 'AWS::ApiGateway::BasePathMapping',
-            DependsOn: [`${id}GatewayRESTAPI`, `${id}GatewayRESTAPIEnvironment`, `${id}DomainName`],
+            DependsOn: [id, `${id}GatewayRESTAPIEnvironment`, `${id}DomainName`],
             Properties: {
               DomainName: domainName,
               RestApiId: {
-                Ref: `${id}GatewayRESTAPI`,
+                Ref: id,
               },
               Stage: stageName,
             },
@@ -321,7 +315,7 @@ export const addGateway = createResourcePack(
                   {
                     __Stage__: stageName,
                     __ApiId__: {
-                      Ref: `${id}GatewayRESTAPI`,
+                      Ref: id,
                     },
                   },
                 ],
@@ -342,7 +336,7 @@ export const addGateway = createResourcePack(
                     Name: `${id}CustomAuthorizer`,
                     ProviderARNs: providerARNs,
                     RestApiId: {
-                      Ref: `${id}GatewayRESTAPI`,
+                      Ref: id,
                     },
                     Type: 'COGNITO_USER_POOLS',
                   },

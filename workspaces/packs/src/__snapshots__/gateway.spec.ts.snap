@@ -4,6 +4,19 @@ exports[`Gateway addGateway should add a gateway for an API 1`] = `
 Object {
   "AWSTemplateFormatVersion": "2010-09-09",
   "Resources": Object {
+    "Basic": Object {
+      "Properties": Object {
+        "EndpointConfiguration": Object {
+          "Types": Array [
+            "EDGE",
+          ],
+        },
+        "Name": Object {
+          "Fn::Sub": "\${AWS::StackName}-BasicGatewayRESTAPI",
+        },
+      },
+      "Type": "AWS::ApiGateway::RestApi",
+    },
     "BasicCloudFunctionANYResourcePermission": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
@@ -19,7 +32,7 @@ Object {
             "arn:aws:execute-api:\${AWS::Region}:\${AWS::AccountId}:\${__ApiId__}/\${__Stage__}/*/*",
             Object {
               "__ApiId__": Object {
-                "Ref": "BasicGatewayRESTAPI",
+                "Ref": "Basic",
               },
               "__Stage__": "production",
             },
@@ -78,7 +91,7 @@ Object {
           "PROVIDER_ARN",
         ],
         "RestApiId": Object {
-          "Ref": "BasicGatewayRESTAPI",
+          "Ref": "Basic",
         },
         "Type": "COGNITO_USER_POOLS",
       },
@@ -98,43 +111,30 @@ Object {
     },
     "BasicDomainNameBasePathMapping": Object {
       "DependsOn": Array [
-        "BasicGatewayRESTAPI",
+        "Basic",
         "BasicGatewayRESTAPIEnvironment",
         "BasicDomainName",
       ],
       "Properties": Object {
         "DomainName": "api.example.com",
         "RestApiId": Object {
-          "Ref": "BasicGatewayRESTAPI",
+          "Ref": "Basic",
         },
         "Stage": "production",
       },
       "Type": "AWS::ApiGateway::BasePathMapping",
-    },
-    "BasicGatewayRESTAPI": Object {
-      "Properties": Object {
-        "EndpointConfiguration": Object {
-          "Types": Array [
-            "EDGE",
-          ],
-        },
-        "Name": Object {
-          "Fn::Sub": "\${AWS::StackName}-BasicGatewayRESTAPI",
-        },
-      },
-      "Type": "AWS::ApiGateway::RestApi",
     },
     "BasicGatewayRESTAPIDeployment": Object {
       "DependsOn": Array [
         "BasicGatewayRESTAPIResource",
         "BasicGatewayRESTAPIMethod",
         "BasicGatewayRESTAPIRootMethod",
-        "BasicGatewayRESTAPI",
+        "Basic",
         "CFID",
       ],
       "Properties": Object {
         "RestApiId": Object {
-          "Ref": "BasicGatewayRESTAPI",
+          "Ref": "Basic",
         },
       },
       "Type": "AWS::ApiGateway::Deployment",
@@ -158,7 +158,7 @@ Object {
           "Ref": "BasicGatewayRESTAPIDeployment",
         },
         "RestApiId": Object {
-          "Ref": "BasicGatewayRESTAPI",
+          "Ref": "Basic",
         },
         "StageName": "production",
       },
@@ -189,7 +189,7 @@ Object {
           "Ref": "BasicGatewayRESTAPIResource",
         },
         "RestApiId": Object {
-          "Ref": "BasicGatewayRESTAPI",
+          "Ref": "Basic",
         },
       },
       "Type": "AWS::ApiGateway::Method",
@@ -210,23 +210,23 @@ Object {
           "Ref": "BasicGatewayRESTAPIResource",
         },
         "RestApiId": Object {
-          "Ref": "BasicGatewayRESTAPI",
+          "Ref": "Basic",
         },
       },
       "Type": "AWS::ApiGateway::Method",
     },
     "BasicGatewayRESTAPIResource": Object {
-      "DependsOn": "BasicGatewayRESTAPI",
+      "DependsOn": "Basic",
       "Properties": Object {
         "ParentId": Object {
           "Fn::GetAtt": Array [
-            "BasicGatewayRESTAPI",
+            "Basic",
             "RootResourceId",
           ],
         },
         "PathPart": "{proxy+}",
         "RestApiId": Object {
-          "Ref": "BasicGatewayRESTAPI",
+          "Ref": "Basic",
         },
       },
       "Type": "AWS::ApiGateway::Resource",
@@ -254,12 +254,12 @@ Object {
         },
         "ResourceId": Object {
           "Fn::GetAtt": Array [
-            "BasicGatewayRESTAPI",
+            "Basic",
             "RootResourceId",
           ],
         },
         "RestApiId": Object {
-          "Ref": "BasicGatewayRESTAPI",
+          "Ref": "Basic",
         },
       },
       "Type": "AWS::ApiGateway::Method",
@@ -278,12 +278,12 @@ Object {
         },
         "ResourceId": Object {
           "Fn::GetAtt": Array [
-            "BasicGatewayRESTAPI",
+            "Basic",
             "RootResourceId",
           ],
         },
         "RestApiId": Object {
-          "Ref": "BasicGatewayRESTAPI",
+          "Ref": "Basic",
         },
       },
       "Type": "AWS::ApiGateway::Method",
@@ -297,7 +297,7 @@ Object {
         },
         "ResponseType": "DEFAULT_4XX",
         "RestApiId": Object {
-          "Ref": "BasicGatewayRESTAPI",
+          "Ref": "Basic",
         },
       },
       "Type": "AWS::ApiGateway::GatewayResponse",

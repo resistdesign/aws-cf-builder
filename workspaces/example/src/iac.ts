@@ -1,5 +1,7 @@
 import { createResourcePack, SimpleCFT } from '@aws-cf-builder/utils';
-import { addCDN, addSecureFileStorage } from '@aws-cf-builder/packs';
+import { addCDN, addCloudFunction, addGateway, addSecureFileStorage } from '@aws-cf-builder/packs';
+
+const EXAMPLE_CERT_ARN = 'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012';
 
 const addBasicOutput = createResourcePack(({ info = '' }: { info: string }) => ({
   Outputs: {
@@ -77,7 +79,7 @@ export default addBasicOutput(
     .applyPack(
       {
         id: 'UICDN',
-        certificateArn: 'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012',
+        certificateArn: EXAMPLE_CERT_ARN,
         domainName: {
           Ref: 'UIDomainName',
         },
@@ -85,5 +87,23 @@ export default addBasicOutput(
         hostedZoneId: '<example.com-hosted-zone-id>',
       },
       addCDN
+    )
+    .applyPack(
+      {
+        id: 'APICF',
+      },
+      addCloudFunction
+    )
+    .applyPack(
+      {
+        id: 'APIGW',
+        hostedZoneId: 'THE_ZONE',
+        cloudFunction: {
+          id: 'APICF',
+        },
+        domainName: 'api.example.com',
+        certificateArn: EXAMPLE_CERT_ARN,
+      },
+      addGateway
     ).template
 );
