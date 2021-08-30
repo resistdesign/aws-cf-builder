@@ -66,7 +66,7 @@ export const addBuildPipeline = createResourcePack(
           Type: 'String',
           Description: 'A GitHub Access Token with `repo` permissions (https://github.com/settings/tokens)',
         },
-        Label: `${id} GitHub Token`,
+        Label: `${cleanLabel} GitHub Token`,
         Group: group,
       },
     ];

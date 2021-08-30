@@ -6,6 +6,7 @@ describe('Build', () => {
       const cft = addBuildPipeline(
         {
           id: 'APIBuild',
+          label: 'API Build',
           buildSpec: 'echo "build spec"',
         },
         { AWSTemplateFormatVersion: '2010-09-09' }

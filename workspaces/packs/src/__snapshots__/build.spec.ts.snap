@@ -8,7 +8,7 @@ Object {
       "ParameterGroups": Array [
         Object {
           "Label": Object {
-            "default": "APIBuild Parameters",
+            "default": "API Build Parameters",
           },
           "Parameters": Array [
             "APIBuildGitHubUser",
@@ -20,16 +20,16 @@ Object {
       ],
       "ParameterLabels": Object {
         "APIBuildGitHubBranch": Object {
-          "default": "APIBuild GitHub Branch",
+          "default": "API Build GitHub Branch",
         },
         "APIBuildGitHubRepo": Object {
-          "default": "APIBuild GitHub Repo",
+          "default": "API Build GitHub Repo",
         },
         "APIBuildGitHubToken": Object {
-          "default": "APIBuild GitHub Token",
+          "default": "API Build GitHub Token",
         },
         "APIBuildGitHubUser": Object {
-          "default": "APIBuild GitHub User",
+          "default": "API Build GitHub User",
         },
       },
     },
