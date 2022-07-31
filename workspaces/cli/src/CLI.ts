@@ -22,10 +22,11 @@ export const CLI = (packageInfo: { version: string } = { version: '0.0.0' }) => 
     input: string;
     output: string;
   } = program.opts() as any;
+  const cleanInput = Path.isAbsolute(input) ? input : Path.join(process.cwd(), input);
 
-  console.log(`READING: ${input}`);
+  console.log(`READING: ${cleanInput}`);
 
-  const templateStructure = require(input);
+  const templateStructure = require(cleanInput);
   const cleanTemplateStructure = templateStructure?.default || templateStructure;
 
   if (!cleanTemplateStructure) {
@@ -34,7 +35,7 @@ export const CLI = (packageInfo: { version: string } = { version: '0.0.0' }) => 
 
   const templateYAML = YAML.stringify(
     // TRICKY: Removed all keys with a value of `undefined`.
-    JSON.parse(JSON.stringify(cleanTemplateStructure))
+    JSON.parse(JSON.stringify(cleanTemplateStructure)),
   );
   const outputDir = Path.dirname(output);
 
@@ -60,11 +61,15 @@ export const CLI = (packageInfo: { version: string } = { version: '0.0.0' }) => 
         `  ${errorLabel}:`,
         `\n    ${currentErrorList
           .map((e) => {
-            const { message = 'Unspecified message.', resource = 'Not supplied.', documentation = 'Not supplied.' } = e || {};
+            const {
+              message = 'Unspecified message.',
+              resource = 'Not supplied.',
+              documentation = 'Not supplied.',
+            } = e || {};
 
             return `Message: ${message}\n    Resource: ${resource}\n    Documentation: ${documentation}`;
           })
-          .join('\n\n    ')}`
+          .join('\n\n    ')}`,
       );
     }
   }
