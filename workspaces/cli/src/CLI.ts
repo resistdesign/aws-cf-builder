@@ -23,6 +23,7 @@ export const CLI = (packageInfo: { version: string } = { version: '0.0.0' }) => 
     output: string;
   } = program.opts() as any;
   const cleanInput = Path.isAbsolute(input) ? input : Path.join(process.cwd(), input);
+  const cleanOutput = Path.isAbsolute(output) ? output : Path.join(process.cwd(), output);
 
   console.log(`READING: ${cleanInput}`);
 
@@ -37,14 +38,14 @@ export const CLI = (packageInfo: { version: string } = { version: '0.0.0' }) => 
     // TRICKY: Removed all keys with a value of `undefined`.
     JSON.parse(JSON.stringify(cleanTemplateStructure)),
   );
-  const outputDir = Path.dirname(output);
+  const outputDir = Path.dirname(cleanOutput);
 
-  console.log(`WRITING: ${output}`);
+  console.log(`WRITING: ${cleanOutput}`);
 
   FS.mkdirSync(outputDir, { recursive: true });
-  FS.writeFileSync(output, templateYAML, { encoding: 'utf8' });
+  FS.writeFileSync(cleanOutput, templateYAML, { encoding: 'utf8' });
 
-  const { templateValid = true, errors: { info = [], warn = [], crit = [] } = {} } = validateFile(output) || {};
+  const { templateValid = true, errors: { info = [], warn = [], crit = [] } = {} } = validateFile(cleanOutput) || {};
   const errorMap: Record<string, any[]> = {
     Info: info,
     Warnings: warn,
