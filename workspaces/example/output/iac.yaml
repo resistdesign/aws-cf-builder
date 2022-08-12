@@ -153,12 +153,12 @@ Resources:
       Policies:
         - PolicyName: lambda-parameter-store
           PolicyDocument:
+            Version: 2012-10-17
             Statement:
               - Effect: Allow
                 Action:
                   - "*"
                 Resource: "*"
-            Version: 2012-10-17T00:00:00.000Z
   APICF:
     Type: AWS::Lambda::Function
     Properties:
