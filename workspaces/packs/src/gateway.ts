@@ -19,32 +19,32 @@ export type AddGatewayConfig = {
 
 export const addGateway = createResourcePack(
   ({
-    id,
-    hostedZoneId,
-    domainName,
-    certificateArn,
-    cloudFunction: { id: cloudFunctionId, region: cloudFunctionRegion = '${AWS::Region}' },
-    stageName = 'production',
-    authorizer,
-    authorizer: {
-      scopes: authScopes = ['phone', 'email', 'openid', 'profile'],
-      type: authType = 'COGNITO_USER_POOLS',
-      providerARNs,
-      identitySource = 'method.request.header.authorization',
-    } = {},
-  }: AddGatewayConfig) => {
+     id,
+     hostedZoneId,
+     domainName,
+     certificateArn,
+     cloudFunction: { id: cloudFunctionId, region: cloudFunctionRegion = '${AWS::Region}' },
+     stageName = 'production',
+     authorizer,
+     authorizer: {
+       scopes: authScopes = ['phone', 'email', 'openid', 'profile'],
+       type: authType = 'COGNITO_USER_POOLS',
+       providerARNs,
+       identitySource = 'method.request.header.authorization',
+     } = {},
+   }: AddGatewayConfig) => {
     const cloudFunctionUri = {
       'Fn::Sub': `arn:aws:apigateway:${cloudFunctionRegion}:lambda:path/2015-03-31/functions/\${${cloudFunctionId}.Arn}/invocations`,
     };
     const authorizerId = `${id}CustomAuthorizer`;
     const authProps = !!authorizer
       ? {
-          AuthorizationScopes: authScopes,
-          AuthorizationType: authType === DEFAULT_AUTH_TYPE ? DEFAULT_AUTH_TYPE : 'CUSTOM',
-          AuthorizerId: {
-            Ref: authorizerId,
-          },
-        }
+        AuthorizationScopes: authScopes,
+        AuthorizationType: authType === DEFAULT_AUTH_TYPE ? DEFAULT_AUTH_TYPE : 'CUSTOM',
+        AuthorizerId: {
+          Ref: authorizerId,
+        },
+      }
       : undefined;
 
     return new SimpleCFT()
@@ -163,8 +163,8 @@ export const addGateway = createResourcePack(
               ResponseParameters: {
                 // Not authorized, so just allow the current origin by mapping it into the header.
                 'gatewayresponse.header.Access-Control-Allow-Origin': 'method.request.header.origin',
-                'gatewayresponse.header.Access-Control-Allow-Credentials': "'true'",
-                'gatewayresponse.header.Access-Control-Allow-Headers': "'*'",
+                'gatewayresponse.header.Access-Control-Allow-Credentials': '\'true\'',
+                'gatewayresponse.header.Access-Control-Allow-Headers': '\'*\'',
               },
               ResponseType: 'DEFAULT_4XX',
               RestApiId: {
@@ -198,7 +198,7 @@ export const addGateway = createResourcePack(
             Type: 'AWS::IAM::Role',
             Properties: {
               AssumeRolePolicyDocument: {
-                Version: '2012-10-17T00:00:00.000Z',
+                Version: '2012-10-17',
                 Statement: [
                   {
                     Effect: 'Allow',
@@ -327,23 +327,23 @@ export const addGateway = createResourcePack(
       .patch(
         !!authorizer
           ? {
-              Resources: {
-                // AUTHORIZER
-                [`${id}CustomAuthorizer`]: {
-                  Type: 'AWS::ApiGateway::Authorizer',
-                  Properties: {
-                    IdentitySource: identitySource,
-                    Name: `${id}CustomAuthorizer`,
-                    ProviderARNs: providerARNs,
-                    RestApiId: {
-                      Ref: id,
-                    },
-                    Type: 'COGNITO_USER_POOLS',
+            Resources: {
+              // AUTHORIZER
+              [`${id}CustomAuthorizer`]: {
+                Type: 'AWS::ApiGateway::Authorizer',
+                Properties: {
+                  IdentitySource: identitySource,
+                  Name: `${id}CustomAuthorizer`,
+                  ProviderARNs: providerARNs,
+                  RestApiId: {
+                    Ref: id,
                   },
+                  Type: 'COGNITO_USER_POOLS',
                 },
               },
-            }
-          : {}
+            },
+          }
+          : {},
       ).template;
-  }
+  },
 );

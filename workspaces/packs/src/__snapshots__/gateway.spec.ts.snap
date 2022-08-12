@@ -74,7 +74,7 @@ Object {
               },
             },
           ],
-          "Version": "2012-10-17T00:00:00.000Z",
+          "Version": "2012-10-17",
         },
         "ManagedPolicyArns": Array [
           "arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs",
