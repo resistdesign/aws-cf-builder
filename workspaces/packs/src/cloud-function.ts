@@ -3,7 +3,7 @@ import { createResourcePack } from '@aws-cf-builder/utils';
 
 export const PLACEHOLDER_FUNCTION_CODE: AWS.Lambda.Function.Code = {
   ZipFile:
-    "module.exports = {handler: async () => ({\n            statusCode: 200,\n            headers: {'Content-Type': 'application/json'},\n            body: '\"You did it!\"'\n          })};\n",
+    'module.exports = {handler: async () => ({\n            statusCode: 200,\n            headers: {\'Content-Type\': \'application/json\'},\n            body: \'"You did it!"\'\n          })};\n',
 };
 
 export type AddCloudFunctionConfig = {
@@ -43,33 +43,32 @@ export type AddCloudFunctionConfig = {
 
 export const addCloudFunction = createResourcePack(
   ({
-    id,
-    code = PLACEHOLDER_FUNCTION_CODE,
-    environment = {
-      Variables: {
-        NODE_ENV: 'production',
-      },
-    },
-    handler = 'index.handler',
-    runtime = 'nodejs12.x',
-    timeout = 30,
-    policies = [
-      {
-        PolicyName: 'lambda-parameter-store',
-        PolicyDocument: {
-          Statement: [
-            // By default, the lambda can do anything.
-            {
-              Effect: 'Allow',
-              Action: ['*'],
-              Resource: '*',
-            },
-          ],
-          Version: '2012-10-17T00:00:00.000Z',
-        },
-      },
-    ],
-  }: AddCloudFunctionConfig) => {
+     id,
+     code = PLACEHOLDER_FUNCTION_CODE,
+     environment = {
+       Variables: {
+         NODE_ENV: 'production',
+       },
+     },
+     handler = 'index.handler',
+     runtime = 'nodejs12.x',
+     timeout = 30,
+     policies = [
+       {
+         PolicyName: 'lambda-parameter-store',
+         PolicyDocument: {
+           Version: '2012-10-17',
+           Statement: [
+             {
+               Effect: 'Allow',
+               Action: ['*'],
+               Resource: '*',
+             },
+           ],
+         },
+       },
+     ],
+   }: AddCloudFunctionConfig) => {
     return {
       Resources: {
         [`${id}Role`]: {
@@ -106,5 +105,5 @@ export const addCloudFunction = createResourcePack(
         },
       },
     };
-  }
+  },
 );
