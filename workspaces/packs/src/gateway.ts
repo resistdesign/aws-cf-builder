@@ -2,6 +2,13 @@ import { createResourcePack, SimpleCFT } from '@aws-cf-builder/utils';
 
 export const DEFAULT_AUTH_TYPE = 'COGNITO_USER_POOLS';
 
+export type AddGatewayAuthorizerConfig = {
+  providerARNs?: string[];
+  scopes?: string[];
+  type?: 'TOKEN' | 'COGNITO_USER_POOLS' | 'REQUEST';
+  identitySource?: string;
+};
+
 export type AddGatewayConfig = {
   id: string;
   hostedZoneId: any;
@@ -9,12 +16,7 @@ export type AddGatewayConfig = {
   certificateArn: any;
   cloudFunction: { id: string; region?: string };
   stageName?: any;
-  authorizer?: {
-    providerARNs?: string[];
-    scopes?: string[];
-    type?: 'TOKEN' | 'COGNITO_USER_POOLS' | 'REQUEST';
-    identitySource?: string;
-  };
+  authorizer?: AddGatewayAuthorizerConfig | boolean;
 };
 
 export const addGateway = createResourcePack(
@@ -26,16 +28,16 @@ export const addGateway = createResourcePack(
      cloudFunction: { id: cloudFunctionId, region: cloudFunctionRegion = '${AWS::Region}' },
      stageName = 'production',
      authorizer,
-     authorizer: {
-       scopes: authScopes = ['phone', 'email', 'openid', 'profile'],
-       type: authType = 'COGNITO_USER_POOLS',
-       providerARNs,
-       identitySource = 'method.request.header.authorization',
-     } = {},
    }: AddGatewayConfig) => {
     const cloudFunctionUri = {
       'Fn::Sub': `arn:aws:apigateway:${cloudFunctionRegion}:lambda:path/2015-03-31/functions/\${${cloudFunctionId}.Arn}/invocations`,
     };
+    const {
+      scopes: authScopes = ['phone', 'email', 'openid', 'profile'],
+      type: authType = 'COGNITO_USER_POOLS',
+      providerARNs,
+      identitySource = 'method.request.header.authorization',
+    }: Partial<AddGatewayAuthorizerConfig> = !!authorizer && typeof authorizer === 'object' ? authorizer : {};
     const authorizerId = `${id}CustomAuthorizer`;
     const authProps = !!authorizer
       ? {
@@ -45,7 +47,9 @@ export const addGateway = createResourcePack(
           Ref: authorizerId,
         },
       }
-      : undefined;
+      : {
+        AuthorizationType: 'NONE',
+      };
 
     return new SimpleCFT()
       .patch({
