@@ -3,57 +3,6 @@
 exports[`Build addBuildPipeline should add a build pipeline 1`] = `
 Object {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Metadata": Object {
-    "AWS::CloudFormation::Interface": Object {
-      "ParameterGroups": Array [
-        Object {
-          "Label": Object {
-            "default": "API Build Parameters",
-          },
-          "Parameters": Array [
-            "APIBuildGitHubUser",
-            "APIBuildGitHubRepo",
-            "APIBuildGitHubBranch",
-            "APIBuildGitHubToken",
-          ],
-        },
-      ],
-      "ParameterLabels": Object {
-        "APIBuildGitHubBranch": Object {
-          "default": "API Build GitHub Branch",
-        },
-        "APIBuildGitHubRepo": Object {
-          "default": "API Build GitHub Repo",
-        },
-        "APIBuildGitHubToken": Object {
-          "default": "API Build GitHub Token",
-        },
-        "APIBuildGitHubUser": Object {
-          "default": "API Build GitHub User",
-        },
-      },
-    },
-  },
-  "Parameters": Object {
-    "APIBuildGitHubBranch": Object {
-      "Default": "master",
-      "Description": "The name of the branch to be built",
-      "Type": "String",
-    },
-    "APIBuildGitHubRepo": Object {
-      "Description": "The name of the GitHub repository",
-      "Type": "String",
-    },
-    "APIBuildGitHubToken": Object {
-      "Description": "A GitHub Access Token with \`repo\` permissions (https://github.com/settings/tokens)",
-      "NoEcho": true,
-      "Type": "String",
-    },
-    "APIBuildGitHubUser": Object {
-      "Description": "The GitHub User that owns the repository",
-      "Type": "String",
-    },
-  },
   "Resources": Object {
     "APIBuildCodeBuildAndDeploy": Object {
       "DependsOn": undefined,
@@ -212,18 +161,10 @@ Object {
                   "Version": "1",
                 },
                 "Configuration": Object {
-                  "Branch": Object {
-                    "Ref": "APIBuildGitHubBranch",
-                  },
-                  "OAuthToken": Object {
-                    "Ref": "APIBuildGitHubToken",
-                  },
-                  "Owner": Object {
-                    "Ref": "APIBuildGitHubUser",
-                  },
-                  "Repo": Object {
-                    "Ref": "APIBuildGitHubRepo",
-                  },
+                  "Branch": "main",
+                  "OAuthToken": "oauth-token",
+                  "Owner": "owner",
+                  "Repo": "repo",
                 },
                 "InputArtifacts": Array [],
                 "Name": "Source",

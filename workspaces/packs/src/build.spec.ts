@@ -6,10 +6,15 @@ describe('Build', () => {
       const cft = addBuildPipeline(
         {
           id: 'APIBuild',
-          label: 'API Build',
           buildSpec: 'echo "build spec"',
+          repoConfig: {
+            owner: 'owner',
+            repo: 'repo',
+            branch: 'main',
+            oauthToken: 'oauth-token',
+          },
         },
-        { AWSTemplateFormatVersion: '2010-09-09' }
+        { AWSTemplateFormatVersion: '2010-09-09' },
       );
 
       expect(cft).toMatchSnapshot();
