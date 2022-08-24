@@ -52,6 +52,7 @@ export const addGateway = createResourcePack(
       : {
         AuthorizationType: 'NONE',
       };
+    const fullDeploymentId = `${id}GatewayRESTAPIDeployment${deploymentSuffix}`;
 
     return new SimpleCFT()
       .patch({
@@ -183,7 +184,7 @@ export const addGateway = createResourcePack(
       .patch({
         Resources: {
           // SUPPORTING RESOURCES
-          [`${id}GatewayRESTAPIDeployment${deploymentSuffix}`]: {
+          [fullDeploymentId]: {
             Type: 'AWS::ApiGateway::Deployment',
             DependsOn: [`${id}GatewayRESTAPIResource`, `${id}GatewayRESTAPIMethod`, `${id}GatewayRESTAPIRootMethod`, id, cloudFunctionId],
             Properties: {
@@ -230,7 +231,7 @@ export const addGateway = createResourcePack(
           },
           [`${id}GatewayRESTAPIEnvironment`]: {
             Type: 'AWS::ApiGateway::Stage',
-            DependsOn: [`${id}CloudWatchAccount`, `${id}GatewayRESTAPIDeployment`],
+            DependsOn: [`${id}CloudWatchAccount`, fullDeploymentId],
             Properties: {
               AccessLogSetting: {
                 DestinationArn: {
@@ -240,7 +241,7 @@ export const addGateway = createResourcePack(
                   '{"requestId":"$context.requestId","ip":"$context.identity.sourceIp","caller":"$context.identity.caller","user":"$context.identity.user","requestTime":"$context.requestTime","httpMethod":"$context.httpMethod","resourcePath":"$context.resourcePath","status":"$context.status","protocol":"$context.protocol","responseLength":"$context.responseLength","apiGatewayErrorMessage":"$context.error.message"}',
               },
               DeploymentId: {
-                Ref: `${id}GatewayRESTAPIDeployment`,
+                Ref: fullDeploymentId,
               },
               RestApiId: {
                 Ref: id,
