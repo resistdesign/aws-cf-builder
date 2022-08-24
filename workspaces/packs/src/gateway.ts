@@ -17,6 +17,7 @@ export type AddGatewayConfig = {
   cloudFunction: { id: string; region?: string };
   stageName?: any;
   authorizer?: AddGatewayAuthorizerConfig | boolean;
+  deploymentSuffix?: string;
 };
 
 export const addGateway = createResourcePack(
@@ -28,6 +29,7 @@ export const addGateway = createResourcePack(
      cloudFunction: { id: cloudFunctionId, region: cloudFunctionRegion = '${AWS::Region}' },
      stageName = 'production',
      authorizer,
+     deploymentSuffix = '',
    }: AddGatewayConfig) => {
     const cloudFunctionUri = {
       'Fn::Sub': `arn:aws:apigateway:${cloudFunctionRegion}:lambda:path/2015-03-31/functions/\${${cloudFunctionId}.Arn}/invocations`,
@@ -181,10 +183,11 @@ export const addGateway = createResourcePack(
       .patch({
         Resources: {
           // SUPPORTING RESOURCES
-          [`${id}GatewayRESTAPIDeployment`]: {
+          [`${id}GatewayRESTAPIDeployment${deploymentSuffix}`]: {
             Type: 'AWS::ApiGateway::Deployment',
             DependsOn: [`${id}GatewayRESTAPIResource`, `${id}GatewayRESTAPIMethod`, `${id}GatewayRESTAPIRootMethod`, id, cloudFunctionId],
             Properties: {
+              StageDescription: {},
               RestApiId: {
                 Ref: id,
               },
