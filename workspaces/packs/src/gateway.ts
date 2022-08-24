@@ -188,7 +188,6 @@ export const addGateway = createResourcePack(
             Type: 'AWS::ApiGateway::Deployment',
             DependsOn: [`${id}GatewayRESTAPIResource`, `${id}GatewayRESTAPIMethod`, `${id}GatewayRESTAPIRootMethod`, id, cloudFunctionId],
             Properties: {
-              StageDescription: {},
               RestApiId: {
                 Ref: id,
               },
