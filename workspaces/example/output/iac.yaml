@@ -281,7 +281,6 @@ Resources:
       - APIGW
       - APICF
     Properties:
-      StageDescription: {}
       RestApiId:
         Ref: APIGW
   APIGWCloudWatch:
