@@ -7,13 +7,21 @@ export type AddSecureFileStorageConfig = {
   shouldDelete?: boolean;
   blockPublicAccess?: boolean;
   cors?: AWS.S3.Bucket['Properties']['CorsConfiguration'] | boolean;
+  accessControl?: AWS.S3.Bucket['Properties']['AccessControl'];
 };
 
 /**
  * Add a secure S3 Bucket with an optional parameter to set the bucket name.
  * */
 export const addSecureFileStorage = createResourcePack(
-  ({ id, bucketName, shouldDelete = true, blockPublicAccess = true, cors = false }: AddSecureFileStorageConfig) => {
+  ({
+     id,
+     bucketName,
+     shouldDelete = true,
+     blockPublicAccess = true,
+     cors = false,
+     accessControl = undefined,
+   }: AddSecureFileStorageConfig) => {
     return {
       Resources: {
         [id]: {
@@ -21,11 +29,12 @@ export const addSecureFileStorage = createResourcePack(
           DeletionPolicy: shouldDelete ? 'Delete' : 'Retain',
           Properties: {
             BucketName: bucketName,
+            AccessControl: accessControl,
             CorsConfiguration:
               typeof cors === 'object'
                 ? cors
                 : cors === true
-                ? {
+                  ? {
                     CorsRules: [
                       {
                         AllowedHeaders: ['*'],
@@ -34,7 +43,7 @@ export const addSecureFileStorage = createResourcePack(
                       },
                     ],
                   }
-                : undefined,
+                  : undefined,
             BucketEncryption: {
               ServerSideEncryptionConfiguration: [
                 {
@@ -46,15 +55,15 @@ export const addSecureFileStorage = createResourcePack(
             },
             PublicAccessBlockConfiguration: blockPublicAccess
               ? {
-                  BlockPublicAcls: true,
-                  BlockPublicPolicy: true,
-                  IgnorePublicAcls: true,
-                  RestrictPublicBuckets: true,
-                }
+                BlockPublicAcls: true,
+                BlockPublicPolicy: true,
+                IgnorePublicAcls: true,
+                RestrictPublicBuckets: true,
+              }
               : undefined,
           },
         },
       },
     };
-  }
+  },
 );
