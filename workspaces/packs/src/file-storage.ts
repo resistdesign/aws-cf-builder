@@ -8,6 +8,7 @@ export type AddSecureFileStorageConfig = {
   blockPublicAccess?: boolean;
   cors?: AWS.S3.Bucket['Properties']['CorsConfiguration'] | boolean;
   accessControl?: AWS.S3.Bucket['Properties']['AccessControl'];
+  allowACLs?: boolean;
 };
 
 /**
@@ -21,6 +22,7 @@ export const addSecureFileStorage = createResourcePack(
      blockPublicAccess = true,
      cors = false,
      accessControl = undefined,
+     allowACLs = false,
    }: AddSecureFileStorageConfig) => {
     return {
       Resources: {
@@ -30,6 +32,13 @@ export const addSecureFileStorage = createResourcePack(
           Properties: {
             BucketName: bucketName,
             AccessControl: accessControl,
+            OwnershipControls: allowACLs ? ({
+              Rules: [
+                {
+                  ObjectOwnership: 'BucketOwnerPreferred',
+                },
+              ],
+            }) : undefined,
             CorsConfiguration:
               typeof cors === 'object'
                 ? cors
