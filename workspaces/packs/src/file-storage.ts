@@ -35,7 +35,7 @@ export const addSecureFileStorage = createResourcePack(
             OwnershipControls: allowACLs ? ({
               Rules: [
                 {
-                  ObjectOwnership: 'BucketOwnerPreferred',
+                  ObjectOwnership: 'ObjectWriter',
                 },
               ],
             }) : undefined,
@@ -69,7 +69,12 @@ export const addSecureFileStorage = createResourcePack(
                 IgnorePublicAcls: true,
                 RestrictPublicBuckets: true,
               }
-              : undefined,
+              : {
+                BlockPublicAcls: false,
+                BlockPublicPolicy: false,
+                IgnorePublicAcls: false,
+                RestrictPublicBuckets: false,
+              },
           },
         },
       },

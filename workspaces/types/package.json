@@ -1,6 +1,6 @@
 {
   "name": "@aws-cf-builder/types",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "main": "dist/index.d.ts",
   "files": [
     "dist"

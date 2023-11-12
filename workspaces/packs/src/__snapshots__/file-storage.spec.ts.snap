@@ -37,6 +37,7 @@ Object {
             },
           ],
         },
+        "OwnershipControls": undefined,
         "PublicAccessBlockConfiguration": Object {
           "BlockPublicAcls": true,
           "BlockPublicPolicy": true,
