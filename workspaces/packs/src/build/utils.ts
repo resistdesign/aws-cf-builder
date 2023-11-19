@@ -8,13 +8,15 @@ export const COMMAND_HELPERS = {
   copyDirectoryToS3: ({ s3Domain, directoryPath }: { s3Domain: string; directoryPath: string }) =>
     `aws s3 cp --recursive --acl public-read ${directoryPath} s3://${s3Domain}/`,
   cloudFrontInvalidation: ({
-    cloudFrontDistributionId,
-    pathsToInvalidate = ['/*'],
-  }: {
+                             cloudFrontDistributionId,
+                             pathsToInvalidate = ['/*'],
+                           }: {
     cloudFrontDistributionId: string;
     pathsToInvalidate?: string[];
   }) => `aws cloudfront create-invalidation --distribution-id "${cloudFrontDistributionId}" --paths "${pathsToInvalidate.join('" "')}"`,
-  addNPMTokenWithNPMRC: ({ npmToken }: { npmToken: string }) => `echo '//registry.npmjs.org/:_authToken=${npmToken}' > .npmrc`,
+  addNPMTokenWithNPMRC: ({ npmToken }: {
+    npmToken: string
+  }) => `echo '//registry.npmjs.org/:_authToken=${npmToken}' > .npmrc`,
 };
 
 export type LinuxUserNameString = string;
@@ -45,6 +47,7 @@ export interface Batch {
 }
 
 export interface Phase {
+  'runtime-versions'?: Record<string, any>;
   'run-as'?: LinuxUserNameString;
   'on-failure'?: 'ABORT' | 'CONTINUE';
   commands: string[];
@@ -114,6 +117,6 @@ export const createBuildSpec = ({ version = 0.2, phases }: BuildSpec): string =>
       JSON.stringify({
         version,
         phases,
-      })
-    )
+      }),
+    ),
   );
